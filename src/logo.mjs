@@ -66,7 +66,7 @@ function candidates(html, base) {
 
 /** Döner: { buf (PNG, yükseklik 120px), source } ya da null */
 export async function fetchEventLogo(officialSite) {
-  if (!/^https?:\/\//i.test(officialSite ?? "")) return null;
+  if (!/^https:\/\//i.test(officialSite ?? "")) return null;
   const html = (await get(officialSite)) ?? "";
   const host = new URL(officialSite).hostname;
   // Yedek: sitenin büyük ikonu (JS ile çizilen sitelerde HTML'de logo olmayabilir). 128px altı = varsayılan ikon, kullanılmaz.

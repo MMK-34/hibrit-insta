@@ -65,27 +65,38 @@ async function makeOne(st) {
       + "Kaydedilmeye değer, öğretici ve uygulanabilir olsun. primarySource alanına ana kaynağın adını yaz.",
   }];
 
-  const draft = await writePost(pick, sources);
-  if (!draft.factsOk) { console.log("stok: kaynak yetersiz:", topic.id); return null; }
-  const rev = await reviewPost(draft, sources, { evergreen: true });
-  if (!rev.approve) { console.log("stok: editör reddetti:", topic.id, (rev.issues ?? []).join(" | ").slice(0, 300)); return null; }
-  if (rev.fixed?.slides?.length && rev.fixed.caption) {
-    // Editör yalnızca metin alanlarını düzeltebilir
-    const { slides, caption, hashtags, imageQueries } = rev.fixed;
-    Object.assign(draft, { slides, caption, ...(hashtags ? { hashtags } : {}), ...(imageQueries ? { imageQueries } : {}) });
+  // Stokta fotoğraf yayın anında lisanslı kütüphaneden seçilir: "gorsel" maddesi bu aşamada uygulanamaz.
+  // İstatistikte sayıların kaynağı koddan hesaplanan arşiv verisidir: kaynak sitesinin açılması / tarih-yer-ad web doğrulaması aranmaz;
+  // sayılar, başlık, kaynak satırı ve alıntı kuralı aynen denetlenir.
+  const skipItems = topic.stat ? ["gorsel", "kaynak", "tarih", "yer", "resmi_ad", "sporcu"] : ["gorsel"];
+  let feedback = "", g = null, sourceName = "";
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const draft = await writePost(pick, sources, feedback);
+    if (!draft.factsOk) { console.log("stok: kaynak yetersiz:", topic.id); return null; }
+    const rev = await reviewPost(draft, sources, { evergreen: true });
+    if (!rev.approve) { console.log("stok: editör reddetti:", topic.id, (rev.issues ?? []).join(" | ").slice(0, 300)); feedback = (rev.issues ?? []).join(" | "); continue; }
+    if (rev.fixed?.slides?.length && rev.fixed.caption) {
+      // Editör yalnızca metin alanlarını düzeltebilir
+      const { slides, caption, hashtags, imageQueries } = rev.fixed;
+      Object.assign(draft, { slides, caption, ...(hashtags ? { hashtags } : {}), ...(imageQueries ? { imageQueries } : {}) });
+    }
+    // İstatistik postu: tablo slaytı koddan eklenir (kapaktan hemen sonra)
+    if (topic.stat) {
+      const table = { type: "table", title: topic.title, columns: topic.table.columns, rows: topic.table.rows, note: topic.note, ...(topic.table.highlight ? { highlight: topic.table.highlight } : {}) };
+      draft.slides = [draft.slides[0], table, ...draft.slides.slice(1).filter((s) => s.type !== "table")];
+    }
+    sourceName = topic.stat ? topic.sourceName : (draft.primarySource || "Hibrit Portal derlemesi");
+    const gg = guardPost(draft, { sourceName });
+    if (!gg.ok) { console.log("stok: kontrolden geçmedi:", topic.id, gg.reason); feedback = gg.reason; continue; }
+    const sourceUrls = (topic.stat ? topic.sourceUrls ?? [] : (draft.evidence ?? []).map((x) => x.url)).filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
+    const gate = await verifyGate(gg.post, { sourceUrls, photos: [], sourceName, referenceData: topic.stat ? topic.dataText : "", skipItems });
+    if (gate.ok) { g = gg; break; }
+    console.log(`stok: doğrulama düştü (deneme ${attempt}):`, topic.id, `
+${failText(gate.fails).slice(0, 800)}`);
+    if (attempt === 2) logRejected({ title: topic.title, url: "stok", kind: "stok", fails: gate.fails });
+    feedback = failText(gate.fails);
   }
-  // İstatistik postu: tablo slaytı koddan eklenir (kapaktan hemen sonra)
-  if (topic.stat) {
-    const table = { type: "table", title: topic.title, columns: topic.table.columns, rows: topic.table.rows, note: topic.note, ...(topic.table.highlight ? { highlight: topic.table.highlight } : {}) };
-    draft.slides = [draft.slides[0], table, ...draft.slides.slice(1).filter((s) => s.type !== "table")];
-  }
-  const sourceName = topic.stat ? topic.sourceName : (draft.primarySource || "Hibrit Portal derlemesi");
-  const g = guardPost(draft, { sourceName });
-  if (!g.ok) { console.log("stok: kontrolden geçmedi:", topic.id, g.reason); return null; }
-  // Bağımsız doğrulama (fotoğraflar yayın anında seçilir; burada görsel maddesi lisanslı stok varsayımıyla denetlenir)
-  const sourceUrls = (topic.stat ? topic.sourceUrls ?? [] : (draft.evidence ?? []).map((x) => x.url)).filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
-  const gate = await verifyGate(g.post, { sourceUrls, photos: [{ alt: (g.post.imageQueries ?? []).join(", "), license: "Pexels lisansı (yayında seçilecek)", credit: "" }], sourceName, referenceData: topic.stat ? topic.dataText : "" });
-  if (!gate.ok) { console.log("stok: doğrulama düştü:", topic.id, `\n${failText(gate.fails).slice(0, 800)}`); logRejected({ title: topic.title, url: "stok", kind: "stok", fails: gate.fails }); return null; }
+  if (!g) return null;
   return { id: `stock:${topic.id}:${Date.now().toString(36)}`, topic: topic.id, category: topic.cat, sourceName, post: g.post, createdAt: new Date().toISOString() };
 }
 

@@ -69,7 +69,7 @@ async function verifyOnce(model, payload) {
  * post: guard'dan geçmiş post; sourceUrls: orijinal kaynak URL'leri; photos: [{alt, license, credit}]
  * Döner: { ok, fails: [{model,item,note}], results }
  */
-export async function verifyGate(post, { sourceUrls, photos, sourceName, referenceData = "" }) {
+export async function verifyGate(post, { sourceUrls, photos, sourceName, referenceData = "", skipItems = [] }) {
   // Doğrulama web_fetch/web_search ister; yalnızca Claude (Anthropic) yapabilir. Gemini ile kapı her zaman kapalı.
   if (!process.env.ANTHROPIC_API_KEY) return { ok: false, fails: [{ model: "-", item: "hata", note: "ANTHROPIC_API_KEY yok: doğrulama (web erişimi) yapılamaz, yayın yok" }], results: [] };
   const e = (t = "") => String(t).replace(/</g, "‹").replace(/>/g, "›");
@@ -91,6 +91,10 @@ ${(photos ?? []).map((p, i) => `${i + 1}. açıklama: ${e(p.alt || "?")} | lisan
   const settled = await Promise.allSettled([verifyOnce(MODEL, payload), verifyOnce(MODEL_WRITE, payload)]);
   const results = settled.map((r, i) => (r.status === "fulfilled" ? r.value
     : { model: i ? MODEL_WRITE : MODEL, ok: false, fails: [{ item: "hata", note: String(r.reason).slice(0, 200) }] }));
+  // Uygulanamayan maddeler (ör. stokta fotoğraf henüz seçilmedi; istatistikte sayıların kaynağı koddan hesaplanan arşiv verisi) sayılmaz.
+  // "hata" (API hatası) asla atlanmaz.
+  const skip = new Set(skipItems.filter((k) => k !== "hata"));
+  for (const r of results) { r.fails = r.fails.filter((f) => !skip.has(f.item)); r.ok = r.fails.length === 0; }
   const fails = results.flatMap((r) => r.fails.map((f) => ({ model: r.model, item: f.item, note: f.note })));
   return { ok: results.every((r) => r.ok), fails, results };
 }

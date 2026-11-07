@@ -16,5 +16,132 @@
         "note": "Pexels lisansı henüz seçilmedi (\"yayında seçilecek\"), bu yüzden lisans ve konuya uygunluk doğrulanamadı. Açıklama genel. Belirli bir Pexels fotoğrafı seçilip doğrulanmalı."
       }
     ]
+  },
+  {
+    "at": "2026-11-07T23:05:59.188Z",
+    "title": "HYROX kategorileri: Open, Pro, Doubles, Relay",
+    "url": "stok",
+    "kind": "stok",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak_satiri",
+        "note": "Caption'daki satırda 'HYROX Rulebook 202627' yazıyor, doğrusu '2026/27'. Ayrıca içerik gerçekte listelenen web sitelerine (RoxHype, Hybrid Athlete Club vb.) dayanıyor, resmî rulebook açılıp okunmadı. Kaynak satırı gerçek kaynağı göstermeli ya da resmî rulebook doğrulanmalı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "gorsel",
+        "note": "Fotoğraf açıklaması gerçek bir görsel tarifi değil, arama sorgusu gibi anahtar kelime listesi. Lisans 'yayında seçilecek' diye belirsiz. Konuyla ilgisi ve Pexels/CC lisansı doğrulanamadı."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "sayilar",
+        "note": "Open ve Pro ağırlıkları (102/152/202 kg, 78/103/153 kg, 2x16/24/32 kg, 10/20/30 kg, 4/6/9 kg, 2,70/3,00 m) ve Relay formatı (2 x 1 km, 2 istasyon, Pro yok) kaynaklarla uyumlu. Ancak 'Mixed Doubles'ta iki sporcu da Open erkek ağırlığıyla yarışır' ifadesi eksik: kaynaklara göre wall ball bu kuralın istisnası, kadın sporcu kendi wall ball standardını kullanıyor. 'Wall ball hariç' notu eklenmeli. Ayrıca Relay'de herkes aynı ağırlığı kullanmıyor; erkekler erkek, kadınlar kadın Open ağırlıklarını kullanıyor."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "kaynak_satiri",
+        "note": "Caption'daki satır 'HYROX Rulebook 202627' şeklinde yazılmış; '2026/27' olmalı. Ayrıca postun dayandığı kaynaklar resmî kural kitabı değil, üçüncü taraf bloglar (roxhype, hybridathleteclub, ritfit, fitvizpro, roxconnect, thegymgroup). Kaynak satırı gerçek kaynağı göstermiyor."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "gorsel",
+        "note": "Fotoğraf seçilmemiş, yalnızca bir arama sorgusu ve 'Pexels lisansı (yayında seçilecek)' notu var. Görselin konuyla ilgisi ve lisansı doğrulanamadı."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-07T23:07:19.570Z",
+    "title": "Türkiye'de yılda kaç yarışma yapılıyor?",
+    "url": "stok",
+    "kind": "stok",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "sayilar",
+        "note": "Sistem verisiyle uyumlu sayılar: 9 yarışma, 17 edisyon, 14 CrossFit, 3 HYROX, 2,25 ortalama, yıl bazlı tablo, 2026'da 4 yarışma. Üç hata var. (1) Tablo notunda '2020, 2026 (14 edisyon)' yazıyor, ama tablodaki CrossFit toplamı 11. 14'e 2020 öncesi 3 edisyon da dahil. (2) '2015, 2026' aralığı virgülle yazılmış, doğrusu '2015–2026'. (3) '2022, 2025' aralığı da virgülle yazılmış, doğrusu '2022–2025'. Aralıklar iki ayrı yıl gibi okunuyor, bu yanıltıcı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "baslik",
+        "note": "Kapak başlığı 'Türkiye'de 2026'da 4 yarışma: 3'ü HYROX' arşive atıf yapmıyor, Türkiye'de toplam 4 yarışma yapıldığı izlenimini veriyor. Oysa arşiv tam bir sayım değil. Öneri: 'Hibrit Portal arşivinde 2026'da Türkiye'den 4 yarışma: 3'ü HYROX'."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-07T23:09:44.153Z",
+    "title": "Türkiye'de en çok yarışma yapılan şehirler",
+    "url": "stok",
+    "kind": "stok",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "tarih",
+        "note": "Kaynak sayfaları açılamadı (web_fetch kullanım sınırı aşıldı). Referans tarih ve 5 yaklaşan yarışmanın tahmini tarihi doğrulanamadı. Şüphe olduğu için fail."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "yer",
+        "note": "Arşivdeki etkinliklerin şehirleri ve mekânları kaynak URL'lerinden doğrulanamadı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "resmi_ad",
+        "note": "Etkinlik ve organizatör adları kaynaklardan doğrulanamadı. Postta etkinlik adı yok, ama 'Hibrit Portal yarışma arşivi' adı doğrulanamadı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak_satiri",
+        "note": "'Kaynak: Hibrit Portal yarışma arşivi' satırı sadece arşivi gösteriyor. Veri aynı zamanda yarışma takvimine de dayanıyor. Doğrusu 'Kaynak: Hibrit Portal yarışma arşivi ve yarışma takvimi' olmalı. Kaynak sayfaları da doğrulanamadı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "baslik",
+        "note": "Başlıktaki 'yarısından fazlası' ifadesi veriyle tam örtüşmüyor. 12/25 kayıt %48 eder, yani yarıdan azdır. %55 ancak şehri belli 22 kaydın içinde geçerli. Başlık 'Arşivimizdeki yarışmaların' diyerek tüm kayıtlardan söz ediyor. 'Şehri belli yarışmaların yarısından fazlası' daha doğru olur. Ayrıca tablo başlığı 'Türkiye'de en çok yarışma yapılan şehirler' bu sınırlı örneklemi Türkiye geneline genelliyor. Ayrıca kapaktaki alt başlık 'Antal' diye kesilmiş."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "yer",
+        "note": "Şehir dağılımı sistem verisiyle uyuşuyor. Ancak web_fetch ve web_search araçları limit hatası verdi, bu yüzden hiçbir kaynak URL'si açılamadı. Arşivdeki etkinliklerin (Battle of Anatolia, Eurasia Throwdown, HYROX Türkiye, Tersane İstanbul, Circle21, Kuşadası şampiyonası) gerçekten olduğu ve yerleri kontrol edilemedi. Şüphe olduğu için fail."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "kaynak_satiri",
+        "note": "Veri arşiv ile takvimin birleşiminden geliyor: 8 yaklaşan yarışma takvimden alındı. Kaynak satırında ise yalnızca 'Hibrit Portal yarışma arşivi' yazıyor. Doğrusu: 'Kaynak: Hibrit Portal yarışma arşivi ve yarışma takvimi'."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "baslik",
+        "note": "Tablo başlığı 'Türkiye'de en çok yarışma yapılan şehirler' yanıltıcı, çünkü arşiv tam bir sayım değil ve yalnızca büyük yarışmaları kapsıyor. Öneri: 'Arşiv ve takvimimizde şehirlere göre yarışmalar'. Kapak başlığındaki 'Arşivimizdeki' ifadesi de yaklaşan yarışmaları dışarıda bırakıyor gibi okunuyor; doğrusu 'Arşiv ve takvimimizdeki'. Ayrıca kapak alt başlığı yarıda kesilmiş ('...Kuşadası, Antal'); düzeltilmeli."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-07T23:14:49.048Z",
+    "title": "Yarışma takviminde en çok yarışma olan ülkeler",
+    "url": "stok",
+    "kind": "stok",
+    "fails": [
+      {
+        "model": "claude-opus-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      }
+    ]
   }
 ]

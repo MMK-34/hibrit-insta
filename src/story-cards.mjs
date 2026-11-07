@@ -72,10 +72,10 @@ for (const f of ["profil.png", "ilk-gonderi.png"]) if (fs.existsSync(path.join(K
 
 fs.writeFileSync(path.join(OUT, "KURULUM.md"), `# @hibritportal profil kurulumu (telefondan ~5 dakika)
 
-Bio ve kategori hazır (bio Graph API ile doğrulandı). Instagram'ın API'si profil fotoğrafını ve öne çıkanları değiştirmeye izin vermediği için bu adımlar uygulamadan yapılır.
+Bio, ad ve profil fotoğrafı hazır (Graph API ile doğrulandı). Instagram'ın API'si profil fotoğrafını ve öne çıkanları değiştirmeye izin vermediği için bu adımlar uygulamadan yapılır.
 
-1. **Profil fotoğrafı:** Profili düzenle > Fotoğrafı değiştir > \`profil.png\`
-2. **Ad:** Profili düzenle > Ad: \`Hibrit Portal\`
+1. **Profil fotoğrafı:** yüklendi (logo). Gerekirse yeniden: Profili düzenle > Fotoğrafı değiştir > \`profil.png\`
+2. **Ad:** ayarlandı (Hibrit Portal).
 3. **Öne çıkanlar** (her biri için): Hikâye olarak \`N-hikaye-*.jpg\` paylaş > Profil > "+" Yeni öne çıkan > hikâyeyi seç > Adı yaz > Kapağı düzenle > \`N-kapak-*.png\`
 ${HIGHLIGHTS.map((h, i) => `   - ${i + 1}. **${h.name}**: \`${i + 1}-hikaye-${h.file}.jpg\` + kapak \`${i + 1}-kapak-${h.file}.png\``).join("\n")}
 4. **İlk gönderi (isteğe bağlı):** \`ilk-gonderi.png\` tanıtım postu olarak sabitlenebilir.

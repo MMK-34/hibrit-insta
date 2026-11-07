@@ -1,11 +1,50 @@
-// Claude ile haber seçimi + Türkçe post yazımı. JSON çıktı tool_use ile zorlanır.
+// Yapay zekâ ile haber seçimi + Türkçe post yazımı. JSON çıktı araç çağrısı (function calling) ile zorlanır.
+// Sağlayıcı: GEMINI_API_KEY varsa Gemini (ücretsiz kota), yoksa ANTHROPIC_API_KEY ile Claude.
 import { MODEL, BRAND } from "./config.mjs";
 
 const API = "https://api.anthropic.com/v1/messages";
+const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+
+// Gemini şeması OpenAPI alt kümesidir: desteklenmeyen anahtarları ayıkla
+function toGeminiSchema(s) {
+  if (Array.isArray(s)) return s.map(toGeminiSchema);
+  if (!s || typeof s !== "object") return s;
+  const out = {};
+  for (const [k, v] of Object.entries(s)) {
+    if (["additionalProperties", "$schema"].includes(k)) continue;
+    out[k] = k === "properties" ? Object.fromEntries(Object.entries(v).map(([pk, pv]) => [pk, toGeminiSchema(pv)])) : toGeminiSchema(v);
+  }
+  return out;
+}
+
+async function gemini({ system, user, tool, maxTokens }) {
+  const key = process.env.GEMINI_API_KEY;
+  for (let i = 0; i < 4; i++) {
+    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`, {
+      method: "POST",
+      headers: { "x-goog-api-key": key, "content-type": "application/json" },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: system }] },
+        contents: [{ role: "user", parts: [{ text: user }] }],
+        tools: [{ functionDeclarations: [{ name: tool.name, description: tool.description, parameters: toGeminiSchema(tool.input_schema) }] }],
+        toolConfig: { functionCallingConfig: { mode: "ANY", allowedFunctionNames: [tool.name] } },
+        generationConfig: { maxOutputTokens: maxTokens * 2, temperature: 0.6 },
+      }),
+    });
+    if (r.status === 429 || r.status >= 500) { await new Promise((s) => setTimeout(s, 8000 * (i + 1))); continue; }
+    const j = await r.json();
+    if (!r.ok) throw new Error(`Gemini API ${r.status}: ${JSON.stringify(j).slice(0, 300)}`);
+    const call = j.candidates?.[0]?.content?.parts?.find((p) => p.functionCall)?.functionCall;
+    if (!call) throw new Error(`Gemini fonksiyon çağrısı dönmedi: ${JSON.stringify(j).slice(0, 200)}`);
+    return call.args;
+  }
+  throw new Error("Gemini API tekrar denemeleri tükendi");
+}
 
 async function claude({ system, user, tool, maxTokens = 4000 }) {
+  if (process.env.GEMINI_API_KEY) return gemini({ system, user, tool, maxTokens });
   const key = process.env.ANTHROPIC_API_KEY;
-  if (!key) throw new Error("ANTHROPIC_API_KEY yok (.env)");
+  if (!key) throw new Error("GEMINI_API_KEY ya da ANTHROPIC_API_KEY yok (.env)");
   for (let i = 0; i < 3; i++) {
     const r = await fetch(API, {
       method: "POST",

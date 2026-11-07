@@ -1,6 +1,5 @@
 // RSS/Atom toplama + makale metni çekme (yalnızca özetlemek için; yayına kopyalanmaz).
-import dns from "node:dns/promises";
-import net from "node:net";
+import { safeGet } from "./safe-net.mjs";
 import { XMLParser } from "fast-xml-parser";
 import { FEEDS, POSTING } from "./config.mjs";
 
@@ -10,65 +9,10 @@ const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "@"
 const txt = (v) => (v == null ? "" : typeof v === "object" ? (v["#text"] ?? v["@href"] ?? "") : String(v));
 const clean = (s = "") => String(s).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&#8217;|&rsquo;/g, "'").replace(/&#8220;|&#8221;|&quot;/g, '"').replace(/&#\d+;/g, "").replace(/\s+/g, " ").trim();
 
-// SSRF koruması (logo.mjs safeUrl ile aynı mantık): http/https, kimlik bilgisiz URL, yalnızca herkese açık IP.
-// Yönlendirmeler elle izlenir ve her adım yeniden denetlenir.
-function privateIp(ip) {
-  if (net.isIPv6(ip)) {
-    const m = ip.match(/^::ffff:(\d+\.\d+\.\d+\.\d+)$/i);
-    if (m) return privateIp(m[1]);
-    return /^(::1$|::$|fc|fd|fe[89ab])/i.test(ip);
-  }
-  const [a, b] = ip.split(".").map(Number);
-  return a === 10 || a === 127 || a === 0 || (a === 169 && b === 254) || (a === 172 && b >= 16 && b <= 31) || (a === 192 && b === 168) || (a === 100 && b >= 64 && b <= 127) || a >= 224;
-}
-async function safeUrl(u) {
-  let url;
-  try { url = new URL(u); } catch { return false; }
-  if (!["https:", "http:"].includes(url.protocol) || url.username || url.password) return false;
-  if (url.port && !["80", "443"].includes(url.port)) return false;
-  const host = url.hostname.replace(/^\[|\]$/g, "");
-  try {
-    const addrs = net.isIP(host) ? [{ address: host }] : await dns.lookup(host, { all: true });
-    return addrs.length > 0 && addrs.every((a) => !privateIp(a.address));
-  } catch { return false; }
-}
-
-/** Gövdeyi en fazla max bayta kadar okur (fazlası kesilir). */
-async function readCapped(r, max) {
-  if (!r.body) return "";
-  const reader = r.body.getReader();
-  const chunks = [];
-  let n = 0;
-  for (;;) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    chunks.push(value);
-    n += value.length;
-    if (n >= max) { await reader.cancel().catch(() => {}); break; }
-  }
-  return Buffer.concat(chunks).subarray(0, max).toString("utf8");
-}
-
+// SSRF koruması: safe-net.mjs (bağlantı anında IP denetimi, her yönlendirme adımı denetlenir, gövde ~2 MB ile sınırlı)
 async function get(url, timeout = 15000) {
-  try {
-    const signal = AbortSignal.timeout(timeout);
-    let cur = url;
-    for (let hop = 0; hop < 6; hop++) {
-      if (!(await safeUrl(cur))) return null;
-      const r = await fetch(cur, { headers: { "user-agent": UA, accept: "*/*" }, signal, redirect: "manual" });
-      if (r.status >= 300 && r.status < 400) {
-        const loc = r.headers.get("location");
-        await r.body?.cancel().catch(() => {});
-        if (!loc) return null;
-        cur = new URL(loc, cur).href;
-        continue;
-      }
-      if (!r.ok) { await r.body?.cancel().catch(() => {}); return null; }
-      if (Number(r.headers.get("content-length") ?? 0) > MAX_BYTES * 5) { await r.body?.cancel().catch(() => {}); return null; }
-      return await readCapped(r, MAX_BYTES);
-    }
-    return null;
-  } catch { return null; }
+  const r = await safeGet(url, { timeout, maxBytes: MAX_BYTES, headers: { "user-agent": UA, accept: "*/*" } });
+  return r?.ok ? r.buf.toString("utf8") : null;
 }
 
 export async function collect() {

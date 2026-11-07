@@ -1,0 +1,20 @@
+[
+  {
+    "at": "2026-11-07T23:03:50.194Z",
+    "title": "HYROX formatı: 8 km koşu + 8 istasyon",
+    "url": "stok",
+    "kind": "stok",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak_satiri",
+        "note": "Kaynak satırında \"HYROX Rulebook\" yazıyor. Fetch edilen rulebook sayfası yalnızca kural kitabı indeksi. İstasyon listesi ve mesafeler hyrox.com/the-fitness-race/ sayfasında. Roxzone bilgisi o sayfada çıkmadı, Red Bull'da çıktı. Kaynak satırı \"HYROX (hyrox.com)\" olarak düzeltilmeli. \"Dünyanın her yerinde aynı\" ifadesi okunan sayfada açıkça doğrulanmadı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "gorsel",
+        "note": "Pexels lisansı henüz seçilmedi (\"yayında seçilecek\"), bu yüzden lisans ve konuya uygunluk doğrulanamadı. Açıklama genel. Belirli bir Pexels fotoğrafı seçilip doğrulanmalı."
+      }
+    ]
+  }
+]

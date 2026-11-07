@@ -4,42 +4,13 @@ import sharp from "sharp";
 
 const UA = "Mozilla/5.0 (compatible; hibrit-portal-news/1.0)";
 
-import dns from "node:dns/promises";
-import net from "node:net";
+import { safeGet } from "./safe-net.mjs";
 
-// SSRF koruması: yalnızca https, herkese açık IP; yönlendirmeler elle izlenir ve her adım denetlenir; boyut sınırı 3 MB
-function privateIp(ip) {
-  if (net.isIPv6(ip)) return /^(::1|fc|fd|fe80|::ffff:(10|127|169\.254|192\.168|172\.(1[6-9]|2\d|3[01]))\.)/i.test(ip) || ip === "::";
-  const [a, b] = ip.split(".").map(Number);
-  return a === 10 || a === 127 || a === 0 || (a === 169 && b === 254) || (a === 172 && b >= 16 && b <= 31) || (a === 192 && b === 168) || (a === 100 && b >= 64 && b <= 127) || a >= 224;
-}
-async function safeUrl(u) {
-  let url;
-  try { url = new URL(u); } catch { return false; }
-  if (url.protocol !== "https:" || url.username || url.password || (url.port && url.port !== "443")) return false;
-  try {
-    const addrs = await dns.lookup(url.hostname, { all: true });
-    return addrs.length > 0 && addrs.every((a) => !privateIp(a.address));
-  } catch { return false; }
-}
-
+// SSRF koruması: safe-net.mjs (yalnızca https, bağlantı anında IP denetimi, yönlendirmeler denetlenir, 3 MB sınırı)
 async function get(url, asBuffer = false) {
-  const ctl = new AbortController();
-  const t = setTimeout(() => ctl.abort(), 15000);
-  try {
-    let cur = url;
-    for (let hop = 0; hop < 4; hop++) {
-      if (!(await safeUrl(cur))) return null;
-      const r = await fetch(cur, { headers: { "user-agent": UA }, signal: ctl.signal, redirect: "manual" });
-      if (r.status >= 300 && r.status < 400 && r.headers.get("location")) { cur = new URL(r.headers.get("location"), cur).href; continue; }
-      if (!r.ok) return null;
-      if (Number(r.headers.get("content-length") ?? 0) > 3e6) return null;
-      const buf = Buffer.from(await r.arrayBuffer());
-      if (buf.length > 3e6) return null;
-      return asBuffer ? buf : buf.toString("utf8");
-    }
-    return null;
-  } catch { return null; } finally { clearTimeout(t); }
+  const r = await safeGet(url, { timeout: 15000, maxBytes: 3e6, headers: { "user-agent": UA }, allowHttp: false });
+  if (!r?.ok) return null;
+  return asBuffer ? r.buf : r.buf.toString("utf8");
 }
 
 function candidates(html, base) {

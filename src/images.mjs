@@ -33,7 +33,8 @@ async function pexels(q, n) {
 
 async function openverse(q, n) {
   const j = await getJson(`https://api.openverse.org/v1/images/?q=${encodeURIComponent(q)}&license_type=commercial,modification&size=large&page_size=${Math.max(n * 3, 10)}&mature=false`);
-  return (j?.results ?? []).filter((r) => r.url && (r.width ?? 0) >= 900).map((r) => ({
+  const BLOCK = /rawpixel|department of defense|u\.s\. army|army|navy|air force|marine|military|wheelchair|paralymp/i;
+  return (j?.results ?? []).filter((r) => r.url && (r.width ?? 0) >= 900 && !BLOCK.test(`${r.creator} ${r.title} ${r.source} ${r.provider} ${r.url}`)).map((r) => ({
     id: `ov:${r.id}`, url: r.url,
     credit: `Foto: ${(r.creator || "bilinmiyor").slice(0, 40)} / ${String(r.license).toUpperCase()} ${r.license_version ?? ""}`.trim(),
   }));
@@ -63,12 +64,14 @@ export async function findImages(queries, n, category, usedIds = new Set()) {
     }
   };
   for (const q of queries) { if (out.length < n) await take(await pexels(q, n)); }
-  for (const q of queries) { if (out.length < n) await take(await openverse(q, n)); }
-  // Yerel yedek: kategoriye uygun kütüphane fotoğrafları (tekrar edebilir)
+  // Yerel kütüphane (seçilmiş, konuyla ilgili Pexels fotoğrafları) Openverse'ten önce gelir: Openverse kalitesi değişken
   const locals = LOCAL_BY_CAT[category] ?? LOCAL_BY_CAT.genel;
-  for (let i = 0; out.length < n && i < locals.length * 2; i++) {
-    const f = path.join(LOCAL, `${locals[i % locals.length]}.webp`);
-    if (fs.existsSync(f)) out.push({ id: `local:${locals[i % locals.length]}:${i}`, buf: fs.readFileSync(f), credit: "Foto: Pexels" });
+  const usedLocal = new Set(out.map((o) => o.id));
+  for (let i = 0; out.length < n && i < locals.length; i++) {
+    const f = path.join(LOCAL, `${locals[i]}.webp`);
+    if (fs.existsSync(f) && !usedLocal.has(`local:${locals[i]}`)) out.push({ id: `local:${locals[i]}`, buf: fs.readFileSync(f), credit: "Foto: Pexels" });
   }
+  // Son çare: Openverse (filigranlı/ilgisiz kaynaklar elenir)
+  for (const q of queries) { if (out.length < Math.min(n, 1)) await take(await openverse(q, n)); }
   return out;
 }

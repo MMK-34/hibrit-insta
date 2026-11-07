@@ -103,6 +103,7 @@ function frame({ cat, inner, index, total, footerRight, photo, photoMode }) {
 const T = {
   cover: (s, ctx) => frame({ ...ctx, photoMode: "full", footerRight: ctx.total > 1 ? "KAYDIR →" : ctx.date, inner: `
     <div style="display:flex;flex-direction:column;justify-content:flex-end;flex:1;padding-bottom:64px">
+      ${ctx.eventLogo ? `<div style="display:flex;align-self:flex-start;background:${ctx.eventLogo.chip};border:2px solid ${ctx.eventLogo.border};padding:12px 18px;border-radius:6px;margin-bottom:30px"><img src="${ctx.eventLogo.uri}" style="width:${ctx.eventLogo.w}px;height:${ctx.eventLogo.h}px" /></div>` : ""}
       ${s.kicker ? `<div style="display:flex;font-family:Mono;font-size:28px;color:${C.text2};margin-bottom:28px">${esc(trUpper(s.kicker))}</div>` : ""}
       <div style="display:flex;font-family:Head;font-weight:800;font-size:${headSize(s.title)}px;line-height:0.95;letter-spacing:-1px;color:${C.text}">${esc(trUpper(s.title))}</div>
       ${s.subtitle ? `<div style="display:flex;font-size:38px;line-height:1.3;color:${C.text2};margin-top:36px">${esc(s.subtitle)}</div>` : ""}
@@ -155,10 +156,22 @@ export async function renderPost(post, outDir) {
   const total = post.slides.length;
   const photos = [];
   for (const p of post.photos ?? []) photos.push({ uri: await toUri(p.buf), credit: p.credit });
+  // Etkinlik logosu (yükseklik 64px'e ölçeklenir)
+  let eventLogo = null;
+  if (post.eventLogo?.buf) {
+    const m = await sharp(post.eventLogo.buf).metadata();
+    const h = 64, w = Math.min(320, Math.round((m.width / m.height) * h));
+    // Logonun görünür piksellerinin parlaklığı: açık renk logo koyu rozette, koyu logo açık rozette
+    const { data, info } = await sharp(post.eventLogo.buf).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+    let sum = 0, cnt = 0;
+    for (let i = 0; i < data.length; i += info.channels) if (data[i + 3] > 128) { sum += 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2]; cnt++; }
+    const light = cnt && sum / cnt > 150;
+    eventLogo = { uri: `data:image/png;base64,${post.eventLogo.buf.toString("base64")}`, w, h: Math.round(w * m.height / m.width), chip: light ? "#0f1012" : "#efeae2", border: light ? "#2b2f35" : "#efeae2" };
+  }
   const files = [];
   for (let i = 0; i < total; i++) {
     const photo = photos.length ? photos[i % photos.length] : null;
-    const buf = await renderSlide(post.slides[i], { cat: post.category, index: i + 1, total, source: post.source, date: post.dateLabel, photo });
+    const buf = await renderSlide(post.slides[i], { cat: post.category, index: i + 1, total, source: post.source, date: post.dateLabel, photo, eventLogo: i === 0 ? eventLogo : null });
     const f = path.join(outDir, `${String(i + 1).padStart(2, "0")}.jpg`);
     fs.writeFileSync(f, buf);
     files.push(f);

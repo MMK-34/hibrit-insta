@@ -13,6 +13,7 @@ import { uploadFiles } from "./upload-github.mjs";
 import { publish } from "./publish.mjs";
 import { notify } from "./notify.mjs";
 import { guardPost } from "./guard.mjs";
+import { fetchEventLogo, fetchInstagramLogo } from "./logo.mjs";
 import { POSTING } from "./config.mjs";
 
 const DRY = process.argv.includes("--dry");
@@ -77,7 +78,11 @@ async function main() {
     // Görselsiz post yok: konuya uygun foto bulunamazsa paylaşılmaz.
     const photos = await findImages(post.imageQueries ?? [], Math.min(post.slides.length, 4), pick.category, usedPhotos);
     if (!photos.length) { log("Foto bulunamadı, atlandı."); continue; }
-    const files = await renderPost({ ...post, photos, category: pick.category, source: sourceName, dateLabel }, outDir);
+    // Etkinlik logosu: önce resmî site, sonra resmî Instagram profil fotoğrafı
+    const eventLogo = (post.officialSite ? await fetchEventLogo(post.officialSite).catch(() => null) : null)
+      ?? (post.officialInstagram ? await fetchInstagramLogo(post.officialInstagram).catch(() => null) : null);
+    if (eventLogo) log("Etkinlik logosu:", eventLogo.source);
+    const files = await renderPost({ ...post, photos, eventLogo, category: pick.category, source: sourceName, dateLabel }, outDir);
     const caption = post.caption; // guard: temizlenmiş metin + "Kaynak: ..." + hashtag
     fs.writeFileSync(path.join(outDir, "caption.txt"), `${caption}\n\n---\n${srcItems.map((s) => s.url).join("\n")}\n`);
     log(`Üretildi: ${outDir} (${files.length} slayt)`);
@@ -95,6 +100,16 @@ async function main() {
 
 try {
   await main();
+  // Sağlık alarmı: 48 saattir hiç paylaşım yoksa iş "başarısız" biter, GitHub hesap sahibine e-posta atar.
+  if (!DRY) {
+    const last = state.posts.filter((p) => p.media && p.at).map((p) => p.at).sort().pop();
+    const firstRun = !state.posts.some((p) => p.media);
+    if (!firstRun && last && Date.now() - new Date(last).getTime() > 48 * 36e5) {
+      console.error(`UYARI: Son paylaşım ${last}. 48 saattir paylaşım yok, kontrol gerekli.`);
+      await notify(`⚠️ Hibrit Portal: 48 saattir paylaşım yok (son: ${last}).`);
+      process.exitCode = 1;
+    }
+  }
 } catch (e) {
   console.error(e);
   await notify(`⚠️ Hibrit Portal bot hatası:\n${e.message}`);

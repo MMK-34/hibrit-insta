@@ -26,6 +26,8 @@ export function guardPost(post, { sourceName }) {
     .filter((s) => ![...FIELDS.map((k) => s[k]), ...(s.bullets ?? [])].some((t) => t && /','|":"|\{"|"\}|'\s*:\s*'/.test(t)))
     // stat slaytı: kısa, temiz bir değer şart (örn. 53:22, 500, %12, 2,5 km)
     .filter((s) => s.type !== "stat" || (s.value && s.value.length <= 10 && !/['"{}\[\]]/.test(s.value) && s.label))
+    // ":" ile bitip içeriği gelmeyen slayt (örn. "Takvim ve kayıt için:") atılır
+    .filter((s) => !(s.title && /[:：]\s*$/.test(s.title) && !s.body && !(s.bullets ?? []).length))
     .filter((s) => s.title || s.value || s.body);
   // Karoselin kapağı ilk slayt olmalı
   if (slides.length && slides[0].type !== "cover") return { ok: false, reason: "kapak slaytı yok" };
@@ -41,6 +43,10 @@ export function guardPost(post, { sourceName }) {
   const all = [caption, ...slides.flatMap((s) => [...FIELDS.map((k) => s[k]), ...(s.bullets ?? [])])].filter(Boolean).join(" ");
   if (BAD.test(all)) return { ok: false, reason: "yasaklı ifade (spam/reklam şüphesi)" };
   if (!TOPIC.test(all)) return { ok: false, reason: "konu dışı görünüyor" };
+  if (/(skandal|şok|olay yarattı|tepki çekti|rezalet|utanç|hezimet|fiyasko)/i.test(all)) return { ok: false, reason: "tarafsızlık: yargılayıcı ifade" };
   if (/ignore (all|previous)|önceki talimat|system prompt/i.test(all)) return { ok: false, reason: "talimat enjeksiyonu şüphesi" };
-  return { ok: true, post: { slides, caption, imageQueries: (post.imageQueries ?? []).map((q) => clean(q).slice(0, 60)).slice(0, 4), brand: BRAND.handle } };
+  const eventName = clean(post.eventName ?? "").slice(0, 80);
+  const officialSite = /^https:\/\/[^\s"'<>]+$/i.test(post.officialSite ?? "") ? post.officialSite : "";
+  const officialInstagram = /^[\w.]{2,30}$/.test(String(post.officialInstagram ?? "").replace(/^@/, "")) ? String(post.officialInstagram).replace(/^@/, "") : "";
+  return { ok: true, post: { slides, caption, eventName, officialSite, officialInstagram, imageQueries: (post.imageQueries ?? []).map((q) => clean(q).slice(0, 60)).slice(0, 4), brand: BRAND.handle } };
 }

@@ -9,6 +9,7 @@
     "fonts": "node src/get-fonts.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.6.0",
     "@resvg/resvg-js": "^2.6.2",
     "dotenv": "^18.0.9",
     "fast-xml-parser": "^5.12.0",

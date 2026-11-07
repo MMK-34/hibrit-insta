@@ -21,7 +21,14 @@ export function guardPost(post, { sourceName }) {
     for (const k of FIELDS) if (o[k]) o[k] = clean(o[k]).slice(0, k === "body" ? 260 : 120);
     if (o.bullets) o.bullets = o.bullets.map((b) => clean(b).slice(0, 140)).filter(Boolean).slice(0, 4);
     return o;
-  }).filter((s) => s.title || s.value || s.body);
+  })
+    // JSON kalıntısı (',' ":" {" gibi) içeren slayt bozuktur
+    .filter((s) => ![...FIELDS.map((k) => s[k]), ...(s.bullets ?? [])].some((t) => t && /','|":"|\{"|"\}|'\s*:\s*'/.test(t)))
+    // stat slaytı: kısa, temiz bir değer şart (örn. 53:22, 500, %12, 2,5 km)
+    .filter((s) => s.type !== "stat" || (s.value && s.value.length <= 10 && !/['"{}\[\]]/.test(s.value) && s.label))
+    .filter((s) => s.title || s.value || s.body);
+  // Karoselin kapağı ilk slayt olmalı
+  if (slides.length && slides[0].type !== "cover") return { ok: false, reason: "kapak slaytı yok" };
   if (!slides.length) return { ok: false, reason: "slayt yok" };
 
   let caption = clean(post.caption ?? "").replace(/\n?\s*kaynak\s*:.*$/gim, "").trim().slice(0, 1900);

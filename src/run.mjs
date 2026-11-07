@@ -7,7 +7,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { collect, articleText, upcomingEvents } from "./collect.mjs";
 import { findImages } from "./images.mjs";
-import { selectNews, writePost } from "./plan.mjs";
+import { selectNews, writePost, reviewPost } from "./plan.mjs";
 import { renderPost } from "./render.mjs";
 import { uploadFiles } from "./upload-github.mjs";
 import { publish } from "./publish.mjs";
@@ -59,6 +59,12 @@ async function main() {
     for (const s of srcItems) if (!s.id.startsWith("cal:")) s.text = await articleText(s.url);
     const draft = await writePost(pick, srcItems);
     if (!draft.factsOk) { log("Kaynak yetersiz, atlandı:", srcItems[0].title); postedIds.add(srcItems[0].id); state.posts.push({ day: today, ids: pick.ids, skipped: true }); continue; }
+
+    // İkinci göz: yazı işleri kontrolü (doğruluk, haber değeri, Türkçe). Reddedilirse paylaşılmaz.
+    const rev = await reviewPost(draft, srcItems);
+    if (!rev.approve) { log("Editör reddetti:", (rev.issues ?? []).join(" | "), "|", srcItems[0].title); state.posts.push({ day: today, ids: pick.ids, skipped: "editör" }); postedIds.add(srcItems[0].id); continue; }
+    if (rev.fixed?.slides?.length && rev.fixed.caption) Object.assign(draft, rev.fixed);
+    if ((rev.issues ?? []).length) log("Editör düzeltti:", rev.issues.join(" | "));
 
     // Kaynak adı: takvim kayıtlarında organizatör sitesi
     const sourceName = srcItems[0].id.startsWith("cal:") ? (() => { try { return new URL(srcItems[0].url).hostname.replace(/^www\./, ""); } catch { return "Yarış takvimi"; } })() : srcItems[0].source;

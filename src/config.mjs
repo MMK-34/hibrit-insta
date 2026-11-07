@@ -13,12 +13,14 @@ export const POSTING = {
   // Haber yaşı sınırı (saat): bundan eski haber paylaşılmaz
   maxAgeHours: 48,
   // Bir haberin "şimdi paylaşılır" sayılması için gereken minimum önem puanı (1-10)
-  minScore: 6,
+  minScore: 7,
   // Günün ilk çalışması (sabah) en az bir paylaşım garanti eder
   morningHour: 9,
 };
 
+// Seçim (çok aday, kısa çıktı) Sonnet; yazım ve editör kontrolü en iyi Türkçe için Opus.
 export const MODEL = "claude-sonnet-5-5";
+export const MODEL_WRITE = "claude-opus-5-5";
 
 // RSS kaynakları. Metin kopyalanmaz; özet kendi cümlelerimizle yazılır, kaynak belirtilir.
 export const FEEDS = [

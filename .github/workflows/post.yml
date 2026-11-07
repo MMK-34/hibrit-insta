@@ -2,19 +2,20 @@ name: Instagram otomatik paylaşım
 
 on:
   schedule:
-    # TR saati = UTC+3 -> 08:30, 11:00, 13:30, 16:00, 18:30, 21:00
-    - cron: "30 5 * * *"
-    - cron: "0 8 * * *"
-    - cron: "30 10 * * *"
-    - cron: "0 13 * * *"
-    - cron: "30 15 * * *"
-    - cron: "0 18 * * *"
+    # TR saati = UTC+3 -> 07:30, 09:30, 11:30, 13:30, 15:30, 17:30, 19:30, 21:30 (2 saatte bir)
+    - cron: "30 4-18/2 * * *"
   workflow_dispatch:
     inputs:
       mode:
-        description: "dry = sadece üret, force = eşiği yok say ve paylaş"
+        description: "normal = olağan çalışma, dry = sadece üret (durum yazılmaz), force = eşiği yok say ve paylaş, stock = stoktan paylaş"
         required: false
-        default: ""
+        type: choice
+        options:
+          - normal
+          - dry
+          - force
+          - stock
+        default: normal
 
 concurrency:
   group: post
@@ -26,22 +27,27 @@ permissions:
 jobs:
   post:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm }
       - run: npm ci
 
       - name: Yarış takvimi senkronu
+        timeout-minutes: 5
         working-directory: cal
         run: node scripts/sync-calendar.mjs || echo "takvim hatası, son sağlam veri korundu"
 
       - name: Haber seç, üret, paylaş
+        # Adımın kendi zaman aşımı: iş (60 dk) bitmeden "Durumu kaydet" mutlaka çalışsın
+        timeout-minutes: 40
         env:
+          MODE: ${{ github.event.inputs.mode }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -49,21 +55,37 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          case "${{ github.event.inputs.mode }}" in
+          case "$MODE" in
             dry) node src/run.mjs --dry ;;
             force) node src/run.mjs --force ;;
+            stock) node src/run.mjs --stock ;;
             *) node src/run.mjs ;;
           esac
 
+      - name: Stok postları tamamla (kuyruk 4'ün altındaysa 6'ya; değilse işlem yapmaz)
+        if: ${{ !cancelled() && github.event.inputs.mode != 'dry' }}
+        timeout-minutes: 15
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: node src/stock.mjs || echo "stok üretimi başarısız, kuyruk olduğu gibi kaldı"
+
       - name: Önizleme (dry)
-        if: github.event.inputs.mode == 'dry'
+        if: ${{ always() && github.event.inputs.mode == 'dry' }}
         uses: actions/upload-artifact@v4
         with: { name: onizleme, path: out/ }
 
       - name: Durumu kaydet
-        if: always()
+        if: ${{ always() && github.event.inputs.mode != 'dry' }}
         run: |
           git config user.name "hibrit-bot"
           git config user.email "hibrit-bot@users.noreply.github.com"
           git add state cal/src/data
-          git diff --cached --quiet || (git commit -m "state: $(date -u +%F' '%H:%M)" && git push)
+          if git diff --cached --quiet; then echo "değişiklik yok"; exit 0; fi
+          git commit -m "state: $(date -u +%F' '%H:%M)"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep 5
+          done
+          echo "durum gönderilemedi (3 deneme)"; exit 1

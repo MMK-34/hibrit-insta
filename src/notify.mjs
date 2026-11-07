@@ -5,7 +5,8 @@ export async function notify(text) {
   try {
     await fetch(`https://api.telegram.org/bot${t}/sendMessage`, {
       method: "POST", headers: { "content-type": "application/json" },
-      body: JSON.stringify({ chat_id: chat, text: text.slice(0, 4000), disable_web_page_preview: true }),
+      body: JSON.stringify({ chat_id: chat, text: String(text).slice(0, 4000), disable_web_page_preview: true }),
+      signal: AbortSignal.timeout(10000),
     });
   } catch { /* bildirim hatası paylaşımı durdurmaz */ }
 }

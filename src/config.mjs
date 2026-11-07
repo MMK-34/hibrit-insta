@@ -8,7 +8,9 @@ export const BRAND = {
 
 export const POSTING = {
   timezone: "Europe/Istanbul",
-  maxPerDay: 5,
+  // Sabit kota yok: haber oldukça paylaşılır. Bu sınırlar yalnızca spam/aşırı maliyet emniyeti.
+  maxPerDay: 12,
+  perRun: 2, // bir çalışmada en fazla (2 saatte bir çalışır)
   minPerDay: 1,
   // Haber yaşı sınırı (saat): bundan eski haber paylaşılmaz
   maxAgeHours: 48,
@@ -24,25 +26,76 @@ export const MODEL_WRITE = "claude-opus-5-5";
 
 // RSS kaynakları. Metin kopyalanmaz; özet kendi cümlelerimizle yazılır, kaynak belirtilir.
 export const FEEDS = [
+  // Not: Google News sonuçları alaka sırasıyla gelir ve collect() yalnızca ilk 25 öğeye bakar;
+  // bu yüzden sorgulara "when:7d" / "when:14d" eklendi (taze haber öne gelsin). 48 saat filtresi collect'te.
+  // Türkiye: resmî kaynaklar (doğrudan RSS)
+  { source: "Türkiye Atletizm Federasyonu", url: "https://taf.org.tr/feed/", cat: "kosu" },
+  { source: "Spor İstanbul", url: "https://spor.istanbul/feed/", cat: "kosu" },
+  // Türkiye: maratonlar, kayıt duyuruları, şehir yarışları
+  { source: "Google News", url: "https://news.google.com/rss/search?q=%22%C4%B0stanbul+Maratonu%22+OR+%22%C4%B0stanbul+Yar%C4%B1+Maratonu%22+OR+%22Spor+%C4%B0stanbul%22+when%3A7d&hl=tr&gl=TR&ceid=TR:tr", cat: "kosu" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=%22yar%C4%B1+maratonu%22+OR+%22halk+ko%C5%9Fusu%22+OR+%22maratonu+kay%C4%B1tlar%C4%B1%22+OR+%22maraton+kay%C4%B1tlar%C4%B1%22+when%3A7d&hl=tr&gl=TR&ceid=TR:tr", cat: "kosu" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=Runatolia+OR+%22Antalya+Maratonu%22+OR+%22%C4%B0zmir+Maratonu%22+OR+%22Mersin+Maratonu%22+OR+%22Ankara+Yar%C4%B1+Maratonu%22+OR+%22Trabzon+Yar%C4%B1+Maratonu%22+OR+%22Kapadokya+Ultra%22+OR+%22Cappadocia+Ultra%22+when%3A14d&hl=tr&gl=TR&ceid=TR:tr", cat: "kosu" },
+  // Türkiye: ultra/patika, atletizm, triatlon
+  { source: "Google News", url: "https://news.google.com/rss/search?q=%22ultra+maraton%22+OR+%22ultra+trail%22+OR+%22patika+ko%C5%9Fusu%22+OR+%22da%C4%9F+ko%C5%9Fusu%22+OR+%22trail+ko%C5%9Fu%22+-y%C3%BCz%C3%BCc%C3%BC+-y%C3%BCz%C3%BCc%C3%BCs%C3%BC+when%3A7d&hl=tr&gl=TR&ceid=TR:tr", cat: "kosu" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=%22Atletizm+Federasyonu%22+OR+%22milli+atlet%22+OR+%22T%C3%BCrk+atlet%22+when%3A7d&hl=tr&gl=TR&ceid=TR:tr", cat: "genel" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=triatlon+OR+%22Ironman+70.3+T%C3%BCrkiye%22+OR+%22Challenge+Turkey%22+OR+duatlon+when%3A7d&hl=tr&gl=TR&ceid=TR:tr", cat: "kosu" },
+  // Türkiye: HYROX, CrossFit (Eurasia/Tirana Throwdown dahil), fonksiyonel/OCR
+  { source: "Google News", url: "https://news.google.com/rss/search?q=HYROX+when%3A14d&hl=tr&gl=TR&ceid=TR:tr", cat: "hyrox" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=CrossFit+OR+Throwdown+when%3A7d&hl=tr&gl=TR&ceid=TR:tr", cat: "crossfit" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=kalistenik+OR+%22Spartan+Race%22+OR+%22fonksiyonel+antrenman%22+OR+%22hibrit+antrenman%22+OR+%22fitness+yar%C4%B1%C5%9Fmas%C4%B1%22+OR+%22fitness+%C5%9Fampiyonas%C4%B1%22+when%3A14d&hl=tr&gl=TR&ceid=TR:tr", cat: "fonksiyonel" },
+  // Dünya: doğrudan RSS
+  // Kaldırıldı: Morning Chalk Up (CloudFront 403), crossfit.com/feed (RSS değil, HTML döndürüyor).
   { source: "BOXROX", url: "https://www.boxrox.com/feed/", cat: "crossfit" },
-  { source: "Morning Chalk Up", url: "https://morningchalkup.com/feed/", cat: "crossfit" },
-  { source: "CrossFit", url: "https://www.crossfit.com/feed", cat: "crossfit" },
   { source: "The Barbell Spin", url: "https://thebarbellspin.com/feed/", cat: "crossfit" },
   { source: "Rox Lyfe", url: "https://roxlyfe.com/feed/", cat: "hyrox" },
   { source: "Runner's World", url: "https://www.runnersworld.com/rss/all.xml/", cat: "kosu" },
   { source: "iRunFar", url: "https://www.irunfar.com/feed", cat: "kosu" },
-  { source: "Google News", url: "https://news.google.com/rss/search?q=HYROX&hl=en-US&gl=US&ceid=US:en", cat: "hyrox" },
-  { source: "Google News", url: "https://news.google.com/rss/search?q=%22CrossFit+Games%22+OR+%22CrossFit+Open%22&hl=en-US&gl=US&ceid=US:en", cat: "crossfit" },
-  { source: "Google News", url: "https://news.google.com/rss/search?q=HYROX+OR+CrossFit+OR+maraton&hl=tr&gl=TR&ceid=TR:tr", cat: "genel" },
-  // Türkiye: yarışlar, maratonlar, etkinlik duyuruları
-  { source: "Google News", url: "https://news.google.com/rss/search?q=%22%C4%B0stanbul+Maratonu%22+OR+%22%C4%B0stanbul+Yar%C4%B1+Maratonu%22&hl=tr&gl=TR&ceid=TR:tr", cat: "kosu" },
-  { source: "Google News", url: "https://news.google.com/rss/search?q=HYROX+T%C3%BCrkiye+OR+%22HYROX+%C4%B0stanbul%22&hl=tr&gl=TR&ceid=TR:tr", cat: "hyrox" },
-  { source: "Google News", url: "https://news.google.com/rss/search?q=CrossFit+yar%C4%B1%C5%9Fma+OR+CrossFit+%C5%9Fampiyona&hl=tr&gl=TR&ceid=TR:tr", cat: "crossfit" },
-  { source: "Google News", url: "https://news.google.com/rss/search?q=maraton+ko%C5%9Fu+yar%C4%B1%C5%9F%C4%B1+OR+ultra+maraton+OR+yar%C4%B1+maraton&hl=tr&gl=TR&ceid=TR:tr", cat: "kosu" },
-  { source: "Google News", url: "https://news.google.com/rss/search?q=fonksiyonel+antrenman+OR+fitness+yar%C4%B1%C5%9Fmas%C4%B1&hl=tr&gl=TR&ceid=TR:tr", cat: "fonksiyonel" },
-  // Dünya: büyük yarışlar, rekorlar
-  { source: "Google News", url: "https://news.google.com/rss/search?q=%22HYROX+World+Championships%22+OR+%22HYROX+Elite+15%22&hl=en-US&gl=US&ceid=US:en", cat: "hyrox" },
-  { source: "Google News", url: "https://news.google.com/rss/search?q=marathon+world+record+OR+%22World+Marathon+Majors%22&hl=en-US&gl=US&ceid=US:en", cat: "kosu" },
-  { source: "Google News", url: "https://news.google.com/rss/search?q=%22World+Fitness+Project%22+OR+%22Rogue+Invitational%22+OR+Wodapalooza&hl=en-US&gl=US&ceid=US:en", cat: "crossfit" },
   { source: "LetsRun", url: "https://www.letsrun.com/feed/", cat: "kosu" },
+  { source: "Triathlete", url: "https://www.triathlete.com/feed/", cat: "kosu" },
+  { source: "Trail Runner", url: "https://trailrunnermag.com/feed/", cat: "kosu" },
+  { source: "ScienceDaily", url: "https://www.sciencedaily.com/rss/health_medicine/fitness.xml", cat: "fonksiyonel" },
+  // Dünya: HYROX, CrossFit, fonksiyonel yarışlar
+  { source: "Google News", url: "https://news.google.com/rss/search?q=HYROX+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "hyrox" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=%22CrossFit+Games%22+OR+%22CrossFit+Open%22+OR+%22CrossFit+Semifinals%22+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "crossfit" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=%22World+Fitness+Project%22+OR+%22Rogue+Invitational%22+OR+Wodapalooza+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "crossfit" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=%22Spartan+Race%22+OR+%22OCR+World+Championships%22+OR+%22DEKA%22+fitness+when%3A14d&hl=en-US&gl=US&ceid=US:en", cat: "fonksiyonel" },
+  // Dünya: koşu, ultra, triatlon (World Athletics ve World Triathlon'un RSS'i yok/eski; site: sorgusu kullanılıyor)
+  { source: "Google News", url: "https://news.google.com/rss/search?q=site%3Aworldathletics.org+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "kosu" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=%22marathon+world+record%22+OR+%22World+Marathon+Majors%22+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "kosu" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=UTMB+OR+%22ultra-trail%22+OR+ultramarathon+OR+%22Western+States+100%22+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "kosu" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=site%3Atriathlon.org+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "kosu" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=IRONMAN+triathlon+OR+%22T100+Triathlon%22+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "kosu" },
+  // Spor bilimi
+  { source: "Google News", url: "https://news.google.com/rss/search?q=exercise+study+endurance+OR+%22strength+training%22+study+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "fonksiyonel" },
+];
+
+// Stok (kalıcı bilgi) post konuları: haber çıkmayan günlerde sırayla paylaşılır. Her biri kaynaklı yazılır.
+// Liste bitince başa dönülür; yeni konu eklemek için buraya satır ekle.
+export const STOCK_TOPICS = [
+  { id: "hyrox-format", cat: "hyrox", title: "HYROX formatı: 8 km koşu + 8 istasyon", brief: "HYROX yarışının yapısı, istasyonların sırası, mesafeler ve tekrarlar (resmî kural kitabına göre)" },
+  { id: "hyrox-divisions", cat: "hyrox", title: "HYROX kategorileri: Open, Pro, Doubles, Relay", brief: "Kategoriler arasındaki farklar, ağırlıklar ve kimler için uygun olduğu" },
+  { id: "hyrox-roxzone", cat: "hyrox", title: "Roxzone nedir, neden süre kaybettirir?", brief: "Roxzone tanımı ve yarış süresine etkisi" },
+  { id: "hyrox-wallball", cat: "hyrox", title: "HYROX wall ball standartları", brief: "Top ağırlıkları, hedef yükseklikleri ve geçerli tekrar kuralları" },
+  { id: "hyrox-sled", cat: "hyrox", title: "Sled push ve sled pull: ağırlıklar ve kurallar", brief: "Kategorilere göre kızak ağırlıkları ve geçerli hareket standartları" },
+  { id: "crossfit-open", cat: "crossfit", title: "CrossFit Open nedir, nasıl katılınır?", brief: "Open formatı, kayıt süreci, skor gönderme ve Türkiye'den katılım" },
+  { id: "crossfit-girls", cat: "crossfit", title: "Benchmark WOD'lar: Fran, Grace, Helen", brief: "Klasik benchmark antrenmanlarının içeriği ve neden ölçüt olarak kullanıldıkları" },
+  { id: "crossfit-hero", cat: "crossfit", title: "Hero WOD geleneği ve Murph", brief: "Hero WOD'ların ortaya çıkışı ve Murph antrenmanının içeriği" },
+  { id: "crossfit-scaling", cat: "crossfit", title: "Scaling: Rx, Scaled ve Foundations", brief: "CrossFit'te ölçekleme seviyeleri ve doğru seviyeyi seçmek" },
+  { id: "run-zone2", cat: "kosu", title: "Zone 2 antrenmanı nedir?", brief: "Düşük yoğunluklu dayanıklılık antrenmanının fizyolojisi ve bilimsel kanıtları" },
+  { id: "run-8020", cat: "kosu", title: "80/20 yoğunluk dağılımı", brief: "Elit dayanıklılık sporcularında polarize antrenman araştırmaları" },
+  { id: "run-taper", cat: "kosu", title: "Yarış öncesi taper", brief: "Yarıştan önce antrenman yükünü azaltmanın bilimsel temelleri" },
+  { id: "run-carb", cat: "kosu", title: "Maraton öncesi karbonhidrat yükleme", brief: "Karbonhidrat yüklemenin performansa etkisi ve spor beslenmesi kılavuzlarındaki öneriler" },
+  { id: "run-shoes", cat: "kosu", title: "Koşu ayakkabısının ömrü", brief: "Ayakkabı ömrü ve yaralanma riskiyle ilgili araştırmalar" },
+  { id: "run-tr-marathons", cat: "kosu", title: "Türkiye'nin uluslararası maratonları", brief: "Türkiye'de düzenlenen uluslararası maraton ve yarı maratonlar (İstanbul, Antalya Runatolia vb.) ve parkur özellikleri" },
+  { id: "sci-protein", cat: "fonksiyonel", title: "Sporcular ne kadar protein almalı?", brief: "ISSN pozisyon bildirisine göre günlük protein ihtiyacı ve zamanlama" },
+  { id: "sci-creatine", cat: "fonksiyonel", title: "Kreatin: bilimsel olarak ne biliniyor?", brief: "ISSN kreatin pozisyon bildirisi, etkileri ve güvenliği" },
+  { id: "sci-caffeine", cat: "fonksiyonel", title: "Kafein ve performans", brief: "ISSN kafein pozisyon bildirisine göre doz ve zamanlama" },
+  { id: "sci-sleep", cat: "fonksiyonel", title: "Uyku ve toparlanma", brief: "Uykunun sporcu performansı ve toparlanma üzerindeki etkisine dair araştırmalar" },
+  { id: "sci-hydration", cat: "fonksiyonel", title: "Antrenmanda sıvı ve elektrolit", brief: "ACSM sıvı alımı önerileri ve terlemeyle kayıp" },
+  { id: "sci-warmup", cat: "fonksiyonel", title: "Doğru ısınma nasıl yapılır?", brief: "Dinamik ısınmanın performans ve yaralanma riskine etkisi (araştırmalar)" },
+  { id: "sci-vo2max", cat: "kosu", title: "VO2max nedir, nasıl gelişir?", brief: "VO2max tanımı ve geliştirmeye yönelik antrenman yöntemlerinin kanıtları" },
+  { id: "func-kettlebell", cat: "fonksiyonel", title: "Kettlebell swing: teknik ve faydaları", brief: "Kettlebell swing tekniği ve araştırmalardaki etkileri" },
+  { id: "func-hybrid", cat: "fonksiyonel", title: "Hibrit antrenman: kuvvet ve dayanıklılık birlikte", brief: "Eşzamanlı antrenman (concurrent training) etkisi üzerine araştırmalar" },
+  { id: "tri-distances", cat: "kosu", title: "Triatlon mesafeleri: Sprint'ten Ironman'e", brief: "Resmî triatlon mesafeleri (World Triathlon, IRONMAN)" },
+  { id: "ocr-spartan", cat: "fonksiyonel", title: "Spartan Race formatları", brief: "Sprint, Super, Beast mesafeleri ve engel cezaları (resmî kurallar)" },
 ];

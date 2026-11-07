@@ -38,8 +38,9 @@ export function guardPost(post, { sourceName }) {
     }
     for (const k of FIELDS) if (s[k]) o[k] = s[k];
     if (Array.isArray(s.bullets)) o.bullets = s.bullets;
-    for (const k of FIELDS) if (o[k]) o[k] = clean(o[k]).slice(0, k === "body" ? 240 : k === "title" ? 100 : 120);
-    if (o.bullets) o.bullets = o.bullets.map((b) => clean(b).slice(0, 125)).filter(Boolean).slice(0, 4);
+    // Alanlar KESİLMEZ (yarım cümle yayınlanmasın): sınırı aşan alan aşağıda gerekçeli retle yazara geri döner
+    for (const k of FIELDS) if (o[k]) o[k] = clean(o[k]);
+    if (o.bullets) o.bullets = o.bullets.map((b) => clean(b)).filter(Boolean).slice(0, 4);
     return o;
   })
     // JSON kalıntısı (',' ":" {" gibi) içeren slayt bozuktur
@@ -54,6 +55,13 @@ export function guardPost(post, { sourceName }) {
   // Karoselin kapağı ilk slayt olmalı
   if (slides.length && slides[0].type !== "cover") return { ok: false, reason: "kapak slaytı yok" };
   if (!slides.length) return { ok: false, reason: "slayt yok" };
+  const LIMIT = { title: 100, body: 240, subtitle: 160, kicker: 40, label: 60, value: 10 };
+  const tooLong = [];
+  slides.forEach((s, i) => {
+    for (const [k, n] of Object.entries(LIMIT)) if (s[k] && s[k].length > n) tooLong.push(`slayt ${i + 1} ${k} ${s[k].length}>${n}`);
+    (s.bullets ?? []).forEach((b, j) => { if (b.length > 125) tooLong.push(`slayt ${i + 1} madde ${j + 1} ${b.length}>125`); });
+  });
+  if (tooLong.length) return { ok: false, reason: `metin çok uzun, kısalt (yarım cümle olmasın): ${tooLong.join("; ")}` };
 
   let caption = clean(post.caption ?? "").replace(/\n?\s*kaynak\s*:.*$/gim, "").trim().slice(0, 1900);
   // Hashtag: her biri en fazla 30 karakter (# hariç; uzunsa atılır), tekrarsız, en fazla 12

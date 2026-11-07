@@ -143,5 +143,87 @@
         "note": "Orijinal kaynak açılamadı (paywall/403)"
       }
     ]
+  },
+  {
+    "at": "2026-11-07T23:23:26.514Z",
+    "title": "HYROX formatı: 8 km koşu + 8 istasyon",
+    "url": "stok",
+    "kind": "stok",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "sayilar",
+        "note": "8 koşu, istasyon sırası, mesafeler ve 100 tekrar doğru. Wall ball hedef yüksekliği yanlış: 'diğer kategorilerde 2,7 m' ifadesi hatalı. Open erkekte hedef 3,0 m (6 kg), kadınlarda 2,7 m (4 kg). Pro kategorilerinin yüksekliğini resmî kural kitabından doğrulayamadım. Stat slaytındaki '3 m' ve caption'daki cümle düzeltilmeli."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak_satiri",
+        "note": "Red Bull sayfası web_fetch ile boş geldi, içeriği doğrulanamadı. Format bilgileri Red Bull'dan değil, Centr ve ikinci kaynaklardan doğrulandı. 'Kaynak: Red Bull' satırı postun dayandığı kaynağı göstermiyor olabilir."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "sayilar",
+        "note": "İstasyon sırası ve mesafeler doğru: 1000 m SkiErg, 50 m sled push (4x12,5 m), 50 m sled pull, 80 m burpee broad jump, 1000 m row, 200 m farmers carry, 100 m lunges, 100 wall ball. Ancak wall ball yüksekliği yanlış. 3 m (10 ft) hedef yalnızca Men's Pro'ya özel değil; Men Open'da ve Men Doubles'ta da 3 m. 2,7 m (9 ft) kadın kategorilerine ve Mixed/Women Doubles'a ait. Ayrımı Pro/diğer değil, erkek/kadın olarak yaz."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "kaynak_satiri",
+        "note": "'Kaynak: Red Bull' yazıyor ama Red Bull sayfası açıldığında içerik boş geldi, yalnızca meta veri vardı. Postu doğrulayan içerik Centr makalesinde ve HYROX kural kitabında. Kaynak satırı postun gerçekte dayandığı kaynağı göstermiyor, Centr/HYROX Rulebook olarak düzeltilmeli."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-07T23:26:42.224Z",
+    "title": "Türkiye'de yılda kaç yarışma yapılıyor?",
+    "url": "stok",
+    "kind": "stok",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "sayilar",
+        "note": "17 edisyon, 9 yarışma, 14 CrossFit / 3 HYROX, yıl bazlı tablo, 2,25 ortalama, 4 yarışma ve 8 / 5 tahmini tarih sistem verisiyle uyuşuyor. Sorun 3. slaytta: '2026'nın kalanı için 4 yarışma' deniyor ama yalnızca 3 ad sayılıyor, biri yarım kalmış, Olympos Games eksik. Düzeltme: dört yarışmanın hepsi tam adıyla yazılmalı. Arşiv dışı doğrulama sınırlıydı. HYROX sayfasında 2026'daki 3 HYROX etkinliği görünmüyor, bu sayı yalnızca sistem verisine dayanıyor."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "sayilar",
+        "note": "Sayıların çoğu sistem verisiyle birebir uyuşuyor: 17 edisyon, 9 yarışma, 14 CrossFit, 3 HYROX, yıllık tablo, 2,25 ortalama, 2026'da 4 yarışma, sonrası için 8 yarışma ve bunlardan 5'inin tarihi tahmini. Tablo notundaki 14 edisyon da 2020–2026 toplamına eşit. HATA: 5. slayt '2026'nın kalanı için 4 yarışma' diyor ama yalnızca 3 ad sayıyor ve madde yarıda kesilmiş. 'Olympos Games' eksik, 'VU BOX HYROX-style 50%' de kesik. Doğrusu: Battle of Anatolia, Kuşadası Uluslararası CrossFit Şampiyonası, VU BOX HYROX-style 50% ve Olympos Games."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-07T23:30:03.520Z",
+    "title": "Türkiye'de en çok yarışma yapılan şehirler",
+    "url": "stok",
+    "kind": "stok",
+    "fails": [
+      {
+        "model": "claude-opus-5-5",
+        "item": "kaynak_satiri",
+        "note": "Caption'daki kaynak satırında yalnızca 'Hibrit Portal yarışma arşivi' yazıyor. Oysa veride takvimdeki 8 yaklaşan yarışma da var. Doğrusu: 'Kaynak: Hibrit Portal yarışma arşivi ve yarışma takvimi'."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "baslik",
+        "note": "Kapak başlığı tarafsız. Ancak tablo slaytının başlığı 'Türkiye'de en çok yarışma yapılan şehirler' yanıltıcı, çünkü veri tüm Türkiye'yi değil, büyük yarışmaları kapsayan sınırlı arşivi ve takvimi yansıtıyor. Önerilen başlık: 'Arşivimizde ve takvimimizde yarışmaların şehirlere göre dağılımı'."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-07T23:33:35.605Z",
+    "title": "Yarışma takviminde en çok yarışma olan ülkeler",
+    "url": "stok",
+    "kind": "stok",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "sayilar",
+        "note": "Çoğu sayı sistem verisiyle birebir uyuşuyor: 198/191/36/7, 106/92, ülke toplamları, yüzdeler ve 5. sıra. Ancak slayt 4 ve caption'daki \"CrossFit kayıtlarının 93'ü circle21'den, bunların 41'i Birleşik Krallık'ta\" ifadesi çelişkili. Birleşik Krallık'ta toplam CrossFit kaydı 38, yani 41 olamaz. Sistem verisindeki 41 büyük olasılıkla CrossFit dışı kayıtları da içeriyor. Bu sayı düzeltilmeli, doğrulanana kadar çıkarılmalı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "baslik",
+        "note": "Tablo slaytının başlığı \"Yarışma takviminde en çok yarışma olan ülkeler\" sistem uyarısıyla çelişiyor ve dünya geneli iddiası gibi okunuyor. \"Takvimimizde en çok yer alan ülkeler\" olmalı. Slayt 4'ün üçüncü maddesi \"etkinlikl\" diye yarım kesilmiş. Kapak başlığı \"Takvimimizin zirvesinde\" kabul edilebilir."
+      }
+    ]
   }
 ]

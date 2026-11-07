@@ -12,6 +12,18 @@ import { verifyGate, logRejected, failText } from "./verify.mjs";
 import { STOCK_TOPICS } from "./config.mjs";
 import { statTopics } from "./stats.mjs";
 
+// Tablo başlıkları veriyi arşivle sınırlar (genelleme yok); takvim verisi kullanan konularda kaynak "arşiv ve takvim"
+const STAT_TABLE_TITLE = {
+  "stat-tr-yillara-gore": "Arşivimizde yıllara göre Türkiye yarışmaları",
+  "stat-tr-sehirler": "Arşivimizde ve takvimimizde şehirlere göre",
+  "stat-takvim-ulkeler": "Takvimimizde en çok yer alan ülkeler",
+  "stat-takvim-aylar": "Takvimimizde ay ay yarışmalar",
+  "stat-hyrox-ulkeler": "Takvimimizdeki HYROX yarışları, ülkelere göre",
+  "stat-crossfit-hareketler": "Arşivimizdeki workout'larda hareketler",
+  "stat-yarisma-suresi": "Arşivimizde yarışma süreleri",
+};
+const statSource = (t) => (/takvim/i.test(`${t.note} ${t.id}`) ? "Hibrit Portal yarışma arşivi ve takvimi" : t.sourceName);
+
 // Havuz: bilgi konuları + koddan hesaplanan istatistik konuları (sırayla karışık: 2 bilgi, 1 istatistik)
 function topicPool() {
   let stats = [];
@@ -57,6 +69,7 @@ async function makeOne(st) {
     snippet: `Konu: ${topic.title}. Bu bir VERİ/İSTATİSTİK postudur (kalıcı bilgi; tazelik kuralı uygulanmaz). `
       + "Aşağıdaki veri Hibrit Portal yarışma arşivinden kodla hesaplandı ve postta kullanılabilecek TEK sayı kaynağıdır: sayıları değiştirme, yuvarlama, yeni sayı ekleme. "
       + "Tablo slaytını sistem ekleyecek; sen kapak (başlıkta en çarpıcı bulgu), 1-2 metin slaytı (bağlam ve yorum, örneklem uyarısıyla) ve son slaytı yaz. "
+      + "Başlıklarda ve metinde genelleme yapma: veri tüm Türkiye'yi ya da dünyayı değil, Hibrit Portal arşivini ve takvimini kapsar ('arşivimizde', 'takvimimizde' gibi sınırla). Her listede tüm öğeleri tam adıyla yaz. "
       + "Örneklemin sınırlı olduğunu dürüstçe belirt. web_search gerekmez. primarySource alanına 'Hibrit Portal yarışma arşivi' yaz.\nVERİ:\n" + topic.dataText,
   }] : [{
     id: `stock:${topic.id}`, source: "Hibrit Portal", title: topic.title, url: "",
@@ -82,10 +95,10 @@ async function makeOne(st) {
     }
     // İstatistik postu: tablo slaytı koddan eklenir (kapaktan hemen sonra)
     if (topic.stat) {
-      const table = { type: "table", title: topic.title, columns: topic.table.columns, rows: topic.table.rows, note: topic.note, ...(topic.table.highlight ? { highlight: topic.table.highlight } : {}) };
+      const table = { type: "table", title: STAT_TABLE_TITLE[topic.id] ?? "Arşivimizdeki veriler", columns: topic.table.columns, rows: topic.table.rows, note: topic.note, ...(topic.table.highlight ? { highlight: topic.table.highlight } : {}) };
       draft.slides = [draft.slides[0], table, ...draft.slides.slice(1).filter((s) => s.type !== "table")];
     }
-    sourceName = topic.stat ? topic.sourceName : (draft.primarySource || "Hibrit Portal derlemesi");
+    sourceName = topic.stat ? statSource(topic) : (draft.primarySource || "Hibrit Portal derlemesi");
     const gg = guardPost(draft, { sourceName });
     if (!gg.ok) { console.log("stok: kontrolden geçmedi:", topic.id, gg.reason); feedback = gg.reason; continue; }
     const sourceUrls = (topic.stat ? topic.sourceUrls ?? [] : (draft.evidence ?? []).map((x) => x.url)).filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);

@@ -18,8 +18,8 @@ export function guardPost(post, { sourceName }) {
     const o = { type: ["cover", "text", "stat", "end"].includes(s.type) ? s.type : "text" };
     for (const k of FIELDS) if (s[k]) o[k] = s[k];
     if (Array.isArray(s.bullets)) o.bullets = s.bullets;
-    for (const k of FIELDS) if (o[k]) o[k] = clean(o[k]).slice(0, k === "body" ? 260 : 120);
-    if (o.bullets) o.bullets = o.bullets.map((b) => clean(b).slice(0, 140)).filter(Boolean).slice(0, 4);
+    for (const k of FIELDS) if (o[k]) o[k] = clean(o[k]).slice(0, k === "body" ? 240 : k === "title" ? 100 : 120);
+    if (o.bullets) o.bullets = o.bullets.map((b) => clean(b).slice(0, 125)).filter(Boolean).slice(0, 4);
     return o;
   })
     // JSON kalıntısı (',' ":" {" gibi) içeren slayt bozuktur

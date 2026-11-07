@@ -64,7 +64,11 @@ async function main() {
     // İkinci göz: yazı işleri kontrolü (doğruluk, haber değeri, Türkçe). Reddedilirse paylaşılmaz.
     const rev = await reviewPost(draft, srcItems);
     if (!rev.approve) { log("Editör reddetti:", (rev.issues ?? []).join(" | "), "|", srcItems[0].title); state.posts.push({ day: today, ids: pick.ids, skipped: "editör" }); postedIds.add(srcItems[0].id); continue; }
-    if (rev.fixed?.slides?.length && rev.fixed.caption) Object.assign(draft, rev.fixed);
+    // Editör yalnızca metin alanlarını düzeltebilir; resmî site/Instagram (dış adres) yazarın alanı olarak kalır
+    if (rev.fixed?.slides?.length && rev.fixed.caption) {
+      const { slides, caption, hashtags, imageQueries, eventName } = rev.fixed;
+      Object.assign(draft, { slides, caption, ...(hashtags ? { hashtags } : {}), ...(imageQueries ? { imageQueries } : {}), ...(eventName ? { eventName } : {}) });
+    }
     if ((rev.issues ?? []).length) log("Editör düzeltti:", rev.issues.join(" | "));
 
     // Kaynak adı: takvim kayıtlarında organizatör sitesi

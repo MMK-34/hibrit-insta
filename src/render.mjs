@@ -127,7 +127,7 @@ const T = {
 
   end: (s, ctx) => frame({ ...ctx, photoMode: "dim", footerRight: ctx.date, inner: `
     <div style="display:flex;flex-direction:column;justify-content:center;flex:1">
-      <div style="display:flex;font-family:Head;font-weight:800;font-size:110px;line-height:0.95;color:${C.text}">${esc(trUpper(s.title ?? "Sence?"))}</div>
+      <div style="display:flex;font-family:Head;font-weight:800;font-size:${headSize(s.title ?? "", 104)}px;line-height:0.95;color:${C.text}">${esc(trUpper(s.title ?? "Sence?"))}</div>
       ${s.body ? `<div style="display:flex;font-size:40px;line-height:1.4;color:${C.text2};margin-top:36px">${esc(s.body)}</div>` : ""}
       <div style="display:flex;gap:18px;margin-top:72px">
         ${["KAYDET", "PAYLAŞ", "TAKİP ET"].map((x) => `<div style="display:flex;border:2px solid ${C.border};padding:16px 26px;font-family:Mono;font-size:26px;color:${C.text}">${x}</div>`).join("")}

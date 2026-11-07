@@ -79,7 +79,11 @@ const SELECT_TOOL = {
 /** Aday listesinden en fazla `limit` haber seçer (puana göre azalan). */
 export async function selectNews(items, { limit, postedIds }) {
   const list = items.filter((i) => !postedIds.has(i.id))
-    .map((i) => `id: ${i.id}\nkaynak: ${i.source} | ${i.ageH} saat önce | akış: ${i.feedCat}\nbaşlık: ${i.title}\nözet: ${i.snippet}`).join("\n---\n");
+    .map((i) => {
+      // < ve > kaçışlanır: güvenilmez metin <aday> sınırını kapatamaz
+      const e = (t = "") => String(t).replace(/</g, "‹").replace(/>/g, "›");
+      return `<aday>\nid: ${e(i.id)}\nkaynak: ${e(i.source)} | ${i.ageH} saat önce | akış: ${i.feedCat}\nbaşlık: ${e(i.title)}\nözet: ${e(i.snippet)}\n</aday>`;
+    }).join("\n");
   if (!list) return [];
   const res = await claude({
     system: EDITOR,
@@ -132,7 +136,8 @@ export async function writePost(pick, sources) {
     ? `KAROSEL: 4-7 slayt. 1. slayt "cover" (kanca başlık, en fazla ~55 karakter; subtitle merak uyandıran tek cümle). Ortada "text" (en fazla 3-4 kısa madde) ve uygunsa "stat" slaytları. Son slayt "end": topluluğa soru + kısa yorum çağrısı.`
     : `TEKLİ POST: tam 1 slayt, "cover" tipi. title haberin kendisi (en fazla ~70 karakter), subtitle en önemli ek bilgi (tek cümle).`;
   // Dış içerik güvenilmez veridir: etiketle sarılır, içindeki sahte kapanış etiketleri temizlenir.
-  const strip = (t = "") => String(t).replace(/<\/?\s*kaynak[^>]*>/gi, "");
+  // < ve > kaçışlanır: güvenilmez metin hiçbir etiket oluşturamaz
+  const strip = (t = "") => String(t).replace(/</g, "‹").replace(/>/g, "›");
   const src = sources.map((s, i) => `<kaynak no="${i + 1}">\nyayın: ${strip(s.source)}\nbaşlık: ${strip(s.title)}\n${strip(s.text || s.snippet)}\n</kaynak>`).join("\n\n");
   return claude({
     system: `${EDITOR}

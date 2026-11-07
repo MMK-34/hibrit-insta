@@ -1,0 +1,34 @@
+{
+  "name": "Decathlon Battle of Bosphorus",
+  "shortName": "Battle of Bosphorus",
+  "type": "crossfit",
+  "scope": "tr",
+  "city": "İstanbul",
+  "country": "Türkiye",
+  "description": "9 Ekim 2022'de İstanbul'da bireysel kategorilerle yapıldığı kaydedilen fitness yarışması. Tek kaynak hayran yapımı bir sıralama veritabanı (baserank); organizatör, web sitesi ve workout bilgisi bulunamadı, etkinlik doğrulanmadı. \"Bosphorus Throwdown\" adında ayrı bir etkinlik bulunamadı.",
+  "tags": [
+    "istanbul",
+    "arşiv",
+    "doğrulanmadı",
+    "2022"
+  ],
+  "featured": false,
+  "editions": [
+    {
+      "year": 2022,
+      "label": "Decathlon Battle of Bosphorus 2022",
+      "dates": "9 Eki 2022 (doğrulanmadı)",
+      "startDate": "2022-10-09",
+      "endDate": "2022-10-09",
+      "venue": "İstanbul",
+      "divisions": [
+        "Bireysel"
+      ],
+      "source": "https://baserank-online.onrender.com/athlete_spec/1019448",
+      "workouts": [],
+      "notes": "Tek kaynak (baserank, hayran veritabanı); doğrulanmadı. Organizatör, web ve workout bilgisi yok."
+    }
+  ],
+  "prep": "## Genel yarışma hazırlığı (örnek 6 hafta)\n\nEtkinlik verisi çok sınırlı; genel CrossFit yarışma şablonu:\n\n- **Hafta 1–2:** haftada 2 barbell cycling, 2 gymnastics hacim günü, 1 makine aralığı.\n- **Hafta 3–4:** 6–12 dk couplet/triplet sprintleri; burpee ve double-under hacmi.\n- **Hafta 5:** iki workout aynı gün provası, yargıç standardıyla video kaydı.\n- **Hafta 6:** taper, hacim %40 düşer; yalnızca kısa hız ve teknik.\n\nBireysel kategoriler için Open Rx yüklerini referans al; organizatör duyurusu çıkarsa yük ve formatlara göre uyarla.",
+  "updatedAt": "2026-11-07"
+}

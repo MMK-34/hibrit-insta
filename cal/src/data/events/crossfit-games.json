@@ -1,0 +1,90 @@
+{
+  "name": "CrossFit Games",
+  "shortName": "Games",
+  "type": "crossfit",
+  "scope": "world",
+  "city": "San Jose, California (2026)",
+  "country": "ABD",
+  "organizer": "CrossFit LLC",
+  "website": "https://games.crossfit.com/",
+  "registration": "https://games.crossfit.com/",
+  "description": "CrossFit LLC'nin düzenlediği, sporun dünya şampiyonası. Sezon Open (Şubat–Mart, online) ile başlar, Quarterfinals ve Semifinals (Nisan–Haziran) ile daralır, Games (Temmuz sonu – Ağustos başı) ile biter. 2026 Games 20. edisyondu ve San Jose'de (SAP Center) yapıldı. 2027 yeri ve tarihi 7 Kasım 2026 itibarıyla açıklanmadı.",
+  "tags": [
+    "games",
+    "elite",
+    "sezon-finali",
+    "temmuz",
+    "ağustos",
+    "worldwide"
+  ],
+  "featured": true,
+  "editions": [
+    {
+      "year": 2026,
+      "label": "CrossFit Games 2026 (20. edisyon)",
+      "dates": "22–26 Tem 2026",
+      "startDate": "2026-07-22",
+      "endDate": "2026-07-26",
+      "venue": "SAP Center, San Jose, California (bireysel Ev 1–7, 22 Temmuz'da çiftlik/dış mekânlarda)",
+      "divisions": [],
+      "source": "https://eu.velitessport.com/blogs/news/crossfit-games-2026-wods",
+      "workouts": [
+        {
+          "name": "Event 1 — The 2007 Hopper",
+          "format": "For Time",
+          "description": "1.000 m row\nArdından 5 round:\n25 pull-up\n7 push jerk",
+          "movements": [
+            "row",
+            "pull-up",
+            "push jerk"
+          ],
+          "loads": "Push jerk K 38,5 kg / E 61 kg",
+          "source": "https://eu.velitessport.com/blogs/news/crossfit-games-2026-wods",
+          "verified": true
+        },
+        {
+          "name": "Event 10 — Run Hang Squat Clean",
+          "format": "For Time (4 round)",
+          "description": "4 round for time:\n660 m run\n10 hang squat clean",
+          "movements": [
+            "run",
+            "hang squat clean"
+          ],
+          "loads": "K 155 lb / E 225 lb (short barbell)",
+          "source": "https://eu.velitessport.com/blogs/news/crossfit-games-2026-wods",
+          "verified": true
+        },
+        {
+          "name": "Event 18 — Machine 7200M",
+          "format": "For Time",
+          "timeCap": "K 35 dk / E 30 dk",
+          "description": "For time:\n3.600 m row\n3.600 m SkiErg",
+          "movements": [
+            "row",
+            "skierg"
+          ],
+          "source": "https://eu.velitessport.com/blogs/news/crossfit-games-2026-wods",
+          "verified": true
+        },
+        {
+          "name": "Event 20 — Fibonacci Final",
+          "format": "For Time (5-8-13)",
+          "timeCap": "10 dk",
+          "description": "5-8-13 reps for time:\nDeficit handstand push-up\nDouble-KB deadlift\n\nArdından 89 ft KB overhead walking lunge",
+          "movements": [
+            "deficit handstand push-up",
+            "double kettlebell deadlift",
+            "kettlebell overhead walking lunge"
+          ],
+          "loads": "K: 8\" deficit, 2x124 lb KB deadlift, 2x35 lb KB lunge; E: 14\" deficit, 2x203 lb KB deadlift, 2x53 lb KB lunge",
+          "source": "https://eu.velitessport.com/blogs/news/crossfit-games-2026-wods",
+          "verified": true
+        }
+      ],
+      "notes": "Kaynaklar tarih konusunda farklı: resmi 24–26 Temmuz (arena), Wikipedia 22–26 Temmuz (Ev 1–7 22 Temmuz'da dış mekân). 2026 şampiyonları James Sprague / Aimee Cringle (Wikipedia, doğrulanmadı). Toplam 20 etkinlikten yalnızca 4'ünün metni raporda var."
+    }
+  ],
+  "analysis": "## 2026 Games'ten okunanlar\n\nElimizde tek edisyonun 20 etkinliğinden 4'ü var; örüntü çıkarımı sınırlı.\n\n**Görünen temalar**\n- Tarihe saygı: Event 1 \"The 2007 Hopper\" ilk Games'in hopper formatına gönderme (row + pull-up + push jerk). 20. edisyonda nostalji teması açık.\n- Uzun makine testi: 3.600 m row + 3.600 m ski, 30–35 dk cap. Saf monostructural dayanıklılık hâlâ Games'in parçası.\n- Koşu + barbell cycling: 4x (660 m run + 10 hang squat clean 225/155 lb). Orta-ağır barbell tekrar altında.\n- Final: Fibonacci şeması (5-8-13), deficit HSPU + çok ağır KB deadlift (2x203/124 lb) + KB overhead lunge, 10 dk. Finalde ağır odd-object ve gymnastics birleşimi.\n- Etkinlik sayısı 20'ye çıktı; çiftlik/dış mekân günü (22 Temmuz) ile arena bölümü ayrıştı.\n\n**Sırada ne gelebilir (2027)**\n- Yer ve tarih açıklanmadı; Dave Castro'nun \"2027'de Avrupa\" isteği spekülasyon. Temmuz sonu – Ağustos başı en olası pencere.\n- Uzun makine testi, koşu + barbell çifti ve ağır odd-object finali tekrar beklenebilir, ancak Games programlaması her yıl sürpriz içerir; bu çıkarımlar 4 etkinlikten yapılmıştır.",
+  "prep": "## Games tipi hazırlık (örnek 12 haftalık omurga)\n\nGames elit sporcu seviyesidir; aşağıdaki şablon \"Games tarzı\" antrenman isteyenler için.\n\n- **Hafta 1–4 (kapasite):** haftada 2 uzun makine seansı (row/ski 3.000–4.000 m toplam), 2 koşu (600–800 m tekrarları), 2 ağır kuvvet (deadlift, squat clean).\n- **Hafta 5–8 (karma):** koşu + hang squat clean çiftleri (4 round), pull-up hacmi (25'li setler), push jerk cycling 61/38,5 kg.\n- **Hafta 9–11 (yarış):** deficit HSPU + ağır KB deadlift kombinasyonları, KB overhead lunge; haftada 3 etkinlik aynı gün simülasyonu.\n- **Hafta 12:** taper.\n\nYükleri kendi kapasitenin %60–70'inden başlat.",
+  "updatedAt": "2026-11-07"
+}

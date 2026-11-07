@@ -1,0 +1,63 @@
+{
+  "name": "Istanbul Throwdown",
+  "type": "crossfit",
+  "scope": "tr",
+  "city": "İstanbul",
+  "country": "Türkiye",
+  "description": "2015'te \"Avrupa'nın en büyük para ödüllü fitness yarışması\" olarak tanıtılan, İstanbul merkezli CrossFit yarışması. Online qualifier sonrası 180 finalistin yarıştığı iki günlük final formatıyla başladı; 2019'da fiziksel, 2020'de online edisyon kaydı var. Organizatör, web sitesi ve güncel durumu bulunamadı; Eurasia Throwdown ile aynı organizasyon olduğuna dair kanıt yok. Arşiv niteliğinde bir kayıt.",
+  "tags": [
+    "istanbul",
+    "throwdown",
+    "arşiv",
+    "online-qualifier",
+    "elite",
+    "masters",
+    "scaled"
+  ],
+  "featured": false,
+  "editions": [
+    {
+      "year": 2020,
+      "label": "Istanbul Throwdown 2020 — Online Edition",
+      "dates": "Haz 2020 (online; doğrulanmadı)",
+      "divisions": [],
+      "source": "https://baserank-online.onrender.com/athlete_spec/239827",
+      "workouts": [],
+      "notes": "Hayran yapımı sıralama veritabanı (baserank) kaydı; tek kaynak, doğrulanmadı. Workout metni yok."
+    },
+    {
+      "year": 2019,
+      "label": "Istanbul Throwdown 2019",
+      "dates": "7–8 Eyl 2019 (doğrulanmadı)",
+      "startDate": "2019-09-07",
+      "endDate": "2019-09-08",
+      "venue": "Koç Üniversitesi kampüsü, İstanbul (doğrulanmadı)",
+      "divisions": [],
+      "source": "https://baserank-online.onrender.com/athlete_spec/239827",
+      "workouts": [],
+      "notes": "Final tarihi baserank'ten (7 Eylül). CrossFit Boomerang blogu 7–8 Eylül ve Koç Üniversitesi kampüsünü yazmış; sayfa 404 veriyor, arama özetine dayanıyor (doğrulanmadı). Workout metni yok."
+    },
+    {
+      "year": 2015,
+      "label": "Istanbul Throwdown 2015",
+      "dates": "17–18 Eki 2015",
+      "startDate": "2015-10-17",
+      "endDate": "2015-10-18",
+      "venue": "Ataköy Aslı Çakır Alptekin Atletizm Salonu, İstanbul",
+      "divisions": [
+        "Elite Women (40)",
+        "Elite Men (40)",
+        "Master Women 38+ (20)",
+        "Master Men 38+ (20)",
+        "Scaled Women (30)",
+        "Scaled Men (30)"
+      ],
+      "source": "https://www.boxrox.com/?p=33863",
+      "workouts": [],
+      "notes": "Toplam 180 finalist. Format: 3 online qualifier workout, CrossFit affiliate'te koç gözetiminde; skor onayı WODCAST üzerinden; qualifier duyuruları 28 Ağustos, 5 Eylül ve 11 Eylül 2015. Ödül: qualifier sonunda ilk 5 Elite erkek ve ilk 5 Elite kadına 500 € (finale kayıt şartıyla). Workout'lar resmi sitede yayınlanmış ama metin kaynaklarda yok."
+    }
+  ],
+  "analysis": "## 2015–2020 kayıtları\n\nÜç edisyon kaydı var ama hiçbirinin workout metni yok; dolayısıyla programlama örüntüsü çıkarılamıyor.\n\n**Bilinenler**\n- 2015: klasik \"3 online qualifier → iki günlük final\" şeması; 6 kategori, kontenjanlı (Elite 40/40, Masters 38+ 20/20, Scaled 30/30). Para ödülü qualifier'da verilmesi dönem için sıra dışı.\n- 2019: Eylül başında fiziksel final (Koç Üniversitesi, doğrulanmadı).\n- 2020: pandemi döneminde online edisyon (tek kaynak, doğrulanmadı).\n- Takvim: Ekim (2015) → Eylül (2019) → Haziran (2020, online).\n\n**Belirsizlik**\n- 2020 sonrası herhangi bir edisyon kaydı bulunamadı; etkinliğin devam ettiğine dair kanıt yok.\n- Organizatör bilinmiyor; Eurasia Throwdown ile bağlantı kurulamadı.\n\n**Sırada ne gelebilir**\n- Yeni bir edisyon duyurusu olmadan tahmin yapmak anlamlı değil. Takip için Instagram ve competitioncorner.net aramaları gerekir.",
+  "prep": "## Genel CrossFit yarışması hazırlığı (örnek 6 hafta)\n\nWorkout verisi olmadığı için genel \"throwdown\" şablonu:\n\n- **Hafta 1–2:** haftada 2 barbell cycling seansı (clean, thruster, STOH orta yük), 2 gymnastics hacim günü (pull-up, toes-to-bar, HSPU), 1 uzun makine aralığı.\n- **Hafta 3–4:** couplet/triplet sprintleri (6–10 dk), burpee varyantları, double-under hacmi.\n- **Hafta 5:** iki workout aynı gün provası, yargıç standardıyla video kaydı.\n- **Hafta 6:** taper; hacim %40 düşer, hız ve teknik korunur.\n\nQualifier yapılıyorsa haftalık duyuru ritmine göre Cuma strateji / hafta sonu deneme planla.",
+  "updatedAt": "2026-11-07"
+}

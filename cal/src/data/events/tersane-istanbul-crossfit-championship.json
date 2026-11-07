@@ -1,0 +1,34 @@
+{
+  "name": "CrossFit Championship 2026 (Tersane İstanbul)",
+  "shortName": "Tersane CF Championship",
+  "type": "crossfit",
+  "scope": "tr",
+  "city": "İstanbul",
+  "country": "Türkiye",
+  "organizer": "Tersane İstanbul (ev sahibi; organizatör doğrulanmadı)",
+  "website": "https://www.tersaneistanbul.com.tr/experiences/crossfit-championship",
+  "description": "Tersane İstanbul'un (Haliç, Beyoğlu) \"experiences\" sayfasında duyurulan, 10–12 Temmuz 2026 tarihli CrossFit yarışması. Sayfada yalnızca ev sahibi mekân yazıyor; organizatör, kategoriler ve workout'lar yok. Kayıt \"RESERVATION CLOSED\" olarak görünüyor. Battle of Anatolia veya Eurasia Throwdown ile bağlantısı doğrulanmadı.",
+  "tags": [
+    "istanbul",
+    "haliç",
+    "tersane",
+    "2026"
+  ],
+  "featured": false,
+  "editions": [
+    {
+      "year": 2026,
+      "label": "CrossFit Championship 2026",
+      "dates": "10–12 Tem 2026",
+      "startDate": "2026-07-10",
+      "endDate": "2026-07-12",
+      "venue": "Tersane İstanbul, Haliç, Beyoğlu",
+      "divisions": [],
+      "source": "https://www.tersaneistanbul.com.tr/experiences/crossfit-championship",
+      "workouts": [],
+      "notes": "Kategori ve workout bilgisi yok. Kayıt durumu: RESERVATION CLOSED. Organizatör sayfada belirtilmiyor (doğrulanmadı)."
+    }
+  ],
+  "prep": "## Genel yarışma hazırlığı (örnek 6 hafta)\n\nWorkout ve kategori bilgisi olmadığından genel CrossFit yarışma şablonu:\n\n- **Hafta 1–2:** haftada 2 barbell cycling (clean, thruster, STOH), 2 gymnastics (pull-up/C2B, toes-to-bar, HSPU), 1 uzun makine aralığı (row/bike).\n- **Hafta 3–4:** 6–12 dk couplet/triplet sprintleri; burpee ve double-under hacmi.\n- **Hafta 5:** iki workout aynı gün provası; Temmuz sıcağı için açık havada ısı alışkanlığı ve sıvı stratejisi.\n- **Hafta 6:** taper, hacim %40 düşer.\n\nOrganizatör duyurusu gelince yük ve formatlara göre uyarlayın.",
+  "updatedAt": "2026-11-07"
+}

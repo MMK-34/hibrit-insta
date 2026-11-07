@@ -1,0 +1,50 @@
+{
+  "name": "Athens Throwdown",
+  "shortName": "ATD",
+  "type": "crossfit",
+  "scope": "world",
+  "city": "Atina",
+  "country": "Yunanistan",
+  "website": "https://www.athensthrowdown.com/en/",
+  "instagram": "https://www.instagram.com/athensthrowdown",
+  "registration": "https://www.athensthrowdown.com/en/register/",
+  "description": "Yunanistan'ın büyük CrossFit lisanslı yarışması (CrossFit® markası lisansla kullanılıyor). 2027 edisyonu World Fitness Series'in resmi parçası; bireysel ve takım için 2027 World Fitness Championship'e 10'dan fazla kota veriyor. Kayıt 14 Kasım 2026'da açılıyor, bireysel online qualifier 11–26 Ocak 2027, final 16–18 Nisan 2027 Tae Kwon Do Stadium'da. Türkiye'ye yakınlığı nedeniyle Türk sporcular için ulaşılabilir bir uluslararası seçenek. Workout metinleri bulunamadı.",
+  "tags": [
+    "atina",
+    "yunanistan",
+    "world-fitness-series",
+    "online-qualifier",
+    "nisan",
+    "takım"
+  ],
+  "featured": false,
+  "editions": [
+    {
+      "year": 2027,
+      "label": "Athens Throwdown 2027",
+      "dates": "16–18 Nis 2027 (final)",
+      "startDate": "2027-04-16",
+      "endDate": "2027-04-18",
+      "venue": "Tae Kwon Do Stadium, Atina",
+      "divisions": [
+        "Individual",
+        "Team",
+        "Team Scaled Women (yeni; 2 kadın)"
+      ],
+      "source": "https://www.athensthrowdown.com/en/",
+      "workouts": [],
+      "notes": "Kayıt açılışı 14 Kasım 2026, 12:00 (Yunanistan saati). Bireysel online qualifier 11–26 Ocak 2027; takımlar direkt finale. Takım check-in 15 Nisan. World Fitness Series resmi etkinliği; 2027 World Fitness Championship'e 10+ kota. Workout henüz yayınlanmadı. Takım sayfası: athensthrowdown.com/en/teams/. TikTok: @athensthrowdown."
+    },
+    {
+      "year": 2026,
+      "label": "Athens Throwdown 2026",
+      "divisions": [],
+      "source": "https://www.athensthrowdown.com/en/",
+      "workouts": [],
+      "notes": "Üçüncü taraf sayfalarda \"Athens Throwdown 2026 Qualifiers WOD 2 / ATD 26.2 A-B\" adları geçiyor ama hareket metni yok (new.ccum.net — düşük kalite, doğrulanmadı). Resmi \"Standards – Workouts\" sayfası 404. Tarih bilgisi raporda yok."
+    }
+  ],
+  "analysis": "## 2026–2027 örüntüsü\n\nWorkout metni yok; yalnızca yapı ve takvim okunabiliyor.\n\n**Bilinenler**\n- Qualifier adlandırması CrossFit Open'ı andırıyor: \"ATD 26.2 A-B\" → iki parçalı qualifier workout'lar (A/B) kullanılıyor.\n- 2027 yapısı: Kasım'da kayıt, Ocak'ta iki haftalık bireysel online qualifier, Nisan ortasında üç günlük final. Takımlar qualifier'sız direkt finale.\n- Yeni kategori: Team Scaled Women. Kategori yelpazesi genişliyor.\n- World Fitness Series bağlantısı: Athens Throwdown artık CrossFit Games dışındaki alternatif bir uluslararası yolun kota etkinliği.\n\n**Belirsizlik**\n- 2026 edisyonunun tarihi, kazananları ve workout'ları raporda yok.\n- Resmi workout sayfasına erişilemedi.\n\n**Sırada ne gelebilir**\n- Ocak 2027 qualifier'ında A/B parçalı workout'lar beklenebilir. Final programlaması hakkında veri yok; Yunanistan'daki büyük yarışmalarda tipik olarak koşu ve dış mekân parçaları görülür ama bu kaynaksız bir genellemedir.",
+  "prep": "## Athens Throwdown 2027 için örnek 12 haftalık plan\n\n- **Kasım–Aralık (hafta 1–6, baz):** haftada 2 barbell cycling (clean, snatch, thruster), 2 gymnastics (C2B, toes-to-bar, HSPU, muscle-up progresyonu), 1 uzun makine aralığı, 1 koşu.\n- **Ocak (hafta 7–8, qualifier):** A/B parçalı workout provaları (AMRAP + kısa dinlenme + ikinci parça), yargıç standardıyla video kaydı; 11–26 Ocak penceresinde haftada en fazla 2 deneme.\n- **Şubat–Mart (hafta 9–11, final hazırlığı):** günde 2–3 etkinlik simülasyonu, odd-object ve koşu kombinasyonları.\n- **Nisan ilk yarısı (hafta 12):** taper; 15 Nisan check-in, 16–18 Nisan final.\n\nYükleri organizatörün duyurduğu kategori standartlarına göre ayarla.",
+  "updatedAt": "2026-11-07"
+}

@@ -1,0 +1,98 @@
+{
+  "name": "French Throwdown",
+  "shortName": "FTD",
+  "type": "crossfit",
+  "scope": "world",
+  "city": "Tremblay-en-France (Paris)",
+  "country": "Fransa",
+  "description": "Fransa'nın en büyük CrossFit yarışması; 2019'da Sanctional, 2026'da CrossFit Games Semifinal'i oldu (ilk 3 erkek ve ilk 3 kadın Games'e). 2026 edisyonu 15–17 Mayıs'ta Arena Grand Paris'te yapıldı; online qualifier 29 Ocak'ta başladı. Kazananlar Jayson Hopper ve Mirjam von Rohr. Resmi site bulunamadı (frenchthrowdown.com olabilir — doğrulanmadı).",
+  "tags": [
+    "semifinal",
+    "paris",
+    "mayıs",
+    "elite",
+    "online-qualifier"
+  ],
+  "featured": false,
+  "editions": [
+    {
+      "year": 2026,
+      "label": "French Throwdown 2026 (CrossFit Games Semifinal)",
+      "dates": "15–17 May 2026",
+      "startDate": "2026-05-15",
+      "endDate": "2026-05-17",
+      "venue": "Arena Grand Paris, Tremblay-en-France",
+      "divisions": [
+        "Individual Men",
+        "Individual Women"
+      ],
+      "source": "https://thebarbellspin.com/featured/2026-french-throwdown-workouts/",
+      "workouts": [
+        {
+          "name": "Event 1 — Rive Gauche Rive Droite",
+          "format": "For Time",
+          "description": "900 m run\n1.000 m row\n1.200 m run (feedsack bag ile)\n1.000 m row\n900 m run\n\nTime cap kaynakta yok.",
+          "movements": [
+            "run",
+            "row",
+            "sandbag run"
+          ],
+          "loads": "Feedsack bag ağırlığı kaynakta belirtilmemiş",
+          "source": "https://thebarbellspin.com/featured/2026-french-throwdown-workouts/",
+          "verified": true
+        },
+        {
+          "name": "Event 2 — Guillotine",
+          "format": "İki parça, her biri 2 round",
+          "description": "Part A — 2 round:\n20/18 cal Echo Bike\n10 snatch (80/60 kg)\n10 bar muscle-up\n\nPart B — 2 round:\n20/18 cal Echo Bike\n10 snatch (55/45 kg)\n10 bar muscle-up\n\nTime cap kaynakta yok.",
+          "movements": [
+            "echo bike",
+            "snatch",
+            "bar muscle-up"
+          ],
+          "loads": "Snatch A 80/60 kg, B 55/45 kg",
+          "source": "https://thebarbellspin.com/featured/2026-french-throwdown-workouts/",
+          "verified": true
+        },
+        {
+          "name": "Event 3 — Charléty 2018",
+          "format": "For Time (6 round)",
+          "description": "6 round for time:\n15 double-DB thruster\n15 burpee facing over the line\n\nTime cap kaynakta yok.",
+          "movements": [
+            "double dumbbell thruster",
+            "burpee over the line"
+          ],
+          "loads": "DB 2x22,5/15 kg",
+          "source": "https://thebarbellspin.com/featured/2026-french-throwdown-workouts/",
+          "verified": true
+        },
+        {
+          "name": "Event 6 — Le Sacre",
+          "format": "For Time (3 round, azalan rep)",
+          "description": "Round 1: 21 deadlift + 16 m DB walking lunge\nRound 2: 15 clean + 16 m DB walking lunge\nRound 3: 9 shoulder-to-overhead + 8 m DB walking lunge\n\nTime cap kaynakta yok.",
+          "movements": [
+            "deadlift",
+            "clean",
+            "shoulder-to-overhead",
+            "dumbbell walking lunge"
+          ],
+          "loads": "Barbell 90/70 kg; DB 22,5/15 kg",
+          "source": "https://thebarbellspin.com/featured/2026-french-throwdown-workouts/",
+          "verified": true
+        }
+      ],
+      "notes": "Kazananlar: Jayson Hopper (554 p) / Mirjam von Rohr. Online qualifier 29 Ocak 2026'dan itibaren. Raporda yalnızca 4 etkinliğin metni var; time cap'ler verilmemiş. Diğer kaynaklar: thebarbellspin.com tarih duyurusu ve sonuçlar, generationiron.com."
+    },
+    {
+      "year": 2019,
+      "label": "French Throwdown 2019 (Sanctional)",
+      "divisions": [],
+      "source": "https://thebarbellspin.com/crossfit-games/2026-french-throwdown-set-for-may-15-17",
+      "workouts": [],
+      "notes": "CrossFit Games Sanctional statüsü. Raporda tarih ve workout bilgisi yok; önceki yıllarda Haziran–Temmuz'da yapıldığı belirtiliyor."
+    }
+  ],
+  "analysis": "## 2026 Semifinal'inden okunanlar\n\nWorkout metni yalnızca 2026'dan (4 etkinlik, time cap yok).\n\n**Görünen temalar**\n- Uzun karma dayanıklılık: koşu + row piramidi (900/1.000/1.200 m) ve yüklü koşu (feedsack bag). Semifinal'in \"uzun test\" kotası bu etkinlikte.\n- Barbell yük düşürme ile hız: Guillotine'de snatch 80/60 → 55/45 kg; aynı hareket iki yükte. Echo Bike + bar muscle-up ile çiftlenmiş.\n- Klasik tekrar: Charléty 2018, 2018 edisyonundan bir workout'un dönüşü (DB thruster + burpee). Fransız programlaması kendi tarihine gönderme yapıyor.\n- Barbell merdiveni + DB lunge: 21-15-9 deadlift → clean → STOH (90/70 kg), yürüyüş lunge ile. Orta-ağır tek barbell, azalan rep.\n- Yükler Semifinal standardına uygun: snatch 80/60, barbell 90/70, DB 22,5/15 kg.\n\n**Takvim**\n- Mayıs ortası (2026: 15–17 Mayıs); önceki yıllar Haziran–Temmuz. Qualifier Ocak sonu.\n\n**Sırada ne gelebilir (2027)**\n- 2027 Semifinal listesi yayınlanmadı. French Throwdown'un Mayıs 2027'de tekrar Semifinal olması olası, ancak kaynak yok. Devam ederse koşu + row uzun testi, bir eski workout tekrarı ve snatch bazlı barbell yine beklenebilir.",
+  "prep": "## French Throwdown tipi hazırlık (örnek 10 hafta)\n\n- **Hafta 1–3:** haftada 2 koşu (900–1.200 m tekrarları) + 1 row aralığı (1.000 m), sandbag/feedsack ile yüklü koşu alıştırması; snatch teknik 2 gün.\n- **Hafta 4–6:** Echo Bike + snatch + bar muscle-up üçlüleri (iki yük kademesi), double-DB thruster 22,5/15 kg + burpee 6 round provası.\n- **Hafta 7–8:** deadlift/clean/STOH 90/70 kg merdiveni + DB walking lunge; günde 2 etkinlik, 3 gün üst üste simülasyonu.\n- **Hafta 9:** yarış hızında tek tekrarlar, strateji.\n- **Hafta 10:** taper.\n\nQualifier Ocak sonunda; Aralık'ta AMRAP ve for-time kapasitesini zirveye çıkar.",
+  "updatedAt": "2026-11-07"
+}

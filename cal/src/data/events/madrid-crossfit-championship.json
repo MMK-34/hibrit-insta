@@ -1,0 +1,104 @@
+{
+  "name": "Madrid CrossFit Championship / MAD Fitness Festival",
+  "shortName": "MAD",
+  "type": "crossfit",
+  "scope": "world",
+  "city": "Madrid → Ciudad Real",
+  "country": "İspanya",
+  "organizer": "Loud and Live Sport Events",
+  "website": "https://madridchampionship.com",
+  "instagram": "https://www.instagram.com/mad_fitness_festival/",
+  "description": "Loud and Live Sport Events'in Madrid'de (Caja Mágica) başlattığı yarışma; 2022'de programlamayı Mat Fraser yaptı, 2023 edisyonu 7–10 Eylül'de yapıldı. Daha sonra \"MAD Fitness Festival\" adıyla CrossFit Games Avrupa Semifinal'i oldu: 2026 edisyonu 29–31 Mayıs'ta Ciudad Real'de (Quijote Arena) 3 erkek, 3 kadın ve 1 takım Games bileti dağıttı. Yeni resmi site bulunamadı; eski alan adı madridchampionship.com.",
+  "tags": [
+    "semifinal",
+    "ispanya",
+    "mayıs",
+    "elite",
+    "takım",
+    "loud-and-live"
+  ],
+  "featured": false,
+  "editions": [
+    {
+      "year": 2026,
+      "label": "MAD Fitness Festival 2026 (CrossFit Games Semifinal)",
+      "dates": "29–31 May 2026",
+      "startDate": "2026-05-29",
+      "endDate": "2026-05-31",
+      "venue": "Quijote Arena, Ciudad Real, İspanya",
+      "divisions": [
+        "Individual Men",
+        "Individual Women",
+        "Team"
+      ],
+      "source": "https://eu.velitessport.com/blogs/news/mad-fitness-festival-2026-crossfit",
+      "workouts": [],
+      "notes": "Avrupa Semifinal'i; 3 E + 3 K + 1 takım Games bileti. Kazananlar: Aniol Ekai (562 p) / Gabriela Migała; takım CrossFit Asker Kriger (arama özeti). \"Beaded Sandbag\" ve \"CALATRAVA\" adlı etkinlikler geçiyor ama metin bulunamadı (doğrulanmadı). Diğer kaynaklar: thebarbellspin.com semifinal takvimi, prismnews.com."
+    },
+    {
+      "year": 2023,
+      "label": "Madrid CrossFit Championship 2023",
+      "dates": "7–10 Eyl 2023",
+      "startDate": "2023-09-07",
+      "endDate": "2023-09-10",
+      "venue": "Caja Mágica, Madrid",
+      "divisions": [
+        "Individual Men",
+        "Individual Women"
+      ],
+      "source": "https://theprogrm.com/madrid-crossfit-championship/",
+      "workouts": [
+        {
+          "name": "WOD 2",
+          "format": "For Time (42-30-18 / 21-15-9)",
+          "timeCap": "11 dk",
+          "description": "For time:\n42 chest-to-bar pull-up, 21 snatch\n30 chest-to-bar pull-up, 15 snatch\n18 chest-to-bar pull-up, 9 snatch\n\nSnatch yükü her sette artar.",
+          "movements": [
+            "chest-to-bar pull-up",
+            "snatch"
+          ],
+          "loads": "Snatch E 65/75/85 kg, K 45/55/65 kg",
+          "source": "https://theprogrm.com/madrid-crossfit-championship/",
+          "verified": true
+        },
+        {
+          "name": "WOD 4",
+          "format": "For Time",
+          "description": "5 km run, plate carrier ile",
+          "movements": [
+            "run"
+          ],
+          "loads": "Plate carrier 45/35 lb",
+          "source": "https://theprogrm.com/madrid-crossfit-championship/",
+          "verified": true
+        },
+        {
+          "name": "WOD 6",
+          "format": "For Time (3 round)",
+          "timeCap": "12 dk",
+          "description": "3 round for time:\nHandstand walk (merdiven yukarı + rampa aşağı)\n20/15 cal SkiErg\n12/9 ring muscle-up\nHandstand walk (rampa yukarı + merdiven aşağı)\nSatranç taşı hamlesi",
+          "movements": [
+            "handstand walk",
+            "skierg",
+            "ring muscle-up"
+          ],
+          "source": "https://theprogrm.com/madrid-crossfit-championship/",
+          "verified": true
+        }
+      ],
+      "notes": "Raporda yalnızca 3 bireysel WOD'un metni var."
+    },
+    {
+      "year": 2022,
+      "label": "Madrid CrossFit Championship 2022",
+      "venue": "Caja Mágica, Madrid",
+      "divisions": [],
+      "source": "https://theprogrm.com/madrid-crossfit-championship/",
+      "workouts": [],
+      "notes": "Programlamayı Mat Fraser yaptı. Raporda tarih ve workout bilgisi yok."
+    }
+  ],
+  "analysis": "## 2022–2026 örüntüsü\n\nWorkout metni yalnızca 2023'ten (3 WOD); 2026 Semifinal metinleri bulunamadı. Etkinliğin kimliği değişti: bağımsız Eylül yarışmasından Mayıs sonundaki resmi Semifinal'e.\n\n**2023'te görünen temalar**\n- Artan yük snatch merdiveni + yüksek hacim C2B (42-30-18 / 21-15-9, 65→85 / 45→65 kg).\n- Uzun yüklü koşu: 5 km, plate carrier 45/35 lb. Madrid'in imza dayanıklılık testi.\n- Mekân kullanan gymnastics: merdiven ve rampada handstand walk, ring muscle-up, SkiErg; \"satranç taşı hamlesi\" gibi gösteri unsurları.\n- Time cap 11–12 dk.\n\n**2026 (Semifinal)**\n- Etkinlik adları \"Beaded Sandbag\" ve \"CALATRAVA\" → odd-object ve yerel temalı programlama devam ediyor; metin yok (doğrulanmadı).\n- Semifinal olduğu için CrossFit'in test standartlarına uymak zorunda: genellikle bir ağır barbell, bir uzun dayanıklılık, bir yüksek beceri gymnastics, bir makine etkinliği.\n\n**Sırada ne gelebilir (2027)**\n- 2027 Semifinal listesi yayınlanmadı; MAD'ın tekrar Semifinal olması ve Mayıs sonu pencereyi koruması olası, ancak kaynak yok. Ciudad Real mekânı da teyit edilmemiş.",
+  "prep": "## Semifinal tipi hazırlık (örnek 10 hafta)\n\n- **Hafta 1–3:** snatch merdiveni teknik ve cycling (65–85 / 45–65 kg bandı), C2B hacmi (unbroken 15–20), haftada 1 yüklü yürüyüş/koşu (vest 9–10 kg ile 3–5 km).\n- **Hafta 4–6:** handstand walk eğimli yüzeylerde (rampa, merdiven), ring muscle-up + SkiErg çiftleri, sandbag taşıma ve clean.\n- **Hafta 7–8:** 11–12 dk cap'li etkinlik simülasyonları; günde 2 etkinlik, 3 gün üst üste provası.\n- **Hafta 9:** yarış hızında tek tekrarlar, strateji.\n- **Hafta 10:** taper.\n\nYükleri kendi seviyene göre Rx'in %65–70'inden başlat.",
+  "updatedAt": "2026-11-07"
+}

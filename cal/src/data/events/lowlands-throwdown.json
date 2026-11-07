@@ -1,0 +1,125 @@
+{
+  "name": "Lowlands Throwdown",
+  "shortName": "Lowlands",
+  "type": "crossfit",
+  "scope": "world",
+  "city": "Amsterdam / Eindhoven",
+  "country": "Hollanda",
+  "website": "https://www.lowlandsthrowdown.nl/",
+  "instagram": "https://www.instagram.com/crossfitlowlandsthrowdown/",
+  "description": "Hollanda'nın büyük CrossFit yarışması (CrossFit Lowlands Throwdown); 2019'da Sanctional, 2021–2022'de CrossFit Games Avrupa Semifinal'i oldu. 2022 edisyonu 20–22 Mayıs'ta RAI Amsterdam'da yapıldı ve ilk 5 erkek, kadın ve takım Games'e gitti. Sonraki yıllarda \"Lowlands Throwdown Classic\" adıyla devam etti (2024 Eindhoven, doğrulanmadı). 2025/2026 edisyonu için kaynak bulunamadı.",
+  "tags": [
+    "hollanda",
+    "semifinal",
+    "mayıs",
+    "elite",
+    "takım",
+    "classic"
+  ],
+  "featured": false,
+  "editions": [
+    {
+      "year": 2024,
+      "label": "Lowlands Throwdown Classic 2024",
+      "dates": "20 Eyl 2024 (doğrulanmadı)",
+      "startDate": "2024-09-20",
+      "endDate": "2024-09-20",
+      "venue": "Eindhoven",
+      "divisions": [],
+      "source": "https://theprogrm.com/crossfit-lowlands-throwdown/",
+      "workouts": [],
+      "notes": "Tarih ve yer baserank kaydından (hayran veritabanı; doğrulanmadı). Workout metni yok."
+    },
+    {
+      "year": 2022,
+      "label": "Lowlands Throwdown 2022 (CrossFit Games Semifinal)",
+      "dates": "20–22 May 2022",
+      "startDate": "2022-05-20",
+      "endDate": "2022-05-22",
+      "venue": "RAI Amsterdam",
+      "divisions": [
+        "Individual Men",
+        "Individual Women",
+        "Team"
+      ],
+      "source": "https://games.crossfit.com/article/2022-crossfit-lowlands-throwdown-semifinal-workouts",
+      "workouts": [
+        {
+          "name": "Event 1 — 2014 Regional Event 5",
+          "format": "For Time (10 round)",
+          "timeCap": "11 dk",
+          "description": "10 round for time:\n1 legless rope climb (15 ft)\n170 ft run",
+          "movements": [
+            "legless rope climb",
+            "run"
+          ],
+          "source": "https://theprogrm.com/crossfit-lowlands-throwdown/",
+          "verified": true
+        },
+        {
+          "name": "Event 2 — Insidious",
+          "format": "For Time",
+          "timeCap": "22 dk",
+          "description": "1.200 m AirRunner\nArdından 3 round:\n12 axle bar deadlift\n6 m out-and-back handstand walk\n600 m Concept2 row",
+          "movements": [
+            "airrunner",
+            "axle bar deadlift",
+            "handstand walk",
+            "row"
+          ],
+          "loads": "Axle bar deadlift 121/89 kg",
+          "source": "https://theprogrm.com/crossfit-lowlands-throwdown/",
+          "verified": true
+        },
+        {
+          "name": "Event 5 — Devil's Advocate",
+          "format": "For Time",
+          "timeCap": "11 dk",
+          "description": "50 devil's press\n40 handstand push-up\n30 sandbag-to-shoulder\n20 handstand push-up\n25 devil's press",
+          "movements": [
+            "devil's press",
+            "handstand push-up",
+            "sandbag-to-shoulder"
+          ],
+          "loads": "Devil's press 2x22,5/15 kg; sandbag 70/45 kg",
+          "source": "https://theprogrm.com/crossfit-lowlands-throwdown/",
+          "verified": true
+        },
+        {
+          "name": "Event 6 — Die Hard with a Vengeance",
+          "format": "For Time (sprint)",
+          "timeCap": "5 dk",
+          "description": "40/32 cal Echo Bike\n20/16 bar muscle-up\n10 overhead squat",
+          "movements": [
+            "echo bike",
+            "bar muscle-up",
+            "overhead squat"
+          ],
+          "loads": "Overhead squat 100/70 kg",
+          "source": "https://theprogrm.com/crossfit-lowlands-throwdown/",
+          "verified": true
+        }
+      ],
+      "notes": "Avrupa Semifinal'i; ilk 5 E / K / Takım Games'e. Raporda yalnızca 4 bireysel etkinliğin metni var. Diğer kaynak: morningchalkup.com 2022 sonuçları."
+    },
+    {
+      "year": 2021,
+      "label": "Lowlands Throwdown 2021 (CrossFit Games Semifinal)",
+      "divisions": [],
+      "source": "https://theprogrm.com/crossfit-lowlands-throwdown/",
+      "workouts": [],
+      "notes": "Avrupa Semifinal'i. Raporda tarih ve workout bilgisi yok."
+    },
+    {
+      "year": 2019,
+      "label": "Lowlands Throwdown 2019 (Sanctional)",
+      "divisions": [],
+      "source": "https://theprogrm.com/crossfit-lowlands-throwdown/",
+      "workouts": [],
+      "notes": "CrossFit Games Sanctional statüsü. Raporda tarih ve workout bilgisi yok."
+    }
+  ],
+  "analysis": "## 2019–2024 örüntüsü\n\nWorkout metni yalnızca 2022 Semifinal'inden (4 etkinlik). Etkinlik Semifinal statüsünü kaybettikten sonra \"Classic\" adıyla küçüldü; 2025/2026 için kaynak yok.\n\n**2022'de görünen temalar**\n- Tarihe gönderme: Event 1, 2014 Regional Event 5'in tekrarı (legless rope climb + koşu).\n- Uzun karma test: AirRunner 1.200 m + axle deadlift 121/89 kg + handstand walk + row, 22 dk cap. Ağır odd-object barbell (axle) burada.\n- Yüksek beceri gymnastics: legless rope climb x10, handstand push-up 60 toplam, bar muscle-up 20/16.\n- Odd-object: sandbag-to-shoulder 70/45 kg, devil's press 2x22,5/15 kg.\n- Sprint finali: 5 dk cap, Echo Bike + bar muscle-up + ağır OHS 100/70 kg.\n- Time cap aralığı geniş: 5, 11, 11, 22 dk.\n\n**Takvim**\n- Semifinal yıllarında Mayıs; 2024 Classic Eylül (doğrulanmadı).\n\n**Sırada ne gelebilir**\n- Etkinliğin devam ettiği teyit edilmeden tahmin güvenilir değil. Devam ederse Hollanda programlamasının imzası olan eski Regional tekrarı, axle/sandbag ve kısa sprint finali yine beklenir. Semifinal'e geri dönüş için kaynak yok.",
+  "prep": "## Lowlands tipi hazırlık (örnek 8 hafta)\n\n- **Hafta 1–2:** legless rope climb teknik ve hacim (10'lu seriler, kısa koşu arası), AirRunner/row aralıkları, axle deadlift alışkanlığı.\n- **Hafta 3–4:** devil's press 2x22,5/15 kg yüksek hacim + HSPU 20–40'lık bloklar, sandbag-to-shoulder 70/45 kg.\n- **Hafta 5–6:** 5 dk sprint finali provaları (Echo Bike → bar muscle-up → ağır OHS), handstand walk kısa gidiş-dönüş.\n- **Hafta 7:** 22 dk uzun karma test simülasyonu, günde 2 etkinlik.\n- **Hafta 8:** taper.\n\nYükleri kendi 1RM'inle ölçekle; OHS 100/70 kg Semifinal standardıdır.",
+  "updatedAt": "2026-11-07"
+}

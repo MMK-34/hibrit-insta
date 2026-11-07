@@ -1,0 +1,108 @@
+{
+  "name": "Dubai Fitness Championship",
+  "shortName": "DFC",
+  "type": "crossfit",
+  "scope": "world",
+  "city": "Dubai",
+  "country": "BAE",
+  "instagram": "https://www.instagram.com/dxbfitnesschamp/",
+  "description": "Aralık ayında Dubai Duty Free Tennis Stadium'da düzenlenen, online qualifier ve davetle katılımlı elit yarışma. 2018–2020 arası \"Dubai CrossFit Championship\" adıyla Sanctional'dı; 2020 edisyonu COVID nedeniyle iptal edildi, Ekim 2022'de CrossFit lisansından ayrılıp eski adına döndü. 2024 (12. edisyon) kazananlarına 50.000 $ verildi. 2025 edisyonuna dair hiçbir kaynak bulunamadı; etkinliğin devam ettiği doğrulanmadı. \"Dubai Fitness Challenge\" (30x30) farklı bir etkinliktir.",
+  "tags": [
+    "dubai",
+    "aralık",
+    "elite",
+    "online-qualifier",
+    "davetli",
+    "ödül"
+  ],
+  "featured": false,
+  "editions": [
+    {
+      "year": 2025,
+      "label": "Dubai Fitness Championship 2025",
+      "divisions": [],
+      "source": "https://bfriendlyfitness.com/tag/dubaifitnesschampionship",
+      "workouts": [],
+      "notes": "Hiçbir kaynak bulunamadı; yapılıp yapılmadığı doğrulanmadı. Takip edilen kaynağın son yazısı Aralık 2024."
+    },
+    {
+      "year": 2024,
+      "label": "Dubai Fitness Championship 2024 (12. edisyon)",
+      "dates": "6–8 Ara 2024",
+      "startDate": "2024-12-06",
+      "endDate": "2024-12-08",
+      "venue": "Dubai Duty Free Tennis Stadium, Dubai",
+      "divisions": [
+        "Elite Men",
+        "Elite Women"
+      ],
+      "source": "https://morningchalkup.com/2024/12/09/2024-dubai-fitness-championship-results-luka-dukic-karin-frey/",
+      "workouts": [
+        {
+          "name": "Qualifier 24.1",
+          "format": "AMRAP 12 dk",
+          "timeCap": "12 dk",
+          "description": "AMRAP 12 dk:\n60 double-under\n40 wall ball\n30 pull-up\n20 hang power clean\n10 shoulder-to-overhead\n\nYükler kaynakta yok.",
+          "movements": [
+            "double-under",
+            "wall ball",
+            "pull-up",
+            "hang power clean",
+            "shoulder-to-overhead"
+          ],
+          "loads": "Kaynakta belirtilmemiş",
+          "source": "https://www.wodlib.com/workouts/dubai-fitness-championship-2024/dfc-qualifier-241",
+          "verified": true
+        },
+        {
+          "name": "Event 5",
+          "format": "For Time",
+          "timeCap": "12 dk",
+          "description": "100 heavy double-under\n20 sandbag clean\n50 toes-to-bar\n20 sandbag clean\n100 heavy double-under",
+          "movements": [
+            "heavy double-under",
+            "sandbag clean",
+            "toes-to-bar"
+          ],
+          "loads": "Sandbag 150/100 lb",
+          "source": "https://morningchalkup.com/2024/12/09/2024-dubai-fitness-championship-results-luka-dukic-karin-frey/",
+          "verified": true
+        },
+        {
+          "name": "Event 7 — EMOM Challenge",
+          "format": "EMOM 15 dk + 2 round for time",
+          "description": "15 dk EMOM:\nDk 1: 10 burpee box jump (24\"/20\")\nDk 2: 15 DB snatch\nDk 3: 20/17 cal row\n\nArdından aynı üç hareketten 2 round for time.\nSkor: son 2 roundun süresi.",
+          "movements": [
+            "burpee box jump",
+            "dumbbell snatch",
+            "row"
+          ],
+          "loads": "DB 30/22,5 kg; kutu 24\"/20\"",
+          "source": "https://morningchalkup.com/2024/12/09/2024-dubai-fitness-championship-results-luka-dukic-karin-frey/",
+          "verified": true
+        },
+        {
+          "name": "Event 8 — Lazar Tribute",
+          "format": "For Time (piramit)",
+          "timeCap": "14:00",
+          "description": "28/21 cal SkiErg\n8 power snatch\n8 overhead squat\n24/18 cal Assault Bike\n20 m handstand walk\n6/4 rope climb\n30 m handstand walk\n24/18 cal Assault Bike\n8 overhead squat\n8 power snatch\n28/21 cal SkiErg",
+          "movements": [
+            "skierg",
+            "power snatch",
+            "overhead squat",
+            "assault bike",
+            "handstand walk",
+            "rope climb"
+          ],
+          "loads": "Barbell 85/60 kg",
+          "source": "https://morningchalkup.com/2024/12/09/2024-dubai-fitness-championship-results-luka-dukic-karin-frey/",
+          "verified": true
+        }
+      ],
+      "notes": "Kazananlar: Luka Đukić (SRB) / Karin Frey (SVK); 1.'ye 50.000 $. Raporda yalnızca 3 final etkinliği + 1 qualifier metni var. Diğer kaynaklar: morningchalkup 2022 lisans ayrılığı haberi, boxrox sonuç yazısı."
+    }
+  ],
+  "analysis": "## 2024 edisyonundan okunanlar\n\nTek edisyonun 3 final etkinliği + 1 qualifier'ı var; etkinliğin 2025'te yapıldığına dair kaynak yok, bu nedenle \"sırada ne var\" sorusu önce \"etkinlik devam ediyor mu\" sorusuna bağlı.\n\n**2024'te görünen temalar**\n- Ağır ip: heavy double-under 100'lük bloklar halinde (Event 5). DFC'nin imza hareketi.\n- Odd-object: sandbag clean 150/100 lb.\n- Makine karışımı: SkiErg + Assault Bike aynı etkinlikte (Event 8), row EMOM içinde (Event 7).\n- Barbell orta-ağır ve snatch odaklı: power snatch + OHS 85/60 kg.\n- Yüksek beceri gymnastics: handstand walk 20–30 m, rope climb 6/4, toes-to-bar 50.\n- Format çeşitliliği: EMOM + for-time melezi (Event 7), piramit (Event 8). Time cap 12–14 dk.\n- Qualifier klasik AMRAP 12: double-under, wall ball, pull-up, hang power clean, STOH.\n\n**Takvim**\n- Geleneksel pencere Aralık'ın ilk haftası. 2025 ve 2026 için kaynak yok (doğrulanmadı).\n\n**Sırada ne gelebilir**\n- Devam ederse heavy double-under, sandbag, ski/bike kombinasyonu ve snatch bazlı barbell yine beklenir. Belirsizlik yüksek; önce etkinliğin duyurusu teyit edilmeli.",
+  "prep": "## DFC tipi hazırlık (örnek 8 hafta)\n\n- **Hafta 1–2:** heavy rope tekniği (50–100'lük setler), SkiErg ve Assault Bike kalori aralıkları, snatch teknik 2 gün.\n- **Hafta 3–4:** sandbag clean (ağır, 10–20 rep), toes-to-bar hacmi, handstand walk 20–30 m parçaları.\n- **Hafta 5–6:** EMOM + for-time melezi simülasyonu (burpee box jump / DB snatch / row), rope climb 4–6'lık setler.\n- **Hafta 7:** piramit tipi 14 dk etkinlik provası (ski → snatch → OHS → bike → HS walk → rope).\n- **Hafta 8:** taper.\n\nQualifier için AMRAP 12 (double-under, wall ball, pull-up, hang power clean, STOH) yargıç standardıyla deneme.",
+  "updatedAt": "2026-11-07"
+}

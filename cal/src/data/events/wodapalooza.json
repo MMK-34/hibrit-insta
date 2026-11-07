@@ -1,0 +1,113 @@
+{
+  "name": "Wodapalooza",
+  "shortName": "WZA",
+  "type": "crossfit",
+  "scope": "world",
+  "city": "Miami Beach, Florida",
+  "country": "ABD",
+  "organizer": "Loud and Live Sports",
+  "website": "https://wodapalooza.com/",
+  "registration": "https://wodapalooza.com/",
+  "description": "Loud and Live Sports'un Miami Beach'te düzenlediği 4 günlük fitness festivali; 50'den fazla kategori, 2.000'in üzerinde sporcu ve 2025'te yaklaşık 600.000 $ ödül. İsim sponsoru 2025'e kadar TYR, 2026'dan itibaren Gymreapers. 2026'da Ocak'tan Mart'a taşındı (Lummus Park); 2027 edisyonu 11–14 Mart. Wodapalooza SoCal, Wodapalooza Mexico ve Online Challenge & Qualifier (OCQ) ile genişleyen bir seri.",
+  "tags": [
+    "miami",
+    "festival",
+    "elite",
+    "takım",
+    "online-qualifier",
+    "mart",
+    "ödül"
+  ],
+  "featured": true,
+  "editions": [
+    {
+      "year": 2027,
+      "label": "Gymreapers Wodapalooza Miami Beach 2027",
+      "dates": "11–14 Mar 2027",
+      "startDate": "2027-03-11",
+      "endDate": "2027-03-14",
+      "venue": "Lummus Park, Miami Beach",
+      "divisions": [],
+      "source": "https://wodapalooza.com/",
+      "workouts": [],
+      "notes": "Tarih resmi siteden; workout henüz yayınlanmadı. OCQ (online qualifier) 5–16 Kasım 2026. Diğer kaynaklar: exhibit.wodapalooza.com, floelite.com."
+    },
+    {
+      "year": 2026,
+      "label": "Gymreapers Wodapalooza 2026",
+      "dates": "12–15 Mar 2026",
+      "startDate": "2026-03-12",
+      "endDate": "2026-03-15",
+      "venue": "Lummus Park, Miami Beach",
+      "divisions": [],
+      "source": "https://thebarbellspin.com/competition/2026-tyr-wodapalooza-moving-to-march",
+      "workouts": [],
+      "notes": "Ocak'tan Mart'a taşınan ilk edisyon; Open 26.3 canlı duyurusu burada yapıldı. Yağmur nedeniyle erkek finali iptal. Önizlemede DB bench press, 1RM clean & jerk, plaj koşusu, ping-pong wall ball, wall-facing HSPU ve synchro gymnastics geçiyor; \"Complex, Actually\" adlı 20 dk'lık bir workout var (arama özeti; tam metin bulunamadı — doğrulanmadı). Wrap-up kaynağı morningchalkup (403, yalnızca arama özeti)."
+    },
+    {
+      "year": 2025,
+      "label": "TYR Wodapalooza 2025",
+      "dates": "23–26 Oca 2025",
+      "startDate": "2025-01-23",
+      "endDate": "2025-01-26",
+      "venue": "Ocean Drive, Miami Beach",
+      "divisions": [
+        "Elite Men",
+        "Elite Women",
+        "50+ kategori"
+      ],
+      "source": "https://barbend.com/news/tyr-wodapalooza-miami-results-leaderboard/",
+      "workouts": [
+        {
+          "name": "Event 3 — High Stakes, Tight Ropes",
+          "format": "For Time (piramit)",
+          "description": "75 heavy double-under\n90 ft handstand walk\n21 wall-facing handstand push-up\nHer kol 12 single-arm DB snatch + 12 m single-arm overhead DB lunge\n6/4 legless rope climb\nHer kol 12 single-arm DB snatch + 12 m single-arm overhead DB lunge\n21 wall-facing handstand push-up\n90 ft handstand walk\n75 heavy double-under",
+          "movements": [
+            "heavy double-under",
+            "handstand walk",
+            "wall-facing handstand push-up",
+            "single-arm dumbbell snatch",
+            "single-arm overhead dumbbell lunge",
+            "legless rope climb"
+          ],
+          "loads": "DB 100/70 lb",
+          "source": "https://barbend.com/news/tyr-wodapalooza-miami-results-leaderboard/",
+          "verified": true
+        },
+        {
+          "name": "Event 5 — Cuban Press",
+          "format": "For Time",
+          "timeCap": "11 dk",
+          "description": "25 chest-to-bar pull-up\n25 burpee over blocks\n40 DB bench press\n25 burpee over blocks\n25 chest-to-bar pull-up\n\nDB yükü kaynakta yok.",
+          "movements": [
+            "chest-to-bar pull-up",
+            "burpee over blocks",
+            "dumbbell bench press"
+          ],
+          "loads": "Kaynakta belirtilmemiş",
+          "source": "https://barbend.com/news/tyr-wodapalooza-miami-results-leaderboard/",
+          "verified": true
+        },
+        {
+          "name": "Event 6 — Cortadito 2.0",
+          "format": "For Time (30-20-10 → 15-10-5)",
+          "timeCap": "13 dk",
+          "description": "30-20-10:\nWall ball\nHang power snatch\n\nArdından 15-10-5:\nThruster\nRing muscle-up\n\nYükler kaynakta yok.",
+          "movements": [
+            "wall ball",
+            "hang power snatch",
+            "thruster",
+            "ring muscle-up"
+          ],
+          "loads": "Kaynakta belirtilmemiş",
+          "source": "https://barbend.com/news/tyr-wodapalooza-miami-results-leaderboard/",
+          "verified": true
+        }
+      ],
+      "notes": "Ocak'taki son edisyon; ~600.000 $ ödül, 2.000+ sporcu. Raporda yalnızca 3 elit etkinliğin metni var."
+    }
+  ],
+  "analysis": "## 2025–2027 örüntüsü\n\nWorkout metni yalnızca 2025'ten (3 elit etkinlik); 2026 için sadece önizleme başlıkları var.\n\n**Görünen temalar**\n- Ağır dumbbell: 100/70 lb single-arm snatch + overhead lunge (2025); 2026 önizlemesinde DB bench press ve ping-pong wall ball. WZA, dumbbell ve \"eğlenceli varyasyon\" hareketleriyle tanınır.\n- Yüksek beceri gymnastics piramitleri: handstand walk, wall-facing HSPU, legless rope climb, ring muscle-up. Elit programlama beceri bariyeri yüksek.\n- Klasik CrossFit şemaları: 30-20-10 / 15-10-5 (Cortadito), 11–13 dk cap'ler.\n- Dış mekân: plaj koşusu ve yağmur riski (2026 erkek finali iptal). Lummus Park'ta hava koşulları programı etkiliyor.\n- Synchro gymnastics ve takım formatları festivalin parçası.\n\n**Takvim**\n- 2025 Ocak → 2026 ve 2027 Mart. Yeni pencere Mart ortası; 2027 tarihi resmi (11–14 Mart). OCQ Kasım'da.\n\n**Sırada ne gelebilir (2027)**\n- Ağır DB kombinasyonu, bir handstand walk/HSPU piramidi, bir 1RM veya kompleks testi (2026'da 1RM C&J ve \"Complex, Actually\") ve plaj/dış mekân etkinliği beklenir. 2026 metinleri doğrulanmadığı için bu çıkarımlar kısmen önizlemeye dayanır.",
+  "prep": "## WZA tipi hazırlık (örnek 10 hafta)\n\n- **Hafta 1–3:** ağır DB tekniği (single-arm snatch, overhead lunge, bench press), handstand walk 30 m parçaları, wall-facing HSPU hacmi.\n- **Hafta 4–6:** heavy double-under 75'lik setler, legless rope climb, ring muscle-up + thruster çiftleri; 30-20-10 şemalarıyla 10–13 dk sprintler.\n- **Hafta 7–8:** 1RM clean & jerk ve kompleks testi; kum/plaj koşusu alışkanlığı; synchro çalışmaları (takımsa).\n- **Hafta 9:** günde 2–3 etkinlik simülasyonu, 4 günlük festival ritmi için toparlanma rutini.\n- **Hafta 10:** taper.\n\nOCQ için Kasım'da qualifier workout'larını yargıç standardıyla kaydet.",
+  "updatedAt": "2026-11-07"
+}

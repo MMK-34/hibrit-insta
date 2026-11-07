@@ -1,0 +1,55 @@
+{
+  "name": "HYROX İzmir",
+  "shortName": "HYROX IZM",
+  "type": "hyrox",
+  "scope": "tr",
+  "city": "İzmir",
+  "country": "Türkiye",
+  "organizer": "HYROX SEE Sportif Organizasyon A.Ş.",
+  "website": "https://turkiye.hyrox.com/",
+  "registration": "https://turkiye.hyrox.com/event/hyrox-izmir-season-26-27-0va2xn",
+  "description": "Türkiye'de İstanbul dışındaki ilk HYROX yarışı; 19 Eylül 2026'da tek gün olarak Fuar İzmir (Gaziemir) içinde düzenlendi. 70 ülkeden 1.606 sporcu katıldı. Lisans sahibi HYROX SEE Sportif Organizasyon A.Ş. 2027 İzmir tarihi 7 Kasım 2026 itibarıyla açıklanmadı.",
+  "tags": [
+    "hyrox",
+    "izmir",
+    "fuar-izmir",
+    "tek-gün"
+  ],
+  "featured": false,
+  "editions": [
+    {
+      "year": 2026,
+      "label": "HYROX İzmir — Sezon 26/27",
+      "dates": "19 Eyl 2026",
+      "startDate": "2026-09-19",
+      "endDate": "2026-09-19",
+      "venue": "Fuar İzmir, Gaziemir",
+      "divisions": [],
+      "source": "https://turkiye.hyrox.com/event/hyrox-izmir-season-26-27-0va2xn",
+      "workouts": [
+        {
+          "name": "Yarış formatı",
+          "format": "8 x 1 km koşu + 8 istasyon, for time",
+          "description": "8 x 1 km koşu; her koşunun ardından bir istasyon:\n1. 1.000 m SkiErg\n2. 50 m sled push\n3. 50 m sled pull\n4. 80 m burpee broad jump\n5. 1.000 m row\n6. 200 m farmers carry\n7. 100 m sandbag lunge\n8. 100 wall ball\n\nFormat tüm HYROX yarışlarında sabittir.",
+          "movements": [
+            "run",
+            "skierg",
+            "sled push",
+            "sled pull",
+            "burpee broad jump",
+            "row",
+            "farmers carry",
+            "sandbag lunge",
+            "wall ball"
+          ],
+          "loads": "İstasyon ağırlıkları kaynakta yok; HYROX resmi \"weights overview\" sayfasına bakın",
+          "source": "https://www.redbull.com/us-en/hyrox-world-championships-all-you-need-to-know",
+          "verified": true
+        }
+      ],
+      "notes": "Tek günlük yarış. 1.606 sporcu, 70 ülke (halktv). Kategori listesi kaynakta yok. Diğer kaynaklar: beinsports.com.tr, halktv.com.tr."
+    }
+  ],
+  "prep": "## 8 haftalık örnek HYROX hazırlığı (compromised running + istasyonlar)\n\n- **Hafta 1–2:** haftada 3 koşu (uzun kolay, tempo, 6x1 km aralık), 2 istasyon kuvvet günü (sled push/pull, farmers carry, wall ball).\n- **Hafta 3–4:** istasyon + 1 km koşu çiftleri (SkiErg → koşu, row → koşu, sled → koşu); sled sonrası bacak yorgunluğuyla tempo tutma.\n- **Hafta 5–6:** yarım yarış simülasyonu (4 istasyon + 4 koşu), burpee broad jump ve sandbag lunge hacmi, wall ball 100 unbroken denemesi.\n- **Hafta 7:** tam veya 6 istasyonlu prova; Eylül sıcağı için sıvı planı.\n- **Hafta 8:** taper; koşu hacmi %50.\n\nAğırlıkları kategoriye göre resmi HYROX tablosundan al.",
+  "updatedAt": "2026-11-07"
+}

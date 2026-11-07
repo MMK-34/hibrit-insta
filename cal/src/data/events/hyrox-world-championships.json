@@ -1,0 +1,159 @@
+{
+  "name": "HYROX World Championships",
+  "shortName": "HYROX WC",
+  "type": "hyrox",
+  "scope": "world",
+  "city": "Stockholm (2026) / Hong Kong (2027)",
+  "country": "Dünya (her yıl farklı şehir)",
+  "organizer": "HYROX",
+  "website": "https://hyrox.com/",
+  "description": "HYROX sezonunun finali. Katılım Pro kategorisinde yaş grubu kotasıyla ya da Elite 15 için 4 Major (Phoenix, Melbourne, Warsaw, Hamburg), bölgesel şampiyonalar ve 365 günlük dünya sıralaması üzerinden. Format her HYROX yarışıyla aynı: 8 x 1 km koşu ve 8 istasyon. 2026 finali 18–21 Haziran'da Stockholm'de (Strawberry Arena) yapıldı; 2027 finali 10–13 Haziran'da Hong Kong'da.",
+  "tags": [
+    "hyrox",
+    "dünya-şampiyonası",
+    "elite-15",
+    "pro",
+    "haziran",
+    "sezon-finali"
+  ],
+  "featured": true,
+  "editions": [
+    {
+      "year": 2027,
+      "label": "HYROX World Championships 2027",
+      "dates": "10–13 Haz 2027",
+      "startDate": "2027-06-10",
+      "endDate": "2027-06-13",
+      "venue": "Hong Kong",
+      "divisions": [
+        "Elite 15 Men",
+        "Elite 15 Women",
+        "Pro Doubles",
+        "Age Group Pro",
+        "Mixed Doubles",
+        "Adaptive",
+        "Mixed Relay"
+      ],
+      "source": "https://endurance.biz/2026/industry-news/targeting-2-million-athletes-hyrox-expands-global-calendar-for-2026-27-season/",
+      "workouts": [
+        {
+          "name": "Yarış formatı",
+          "format": "8 x 1 km koşu + 8 istasyon, for time",
+          "description": "8 x 1 km koşu; her koşunun ardından bir istasyon:\n1. 1.000 m SkiErg\n2. 50 m sled push\n3. 50 m sled pull\n4. 80 m burpee broad jump\n5. 1.000 m row\n6. 200 m farmers carry\n7. 100 m sandbag lunge\n8. 100 wall ball\n\nFormat tüm HYROX yarışlarında sabittir.",
+          "movements": [
+            "run",
+            "skierg",
+            "sled push",
+            "sled pull",
+            "burpee broad jump",
+            "row",
+            "farmers carry",
+            "sandbag lunge",
+            "wall ball"
+          ],
+          "loads": "İstasyon ağırlıkları kaynakta yok; HYROX resmi \"weights overview\" sayfasına bakın",
+          "source": "https://www.redbull.com/us-en/hyrox-world-championships-all-you-need-to-know",
+          "verified": true
+        }
+      ],
+      "notes": "HYROX'un 20 Temmuz 2026 duyurusu (endurance.biz aktarımı); durum \"announced\". Kategori listesi genel WC yapısından."
+    },
+    {
+      "year": 2026,
+      "label": "HYROX World Championships 2026",
+      "dates": "18–21 Haz 2026",
+      "startDate": "2026-06-18",
+      "endDate": "2026-06-21",
+      "venue": "Strawberry Arena, Stockholm",
+      "divisions": [
+        "Elite 15 Men",
+        "Elite 15 Women",
+        "Pro Doubles",
+        "Age Group Pro",
+        "Mixed Doubles",
+        "Adaptive",
+        "Mixed Relay"
+      ],
+      "source": "https://roxlyfe.com/2026-hyrox-world-championships/",
+      "workouts": [
+        {
+          "name": "Yarış formatı",
+          "format": "8 x 1 km koşu + 8 istasyon, for time",
+          "description": "8 x 1 km koşu; her koşunun ardından bir istasyon:\n1. 1.000 m SkiErg\n2. 50 m sled push\n3. 50 m sled pull\n4. 80 m burpee broad jump\n5. 1.000 m row\n6. 200 m farmers carry\n7. 100 m sandbag lunge\n8. 100 wall ball\n\nFormat tüm HYROX yarışlarında sabittir.",
+          "movements": [
+            "run",
+            "skierg",
+            "sled push",
+            "sled pull",
+            "burpee broad jump",
+            "row",
+            "farmers carry",
+            "sandbag lunge",
+            "wall ball"
+          ],
+          "loads": "İstasyon ağırlıkları kaynakta yok; HYROX resmi \"weights overview\" sayfasına bakın",
+          "source": "https://www.redbull.com/us-en/hyrox-world-championships-all-you-need-to-know",
+          "verified": true
+        }
+      ],
+      "notes": "Sonuçlar raporda yok."
+    },
+    {
+      "year": 2025,
+      "label": "HYROX World Championships 2025",
+      "venue": "Chicago, ABD",
+      "divisions": [],
+      "source": "https://www.redbull.com/us-en/hyrox-world-championships-all-you-need-to-know",
+      "workouts": [],
+      "notes": "Format aynı. Tarih ve sonuç raporda yok."
+    },
+    {
+      "year": 2024,
+      "label": "HYROX World Championships 2024",
+      "venue": "Nice, Fransa",
+      "divisions": [],
+      "source": "https://www.redbull.com/us-en/hyrox-world-championships-all-you-need-to-know",
+      "workouts": [],
+      "notes": "Format aynı. Tarih ve sonuç raporda yok."
+    },
+    {
+      "year": 2023,
+      "label": "HYROX World Championships 2023",
+      "venue": "Manchester, İngiltere",
+      "divisions": [],
+      "source": "https://www.redbull.com/us-en/hyrox-world-championships-all-you-need-to-know",
+      "workouts": [],
+      "notes": "Format aynı. Tarih ve sonuç raporda yok."
+    },
+    {
+      "year": 2022,
+      "label": "HYROX World Championships 2022",
+      "venue": "Las Vegas, ABD",
+      "divisions": [],
+      "source": "https://www.redbull.com/us-en/hyrox-world-championships-all-you-need-to-know",
+      "workouts": [],
+      "notes": "Format aynı. Tarih ve sonuç raporda yok."
+    },
+    {
+      "year": 2021,
+      "label": "HYROX World Championships 2021",
+      "venue": "Leipzig, Almanya",
+      "divisions": [],
+      "source": "https://www.redbull.com/us-en/hyrox-world-championships-all-you-need-to-know",
+      "workouts": [],
+      "notes": "Format aynı. Tarih ve sonuç raporda yok."
+    },
+    {
+      "year": 2019,
+      "label": "HYROX World Championships 2019",
+      "venue": "Oberhausen, Almanya",
+      "divisions": [],
+      "source": "https://www.redbull.com/us-en/hyrox-world-championships-all-you-need-to-know",
+      "workouts": [],
+      "notes": "İlk dünya şampiyonası. Format aynı. Tarih ve sonuç raporda yok."
+    }
+  ],
+  "analysis": "## 2019–2027 örüntüsü\n\nFormat sabit olduğu için örüntü takvim, ev sahibi ve katılım yolunda.\n\n**Ev sahibi rotasyonu**\n- 2019 Oberhausen, 2021 Leipzig (2020 yok), 2022 Las Vegas, 2023 Manchester, 2024 Nice, 2025 Chicago, 2026 Stockholm, 2027 Hong Kong. Avrupa → Kuzey Amerika → Avrupa dönüşümü 2027'de ilk kez Asya'ya açılıyor.\n- Tarih: Haziran ortası (2026: 18–21 Haziran; 2027: 10–13 Haziran). Sezon finali olarak Mayıs sonu – Haziran penceresi sabit.\n\n**Katılım yolu**\n- Pro kategorisinde yaş grubu kotası (sezon içi yarışlarda) veya Elite 15 (4 Major + bölgesel şampiyonalar + 365 günlük dünya sıralaması). Elite Series 2026/27: Hamburg, London, Bangkok, Las Vegas, Lyon.\n- Kategoriler: Elite 15 E/K, Pro Doubles, Age Group Pro, Mixed Doubles, Adaptive, Mixed Relay.\n\n**Türk sporcular için**\n- Istanbul (Ağustos) ve İzmir (Eylül) Pro yarışları yaş grubu kotası için doğal giriş noktası.\n\n**Sırada ne gelebilir**\n- 2027 Hong Kong tarihi \"announced\" statüsünde; değişebilir. 2028 ev sahibi açıklanmadı. İstasyon ağırlıkları kaynakta yok; resmi tabloya bakılmalı.",
+  "prep": "## Dünya Şampiyonası (Pro) için örnek 12 haftalık hazırlık\n\nPro kategorisi daha ağır istasyon yükleriyle yarışır; şablon compromised running odaklı.\n\n- **Hafta 1–4 (baz):** haftada 3–4 koşu (uzun 10–12 km, tempo, 8x1 km yarış temposu), 2 istasyon kuvvet (ağır sled push/pull, farmers carry, sandbag lunge).\n- **Hafta 5–8 (compromised running):** istasyon → 1 km çiftleri Pro yüklerinde; sled sonrası ilk 200 m tempo kontrolü; wall ball 100 unbroken.\n- **Hafta 9–11 (yarış):** yarım ve tam yarış simülasyonları (2 haftada 1), roxzone geçiş süresi ölçümü, burpee broad jump ritmi.\n- **Hafta 12:** taper; koşu hacmi %50, istasyon yalnızca teknik.\n\nYükleri kategoriye göre HYROX resmi ağırlık tablosundan al.",
+  "updatedAt": "2026-11-07"
+}

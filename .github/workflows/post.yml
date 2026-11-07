@@ -1,0 +1,68 @@
+name: Instagram otomatik paylaşım
+
+on:
+  schedule:
+    # TR saati = UTC+3 -> 08:30, 11:00, 13:30, 16:00, 18:30, 21:00
+    - cron: "30 5 * * *"
+    - cron: "0 8 * * *"
+    - cron: "30 10 * * *"
+    - cron: "0 13 * * *"
+    - cron: "30 15 * * *"
+    - cron: "0 18 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "dry = sadece üret, force = eşiği yok say ve paylaş"
+        required: false
+        default: ""
+
+concurrency:
+  group: post
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+
+      - name: Yarış takvimi senkronu
+        working-directory: cal
+        run: node scripts/sync-calendar.mjs || echo "takvim hatası, son sağlam veri korundu"
+
+      - name: Haber seç, üret, paylaş
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          case "${{ github.event.inputs.mode }}" in
+            dry) node src/run.mjs --dry ;;
+            force) node src/run.mjs --force ;;
+            *) node src/run.mjs ;;
+          esac
+
+      - name: Önizleme (dry)
+        if: github.event.inputs.mode == 'dry'
+        uses: actions/upload-artifact@v4
+        with: { name: onizleme, path: out/ }
+
+      - name: Durumu kaydet
+        if: always()
+        run: |
+          git config user.name "hibrit-bot"
+          git config user.email "hibrit-bot@users.noreply.github.com"
+          git add state cal/src/data
+          git diff --cached --quiet || (git commit -m "state: $(date -u +%F' '%H:%M)" && git push)

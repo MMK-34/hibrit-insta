@@ -1,0 +1,39 @@
+{
+  "name": "Kuşadası Uluslararası CrossFit Şampiyonası",
+  "shortName": "Kuşadası",
+  "type": "crossfit",
+  "scope": "tr",
+  "city": "Kuşadası, Aydın",
+  "country": "Türkiye",
+  "description": "Haberlere göre 2017'den beri Kuşadası'nda düzenlenen, çiftler formatında uluslararası CrossFit yarışması. 2025 edisyonuna 12 ülkeden yaklaşık 500 sporcu katıldı; parkurlar olimpik halter, cimnastik, yüzme ve atletizm kombinasyonu. Beginner, Scaled ve Advanced kategorileri var. Marka adı ve organizatör haberlerde geçmiyor (doğrulanmadı); workout metni bulunamadı.",
+  "tags": [
+    "kuşadası",
+    "çiftler",
+    "beginner",
+    "scaled",
+    "advanced",
+    "yüzme",
+    "uluslararası"
+  ],
+  "featured": false,
+  "editions": [
+    {
+      "year": 2025,
+      "label": "Kuşadası Uluslararası CrossFit Şampiyonası 2025",
+      "dates": "9–10 Kas 2025",
+      "startDate": "2025-11-09",
+      "endDate": "2025-11-10",
+      "venue": "Kuşadası",
+      "divisions": [
+        "Beginner (çift)",
+        "Scaled (çift)",
+        "Advanced (çift)"
+      ],
+      "source": "https://www.aydindenge.com.tr/kusadasi/09/11/2025/kusadasinda-uluslararasi-crossfit-sampiyonasi-basladi",
+      "workouts": [],
+      "notes": "~500 sporcu, 12 ülke (Türkiye, Rusya, Ukrayna, Kazakistan, Hırvatistan, Çekya, Arnavutluk, KKTC ...). Haberde konuşan: Deniz Işık (\"CrossFit uzmanı\"). Türkiye'nin ilk adaptive CrossFit sporcusu Tuğçe Melis Eminoğlu katıldı (Posta). Workout metni yayınlanmış kaynak bulunamadı. Diğer kaynaklar: posta.com.tr ve yenisokegazetesi.com haberleri."
+    }
+  ],
+  "prep": "## Çiftler yarışması için örnek 6 haftalık hazırlık\n\nFormat olimpik halter + cimnastik + yüzme + atletizm karışımı olduğu için:\n\n- **Hafta 1–2:** haftada 2 koşu/yüzme seansı (400–800 m koşu tekrarları, 100–200 m yüzme aralıkları), 2 barbell teknik günü (clean, snatch, orta yük).\n- **Hafta 3–4:** partnerle \"you go / I go\" aralıkları; pull-up, toes-to-bar, burpee hacmi; yüzme sonrası barbell geçişi provası.\n- **Hafta 5:** iki workout aynı gün, partner sırası ve geçiş stratejisi.\n- **Hafta 6:** taper, hacim %40 düşer.\n\nKategori yüklerini organizatör duyurusundan al; kaynaklarda yük yok.",
+  "updatedAt": "2026-11-07"
+}

@@ -1,0 +1,164 @@
+{
+  "name": "Eurasia Throwdown",
+  "shortName": "Eurasia",
+  "type": "crossfit",
+  "scope": "tr",
+  "city": "İstanbul",
+  "country": "Türkiye",
+  "organizer": "CrossFit Backstreet (Ankara)",
+  "website": "https://eurasiathrowdown.com/",
+  "instagram": "https://www.instagram.com/eurasiathrowdown/",
+  "registration": "https://competitioncorner.net/events/15693",
+  "description": "Ankara merkezli CrossFit Backstreet'in düzenlediği, Türkiye'nin uluslararası katılımlı en büyük CrossFit yarışması. Online qualifier sonrası İstanbul'da iki günlük final; 2024 finaline 50'ye yakın ülkeden 500'ün üzerinde sporcu katıldı. Beginner'dan Elite'e bireysel kategoriler, Masters yaş grupları ve takım kategorileri var. Resmi site araştırma anında erişilemediği için bazı tarih ve kategori bilgileri doğrulanamadı.",
+  "tags": [
+    "istanbul",
+    "throwdown",
+    "online-qualifier",
+    "elite",
+    "masters",
+    "takım",
+    "uluslararası"
+  ],
+  "featured": true,
+  "editions": [
+    {
+      "year": 2026,
+      "label": "Eurasia Throwdown 2026",
+      "dates": "2026 (Q1–Q2; kesin tarih yok)",
+      "divisions": [],
+      "source": "https://wetime.io/competitions/eurasian-throwdown",
+      "workouts": [],
+      "notes": "Resmi site başlığı \"EURASIA THROWDOWN 2026\"; WeTime'da \"2026 Q1\" ve \"2026 Q2\" girişleri var ama kesin tarih bulunamadı (doğrulanmadı). Workout metni yayınlanmamış ya da erişilemedi."
+    },
+    {
+      "year": 2025,
+      "label": "Eurasia Throwdown 2025",
+      "dates": "26–27 Nis 2025 (final)",
+      "startDate": "2025-04-26",
+      "endDate": "2025-04-27",
+      "venue": "İstanbul",
+      "divisions": [
+        "Beginner → Elite (bireysel)",
+        "Masters",
+        "Beginner Team",
+        "Scaled Team"
+      ],
+      "source": "https://competitioncorner.net/events/15693",
+      "workouts": [],
+      "notes": "Online qualifier Ocak ortası – Şubat başı; final tarihi resmi site arama özetinden alındı (doğrulanmadı). Kategori listesi arama özetine dayanıyor (doğrulanmadı). Workout metni bulunamadı; competitioncorner.net workout sayfaları (events/11750 ve events/12626) JavaScript nedeniyle okunamadı."
+    },
+    {
+      "year": 2024,
+      "label": "Eurasia Throwdown 2024",
+      "dates": "9–10 Mar 2024 (final)",
+      "startDate": "2024-03-09",
+      "endDate": "2024-03-10",
+      "venue": "Türkiye Cimnastik Federasyonu tesisleri, Sancaktepe, İstanbul",
+      "divisions": [
+        "Elite RX Men",
+        "Elite RX Women",
+        "Advanced (qualifier)"
+      ],
+      "source": "https://bfriendlyfitness.com/the-2024-eurasia-throwdown-finals-preview/",
+      "workouts": [
+        {
+          "name": "Event 1",
+          "format": "For Time (triplet)",
+          "timeCap": "7:00",
+          "description": "30 front squat\n20 shoulder-to-overhead\n10 thruster\n\nYükler kaynakta belirtilmemiş. Elite kazanan süre örneği: 3:44.",
+          "movements": [
+            "front squat",
+            "shoulder-to-overhead",
+            "thruster"
+          ],
+          "loads": "Kaynakta belirtilmemiş",
+          "source": "https://bfriendlyfitness.com/the-2024-eurasia-throwdown-finals-preview/",
+          "verified": true
+        },
+        {
+          "name": "Event 2",
+          "format": "For Time",
+          "timeCap": "25:00",
+          "description": "5.000 m row for time",
+          "movements": [
+            "row"
+          ],
+          "source": "https://bfriendlyfitness.com/the-2024-eurasia-throwdown-finals-preview/",
+          "verified": true
+        },
+        {
+          "name": "Event 3",
+          "format": "For Time",
+          "timeCap": "15:00",
+          "description": "50 burpee box jump-over\nArdından ring muscle-up: Erkek 30 / Kadın 20\n\nHer muscle-up molasında (seti bırakışta) 7 shuttle run cezası.",
+          "movements": [
+            "burpee box jump-over",
+            "ring muscle-up",
+            "shuttle run"
+          ],
+          "loads": "Kutu yüksekliği kaynakta belirtilmemiş",
+          "source": "https://bfriendlyfitness.com/the-2024-eurasia-throwdown-finals-preview/",
+          "verified": true
+        },
+        {
+          "name": "Event 4",
+          "format": "For Time (2 round)",
+          "timeCap": "12:00",
+          "description": "2 round:\n1.000 m BikeErg\nRampalı handstand walk\n10 pull-over\nRampalı handstand walk",
+          "movements": [
+            "bikeerg",
+            "handstand walk",
+            "pull-over"
+          ],
+          "source": "https://bfriendlyfitness.com/the-2024-eurasia-throwdown-finals-preview/",
+          "verified": true
+        },
+        {
+          "name": "Event 5",
+          "format": "For Time (5 round + cash-out)",
+          "timeCap": "12:00",
+          "description": "5 round:\nBike kalori (Erkek 18 / Kadın 15)\n6 sandbag clean\n1 seated legless rope climb\n\nCash-out: 50 m sandbag carry",
+          "movements": [
+            "bike",
+            "sandbag clean",
+            "seated legless rope climb",
+            "sandbag carry"
+          ],
+          "loads": "Sandbag ağırlığı kaynakta belirtilmemiş",
+          "source": "https://bfriendlyfitness.com/the-2024-eurasia-throwdown-finals-preview/",
+          "verified": true
+        }
+      ],
+      "notes": "Yeni adıyla ve yeni yerinde ilk İstanbul edisyonu; 500+ sporcu, ~50 ülke. 6 etkinlik duyuruldu, kaynakta 5'inin metni var; Event 6 metni yok (doğrulanmadı). Sonuçlar: Erkekler 1. Nika Maisuradze (Gürcistan), 2. Agustin Viličnik; Kadınlar 1. Natalia Biberica (yazar çıkarımı), 2. Eva Ioanna Arampatzi. Final Türkçe ve İngilizce çift yayınla (B.Friendly Fitness YouTube) verildi; sonuçlar Competition Corner'da."
+    },
+    {
+      "year": 2023,
+      "label": "Eurasia Throwdown 2023",
+      "dates": "2023 (final yeri/tarihi doğrulanmadı)",
+      "divisions": [
+        "Masters 45+"
+      ],
+      "source": "https://www.youtube.com/watch?v=1iOnQ2pB_Ds",
+      "workouts": [
+        {
+          "name": "Online Qualifier WOD 1A (Masters 45+)",
+          "format": "AMRAP 8 dk (A bölümü)",
+          "timeCap": "8:00",
+          "description": "A: AMRAP 8 dk\n32 double-under\n16 toes-to-bar\n4 squat clean 60 kg\nCAP 8 dk, ardından 2 dk dinlenme\n\nB bölümü kaynaktan alınamadı.",
+          "movements": [
+            "double-under",
+            "toes-to-bar",
+            "squat clean"
+          ],
+          "loads": "Squat clean 60 kg (Masters 45+)",
+          "source": "https://www.youtube.com/watch?v=1iOnQ2pB_Ds",
+          "verified": false
+        }
+      ],
+      "notes": "Aynı ad 2023'te de kullanılmış (YouTube \"Eurasia Throwdown 2023 Online Qualifiers\"). WOD metni arama özetindeki YouTube açıklamasından; WebFetch ile doğrulanamadı. Final yeri ve tarihi bulunamadı. Önceki yıllarda başka bir şehirde (muhtemelen Ankara) daha küçük ölçekte düzenlenmiş; \"2016'dan beri\" ifadesi organizatörün önceki etkinliklerini kapsıyor olabilir (doğrulanmadı)."
+    }
+  ],
+  "analysis": "## 2023–2026 örüntüsü\n\nElimizde yalnızca 2024 finalinin 5 etkinliği ve 2023 qualifier'ından tek bir AMRAP var; 2025 ve 2026 workout metni yok. Bu yüzden çıkarımlar sınırlı ve belirsizlik yüksek.\n\n**2024 finalinde görünen yapı**\n- Makine ağırlıklı monostructural testler: 5K row (tek başına, 25 dk cap), 1.000 m BikeErg, bike kalori. 5 etkinliğin 3'ünde makine var.\n- Yüksek beceri gymnastics: ring muscle-up (30/20), rampalı handstand walk, pull-over, seated legless rope climb. Elite'te gymnastics bariyeri yüksek.\n- Barbell yalnızca Event 1'de (front squat → STOH → thruster triplet, 7 dk). Ağır barbell veya 1RM testi görünmüyor; yük bilgisi kaynakta yok.\n- Sandbag ve odd-object: sandbag clean + sandbag carry (Event 5).\n- Time cap'ler 7–15 dk bandında; yalnızca 5K row 25 dk.\n\n**Qualifier tarafı (2023)**\n- Klasik online qualifier şeması: AMRAP + kısa dinlenme + B bölümü; double-under, toes-to-bar, orta yük squat clean (60 kg Masters 45+).\n\n**Sırada ne gelebilir**\n- Finalde tekrar bir uzun makine testi (row/ski/bike) + rampalı handstand walk + muscle-up kombinasyonu beklemek makul.\n- Sandbag/odd-object hareketleri organizatörün tercihi gibi duruyor.\n- Takvim 2024'te Mart, 2025'te Nisan sonuydu; 2026 \"Q1–Q2\" olarak listelendi. 2027 için de Mart–Nisan aralığı olası, ancak kaynak yok.",
+  "prep": "## 8 haftalık örnek hazırlık (Eurasia finali tipi)\n\n- **Hafta 1–2:** haftada 2 uzun makine seansı (row 5K tempo, BikeErg 1.000 m tekrarları), 2 gymnastics teknik günü (ring muscle-up, handstand walk rampa/çizgi).\n- **Hafta 3–4:** barbell triplet sprintleri (front squat / STOH / thruster, 5–8 dk, orta yük); seated legless rope climb ve pull-over tekniği.\n- **Hafta 5–6:** sandbag clean + carry kombinasyonları, bike kalori aralıkları; haftada bir \"iki etkinlik aynı gün\" provası.\n- **Hafta 7:** qualifier tipi AMRAP'lar (double-under, toes-to-bar, squat clean) yargıç standardıyla.\n- **Hafta 8:** hacim %40 düşer, yalnızca kısa hız çalışmaları.\n\nYükler kaynaklarda yok; kendi seviyene göre Open Rx yüklerinden başla.",
+  "updatedAt": "2026-11-07"
+}

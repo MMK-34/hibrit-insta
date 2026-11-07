@@ -1,0 +1,19 @@
+{
+  "name": "hibrit-insta",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "run": "node src/run.mjs",
+    "dry": "node src/run.mjs --dry",
+    "render-test": "node src/render-test.mjs",
+    "fonts": "node src/get-fonts.mjs"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "dotenv": "^18.0.9",
+    "fast-xml-parser": "^5.12.0",
+    "satori": "^0.63.2",
+    "satori-html": "^0.3.2",
+    "sharp": "^0.35.5"
+  }
+}

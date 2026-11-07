@@ -1,0 +1,58 @@
+{
+  "name": "Tirana Throwdown",
+  "type": "crossfit",
+  "scope": "world",
+  "city": "Tiran",
+  "country": "Arnavutluk",
+  "website": "https://www.tiranathrowdown.com/",
+  "instagram": "https://www.instagram.com/tiranathrowdown/",
+  "registration": "https://reventy.com/sports/event/65b8dfae000ee/details",
+  "description": "Arnavutluk'un \"bu türün ilk ve en büyüğü\" olarak tanıtılan CrossFit yarışması; ilk edisyon 2023, ikincisi 27–28 Nisan 2024'te yapıldı. Elite, Scaled, Masters ve Teen kategorileri kontenjanlı; 2024'te final dahil toplam 5 workout, iki gün. Türkiye'ye yakın coğrafyada olduğu için Türk sporcular için erişilebilir bir seçenek. Workout metinleri kaynaktan alınamadı.",
+  "tags": [
+    "tiran",
+    "balkanlar",
+    "throwdown",
+    "elite",
+    "scaled",
+    "masters",
+    "teens"
+  ],
+  "featured": false,
+  "editions": [
+    {
+      "year": 2024,
+      "label": "Tirana Throwdown 2024 (2. edisyon)",
+      "dates": "27–28 Nis 2024",
+      "startDate": "2024-04-27",
+      "endDate": "2024-04-28",
+      "venue": "Tiran",
+      "divisions": [
+        "Elite Men (40)",
+        "Elite Women (20)",
+        "Scaled Men (80)",
+        "Scaled Women (60)",
+        "Master Men 35-39 (20)",
+        "Master Women 35-39 (10)",
+        "Master Men 40+ (20)",
+        "Master Women 40+ (10)",
+        "Teen Boys (10)",
+        "Teen Girls (10)"
+      ],
+      "source": "https://reventy.com/sports/event/65b8dfae000ee/details",
+      "workouts": [],
+      "notes": "Briefing 26 Nisan, yarışma 27–28 Nisan 2024. Toplam 5 workout (final dahil). Reventy sayfasında ayrı \"Workouts\" bölümü var ama metin alınamadı. İletişim: info@tiranathrowdown.com."
+    },
+    {
+      "year": 2023,
+      "label": "Tirana Throwdown 2023 (1. edisyon)",
+      "dates": "2023",
+      "divisions": [],
+      "source": "https://reventy.com/sports/event/65b8dfae000ee/details",
+      "workouts": [],
+      "notes": "İlk edisyon; tarih ve workout bilgisi kaynakta yok."
+    }
+  ],
+  "analysis": "## 2023–2024 örüntüsü\n\nİki edisyon kaydı var ama workout metni yok; programlama örüntüsü çıkarılamıyor.\n\n**Bilinenler**\n- Takvim: 2024 Nisan sonu (27–28 Nisan). 2023 tarihi kaynakta yok.\n- Format: iki gün, final dahil 5 workout; sporcu başına günde 2–3 etkinlik demek.\n- Kategori yapısı geniş ve kontenjanlı: Scaled en kalabalık (80 E / 60 K), Elite dar (40 E / 20 K), iki Masters bandı (35-39 ve 40+) ve Teen kategorileri. Bölgesel katılımı hedefleyen bir yapı.\n\n**Belirsizlik**\n- 2025 ve 2026 edisyonu için kaynak yok; etkinliğin devamı doğrulanmadı.\n\n**Sırada ne gelebilir**\n- Devam ederse Nisan sonu tekrar olası, ancak kaynaksız. Workout'lar için resmi site \"Workouts\" bölümü takip edilmeli.",
+  "prep": "## 6 haftalık örnek hazırlık (5 workout / 2 gün formatı)\n\n- **Hafta 1–2:** haftada 2 barbell cycling (clean, snatch, thruster orta yük), 2 gymnastics (pull-up/C2B, toes-to-bar, HSPU), 1 makine aralığı.\n- **Hafta 3–4:** 6–12 dk couplet/triplet sprintleri; günde iki workout provası (sabah/öğleden sonra) ile toparlanma alışkanlığı.\n- **Hafta 5:** 3 workout tek gün simülasyonu, beslenme ve ısınma rutini.\n- **Hafta 6:** taper, hacim %40 düşer; yalnızca kısa hız ve teknik.\n\nKategori yüklerini organizatör duyurusundan al; Scaled kontenjanı geniş olduğu için seviyene uygun kategoriyi erken seç ve o kategorinin standartlarıyla antrenman yap.",
+  "updatedAt": "2026-11-07"
+}

@@ -1,0 +1,104 @@
+{
+  "name": "HYROX Istanbul",
+  "shortName": "HYROX IST",
+  "type": "hyrox",
+  "scope": "tr",
+  "city": "İstanbul",
+  "country": "Türkiye",
+  "organizer": "HYROX SEE Sportif Organizasyon A.Ş.",
+  "website": "https://turkiye.hyrox.com/",
+  "registration": "https://turkiye.hyrox.com/event/hyrox-istanbul-season-26-27-su6dnr",
+  "description": "Türkiye'deki ilk HYROX yarışı; Şubat 2026'da İstanbul Fuar Merkezi'nde (Yeşilköy) 95 ülkeden sporcuyla başladı, Ağustos 2026'daki ikinci edisyona 113 ülkeden 5.209 sporcu katıldı ve satış kapandı. Lisans sahibi HYROX SEE Sportif Organizasyon A.Ş., ana sponsor PUMA. Open, Pro, Doubles, Relay ve Adaptive kategorileri var. 2027 İstanbul tarihi 7 Kasım 2026 itibarıyla açıklanmadı.",
+  "tags": [
+    "hyrox",
+    "istanbul",
+    "ifm",
+    "puma",
+    "open",
+    "pro",
+    "doubles",
+    "relay"
+  ],
+  "featured": true,
+  "editions": [
+    {
+      "year": 2026,
+      "label": "HYROX Istanbul — Sezon 26/27",
+      "dates": "1–2 Ağu 2026",
+      "startDate": "2026-08-01",
+      "endDate": "2026-08-02",
+      "venue": "İstanbul Fuar Merkezi, Hol 5-6-7 (Yeşilköy, Bakırköy)",
+      "divisions": [
+        "Men",
+        "Women",
+        "Adaptive",
+        "Doubles",
+        "Pro",
+        "Relay"
+      ],
+      "source": "https://turkiye.hyrox.com/event/hyrox-istanbul-season-26-27-su6dnr",
+      "workouts": [
+        {
+          "name": "Yarış formatı",
+          "format": "8 x 1 km koşu + 8 istasyon, for time",
+          "description": "8 x 1 km koşu; her koşunun ardından bir istasyon:\n1. 1.000 m SkiErg\n2. 50 m sled push\n3. 50 m sled pull\n4. 80 m burpee broad jump\n5. 1.000 m row\n6. 200 m farmers carry\n7. 100 m sandbag lunge\n8. 100 wall ball\n\nFormat tüm HYROX yarışlarında sabittir.",
+          "movements": [
+            "run",
+            "skierg",
+            "sled push",
+            "sled pull",
+            "burpee broad jump",
+            "row",
+            "farmers carry",
+            "sandbag lunge",
+            "wall ball"
+          ],
+          "loads": "İstasyon ağırlıkları kaynakta yok; HYROX resmi \"weights overview\" sayfasına bakın",
+          "source": "https://www.redbull.com/us-en/hyrox-world-championships-all-you-need-to-know",
+          "verified": true
+        }
+      ],
+      "notes": "5.209 sporcu, 113 ülke (beIN Sports / halktv). Kategori listesi roxlyfe programından. Satış kapandı. Diğer kaynaklar: ifm.com.tr/en/fairs/hyrox-istanbul-2026, halktv.com.tr."
+    },
+    {
+      "year": 2026,
+      "label": "HYROX Istanbul — Sezon 25/26",
+      "dates": "13–14 Şub 2026",
+      "startDate": "2026-02-13",
+      "endDate": "2026-02-14",
+      "venue": "İstanbul Fuar Merkezi (Yeşilköy, Bakırköy)",
+      "divisions": [
+        "Open",
+        "Pro",
+        "Doubles",
+        "Relay"
+      ],
+      "source": "https://roxlyfe.com/hyrox-istanbul-feb-2026/",
+      "workouts": [
+        {
+          "name": "Yarış formatı",
+          "format": "8 x 1 km koşu + 8 istasyon, for time",
+          "description": "8 x 1 km koşu; her koşunun ardından bir istasyon:\n1. 1.000 m SkiErg\n2. 50 m sled push\n3. 50 m sled pull\n4. 80 m burpee broad jump\n5. 1.000 m row\n6. 200 m farmers carry\n7. 100 m sandbag lunge\n8. 100 wall ball\n\nFormat tüm HYROX yarışlarında sabittir.",
+          "movements": [
+            "run",
+            "skierg",
+            "sled push",
+            "sled pull",
+            "burpee broad jump",
+            "row",
+            "farmers carry",
+            "sandbag lunge",
+            "wall ball"
+          ],
+          "loads": "İstasyon ağırlıkları kaynakta yok; HYROX resmi \"weights overview\" sayfasına bakın",
+          "source": "https://www.redbull.com/us-en/hyrox-world-championships-all-you-need-to-know",
+          "verified": true
+        }
+      ],
+      "notes": "Türkiye'deki ilk HYROX; 95 ülkeden sporcu (aspor). Sonuçlar: Women Pro 1. Danél Louw 59:44 (sub-60 yapan 8. kadın); Men Pro 1. Jannik Czapla 55:46; Men Pro Doubles Lamoureux/Olivier 51:42; Women Pro Doubles Towl/Egan 56:19. Resmi toplam katılımcı sayısı bulunamadı; TrainRox 3.408 sporcu gösteriyor ama hangi edisyon olduğu net değil (doğrulanmadı). Kaynaklar: roxlyfe.com, aspor.com.tr, beinsports.com.tr."
+    }
+  ],
+  "analysis": "## Şubat 2026 → Ağustos 2026 örüntüsü\n\nHYROX'ta yarış formatı sabit olduğu için \"workout tahmini\" değil, takvim ve ölçek örüntüsü anlamlı.\n\n**Bilinenler**\n- İki edisyon aynı takvim yılında: Sezon 25/26 (13–14 Şubat) ve Sezon 26/27 (1–2 Ağustos). Her ikisi de İstanbul Fuar Merkezi, Yeşilköy.\n- Ölçek hızla büyüdü: ilk edisyonda 95 ülke; ikincide 5.209 sporcu, 113 ülke ve satış kapandı. Türkiye'de HYROX arama ilgisi 18 ayda 15 kat arttı (halktv aktarımı).\n- Kategori seti genişledi: Şubat'ta Open/Pro/Doubles/Relay; Ağustos'ta Men/Women/Adaptive/Doubles/Pro/Relay.\n- Eylül 2026'da İzmir eklendi (ayrı sayfa). Türkiye artık iki şehirli bir HYROX pazarı.\n\n**Sırada ne gelebilir**\n- 2027 İstanbul tarihi açıklanmadı; turkiye.hyrox.com yalnızca Ağustos 2026'yı listeliyor, roxradar \"No upcoming HYROX Turkey events\" diyor. 2026 örüntüsüne göre Ağustos 2027 tekrarı olası, ancak bu kaynaksız bir tahmindir.\n- Satış kapanma hızı nedeniyle 2027 kaydı için erken satış tarihini takip etmek gerekir.\n- Performans referansı: Pro erkek ~55–56 dk, Pro kadın sub-60 kazanan süreleri; Open için hedef bandı buna göre ölçeklenmeli.",
+  "prep": "## 8 haftalık örnek HYROX hazırlığı (compromised running + istasyonlar)\n\n- **Hafta 1–2 (baz):** haftada 3 koşu (1 uzun 8–10 km kolay, 1 tempo, 1 aralık 6x1 km yarış temposu), 2 istasyon kuvvet günü (sled push/pull, farmers carry, wall ball tekniği).\n- **Hafta 3–4 (compromised running):** istasyon + 1 km koşu çiftleri: SkiErg 1.000 m → 1 km, row 1.000 m → 1 km; sled sonrası koşu temposu alışkanlığı.\n- **Hafta 5–6 (yarış blokları):** yarışın yarısı simülasyonu (4 istasyon + 4 koşu), burpee broad jump ve sandbag lunge hacmi, wall ball 100 unbroken denemeleri.\n- **Hafta 7:** tam yarış provası veya 6 istasyonlu simülasyon, geçiş (roxzone) stratejisi.\n- **Hafta 8:** taper; koşu hacmi %50, istasyonlar yalnızca teknik.\n\nİstasyon ağırlıklarını kategoriye göre resmi HYROX tablosundan al.",
+  "updatedAt": "2026-11-07"
+}

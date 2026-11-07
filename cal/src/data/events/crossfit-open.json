@@ -1,0 +1,408 @@
+{
+  "name": "CrossFit Open",
+  "shortName": "Open",
+  "type": "crossfit",
+  "scope": "world",
+  "country": "Dünya",
+  "organizer": "CrossFit LLC",
+  "website": "https://games.crossfit.com/",
+  "registration": "https://games.crossfit.com/",
+  "description": "Dünyanın en büyük katılımlı fitness yarışması. Her yıl Şubat–Mart arasında 3 hafta, haftada bir antrenman; herkes kendi salonunda ya da evinde yapar, skor online girilir. Games yolunun ilk basamağı ve yılın en çok konuşulan 3 antrenmanı.",
+  "tags": [
+    "open",
+    "worldwide",
+    "online",
+    "şubat",
+    "mart"
+  ],
+  "featured": true,
+  "editions": [
+    {
+      "year": 2026,
+      "label": "CrossFit Open 2026",
+      "dates": "26 Şub – 16 Mar 2026",
+      "startDate": "2026-02-26",
+      "endDate": "2026-03-16",
+      "divisions": [
+        "Rx",
+        "Scaled",
+        "Foundations",
+        "Masters",
+        "Teens",
+        "Adaptive"
+      ],
+      "source": "https://games.crossfit.com/workouts/open/2026",
+      "workouts": [
+        {
+          "name": "26.1",
+          "format": "For Time (piramit)",
+          "timeCap": "12 dk",
+          "description": "Erkek (Rx): 20 WB, 18 BJO, 30 WB, 18 BJO, 40 WB, 18 med-ball box step-over, 66 WB, 18 med-ball box step-over, 40 WB, 18 BJO, 30 WB, 18 BJO, 20 WB; med-ball 20 lb (9 kg) → 10 ft, kutu 24 in\nKadın (Rx): Aynı; med-ball 14 lb (6 kg) → 9 ft, kutu 20 in",
+          "movements": [
+            "wall-ball shot",
+            "box jump-over",
+            "medicine-ball box step-over"
+          ],
+          "scaled": "Aynı şema; med-ball E 14 lb (6 kg) / K 10 lb (4 kg), step-up serbest; Foundations: box step-over, kutu 20 in",
+          "source": "https://fitnessvolt.com/2026-crossfit-open-workout-26-1-announced/",
+          "verified": true
+        },
+        {
+          "name": "26.2",
+          "format": "For Time (3 tur)",
+          "timeCap": "15 dk",
+          "description": "Erkek (Rx): 3x [80 ft DB overhead walking lunge, 20 alternating DB snatch, 20 gymnastics]; gymnastics: pull-up → C2B pull-up → ring muscle-up; DB 50 lb (22.5 kg)\nKadın (Rx): Aynı; DB 35 lb (15 kg)",
+          "movements": [
+            "dumbbell overhead walking lunge",
+            "alternating dumbbell snatch",
+            "pull-up",
+            "chest-to-bar pull-up",
+            "ring muscle-up"
+          ],
+          "scaled": "Aynı yapı; DB E 35 lb (15 kg) / K 20 lb (10 kg); jumping pull-up → pull-up → C2B; Foundations: lunge DB'siz, bent-over row / ring row / jumping pull-up",
+          "source": "https://fitnessvolt.com/2026-crossfit-open-workout-26-2-announced/",
+          "verified": true
+        },
+        {
+          "name": "26.3",
+          "format": "For Time (3 ağırlık bloğu x 2 tur)",
+          "timeCap": "16 dk",
+          "description": "Erkek (Rx): Her blok 2 tur: 12 burpee over bar, 12 clean, 12 burpee over bar, 12 thruster; yükler 95 / 115 / 135 lb (43 / 52 / 61 kg)\nKadın (Rx): Aynı; 65 / 75 / 85 lb (29 / 34 / 38 kg)",
+          "movements": [
+            "burpee over bar",
+            "clean",
+            "thruster"
+          ],
+          "scaled": "Aynı yapı, burpee'de bar üzerinden adım serbest; E 65/85/95 lb (29/38/43 kg), K 45/55/65 lb (20/25/29 kg); Foundations E 45/55/65, K 25/35/45 lb",
+          "source": "https://fitnessvolt.com/2026-crossfit-open-workout-26-3-announced/",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "label": "CrossFit Open 2025",
+      "dates": "27 Şub – 17 Mar 2025",
+      "startDate": "2025-02-27",
+      "endDate": "2025-03-17",
+      "divisions": [
+        "Rx",
+        "Scaled",
+        "Foundations",
+        "Masters",
+        "Teens",
+        "Adaptive"
+      ],
+      "source": "https://games.crossfit.com/workouts/open/2025",
+      "workouts": [
+        {
+          "name": "25.1",
+          "format": "AMRAP (artan rep)",
+          "timeCap": "15 dk",
+          "description": "Erkek (Rx): 3 lateral burpee over DB, 3 DB hang clean-to-overhead, 30 ft walking lunge (2x15 ft); her turdan sonra burpee ve HCTO +3; DB 50 lb (22.5 kg)\nKadın (Rx): Aynı; DB 35 lb (15 kg)",
+          "movements": [
+            "lateral burpee over dumbbell",
+            "dumbbell hang clean-to-overhead",
+            "walking lunge"
+          ],
+          "scaled": "Aynı hareketler ve progresyon; DB E 35 lb (15 kg) / K 20 lb (10 kg); Foundations: standart burpee, 20/10 lb",
+          "source": "https://fitnessvolt.com/2025-crossfit-open-workout-25-1-announced/",
+          "verified": true
+        },
+        {
+          "name": "25.2",
+          "format": "For Time (22.3 tekrarı)",
+          "timeCap": "12 dk",
+          "description": "Erkek (Rx): 21 pull-up, 42 DU, 21 thruster 95 lb (43 kg); 18 C2B, 36 DU, 18 thruster 115 lb (52 kg); 15 bar muscle-up, 30 DU, 15 thruster 135 lb (61 kg)\nKadın (Rx): Aynı; thruster 65 lb (29 kg) / 75 lb (34 kg) / 85 lb (38 kg)",
+          "movements": [
+            "pull-up",
+            "double-under",
+            "thruster",
+            "chest-to-bar pull-up",
+            "bar muscle-up"
+          ],
+          "scaled": "Jumping chin-over-bar / chin-over-bar / C2B, single-under; thruster E 65/85/105 lb (29/38/47 kg), K 45/55/65 lb (20/25/29 kg)",
+          "source": "https://www.theprogrm.com/blog/crossfit-open-25-2",
+          "verified": true
+        },
+        {
+          "name": "25.3",
+          "format": "For Time",
+          "timeCap": "20 dk",
+          "description": "Erkek (Rx): 5 WW, 50 cal row, 5 WW, 25 deadlift 225 lb (102 kg), 5 WW, 25 clean 135 lb (61 kg), 5 WW, 25 snatch 95 lb (43 kg), 5 WW, 50 cal row\nKadın (Rx): Aynı; deadlift 155 lb (70 kg), clean 85 lb (38 kg), snatch 65 lb (29 kg)",
+          "movements": [
+            "wall walk",
+            "row",
+            "deadlift",
+            "clean",
+            "snatch"
+          ],
+          "scaled": "Aynı sıra, scaled wall walk; yükler E 135/95/65 lb (61/43/29 kg), K 85/65/45 lb (38/29/20 kg) (deadlift/clean/snatch eşlemesi kaynakta açık değil)",
+          "source": "https://www.theprogrm.com/blog/crossfit-open-25-3",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "label": "CrossFit Open 2024",
+      "dates": "29 Şub – 18 Mar 2024",
+      "startDate": "2024-02-29",
+      "endDate": "2024-03-18",
+      "divisions": [
+        "Rx",
+        "Scaled",
+        "Foundations",
+        "Masters",
+        "Teens",
+        "Adaptive"
+      ],
+      "source": "https://games.crossfit.com/workouts/open/2024",
+      "workouts": [
+        {
+          "name": "24.1",
+          "format": "For Time (21-15-9)",
+          "timeCap": "15 dk",
+          "description": "Erkek (Rx): 21-15-9: DB snatch kol 1, lateral burpee over DB, DB snatch kol 2, lateral burpee over DB; DB 50 lb (22.5 kg)\nKadın (Rx): Aynı; DB 35 lb (15 kg)",
+          "movements": [
+            "dumbbell snatch",
+            "lateral burpee over dumbbell"
+          ],
+          "scaled": "Aynı yapı; DB E 35 lb / K 20 lb; Foundations: standart burpee, 25/15 lb",
+          "source": "https://www.boxrox.com/?p=200217",
+          "verified": true
+        },
+        {
+          "name": "24.2",
+          "format": "AMRAP",
+          "timeCap": "20 dk",
+          "description": "Erkek (Rx): 300 m row, 10 deadlift 185 lb (83 kg), 50 double-under\nKadın (Rx): 300 m row, 10 deadlift 125 lb (56 kg), 50 double-under",
+          "movements": [
+            "row",
+            "deadlift",
+            "double-under"
+          ],
+          "scaled": "300 m row, 10 deadlift E 135 lb (61 kg) / K 95 lb (43 kg), 50 single-under; Foundations: 30 rower stroke, 75/55 lb, SU veya jumping jack",
+          "source": "https://fitnessvolt.com/2024-crossfit-open-workout-24-2-announced/",
+          "verified": true
+        },
+        {
+          "name": "24.3",
+          "format": "For Time (2 bölüm, arada 1 dk dinlenme)",
+          "timeCap": "15 dk",
+          "description": "Erkek (Rx): 5 tur: 10 thruster 95 lb (43 kg) + 10 C2B pull-up; 1 dk dinlen; 5 tur: 7 thruster 135 lb (61 kg) + 7 bar muscle-up\nKadın (Rx): 5 tur: 10 thruster 65 lb (29 kg) + 10 C2B; 1 dk; 5 tur: 7 thruster 95 lb (43 kg) + 7 bar muscle-up",
+          "movements": [
+            "thruster",
+            "chest-to-bar pull-up",
+            "bar muscle-up"
+          ],
+          "scaled": "5 tur: 10 thruster E 65 lb (29 kg) / K 45 lb (20 kg) + 10 jumping C2B pull-up; 1 dk; 5 tur: 7 thruster E 95 lb (43 kg) / K 65 lb (29 kg) + 7 chin-over-bar pull-up",
+          "source": "https://www.coachweb.com/sport/crossfit-open-workout-24-3",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "year": 2023,
+      "label": "CrossFit Open 2023",
+      "dates": "16 Şub – 6 Mar 2023",
+      "startDate": "2023-02-16",
+      "endDate": "2023-03-06",
+      "divisions": [
+        "Rx",
+        "Scaled",
+        "Foundations",
+        "Masters",
+        "Teens",
+        "Adaptive"
+      ],
+      "source": "https://games.crossfit.com/workouts/open/2023",
+      "workouts": [
+        {
+          "name": "23.1",
+          "format": "AMRAP (14.4 tekrarı)",
+          "timeCap": "14 dk",
+          "description": "Erkek (Rx): 60 cal row, 50 toes-to-bar, 40 wall-ball 20 lb → 10 ft, 30 clean 135 lb, 20 muscle-up (kg doğrulanmadı; kaynak yalnızca lb)\nKadın (Rx): 60 cal row, 50 toes-to-bar, 40 wall-ball 14 lb → 9 ft, 30 clean 95 lb, 20 muscle-up (kg doğrulanmadı)",
+          "movements": [
+            "row",
+            "toes-to-bar",
+            "wall-ball shot",
+            "clean",
+            "ring muscle-up"
+          ],
+          "scaled": "60 cal row, 50 hanging knee raise, 40 wall-ball (K 10 lb→9 ft; E ağırlığı kaynaklar arasında çelişkili: doğrulanmadı), 30 clean E 95 lb / K 65 lb, 20 chin-over-bar pull-up",
+          "source": "https://fitnessvolt.com/2023-crossfit-open-workout-23-1-announced/",
+          "verified": true
+        },
+        {
+          "name": "23.2",
+          "format": "A: AMRAP 15 dk, B: 1RM thruster 5 dk (A'dan hemen sonra)",
+          "timeCap": "20 dk",
+          "description": "Erkek (Rx): A: 5 burpee pull-up + 10 shuttle run (1 rep = 50 ft: 25 ft gidiş-dönüş), her turda burpee pull-up +5; B: yerden 1RM thruster\nKadın (Rx): Aynı",
+          "movements": [
+            "burpee pull-up",
+            "shuttle run",
+            "thruster (1RM)"
+          ],
+          "scaled": "A: burpee pull-up → burpee to target, shuttle run yürünebilir; B aynı (arama özeti; resmi scaled detay doğrulanmadı)",
+          "source": "https://www.theprogrm.com/blog/crossfit-open-23-2",
+          "verified": true
+        },
+        {
+          "name": "23.3",
+          "format": "For Time / uzayan time cap (6 → 9 → 12 dk)",
+          "timeCap": "6 dk",
+          "description": "Erkek (Rx): 5 WW, 50 DU, 15 snatch 95 lb; 5 WW, 50 DU, 12 snatch 135 lb; [6 dk içinde bitirirse +3 dk] 20 strict HSPU, 50 DU, 9 snatch 185 lb; [+3 dk] 20 strict HSPU, 50 DU, 6 snatch 225 lb (kg doğrulanmadı)\nKadın (Rx): Aynı; snatch 65 / 95 / 125 / 155 lb (kg doğrulanmadı)",
+          "movements": [
+            "wall walk",
+            "double-under",
+            "snatch",
+            "strict handstand push-up"
+          ],
+          "scaled": "Scaled wall walk, single-under, hand-release push-up; snatch E 65/95/115/135 lb, K 45/65/75/85 lb; aynı 6/9/12 dk yapısı",
+          "source": "https://fitnessvolt.com/2023-crossfit-open-workout-23-3-revealed/",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "label": "CrossFit Open 2022",
+      "dates": "24 Şub – 14 Mar 2022",
+      "startDate": "2022-02-24",
+      "endDate": "2022-03-14",
+      "divisions": [
+        "Rx",
+        "Scaled",
+        "Foundations",
+        "Masters",
+        "Teens",
+        "Adaptive"
+      ],
+      "source": "https://games.crossfit.com/workouts/open/2022",
+      "workouts": [
+        {
+          "name": "22.1",
+          "format": "AMRAP",
+          "timeCap": "15 dk",
+          "description": "Erkek (Rx): 3 wall walk, 12 DB snatch 50 lb (22.7 kg), 15 box jump-over 24 in\nKadın (Rx): 3 wall walk, 12 DB snatch 35 lb (15.9 kg), 15 box jump-over 20 in",
+          "movements": [
+            "wall walk",
+            "dumbbell snatch",
+            "box jump-over"
+          ],
+          "scaled": "Scaled wall walk, 12 DB snatch E 35 lb / K 20 lb, 15 box jump-over step-up serbest (E 24 in / K 20 in); Foundations: bear crawl, 20/10 lb DB, 12 in step-over",
+          "source": "https://fitnessvolt.com/2022-crossfit-open-22-1-workout/",
+          "verified": true
+        },
+        {
+          "name": "22.2",
+          "format": "For Time (1-10-1 merdiven)",
+          "timeCap": "10 dk",
+          "description": "Erkek (Rx): 1-2-3-...-10-9-...-1 deadlift 225 lb (102.1 kg) + bar-facing burpee\nKadın (Rx): Aynı merdiven, deadlift 155 lb (70.3 kg)",
+          "movements": [
+            "deadlift",
+            "bar-facing burpee"
+          ],
+          "scaled": "Aynı merdiven; deadlift E 135 lb (61.2 kg) / K 95 lb (43.1 kg), burpee'de bar üzerinden adım serbest; Foundations 75/55 lb standart burpee",
+          "source": "https://fitnessvolt.com/2022-crossfit-open-22-2-workout",
+          "verified": true
+        },
+        {
+          "name": "22.3",
+          "format": "For Time",
+          "timeCap": "12 dk",
+          "description": "Erkek (Rx): 21 pull-up, 42 DU, 21 thruster 95 lb; 18 C2B pull-up, 36 DU, 18 thruster 115 lb; 15 bar muscle-up, 30 DU, 15 thruster 135 lb (kg doğrulanmadı)\nKadın (Rx): Aynı; thruster 65 / 75 / 85 lb (kg doğrulanmadı)",
+          "movements": [
+            "pull-up",
+            "double-under",
+            "thruster",
+            "chest-to-bar pull-up",
+            "bar muscle-up"
+          ],
+          "scaled": "21 jumping chin-over-bar, 42 single-under, 21 thruster; 18 chin-over-bar, 36 SU, 18 thruster; 15 C2B, 30 SU, 15 thruster; E 65/85/105 lb, K 45/55/65 lb",
+          "source": "https://fitnessvolt.com/2022-crossfit-open-22-3-workout",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "year": 2021,
+      "label": "CrossFit Open 2021",
+      "dates": "11 Mar – 29 Mar 2021",
+      "startDate": "2021-03-11",
+      "endDate": "2021-03-29",
+      "divisions": [
+        "Rx",
+        "Scaled",
+        "Foundations",
+        "Masters",
+        "Teens",
+        "Adaptive"
+      ],
+      "source": "https://games.crossfit.com/workouts/open/2021",
+      "workouts": [
+        {
+          "name": "21.1",
+          "format": "For Time (merdiven)",
+          "timeCap": "15 dk",
+          "description": "Erkek (Rx): 1-3-6-9-15-21 wall walk + 10-30-60-90-150-210 double-under (ağırlık yok)\nKadın (Rx): 1-3-6-9-15-21 wall walk + 10-30-60-90-150-210 double-under (ağırlık yok)",
+          "movements": [
+            "wall walk",
+            "double-under"
+          ],
+          "scaled": "Scaled wall walk + single-under, aynı merdiven, 15 dk cap; Foundations: bear crawl + jumping jack",
+          "source": "https://fitnessvolt.com/21-1-crossfit-open-workout-announced",
+          "verified": true
+        },
+        {
+          "name": "21.2",
+          "format": "For Time (17.1 tekrarı)",
+          "timeCap": "20 dk",
+          "description": "Erkek (Rx): 10-20-30-40-50 DB snatch 50 lb (kg doğrulanmadı), her setten sonra 15 burpee box jump-over 24 in\nKadın (Rx): 10-20-30-40-50 DB snatch 35 lb (kg doğrulanmadı), her setten sonra 15 burpee box jump-over 20 in",
+          "movements": [
+            "dumbbell snatch",
+            "burpee box jump-over"
+          ],
+          "scaled": "Aynı merdiven; E 35 lb / K 20 lb DB, 20 in kutu, step-up serbest, 20 dk cap",
+          "source": "https://fitnessvolt.com/?p=84401",
+          "verified": true
+        },
+        {
+          "name": "21.3",
+          "format": "For Time (3 set, setler arası 1 dk dinlenme)",
+          "timeCap": "15 dk",
+          "description": "Erkek (Rx): 3x [15 front squat + 30 gymnastics + 15 thruster] @ 95 lb (kg doğrulanmadı); gymnastics sırası: toes-to-bar, chest-to-bar pull-up, bar muscle-up\nKadın (Rx): Aynı yapı @ 65 lb (kg doğrulanmadı)",
+          "movements": [
+            "front squat",
+            "toes-to-bar",
+            "chest-to-bar pull-up",
+            "bar muscle-up",
+            "thruster"
+          ],
+          "scaled": "Front squat/thruster E 65 lb / K 45 lb; hanging knee raise → pull-up → chest-to-bar pull-up; 15 dk cap",
+          "source": "https://www.snoridgecrossfit.com/?p=34188",
+          "verified": true
+        },
+        {
+          "name": "21.4",
+          "format": "Max Load (kompleks)",
+          "timeCap": "7 dk",
+          "description": "Erkek (Rx): 1 deadlift + 1 clean + 1 hang clean + 1 jerk kompleksi, en ağır yük; 21.3 bitiminden hemen sonra başlar; tek barbell\nKadın (Rx): Aynı",
+          "movements": [
+            "deadlift",
+            "clean",
+            "hang clean",
+            "jerk"
+          ],
+          "scaled": "Aynı format, skor max yük (kaynak başka fark belirtmiyor)",
+          "source": "https://www.snoridgecrossfit.com/?p=34188",
+          "verified": true
+        }
+      ]
+    }
+  ],
+  "analysis": "## 2021–2026 örüntüsü\n\n**Tekrarlayan hareketler**\n- Wall walk: 21.1, 22.1, 23.3, 25.3 → 6 sezonda 4 kez. Open'ın \"yeni klasiği\".\n- Dumbbell snatch / DB hareketi: 21.2, 22.1, 24.1, 25.1 (hang clean-to-overhead), 26.2 → neredeyse her yıl, hep 50/35 lb.\n- Thruster: 21.3, 22.3, 23.2B (1RM), 24.3, 25.2, 26.3 → 6 sezonda 6 kez; artan yük merdiveni (95-115-135 / 65-75-85) 22.3, 25.2 ve 26.3'te aynı rakamlarla.\n- Double-under: 21.1, 22.3, 23.3, 24.2, 25.2 → 5 kez; 2026 hariç her yıl en az bir ip antrenmanı.\n- Burpee varyantı: 21.2 (box jump-over), 22.2 (bar-facing), 23.2 (burpee pull-up), 24.1 ve 25.1 (lateral over DB), 26.3 (over bar) → her yıl.\n- Pull-up progresyonu (pull-up → C2B → bar/ring muscle-up): 21.3, 22.3, 24.3, 25.2, 26.2 → gymnastics neredeyse hep \"artan zorluk\" şemasıyla gelir.\n- Row: 23.1, 24.2, 25.3 → 2023–2025 her yıl bir kez; 2026'da yok.\n- Box jump-over: 21.2, 22.1, 26.1. Wall-ball: 23.1, 26.1. Deadlift: 22.2, 24.2, 25.3. Clean: 23.1, 25.3, 26.3.\n- Tekrarlar: 21.2 = 17.1, 23.1 = 14.4, 25.2 = 22.3. Yaklaşık her 2 yılda bir eski antrenman geri geliyor.\n\n**Hafta yapısı**\n- Hafta 1: hafif yük, yüksek kardiyo, düşük beceri bariyeri. DB (50/35) veya vücut ağırlığı + ip/wall walk. Çoğunlukla 15 dk (21.1, 22.1, 24.1, 25.1); 23.1 14 dk, 26.1 12 dk. Barbell hafta 1'de yalnızca 23.1'de (clean).\n- Hafta 2: uçlar. Ya kısa barbell sprint (22.2 10 dk), ya uzun AMRAP (24.2 20 dk), ya iki parçalı test (23.2A+B), ya da DB + gymnastics progresyonu (26.2). Yüksek beceri gymnastics (ring muscle-up) 26.2'de hafta 2'ye kaydı.\n- Hafta 3: thruster + gymnastics finali. 21.3, 22.3, 24.3, 26.3 (25.2 aynı şablon, hafta 2'de) → \"Fran'a saygı\" formatı. 23.3 ve 25.3 ise barbell yük merdiveni (snatch / deadlift-clean-snatch) + wall walk.\n\n**Zaman alanı**\n- Cap dağılımı: 6(+3+3), 7, 10, 12, 12, 12, 14, 15, 15, 15, 15, 15, 15, 15, 16, 20, 20, 20 dk. Mod = 15 dk. Hiçbir antrenman 20 dk'yı aşmadı; 10 dk altı yalnızca 23.3 başlangıç cap'i ve 21.4.\n- 2021–2022'de 15 dk ağırlıklı; 2023'ten sonra her sezonda bir 20 dk'lık ve bir ≤12 dk'lık parça var → sezon içinde zaman alanı çeşitlendiriliyor.\n- \"Max yük\" parçası (21.4, 23.2B) 2 kez geldi (2021, 2023); 2024–2026'da yok.\n\n**Yük trendi**\n- DB standardı sabit: 50/35 lb Rx, 35/20 lb scaled (21.2 → 26.2 değişmedi).\n- Thruster merdiveni sabit: 95-115-135 / 65-75-85 lb (22.3, 25.2, 26.3); 24.3 iki kademeli 95→135 / 65→95.\n- Deadlift: 225/155 (22.2, 25.3) ve 185/125 (24.2). Clean: 135/95 (23.1, 25.3). Snatch: 95/65 başlangıç, 23.3'te 225/155'e çıktı.\n- Wall-ball 20/14 lb → 10/9 ft sabit (23.1, 26.1); kutu 24/20 in sabit.\n- Eğilim: mutlak yükler artmıyor; zorluk hacim (26.1'de 246 WB), hareket çeşitliliği ve artan yük merdiveni ile veriliyor. Scaled yükler Rx'in yaklaşık %65–70'i.\n\n**\"Sırada ne gelebilir\" için çıkarımlar**\n- Hafta 1 adayları: DB snatch/clean-to-overhead 50/35 + burpee veya box, 12–15 dk, muhtemelen wall walk.\n- Hafta 2 adayları: barbell couplet (deadlift 225/155 veya clean 135/95) + burpee, 10–15 dk; ya da row + hafif barbell 20 dk AMRAP.\n- Hafta 3 adayları: thruster 95-115-135 merdiveni + pull-up→C2B→muscle-up progresyonu, 12–16 dk; ya da bir tekrar (2–3 yıl ara ile; sırada 23.x veya 24.x'ten biri).\n- 2026'da ip ve row olmadı → 2027'de double-under ve row dönüşü muhtemel.",
+  "prep": "## 8 haftalık Open hazırlık bloğu (örnek)\n\n- **Hafta 1-2 (baz):** haftada 2 thruster seansı (95/65 lb hızlı setler), 2 wall walk + double-under tekniği, 1 uzun AMRAP (20 dk, düşük yoğunluk).\n- **Hafta 3-4 (kapasite):** DB snatch 50/35 lb yüksek hacim + burpee; pull-up → C2B → muscle-up progresyonu haftada 2.\n- **Hafta 5-6 (yarış provası):** her hafta bir eski Open antrenmanı tam Rx (22.3, 24.2, 25.1). Yargıç standardıyla, video kaydı.\n- **Hafta 7 (keskinleştirme):** kısa sprintler (8-10 dk), deadlift 225/155 lb kondisyonu, wall-ball hacmi.\n- **Hafta 8 (taper):** hacim %40 düşer, Perşembe duyuru, Cuma strateji, Cumartesi/Pazar deneme, gerekirse Pazartesi tekrar.\n\nBu blok genel şablondur; seviyene göre yükleri Rx'in %65-70'i ile (scaled oranı) başlatıp artır.",
+  "updatedAt": "2026-11-07"
+}

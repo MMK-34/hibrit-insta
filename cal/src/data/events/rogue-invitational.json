@@ -1,0 +1,115 @@
+{
+  "name": "Rogue Invitational",
+  "shortName": "Rogue",
+  "type": "crossfit",
+  "scope": "world",
+  "city": "Aberdeen",
+  "country": "İskoçya",
+  "organizer": "Rogue Fitness",
+  "website": "https://www.roguefitness.com/invitational",
+  "description": "Rogue Fitness'ın 2019'dan beri düzenlediği davetli yarışma; CrossFit bireysel erkek/kadın ile birlikte Strongman (2021'den) ve Strongwoman (2024'ten) yarışmaları aynı etkinlikte. 2019 Columbus, 2020 online, 2021–2023 Austin (Dell Diamond), 2024–2026 Aberdeen (P&J Live). 2026 ödül havuzu 1.215.000 $ + 275.000 $ Bitcoin. Ekim sonu – Kasım başı yapılır; 2027 tarihi ve yeri açıklanmadı.",
+  "tags": [
+    "davetli",
+    "elite",
+    "strongman",
+    "ekim",
+    "aberdeen",
+    "ödül-havuzu"
+  ],
+  "featured": true,
+  "editions": [
+    {
+      "year": 2026,
+      "label": "Rogue Invitational 2026",
+      "dates": "23–25 Eki 2026",
+      "startDate": "2026-10-23",
+      "endDate": "2026-10-25",
+      "venue": "P&J Live, Aberdeen, İskoçya",
+      "divisions": [
+        "CrossFit Men",
+        "CrossFit Women",
+        "Strongman",
+        "Strongwoman"
+      ],
+      "source": "https://thebarbellspin.com/competition/2026-rogue-invitational-workouts/",
+      "workouts": [
+        {
+          "name": "Event 1 — River Dee",
+          "format": "For Time (7 round)",
+          "description": "7 round:\n11 cal SkiErg\n7 wall walk\n11 cal SkiErg\n7 devil's press",
+          "movements": [
+            "skierg",
+            "wall walk",
+            "devil's press"
+          ],
+          "loads": "Devil's press 50/35 lb",
+          "source": "https://thebarbellspin.com/competition/2026-rogue-invitational-workouts/",
+          "verified": true
+        },
+        {
+          "name": "Event 2 — Single Malt",
+          "format": "For Time (artan yük merdiveni + tepe)",
+          "timeCap": "12 dk",
+          "description": "10 back squat (315/225 lb)\nHill run\n8 back squat (335/235 lb)\nHill carry (150/100 lb)\n6 back squat (355/250 lb)\nHill carry (125/75 lb)\n4 back squat (375/265 lb)\nHill carry (100/70 lb)\n2 back squat (405/285 lb)\nHill run",
+          "movements": [
+            "back squat",
+            "hill run",
+            "hill carry"
+          ],
+          "loads": "Back squat 315/225 → 335/235 → 355/250 → 375/265 → 405/285 lb; carry 150/100, 125/75, 100/70 lb",
+          "source": "https://thebarbellspin.com/competition/2026-rogue-invitational-workouts/",
+          "verified": true
+        },
+        {
+          "name": "Event 6 — Orlando",
+          "format": "For Time",
+          "timeCap": "12 dk",
+          "description": "10 axle clean & jerk\n15 ring muscle-up\n10 axle clean & jerk\n15 log muscle-up\n10 axle clean & jerk",
+          "movements": [
+            "axle clean and jerk",
+            "ring muscle-up",
+            "log muscle-up"
+          ],
+          "loads": "Axle 205/150 lb",
+          "source": "https://thebarbellspin.com/competition/2026-rogue-invitational-workouts/",
+          "verified": true
+        },
+        {
+          "name": "Event 7 — Pulling Power",
+          "format": "For Time (azalan rep, artan yük)",
+          "description": "Her round başında 3 rope climb:\n12 overhead squat (225/175 lb) + 12 deadlift (275/195 lb)\n9 overhead squat + 9 deadlift (315/225 lb)\n6 overhead squat + 6 deadlift (385/270 lb)\n3 overhead squat + 3 deadlift (405/285 lb)\n\nKaynakta 2.–4. roundlardaki yükün OHS'ye mi deadlift'e mi ait olduğu açık değil.",
+          "movements": [
+            "rope climb",
+            "overhead squat",
+            "deadlift"
+          ],
+          "loads": "OHS 225/175 lb; deadlift 275/195 → 315/225 → 385/270 → 405/285 lb (eşleme kaynakta belirsiz)",
+          "source": "https://en.wikipedia.org/wiki/2026_Rogue_Invitational",
+          "verified": true
+        }
+      ],
+      "notes": "Ödül havuzu 1.215.000 $ + 275.000 $ Bitcoin. Şampiyonlar: Dallin Pepper / Lucy Campbell (CrossFit), Trey Mitchell / Angelica Jardine (Strong). Raporda yalnızca 4 etkinliğin metni var. Diğer kaynaklar: Wikipedia 2026 Rogue Invitational, fitnessvolt.com sonuçları."
+    },
+    {
+      "year": 2025,
+      "label": "Rogue Invitational 2025",
+      "venue": "P&J Live, Aberdeen, İskoçya",
+      "divisions": [],
+      "source": "https://en.wikipedia.org/wiki/Rogue_Invitational",
+      "workouts": [],
+      "notes": "Raporda tarih ve workout bilgisi yok; yalnızca Aberdeen'de yapıldığı geçiyor."
+    },
+    {
+      "year": 2024,
+      "label": "Rogue Invitational 2024",
+      "venue": "P&J Live, Aberdeen, İskoçya",
+      "divisions": [],
+      "source": "https://en.wikipedia.org/wiki/Rogue_Invitational",
+      "workouts": [],
+      "notes": "Aberdeen'deki ilk edisyon; Strongwoman kategorisi bu yıl eklendi. Raporda tarih ve workout bilgisi yok."
+    }
+  ],
+  "analysis": "## 2024–2026 örüntüsü\n\nWorkout metni yalnızca 2026'dan (4 etkinlik). Rogue'un kimliği bu 4 etkinlikte bile net.\n\n**Görünen temalar**\n- Ağır barbell merdivenleri: back squat 315→405 lb, deadlift 275→405 lb, OHS 225/175 lb. Rogue, Games'ten belirgin biçimde daha ağır yüklerle programlar.\n- Strongman etkisi: axle clean & jerk, log muscle-up, hill carry. Ekipman sponsoru olduğu için odd-object her yıl beklenir.\n- Dış mekân/tepe: \"Single Malt\" hill run ve hill carry ile Aberdeen'in arazisini kullanıyor.\n- Yüksek beceri gymnastics ağır yükle çiftleniyor: ring muscle-up + axle C&J; rope climb + OHS/deadlift.\n- Makine: SkiErg (River Dee); wall walk + devil's press ile klasik Open hareketleri de var.\n- Time cap'ler 12 dk civarı; uzun dayanıklılık testi bu 4 etkinlikte yok (diğer 3–4 etkinlik bilinmiyor).\n\n**Takvim**\n- 2024–2026 Aberdeen, Ekim sonu. 2027 yeri ve tarihi açıklanmadı; roguefitness.com yalnızca 2026'yı listeliyor. Ekim–Kasım 2027 olasıdır, kaynaksız.\n\n**Sırada ne gelebilir**\n- Ağır back squat/deadlift merdiveni, axle veya log ile bir strongman melezi, bir tepe/dış mekân etkinliği. Belirsizlik: 2027 mekânı değişirse arazi etkinlikleri de değişir.",
+  "prep": "## Rogue tipi hazırlık (örnek 10 hafta)\n\nDavetli elit yarışma; şablon \"Rogue tarzı\" ağır karma antrenman için.\n\n- **Hafta 1–4 (kuvvet):** haftada 2 ağır alt vücut (back squat merdivenleri %80–90, deadlift 3–6 rep), 1 axle/log teknik günü, 1 SkiErg aralığı.\n- **Hafta 5–7 (karma):** ağır barbell + gymnastics çiftleri (OHS + rope climb, C&J + ring muscle-up), yük altında yürüyüş/carry ve eğimli koşu.\n- **Hafta 8–9 (yarış):** 12 dk cap'li ağır etkinlik simülasyonları; wall walk + devil's press hacmi.\n- **Hafta 10:** taper.\n\nYükleri kendi 1RM'inin yüzdesiyle ölçekle; Rogue yükleri çoğu sporcu için Rx değildir.",
+  "updatedAt": "2026-11-07"
+}

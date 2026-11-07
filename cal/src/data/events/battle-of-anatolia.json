@@ -1,0 +1,131 @@
+{
+  "name": "Battle of Anatolia",
+  "shortName": "BoA",
+  "type": "crossfit",
+  "scope": "tr",
+  "city": "Ankara / İstanbul",
+  "country": "Türkiye",
+  "organizer": "CrossFit Backstreet (Ankara)",
+  "website": "https://www.battleofanatolia.com/",
+  "description": "CrossFit Backstreet'in düzenlediği, iki günlük takım yarışması (CrossFit Team Competition / Functional Fitness Competition). 2019–2023 arasında Ankara'da yapıldı, 2024 finali İstanbul'a taşındı ve wodlib tarafından mekân büyüklüğü ve yarışmacı sayısı bakımından \"ülkenin en büyük fitness yarışması\" olarak tanımlandı. Online qualifier sonrası final; YouTube canlı yayın. Resmi site araştırma anında erişilemedi; 2025/2026 tarihi bulunamadı.",
+  "tags": [
+    "takım",
+    "ankara",
+    "istanbul",
+    "online-qualifier",
+    "functional-fitness"
+  ],
+  "featured": false,
+  "editions": [
+    {
+      "year": 2024,
+      "label": "Battle of Anatolia 2024",
+      "dates": "8–10 Kas 2024 (final)",
+      "startDate": "2024-11-08",
+      "endDate": "2024-11-10",
+      "venue": "İstanbul",
+      "divisions": [
+        "Team"
+      ],
+      "source": "https://www.wodlib.com/workouts/battle-of-anatolia-2024/event-1-strongrips",
+      "workouts": [
+        {
+          "name": "Event 1 — STRONGRIPS",
+          "format": "For Time (5 round)",
+          "timeCap": "23 dk",
+          "description": "5 round for time:\n400 m run\n20 pull-up\n20 pistol squat\n\nWeighted vest ile: Erkek 9 kg / Kadın 6 kg",
+          "movements": [
+            "run",
+            "pull-up",
+            "pistol squat"
+          ],
+          "loads": "Weighted vest E 9 kg / K 6 kg",
+          "source": "https://www.wodlib.com/workouts/battle-of-anatolia-2024/event-1-strongrips",
+          "verified": true
+        },
+        {
+          "name": "Event 2 — A+B",
+          "format": "For Time (iki parça, arada 1 dk dinlenme)",
+          "timeCap": "3 dk + 3 dk",
+          "description": "Part A — For time:\n9-7-5 power snatch\n9-7-5 lateral burpee over bar\n\n1 dk dinlenme\n\nPart B — For time:\n9-7-5 overhead squat\n9-7-5 lateral burpee over bar\n\nHer parça için time cap 3 dk.",
+          "movements": [
+            "power snatch",
+            "lateral burpee over bar",
+            "overhead squat"
+          ],
+          "loads": "Barbell E 60 kg / K 40 kg",
+          "source": "https://www.wodlib.com/workouts/battle-of-anatolia-2024/event-2-ab",
+          "verified": true
+        },
+        {
+          "name": "Event 3",
+          "format": "For Time (27-21-15-9-3)",
+          "timeCap": "10 dk",
+          "description": "For time:\n27-21-15-9-3\nShoulder-to-overhead\nToes-to-bar",
+          "movements": [
+            "shoulder-to-overhead",
+            "toes-to-bar"
+          ],
+          "loads": "Barbell E 60 kg / K 40 kg",
+          "source": "https://www.wodlib.com/workouts/battle-of-anatolia-2024/event-3",
+          "verified": true
+        },
+        {
+          "name": "Event 4",
+          "format": "For Time",
+          "timeCap": "10 dk",
+          "description": "1.600 m run for time",
+          "movements": [
+            "run"
+          ],
+          "source": "https://www.wodlib.com/workouts/battle-of-anatolia-2024/event-4",
+          "verified": true
+        }
+      ],
+      "notes": "Kayıt 15 Haziran – 1 Eylül 2024; online qualifier 5 Ağustos – 15 Eylül 2024; final 8–10 Kasım 2024, İstanbul (arama özeti, resmi site; doğrulanmadı). Workout metinleri wodlib.com'dan; wodlib takım formatını (sporcu başına mı, takım toplamı mı) belirtmiyor. YouTube'da \"WOD 6 FİNAL\" videosu var ama Event 5/6 metni yok (doğrulanmadı)."
+    },
+    {
+      "year": 2023,
+      "label": "Battle of Anatolia 2023",
+      "dates": "7 Haz 2023 (final; doğrulanmadı)",
+      "startDate": "2023-06-07",
+      "endDate": "2023-06-07",
+      "venue": "Ankara",
+      "divisions": [
+        "Team"
+      ],
+      "source": "https://competitioncorner.net/events/9390",
+      "workouts": [],
+      "notes": "Team Competition Online Qualifiers competitioncorner.net/events/9390 üzerinden; final tarihi baserank kaydından (doğrulanmadı). Workout metni yok."
+    },
+    {
+      "year": 2022,
+      "label": "Battle of Anatolia 2022 — Semi Finals",
+      "dates": "19–20 Mar 2022",
+      "startDate": "2022-03-19",
+      "endDate": "2022-03-20",
+      "venue": "CrossFit BackStreet, Ankara",
+      "divisions": [],
+      "source": "https://competitioncorner.net/events/6512/divisions",
+      "workouts": [],
+      "notes": "Arama özetine dayanıyor. Workout metni yok."
+    },
+    {
+      "year": 2019,
+      "label": "Battle of Anatolia 2019",
+      "dates": "21–22 Ara 2019 (final)",
+      "startDate": "2019-12-21",
+      "endDate": "2019-12-22",
+      "venue": "Ankara",
+      "divisions": [
+        "Team"
+      ],
+      "source": "https://www.youtube.com/watch?v=BWLOkO9nJ2w",
+      "workouts": [],
+      "notes": "Ana sponsor WERK SAN (arama özeti, competitioncorner.net/events/2929; doğrulanmadı). YouTube: \"Battle of Anatolia'19 / Functional Fitness Competition / Final Event / Team Güneli\". Workout metni yok."
+    }
+  ],
+  "analysis": "## 2019–2024 örüntüsü\n\nYalnızca 2024 finalinin 4 etkinliği metin olarak elimizde; önceki yıllar için workout yok. Takım formatının nasıl paylaştırıldığı da kaynakta belirtilmiyor.\n\n**2024'te öne çıkanlar**\n- Koşu ağırlığı: 5x400 m (vest ile) ve ayrı bir 1.600 m zaman testi. 4 etkinliğin 2'sinde koşu, biri saf koşu.\n- Orta yük barbell cycling: power snatch, overhead squat, shoulder-to-overhead; hep 60/40 kg. Ağır barbell ya da 1RM yok.\n- Vücut ağırlığı gymnastics: pull-up, pistol squat, toes-to-bar; muscle-up veya handstand walk gibi yüksek beceri hareketleri bu 4 etkinlikte görünmüyor.\n- Kısa time cap'ler: 3+3, 10, 10 dk; yalnızca STRONGRIPS 23 dk. Programlama \"sprint ve kapasite\" ağırlıklı.\n- Weighted vest (9/6 kg) ayırt edici bir unsur.\n\n**Takvim**\n- 2019 Aralık, 2022 Mart (semi), 2023 Haziran, 2024 Kasım: sabit bir ay yok. 2025 ve 2026 için duyuru bulunamadı.\n\n**Sırada ne gelebilir**\n- Koşu + orta yük barbell + temel gymnastics üçlüsü, Event 5/6 metinleri bilinmediği için ağır ya da beceri odaklı bir final olasılığı dışlanamaz.\n- Yeni edisyon duyurusu olmadan tarih tahmini güvenilir değil.",
+  "prep": "## 8 haftalık örnek takım hazırlığı\n\n- **Hafta 1–2:** haftada 2 koşu seansı (400 m tekrarları + 1.600 m tempo), weighted vest alıştırması; barbell cycling 60/40 kg (power snatch, OHS, STOH) düşük hacim.\n- **Hafta 3–4:** pull-up ve toes-to-bar hacmi (unbroken set kapasitesi), pistol squat tekniği; 9-7-5 ve 27-21-15-9-3 şemalarıyla kısa sprintler.\n- **Hafta 5–6:** takım geçiş provaları (bir sporcu çalışırken diğerinin dinlenme ritmi), 3 dk cap'li parçalarda hız; haftada bir vestli koşu + gymnastics kombinasyonu.\n- **Hafta 7:** iki etkinlik aynı gün simülasyonu, takım sırası ve strateji.\n- **Hafta 8:** taper; koşu hacmi %50, barbell yalnızca teknik.",
+  "updatedAt": "2026-11-07"
+}

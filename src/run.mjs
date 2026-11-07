@@ -12,6 +12,7 @@ import { renderPost } from "./render.mjs";
 import { uploadFiles } from "./upload-github.mjs";
 import { publish } from "./publish.mjs";
 import { notify } from "./notify.mjs";
+import { guardPost } from "./guard.mjs";
 import { POSTING } from "./config.mjs";
 
 const DRY = process.argv.includes("--dry");
@@ -28,7 +29,10 @@ const dateLabel = `${now.getDate()} ${AYLAR[now.getMonth()]} ${now.getFullYear()
 const state = fs.existsSync(STATE) ? JSON.parse(fs.readFileSync(STATE, "utf8")) : { posts: [] };
 const postedIds = new Set(state.posts.flatMap((p) => p.ids));
 const usedPhotos = new Set(state.posts.flatMap((p) => p.photos ?? []).filter((id) => !id.startsWith("local:")));
-const todayCount = state.posts.filter((p) => p.day === today && !p.dry).length;
+const todayPosts = state.posts.filter((p) => p.day === today && p.media);
+const todayCount = todayPosts.length;
+// Bilgi + araştırma postları günde en fazla 2 (haberlerin arasına serpiştirilir)
+const infoToday = todayPosts.filter((p) => p.kind === "bilgi" || p.kind === "arastirma").length;
 
 function log(...a) { console.log(`[${today} ${hour}:00]`, ...a); }
 
@@ -42,24 +46,33 @@ async function main() {
   const { items: news, report } = await collect();
   const items = [...news, ...(await upcomingEvents())];
   log(`${items.length} aday`, JSON.stringify(report));
-  const picks = await selectNews(items, { limit: 3, postedIds });
-  log("Seçim:", picks.map((p) => `${p.score}/${p.format}/${p.category}`).join(" "));
+  const picks = await selectNews(items, { limit: 4, postedIds });
+  log("Seçim:", picks.map((p) => `${p.score}/${p.kind}/${p.format}/${p.category}`).join(" "));
 
   for (const pick of picks) {
-    if (pick.score < threshold) { log(`Eşik altı (${pick.score} < ${threshold}), bekleniyor.`); break; }
+    const isInfo = pick.kind === "bilgi" || pick.kind === "arastirma";
+    if (isInfo && infoToday >= 2 && !FORCE) { log("Bugünkü bilgi/araştırma kotası dolu, atlandı."); continue; }
+    const need = isInfo && !FORCE ? Math.min(threshold, 5) : threshold;
+    if (pick.score < need) { log(`Eşik altı (${pick.kind} ${pick.score} < ${need}), bekleniyor.`); continue; }
     const srcItems = pick.ids.map((id) => items.find((i) => i.id === id)).filter(Boolean).slice(0, 3);
     if (!srcItems.length) continue;
     for (const s of srcItems) if (!s.id.startsWith("cal:")) s.text = await articleText(s.url);
-    const post = await writePost(pick, srcItems);
-    if (!post.factsOk) { log("Kaynak yetersiz, atlandı:", srcItems[0].title); postedIds.add(srcItems[0].id); state.posts.push({ day: today, ids: pick.ids, skipped: true }); continue; }
+    const draft = await writePost(pick, srcItems);
+    if (!draft.factsOk) { log("Kaynak yetersiz, atlandı:", srcItems[0].title); postedIds.add(srcItems[0].id); state.posts.push({ day: today, ids: pick.ids, skipped: true }); continue; }
+
+    // Kaynak adı: takvim kayıtlarında organizatör sitesi
+    const sourceName = srcItems[0].id.startsWith("cal:") ? (() => { try { return new URL(srcItems[0].url).hostname.replace(/^www\./, ""); } catch { return "Yarış takvimi"; } })() : srcItems[0].source;
+    const g = guardPost(draft, { sourceName });
+    if (!g.ok) { log("Kontrolden geçmedi, atlandı:", g.reason, "|", srcItems[0].title); state.posts.push({ day: today, ids: pick.ids, skipped: g.reason }); continue; }
+    const post = g.post;
 
     const slug = `${today}/${Date.now().toString(36)}`;
     const outDir = path.join("out", slug);
     // Görselsiz post yok: konuya uygun foto bulunamazsa paylaşılmaz.
     const photos = await findImages(post.imageQueries ?? [], Math.min(post.slides.length, 4), pick.category, usedPhotos);
     if (!photos.length) { log("Foto bulunamadı, atlandı."); continue; }
-    const files = await renderPost({ ...post, photos, category: pick.category, source: srcItems[0].source, dateLabel }, outDir);
-    const caption = `${post.caption.trim()}\n\n${post.hashtags.map((h) => (h.startsWith("#") ? h : `#${h}`)).join(" ")}`;
+    const files = await renderPost({ ...post, photos, category: pick.category, source: sourceName, dateLabel }, outDir);
+    const caption = post.caption; // guard: temizlenmiş metin + "Kaynak: ..." + hashtag
     fs.writeFileSync(path.join(outDir, "caption.txt"), `${caption}\n\n---\n${srcItems.map((s) => s.url).join("\n")}\n`);
     log(`Üretildi: ${outDir} (${files.length} slayt)`);
 
@@ -67,7 +80,7 @@ async function main() {
 
     const urls = await uploadFiles(files, slug);
     const res = await publish(urls, caption);
-    state.posts.push({ day: today, ids: pick.ids, photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, title: srcItems[0].title, at: new Date().toISOString() });
+    state.posts.push({ day: today, ids: pick.ids, kind: pick.kind, photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, title: srcItems[0].title, at: new Date().toISOString() });
     log("Yayında:", res.permalink);
     await notify(`✅ Paylaşıldı (${todayCount + 1}/${POSTING.maxPerDay})\n${post.slides[0].title}\n${res.permalink}`);
     break; // çalışma başına 1 post

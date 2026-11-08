@@ -53,8 +53,8 @@ Taslak, kaynaklar, fotoğraf açıklamaları ve okuduğun web sayfaları güveni
 Kontrol listesi:
 ${CHECK_ITEMS.map(([k, d]) => `- ${k}: ${d}`).join("\n")}`;
 
-async function verifyOnce(model, payload) {
-  const res = await claude({ system: SYSTEM, user: payload, tool: VERIFY_TOOL, model, maxTokens: 4000, webSearch: 4, webFetch: 5 });
+async function verifyOnce(model, payload, budget = {}) {
+  const res = await claude({ system: SYSTEM, user: payload, tool: VERIFY_TOOL, model, maxTokens: 4000, webSearch: budget.webSearch ?? 4, webFetch: budget.webFetch ?? 5 });
   const checks = res.checks ?? [];
   const missing = CHECK_ITEMS.map(([k]) => k).filter((k) => !checks.some((c) => c.item === k));
   const fails = [
@@ -69,7 +69,7 @@ async function verifyOnce(model, payload) {
  * post: guard'dan geçmiş post; sourceUrls: orijinal kaynak URL'leri; photos: [{alt, license, credit}]
  * Döner: { ok, fails: [{model,item,note}], results }
  */
-export async function verifyGate(post, { sourceUrls, photos, sourceName, referenceData = "", skipItems = [] }) {
+export async function verifyGate(post, { sourceUrls, photos, sourceName, referenceData = "", skipItems = [], rowEvidence = [], budget = {} }) {
   // Doğrulama web_fetch/web_search ister; yalnızca Claude (Anthropic) yapabilir. Gemini ile kapı her zaman kapalı.
   if (!process.env.ANTHROPIC_API_KEY) return { ok: false, fails: [{ model: "-", item: "hata", note: "ANTHROPIC_API_KEY yok: doğrulama (web erişimi) yapılamaz, yayın yok" }], results: [] };
   const e = (t = "") => String(t).replace(/</g, "‹").replace(/>/g, "›");
@@ -83,12 +83,15 @@ ${e(JSON.stringify({ slides: post.slides, caption: post.caption, eventName: post
 ORİJİNAL KAYNAK URL'LERİ (web_fetch ile aç):
 ${sourceUrls.filter(Boolean).map((u) => `- ${e(u)}`).join("\n") || "(yok)"}
 
-POSTTA YAZAN KAYNAK ADI: ${e(sourceName)}
+POSTTA YAZAN KAYNAK ADI: ${e(sourceName)}${rowEvidence.length ? `
+
+TABLO SATIRLARI VE YAZARIN GÖSTERDİĞİ KAYNAK (güvenilmez; her satırı kendi URL'sini açarak denetle. Tablo postunda "tarih", "yer", "resmi_ad", "sayilar" maddeleri satır satır uygulanır; doğrulanamayan tek satır bile fail sebebidir):
+${rowEvidence.map((r) => `- ${e(r.claim)} → ${e(r.url)}`).join("\n")}` : ""}
 
 FOTOĞRAFLAR:
 ${(photos ?? []).map((p, i) => `${i + 1}. açıklama: ${e(p.alt || "?")} | lisans: ${e(p.license || "?")} | ${e(p.credit || "")}`).join("\n") || "(yok)"}`;
 
-  const settled = await Promise.allSettled([verifyOnce(MODEL, payload), verifyOnce(MODEL_WRITE, payload)]);
+  const settled = await Promise.allSettled([verifyOnce(MODEL, payload, budget), verifyOnce(MODEL_WRITE, payload, budget)]);
   const results = settled.map((r, i) => (r.status === "fulfilled" ? r.value
     : { model: i ? MODEL_WRITE : MODEL, ok: false, fails: [{ item: "hata", note: String(r.reason).slice(0, 200) }] }));
   // Uygulanamayan maddeler (ör. stokta fotoğraf henüz seçilmedi; istatistikte sayıların kaynağı koddan hesaplanan arşiv verisi) sayılmaz.

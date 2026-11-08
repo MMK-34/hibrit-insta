@@ -19,11 +19,14 @@ import { scheduleFollowups, dueFollowup, markFollowup, followupInput, loadFollow
 import { loadStock, saveStock } from "./stock.mjs";
 import { fetchEventLogo, fetchInstagramLogo } from "./logo.mjs";
 import { POSTING } from "./config.mjs";
+import { dueSeries, SERIES } from "./series.mjs";
+import { writeSeries } from "./series.mjs";
 
 const START = Date.now();
 const DRY = process.argv.includes("--dry");
 const FORCE = process.argv.includes("--force"); // eşiği yok say, en iyi haberi paylaş
 const STOCK = process.argv.includes("--stock"); // haber aramadan stoktan paylaş (test/elle)
+const SERIES_FORCE = (() => { const i = process.argv.indexOf("--series"); return i > 0 ? process.argv[i + 1] : ""; })(); // test: --series hafta-sonu|tr-haftasi|aylik
 const DRY_COUNT = Number(process.argv[process.argv.indexOf("--count") + 1]) || 1; // dry testte işlenecek haber sayısı
 const STATE = "state/posted.json";
 const PER_RUN = POSTING.perRun ?? 2;
@@ -103,6 +106,14 @@ async function main() {
   // Canlıya alınınca ilk paylaşım: tanıtım postu (bir kez)
   if (!state.intro && !DRY) return publishIntro();
   if (STOCK) return publishStock();
+  // Tekrarlayan seriler (hafta sonu yarışları, Türk sporcuların haftası, aylık takvim): günde bir kez, sabah 9'dan sonra
+  if (SERIES_FORCE || (hour >= 9 && budgetLeft() && !draftCapReached() && todayCount < MAX_PER_DAY)) {
+    try {
+      const due = SERIES_FORCE ? (() => { const s = SERIES.find((x) => x.id === SERIES_FORCE); return s ? { s, key: `${s.id}:test`, ctx: s.ctx(now) } : null; })() : dueSeries(state, now);
+      if (due && await publishSeries(due)) { published = true; publishedCount++; }
+    } catch (e) { console.error(e); log("Seri postu hatası:", e.message); }
+    if (SERIES_FORCE) return;
+  }
   if (process.argv.includes("--followup")) return publishFollowup(); // test: vadesi gelen takip postu
   const isMorning = hour <= POSTING.morningHour + 1;
   const isLast = hour >= 20;
@@ -225,6 +236,39 @@ async function prepareVerified(pick, srcItems, sourceName) {
   bump("rejected");
   logRejected({ title: srcItems[0].title, url: srcItems[0].url, kind: pick.kind, fails: lastFails });
   return null;
+}
+
+
+/** Tekrarlayan seri postu: web aramasıyla veri -> tablo slaytları -> süzgeç -> foto -> iki doğrulayıcı (bir kez yeniden deneme). */
+async function publishSeries({ s, key, ctx }) {
+  log(`Seri: ${s.id} (${key})`);
+  state.series ??= {};
+  const st = (state.series[key] ??= { tries: 0 });
+  st.tries++; bump("drafts"); saveState();
+  let feedback = "";
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const w = await writeSeries({ s, ctx }, feedback);
+    if (!w) { log("Seri: yeterli doğrulanmış veri yok."); return false; }
+    const sourceName = w.post.primarySource;
+    const g = guardPost(w.post, { sourceName });
+    if (!g.ok) { log("Seri süzgeçten geçmedi:", g.reason); feedback = g.reason; continue; }
+    const photos = await findImages(g.post.imageQueries ?? s.imageQueries, Math.min(g.post.slides.length, 3), s.cat ?? "genel", usedPhotos);
+    if (!photos.length) { log("Seri: foto yok."); return false; }
+    const gate = await verifyGate(g.post, { sourceUrls: w.sourceUrls, photos, sourceName, rowEvidence: w.post.evidence, budget: { webSearch: 6, webFetch: 16 }, skipItems: ["kaynak_satiri"] });
+    if (gate.ok) {
+      bump("approved");
+      const res = await renderAndPublish({ post: g.post, photos }, { category: s.cat ?? "genel", sourceName, ids: [`seri:${key}`], kind: "seri", title: g.post.slides[0]?.title, srcUrls: w.sourceUrls });
+      if (res && !DRY) { st.done = true; st.media = res.id; saveState(); }
+      return !!res;
+    }
+    feedback = failText(gate.fails);
+    log(`Seri doğrulaması düştü (deneme ${attempt}):
+${feedback.slice(0, 1200)}`);
+  }
+  bump("rejected");
+  logRejected({ title: key, url: "seri", kind: "seri", fails: [{ model: "-", item: "seri", note: feedback.slice(0, 500) }] });
+  saveState();
+  return false;
 }
 
 /** Görselleri üretir, (dry değilse) yükleyip paylaşır, state'e yazar. Paylaşım sonucunu döner. */

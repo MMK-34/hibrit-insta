@@ -82,7 +82,8 @@ export function guardPost(post, { sourceName }) {
   if (/(skandal|şok|olay yarattı|tepki çekti|rezalet|utanç|hezimet|fiyasko)/i.test(all)) return { ok: false, reason: "tarafsızlık: yargılayıcı ifade" };
   if (/ignore (all|previous)|önceki talimat|system prompt/i.test(all)) return { ok: false, reason: "talimat enjeksiyonu şüphesi" };
   const eventName = clean(post.eventName ?? "").slice(0, 80);
-  if (LINKISH_RE.test(`${all} ${eventName}`)) return { ok: false, reason: "link benzeri ifade" };
+  const lk = `${all} ${eventName}`.match(LINKISH_RE);
+  if (lk) return { ok: false, reason: `link benzeri ifade: "${lk[0]}" (alan adı/link yazma; nokta sonrası boşluk bırak)` };
   const officialSite = /^https:\/\/[^\s"'<>]+$/i.test(post.officialSite ?? "") ? post.officialSite : "";
   const officialInstagram = /^[\w.]{2,30}$/.test(String(post.officialInstagram ?? "").replace(/^@/, "")) ? String(post.officialInstagram).replace(/^@/, "") : "";
   return { ok: true, post: { slides, caption, eventName, officialSite, officialInstagram, imageQueries: (post.imageQueries ?? []).map((q) => clean(q).slice(0, 60)).slice(0, 4), brand: BRAND.handle } };

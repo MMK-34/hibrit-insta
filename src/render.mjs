@@ -41,6 +41,8 @@ export const CATEGORY = {
   bisiklet: { label: "BİSİKLET" },
   doga: { label: "DOĞA SPORLARI" },
   olimpik: { label: "OLİMPİK BRANŞLAR" },
+  yaris: { label: "YARIŞ TAKVİMİ" },
+  basari: { label: "BAŞARILAR" },
   genel: { label: "GÜNDEM" },
 };
 

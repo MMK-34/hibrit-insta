@@ -80,6 +80,9 @@ const LOCAL_BY_CAT = {
   bisiklet: ["bisiklet-road", "bisiklet-mtb"],
   doga: ["doga-climb-hand", "doga-climb-wall", "doga-mountain"],
   olimpik: ["olimpik-archery-target", "olimpik-archery-bow", "olimpik-rings"],
+  // Seri postları (çok branşlı listeler): tüm branş fotoğrafları; sorgu eşleşmesi listedeki branşlarınkini seçer
+  yaris: ["run-marathon", "run-start", "run-finish", "comp-win", "comp-field", "bisiklet-road", "bisiklet-mtb", "su-swim-race", "su-swim-back", "su-rowing", "su-kayak", "dovus-wrestling", "dovus-wrestling-2", "dovus-boxing-gym", "dovus-judo", "kuvvet-weightlifting", "kuvvet-snatch", "doga-climb-wall", "doga-mountain", "olimpik-archery-target", "olimpik-archery-bow", "olimpik-rings", "hyrox-sled", "comp-overhead"],
+  basari: ["run-marathon", "run-start", "run-finish", "comp-win", "comp-field", "bisiklet-road", "bisiklet-mtb", "su-swim-race", "su-swim-back", "su-rowing", "su-kayak", "dovus-wrestling", "dovus-wrestling-2", "dovus-boxing-gym", "dovus-judo", "kuvvet-weightlifting", "kuvvet-snatch", "doga-climb-wall", "doga-mountain", "olimpik-archery-target", "olimpik-archery-bow", "olimpik-rings", "hyrox-sled", "comp-overhead"],
   genel: ["comp-field", "comp-crowd", "gym-flags", "hero-gym", "run-marathon", "comp-win", "barbell-floor"],
 };
 
@@ -137,11 +140,14 @@ export async function findImages(queries, n, category, usedIds = new Set()) {
   let locals = hasLocal ? [...LOCAL_BY_CAT[category ?? "genel"]].sort(() => Math.random() - 0.5) : [];
   // Çok branşlı kategorilerde (dövüş, su, olimpik...) sorgudaki sporla eşleşen fotoğraflar varsa yalnızca onlar kullanılır:
   // güreş haberine boks ringi, yüzme haberine kano fotoğrafı gelmesin.
-  const q = queries.join(" ").toLowerCase();
   const SPORT = { swim: /swim|pool/, rowing: /row/, kayak: /kayak|canoe|paddl/, wrestling: /wrestl/, boxing: /box/, judo: /judo|martial/,
     weightlifting: /weightlift|snatch|clean|jerk/, snatch: /weightlift|snatch/, road: /road|cycl/, mtb: /mountain bik|mtb/,
-    climb: /climb|boulder/, mountain: /mountain(?! bik)|summit|alpin/, archery: /archer|arrow/, rings: /gymnast|rings/ };
-  const match = locals.filter((id) => Object.entries(SPORT).some(([k, re]) => id.includes(k) && re.test(q)));
+    climb: /climb|boulder/, marathon: /marathon|runner|running/, start: /marathon|runner|running/, finish: /marathon|runner|running/, sled: /hyrox|sled/, overhead: /crossfit/, mountain: /mountain(?! bik)|summit|alpin/, archery: /archer|arrow/, rings: /gymnast|rings/ };
+  const fits = (id, q) => Object.entries(SPORT).some(([k, re]) => id.includes(k) && re.test(q.toLowerCase()));
+  // Sorgu sırasıyla dönüşümlü seçim: her sorgudan (branştan) önce birer fotoğraf, sonra kalanlar
+  const perQuery = queries.map((q) => locals.filter((id) => fits(id, q)));
+  const match = [];
+  for (let i = 0; perQuery.some((l) => l.length > i); i++) for (const l of perQuery) if (l[i] && !match.includes(l[i])) match.push(l[i]);
   if (match.length) locals = match;
   const usedLocal = new Set(out.map((o) => o.id));
   for (let i = 0; out.length < n && i < locals.length; i++) {

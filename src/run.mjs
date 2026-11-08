@@ -16,7 +16,7 @@ import { renderPost, renderStory, renderCountdown } from "./render.mjs";
 import { countdownsDue } from "./countdown.mjs";
 import { uploadFiles } from "./upload-github.mjs";
 import { publish, preflight, publishStory, deleteMedia } from "./publish.mjs";
-import { auditPublished } from "./audit.mjs";
+import { auditPublished, MODEL as AUDIT_MODEL_2 } from "./audit.mjs";
 import { notify } from "./notify.mjs";
 import { guardPost } from "./guard.mjs";
 import { INTRO_IMAGES, INTRO_CAPTION } from "./intro.mjs";
@@ -61,7 +61,10 @@ try {
   await notify(`⚠️ Hibrit Portal: ${STATE} bozuk (${e.message}). Bot durdu, dosyaya dokunulmadı; elle düzeltin.`);
   process.exit(1);
 }
-const postedIds = new Set(state.posts.filter((p) => !p.deleted).flatMap((p) => p.ids ?? [])); // denetimde silinen post yeniden işlenebilir
+// Denetimde silinen haber BİR kez yeniden işlenebilir; ikinci kez silinirse bir daha denenmez (döngü olmasın)
+const deletedTimes = {};
+for (const p of state.posts) if (p.deleted) for (const id of p.ids ?? []) deletedTimes[id] = (deletedTimes[id] ?? 0) + 1;
+const postedIds = new Set(state.posts.filter((p) => !p.deleted || (p.ids ?? []).some((id) => deletedTimes[id] >= 2)).flatMap((p) => p.ids ?? []));
 const usedPhotos = new Set(state.posts.flatMap((p) => p.photos ?? []).filter((id) => !id.startsWith("local:")));
 const todayPosts = state.posts.filter((p) => p.day === today && p.media);
 const todayCount = todayPosts.length;
@@ -484,7 +487,12 @@ async function auditRecentPosts() {
   if (DRY) return;
   const due = state.posts.filter((p) => p.audit && p.media && !p.audited && Date.now() - Date.parse(p.at ?? 0) > 20 * 60e3 && Date.now() - Date.parse(p.at ?? 0) < 48 * 36e5).slice(0, 2);
   for (const p of due) {
-    const r = await auditPublished(p.audit);
+    let r = await auditPublished(p.audit);
+    // Silme yalnızca İKİ bağımsız denetçi (Opus + Sonnet, ayrı çağrılar) de "yanlis" derse; tek denetçinin kararı yetmez
+    if (r.verdict === "yanlis") {
+      const r2 = await auditPublished(p.audit, AUDIT_MODEL_2);
+      if (r2.verdict !== "yanlis") { log("Denetim: ikinci denetçi onaylamadı, post silinmedi:", p.headline ?? p.title); r = { verdict: "kucuk_sorun", problems: r.problems }; }
+    }
     p.audited = r.verdict;
     const list = r.problems.map((x) => `- "${String(x.what).slice(0, 160)}": ${String(x.why).slice(0, 220)}`).join("\n");
     if (r.verdict === "yanlis") {

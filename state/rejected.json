@@ -339,5 +339,51 @@
         "note": "Fotoğraf 1, karla kaplı zirveye yürüyen dağcıları gösteriyor. Bu görsel, Adana Toroslar'daki patika koşusuyla ilgili değil ve yanıltıcı. Fotoğraf 2 ve 3 uygun, üçü de Pexels lisanslı."
       }
     ]
+  },
+  {
+    "at": "2026-11-08T17:51:56.698Z",
+    "title": "Harun Reşit Yiğit : 'Likya Yarı Maratonu'na Yaklaşık 900 Sporcu Katıldı'",
+    "url": "https://www.gercekfethiye.com/amp/harun-resit-yigit-likya-yari-maratonu-na-yaklasik-900-sporcu-katildi/132668/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "resmi_ad",
+        "note": "Kaynakta ad \"Likya Yarı Maratonu\" olarak geçiyor. Postta ise \"Likya'rı Maratonu\" yazılmış. Festival adı \"7'nci Uluslararası Fethiye Spor Festivali\" doğru. Kaynakta ayrıca \"Sporfest\" ifadesi de geçiyor."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak_satiri",
+        "note": "Postta \"Fethiye Haber\" yazıyor. Verilen kaynakların yayıncıları Fethiye TV (fethiyetv.com) ve Gerçek Fethiye (gercekfethiye.com). \"Fethiye Haber\" bunlarla ilişkilendirilemiyor."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "baslik",
+        "note": "Başlık ve kapak yanlış yarış adını kullanıyor (\"Likya'rı Maratonu\", doğrusu \"Likya Yarı Maratonu\"). Başlığın geri kalanı tarafsız."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "resmi_ad",
+        "note": "Ana haberde ve ikinci kaynakta (Gerçek Fethiye) yarışın adı 'Likya Yarı Maratonu' olarak geçiyor. Postta başlık, kicker ve metin boyunca 'Likya'rı Maratonu' yazılmış. Bu yazım yalnızca Fethiye TV'nin ilgili başka bir haber başlığında 'LİKYA'RI Maratonu' biçiminde görülüyor. Resmî yazım olarak 'Likya Yarı Maratonu' kullanılmalı. '7. Uluslararası Fethiye Spor Festivali' ve 'Atatürk Koşusu' adları doğru."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "kaynak_satiri",
+        "note": "Verilen kaynakların yayıncıları 'Fethiye TV' (fethiyetv.com) ve 'Gerçek Fethiye' (gercekfethiye.com). Postta yazan 'Fethiye Haber' bu yayıncılardan hiçbirinin adı değil; sitedeki 'Fethiye Haberleri' ifadesi yalnızca bir slogan. Kaynak satırı 'Kaynak: Fethiye TV' olarak düzeltilmeli."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-08T17:52:44.922Z",
+    "title": "Jandarma uyardı: Para isteğine inanmayın... WhatsApp'ı korumak için bunları yapın",
+    "url": "https://www.haberizlenim.com/jandarma-uyardi-para-istegine-inanmayin-whatsapp-i-korumak-icin-bunlari-yapin/199075",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

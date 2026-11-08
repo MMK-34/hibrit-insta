@@ -141,3 +141,21 @@ export async function refreshToken() {
   const j = await call("GET", "refresh_access_token", { grant_type: "ig_refresh_token" });
   return j; // { access_token, token_type, expires_in }
 }
+
+/**
+ * Yayınlanmış medyayı siler (yayın sonrası denetimde ciddi hata bulunursa). instagram_manage_contents izni gerekir;
+ * izin yoksa { ok: false, error } döner ve çağıran kullanıcıya elle silme uyarısı gönderir.
+ */
+export async function deleteMedia(mediaId) {
+  if (!/^\d{5,30}$/.test(String(mediaId ?? ""))) return { ok: false, error: "geçersiz medya kimliği" };
+  let last = "";
+  for (const token of [process.env.IG_ACCESS_TOKEN, process.env.IG_DISCOVERY_TOKEN].filter(Boolean)) {
+    try {
+      const r = await fetch(`https://graph.facebook.com/v23.0/${mediaId}?access_token=${token}`, { method: "DELETE", signal: AbortSignal.timeout(30000) });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok && (j.success === true || j === true)) return { ok: true };
+      last = JSON.stringify(j.error ?? j).slice(0, 200);
+    } catch (e) { last = String(e?.message ?? e).slice(0, 200); }
+  }
+  return { ok: false, error: last };
+}

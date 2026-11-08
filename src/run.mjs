@@ -15,7 +15,8 @@ import { selectNews, writePost, reviewPost, creditProbe, isCreditError } from ".
 import { renderPost, renderStory, renderCountdown } from "./render.mjs";
 import { countdownsDue } from "./countdown.mjs";
 import { uploadFiles } from "./upload-github.mjs";
-import { publish, preflight, publishStory } from "./publish.mjs";
+import { publish, preflight, publishStory, deleteMedia } from "./publish.mjs";
+import { auditPublished } from "./audit.mjs";
 import { notify } from "./notify.mjs";
 import { guardPost } from "./guard.mjs";
 import { INTRO_IMAGES, INTRO_CAPTION } from "./intro.mjs";
@@ -60,7 +61,7 @@ try {
   await notify(`⚠️ Hibrit Portal: ${STATE} bozuk (${e.message}). Bot durdu, dosyaya dokunulmadı; elle düzeltin.`);
   process.exit(1);
 }
-const postedIds = new Set(state.posts.flatMap((p) => p.ids ?? []));
+const postedIds = new Set(state.posts.filter((p) => !p.deleted).flatMap((p) => p.ids ?? [])); // denetimde silinen post yeniden işlenebilir
 const usedPhotos = new Set(state.posts.flatMap((p) => p.photos ?? []).filter((id) => !id.startsWith("local:")));
 const todayPosts = state.posts.filter((p) => p.day === today && p.media);
 const todayCount = todayPosts.length;
@@ -162,6 +163,7 @@ async function main() {
   // Canlıya alınınca ilk paylaşım: tanıtım postu (bir kez)
   if (!state.intro && !DRY) return publishIntro();
   if (STOCK) return publishStock();
+  try { await auditRecentPosts(); } catch (e) { if (isCreditError(e)) throw e; log("Denetim hatası:", String(e.message).slice(0, 200)); }
   try { await publishCountdowns(); } catch (e) { log("Geri sayım hatası:", String(e.message).slice(0, 200)); }
   try { await processApprovals(); } catch (e) { if (isCreditError(e)) throw e; log("Onay kontrolü hatası:", String(e.message).slice(0, 200)); }
   try { await draftStatForApproval(); } catch (e) { if (isCreditError(e)) throw e; log("İstatistik taslağı hatası:", String(e.message).slice(0, 200)); }
@@ -450,7 +452,9 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   const collaborators = COLLAB_ON && evHandle && IG_WATCH_TR.includes(evHandle) && Date.now() - lastInvite > 30 * 864e5 ? [evHandle] : [];
   const res = await publish(urls, caption, { collaborators });
   if (collaborators.length) { state.collabInvites[evHandle] = new Date().toISOString(); log("Collab daveti gönderildi:", `@${evHandle}`); }
-  state.posts.push({ day: today, ids, kind, photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, cover: urls[0], title, headline: post.slides[0]?.title, eventName: post.eventName || undefined, at: new Date().toISOString() });
+  state.posts.push({ day: today, ids, kind, photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, cover: urls[0], title, headline: post.slides[0]?.title, eventName: post.eventName || undefined, at: new Date().toISOString(),
+    // Yayın sonrası denetim için (denetimden sonra silinir)
+    audit: { slides: post.slides, caption, srcUrls, eventName: post.eventName || "" } });
   for (const id of ids ?? []) postedIds.add(id);
   for (const p of photos) if (!String(p.id).startsWith("local:")) usedPhotos.add(p.id);
   saveState(); // paylaşım hemen kalıcı: sonraki adım çökse de aynı haber tekrar paylaşılmaz
@@ -471,6 +475,32 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     } catch (e) { log("Hikâye paylaşılamadı (post yayında):", String(e.message).slice(0, 300)); }
   }
   return res;
+}
+
+// ---------- Yayın sonrası denetim ----------
+// Kullanıcı isteği: her post yayından en az 20 dk sonra ayrı bir denetçiyle (Opus, web erişimli) yeniden kontrol edilir.
+// "yanlis" kararında post silinir (izin varsa); silinemezse kullanıcıya elle silme uyarısı gider. Çalışma başına en çok 2 post.
+async function auditRecentPosts() {
+  if (DRY) return;
+  const due = state.posts.filter((p) => p.audit && p.media && !p.audited && Date.now() - Date.parse(p.at ?? 0) > 20 * 60e3 && Date.now() - Date.parse(p.at ?? 0) < 48 * 36e5).slice(0, 2);
+  for (const p of due) {
+    const r = await auditPublished(p.audit);
+    p.audited = r.verdict;
+    const list = r.problems.map((x) => `- "${String(x.what).slice(0, 160)}": ${String(x.why).slice(0, 220)}`).join("\n");
+    if (r.verdict === "yanlis") {
+      const del = await deleteMedia(p.media);
+      if (del.ok) {
+        p.deleted = new Date().toISOString(); p.media = null;
+        log("Denetim: post silindi:", p.permalink);
+        await notify(`⚠️ Yayın sonrası denetim bir hata buldu ve postu SİLDİ:\n${p.headline ?? p.title}\n${p.permalink}\n\n${list}\n\nHaber sonraki çalışmalarda düzeltilmiş olarak yeniden işlenebilir.`);
+      } else {
+        log("Denetim: post silinemedi:", del.error);
+        await notify(`⚠️ Yayın sonrası denetim bir hata buldu; post otomatik silinemedi (izin yok). Lütfen elle sil:\n${p.headline ?? p.title}\n${p.permalink}\n\n${list}`);
+      }
+    } else log(`Denetim: ${r.verdict} — ${p.headline ?? p.title}`);
+    delete p.audit;
+    saveState();
+  }
 }
 
 // ---------- Geri sayım hikâyeleri (yalnızca büyük yarışlar) ----------

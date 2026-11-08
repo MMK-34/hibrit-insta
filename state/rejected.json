@@ -398,5 +398,18 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-08T18:28:19.083Z",
+    "title": "Kuşadası’nda CrossFit Şampiyonası başladı",
+    "url": "https://www.halikarnashaber.com/haber/9336/kusadasinda-crossfit-sampiyonasi-basladi",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "sayilar",
+        "note": "12 ülke ve yaklaşık 500 sporcu doğru. Ancak 'Dereceye girenler kupa ve madalya alacak' ifadesi kaynaklarda yok. Kaynaklar sporcuların kupa ve madalya hedefiyle yarıştığını söylüyor. Ödül dağıtımı ya da derece alanların ne alacağı belirtilmiyor. Bu ifade hem slayttan hem caption'dan çıkarılmalı ya da 'kupa ve madalya hedefiyle' diye düzeltilmeli."
+      }
+    ]
   }
 ]

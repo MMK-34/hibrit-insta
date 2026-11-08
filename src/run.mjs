@@ -1,4 +1,4 @@
-// Ana akış. 2 saatte bir çalışır (07:30-21:30 TR). Çalışma başına en fazla POSTING.perRun post.
+// Ana akış. Saatte bir çalışır (07:30-22:30 TR). Çalışma başına en fazla POSTING.perRun post.
 // Sabah ilk çalışma ve akşam son çalışma, gün boş geçmesin diye eşiği düşürür.
 //   node src/run.mjs          -> gerçek paylaşım
 //   node src/run.mjs --dry    -> yalnızca üret: out/<tarih>/ altına görsel + caption (durum dosyalarına yazılmaz)
@@ -110,15 +110,15 @@ async function recentIgCaptions(limit = 12) {
   }
 }
 let igTitles = []; // state'te olmayan son IG paylaşımlarının başlıkları (selectNews tekrar önleme)
-const SKIPPED = Symbol("atlandı"); // 80 dk kapısında atlanan çalışma: özet/alarm da çalışmaz
+const SKIPPED = Symbol("atlandı"); // 45 dk kapısında atlanan çalışma: özet/alarm da çalışmaz
 
 async function main() {
   let published = false, processed = 0, publishedCount = 0;
-  // Yedek cron: ana slot çalıştıysa (son 80 dk) zamanlanmış çalışma hiçbir şey yapmaz. Elle (workflow_dispatch) çalışmalar atlanmaz.
+  // Yedek cron: ana slot çalıştıysa (son 45 dk) zamanlanmış çalışma hiçbir şey yapmaz. Elle (workflow_dispatch) çalışmalar atlanmaz.
   const SCHEDULED = process.env.GITHUB_EVENT_NAME === "schedule";
   if (!DRY && !FORCE && !STOCK && SCHEDULED && state.lastRunAt) {
     const ago = (Date.now() - new Date(state.lastRunAt).getTime()) / 60e3;
-    if (ago >= 0 && ago < 80) {
+    if (ago >= 0 && ago < 45) {
       log(`Son çalışma ${Math.round(ago)} dk önce; atlandı`);
       // Workflow'daki stok tamamlama adımı da atlansın
       try { if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, "skipped=true\n"); } catch {}
@@ -183,7 +183,7 @@ async function main() {
       return !dup;
     });
     if (draftCapReached()) log(`Günlük taslak tavanı dolu (${MAX_DRAFTS_PER_DAY}), yeni taslak yok.`);
-    else picks = await selectNews(items, { limit: 4, postedIds, recentTitles });
+    else picks = await selectNews(items, { limit: 6, postedIds, recentTitles });
     log("Seçim:", picks.map((p) => `${p.score}/${p.kind}/${p.format}/${p.category}`).join(" "));
   } catch (e) {
     console.error(e);
@@ -197,7 +197,7 @@ async function main() {
     if (draftCapReached()) { log(`Günlük taslak tavanı dolu (${MAX_DRAFTS_PER_DAY}).`); break; }
     try {
       const isInfo = pick.kind === "bilgi" || pick.kind === "arastirma";
-      if (isInfo && infoToday >= 2 && !FORCE) { log("Bugünkü bilgi/araştırma kotası dolu, atlandı."); continue; }
+      if (isInfo && infoToday >= (POSTING.maxInfoPerDay ?? 4) && !FORCE) { log("Bugünkü bilgi/araştırma kotası dolu, atlandı."); continue; }
       const need = isInfo && !FORCE ? Math.min(threshold, 5) : threshold;
       if (pick.score < need) { log(`Eşik altı (${pick.kind} ${pick.score} < ${need}), bekleniyor.`); continue; }
       const srcItems = (pick.ids ?? []).map((id) => items.find((i) => i.id === id)).filter(Boolean).slice(0, 3);

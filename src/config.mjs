@@ -9,8 +9,12 @@ export const BRAND = {
 export const POSTING = {
   timezone: "Europe/Istanbul",
   // Sabit kota yok: haber oldukça paylaşılır. Bu sınırlar yalnızca spam/aşırı maliyet emniyeti.
-  maxPerDay: 12,
-  perRun: 2, // bir çalışmada en fazla (2 saatte bir çalışır)
+  maxPerDay: 30,
+  perRun: 4, // bir çalışmada en fazla (saatte bir çalışır)
+  // Ücretli taslak (yazım + iki doğrulayıcı) için günlük maliyet emniyeti
+  maxDraftsPerDay: 30,
+  // Bilgi + araştırma postları günde en fazla (haber ve hikâye sınırsız)
+  maxInfoPerDay: 4,
   minPerDay: 1,
   // Haber yaşı sınırı (saat): bundan eski haber paylaşılmaz
   maxAgeHours: 48,

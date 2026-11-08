@@ -2,11 +2,11 @@ name: Instagram otomatik paylaşım
 
 on:
   schedule:
-    # TR saati = UTC+3 -> 07:30, 09:30, 11:30, 13:30, 15:30, 17:30, 19:30, 21:30 (2 saatte bir)
-    - cron: "30 4-18/2 * * *"
-    # Yedek: her ana slottan 40 dk sonra (GitHub cron'u düşürebilir/geciktirebilir). Ana slot son 80 dk içinde
+    # TR saati = UTC+3 -> 07:30-22:30 arası saatte bir (güncel haber hızlı çıksın)
+    - cron: "30 4-19 * * *"
+    # Yedek: her ana slottan 20 dk sonra (GitHub cron'u düşürebilir/geciktirebilir). Ana slot son 45 dk içinde
     # çalıştıysa run.mjs hiçbir şey yapmadan çıkar (yalnızca GITHUB_EVENT_NAME=schedule için).
-    - cron: "10 5-19/2 * * *"
+    - cron: "50 4-19 * * *"
   workflow_dispatch:
     inputs:
       mode:
@@ -68,7 +68,7 @@ jobs:
           esac
 
       - name: Stok postları tamamla (kuyruk 4'ün altındaysa 6'ya; değilse işlem yapmaz)
-        # 80 dk kapısında atlanan (yedek cron) çalışmada stok tamamlanmaz
+        # 45 dk kapısında atlanan (yedek cron) çalışmada stok tamamlanmaz
         if: ${{ !cancelled() && github.event.inputs.mode != 'dry' && steps.paylas.outputs.skipped != 'true' }}
         timeout-minutes: 15
         env:

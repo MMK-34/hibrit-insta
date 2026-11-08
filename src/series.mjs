@@ -100,17 +100,17 @@ const CITIES = ["İstanbul", "Ankara", "İzmir", "Antalya", "Bursa", "Muğla", "
 export const SERIES = [
   {
     id: "vizesiz",
-    // İki haftada bir salı sabahı (çift ISO haftaları)
-    due: (d) => d.getDay() === 2 && d.getHours() >= 10 && Number(isoWeek(d).split("-W")[1]) % 2 === 0,
-    key: (d) => `vizesiz:${isoWeek(d)}`,
+    // Üç ayda bir (Ocak/Nisan/Temmuz/Ekim ayının ilk iki haftasında salı sabahı); vizesiz yarış sayısı az olduğu için seyrek
+    due: (d) => d.getMonth() % 3 === 0 && d.getDate() <= 14 && d.getDay() === 2 && d.getHours() >= 10,
+    key: (d) => `vizesiz:${d.getFullYear()}-Q${Math.floor(d.getMonth() / 3) + 1}`,
     ctx: (d) => { const from = addDays(d, 21), to = addDays(d, 150); return { from, to, range: `${AY[from.getMonth()]}-${AY[to.getMonth()]}` }; },
-    columns: ["Tarih", "Yarış", "Ülke", "Branş"], min: 3, max: 12,
+    columns: ["Tarih", "Yarış", "Ülke", "Branş"], min: 2, max: 12,
     cover: (c) => ({ kicker: "VİZESİZ ROTALAR", title: "Vize gerektirmeyen ülkelerdeki yarışlar", subtitle: `${c.range}: Türk vatandaşlarının vizesiz gidebildiği ülkelerdeki yarışlardan bir seçki.` }),
     intro: (c, names, n) => `Türk vatandaşlarının vizesiz gidebildiği ülkelerde ${n} yarış: ${names}. Vize kuralları değişebilir; yola çıkmadan önce Dışişleri Bakanlığı'nın güncel bilgisini kontrol edin.`,
     tableTitle: "Vizesiz yarışlar",
     end: { title: "Hangi ülkede yarışmak istersiniz?", body: "Bu listeyi yurt dışında yarışmak isteyen arkadaşınıza gönderin." },
     imageQueries: ["crossfit competition barbell", "marathon runners city street", "trail running race"], cat: "yaris",
-    task: (c) => `GÖREV: ${fmt(c.from)} ile ${fmt(c.to)} arasında, TÜRKİYE CUMHURİYETİ VATANDAŞLARININ (umuma mahsus pasaportla) VİZESİZ girebildiği ülkelerde düzenlenecek yarışları bul (en az 3, en fazla 12). Türkiye ve KKTC hariç. Öncelik: CrossFit yarışmaları ve throwdown'lar (ör. Balkanlar, Gürcistan, Azerbaycan), HYROX şehir yarışları, ATHX, maratonlar ve trail/ultra yarışları. Tarih sırasına göre diz.
+    task: (c) => `GÖREV: ${fmt(c.from)} ile ${fmt(c.to)} arasında, TÜRKİYE CUMHURİYETİ VATANDAŞLARININ (umuma mahsus pasaportla) VİZESİZ girebildiği ülkelerde düzenlenecek yarışları bul (en az 2, en fazla 12). Türkiye ve KKTC hariç. Başlıca aday bölgeler: Balkanlar (Sırbistan/Belgrad, Arnavutluk/Tiran, Bosna-Hersek, Karadağ, Kuzey Makedonya, Kosova), Gürcistan, Azerbaycan; yine de her ülkeyi aşağıdaki kurala göre doğrula. Öncelik: CrossFit yarışmaları ve throwdown'lar (ör. Balkanlar, Gürcistan, Azerbaycan), HYROX şehir yarışları, ATHX, maratonlar ve trail/ultra yarışları. Tarih sırasına göre diz.
 VİZE KURALI (kesin): Her ülkenin Türk vatandaşları için vizesiz olduğunu T.C. Dışişleri Bakanlığı'nın (mfa.gov.tr) ilgili ülke sayfasından ya da o ülkenin resmî konsolosluk/vize sitesinden DOĞRULA. Vize kapıda, e-vize ya da elektronik seyahat izni gereken ülkeler VİZESİZ SAYILMAZ, listeye koyma. Emin olmadığın ülkeyi koyma.
 Her satırın tarihini ve resmî adını organizatörün sitesinden doğrula ve o sayfanın URL'sini yaz. Hücreler: Tarih "15-16 Kas", Yarış resmî adıyla en fazla 40 karakter, Ülke Türkçe ülke adı (ör. "Sırbistan", "Arnavutluk", "Gürcistan"), Branş tek kelime (CrossFit, HYROX, Koşu, Trail, Triatlon...). Alan adı ya da link yazma.`,
   },

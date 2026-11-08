@@ -108,13 +108,15 @@ export async function findImages(queries, n, category, usedIds = new Set()) {
   for (const q of queries) { if (out.length < n) await take(await pexels(q, n)); }
   // Yerel kütüphane (seçilmiş, konuyla ilgili Pexels fotoğrafları) Openverse'ten önce gelir: Openverse kalitesi değişken
   // Karışık sıra: aynı kategoride postlar hep aynı fotoğrafla açılmasın
-  const locals = [...(LOCAL_BY_CAT[category] ?? LOCAL_BY_CAT.genel)].sort(() => Math.random() - 0.5);
+  // Yerel kütüphanesi olmayan branşlarda (yüzme, güreş, bisiklet vb.) alakasız salon fotoğrafı konmaz
+  const hasLocal = Object.hasOwn(LOCAL_BY_CAT, category ?? "genel");
+  const locals = hasLocal ? [...LOCAL_BY_CAT[category ?? "genel"]].sort(() => Math.random() - 0.5) : [];
   const usedLocal = new Set(out.map((o) => o.id));
   for (let i = 0; out.length < n && i < locals.length; i++) {
     const f = path.join(LOCAL, `${locals[i]}.webp`);
     if (fs.existsSync(f) && !usedLocal.has(`local:${locals[i]}`)) out.push({ id: `local:${locals[i]}`, buf: fs.readFileSync(f), credit: "Foto: Pexels", alt: LOCAL_ALT[locals[i]] ?? locals[i], license: "Pexels lisansı" });
   }
   // Son çare: Openverse (filigranlı/ilgisiz kaynaklar elenir)
-  for (const q of queries) { if (out.length < Math.min(n, 1)) await take(await openverse(q, n)); }
+  for (const q of queries) { if (out.length < (hasLocal ? Math.min(n, 1) : n)) await take(await openverse(q, n)); }
   return out;
 }

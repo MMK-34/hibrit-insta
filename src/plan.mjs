@@ -124,8 +124,9 @@ function toStrictSchema(s) {
 }
 
 const EDITOR = `Sen "${BRAND.name}" adlı Türkçe Instagram hesabının kıdemli editörüsün.
-Konu: HYROX, CrossFit, koşu (maraton, yarı maraton, ultra, trail, pist), triatlon ve Ironman, OCR (Spartan vb.), kalistenik, fonksiyonel fitness, hibrit antrenman ve spor bilimi. Bu alanlarla uğraşan insanların dikkatini çekecek, Türkiye'den ve dünyadan sporla ilgili ilginç, sıra dışı ve profesyonelce aktarılabilecek haberler de kapsamdadır.
-Kitle: Türkiye'deki CrossFit/HYROX sporcuları ve koşucular; bilgili, jargonu bilir.
+Konu: Bireysel sporların ve antrenmanın tüm branşları. Koşu (maraton, ultra, trail, pist), atletizm, triatlon, HYROX, CrossFit, fonksiyonel fitness, OCR, kalistenik; kuvvet sporları (halter, powerlifting, strongman); dövüş sporları (güreş, boks, judo, tekvando, karate, kick boks, eskrim); su sporları (yüzme, açık su, kürek, kano, yelken, sörf); bisiklet; doğa sporları (tırmanış, dağcılık, kayak); jimnastik, okçuluk, atıcılık ve diğer olimpik bireysel branşlar; spor bilimi. Branşı ne olursa olsun, küçük de olsa bilgilendirici ve ilginç her haber kapsamdadır.
+KAPSAM DIŞI (seçme, puan 1): Futbol, basketbol, voleybol, hentbol ve diğer takım/top sporları; transfer, kulüp ve lig haberleri; at yarışı ve motor sporları.
+Kitle: Türkiye'de aktif spor yapan, antrenmanla ilgilenen insanlar; bilgili, jargonu bilir.
 Amaç: Bu kitleyi elde tutmak ve takip ettirmek. Hiçbir önemli haberi kaçırma; profesyonel, güvenilir bir haber kaynağı ol.
 
 Öncelik sırası (puanlamada bunu kullan):
@@ -134,7 +135,7 @@ Amaç: Bu kitleyi elde tutmak ve takip ettirmek. Hiçbir önemli haberi kaçırm
    - "Eurasia Throwdown şu tarihlerde şu şehirde yapılacak, ön elemeler açıldı"
    - "HYROX İstanbul duyuruldu"
    Kayıt açılışı, tarih/yer duyurusu, ön eleme, sonuçlar, Türk sporcuların başarıları.
-2. Dünyadan büyük gelişmeler: yarış sonuçları, rekorlar, HYROX/CrossFit kural, format ve takvim değişiklikleri, büyük sponsorluklar (7-9).
+2. Türk sporcuların uluslararası başarıları (her branşta: güreş, halter, boks, yüzme, okçuluk, tırmanış vb. madalyalar ve rekorlar) ve dünyadan büyük gelişmeler: yarış sonuçları, dünya rekorları, kural, format ve takvim değişiklikleri (7-9).
 3. Sporla ilgili sağlam bilimsel araştırmalar: dayanıklılık, kuvvet, toparlanma, beslenme, yaralanma (6-8). Tür: "arastirma".
 4. Dünyadan ilginç haberler: sıra dışı sporcu hikâyeleri, ilginç yarışlar (5-7).
 5. Bilgi postu: kaynağı sağlam, öğretici, konuyla ilgili antrenman, teknik ya da taktik içerik (5-6). Tür: "bilgi". Günde 1-2 tane yeterli.
@@ -165,7 +166,7 @@ const SELECT_TOOL = {
           properties: {
             ids: { type: "array", items: { type: "string" }, description: "Aynı olaya ait haber id'leri (ilk id ana kaynak)" },
             score: { type: "integer", minimum: 1, maximum: 10, description: "Haber değeri" },
-            category: { type: "string", enum: ["hyrox", "crossfit", "kosu", "fonksiyonel", "genel"] },
+            category: { type: "string", enum: ["hyrox", "crossfit", "kosu", "fonksiyonel", "kuvvet", "dovus", "su", "bisiklet", "doga", "olimpik", "genel"], description: "kosu: koşu, atletizm, triatlon; kuvvet: halter, powerlifting, strongman; dovus: güreş, boks, judo vb.; su: yüzme, kürek, kano, yelken; doga: tırmanış, dağcılık, kayak; olimpik: jimnastik, okçuluk, atıcılık ve diğer bireysel branşlar" },
             kind: { type: "string", enum: ["haber", "duyuru", "arastirma", "bilgi"], description: "duyuru: yarış/kayıt/etkinlik duyurusu; bilgi: öğretici içerik" },
             format: { type: "string", enum: ["carousel", "single"], description: "Çok bilgi/rakam varsa carousel, tek cümlelik haber single" },
             why: { type: "string" },
@@ -226,7 +227,7 @@ const POST_TOOL = {
       eventName: { type: "string", description: "Haber bir etkinlik/yarış hakkındaysa RESMÎ adı, organizatörün kullandığı yazımla (örn. 'Alsancak Team Series', 'HYROX Istanbul', 'Eurasia Throwdown'). Etkinlik yoksa boş." },
       officialSite: { type: "string", description: "Etkinliğin ya da organizatörün resmî web sitesi (https://...). Bilinmiyorsa boş. Haber sitesi değil." },
       officialInstagram: { type: "string", description: "Etkinliğin ya da organizatörün resmî Instagram kullanıcı adı (@ olmadan). Emin değilsen boş." },
-      imageQueries: { type: "array", items: { type: "string" }, minItems: 2, maxItems: 4, description: "Stok foto aramak için İngilizce sorgular, en spesifikten genele. Örn: 'hyrox sled push race', 'marathon runners city street', 'crossfit competition barbell'. Kişi adı kullanma." },
+      imageQueries: { type: "array", items: { type: "string" }, minItems: 2, maxItems: 4, description: "Stok foto aramak için İngilizce sorgular, en spesifikten genele. Örn: 'hyrox sled push race', 'marathon runners city street', 'olympic weightlifting snatch', 'freestyle wrestling match', 'swimmer pool race'. Kişi adı kullanma." },
       caption: { type: "string" },
       hashtags: { type: "array", items: { type: "string" }, maxItems: 12 },
     },
@@ -297,7 +298,7 @@ export async function reviewPost(draft, sources, { evergreen = false } = {}) {
     system: `Sen "${BRAND.name}" hesabının yazı işleri müdürüsün. Kalite çıtan yüksek: saçma, boş, yanıltıcı ya da kötü Türkçe içerik yayınlanmaz.
 Kontrol listesi:
 1. Doğruluk: Posttaki her rakam, tarih, isim ve iddia kaynakta geçiyor mu? Kaynakta olmayan bilgileri önce yazarın kanıt listesindeki URL'leri web_fetch ile açarak, gerekirse web_search ile resmî ya da güvenilir kaynaklardan (organizatör sitesi, ulusal basın, federasyon) doğrula. Doğrulanan bilgi kalabilir. Doğrulanamayanı çıkar. Çıkarınca post anlamsız kalıyorsa reddet.
-2. Haber değeri: Bu, HYROX/CrossFit/koşu/fonksiyonel fitness kitlesi için gerçekten bilgilendirici ya da duyurucu mu? Boş, klikbait, reklam ya da konu dışıysa reddet.
+2. Haber değeri: Bu, spor yapan ve antrenmanla ilgilenen kitle için gerçekten bilgilendirici ya da duyurucu mu? Boş, klikbait, reklam ya da konu dışıysa reddet. Futbol, basketbol, voleybol, hentbol gibi takım/top sporları, at yarışı ve motor sporları konu dışıdır.
 3. Türkçe: Kusursuz ve doğal mı? Çeviri kokusu, yazım hatası, ek hatası (kesme işareti), klişe var mı? Varsa düzelt.
 8. Tazelik: Haberin özü (duyuru, sonuç, anlaşma) 7 günden eskiyse reddet; eski bir olayı yeni gibi sunma. Yaklaşan etkinlik duyuruları ve yeni yayımlanan araştırmalar bu kuralın dışındadır.
 7. Kişi adları ve magazin: Haberin kendisi olmayan kişi adları (antrenör, uzman, yetkili, organizatör) ve alıntılar var mı? Varsa çıkar, yerine organizasyon adını kullan. Magazin ya da özel hayat içeriği varsa reddet.

@@ -35,6 +35,12 @@ export const CATEGORY = {
   crossfit: { label: "CROSSFIT" },
   kosu: { label: "KOŞU" },
   fonksiyonel: { label: "FONKSİYONEL" },
+  kuvvet: { label: "KUVVET" },
+  dovus: { label: "DÖVÜŞ SPORLARI" },
+  su: { label: "SU SPORLARI" },
+  bisiklet: { label: "BİSİKLET" },
+  doga: { label: "DOĞA SPORLARI" },
+  olimpik: { label: "OLİMPİK BRANŞLAR" },
   genel: { label: "GÜNDEM" },
 };
 

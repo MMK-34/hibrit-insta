@@ -88,8 +88,8 @@ function logoHtml(L) {
 function photoLayer(photo, mode) {
   if (!photo) return "";
   if (mode === "band") {
-    const bandH = 620;
-    return `<img src="${photo.uri}" style="position:absolute;left:0;top:0;width:${W}px;height:${bandH}px;object-fit:cover" />
+    const bandH = BAND_H;
+    return `<img src="${photo.bandUri ?? photo.uri}" style="position:absolute;left:0;top:0;width:${W}px;height:${bandH}px;object-fit:cover" />
       <div style="position:absolute;left:0;top:0;width:${W}px;height:${bandH}px;background-image:linear-gradient(180deg, rgba(14,15,18,0.7) 0%, rgba(14,15,18,0.2) 30%, rgba(14,15,18,0.55) 70%, ${C.ink} 100%)"></div>`;
   }
   const grad = mode === "dim"
@@ -254,11 +254,29 @@ export async function renderSlide(slide, ctx) {
   return sharp(png).jpeg({ quality: 90, mozjpeg: true }).toBuffer();
 }
 
-/** Ham foto -> 1080x1350 kırpılmış, siyah-beyaz (marka stili) JPEG data URI */
-async function toUri(buf) {
-  const j = await sharp(buf).rotate().resize(W, H, { fit: "cover", position: "attention" })
-    .grayscale().linear(1.12, -10).jpeg({ quality: 82 }).toBuffer();
-  return `data:image/jpeg;base64,${j.toString("base64")}`;
+// Slaytta fotoğrafın görünen kısmı: tam ekran düzende üstteki ~860px (altını başlık paneli kapatır), bant düzeninde üstteki 620px.
+// Fotoğraf bu görünen pencereye göre kırpılır: yatay fotoğraf gereksiz büyütülmez, kişiler kesilmez.
+const VIS_FULL = 860, BAND_H = 620;
+
+/** Fotoğrafı bw x bh pencereye kırp. focus (0-1 oran, görsel denetimden) varsa ana kişiler yatayda ortada, dikeyde fy oranında kalır. */
+async function cropTo(buf, focus, bw, bh, fy) {
+  const { data, info } = await sharp(buf).rotate().toBuffer({ resolveWithObject: true });
+  if (!focus) return sharp(data).resize(bw, bh, { fit: "cover", position: "attention" }).toBuffer();
+  const s = Math.max(bw / info.width, bh / info.height);
+  const sw = Math.max(bw, Math.ceil(info.width * s)), sh = Math.max(bh, Math.ceil(info.height * s));
+  const clamp = (v, max) => Math.min(Math.max(0, Math.round(v)), max);
+  const left = clamp(focus.x * sw - bw / 2, sw - bw), top = clamp(focus.y * sh - bh * fy, sh - bh);
+  return sharp(await sharp(data).resize(sw, sh, { fit: "fill" }).toBuffer()).extract({ left, top, width: bw, height: bh }).toBuffer();
+}
+
+const style = (img) => img.grayscale().linear(1.12, -10).jpeg({ quality: 82 }).toBuffer();
+
+/** Ham foto -> { uri: 1080x1350 (fotoğraf üstteki görünen alanda, altı koyu zemin), bandUri: 1080x620 } siyah-beyaz (marka stili) JPEG data URI */
+async function toUri(buf, focus) {
+  const top = await cropTo(buf, focus, W, VIS_FULL, 0.45);
+  const full = await style(sharp({ create: { width: W, height: H, channels: 3, background: C.ink } }).composite([{ input: top, left: 0, top: 0 }]));
+  const band = await style(sharp(await cropTo(buf, focus, W, BAND_H, 0.5)));
+  return { uri: `data:image/jpeg;base64,${full.toString("base64")}`, bandUri: `data:image/jpeg;base64,${band.toString("base64")}` };
 }
 
 /** Kapak slaytından 1080x1920 hikâye kartı: mürekkep zemin, kapak ortada, üstte küçük "YENİ PAYLAŞIM" etiketi. */
@@ -281,7 +299,7 @@ export async function renderPost(post, outDir) {
   fs.mkdirSync(outDir, { recursive: true });
   const total = post.slides.length;
   const photos = [];
-  for (const p of post.photos ?? []) photos.push({ uri: await toUri(p.buf), credit: p.credit });
+  for (const p of post.photos ?? []) photos.push({ ...(await toUri(p.buf, p.focus)), credit: p.credit });
   // Etkinlik logosu (yükseklik 64px'e ölçeklenir); açık renk logo koyu rozette, koyu logo açık rozette
   let eventLogo = null;
   if (post.eventLogo?.buf) {

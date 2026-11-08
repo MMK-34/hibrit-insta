@@ -340,15 +340,15 @@ ${feedback.slice(0, 1200)}`);
 /** Görselleri üretir, (dry değilse) yükleyip paylaşır, state'e yazar. Paylaşım sonucunu döner. */
 async function pickPhotos({ post, pages, topic, want, category }) {
   // Etkinlik fotoğrafları önceki postlarda kullanılmış olabilir (aynı etkinliğin takip/hikaye postu): tekrar kullanılabilir
-  const ev = await eventPhotos({ pages, instagram: post.officialInstagram, topic, n: want })
+  const ev = await eventPhotos({ pages, instagram: post.officialInstagram, topic, n: want, eventName: post.eventName })
     .catch((e) => { if (isCreditError(e)) throw e; log("Etkinlik fotoğrafı hatası:", String(e?.message ?? e).slice(0, 160)); return []; });
   if (ev.length) log(`Etkinlik fotoğrafı: ${ev.length} (${[...new Set(ev.map((p) => p.source))].join(", ")})`);
-  // Belirli bir etkinlikten bahseden postta YALNIZCA o etkinliğin fotoğrafı kullanılır, stok foto konmaz.
-  // Etkinliğe ait fotoğraf bulunamazsa post paylaşılmaz; az fotoğraf varsa slaytlarda sırayla tekrar eder.
+  // Belirli bir etkinlikten bahseden postta o etkinliğin fotoğrafı varsa YALNIZCA onlar kullanılır (slaytlarda sırayla tekrar eder).
+  // Hiç bulunamazsa konuyla ilgili (görsel denetimden geçmiş) stok fotoğrafa düşülür.
   if (post.eventName) {
     const own = ev.filter((p) => p.specific);
-    if (!own.length) log(`Etkinliğe ait fotoğraf bulunamadı (${post.eventName}); stok foto konmaz, post paylaşılmaz.`);
-    return own;
+    if (own.length) return own;
+    log(`Etkinliğe ait fotoğraf bulunamadı (${post.eventName}); konuyla ilgili stok fotoğraf kullanılacak.`);
   }
   const need = want - ev.length;
   if (need <= 0) return ev;

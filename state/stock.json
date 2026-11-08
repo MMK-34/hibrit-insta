@@ -417,5 +417,6 @@
     "stat-tr-sehirler",
     "crossfit-open",
     "stat-takvim-ulkeler"
-  ]
+  ],
+  "fails": {}
 }

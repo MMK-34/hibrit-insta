@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "key": "athensthrowdown",
+    "type": "gecmis",
+    "eventName": "Athens Throwdown",
+    "officialSite": "https://www.athensthrowdown.com",
+    "category": "crossfit",
+    "createdDay": "2026-11-08",
+    "due": "2026-11-12",
+    "status": "bekliyor"
+  },
+  {
+    "key": "athensthrowdown",
+    "type": "wodlar",
+    "eventName": "Athens Throwdown",
+    "officialSite": "https://www.athensthrowdown.com",
+    "category": "crossfit",
+    "createdDay": "2026-11-08",
+    "due": "2026-11-17",
+    "status": "bekliyor"
+  }
+]

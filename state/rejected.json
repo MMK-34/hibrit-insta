@@ -261,5 +261,57 @@
         "note": "Format sayıları kaynakla uyumlu: 8x1 km, 1000 m, 50 m, 80 m, 200 m, 100 m ve 100 tekrar. Open ağırlıkları da doğru (152/102, 103/78, 24/16, 20/10, 6/4 kg); Red Bull da bunları doğruluyor. Yüzde 60-70 ve 1-2 hafta bilgisi kaynakta var. Sorun karma takım yükünde: The Gym Group karma Relay'de herkesin erkek Open ağırlığı kullandığını yazıyor. Red Bull ise karma Relay'de erkeklerin erkek, kadınların kadın ağırlıklarını kullandığını söylüyor. Postta 'karma yarışlarda erkek Open ağırlıkları geçerli' ifadesi Relay cümlesinin hemen arkasında genel kural gibi duruyor. Kaynaklar çeliştiği için resmî HYROX kural kitabından doğrulanmalı. Doğrulanamazsa bu cümle karma Doubles ile sınırlanmalı, karma Relay iddiası çıkarılmalı."
       }
     ]
+  },
+  {
+    "at": "2026-11-08T12:18:55.443Z",
+    "title": "Adana Varda Ultra Trail'de 973 sporcu yarışı tamamladı",
+    "url": "https://www.medyayenigun.net/foto/29123329/adana-varda-ultra-trail-sonuclari",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-opus-5-5",
+        "item": "kaynak_satiri",
+        "note": "Kaynak satırında 'Medya Yenigün Gazetesi' yazıyor, ama verilen medyayenigun.net bağlantısı başka bir habere ait. Adres adına göre konu 'Adana Varda Ultra Trail sonuçları', yani Gran Fondo ile ilgisi yok. Sayfa açılamadı (url_not_accessible), bu yüzden posttaki bilgiler orada doğrulanamadı. Postun tüm içeriği aksiyon.com.tr haberine dayanıyor. Doğrusu: 'Kaynak: Aksiyon' (aksiyon.com.tr)."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-08T12:21:49.229Z",
+    "title": "Adana Varda Ultra Trail'de 973 sporcu yarışı tamamladı",
+    "url": "https://www.medyayenigun.net/foto/29123329/adana-varda-ultra-trail-sonuclari",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-08T12:24:36.916Z",
+    "title": "Magnus Ditlev Sets New Iron-Distance World Best With 7:19:17 at Ironman Florida",
+    "url": "https://www.triathlete.com/culture/news/magnus-ditlev-new-ironman-world-best-ironman-florida/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "metin çok uzun, kısalt (yarım cümle olmasın): slayt 1 subtitle 182>160"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-08T12:27:08.075Z",
+    "title": "American athlete makes history by running over 1,000 km in 6 days",
+    "url": "https://e.vnexpress.net/news/sports/marathon/american-athlete-makes-history-by-running-over-1-000-km-in-6-days-5119177.html",
+    "kind": "arastirma",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

@@ -102,7 +102,7 @@ function photoLayer(photo, mode) {
 /** Ortak çerçeve: foto, sol üstte logo, altta @hesap + sağda bilgi. Sağ üst köşe boş (IG sayacı). */
 function frame({ inner, footerRight, photo, photoMode, logo }) {
   const bg = photo
-    ? photoLayer(photo, photoMode) + (photo.credit ? `<div style="position:absolute;right:${PAD}px;bottom:24px;display:flex;font-family:Body;font-size:15px;color:${C.text3}">${esc(photo.credit)}</div>` : "")
+    ? photoLayer(photo, photoMode)
     : "";
   return `<div style="display:flex;flex-direction:column;width:${W}px;height:${H}px;background:${C.ink};position:relative;font-family:Body;color:${C.paper}">
     ${bg}
@@ -124,7 +124,6 @@ function tag(ctx, extra) {
 }
 
 const head = (text, size) => `<div style="display:flex;font-family:Head;font-weight:800;font-size:${size}px;line-height:0.98;color:${C.paper}">${esc(trUpper(text))}</div>`;
-const src = (ctx) => (ctx.source ? `KAYNAK: ${trUpper(ctx.source)}` : "");
 
 // ---- Tablo slaytı yerleşimi: sütun genişliği + punto, iç alana (yükseklik/genişlik) sığacak şekilde hesaplanır
 const TBL_W = W - 2 * PAD;            // 900px
@@ -208,7 +207,7 @@ const T = {
       ${s.subtitle ? `<div style="display:flex;font-size:36px;line-height:1.35;color:${C.text2};margin-top:30px">${esc(s.subtitle)}</div>` : ""}
     </div>` }),
 
-  text: (s, ctx) => frame({ ...ctx, photoMode: "band", footerRight: src(ctx), inner: `
+  text: (s, ctx) => frame({ ...ctx, photoMode: "band", footerRight: ctx.date, inner: `
     <div style="display:flex;flex-direction:column;justify-content:${ctx.photo ? "flex-end" : "center"};flex:1;padding-bottom:${ctx.photo ? 52 : 0}px">
       ${tag(ctx)}
       ${head(s.title, headSize(s.title, 100))}
@@ -220,14 +219,14 @@ const T = {
       </div>
     </div>` }),
 
-  stat: (s, ctx) => frame({ ...ctx, photoMode: "dim", footerRight: src(ctx), inner: `
+  stat: (s, ctx) => frame({ ...ctx, photoMode: "dim", footerRight: ctx.date, inner: `
     <div style="display:flex;flex-direction:column;justify-content:center;flex:1">
       ${tag(ctx, s.label)}
       <div style="display:flex;font-family:Head;font-weight:800;font-size:${s.value.length > 7 ? 220 : 300}px;line-height:0.9;color:${C.paper}">${esc(s.value)}</div>
       ${s.body ? `<div style="display:flex;font-size:36px;line-height:1.4;color:${C.text2};margin-top:40px">${esc(s.body)}</div>` : ""}
     </div>` }),
 
-  table: (s, ctx) => frame({ ...ctx, photoMode: "dim", footerRight: src(ctx), inner: `
+  table: (s, ctx) => frame({ ...ctx, photoMode: "dim", footerRight: ctx.date, inner: `
     <div style="display:flex;flex-direction:column;justify-content:center;flex:1">
       ${tag(ctx, s.label)}
       ${head(s.title ?? "", tableLayout(s).titleSize)}
@@ -243,7 +242,6 @@ const T = {
       <div style="display:flex;gap:16px;margin-top:60px">
         ${["KAYDET", "PAYLAŞ", "TAKİP ET"].map((x, i) => `<div style="display:flex;border:2px solid ${i === 2 ? C.red : C.paper};background:${i === 2 ? C.red : "transparent"};padding:16px 26px;font-family:Body;font-weight:700;font-size:24px;letter-spacing:2px;color:${C.paper}">${x}</div>`).join("")}
       </div>
-      ${ctx.source ? `<div style="display:flex;font-family:Body;font-weight:600;font-size:20px;letter-spacing:2px;color:${C.text3};margin-top:50px">${esc(src(ctx))}</div>` : ""}
     </div>` }),
 };
 

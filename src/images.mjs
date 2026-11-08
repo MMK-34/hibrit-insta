@@ -137,7 +137,7 @@ async function pexels(q, n) {
 }
 
 async function openverse(q, n) {
-  const j = await getJson(`https://api.openverse.org/v1/images/?q=${encodeURIComponent(q)}&license_type=commercial,modification&size=large&page_size=${Math.max(n * 3, 10)}&mature=false`);
+  const j = await getJson(`https://api.openverse.org/v1/images/?q=${encodeURIComponent(q)}&license=cc0,pdm&size=large&page_size=${Math.max(n * 3, 10)}&mature=false`);
   const BLOCK = /rawpixel|department of defense|u\.s\. army|army|navy|air force|marine|military|wheelchair|paralymp/i;
   return (j?.results ?? []).filter((r) => r.url && (r.width ?? 0) >= 900 && !BLOCK.test(`${r.creator} ${r.title} ${r.source} ${r.provider} ${r.url}`)).map((r) => ({
     id: `ov:${r.id}`, url: r.url, alt: r.title ?? "", license: `${String(r.license).toUpperCase()} ${r.license_version ?? ""}`.trim(),

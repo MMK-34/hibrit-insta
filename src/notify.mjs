@@ -18,12 +18,11 @@ async function gh(method, path, body) {
 async function githubReport(text) {
   const repo = process.env.GH_REPO;
   if (!repo || !process.env.GH_TOKEN || process.argv.includes("--dry")) return;
-  const list = await gh("GET", `/repos/${repo}/issues?state=open&per_page=50&creator=app%2Fgithub-actions`) ?? [];
-  let issue = list.find((i) => i.title === REPORT_TITLE);
-  if (!issue) {
-    const all = await gh("GET", `/repos/${repo}/issues?state=open&per_page=100`) ?? [];
-    issue = all.find((i) => i.title === REPORT_TITLE);
-  }
+  // Yalnızca depo sahibinin ya da botun açtığı rapor issue'su kullanılır (herkese açık depoda başkasının açtığı aynı başlıklı issue'ya yazılmaz)
+  const owner = repo.split("/")[0].toLowerCase();
+  const trusted = (i) => i.title === REPORT_TITLE && !i.pull_request && [owner, "github-actions[bot]"].includes(String(i.user?.login ?? "").toLowerCase());
+  const all = await gh("GET", `/repos/${repo}/issues?state=open&per_page=100`) ?? [];
+  let issue = all.filter(trusted).sort((a, b) => a.number - b.number)[0];
   if (!issue) issue = await gh("POST", `/repos/${repo}/issues`, { title: REPORT_TITLE, body: "Hibrit Portal botunun günlük özetleri ve hata bildirimleri bu başlık altında toplanır. GitHub her yeni yorumda e-posta gönderir." });
   if (!issue?.number) return;
   const stamp = new Date().toLocaleString("tr-TR", { timeZone: "Europe/Istanbul" });

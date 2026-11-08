@@ -37,12 +37,15 @@ export async function push(text, { title = "Hibrit Portal", level = "info", clic
   const topic = process.env.NTFY_TOPIC;
   if (!topic || !/^[A-Za-z0-9_-]{16,64}$/.test(topic) || process.argv.includes("--dry")) return;
   const tags = { info: "hourglass_flowing_sand", ok: "white_check_mark", warn: "warning", approve: "bell" }[level] ?? "information_source";
-  const priority = { info: "2", ok: "3", warn: "5", approve: "4" }[level] ?? "3";
+  const priority = { info: "3", ok: "3", warn: "5", approve: "4" }[level] ?? "3";
   try {
-    // Başlıklar HTTP header'ında: yalnızca ASCII güvenli değil, bu yüzden RFC 2047 yerine JSON gövdeli yayın kullanılır
-    await fetch("https://ntfy.sh/", {
-      method: "POST", headers: { "content-type": "application/json" },
-      body: JSON.stringify({ topic, title, message: String(text).slice(0, 3500), tags: [tags], priority: Number(priority), ...(/^https:\/\//.test(click) ? { click } : {}) }),
+    // Doğrudan kanal adresine yayın (iPhone'da yalnızca bu biçim anlık bildirim olarak düştü; JSON gövdeli yayın düşmedi).
+    // Türkçe başlık HTTP header'ında RFC 2047 (UTF-8, base64) ile kodlanır.
+    const enc = (s) => `=?UTF-8?B?${Buffer.from(String(s), "utf8").toString("base64")}?=`;
+    await fetch(`https://ntfy.sh/${topic}`, {
+      method: "POST",
+      headers: { Title: enc(title), Priority: priority, Tags: tags, ...(/^https:\/\//.test(click) ? { Click: click } : {}) },
+      body: String(text).slice(0, 3500),
       signal: AbortSignal.timeout(10000),
     });
   } catch { /* bildirim hatası paylaşımı durdurmaz */ }

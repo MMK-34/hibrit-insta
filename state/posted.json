@@ -201,12 +201,32 @@
         "https://news.google.com/rss/articles/CBMingFBVV95cUxQMmp5M1d3UUNaTWhNQkZLQXVzUGotMU92RXh6b21IWGxCNlBFd3h0LVhOd3hMalhhTlZXd0VEVGVRektoZnhqWXp0bURSMG5uZXRWZEJvOUVMRzlDSHM1S2ZWRTUtTXBma3Y5NnV2djI0NjRiMjRTeHotUEUzM2Z5ODltcXZsVkgyc3hNYk50MVRZZnlLY09OWGdWX1FjZ9IBnAFBVV95cUxQR1p5ZjEzQUg5aXZrd1gzVXJ1QWtlT3FmdTdSMzhyWWFRdWg4ZFF1cXBXVDJCdjN3YVZnVWZnQUJXR3I4d1lhZHVIeloxWkxzVGRESlVCV3dmbkpPczhPQnZRMU1TSXJteUJXRlFmWHhmOUJ5d2N0Qm5VeGJCaHlFVjJ4blNGazRvbWw0a2ZFdzFzbHBQeU9XLURPOWo"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-08",
+      "ids": [
+        "https://www.halikarnashaber.com/haber/9336/kusadasinda-crossfit-sampiyonasi-basladi",
+        "https://www.aksiyon.com.tr/kusadasi-nda-sinirlari-zorlayan-uluslararasi-crossfit-bulusmasi-390166"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:b403b0483c6c7c95",
+        "event:6a11774738562c53"
+      ],
+      "media": "17906298489597754",
+      "permalink": "https://www.instagram.com/p/DffaKS9DPZ4/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-08/mw865xss/01.jpg",
+      "title": "Kuşadası’nda CrossFit Şampiyonası başladı",
+      "headline": "Uluslararası CrossFit Şampiyonası Kuşadası'nda başladı",
+      "eventName": "Uluslararası CrossFit Şampiyonası",
+      "at": "2026-11-08T18:33:10.504Z",
+      "story": "17904310737377432"
     }
   ],
   "daily": {
     "2026-11-08": {
-      "drafts": 18,
-      "approved": 5,
+      "drafts": 19,
+      "approved": 6,
       "rejected": 10,
       "summarySent": true
     }

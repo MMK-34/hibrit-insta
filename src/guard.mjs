@@ -16,7 +16,8 @@ const URL_RE = new RegExp(
 // Temizlikten sonra kalan link benzeri ifade (harfle başlayan etiket + nokta/[.]/(.)/。 + boşluksuz, TAMAMI küçük harf 2+ harf):
 // varsa post REDDEDİLİR (silinmez). "St.Louis", "açıldı.Ücret" gibi büyük harfle devam eden geçişler etkilenmez.
 // Büyük/küçük harf fark etmeksizin beyaz listedeki TLD ile biten alan adı (harfle başlayan etiket): temizlikten sonra kalırsa ret
-const DOMAIN_ANYCASE_RE = new RegExp(String.raw`(?<![\p{L}\p{N}\-.])\p{L}[\p{L}\p{N}\-]+${DOT}(?:${TLDS})(?![\p{L}\p{N}\-])`, "iu");
+// Alt alan adları dâhil ("SUB.HYROX.COM"); ilk etiket harfle başlar ("Elite 15.Me" gibi sayı + kısaltma geçişleri etkilenmez)
+const DOMAIN_ANYCASE_RE = new RegExp(String.raw`(?<![\p{L}\p{N}\-.])\p{L}[\p{L}\p{N}\-]*(?:${DOT}${LABEL})*${DOT}(?:${TLDS})(?![\p{L}\p{N}\-])`, "iu");
 const LINKISH_RE =/(?<![\p{L}\p{N}\-.])[\p{L}][\p{L}\p{N}\-]+(?:\.|\[\.\]|\(\.\)|。)\p{Ll}{2,}(?![\p{L}\p{N}])/u;
 const MAX_SLIDES = 10, MAX_TAGS = 12, MAX_TAG_LEN = 30, MAX_CAPTION = 2200;
 const MENTION_RE = /(^|\s)@[\w.]{2,30}/g;

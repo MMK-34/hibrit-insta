@@ -326,5 +326,18 @@
         "note": "Orijinal kaynak açılamadı (paywall/403)"
       }
     ]
+  },
+  {
+    "at": "2026-11-08T16:46:29.727Z",
+    "title": "Varda Ultra Trail’de 11 ülkeden 1200 sporcu Toroslar’da yarıştı",
+    "url": "https://www.bolgegundemi.com/adana/varda-ultra-trailde-11-ulkeden-1200-sporcu-toroslarda-yaristi-230731.html",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "gorsel",
+        "note": "Fotoğraf 1, karla kaplı zirveye yürüyen dağcıları gösteriyor. Bu görsel, Adana Toroslar'daki patika koşusuyla ilgili değil ve yanıltıcı. Fotoğraf 2 ve 3 uygun, üçü de Pexels lisanslı."
+      }
+    ]
   }
 ]

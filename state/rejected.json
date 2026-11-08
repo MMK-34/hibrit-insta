@@ -465,5 +465,43 @@
         "note": "Kapanıştaki soru ('takviminize uyuyor mu?') etkileşim için eklenmiş, bilgi taşımıyor ve tanıtım havasını güçlendiriyor."
       }
     ]
+  },
+  {
+    "at": "2026-11-08T18:53:51.796Z",
+    "title": "Kuşadası’nda CrossFit Şampiyonası başladı",
+    "url": "https://www.halikarnashaber.com/haber/9336/kusadasinda-crossfit-sampiyonasi-basladi",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "yer",
+        "note": "Kuşadası/Aydın doğru. \"Atlantique Holiday Club\" mekân adı Halikarnas Haber, Aksiyon ve aramada çıkan diğer kaynaklarda geçmiyor, bu yüzden doğrulanamadı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "resmi_ad",
+        "note": "Etkinlik adı resmî kayda uygun. Ancak \"CrossFit Alsancak\" organizatör adı, \"2014'te kurulan\" ifadesi ve \"8. kez\" bilgisi kaynaklarda yok. Haberlerde kulüp \"Alsancak Team Kulübü\" olarak geçiyor."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "sayilar",
+        "note": "12 ülke, yaklaşık 500 sporcu, 2017'den beri ve 950 EUR ücret doğru. \"2014'te kurulan\" ve \"bu yıl 8. kez\" kaynaklarda yok. 2017'den 2026'ya düzenlenen kaç yarış olduğu da kaynaklarda belirtilmiyor."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kategori",
+        "note": "Post Beginner, Scaled ve Advanced kategori adlarını hem slaytta hem caption'da kullanıyor. Bu madde kategori adı geçmesine izin vermiyor."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "sayilar",
+        "note": "12 ülke, yaklaşık 500 sporcu, 950 EUR ve 2017/2014 yılları doğrulandı. Ancak caption'daki 'bu yıl 8. kez yapılıyor' bilgisi hiçbir kaynakta geçmiyor. 2017'den beri her yıl yapıldıysa 2026 10. yarış olur. İfade kaldırılmalı."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "kategori",
+        "note": "Postta 'Beginner, Scaled ve Advanced' kategori adları geçiyor: 3. slaytta ve caption'da. Kategori adı hiç geçmemeli, bu ifadeler kaldırılmalı."
+      }
+    ]
   }
 ]

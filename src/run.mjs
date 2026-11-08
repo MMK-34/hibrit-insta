@@ -5,7 +5,7 @@
 import "dotenv/config";
 import fs from "node:fs";
 import path from "node:path";
-import { collect, articleText, upcomingEvents, resolveNewsUrl } from "./collect.mjs";
+import { collect, articleText, upcomingEvents, resolveNewsUrl, courseCandidates } from "./collect.mjs";
 import { findImages } from "./images.mjs";
 import { selectNews, writePost, reviewPost } from "./plan.mjs";
 import { renderPost, renderStory } from "./render.mjs";
@@ -163,7 +163,7 @@ async function main() {
   let items = [], picks = [];
   try {
     const { items: news, report } = await collect();
-    items = [...news, ...(await upcomingEvents())];
+    items = [...news, ...(await upcomingEvents()), ...(await courseCandidates())];
     log(`${items.length} aday`, JSON.stringify(report));
     // Tekrar önleme: son ~30 paylaşımın başlıkları seçime verilir; takvim adayları takip serisi / son başlıklarla eşleşirse elenir
     // IG başlıkları sona eklenir (selectNews son 30'u kullanır), aynı/eşdeğer başlık iki kez girmez
@@ -204,10 +204,10 @@ async function main() {
       const srcItems = (pick.ids ?? []).map((id) => items.find((i) => i.id === id)).filter(Boolean).slice(0, 3);
       if (!srcItems.length) continue;
       // Google News bağlantısı yayıncının asıl adresine çözülür (yazar tam metni okur, doğrulayıcı sayfayı açabilir); id değişmez (tekrar önleme)
-      for (const s of srcItems) if (!s.id.startsWith("cal:")) { s.url = await resolveNewsUrl(s.url); s.text = await articleText(s.url); }
+      for (const s of srcItems) if (!s.id.startsWith("cal:") && !s.id.startsWith("cfcourse:")) { s.url = await resolveNewsUrl(s.url); s.text = await articleText(s.url); }
       // Kaynak adı: takvim kayıtlarında organizatör sitesi
       // Takvim kaydı: alan adı yazılmaz (guard link sayar); etkinliğin resmî sitesi olarak belirtilir
-      const sourceName = srcItems[0].id.startsWith("cal:") ? (srcItems[0].eventName ? `${String(srcItems[0].eventName).replace(/s+(20dd|kayıt.*|online.*|qualifier.*|(.*))$/i, "").replace(/s+20dd.*$/, "").trim()} resmî sitesi` : "Organizatörün resmî sitesi") : srcItems[0].source;
+      const sourceName = srcItems[0].id.startsWith("cfcourse:") ? "CrossFit resmî kurs takvimi" : srcItems[0].id.startsWith("cal:") ? (srcItems[0].eventName ? `${String(srcItems[0].eventName).replace(/s+(20dd|kayıt.*|online.*|qualifier.*|(.*))$/i, "").replace(/s+20dd.*$/, "").trim()} resmî sitesi` : "Organizatörün resmî sitesi") : srcItems[0].source;
 
       const ready = await prepareVerified(pick, srcItems, sourceName);
       processed++;
@@ -301,7 +301,7 @@ async function publishSeries({ s, key, ctx }) {
     if (!g.ok) { log("Seri süzgeçten geçmedi:", g.reason); feedback = g.reason; continue; }
     const photos = await findImages(g.post.imageQueries ?? s.imageQueries, Math.min(g.post.slides.length, 3), s.cat ?? "genel", usedPhotos);
     if (!photos.length) { log("Seri: foto yok."); return false; }
-    const gate = await verifyGate(g.post, { sourceUrls: w.sourceUrls, photos, sourceName, rowEvidence: w.post.evidence, budget: { webSearch: 6, webFetch: 16 }, skipItems: ["kaynak_satiri"] });
+    const gate = await verifyGate(g.post, { sourceUrls: w.sourceUrls, photos, sourceName, referenceData: w.referenceData ?? "", rowEvidence: w.post.evidence, budget: { webSearch: 6, webFetch: 16 }, skipItems: ["kaynak_satiri"] });
     if (gate.ok) {
       bump("approved");
       const res = await renderAndPublish({ post: g.post, photos }, { category: s.cat ?? "genel", sourceName, ids: [`seri:${key}`], kind: "seri", title: g.post.slides[0]?.title, srcUrls: w.sourceUrls, onPublished: (r) => { st.done = true; st.media = r.id; saveState(); } });

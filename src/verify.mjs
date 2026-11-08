@@ -76,7 +76,7 @@ export async function verifyGate(post, { sourceUrls, photos, sourceName, referen
   // Doğrulama web_fetch/web_search ister; yalnızca Claude (Anthropic) yapabilir. Gemini ile kapı her zaman kapalı.
   if (!process.env.ANTHROPIC_API_KEY) return { ok: false, fails: [{ model: "-", item: "hata", note: "ANTHROPIC_API_KEY yok: doğrulama (web erişimi) yapılamaz, yayın yok" }], results: [] };
   const e = (t = "") => String(t).replace(/</g, "‹").replace(/>/g, "›");
-  const ref = referenceData ? `SİSTEM VERİSİ (güvenilir; Hibrit Portal yarışma arşivinden kodla hesaplandı). Posttaki sayılar BU VERİYLE birebir uyuşuyorsa "sayilar" maddesi pass olur; web'de aynı istatistiği araman gerekmez, ama arşivdeki etkinliklerin varlığını ve adlarını kaynak URL'lerinden kontrol et:
+  const ref = referenceData ? `SİSTEM VERİSİ (güvenilir; sistem tarafından Hibrit Portal arşivinden hesaplandı ya da resmî bir kaynaktan, ör. resmî CrossFit kurs takviminden, doğrudan çekildi). Posttaki sayılar, tarihler, şehirler ve adlar BU VERİYLE birebir uyuşuyorsa ilgili maddeler (sayilar, tarih, yer, resmi_ad) pass olur; aynı bilgiyi web'de ayrıca araman gerekmez. Bu veride olmayan her bilgiyi normal şekilde denetle:
 ${e(referenceData)}
 
 ` : "";

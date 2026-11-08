@@ -130,3 +130,38 @@ export async function upcomingEvents() {
     text: "",
   }));
 }
+
+// ---- CrossFit resmî kurs takvimi (Level 1, Level 2 vb.): cms-api.crossfit.com/seminars/geojson ----
+// Türkiye ve Türkiye'den kolay gidilen yakın ülkeler. Yalnızca aktif, herkese açık, yüz yüze ve ileri tarihli kurslar.
+const COURSE_COUNTRIES = { TR: "Türkiye", GR: "Yunanistan", BG: "Bulgaristan", CY: "Kıbrıs", AE: "BAE", GE: "Gürcistan", AZ: "Azerbaycan" };
+const CITY_TR = { Athens: "Atina", Thessaloniki: "Selanik", Dubai: "Dubai", "Abu Dhabi": "Abu Dabi", Tbilisi: "Tiflis", Baku: "Bakü", Sofia: "Sofya", Nicosia: "Lefkoşa", Limassol: "Limasol", Istanbul: "İstanbul", Izmir: "İzmir", Ankara: "Ankara", Antalya: "Antalya" };
+export async function crossfitCourses() {
+  try {
+    const r = await safeGet("https://cms-api.crossfit.com/seminars/geojson?expand=location", { timeout: 30000, maxBytes: 8e6, headers: { "user-agent": UA } });
+    if (!r?.ok) return [];
+    const j = JSON.parse(r.buf.toString("utf8"));
+    const now = Date.now();
+    return (j?.seminars?.features ?? []).map((f) => f.properties ?? {})
+      .filter((p) => COURSE_COUNTRIES[p.country] && p.status === "Active" && !p.is_private && !p.is_online && p.start_date && Date.parse(p.start_date) > now)
+      .map((p) => ({
+        id: p.id, course: String(p.name ?? "").split(",")[0].replace(/s+-s+[^-]+$/, "").trim(), cityEn: p.city, city: CITY_TR[p.city] ?? p.city, country: p.country, countryTr: COURSE_COUNTRIES[p.country],
+        host: String(p.location_name ?? "").trim(), start: p.start_date.slice(0, 10), end: String(p.end_date ?? p.start_date).slice(0, 10),
+        url: /^https:\/\//.test(p.seminar_url ?? "") ? p.seminar_url : "https://www.crossfit.com/courses-near-you", price: p.price ?? "", language: p.language ?? "",
+        published: p.date_published ?? "", waitlisted: !!p.is_waitlisted,
+      }))
+      .sort((a, b) => a.start.localeCompare(b.start));
+  } catch { return []; }
+}
+
+/** Son 10 günde yayımlanan Türkiye/yakın ülke CrossFit kursları: duyuru adayı (Türkiye'dekiler öncelikli). */
+export async function courseCandidates() {
+  const list = await crossfitCourses();
+  const cutoff = Date.now() - 10 * 864e5;
+  return list.filter((c) => Date.parse(c.published) > cutoff).map((c) => ({
+    id: `cfcourse:${c.id}`, eventName: `${c.course} ${c.city}`,
+    title: `${c.course}: ${c.city} (${c.countryTr}), ${c.start}${c.end !== c.start ? ` - ${c.end}` : ""}, ev sahibi ${c.host}`,
+    url: c.url, source: "CrossFit kurs takvimi", feedCat: "crossfit", date: new Date().toISOString(), ageH: 0,
+    snippet: `Resmî CrossFit kurs takvimine eklenen kurs. Kurs: ${c.course}. Şehir: ${c.city}, ${c.countryTr}. Tarih: ${c.start}${c.end !== c.start ? ` - ${c.end}` : ""}. Ev sahibi salon: ${c.host}. Ücret: ${c.price || "-"}. Dil: ${c.language || "-"}. Kayıt: ${c.url}`,
+    text: "",
+  }));
+}

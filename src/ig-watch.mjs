@@ -25,7 +25,7 @@ export const IG_WATCH_GLOBAL = [
   "fallseriesthrowdown", "germanthrowdown", "theamsterdamthrowdown", "lxgameslisboa", "ubl_italianchampionship", "uaestormgames", "fareastthrowdown",
 ];
 // Salonlar (box): kendi yarışmalarını düzenleyen salonlar. Çoğu paylaşım antrenman olduğu için yalnızca yarışma geçen paylaşımlar aday olur.
-export const IG_WATCH_BOX = [];
+export const IG_WATCH_BOX = ["wolfhavencf"]; // yalnızca açık katılımlı yarışma düzenleyen salonlar (kullanıcı kararı: salon içi yarışmalar duyurulmaz)
 export const IG_WATCH = [...IG_WATCH_TR, ...IG_WATCH_GLOBAL, ...IG_WATCH_BOX];
 const COMP_RE = /yar[ıi][sş]ma|yar[ıi][sş]|competition|throwdown|games|challenge|championship|şampiyona|in-house|inhouse|kay[ıi]t|registration|qualifier|ön eleme|leaderboard/i;
 

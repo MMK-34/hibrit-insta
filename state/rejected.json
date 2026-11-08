@@ -313,5 +313,18 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-08T15:45:20.658Z",
+    "title": "Doğuştan Sol Kolu Olmayan Tuğçe Melis Eminoğlu, CrossFit Yarışmasında Nasıl Başarı Elde Etti",
+    "url": "https://www.iscihaber.net/gundem/dogustan-sol-kolu-olmayan-tugce-melis-eminoglu-crossfit-yarismasinda-nasil-basari-elde-etti/279893",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      }
+    ]
   }
 ]

@@ -110,13 +110,22 @@
       "eventName": "UCI Gran Fondo World Series Antalya",
       "at": "2026-11-08T14:46:06.207Z",
       "story": "18159455869517027"
+    },
+    {
+      "day": "2026-11-08",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiywFBVV95cUxPblhERFpBN2xWbERQY0s0TmxUV19ZT0ZCQXRZZGZRa1FxZUJVOFh4TTVKMXR0OGtsNjlleWdSX25wZ0FFb0tJSlFYWnlqUVZoNndZWGc3NjhTQndpNFl0TnNjRFdDUVB3MGJFdkl1RkUxZWViVmZYTFhxcHZ6RXdENTN3VDZVUXA2Rm9yTWtVbjhEVDdpcmFrUWM2Snh2SWduUnZmeFI3S0Q2QWliLWRuNkpkZHQ3bTlFVEVXYUdQWWxnaVRKaWFfbkdGaw",
+        "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNczZSZEItZ1VJaGc5bWZzODVnMnJETkVSYzVDd1NIeDVwQXM0emtNeUtjcjVGLXZ2bU5iSjdxVURTMVo3ajJmVVJ6TVBMOS1JUTllUUNJaWd5d051eXRWc2h2bmU2dmFFQmVWaFlzbnJMejA5dWtiWHBqaDUxenlaUWRFemZNZ2JtNzln",
+        "https://news.google.com/rss/articles/CBMinAFBVV95cUxOTE92SGJKTWJLaGtPa05kOFVBSnBHU25OZjkxUXBvVEhld04xOHVxUGlWVHVWNlFLM0V5WUI3YnpSRjBqV2U4R1RrY1AyWEVJYjN2X0NGeHRBTTdNWFpZeUpQLVpwenZSWWM5RGtGUi00RTNRSTVaYW95VFhBYUZ0cmE4RWRhNGluanNlVWZFN1hnX3JBdzhmU2ZMLWfSAZwBQVVfeXFMTkxPdkhiSk1iS2hrT2tOZDhVQUpwR1NuTmY5MVFwb1RIZXdOMTh1cVBpVlR1VjZRSzNFeVlCN2J6UkYwaldlOEdUa2NQMlhFSWIzdl9DRnh0QU03TVhaWXlKUC1acHp2UlljOURrRlItNEUzUUk1WmFveVRYQWFGdHJhOEVkYTRpbmpzZVVmRTdYZ19yQXc4ZlNmTC1n"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
     "2026-11-08": {
-      "drafts": 9,
+      "drafts": 10,
       "approved": 2,
-      "rejected": 4
+      "rejected": 5
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -126,5 +135,5 @@
     "at": "2026-11-08T12:01:48.087Z"
   },
   "series": {},
-  "lastRunAt": "2026-11-08T14:41:51.995Z"
+  "lastRunAt": "2026-11-08T15:41:53.385Z"
 }

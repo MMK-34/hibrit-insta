@@ -4,7 +4,8 @@
 // Adres sınıflandırması net.BlockList ile yapılır (IPv4, IPv6 ve IPv4'e eşlenmiş IPv6 biçimleri dahil).
 import dns from "node:dns";
 import net from "node:net";
-import { Agent } from "undici";
+// fetch da undici paketinden: Node 22 yerleşik fetch (undici 6) undici 8 Agent ile uyumsuz, tüm istekler düşüyordu
+import { Agent, fetch } from "undici";
 
 const BLOCK = new net.BlockList();
 for (const [a, p] of [

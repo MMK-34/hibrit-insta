@@ -274,8 +274,7 @@ async function prepareVerified(pick, srcItems, sourceName) {
     const photos = await findImages(g.post.imageQueries ?? [], Math.min(g.post.slides.length, 4), pick.category, usedPhotos);
     if (!photos.length) { log(`Foto bulunamadı (kategori ${pick.category}, sorgular: ${(g.post.imageQueries ?? []).join(" | ")}).`); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
-    // Statik seri (haftanın sorusu): olgu iddiası yok, doğrulayıcıya gerek yok
-    const gate = s.static ? { ok: true, fails: [] } : await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName });
+    const gate = await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName });
     if (gate.ok) { log(`Doğrulama geçti (deneme ${attempt}).`); bump("approved"); return { post: g.post, photos, sourceName: srcName }; }
     lastFails = gate.fails;
     feedback = failText(gate.fails);

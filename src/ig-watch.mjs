@@ -96,7 +96,9 @@ export async function verifiedEventHandle(handle, eventName = "") {
     const j = await fetch(`https://graph.facebook.com/v23.0/${id}?fields=${encodeURIComponent(f)}&access_token=${t}`, { signal: AbortSignal.timeout(15000) }).then((r) => r.json());
     const b = j?.business_discovery;
     if (!b?.username) return "";
-    const curated = [...IG_WATCH, ...String(process.env.IG_WATCH ?? "").split(/[s,]+/)].map((x) => x.replace(/^@/, "").toLowerCase());
+    // igWatchCandidates ile aynı ayrıştırma: boşluk/virgül, @ temizliği, geçerli kullanıcı adı denetimi
+    const curated = [...IG_WATCH, ...String(process.env.IG_WATCH ?? "").split(/[\s,]+/)]
+      .map((x) => String(x).replace(/^@/, "").trim()).filter((x) => HANDLE.test(x)).map((x) => x.toLowerCase());
     if (curated.includes(b.username.toLowerCase())) return b.username;
     const user = norm(b.username).replace(/[^a-z0-9]/g, "");
     const words = norm(eventName).split(/[^a-z0-9]+/).filter((w) => w.length >= 5 && !GENERIC.has(w));

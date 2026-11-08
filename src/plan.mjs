@@ -140,7 +140,7 @@ Yerel ve amatör yarışlar: Anadolu'daki 150 kişilik bir yarışın kayıt duy
    Kayıt açılışı, tarih/yer duyurusu, ön eleme, sonuçlar, Türk sporcuların başarıları.
 2. Kapsamdaki yarışlardan sonuçlar ve topluluğu ilgilendiren büyük gelişmeler: Türk sporcuların HYROX, CrossFit, ATHX, maraton, trail/ultra ve triatlon yarışlarındaki dereceleri; HYROX ve ATHX'te yeni şehir/yarış duyuruları; CrossFit Open ve Games, HYROX Dünya Şampiyonası, büyük maratonlar (Majors) gibi topluluğun takip ettiği etkinlikler; kural, format, kategori ve takvim değişiklikleri (7-9).
 3. Sporla ilgili sağlam bilimsel araştırmalar: dayanıklılık, kuvvet, toparlanma, beslenme, yaralanma (6-8). Tür: "arastirma".
-4. Dünyadan ilginç yarış haberleri: yeni yarış formatları, sıra dışı amatör sporcu hikâyeleri, Türkiye'den gidilebilecek ilginç yarışlar (5-7).
+4. Yarış içerikleri ve hikâyeler (6-8): açıklanan yarış workout'ları, parkur ve istasyon ayrıntıları, kategori ve kural bilgisi; kapsamdaki yarışlardan GERÇEK başarı ve duygusal hikâyeler (ilk maratonunu bitiren, zorlu bir süreçten sonra yarışa dönen, yaşına rağmen podyuma çıkan amatör sporcu gibi). Tür: "hikaye". Hikâye yalnızca güvenilir bir kaynakta (organizatör, sporcunun kendi açıklaması, ulusal basın) anlatıldığı kadarıyla aktarılır; uydurma, süsleme, dram abartısı yok. Türkiye'den gidilebilecek ilginç yeni yarışlar da bu gruptadır.
 5. Bilgi postu: yarışa hazırlanan amatöre doğrudan yarayan, kaynağı sağlam içerik (5-6). Tür: "bilgi". Günde 1-2 tane yeterli. Örnek kalıplar: "İlk 10K koşunuzdan önce yapmanız gerekenler", "İlk CrossFit yarışmanızdan önce bilmeniz gerekenler", "İlk HYROX'unuz için yarış günü kontrol listesi", "Trail koşusunda zorunlu malzeme". Yarış duyurularında da okura somut yarış sun: "Uludağ'da 5K koşusu, kayıtlar açık", "İznik'te 10K", "HYROX Istanbul ve HYROX Izmir tarihleri açıklandı".
 
 Türk okur ve kültür (puanlamada belirleyici):
@@ -150,7 +150,7 @@ Türk okur ve kültür (puanlamada belirleyici):
 
 Ele:
 - Reklam, advertorial, ürün tanıtımı, indirim haberleri.
-- Ölüm, kaza, hastalık, cenaze, suç ve adli haberler (sporcu ya da eski sporcu olsa bile); bunlar spor haberi değildir, seçme.
+- Ölüm, kaza, cenaze, suç ve adli haberler ile hastalık/sakatlık haberleri (sporcu ya da eski sporcu olsa bile); bunlar spor haberi değildir, seçme. İstisna: sporcunun kendisinin ya da organizatörün kamuya anlattığı, zorluğu aşıp yarışa dönme hikâyesi "hikaye" olarak seçilebilir; özel sağlık ayrıntısı verilmez.
 - Konu dışı sonuçlar ("seçim maratonu", "LGS maratonu", "duruşma maratonu" gibi mecazlar).
 - İçi boş klikbait SEO yazıları ("yaşına göre kaç şınav çekmelisin" gibi). Ancak gerçek veri içeren rehberler "bilgi" olabilir.
 - Aynı olayı anlatan birden çok haber varsa tek post say ve id'lerini birlikte ver.
@@ -171,7 +171,7 @@ const SELECT_TOOL = {
             ids: { type: "array", items: { type: "string" }, description: "Aynı olaya ait haber id'leri (ilk id ana kaynak)" },
             score: { type: "integer", minimum: 1, maximum: 10, description: "Haber değeri" },
             category: { type: "string", enum: ["hyrox", "crossfit", "kosu", "fonksiyonel", "bilim", "su", "bisiklet", "doga", "genel"], description: "hyrox: HYROX; crossfit: CrossFit; fonksiyonel: ATHX, DEKA, OCR ve diğer hibrit fitness yarışları; kosu: yol koşusu, maraton, triatlon, duatlon; doga: trail, ultra, dağ koşusu; su: kürek, indoor rowing, açık su yüzmesi; bisiklet: granfondo ve dayanıklılık bisikleti; bilim: spor bilimi; genel: diğer" },
-            kind: { type: "string", enum: ["haber", "duyuru", "arastirma", "bilgi"], description: "duyuru: yarış/kayıt/etkinlik duyurusu; bilgi: öğretici içerik" },
+            kind: { type: "string", enum: ["haber", "duyuru", "arastirma", "bilgi", "hikaye"], description: "hikaye: gerçek başarı/duygusal sporcu hikâyesi (kaynaklı); duyuru: yarış/kayıt/etkinlik duyurusu; bilgi: öğretici içerik" },
             format: { type: "string", enum: ["carousel", "single"], description: "Çok bilgi/rakam varsa carousel, tek cümlelik haber single" },
             why: { type: "string" },
           },
@@ -244,6 +244,7 @@ export async function writePost(pick, sources, feedback = "") {
     duyuru: "Bu bir YARIŞ/ETKİNLİK DUYURUSU. Okur postu kapattığında şunları bilmeli (kaynakta varsa): etkinlik adı, tarih, şehir/mekân, kim katılabilir (kategori/seviye), kayıt ya da ön eleme ne zaman açılıyor/kapanıyor, ücret, nereden kayıt olunur (site adı, link değil). Kapak başlığı haberi söylesin: 'İstanbul Maratonu kayıtları açıldı', 'HYROX Istanbul'un tarihi belli oldu'. Karoselde bu bilgileri madde madde ver.",
     arastirma: "Bu bir ARAŞTIRMA postu: çalışmanın ne bulduğunu, kimde yapıldığını ve sporcuya pratik anlamını yaz; abartma, 'kanıtlandı' deme.",
     bilgi: "Bu bir BİLGİ postu: öğretici, uygulanabilir, kaydedilmeye değer olsun. Kapak merak uyandırsın.",
+    hikaye: "Bu bir HİKÂYE postu: kapsamdaki bir yarıştan gerçek bir başarı ya da duygusal hikâye. YALNIZCA kaynakta anlatılanı aktar; duygu, düşünce, diyalog ya da sahne UYDURMA; sporcunun söylemediği bir sözü ona söyletme. Sporcunun adını (haberin kendisi) doğru yazımla ver, yaşı, yarışı, derecesi gibi doğrulanmış ayrıntılarla anlat. Sakin ve saygılı bir dil kullan; acındırma, abartı ve klişe ('destan yazdı', 'pes etmedi' gibi) yok. Son slaytta tarafsız bir topluluk sorusu: 'Sizin ilk yarışınız hangisiydi?' gibi.",
     haber: "",
   }[pick.kind ?? "haber"];
   const fmt = pick.format === "carousel"

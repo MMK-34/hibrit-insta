@@ -153,6 +153,8 @@ async function main() {
     // Durum kaybına karşı: son 12 IG paylaşımının başlığı da tekrar önleme listesine girer
     igTitles = await recentIgCaptions(12);
   }
+  // Elle yeniden paylaşım: seri/takip çalışmadan yalnızca verilen haber işlenir
+  if (process.argv.includes("--repost")) return repostOne(process.env.REPOST ?? "");
   // Canlıya alınınca ilk paylaşım: tanıtım postu (bir kez)
   if (!state.intro && !DRY) return publishIntro();
   if (STOCK) return publishStock();
@@ -338,6 +340,22 @@ ${feedback.slice(0, 1200)}`);
 }
 
 /** Görselleri üretir, (dry değilse) yükleyip paylaşır, state'e yazar. Paylaşım sonucunu döner. */
+/** Elle yeniden paylaşım: "URL | kategori | kaynak adı | başlık". Tam hat (yazar, editör, süzgeç, foto, doğrulama) çalışır. */
+async function repostOne(spec) {
+  const [link, category = "genel", srcName = "", title = ""] = String(spec).split("|").map((x) => x.trim());
+  if (!/^https:\/\//.test(link)) { log("Yeniden paylaşım: geçersiz URL."); return; }
+  const url = await resolveNewsUrl(link);
+  const text = await articleText(url);
+  const host = new URL(url).hostname.replace(/^www\./, "");
+  const sourceName = srcName || host;
+  const item = { id: link, url, title: title || text.slice(0, 120), source: sourceName, text };
+  const pick = { ids: [link], score: 10, category, kind: "haber", format: "carousel", why: "elle yeniden paylaşım" };
+  const ready = await prepareVerified(pick, [item], sourceName);
+  if (!ready) { await notify(`⚠️ Hibrit Portal: yeniden paylaşım doğrulamadan geçmedi (${title || url}).`); return; }
+  const res = await renderAndPublish(ready, { category, sourceName: ready.sourceName ?? sourceName, ids: pick.ids, kind: "haber", title: item.title, srcUrls: [url] });
+  if (res) log("Yeniden paylaşıldı:", res.permalink ?? res.id);
+}
+
 async function pickPhotos({ post, pages, topic, want, category }) {
   // Etkinlik fotoğrafları önceki postlarda kullanılmış olabilir (aynı etkinliğin takip/hikaye postu): tekrar kullanılabilir
   const ev = await eventPhotos({ pages, instagram: post.officialInstagram, topic, n: want, eventName: post.eventName })

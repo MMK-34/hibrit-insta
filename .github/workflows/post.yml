@@ -24,6 +24,11 @@ on:
         required: false
         type: string
         default: ""
+      repost:
+        description: "Elle yeniden paylaşım (tek haber): 'haber URL | kategori | kaynak adı | başlık'. Boşsa olağan çalışma."
+        required: false
+        type: string
+        default: ""
 
 concurrency:
   group: post
@@ -64,6 +69,7 @@ jobs:
         env:
           MODE: ${{ github.event.inputs.mode }}
           TRIGGER: ${{ github.event.inputs.trigger }}
+          REPOST: ${{ github.event.inputs.repost }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -75,6 +81,7 @@ jobs:
           GH_REPO: ${{ github.repository }}
           # GITHUB_EVENT_NAME (schedule / workflow_dispatch) Actions'ta varsayılan olarak tanımlı; run.mjs 45 dk kapısında kullanır
         run: |
+          if [ -n "$REPOST" ]; then node src/run.mjs --repost; exit $?; fi
           case "$MODE" in
             dry) node src/run.mjs --dry ;;
             force) node src/run.mjs --force ;;

@@ -7,7 +7,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { collect, articleText, upcomingEvents, resolveNewsUrl, courseCandidates } from "./collect.mjs";
 import { findImages } from "./images.mjs";
-import { selectNews, writePost, reviewPost } from "./plan.mjs";
+import { selectNews, writePost, reviewPost, creditProbe, isCreditError } from "./plan.mjs";
 import { renderPost, renderStory } from "./render.mjs";
 import { uploadFiles } from "./upload-github.mjs";
 import { publish, preflight, publishStory } from "./publish.mjs";
@@ -114,6 +114,16 @@ const SKIPPED = Symbol("atlandı"); // 45 dk kapısında atlanan çalışma: öz
 
 async function main() {
   let published = false, processed = 0, publishedCount = 0;
+  // Kredi bittiyse: ücretli işlem yok. Yalnızca 1 token'lık yoklama; kredi gelmişse kendiliğinden devam.
+  if (state.paused?.reason === "kredi" && !DRY) {
+    try { await creditProbe(); } catch (e) {
+      if (isCreditError(e)) { log("Anthropic kredisi yok; bot duraklatıldı (ödeme yapılmaz)."); return SKIPPED; }
+      throw e;
+    }
+    log("Anthropic kredisi yeniden var; bot devam ediyor.");
+    delete state.paused; saveState();
+    await notify("⚠️ Hibrit Portal: Anthropic kredisi yeniden kullanılabilir, bot paylaşımlara devam ediyor.");
+  }
   // Yedek cron: ana slot çalıştıysa (son 45 dk) zamanlanmış çalışma hiçbir şey yapmaz. Elle (workflow_dispatch) çalışmalar atlanmaz.
   // GitHub zamanlayıcısı ya da dış zamanlayıcı (Cloudflare Worker, trigger=cron): ikisi de aynı 45 dk kapısından geçer
   const SCHEDULED = process.env.GITHUB_EVENT_NAME === "schedule" || process.env.TRIGGER === "cron";
@@ -150,7 +160,10 @@ async function main() {
     try {
       const due = SERIES_FORCE ? (() => { const s = SERIES.find((x) => x.id === SERIES_FORCE); return s ? { s, key: `${s.id}:test`, ctx: s.ctx(now) } : null; })() : dueSeries(state, now);
       if (due && await publishSeries(due)) { published = true; publishedCount++; }
-    } catch (e) { console.error(e); log("Seri postu hatası:", e.message); }
+    } catch (e) {
+    if (isCreditError(e)) throw e; // kredi bitti: üst seviyede duraklat
+    console.error(e); log("Seri postu hatası:", e.message);
+    }
     if (SERIES_FORCE) return;
   }
   if (process.argv.includes("--followup")) return publishFollowup(); // test: vadesi gelen takip postu
@@ -187,6 +200,7 @@ async function main() {
     else picks = await selectNews(items, { limit: 6, postedIds, recentTitles });
     log("Seçim:", picks.map((p) => `${p.score}/${p.kind}/${p.format}/${p.category}`).join(" "));
   } catch (e) {
+    if (isCreditError(e)) throw e; // kredi bitti: üst seviyede duraklat
     console.error(e);
     log("Haber toplama/seçim hatası:", e.message);
     await notify(`⚠️ Hibrit Portal: haber seçimi başarısız, yedeklere geçiliyor:\n${e.message}`);
@@ -233,6 +247,7 @@ async function main() {
       // Çalışma başına en fazla PER_RUN post; günlük üst sınıra da uy
       if (publishedCount >= PER_RUN || todayCount + publishedCount >= MAX_PER_DAY) break;
     } catch (e) {
+    if (isCreditError(e)) throw e; // kredi bitti: üst seviyede duraklat
       // Tek haberdeki hata çalışmayı durdurmaz: kaydedilir, sıradakine geçilir
       console.error(e);
       log("Haber işlenirken hata:", e.message);
@@ -376,6 +391,7 @@ async function publishFollowup() {
     if (!DRY) markFollowup(fu, res ? "paylaşıldı" : "hata");
     return Boolean(res) || DRY;
   } catch (e) {
+    if (isCreditError(e)) throw e; // kredi bitti: üst seviyede duraklat
     console.error(e);
     log("Takip postu hatası:", e.message);
     if (fu && !DRY) { try { markFollowup(fu, "hata"); } catch (e2) { log("Takip durumu yazılamadı:", e2.message); } }
@@ -441,6 +457,7 @@ async function publishStock() {
     log("Stok yayında:", res.permalink);
     await notify(`✅ Stok post paylaşıldı\n${post.slides[0]?.title}\n${res.permalink}`);
   } catch (e) {
+    if (isCreditError(e)) throw e; // kredi bitti: üst seviyede duraklat
     console.error(e);
     await failAttempt(e.message);
   }
@@ -479,7 +496,16 @@ try {
   }
 } catch (e) {
   console.error(e);
-  await notify(`⚠️ Hibrit Portal bot hatası:\n${e.message}`);
+  if (isCreditError(e) && !DRY) {
+    if (state.paused?.reason !== "kredi") {
+      state.paused = { reason: "kredi", at: new Date().toISOString() };
+      try { saveState(); } catch {}
+      await notify("⚠️ Hibrit Portal: Anthropic API kredisi bitti. Bot ücretli işlemleri durdurdu; HİÇBİR ödeme yapılmadı. Kredi yüklenince bot bir sonraki saatlik çalışmada kendiliğinden devam eder.");
+    }
+    process.exitCode = 0;
+  } else {
+    await notify(`⚠️ Hibrit Portal bot hatası:\n${e.message}`);
+  }
   process.exitCode = 1;
 } finally {
   // Son kayıt (dry'da yazılmaz). 60 günden eski kayıtlar saveState içinde budanır.

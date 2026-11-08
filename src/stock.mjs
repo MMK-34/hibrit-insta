@@ -151,8 +151,11 @@ ${failText(gate.fails).slice(0, 800)}`);
 
 /** Kuyruk min'in altındaysa target'a tamamlar (çalışma başına en fazla maxNew). force: koşulsuz bu kadar üret.
  *  Her iki durumda da günlük DAILY_MAX deneme sınırı geçerli; uygun konu kalmazsa durur. */
+function botPaused() { try { return JSON.parse(fs.readFileSync("state/posted.json", "utf8")).paused?.reason === "kredi"; } catch { return false; } }
+
 export async function fillStock({ min = 4, target = 6, maxNew = 1, force = 0 } = {}) {
   const st = loadStock();
+  if (botPaused()) { console.log("stok: Anthropic kredisi yok, stok üretimi atlandı"); return st; }
   const today = istDay();
   let need = force || (st.queue.length < min ? Math.min(target - st.queue.length, maxNew) : 0);
   let tries = 0;

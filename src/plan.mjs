@@ -51,7 +51,29 @@ async function gemini({ system, user, tool, maxTokens }) {
   throw new Error("Gemini API tekrar denemeleri tükendi");
 }
 
-export async function claude({ system, user, tool, maxTokens = 4000, model = MODEL, webSearch = 0, webFetch = 0, effortOverride = "" }) {
+/** Anthropic kredisi bitti / faturalama engeli. Bot bu hatada durur; ödeme YAPILMAZ, kredi yüklenince kendiliğinden devam eder. */
+export class CreditError extends Error {}
+export const isCreditError = (e) => e instanceof CreditError || /credit balance is too low|insufficient credit|billing|spend limit|usage limit/i.test(String(e?.message ?? e));
+
+/** Kredi yoklaması: en ucuz çağrı (1 token). Kredi yoksa CreditError fırlatır. */
+export async function creditProbe() {
+  try {
+    await anthropic.messages.create({ model: "claude-haiku-5-5", max_tokens: 1, messages: [{ role: "user", content: "ok" }] });
+    return true;
+  } catch (e) {
+    if (isCreditError(e)) throw new CreditError(String(e?.message ?? e).slice(0, 300));
+    throw e;
+  }
+}
+
+export async function claude(args) {
+  try { return await claudeCall(args); } catch (e) {
+    if (isCreditError(e)) throw new CreditError(String(e?.message ?? e).slice(0, 300));
+    throw e;
+  }
+}
+
+async function claudeCall({ system, user, tool, maxTokens = 4000, model = MODEL, webSearch = 0, webFetch = 0, effortOverride = "" }) {
   if (!process.env.ANTHROPIC_API_KEY) {
     if (process.env.GEMINI_API_KEY) return gemini({ system, user, tool, maxTokens });
     throw new Error("ANTHROPIC_API_KEY ya da GEMINI_API_KEY yok (.env)");
@@ -86,7 +108,7 @@ export async function claude({ system, user, tool, maxTokens = 4000, model = MOD
     // Tek yeniden deneme: effort "low" ile. Zaten "low" ise vazgeç.
     if (effort !== "low") {
       console.warn(`max_tokens sınırı (${res.usage?.output_tokens} çıktı token); effort=low ile yeniden deneniyor`);
-      return claude({ system, user, tool, maxTokens, model, webSearch: Math.min(webSearch, 3), webFetch, effortOverride: "low" });
+      return claudeCall({ system, user, tool, maxTokens, model, webSearch: Math.min(webSearch, 3), webFetch, effortOverride: "low" });
     }
     throw new Error("Claude çıktısı max_tokens sınırında kesildi");
   }

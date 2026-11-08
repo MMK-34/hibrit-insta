@@ -17,7 +17,7 @@ import { countdownsDue } from "./countdown.mjs";
 import { uploadFiles } from "./upload-github.mjs";
 import { publish, preflight, publishStory, deleteMedia } from "./publish.mjs";
 import { auditPublished, MODEL as AUDIT_MODEL_2 } from "./audit.mjs";
-import { notify } from "./notify.mjs";
+import { notify, push } from "./notify.mjs";
 import { guardPost } from "./guard.mjs";
 import { INTRO_IMAGES, INTRO_CAPTION } from "./intro.mjs";
 import { verifyGate, logRejected, failText } from "./verify.mjs";
@@ -221,6 +221,10 @@ async function main() {
     if (draftCapReached()) log(`Günlük taslak tavanı dolu (${MAX_DRAFTS_PER_DAY}), yeni taslak yok.`);
     else picks = await selectNews(items, { limit: 6, postedIds, recentTitles });
     log("Seçim:", picks.map((p) => `${p.score}/${p.kind}/${p.format}/${p.category}`).join(" "));
+    if (picks.length) {
+      const names = picks.slice(0, 6).map((p) => { const it = items.find((i) => i.id === p.ids?.[0]); return `• (${p.score}/10) ${String(it?.title ?? "?").slice(0, 90)}`; }).join("\n");
+      await push(`${items.length} aday tarandı, ${picks.length} haber seçildi:\n${names}`, { title: "Haber taraması" });
+    }
   } catch (e) {
     if (isCreditError(e)) throw e; // kredi bitti: üst seviyede duraklat
     console.error(e);
@@ -310,6 +314,7 @@ async function prepareVerified(pick, srcItems, sourceName) {
   const referenceData = ownC21?.facts ? `circle21 resmî kayıt platformu, yapılandırılmış alanlar (ad, tarihler, kayıt dönemi, ücret, yer):\n${ownC21.facts}` : "";
   for (let attempt = 1; attempt <= 2; attempt++) {
     const draft = await writePost(pick, srcItems, feedback);
+    if (attempt === 1) await push(`Postu hazırlıyorum: ${String(srcItems[0].title).slice(0, 120)}`, { title: "Yazılıyor" });
     if (!draft.factsOk) { log("Kaynak yetersiz:", srcItems[0].title); lastFails = [{ model: "yazar", item: "kaynak", note: "factsOk=false" }]; break; }
     const rev = await reviewPost(draft, srcItems, { evergreen: /^(fu|stock):/.test(srcItems[0].id) });
     if (!rev.approve) { log("Editör reddetti:", (rev.issues ?? []).join(" | ").slice(0, 400)); lastFails = (rev.issues ?? []).map((n) => ({ model: "editör", item: "editör", note: n })); feedback = failText(lastFails); continue; }
@@ -337,13 +342,15 @@ async function prepareVerified(pick, srcItems, sourceName) {
     // Doğrulanmamış hesabın metni birincil kanıt sayılmaz: iddialar bağımsız kaynakla (circle21 kaydı ya da web) teyit edilmeli
     const sourceTexts = srcItems.filter((s) => s.id.startsWith("ig:")).map((s) => ({ label: s.curated ? s.source : `${s.source}: BİRİNCİL KANIT DEĞİL, her iddiayı bağımsız bir kaynakla teyit et; teyit edilemeyen iddia fail`, url: s.url, text: s.text }));
     const gate = await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName, referenceData, sourceTexts });
-    if (gate.ok) { log(`Doğrulama geçti (deneme ${attempt}).`); bump("approved"); return { post: g.post, photos, sourceName: srcName }; }
+    if (gate.ok) { log(`Doğrulama geçti (deneme ${attempt}).`); await push(`İki doğrulayıcı da onayladı, görseller hazırlanıyor: ${String(g.post.slides[0]?.title ?? "").slice(0, 120)}`, { title: "Doğrulandı" }); bump("approved"); return { post: g.post, photos, sourceName: srcName }; }
     lastFails = gate.fails;
     feedback = failText(gate.fails);
     log(`Doğrulama düştü (deneme ${attempt}):\n${feedback.slice(0, 1200)}`);
+    await push(`Doğrulamadan geçmedi (deneme ${attempt}/2): ${String(srcItems[0].title).slice(0, 100)}\nNeden: ${feedback.replace(/\s+/g, " ").slice(0, 300)}`, { title: "Doğrulama" });
   }
   bump("rejected");
   logRejected({ title: srcItems[0].title, url: srcItems[0].url, kind: pick.kind, fails: lastFails });
+  await push(`Paylaşılmadı: ${String(srcItems[0].title).slice(0, 120)}\nNeden: ${lastFails.map((f) => f.note).join(" | ").replace(/\s+/g, " ").slice(0, 300)}`, { title: "Elendi" });
   return null;
 }
 

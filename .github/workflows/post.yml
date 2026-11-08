@@ -72,7 +72,8 @@ jobs:
           REPOST: ${{ github.event.inputs.repost }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
-          IG_DISCOVERY_TOKEN: ${{ secrets.IG_DISCOVERY_TOKEN }} # organizatör hesaplarını okuma (Facebook sayfa token'ı, süresiz)
+          IG_DISCOVERY_TOKEN: ${{ secrets.IG_DISCOVERY_TOKEN }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }} # telefon anlık bildirim (ntfy uygulaması) # organizatör hesaplarını okuma (Facebook sayfa token'ı, süresiz)
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}

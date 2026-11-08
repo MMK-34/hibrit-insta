@@ -29,7 +29,33 @@ async function githubReport(text) {
   await gh("POST", `/repos/${repo}/issues/${issue.number}/comments`, { body: `**${stamp}**\n\n${String(text).slice(0, 6000)}` });
 }
 
+/**
+ * ntfy.sh anlık bildirim (telefondaki ntfy uygulaması). NTFY_TOPIC yoksa sessizce geçer; hata paylaşımı durdurmaz.
+ * level: "info" (ilerleme), "ok" (paylaşıldı), "warn" (hata/silme), "approve" (onay bekliyor)
+ */
+export async function push(text, { title = "Hibrit Portal", level = "info", click = "" } = {}) {
+  const topic = process.env.NTFY_TOPIC;
+  if (!topic || !/^[A-Za-z0-9_-]{16,64}$/.test(topic) || process.argv.includes("--dry")) return;
+  const tags = { info: "hourglass_flowing_sand", ok: "white_check_mark", warn: "warning", approve: "bell" }[level] ?? "information_source";
+  const priority = { info: "2", ok: "3", warn: "5", approve: "4" }[level] ?? "3";
+  try {
+    // Başlıklar HTTP header'ında: yalnızca ASCII güvenli değil, bu yüzden RFC 2047 yerine JSON gövdeli yayın kullanılır
+    await fetch("https://ntfy.sh/", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ topic, title, message: String(text).slice(0, 3500), tags: [tags], priority: Number(priority), ...(/^https:\/\//.test(click) ? { click } : {}) }),
+      signal: AbortSignal.timeout(10000),
+    });
+  } catch { /* bildirim hatası paylaşımı durdurmaz */ }
+}
+
 export async function notify(text) {
+  // Tüm önemli bildirimler telefona da gider
+  {
+    const s = String(text);
+    const level = /^⚠️/u.test(s) ? "warn" : /^✅/u.test(s) ? "ok" : /ONAY BEKLEYEN/.test(s) ? "approve" : "info";
+    const link = (s.match(/https:\/\/www\.instagram\.com\/p\/[\w-]+\/?/) ?? [])[0] ?? "";
+    await push(s.replace(/^(⚠️|✅|📊)\s*/u, ""), { level, click: link });
+  }
   const { TELEGRAM_BOT_TOKEN: t, TELEGRAM_CHAT_ID: chat } = process.env;
   if (t && chat) {
     try {

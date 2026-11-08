@@ -53,7 +53,10 @@ export function c21Handle(e) {
  */
 export function c21Facts(e) {
   const name = String(e.name ?? "").replace(/[^\p{L}\p{N} .'&-]/gu, "").slice(0, 80);
-  const city = (e.address.match(/\d{5}\s+([^/,]+)\/([^,]+)/) ?? []).slice(1).map((x) => x.trim()).join(", ");
+  // Yer: yalnızca "ilçe/il" biçimindeki iki kısa yer adı (harf, boşluk, nokta, kesme işareti, tire); uymazsa hiç yazılmaz
+  const clean = (x) => x.trim().replace(/[^\p{L}\p{N} .'-]/gu, "").slice(0, 40);
+  const parts = (e.address.match(/\d{5}\s+([^/,]{2,40})\/([^,]{2,40})(?:,|$)/) ?? []).slice(1).map(clean).filter((x) => /^[\p{L} .'-]{2,40}$/u.test(x));
+  const city = parts.length === 2 ? parts.join(", ") : "";
   const fee = /^\d+(\.\d+)? [A-Z]{3}$/.test(e.fee) ? e.fee : "";
   return [
     `Resmî ad: ${name}`,

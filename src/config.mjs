@@ -80,6 +80,9 @@ export const FEEDS = [
   { source: "Google News", url: "https://news.google.com/rss/search?q=ATHX%20OR%20%22hibrit%20fitness%22%20OR%20%22hybrid%20fitness%20yar%C4%B1%C5%9F%C4%B1%22%20OR%20%22Spartan%20Race%22%20OR%20%22fonksiyonel%20antrenman%22%20OR%20%22hibrit%20antrenman%22%20when%3A14d&hl=tr&gl=TR&ceid=TR:tr", cat: "fonksiyonel" },
   { source: "Google News", url: "https://news.google.com/rss/search?q=ATHX%20OR%20%22hybrid%20fitness%20race%22%20OR%20%22hybrid%20racing%22%20OR%20%22DEKA%20FIT%22%20OR%20%22fitness%20racing%22%20when%3A14d&hl=en-US&gl=US&ceid=US:en", cat: "fonksiyonel" },
   { source: "Google News", url: "https://news.google.com/rss/search?q=%22indoor%20rowing%22%20OR%20%22Concept2%22%20OR%20%22World%20Rowing%20Indoor%22%20OR%20%22ergometer%22%20rowing%20when%3A30d&hl=en-US&gl=US&ceid=US:en", cat: "su" },
+  // Antrenörlük / hakemlik kursları (CrossFit L1-L2, HYROX antrenör eğitimleri)
+  { source: "Google News", url: "https://news.google.com/rss/search?q=%22CrossFit%20Level%201%22%20OR%20%22CrossFit%20L1%22%20OR%20%22CrossFit%20Level%202%22%20OR%20%22HYROX%20Coach%22%20OR%20%22HYROX%20antren%C3%B6r%22%20OR%20%22antren%C3%B6rl%C3%BCk%20kursu%22%20CrossFit%20OR%20HYROX%20when%3A30d&hl=tr&gl=TR&ceid=TR:tr", cat: "crossfit" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=%22CrossFit%20Level%201%20Certificate%20Course%22%20OR%20%22HYROX%20Master%20Trainer%22%20OR%20%22HYROX%20Coach%20Certification%22%20OR%20%22HYROX%20Academy%22%20when%3A30d&hl=en-US&gl=US&ceid=US:en", cat: "hyrox" },
   // Spor bilimi
   { source: "Google News", url: "https://news.google.com/rss/search?q=exercise+study+endurance+OR+%22strength+training%22+study+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "fonksiyonel" },
 ];

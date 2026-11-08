@@ -11,6 +11,9 @@ import { safeGet } from "./safe-net.mjs";
 // Aday ipuçları: Google News RSS başlıkları (yazar bunları başlangıç noktası olarak kullanır, yine de her satırı kendisi doğrular)
 const gnews = (q) => `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=tr&gl=TR&ceid=TR:tr`;
 const HINTS = {
+  kurslar: [
+    '"CrossFit Level 1" OR "CrossFit L1" OR "CrossFit Level 2" OR "HYROX Coach" OR "antrenörlük kursu" when:60d',
+  ],
   "kayit-acik": [
     '"kayıtları başladı" OR "kayıtlar açıldı" OR "kayıtları açıldı" koşu OR maraton OR trail when:30d',
     'HYROX OR CrossFit OR ATHX OR throwdown kayıt OR "kayıtlar" when:30d',
@@ -96,6 +99,20 @@ export const SERIES = [
     end: { title: "Hangisine kayıt oldunuz?", body: "Kaydı açık başka bir yarış biliyorsanız yorumlara yazın, listeye ekleyelim." },
     imageQueries: ["marathon runners city street", "trail running race", "hyrox sled push"], cat: "yaris",
     task: (c) => `GÖREV: ${fmt(c.from)} ile ${fmt(c.to)} arasında TÜRKİYE'de düzenlenecek ve KAYDI ŞU AN AÇIK olan yarışları bul (en az 4, en fazla 14). Tarih sırasına göre diz. Her satır için kaydın açık olduğunu organizatörün kayıt sayfasından ya da resmî duyurusundan doğrula; kaydı kapanmış ya da tükenmiş yarışı koyma.\n${RACE_RULES}`,
+  },
+  {
+    id: "kurslar",
+    due: (d) => d.getDate() >= 10 && d.getDate() <= 20 && d.getHours() >= 9,
+    key: (d) => `kurslar:${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`,
+    ctx: (d) => { const from = addDays(d, 1), to = addDays(d, 120); return { from, to, range: `${AY[from.getMonth()]}-${AY[to.getMonth()]}` }; },
+    columns: ["Tarih", "Kurs", "Şehir", "Düzenleyen"], min: 2, max: 14,
+    cover: () => ({ kicker: "ANTRENÖRLÜK KURSLARI", title: "Yaklaşan antrenörlük ve hakemlik kursları", subtitle: "Türkiye'de ve yakın ülkelerde açılan kurslardan bir seçki." }),
+    intro: (c, names, n) => `Önümüzdeki aylarda açılacak ${n} kurs: ${names}.`,
+    tableTitle: "Kurs takvimi",
+    end: { title: "Hangi kursa katılmayı düşünüyorsunuz?", body: "Listede olmayan bir kurs varsa yorumlara yazın, ekleyelim." },
+    imageQueries: ["crossfit competition barbell", "hyrox sled push"], cat: "crossfit",
+    task: (c) => `GÖREV: ${fmt(c.from)} ile ${fmt(c.to)} arasında TÜRKİYE'de ve Türkiye'den kolay gidilebilecek yakın ülkelerde (Yunanistan, Bulgaristan, Kıbrıs, BAE vb.) düzenlenecek antrenörlük ve hakemlik kurslarını bul (en az 2, en fazla 14): CrossFit Level 1, Level 2 ve diğer resmî CrossFit kursları (crossfit.com kurs takvimi), HYROX antrenör eğitimleri (HYROX Coach, Master Trainer; hyrox.com ve HYROX Academy), ATHX ve benzeri yarışların resmî eğitimleri. Tarih sırasına göre diz. Her satırı resmî kurs takviminden ya da düzenleyen salonun duyurusundan DOĞRULA ve URL'sini yaz; dolmuş ya da iptal edilmiş kursu koyma.
+Hücreler: Tarih "15-16 Kas" biçiminde; Kurs resmî adıyla en fazla 40 karakter ("CrossFit Level 1", "HYROX Coach Level 1" gibi); Şehir tek şehir adı; Düzenleyen ev sahibi salonun ya da kurumun adı, en fazla 40 karakter. Alan adı ya da link yazma.`,
   },
   {
     id: "aylik",

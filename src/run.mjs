@@ -8,7 +8,8 @@ import path from "node:path";
 import { collect, articleText, upcomingEvents, resolveNewsUrl, courseCandidates } from "./collect.mjs";
 import { findImages } from "./images.mjs";
 import { eventPhotos, screenPhotos } from "./event-photos.mjs";
-import { circle21Candidates, circle21Reference } from "./circle21.mjs";
+import { circle21Candidates, circle21Reference, circle21Events, c21Handle } from "./circle21.mjs";
+import { igWatchCandidates } from "./ig-watch.mjs";
 import { selectNews, writePost, reviewPost, creditProbe, isCreditError } from "./plan.mjs";
 import { renderPost, renderStory } from "./render.mjs";
 import { uploadFiles } from "./upload-github.mjs";
@@ -181,6 +182,13 @@ async function main() {
   try {
     const { items: news, report } = await collect();
     items = [...news, ...(await upcomingEvents()), ...(await courseCandidates()), ...(await circle21Candidates().catch(() => []))];
+    // Organizatör Instagram hesapları (yalnızca Instagram'da duyurulan yarışlar); circle21'deki Türkiye organizatörleri de izlenir
+    try {
+      const c21Handles = (await circle21Events().catch(() => [])).map(c21Handle).filter(Boolean);
+      const ig = await igWatchCandidates(c21Handles);
+      if (ig.length) log(`Instagram izleme: ${ig.length} yeni paylaşım`);
+      items.push(...ig);
+    } catch (e) { log("Instagram izleme hatası:", String(e?.message ?? e).slice(0, 160)); }
     log(`${items.length} aday`, JSON.stringify(report));
     // Tekrar önleme: son ~30 paylaşımın başlıkları seçime verilir; takvim adayları takip serisi / son başlıklarla eşleşirse elenir
     // IG başlıkları sona eklenir (selectNews son 30'u kullanır), aynı/eşdeğer başlık iki kez girmez
@@ -222,10 +230,10 @@ async function main() {
       const srcItems = (pick.ids ?? []).map((id) => items.find((i) => i.id === id)).filter(Boolean).slice(0, 3);
       if (!srcItems.length) continue;
       // Google News bağlantısı yayıncının asıl adresine çözülür (yazar tam metni okur, doğrulayıcı sayfayı açabilir); id değişmez (tekrar önleme)
-      for (const s of srcItems) if (!s.id.startsWith("cal:") && !s.id.startsWith("cfcourse:") && !s.id.startsWith("c21")) { s.url = await resolveNewsUrl(s.url); s.text = await articleText(s.url); }
+      for (const s of srcItems) if (!s.id.startsWith("cal:") && !s.id.startsWith("cfcourse:") && !s.id.startsWith("c21") && !s.id.startsWith("ig:")) { s.url = await resolveNewsUrl(s.url); s.text = await articleText(s.url); }
       // Kaynak adı: takvim kayıtlarında organizatör sitesi
       // Takvim kaydı: alan adı yazılmaz (guard link sayar); etkinliğin resmî sitesi olarak belirtilir
-      const sourceName = srcItems[0].id.startsWith("c21") ? "circle21 resmî kayıt sayfası" : srcItems[0].id.startsWith("cfcourse:") ? "CrossFit resmî kurs takvimi" : srcItems[0].id.startsWith("cal:") ? (srcItems[0].eventName ? `${String(srcItems[0].eventName).replace(/s+(20dd|kayıt.*|online.*|qualifier.*|(.*))$/i, "").replace(/s+20dd.*$/, "").trim()} resmî sitesi` : "Organizatörün resmî sitesi") : srcItems[0].source;
+      const sourceName = srcItems[0].id.startsWith("ig:") ? `@${srcItems[0].handle} Instagram` : srcItems[0].id.startsWith("c21") ? "circle21 resmî kayıt sayfası" : srcItems[0].id.startsWith("cfcourse:") ? "CrossFit resmî kurs takvimi" : srcItems[0].id.startsWith("cal:") ? (srcItems[0].eventName ? `${String(srcItems[0].eventName).replace(/s+(20dd|kayıt.*|online.*|qualifier.*|(.*))$/i, "").replace(/s+20dd.*$/, "").trim()} resmî sitesi` : "Organizatörün resmî sitesi") : srcItems[0].source;
 
       const ready = await prepareVerified(pick, srcItems, sourceName);
       processed++;
@@ -303,12 +311,16 @@ async function prepareVerified(pick, srcItems, sourceName) {
     // Önce etkinliğin kendi fotoğrafı (resmî site, resmî Instagram, kaynak haber); eksik kalırsa görsel denetimden geçen stok foto
     const topic = [g.post.eventName, srcItems[0].title, g.post.slides[0]?.title].filter(Boolean).join(" | ");
     if (ownC21?.logo) g.post.eventLogoUrl = ownC21.logo;
+    const igSrc = srcItems.find((s) => s.id.startsWith("ig:"));
+    if (!g.post.officialInstagram && igSrc?.handle) g.post.officialInstagram = igSrc.handle;
     // Organizatör hesabı yalnızca kaydın yapılandırılmış instagram alanından (doğrulanmış kullanıcı adı)
     if (!g.post.officialInstagram && ownC21?.handle) g.post.officialInstagram = ownC21.handle;
     const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 4), category: pick.category });
     if (!photos.length) { log(`Foto bulunamadı (kategori ${pick.category}, sorgular: ${(g.post.imageQueries ?? []).join(" | ")}).`); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
-    const gate = await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName, referenceData });
+    // Açılamayan kaynakların (Instagram paylaşımı) metni doğrulayıcıya güvenilmez kaynak metni olarak verilir
+    const sourceTexts = srcItems.filter((s) => s.id.startsWith("ig:")).map((s) => ({ label: s.source, url: s.url, text: s.text }));
+    const gate = await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName, referenceData, sourceTexts });
     if (gate.ok) { log(`Doğrulama geçti (deneme ${attempt}).`); bump("approved"); return { post: g.post, photos, sourceName: srcName }; }
     lastFails = gate.fails;
     feedback = failText(gate.fails);

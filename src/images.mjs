@@ -202,7 +202,7 @@ export async function findImages(queries, n, category, usedIds = new Set()) {
   // Çok branşlı kategorilerde (dövüş, su, olimpik...) sorgudaki sporla eşleşen fotoğraflar varsa yalnızca onlar kullanılır:
   // güreş haberine boks ringi, yüzme haberine kano fotoğrafı gelmesin.
   // Anahtar = foto id'sinde geçen parça; değer = o fotoğrafı uygun kılan İngilizce sorgu sözcükleri
-  const SPORT = { swim: /swim|pool/, rowing: /rowing boat|regatta|rowers?|scull|crew/, kayak: /kayak|canoe|paddl/, wrestling: /wrestl/, boxing: /box(?!ing day)/, judo: /judo/,
+  const SPORT = { swim: /swim|pool/, rowing: /rowing boat|regatta|\browers?\b|scull|\bcrew\b/, kayak: /kayak|canoe|paddl/, wrestling: /wrestl/, boxing: /box(?!ing day)/, judo: /judo/,
     weightlifting: /weightlift|snatch|clean|jerk/, snatch: /weightlift|snatch/, road: /road|cycl/, mtb: /mountain bik|mtb/,
     climb: /climb|boulder/, marathon: /marathon|runner|running/, start: /marathon|runner|running/, finish: /marathon|runner|running/, sled: /hyrox|sled/, overhead: /crossfit/, mountain: /mountain(?! bik| run)|summit|alpin/, archery: /archer|arrow/, rings: /gymnast|rings/,
     karate: /karate|kumite|kata\b/, taekwondo: /taekwondo|tekvando/, kickbox: /kickbox|kick box|muay/, fencing: /fenc|epee|sabre|foil/,

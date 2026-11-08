@@ -285,7 +285,7 @@ async function main() {
  * İkinci deneme de geçmezse null döner ve gerekçe state/rejected.json'a yazılır.
  */
 // Kaynak metinlerden yarış kategorisi cümleleri çıkarılır: yazar kategori adı yazmasın (kural: kategori yazılmaz)
-const CAT_WORDS = /(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX|Masters?|Teens?|Hybrid)/;
+const CAT_WORDS = /\b(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX|Masters?|Teens?|Hybrid)\b/;
 const dropCategories = (txt) => String(txt ?? "").split(/(?<=[.!?])s+/).filter((s) => !(/kategori|divizyon|division|categor/i.test(s) && CAT_WORDS.test(s))).join(" ");
 
 async function prepareVerified(pick, srcItems, sourceName) {

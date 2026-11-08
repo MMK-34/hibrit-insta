@@ -279,7 +279,12 @@ async function main() {
  * Yaz -> editör -> süzgeç -> foto -> iki bağımsız doğrulayıcı. Doğrulama düşerse gerekçesiyle BİR kez yeniden yazılır.
  * İkinci deneme de geçmezse null döner ve gerekçe state/rejected.json'a yazılır.
  */
+// Kaynak metinlerden yarış kategorisi cümleleri çıkarılır: yazar kategori adı yazmasın (kural: kategori yazılmaz)
+const CAT_WORDS = /(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX|Masters?|Teens?|Hybrid)/;
+const dropCategories = (txt) => String(txt ?? "").split(/(?<=[.!?])s+/).filter((s) => !(/kategori|divizyon|division|categor/i.test(s) && CAT_WORDS.test(s))).join(" ");
+
 async function prepareVerified(pick, srcItems, sourceName) {
+  srcItems = srcItems.map((s) => ({ ...s, text: dropCategories(s.text), snippet: dropCategories(s.snippet) }));
   bump("drafts");
   saveState(); // günlük taslak tavanı süreç kesilse de doğru sayılsın
   let feedback = "", lastFails = [];

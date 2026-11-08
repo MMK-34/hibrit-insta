@@ -503,5 +503,18 @@
         "note": "Postta 'Beginner, Scaled ve Advanced' kategori adları geçiyor: 3. slaytta ve caption'da. Kategori adı hiç geçmemeli, bu ifadeler kaldırılmalı."
       }
     ]
+  },
+  {
+    "at": "2026-11-08T19:01:32.004Z",
+    "title": "Kuşadası’nda CrossFit Şampiyonası başladı",
+    "url": "https://www.halikarnashaber.com/haber/9336/kusadasinda-crossfit-sampiyonasi-basladi",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar"
+      }
+    ]
   }
 ]

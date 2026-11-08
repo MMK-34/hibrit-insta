@@ -205,9 +205,10 @@
   ],
   "daily": {
     "2026-11-08": {
-      "drafts": 16,
+      "drafts": 17,
       "approved": 5,
-      "rejected": 8
+      "rejected": 9,
+      "summarySent": true
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",

@@ -385,5 +385,18 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-08T18:20:58.667Z",
+    "title": "Kuşadası’nda CrossFit Şampiyonası başladı",
+    "url": "https://www.halikarnashaber.com/haber/9336/kusadasinda-crossfit-sampiyonasi-basladi",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

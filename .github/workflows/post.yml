@@ -50,7 +50,7 @@ jobs:
         timeout-minutes: 5
         run: |
           for f in src/*.mjs; do node --check "$f"; done
-          npx --yes -p eslint@9 eslint -c scripts/eslint.config.mjs src/*.mjs
+          npx --no-install eslint -c scripts/eslint.config.mjs src/*.mjs # sürüm package-lock.json ile sabit
 
       - name: Yarış takvimi senkronu
         timeout-minutes: 5

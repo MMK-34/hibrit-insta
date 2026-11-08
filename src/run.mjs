@@ -8,9 +8,9 @@ import path from "node:path";
 import { collect, articleText, upcomingEvents } from "./collect.mjs";
 import { findImages } from "./images.mjs";
 import { selectNews, writePost, reviewPost } from "./plan.mjs";
-import { renderPost } from "./render.mjs";
+import { renderPost, renderStory } from "./render.mjs";
 import { uploadFiles } from "./upload-github.mjs";
-import { publish, preflight } from "./publish.mjs";
+import { publish, preflight, publishStory } from "./publish.mjs";
 import { notify } from "./notify.mjs";
 import { guardPost } from "./guard.mjs";
 import { INTRO_IMAGE, INTRO_CAPTION } from "./intro.mjs";
@@ -107,7 +107,7 @@ async function main() {
   if (!state.intro && !DRY) return publishIntro();
   if (STOCK) return publishStock();
   // Tekrarlayan seriler (hafta sonu yarışları, Türk sporcuların haftası, aylık takvim): günde bir kez, sabah 9'dan sonra
-  if (SERIES_FORCE || (hour >= 9 && budgetLeft() && !draftCapReached() && todayCount < MAX_PER_DAY)) {
+  if (SERIES_FORCE || (budgetLeft() && !draftCapReached() && todayCount < MAX_PER_DAY)) {
     try {
       const due = SERIES_FORCE ? (() => { const s = SERIES.find((x) => x.id === SERIES_FORCE); return s ? { s, key: `${s.id}:test`, ctx: s.ctx(now) } : null; })() : dueSeries(state, now);
       if (due && await publishSeries(due)) { published = true; publishedCount++; }
@@ -280,7 +280,9 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     ?? (post.officialInstagram ? await fetchInstagramLogo(post.officialInstagram).catch(() => null) : null);
   if (eventLogo) log("Etkinlik logosu:", eventLogo.source);
   const files = await renderPost({ ...post, photos, eventLogo, category, source: sourceName, dateLabel }, outDir);
-  const caption = post.caption; // guard: temizlenmiş metin + "Kaynak: ..." + hashtag
+  // guard: temizlenmiş metin + "Kaynak: ..." + hashtag; foto kredisi Kaynak satırının altına eklenir
+  const credits = [...new Set(photos.map((p) => String(p.credit ?? "").replace(/^Foto:\s*/i, "").replace(/[^\p{L}\p{N} .\/,()'-]/gu, "").trim()).filter(Boolean))].join(", ").slice(0, 120);
+  const caption = credits ? post.caption.replace(/(\nKaynak: [^\n]*)/, `$1\nFoto: ${credits}`) : post.caption;
   fs.writeFileSync(path.join(outDir, "caption.txt"), `${caption}\n\n---\n${srcUrls.join("\n")}\n`);
   log(`Üretildi: ${outDir} (${files.length} slayt)`);
   if (DRY) { log(`Caption:\n${caption}`); return null; }
@@ -292,6 +294,18 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   saveState(); // paylaşım hemen kalıcı: sonraki adım çökse de aynı haber tekrar paylaşılmaz
   log("Yayında:", res.permalink);
   await notify(`✅ Paylaşıldı (${kind})\n${post.slides[0]?.title}\n${res.permalink}`);
+  // Hikâye: kapak 9:16 karta alınır ve Story olarak paylaşılır (erişim için). Hata ana postu etkilemez.
+  if (POSTING.stories !== false) {
+    try {
+      const sf = await renderStory(files[0], path.join(outDir, "story.jpg"));
+      const [su] = await uploadFiles([sf], `${slug}/story`);
+      const st = await publishStory(su);
+      const rec = state.posts.find((p) => p.media === res.id);
+      if (rec) rec.story = st.id;
+      saveState();
+      log("Hikâye yayında:", st.id);
+    } catch (e) { log("Hikâye paylaşılamadı (post yayında):", String(e.message).slice(0, 300)); }
+  }
   return res;
 }
 
@@ -321,7 +335,8 @@ async function publishFollowup() {
 
 /** Tanıtım postu: hesabın ilk paylaşımı (elle yazılmış metin, marka kiti görseli). */
 async function publishIntro() {
-  const urls = await uploadFiles([INTRO_IMAGE], `${today}/tanitim`);
+  // Yol benzersiz: aynı yola ikinci yükleme raw CDN önbelleğinden ESKİ görseli döndürebilir
+  const urls = await uploadFiles([INTRO_IMAGE], `${today}/tanitim-${Date.now().toString(36)}`);
   const res = await publish(urls, INTRO_CAPTION);
   state.intro = { media: res.id, permalink: res.permalink, at: new Date().toISOString() };
   state.posts.push({ day: today, ids: ["intro"], kind: "tanitim", photos: [], media: res.id, permalink: res.permalink, cover: urls[0], title: "Hibrit Portal yayında", at: new Date().toISOString() });

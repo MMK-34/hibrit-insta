@@ -106,6 +106,18 @@ export async function publish(imageUrls, caption) {
   return { id: pub.id, permalink };
 }
 
+/**
+ * Hikâye (Story) paylaşımı: 1080x1920 JPEG URL'si. Business hesaplarda media_type=STORIES desteklenir.
+ * Hata fırlatır; çağıran taraf hikâyeyi isteğe bağlı sayıp yutar (ana post yayında kalır).
+ */
+export async function publishStory(imageUrl) {
+  const me = userId();
+  const c = await retry("IG hikâye container", () => call("POST", `${me}/media`, { image_url: imageUrl, media_type: "STORIES" }));
+  await waitReady(c.id);
+  const pub = await retry("IG hikâye yayın", () => call("POST", `${me}/media_publish`, { creation_id: c.id }), 2);
+  return { id: pub.id };
+}
+
 /** Ücretli çağrılardan önce token + hesap kontrolü. Başarısızsa hata fırlatır. */
 export async function preflight() {
   const me = userId();

@@ -19,7 +19,7 @@ const LINKISH_RE = /(?<![\p{L}\p{N}\-.])[\p{L}][\p{L}\p{N}\-]+(?:\.|\[\.\]|\(\.\
 const MAX_SLIDES = 10, MAX_TAGS = 12, MAX_TAG_LEN = 30, MAX_CAPTION = 2200;
 const MENTION_RE = /(^|\s)@[\w.]{2,30}/g;
 const BAD = /(casino|bahis|bet\b|kripto|crypto|airdrop|dm\s*at|link\s*bio|bio'?daki\s*link|whatsapp|telegram|onlyfans|indirim\s*kodu|promo\s*code)/i;
-const TOPIC = /(hyrox|crossfit|maraton|marathon|koşu|kosu|run|wod|antrenman|fitness|yarış|yaris|sporcu|atlet|kuvvet|dayanıklılık|ultra|throwdown|games|open|elite|sled|wall ball|burpee|rowing|kürek|halter|barbell|kettlebell|araştırma|çalışma)/i;
+const TOPIC = /(hyrox|crossfit|maraton|marathon|koşu|kosu|run|wod|antrenman|fitness|yarış|yaris|sporcu|atlet|kuvvet|dayanıklılık|ultra|throwdown|games|open|elite|sled|wall ball|burpee|rowing|kürek|halter|barbell|kettlebell|araştırma|çalışma|yüz(me|ücü)|güreş|boks|judo|tekvando|karate|eskrim|bisiklet|pedal|tırmanış|dağcı|okçu|cimnastik|jimnastik|atıcı|kano|kayak|yelken|triatlon|duatlon|aquatlon|madalya|şampiyon|rekor|derece|kupa|federasyon|powerlifting|strongman|kalistenik|spartan|parkur)/i;
 
 const FIELDS = ["kicker", "title", "subtitle", "body", "label", "value"];
 const clean = (t = "") => String(t).normalize("NFKC").replace(/\s*[—–]\s*/g, ", ").replace(URL_RE, "").replace(MENTION_RE, "$1").replace(/[ \t]{2,}/g, " ").trim();

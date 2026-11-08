@@ -259,6 +259,21 @@ async function toUri(buf) {
   return `data:image/jpeg;base64,${j.toString("base64")}`;
 }
 
+/** Kapak slaytından 1080x1920 hikâye kartı: mürekkep zemin, kapak ortada, üstte küçük "YENİ PAYLAŞIM" etiketi. */
+export async function renderStory(coverFile, outFile) {
+  const SW = 1080, SH = 1920, top = Math.round((SH - H) / 2);
+  const label = Buffer.from(`<svg width="${SW}" height="${top}" xmlns="http://www.w3.org/2000/svg">
+    <rect x="${PAD}" y="${top - 92}" width="110" height="10" fill="${C.red}"/>
+    <text x="${PAD}" y="${top - 40}" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="26" letter-spacing="3" fill="${C.red}">YENİ PAYLAŞIM</text>
+    <text x="${SW - PAD}" y="${top - 40}" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="24" letter-spacing="3" fill="${C.text3}">PROFİLDE</text>
+  </svg>`);
+  const buf = await sharp({ create: { width: SW, height: SH, channels: 3, background: C.ink } })
+    .composite([{ input: coverFile, left: 0, top }, { input: label, left: 0, top: 0 }])
+    .jpeg({ quality: 90, mozjpeg: true }).toBuffer();
+  fs.writeFileSync(outFile, buf);
+  return outFile;
+}
+
 /** Post (slayt listesi) -> dosyalar; dosya yollarını döner. post.photos: [{buf, credit}] (slayt sırasıyla, eksikse döngüsel) */
 export async function renderPost(post, outDir) {
   fs.mkdirSync(outDir, { recursive: true });

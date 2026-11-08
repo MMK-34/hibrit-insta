@@ -18,6 +18,8 @@ export const POSTING = {
   minScore: 7,
   // Günün ilk çalışması (sabah) en az bir paylaşım garanti eder
   morningHour: 9,
+  // Her paylaşımın kapağı hikâye (Story) olarak da paylaşılır (erişim); false ile kapatılır
+  stories: true,
 };
 
 // Seçim (çok aday, kısa çıktı) Sonnet; yazım ve editör kontrolü en iyi Türkçe için Opus.

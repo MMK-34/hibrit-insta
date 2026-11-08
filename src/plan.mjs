@@ -246,7 +246,7 @@ export async function writePost(pick, sources, feedback = "") {
     haber: "",
   }[pick.kind ?? "haber"];
   const fmt = pick.format === "carousel"
-    ? `KAROSEL: 4-7 slayt. 1. slayt "cover" (kanca başlık, en fazla ~55 karakter; subtitle merak uyandıran tek cümle). Ortada "text" (en fazla 3-4 kısa madde) ve uygunsa "stat" slaytları. Son slayt "end": topluluğa soru + kısa yorum çağrısı.`
+    ? `KAROSEL: 4-7 slayt. 1. slayt "cover" (kanca başlık, en fazla ~55 karakter; subtitle haberin en önemli ek bilgisi, tek cümle). Haberde çarpıcı bir sayı varsa 2. slayt "stat" (o tek sayı). Ardından "text" slaytları (her birinde en fazla 3-4 kısa madde; kim, ne, nerede, ne zaman, kayıt/ücret/tarih). Son slayt "end": habere özgü tarafsız soru + kısa yorum çağrısı.`
     : `TEKLİ POST: tam 1 slayt, "cover" tipi. title haberin kendisi (en fazla ~70 karakter), subtitle en önemli ek bilgi (tek cümle).`;
   // Dış içerik güvenilmez veridir: etiketle sarılır, içindeki sahte kapanış etiketleri temizlenir.
   // < ve > kaçışlanır: güvenilmez metin hiçbir etiket oluşturamaz
@@ -269,8 +269,10 @@ Yazım kuralları (Türkçe spor gazeteciliği):
 - Doğruluk: YALNIZCA kaynakta ya da aramada doğruladığın resmî/güvenilir kaynaklarda geçen bilgiyi kullan. Rakam, tarih, isim, sıralama uydurma ya da tahmin etme. Kaynakta olmayan bilgiyi koyma. Kaynak haberi doğrulamaya yetmiyorsa ya da haber değeri zayıfsa factsOk=false ver.
 - Kaynak metni çevirip kopyalama; özgün cümlelerle özetle.
 - Slayt metinleri kısa ve net olsun, madde başına tek bilgi. KESİN karakter sınırları (aşarsan post reddedilir): title 100, subtitle 160, kicker 40, body 240, madde (bullet) 120, label 60, value 10.
-- Caption yapısı: 1. satırda haberin özü (kanca). Ardından 2-4 kısa paragrafta ayrıntılar ve sporcuya anlamı. En sonda topluluğa gerçek bir soru. 2000 karakteri geçme. Emoji en fazla 2 tane, slaytlarda hiç yok. Link, URL ve @kullanıcı adı koyma; kaynak satırını yazma (sistem en sona ekler).
-- Hashtag: 6-10 adet, konuya özgü, Türkçe ve İngilizce karışık. Branşın setinden 3-5 etiket + varsa etkinlik/şehir etiketi (#istanbulmaratonu, #antalya) + #hibritportal. Alakasız popüler etiket kullanma. Branş setleri:
+- Caption yapısı: 1. satır HABERİN KENDİSİ, en fazla 70 karakter, varsa rakamla (ör. "İstanbul Maratonu'na 41.400 koşucu kayıt yaptırdı", "Yusuf Kerem Yerhan 100 m kelebekte bronz madalya kazandı"). Yasak açılışlar: "Bu hafta", "Heyecan dorukta", "Spor dünyası", "Büyük bir", "Herkesin merak ettiği". 2. satır tek cümle bağlam. Ardından 2-4 kısa paragraf ya da madde: ayrıntılar ve sporcuya anlamı. Caption tek başına anlaşılsın; "detaylar slaytlarda", "yorumlara yaz" gibi tuzak cümle kurma. En sonda habere özgü, tarafsız tek soru. 2000 karakteri geçme. Emoji en fazla 2 tane, slaytlarda hiç yok. Link, URL ve @kullanıcı adı koyma; kaynak satırını yazma (sistem en sona ekler).
+- Kapak başlığı: en fazla 8 kelime, varsa tek bir rakam içersin ("41.400 koşucu", "1:05.31", "13 ülke"). Kicker: etkinlik varsa etkinliğin kısa resmî adı (İSTANBUL MARATONU, HYROX İZMİR), yoksa haber türü (SON DAKİKA, YARIŞ RAPORU, ARAŞTIRMA).
+- Son slayt sorusu habere özgü olsun: yarış adı, mesafe, sporcu ya da sayıyı içersin ("Latmos Ultra'da 38K mi 60K mı koşuyorsun?", "Sen 2K kürek testini kaçta çekiyorsun?"). Genel "Siz ne düşünüyorsunuz?" yasak.
+- Hashtag: 5-8 adet, konuya özgü. Sıra: etkinlik etiketi (#istanbulmaratonu) > branş Türkçe > branş İngilizce > şehir > #hibritportal. #spor, #motivasyon, #fitnessmotivation gibi genel etiketler yasak. Branş setleri:
   koşu: #koşu #maraton #yarımaraton #running #runningturkey | trail: #trailrunning #patikakoşusu #ultratrail #ultrarunning | triatlon: #triatlon #triathlon #duatlon #swimbikerun
   yüzme: #yüzme #swimming #açıksuyüzme #openwaterswimming | kürek/kano: #kürek #rowing #indoorrowing #kano | bisiklet: #bisiklet #cycling #granfondo #mtb
   tırmanış/dağ: #tırmanış #climbing #bouldering #dağcılık | kuvvet: #halter #weightlifting #powerlifting #strongman | dövüş: #güreş #boks #judo

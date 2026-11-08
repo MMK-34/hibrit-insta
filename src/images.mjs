@@ -149,6 +149,15 @@ export async function findImages(queries, n, category, usedIds = new Set()) {
   const match = [];
   for (let i = 0; perQuery.some((l) => l.length > i); i++) for (const l of perQuery) if (l[i] && !match.includes(l[i])) match.push(l[i]);
   if (match.length) locals = match;
+  else {
+    // Kategoride sorguyla eşleşen foto yoksa (ör. yüzme haberi "olimpik" sınıflandı) tüm kütüphanede branşa göre ara;
+    // alakasız bir kategori fotoğrafı (okçuluk, halka) yüzme haberine girmesin
+    const every = [...new Set(Object.values(LOCAL_BY_CAT).flat())];
+    const pq = queries.map((q) => every.filter((id) => fits(id, q)));
+    const m2 = [];
+    for (let i = 0; pq.some((l) => l.length > i); i++) for (const l of pq) if (l[i] && !m2.includes(l[i])) m2.push(l[i]);
+    if (m2.length) locals = m2;
+  }
   const usedLocal = new Set(out.map((o) => o.id));
   for (let i = 0; out.length < n && i < locals.length; i++) {
     const f = path.join(LOCAL, `${locals[i]}.webp`);

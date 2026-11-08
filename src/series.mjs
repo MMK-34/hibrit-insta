@@ -60,7 +60,7 @@ Yarış adlarını organizatörün yazdığı biçimde yaz (boşluk, büyük har
 export const SERIES = [
   {
     id: "hafta-sonu",
-    due: (d) => d.getDay() === 4, // perşembe
+    due: (d) => d.getDay() === 4 && d.getHours() >= 17, // perşembe akşamı (17:30 çalışması; 19:30 ve 21:30 yedek)
     key: (d) => `hafta-sonu:${isoWeek(d)}`,
     ctx: (d) => { const sat = addDays(d, (6 - d.getDay() + 7) % 7 || 7), sun = addDays(sat, 1); return { from: sat, to: sun, range: `${sat.getDate()}-${sun.getDate()} ${AY[sun.getMonth()]}` }; },
     columns: RACE_COLS, min: 3, max: 14,
@@ -73,7 +73,7 @@ export const SERIES = [
   },
   {
     id: "tr-haftasi",
-    due: (d) => d.getDay() === 1, // pazartesi
+    due: (d) => d.getDay() === 1 && d.getHours() >= 9, // pazartesi sabahı
     key: (d) => `tr-haftasi:${isoWeek(d)}`,
     ctx: (d) => { const from = addDays(d, -7), to = addDays(d, -1); return { from, to, range: `${from.getDate()} ${AY[from.getMonth()]}-${to.getDate()} ${AY[to.getMonth()]}` }; },
     columns: ["Sporcu", "Branş", "Derece", "Yarışma"], min: 3, max: 14,
@@ -89,7 +89,7 @@ Her satırı federasyon, organizatör ya da güvenilir ulusal basın (AA vb.) sa
   },
   {
     id: "aylik",
-    due: (d) => d.getDate() >= 25,
+    due: (d) => d.getDate() >= 25 && d.getHours() >= 9,
     key: (d) => { const n = new Date(d.getFullYear(), d.getMonth() + 1, 1); return `aylik:${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, "0")}`; },
     ctx: (d) => { const from = new Date(d.getFullYear(), d.getMonth() + 1, 1), to = new Date(d.getFullYear(), d.getMonth() + 2, 0); return { from, to, range: `${AY[from.getMonth()]} ${from.getFullYear()}` }; },
     columns: RACE_COLS, min: 5, max: 21,

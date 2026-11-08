@@ -647,7 +647,7 @@ async function publishStock() {
     if (DRY) { log(`Caption:\n${post.caption}`); return; }
     const urls = await uploadFiles(files, slug);
     // Kullanıcı kuralı: istatistik postları onaysız paylaşılmaz -> onaya gönderilir, kuyruktan çıkar
-    if (/^stat/.test(item.id ?? item.topic ?? "")) {
+    if (/^stat/.test(item.topic ?? "") || /^stock:stat/.test(item.id ?? "")) {
       await queueForApproval({ caption: post.caption, urls, ids: [item.id], kind: "istatistik", title: post.slides[0]?.title, post, photos, srcUrls: [] });
       st.queue.shift(); saveStock(st);
       return;

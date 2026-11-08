@@ -13,7 +13,7 @@ import { uploadFiles } from "./upload-github.mjs";
 import { publish, preflight, publishStory } from "./publish.mjs";
 import { notify } from "./notify.mjs";
 import { guardPost } from "./guard.mjs";
-import { INTRO_IMAGE, INTRO_CAPTION } from "./intro.mjs";
+import { INTRO_IMAGES, INTRO_CAPTION } from "./intro.mjs";
 import { verifyGate, logRejected, failText } from "./verify.mjs";
 import { scheduleFollowups, dueFollowup, markFollowup, followupInput, loadFollowups, norm } from "./followups.mjs";
 import { loadStock, saveStock } from "./stock.mjs";
@@ -385,7 +385,7 @@ async function publishFollowup() {
 /** Tanıtım postu: hesabın ilk paylaşımı (elle yazılmış metin, marka kiti görseli). */
 async function publishIntro() {
   // Yol benzersiz: aynı yola ikinci yükleme raw CDN önbelleğinden ESKİ görseli döndürebilir
-  const urls = await uploadFiles([INTRO_IMAGE], `${today}/tanitim-${Date.now().toString(36)}`);
+  const urls = await uploadFiles(INTRO_IMAGES, `${today}/tanitim-${Date.now().toString(36)}`);
   const res = await publish(urls, INTRO_CAPTION);
   state.intro = { media: res.id, permalink: res.permalink, at: new Date().toISOString() };
   state.posts.push({ day: today, ids: ["intro"], kind: "tanitim", photos: [], media: res.id, permalink: res.permalink, cover: urls[0], title: "Hibrit Portal yayında", at: new Date().toISOString() });

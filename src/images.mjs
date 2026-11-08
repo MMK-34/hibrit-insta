@@ -102,7 +102,7 @@ const LOCAL_ALT = {
 const LOCAL_BY_CAT = {
   hyrox: ["hyrox-sled", "hyrox-sled-2", "sled-stadium", "sled-water", "rower", "medball-rack", "kb-rack", "run-start", "chalk-hands"],
   crossfit: ["comp-overhead", "comp-lift", "comp-women", "comp-barbell", "comp-crowd", "comp-judge", "comp-rings", "comp-win", "comp-night-tr", "comp-pullups-tr", "rope-climb", "box-jumps", "barbell-floor", "overhead-woman"],
-  kosu: ["run-marathon", "run-start", "run-finish", "run-track", "silhouette", "hero-alt", "doga-trail", "doga-trail-2", "kosu-triathlon", "kosu-triathlon-swim", "kosu-triathlon-bike", "kosu-sprint", "kosu-longjump", "kosu-javelin"],
+  kosu: ["run-start", "run-finish", "run-track", "silhouette", "hero-alt", "doga-trail", "doga-trail-2", "kosu-triathlon", "kosu-triathlon-swim", "kosu-triathlon-bike", "kosu-sprint", "kosu-longjump", "kosu-javelin"],
   fonksiyonel: ["kb-floor", "kb-rack", "medball-rack", "ropes", "rings-gym", "box-jumps", "chalk-hands", "barbell-mist", "gym-industrial", "athlete-rest", "fonksiyonel-calisthenics", "fonksiyonel-ocr"],
   bilim: ["athlete-rest", "barbell-mist", "run-track", "chalk-hands", "kb-floor", "gym-industrial"],
   kuvvet: ["kuvvet-weightlifting", "kuvvet-snatch", "kuvvet-strongman", "barbell-floor", "chalk-hands"],
@@ -112,10 +112,10 @@ const LOCAL_BY_CAT = {
   doga: ["doga-climb-hand", "doga-climb-wall", "doga-bouldering", "doga-mountain", "doga-trail", "doga-trail-2", "doga-ski"],
   olimpik: ["olimpik-archery-target", "olimpik-archery-bow", "olimpik-rings", "olimpik-gymnast", "olimpik-fencing", "olimpik-shooting"],
   // Seri postları (çok branşlı listeler): tüm branş fotoğrafları; sorgu eşleşmesi listedeki branşlarınkini seçer
-  genel: ["comp-field", "comp-crowd", "gym-flags", "hero-gym", "run-marathon", "comp-win", "barbell-floor"],
+  genel: ["comp-field", "comp-crowd", "gym-flags", "hero-gym", "comp-win", "barbell-floor"],
 };
 // Seri postları (çok branşlı listeler): tüm branş fotoğrafları; sorgu eşleşmesi listedeki branşlarınkini seçer
-LOCAL_BY_CAT.yaris = [...new Set(["run-marathon", "run-start", "run-finish", "comp-win", "comp-field", "hyrox-sled", "comp-overhead",
+LOCAL_BY_CAT.yaris = [...new Set(["run-start", "run-finish", "comp-win", "comp-field", "hyrox-sled", "comp-overhead",
   ...["kosu", "kuvvet", "dovus", "su", "bisiklet", "doga", "olimpik"].flatMap((k) => LOCAL_BY_CAT[k])])];
 LOCAL_BY_CAT.basari = LOCAL_BY_CAT.yaris;
 // Bu kategorilerde sorguyla eşleşmeyen havuz fotoğrafı kullanılmaz (başka branşın fotoğrafı yanıltır)
@@ -141,7 +141,10 @@ async function pixabay(q, n) {
   const key = process.env.PIXABAY_API_KEY;
   if (!key) return [];
   const j = await getJson(`https://pixabay.com/api/?key=${encodeURIComponent(key)}&q=${encodeURIComponent(q.slice(0, 100))}&image_type=photo&orientation=vertical&category=sports&safesearch=true&min_width=1000&per_page=${Math.max(n * 3, 10)}`);
-  return (j?.hits ?? []).filter((h) => h.largeImageURL).map((h) => ({ id: `pixabay:${h.id}`, url: h.largeImageURL, credit: "Foto: Pixabay", alt: String(h.tags ?? ""), license: "Pixabay İçerik Lisansı" }));
+  const GENERIC = new Set(["race", "racing", "competition", "sport", "sports", "city", "street", "athlete", "athletes", "the", "and", "with", "start", "event", "outdoor", "gym", "training", "man", "woman", "people"]);
+  const words = q.toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length > 2 && !GENERIC.has(w));
+  const relevant = (tags) => { const tg = String(tags ?? "").toLowerCase(); return words.length && words.some((w) => tg.includes(w.replace(/(ing|er|ers|s)$/, ""))); };
+  return (j?.hits ?? []).filter((h) => h.largeImageURL && relevant(h.tags)).map((h) => ({ id: `pixabay:${h.id}`, url: h.largeImageURL, credit: "Foto: Pixabay", alt: String(h.tags ?? ""), license: "Pixabay İçerik Lisansı" }));
 }
 
 async function openverse(q, n) {
@@ -191,7 +194,6 @@ export async function findImages(queries, n, category, usedIds = new Set()) {
     }
   };
   for (const q of queries) { if (out.length < n) await take(await pexels(q, n)); }
-  for (const q of queries) { if (out.length < n) await take(await pixabay(q, n)); }
   // Yerel kütüphane (seçilmiş, konuyla ilgili Pexels fotoğrafları) Openverse'ten önce gelir: Openverse kalitesi değişken
   // Karışık sıra: aynı kategoride postlar hep aynı fotoğrafla açılmasın
   // Yerel kütüphanesi olmayan branşlarda (yüzme, güreş, bisiklet vb.) alakasız salon fotoğrafı konmaz
@@ -200,7 +202,7 @@ export async function findImages(queries, n, category, usedIds = new Set()) {
   // Çok branşlı kategorilerde (dövüş, su, olimpik...) sorgudaki sporla eşleşen fotoğraflar varsa yalnızca onlar kullanılır:
   // güreş haberine boks ringi, yüzme haberine kano fotoğrafı gelmesin.
   // Anahtar = foto id'sinde geçen parça; değer = o fotoğrafı uygun kılan İngilizce sorgu sözcükleri
-  const SPORT = { swim: /swim|pool/, rowing: /row/, kayak: /kayak|canoe|paddl/, wrestling: /wrestl/, boxing: /box(?!ing day)/, judo: /judo/,
+  const SPORT = { swim: /swim|pool/, rowing: /rowing boat|regatta|rowers?|scull|crew/, kayak: /kayak|canoe|paddl/, wrestling: /wrestl/, boxing: /box(?!ing day)/, judo: /judo/,
     weightlifting: /weightlift|snatch|clean|jerk/, snatch: /weightlift|snatch/, road: /road|cycl/, mtb: /mountain bik|mtb/,
     climb: /climb|boulder/, marathon: /marathon|runner|running/, start: /marathon|runner|running/, finish: /marathon|runner|running/, sled: /hyrox|sled/, overhead: /crossfit/, mountain: /mountain(?! bik| run)|summit|alpin/, archery: /archer|arrow/, rings: /gymnast|rings/,
     karate: /karate|kumite|kata\b/, taekwondo: /taekwondo|tekvando/, kickbox: /kickbox|kick box|muay/, fencing: /fenc|epee|sabre|foil/,
@@ -233,6 +235,8 @@ export async function findImages(queries, n, category, usedIds = new Set()) {
     const f = path.join(LOCAL, `${locals[i]}.webp`);
     if (fs.existsSync(f) && !usedLocal.has(`local:${locals[i]}`)) out.push({ id: `local:${locals[i]}`, buf: fs.readFileSync(f), credit: "Foto: Pexels", alt: LOCAL_ALT[locals[i]] ?? locals[i], license: "Pexels lisansı" });
   }
+  // Yerelde uygun foto yoksa Pixabay (etiket alaka süzgeçli)
+  for (const q of queries) { if (out.length < (locals.length ? Math.min(n, 1) : n)) await take(await pixabay(q, n)); }
   // Son çare: Openverse (filigranlı/ilgisiz kaynaklar elenir)
   for (const q of queries) { if (out.length < (hasLocal && locals.length ? Math.min(n, 1) : n)) await take(await openverse(q, n)); }
   return out;

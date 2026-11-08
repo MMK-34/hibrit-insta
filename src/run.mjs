@@ -646,6 +646,12 @@ async function publishStock() {
     log(`Stok üretildi: ${item.topic} -> ${outDir} (${files.length} slayt)`);
     if (DRY) { log(`Caption:\n${post.caption}`); return; }
     const urls = await uploadFiles(files, slug);
+    // Kullanıcı kuralı: istatistik postları onaysız paylaşılmaz -> onaya gönderilir, kuyruktan çıkar
+    if (/^stat/.test(item.id ?? item.topic ?? "")) {
+      await queueForApproval({ caption: post.caption, urls, ids: [item.id], kind: "istatistik", title: post.slides[0]?.title, post, photos, srcUrls: [] });
+      st.queue.shift(); saveStock(st);
+      return;
+    }
     const res = await publish(urls, post.caption);
     // Paylaşım hemen kalıcı: önce posted.json, sonra kuyruk
     state.posts.push({ day: today, ids: [item.id], kind: "stok", photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, cover: urls[0], title: post.slides[0]?.title, headline: post.slides[0]?.title, at: new Date().toISOString() });

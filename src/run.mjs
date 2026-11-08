@@ -160,6 +160,8 @@ async function main() {
   // Canlıya alınınca ilk paylaşım: tanıtım postu (bir kez)
   if (!state.intro && !DRY) return publishIntro();
   if (STOCK) return publishStock();
+  try { await processApprovals(); } catch (e) { if (isCreditError(e)) throw e; log("Onay kontrolü hatası:", String(e.message).slice(0, 200)); }
+  try { await draftStatForApproval(); } catch (e) { if (isCreditError(e)) throw e; log("İstatistik taslağı hatası:", String(e.message).slice(0, 200)); }
   // Tekrarlayan seriler (hafta sonu yarışları, Türk sporcuların haftası, aylık takvim): günde bir kez, sabah 9'dan sonra
   if (SERIES_FORCE || (budgetLeft() && !draftCapReached() && todayCount < MAX_PER_DAY)) {
     try {
@@ -309,7 +311,7 @@ async function prepareVerified(pick, srcItems, sourceName) {
       Object.assign(draft, { slides, caption, ...(hashtags ? { hashtags } : {}), ...(imageQueries ? { imageQueries } : {}), ...(eventName ? { eventName } : {}) });
     }
     // Takip postlarında kaynak adı, yazarın dayandığı ana kaynaktır
-    const srcName = srcItems[0].id.startsWith("fu:") && draft.primarySource ? draft.primarySource : sourceName;
+    const srcName = /^(fu|stat):/.test(srcItems[0].id) && draft.primarySource ? draft.primarySource : sourceName;
     const g = guardPost(draft, { sourceName: srcName });
     if (!g.ok) { log("Süzgeçten geçmedi:", g.reason); lastFails = [{ model: "süzgeç", item: "süzgeç", note: g.reason }]; feedback = failText(lastFails); continue; }
     // Görselsiz post yok: konuya uygun foto bulunamazsa paylaşılmaz.
@@ -413,7 +415,7 @@ async function pickPhotos({ post, pages, topic, want, category }) {
   return [...ev, ...stock];
 }
 
-async function renderAndPublish({ post, photos }, { category, sourceName, ids, kind, title, srcUrls = [], onPublished = null }) {
+async function renderAndPublish({ post, photos }, { category, sourceName, ids, kind, title, srcUrls = [], onPublished = null, hold = false }) {
   const slug = `${today}/${Date.now().toString(36)}`;
   const outDir = path.join("out", slug);
   // Etkinlik logosu: önce circle21 resmî kaydındaki yarış logosu, sonra resmî site, sonra resmî Instagram profil fotoğrafı
@@ -435,6 +437,8 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   log(`Üretildi: ${outDir} (${files.length} slayt)`);
   if (DRY) { log(`Caption:\n${caption}`); return null; }
   const urls = await uploadFiles(files, slug);
+  // Onay gerektiren post (istatistik): yayınlanmaz, kullanıcıya e-postayla gönderilir; ONAY gelince sonraki çalışmada paylaşılır
+  if (hold) return queueForApproval({ caption, urls, ids, kind, title, post, photos, srcUrls });
   // Ortak gönderi (Collab) daveti: yalnızca izlenen Türkiye/bölge organizatörüne, aynı hesaba 30 günde en çok bir kez (davet bombardımanı yok)
   state.collabInvites ??= {};
   const lastInvite = evHandle ? Date.parse(state.collabInvites[evHandle] ?? 0) : 0;
@@ -462,6 +466,83 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     } catch (e) { log("Hikâye paylaşılamadı (post yayında):", String(e.message).slice(0, 300)); }
   }
   return res;
+}
+
+// ---------- Onaylı istatistik postları ----------
+// Kullanıcı kuralı: yarış istatistikleri (katılımcı sayısı, Türk sporcu sayısı vb.) KULLANICI ONAYI olmadan paylaşılmaz.
+// Akış: haftada bir taslak -> doğrulama -> görseller yüklenir -> "Bot raporları" issue'suna önizleme (e-posta) ->
+// kullanıcı e-postayı "ONAY <kod>" ya da "RET <kod>" diye yanıtlar -> sonraki saatlik çalışmada onaylanan paylaşılır.
+async function queueForApproval({ caption, urls, ids, kind, title, post, photos, srcUrls }) {
+  state.pendingApprovals ??= {};
+  const code = `s${Date.now().toString(36).slice(-5)}`;
+  state.pendingApprovals[code] = { caption, urls, ids, kind, title, headline: post.slides[0]?.title, eventName: post.eventName || undefined, photos: photos.map((p) => p.id), srcUrls, at: new Date().toISOString() };
+  saveState();
+  log("Onaya gönderildi:", code);
+  await notify(`📊 ONAY BEKLEYEN İSTATİSTİK POSTU (kod: ${code})\n\nBu post sen onaylamadan paylaşılmayacak.\n\nOnaylamak için bu e-postayı yalnızca şu kelimelerle yanıtla:  ONAY ${code}\nİstemiyorsan:  RET ${code}\n\n--- Açıklama ---\n${caption}\n\n--- Görseller ---\n${urls.join("\n")}\n\n--- Kaynaklar ---\n${srcUrls.join("\n")}`);
+  return { held: true, code };
+}
+
+async function ghApi(pathname) {
+  const repo = process.env.GH_REPO, t = process.env.GH_TOKEN;
+  if (!repo || !t) return null;
+  const r = await fetch(`https://api.github.com/repos/${repo}${pathname}`, { headers: { authorization: `Bearer ${t}`, accept: "application/vnd.github+json", "user-agent": "hibrit-insta" }, signal: AbortSignal.timeout(15000) }).catch(() => null);
+  return r?.ok ? r.json() : null;
+}
+
+/** Bekleyen onaylar: yalnızca depo sahibinin yorumları (e-posta yanıtı da yorum olur) geçerlidir. 7 günde yanıt yoksa düşer. */
+async function processApprovals() {
+  const pend = state.pendingApprovals ?? {};
+  const codes = Object.keys(pend);
+  if (!codes.length || DRY) return;
+  const owner = String(process.env.GH_REPO ?? "").split("/")[0].toLowerCase();
+  const since = new Date(Math.min(...codes.map((c) => Date.parse(pend[c].at)))).toISOString();
+  const issues = (await ghApi("/issues?state=open&per_page=100")) ?? [];
+  const rep = issues.filter((i) => i.title === "Bot raporları (otomatik)" && !i.pull_request).sort((a, b) => a.number - b.number)[0];
+  const comments = rep ? (await ghApi(`/issues/${rep.number}/comments?since=${since}&per_page=100`)) ?? [] : [];
+  for (const c of comments) {
+    if (String(c.user?.login ?? "").toLowerCase() !== owner) continue;
+    for (const m of String(c.body ?? "").matchAll(/\b(ONAY|RET)\s+(s[a-z0-9]{3,8})\b/gi)) {
+      const code = m[2].toLowerCase(), item = pend[code];
+      if (!item) continue;
+      delete pend[code]; saveState();
+      if (m[1].toUpperCase() === "RET") { log("İstatistik postu reddedildi:", code); continue; }
+      try {
+        const res = await publish(item.urls, item.caption);
+        state.posts.push({ day: today, ids: item.ids, kind: item.kind, photos: item.photos, media: res.id, permalink: res.permalink, cover: item.urls[0], title: item.title, headline: item.headline, eventName: item.eventName, approved: code, at: new Date().toISOString() });
+        saveState();
+        log("Onaylı istatistik postu yayında:", res.permalink);
+        await notify(`✅ Onayladığın istatistik postu paylaşıldı (${code})\n${res.permalink}`);
+      } catch (e) {
+        if (isCreditError(e)) throw e;
+        pend[code] = item; saveState();
+        log("Onaylı post paylaşılamadı, sonraki çalışmada tekrar denenecek:", String(e.message).slice(0, 200));
+      }
+    }
+  }
+  for (const c of Object.keys(pend)) if (Date.now() - Date.parse(pend[c].at) > 7 * 864e5) { delete pend[c]; log("Onay süresi doldu, taslak düştü:", c); }
+  saveState();
+}
+
+/** Haftada bir (salı 12:00 sonrası): son paylaşılan yarışlardan birinin katılım istatistiği taslağı, onaya gönderilir. */
+async function draftStatForApproval() {
+  const d = new Date();
+  const week = `${d.getFullYear()}-${Math.ceil(((d - new Date(d.getFullYear(), 0, 1)) / 864e5 + 1) / 7)}`;
+  if (d.getDay() !== 2 || d.getHours() < 12 || state.statWeek === week) return false;
+  if (Object.keys(state.pendingApprovals ?? {}).length >= 2) return false;
+  state.statEvents ??= [];
+  const ev = [...state.posts].reverse().find((p) => p.eventName && p.media && !state.statEvents.includes(p.eventName) && Date.now() - Date.parse(p.at ?? 0) < 30 * 864e5);
+  if (!ev) return false;
+  state.statWeek = week; state.statEvents.push(ev.eventName); saveState();
+  const item = {
+    id: `stat:${norm(ev.eventName).slice(0, 40)}`, url: "", title: `${ev.eventName}: katılım istatistikleri`, source: "Hibrit Portal araştırması",
+    text: `GÖREV: "${ev.eventName}" yarışının katılım istatistiklerini içeren bir veri postu hazırla: toplam katılımcı/sporcu sayısı, katılan ülke sayısı, Türkiye'den katılan sporcu sayısı, geçmiş edisyonlarla karşılaştırma. YALNIZCA resmî sonuç listesinde, organizatörün resmî açıklamasında ya da güvenilir basında AÇIKÇA geçen sayıları kullan; sayıları kendin sayma, tahmin etme, yuvarlama. Bir sayı bulunamazsa o sayıyı yazma. Hiç güvenilir sayı bulamazsan factsOk=false ver. Her sayının URL'sini evidence'a yaz.`,
+  };
+  const pick = { ids: [item.id], score: 10, category: "yaris", kind: "haber", format: "carousel", why: "istatistik (onaylı)" };
+  log("İstatistik taslağı hazırlanıyor:", ev.eventName);
+  const ready = await prepareVerified(pick, [item], "Hibrit Portal");
+  if (!ready) { log("İstatistik taslağı doğrulamadan geçmedi."); return false; }
+  const r = await renderAndPublish(ready, { category: "yaris", sourceName: ready.sourceName, ids: pick.ids, kind: "istatistik", title: item.title, srcUrls: [], hold: true });
+  return !!r;
 }
 
 /** Vadesi gelmiş takip postunu (geçmiş edisyonlar / geçmiş antrenmanlar) hazırlar ve paylaşır. */

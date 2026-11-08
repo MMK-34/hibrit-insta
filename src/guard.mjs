@@ -58,6 +58,10 @@ export function guardPost(post, { sourceName }) {
   // Karoselin kapağı ilk slayt olmalı
   if (slides.length && slides[0].type !== "cover") return { ok: false, reason: "kapak slaytı yok" };
   if (!slides.length) return { ok: false, reason: "slayt yok" };
+  // Kesin kural: yarış kategorisi/divizyonu adı yazılmaz (eksik liste yanıltıcı olur). Model kurala uymazsa kod durdurur.
+  const allText = JSON.stringify(slides) + " " + String(post.caption ?? "");
+  if (/kategori|divizyon|division/i.test(allText) && /\b(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX'?|Masters?|Teens?|Hybrid)\b/.test(allText))
+    return { ok: false, reason: "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar" };
   const LIMIT = { title: 100, body: 240, subtitle: 160, kicker: 40, label: 60, value: 10 };
   const tooLong = [];
   slides.forEach((s, i) => {

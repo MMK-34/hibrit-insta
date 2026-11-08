@@ -12,8 +12,6 @@ Bu hesapta neler paylaşacağız:
 ▪️ Spor bilimi araştırmaları ve antrenman bilgileri
 ▪️ Yarışma arşivinden istatistikler
 
-Her paylaşımın sonunda kaynağını belirtiyoruz.
-
 Takip edin, yarış duyurularını kaçırmayın.
 
 #hibritportal #hyrox #hyroxturkiye #crossfit #crossfitturkiye #koşu #maraton #fonksiyonelfitness`;

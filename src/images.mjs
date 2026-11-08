@@ -124,8 +124,9 @@ const MULTI_SPORT = new Set(["kosu", "kuvvet", "dovus", "su", "bisiklet", "doga"
 async function getJson(url, headers = {}) {
   try {
     const r = await fetch(url, { headers: { "user-agent": UA, ...headers }, signal: AbortSignal.timeout(20000) });
-    return r.ok ? await r.json() : null;
-  } catch { return null; }
+    if (!r.ok) { console.warn(`foto API ${new URL(url).hostname}: HTTP ${r.status}`); return null; }
+    return await r.json();
+  } catch (e) { console.warn(`foto API ${new URL(url).hostname}: ${String(e?.message ?? e).slice(0, 120)}`); return null; }
 }
 
 async function pexels(q, n) {

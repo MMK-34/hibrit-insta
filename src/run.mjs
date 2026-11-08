@@ -271,7 +271,7 @@ async function prepareVerified(pick, srcItems, sourceName) {
     if (!g.ok) { log("Süzgeçten geçmedi:", g.reason); lastFails = [{ model: "süzgeç", item: "süzgeç", note: g.reason }]; feedback = failText(lastFails); continue; }
     // Görselsiz post yok: konuya uygun foto bulunamazsa paylaşılmaz.
     const photos = await findImages(g.post.imageQueries ?? [], Math.min(g.post.slides.length, 4), pick.category, usedPhotos);
-    if (!photos.length) { log("Foto bulunamadı."); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
+    if (!photos.length) { log(`Foto bulunamadı (kategori ${pick.category}, sorgular: ${(g.post.imageQueries ?? []).join(" | ")}).`); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
     const gate = await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName });
     if (gate.ok) { log(`Doğrulama geçti (deneme ${attempt}).`); bump("approved"); return { post: g.post, photos, sourceName: srcName }; }

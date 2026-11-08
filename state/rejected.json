@@ -516,5 +516,43 @@
         "note": "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar"
       }
     ]
+  },
+  {
+    "at": "2026-11-08T19:11:36.190Z",
+    "title": "Kuşadası’nda CrossFit Şampiyonası başladı",
+    "url": "https://www.halikarnashaber.com/haber/9336/kusadasinda-crossfit-sampiyonasi-basladi",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "Tazelik ve yanıltıcı tarih: 'başladı' haberi (Kaynak 1 ve 2) büyük olasılıkla önceki bir edisyona ait. aksiyon.com.tr sayfasının yanındaki haberler Aralık 2025 ve Ocak 2026 tarihli. Taslak ise bu haberi 2026 edisyonuna bağlayıp '8 Kasım 2026'da sona erecek' diyor. Resmî kayıt sayfasına göre 2026 edisyonu 6-8 Kasım 2026'da yapılacak, yani 'başladı' ifadesi 2026 için doğru değil. Eski bir olay yeni gibi sunulmuş."
+      },
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "'12 ülkeden yaklaşık 500 sporcu' rakamı önceki edisyona ait. 2026 edisyonu için bir kaynakta geçmiyor."
+      },
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "Stat slaytı bozuk: '500+12'den' anlamsız bir değer ve etiket (label) alanı da yok."
+      },
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "Post yarım kalmış: caption, hashtag'ler, imageQueries, eventName, officialSite ve officialInstagram alanları boş, end slaytı da yok."
+      },
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "Kaynaklarda başlangıç haberi 'Uluslararası CrossFit Şampiyonası' diye geçiyor. Resmî ad ALSANCAK TEAM SERIES 2026, ama taslak eski yarışın haberini bu adla birleştiriyor."
+      },
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "Bu konu ancak 2026 edisyonunun duyurusu olarak yeniden yazılabilir: 6-8 Kasım 2026, Atlantique Holiday Club Kuşadası, 8. edisyon, yeni HYBRID kategorisi. Ancak kayıt dönemi 25 Eylül 2026'da kapanıyor, duyurunun zamanlaması buna göre kontrol edilmeli. Mevcut taslak küçük düzeltmelerle yayımlanamaz."
+      }
+    ]
   }
 ]

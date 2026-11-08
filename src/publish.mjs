@@ -72,11 +72,21 @@ export async function findRecentDuplicate(me, caption) {
 }
 
 /** imageUrls: 1 => tekli, 2-10 => karosel. Yayınlanan medya id ve permalink döner. */
-export async function publish(imageUrls, caption) {
+export async function publish(imageUrls, caption, { collaborators = [] } = {}) {
   const me = userId();
+  // Ortak gönderi (Collab) daveti: organizatör kabul ederse post onun profilinde ve takipçilerinde de görünür.
+  // Davet desteklenmezse (hesap türü, sınır) container davetsiz yeniden oluşturulur; paylaşım durmaz.
+  const collab = collaborators.length ? { collaborators: JSON.stringify(collaborators.slice(0, 3)) } : {};
+  const withCollab = async (label, params) => {
+    try { return await retry(label, () => call("POST", `${me}/media`, { ...params, ...collab })); } catch (e) {
+      if (!collaborators.length) throw e;
+      console.warn(`Collab daveti kabul edilmedi (${String(e?.message ?? e).slice(0, 120)}); davetsiz paylaşılıyor.`);
+      return retry(label, () => call("POST", `${me}/media`, params));
+    }
+  };
   let creationId;
   if (imageUrls.length === 1) {
-    const c = await retry("IG container", () => call("POST", `${me}/media`, { image_url: imageUrls[0], caption }));
+    const c = await withCollab("IG container", { image_url: imageUrls[0], caption });
     await waitReady(c.id);
     creationId = c.id;
   } else {
@@ -86,7 +96,7 @@ export async function publish(imageUrls, caption) {
       children.push(c.id);
     }
     for (const id of children) await waitReady(id);
-    const c = await retry("IG karosel", () => call("POST", `${me}/media`, { media_type: "CAROUSEL", children: children.join(","), caption }));
+    const c = await withCollab("IG karosel", { media_type: "CAROUSEL", children: children.join(","), caption });
     await waitReady(c.id);
     creationId = c.id;
   }

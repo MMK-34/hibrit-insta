@@ -9,7 +9,7 @@ import { collect, articleText, upcomingEvents, resolveNewsUrl, courseCandidates 
 import { findImages } from "./images.mjs";
 import { eventPhotos, screenPhotos } from "./event-photos.mjs";
 import { circle21Candidates, circle21Reference, circle21Events, c21Handle } from "./circle21.mjs";
-import { igWatchCandidates, verifiedEventHandle } from "./ig-watch.mjs";
+import { igWatchCandidates, verifiedEventHandle, IG_WATCH_TR } from "./ig-watch.mjs";
 import { selectNews, writePost, reviewPost, creditProbe, isCreditError } from "./plan.mjs";
 import { renderPost, renderStory } from "./render.mjs";
 import { uploadFiles } from "./upload-github.mjs";
@@ -435,7 +435,12 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   log(`Üretildi: ${outDir} (${files.length} slayt)`);
   if (DRY) { log(`Caption:\n${caption}`); return null; }
   const urls = await uploadFiles(files, slug);
-  const res = await publish(urls, caption);
+  // Ortak gönderi (Collab) daveti: yalnızca izlenen Türkiye/bölge organizatörüne, aynı hesaba 30 günde en çok bir kez (davet bombardımanı yok)
+  state.collabInvites ??= {};
+  const lastInvite = evHandle ? Date.parse(state.collabInvites[evHandle] ?? 0) : 0;
+  const collaborators = evHandle && IG_WATCH_TR.includes(evHandle) && Date.now() - lastInvite > 30 * 864e5 ? [evHandle] : [];
+  const res = await publish(urls, caption, { collaborators });
+  if (collaborators.length) { state.collabInvites[evHandle] = new Date().toISOString(); log("Collab daveti gönderildi:", `@${evHandle}`); }
   state.posts.push({ day: today, ids, kind, photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, cover: urls[0], title, headline: post.slides[0]?.title, eventName: post.eventName || undefined, at: new Date().toISOString() });
   for (const id of ids ?? []) postedIds.add(id);
   for (const p of photos) if (!String(p.id).startsWith("local:")) usedPhotos.add(p.id);

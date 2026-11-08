@@ -127,7 +127,8 @@ export async function circle21Candidates() {
       snippet: c21Text(e).slice(0, 1500), text: c21Text(e), facts: c21Facts(e), handle: c21Handle(e),
     };
     if (now - pub < 10 * 864e5) out.push({ ...base, id: `c21:${e.id}`, title: `Yeni yarış duyurusu (resmî kayıt platformu): ${e.name}, ${day(e.start)}` });
-    else if (regTo > now && regTo - now < 7 * 864e5) out.push({ ...base, id: `c21son:${e.id}`, title: `Kayıtlar ${day(e.regTo)} tarihinde kapanıyor: ${e.name}, yarış ${day(e.start)}` });
+    // Son kayıt alarmı: kayıt 72 saat içinde kapanıyorsa (aciliyet, arkadaşa gönderme)
+    else if (regTo > now && regTo - now < 3 * 864e5) out.push({ ...base, id: `c21son:${e.id}`, title: `SON KAYIT ALARMI: ${e.name} kayıtları ${day(e.regTo)} tarihinde kapanıyor (yarış ${day(e.start)})` });
   }
   return out;
 }

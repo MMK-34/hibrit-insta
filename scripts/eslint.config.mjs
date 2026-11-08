@@ -1,0 +1,2 @@
+const g = Object.fromEntries(["process","console","Buffer","URL","URLSearchParams","fetch","AbortSignal","setTimeout","clearTimeout","setInterval","TextDecoder","TextEncoder","Response","Request","Headers","structuredClone","performance","crypto","globalThis","FormData","Blob","queueMicrotask"].map((k) => [k, "readonly"]));
+export default [{ files: ["**/*.mjs"], languageOptions: { ecmaVersion: 2024, sourceType: "module", globals: g }, rules: { "no-undef": "error" } }];

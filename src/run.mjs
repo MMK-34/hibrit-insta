@@ -238,7 +238,7 @@ async function main() {
       for (const s of srcItems) if (!s.id.startsWith("cal:") && !s.id.startsWith("cfcourse:") && !s.id.startsWith("c21") && !s.id.startsWith("ig:")) { s.url = await resolveNewsUrl(s.url); s.text = await articleText(s.url); }
       // Kaynak adı: takvim kayıtlarında organizatör sitesi
       // Takvim kaydı: alan adı yazılmaz (guard link sayar); etkinliğin resmî sitesi olarak belirtilir
-      const sourceName = srcItems[0].id.startsWith("ig:") ? `@${srcItems[0].handle} Instagram` : srcItems[0].id.startsWith("c21") ? "circle21 resmî kayıt sayfası" : srcItems[0].id.startsWith("cfcourse:") ? "CrossFit resmî kurs takvimi" : srcItems[0].id.startsWith("cal:") ? (srcItems[0].eventName ? `${String(srcItems[0].eventName).replace(/s+(20dd|kayıt.*|online.*|qualifier.*|(.*))$/i, "").replace(/s+20dd.*$/, "").trim()} resmî sitesi` : "Organizatörün resmî sitesi") : srcItems[0].source;
+      const sourceName = srcItems[0].id.startsWith("ig:") ? `@${srcItems[0].handle} Instagram` : srcItems[0].id.startsWith("c21") ? "circle21 resmî kayıt sayfası" : srcItems[0].id.startsWith("cfcourse:") ? "CrossFit resmî kurs takvimi" : srcItems[0].id.startsWith("cal:") ? (srcItems[0].eventName ? `${String(srcItems[0].eventName).replace(/\s+[—–-]\s+.*$/, "").replace(/\s+(20\d\d|kayıt.*|online.*|qualifier.*|\(.*\))$/i, "").replace(/\s+20\d\d.*$/, "").trim()} resmî sitesi` : "Organizatörün resmî sitesi") : srcItems[0].source;
 
       const ready = await prepareVerified(pick, srcItems, sourceName);
       processed++;

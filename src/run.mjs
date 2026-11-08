@@ -26,7 +26,7 @@ const START = Date.now();
 const DRY = process.argv.includes("--dry");
 const FORCE = process.argv.includes("--force"); // eşiği yok say, en iyi haberi paylaş
 const STOCK = process.argv.includes("--stock"); // haber aramadan stoktan paylaş (test/elle)
-const SERIES_FORCE = (() => { const i = process.argv.indexOf("--series"); return i > 0 ? process.argv[i + 1] : ""; })(); // test: --series hafta-sonu|tr-haftasi|aylik
+const SERIES_FORCE = (() => { const i = process.argv.indexOf("--series"); return i > 0 ? process.argv[i + 1] : ""; })(); // test: --series hafta-sonu|kayit-acik|aylik
 const DRY_COUNT = Number(process.argv[process.argv.indexOf("--count") + 1]) || 1; // dry testte işlenecek haber sayısı
 const STATE = "state/posted.json";
 const PER_RUN = POSTING.perRun ?? 2;

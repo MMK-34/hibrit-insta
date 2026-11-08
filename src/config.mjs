@@ -39,7 +39,6 @@ export const FEEDS = [
   { source: "Google News", url: "https://news.google.com/rss/search?q=Runatolia+OR+%22Antalya+Maratonu%22+OR+%22%C4%B0zmir+Maratonu%22+OR+%22Mersin+Maratonu%22+OR+%22Ankara+Yar%C4%B1+Maratonu%22+OR+%22Trabzon+Yar%C4%B1+Maratonu%22+OR+%22Kapadokya+Ultra%22+OR+%22Cappadocia+Ultra%22+when%3A14d&hl=tr&gl=TR&ceid=TR:tr", cat: "kosu" },
   // Türkiye: ultra/patika, atletizm, triatlon
   { source: "Google News", url: "https://news.google.com/rss/search?q=%22ultra+maraton%22+OR+%22ultra+trail%22+OR+%22patika+ko%C5%9Fusu%22+OR+%22da%C4%9F+ko%C5%9Fusu%22+OR+%22trail+ko%C5%9Fu%22+-y%C3%BCz%C3%BCc%C3%BC+-y%C3%BCz%C3%BCc%C3%BCs%C3%BC+when%3A7d&hl=tr&gl=TR&ceid=TR:tr", cat: "kosu" },
-  { source: "Google News", url: "https://news.google.com/rss/search?q=%22Atletizm+Federasyonu%22+OR+%22milli+atlet%22+OR+%22T%C3%BCrk+atlet%22+when%3A7d&hl=tr&gl=TR&ceid=TR:tr", cat: "genel" },
   { source: "Google News", url: "https://news.google.com/rss/search?q=triatlon+OR+%22Ironman+70.3+T%C3%BCrkiye%22+OR+%22Challenge+Turkey%22+OR+duatlon+when%3A7d&hl=tr&gl=TR&ceid=TR:tr", cat: "kosu" },
   // Türkiye: HYROX, CrossFit (Eurasia/Tirana Throwdown dahil), fonksiyonel/OCR
   { source: "Google News", url: "https://news.google.com/rss/search?q=HYROX+when%3A14d&hl=tr&gl=TR&ceid=TR:tr", cat: "hyrox" },
@@ -51,7 +50,6 @@ export const FEEDS = [
   { source: "Rox Lyfe", url: "https://roxlyfe.com/feed/", cat: "hyrox" },
   { source: "Runner's World", url: "https://www.runnersworld.com/rss/all.xml/", cat: "kosu" },
   { source: "iRunFar", url: "https://www.irunfar.com/feed", cat: "kosu" },
-  { source: "LetsRun", url: "https://www.letsrun.com/feed/", cat: "kosu" },
   { source: "Triathlete", url: "https://www.triathlete.com/feed/", cat: "kosu" },
   { source: "Trail Runner", url: "https://trailrunnermag.com/feed/", cat: "kosu" },
   { source: "ScienceDaily", url: "https://www.sciencedaily.com/rss/health_medicine/fitness.xml", cat: "fonksiyonel" },
@@ -61,14 +59,10 @@ export const FEEDS = [
   { source: "Google News", url: "https://news.google.com/rss/search?q=%22World+Fitness+Project%22+OR+%22Rogue+Invitational%22+OR+Wodapalooza+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "crossfit" },
   { source: "Google News", url: "https://news.google.com/rss/search?q=%22Spartan+Race%22+OR+%22OCR+World+Championships%22+OR+%22DEKA%22+fitness+when%3A14d&hl=en-US&gl=US&ceid=US:en", cat: "fonksiyonel" },
   // Dünya: koşu, ultra, triatlon (World Athletics ve World Triathlon'un RSS'i yok/eski; site: sorgusu kullanılıyor)
-  { source: "Google News", url: "https://news.google.com/rss/search?q=site%3Aworldathletics.org+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "kosu" },
   { source: "Google News", url: "https://news.google.com/rss/search?q=%22marathon+world+record%22+OR+%22World+Marathon+Majors%22+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "kosu" },
   { source: "Google News", url: "https://news.google.com/rss/search?q=UTMB+OR+%22ultra-trail%22+OR+ultramarathon+OR+%22Western+States+100%22+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "kosu" },
-  { source: "Google News", url: "https://news.google.com/rss/search?q=site%3Atriathlon.org+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "kosu" },
-  { source: "Google News", url: "https://news.google.com/rss/search?q=IRONMAN+triathlon+OR+%22T100+Triathlon%22+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "kosu" },
+  { source: "Google News", url: "https://news.google.com/rss/search?q=IRONMAN+triathlon+OR+%22IRONMAN+70.3%22+when%3A7d&hl=en-US&gl=US&ceid=US:en", cat: "kosu" },
   // Kürek, triatlon, spor bilimi (RSS olarak doğrulandı)
-  { source: "World Rowing", url: "https://worldrowing.com/feed/", cat: "su" },
-  { source: "Slowtwitch", url: "https://www.slowtwitch.com/feed", cat: "kosu" },
   { source: "mysportscience", url: "https://www.mysportscience.com/blog-feed.xml", cat: "genel" },
   { source: "ScienceDaily", url: "https://www.sciencedaily.com/rss/health_medicine/sports_medicine.xml", cat: "genel" },
   // Türkiye: yerel ve amatör yarışlar
@@ -89,6 +83,12 @@ export const FEEDS = [
 // Stok (kalıcı bilgi) post konuları: haber çıkmayan günlerde sırayla paylaşılır. Her biri kaynaklı yazılır.
 // Liste bitince başa dönülür; yeni konu eklemek için buraya satır ekle.
 export const STOCK_TOPICS = [
+  { id: "ilk-10k", cat: "kosu", title: "İlk 10K koşunuzdan önce yapmanız gerekenler", brief: "İlk 10 km halk koşusuna katılacak amatör için: kayıt ve göğüs numarası teslimi, son hafta antrenman azaltma, yarış sabahı beslenme ve ısınma, tempo planı, yarış günü kontrol listesi (TAF yol koşusu kuralları, spor beslenmesi kılavuzları ve güvenilir koşu kaynakları)" },
+  { id: "ilk-crossfit-yarisi", cat: "crossfit", title: "İlk CrossFit yarışmanızdan önce bilmeniz gerekenler", brief: "İlk throwdown ya da takım yarışmasına girecek amatör için: Rx/Scaled kategori seçimi, hareket standartları ve hakemlik (no rep), ısınma alanı, workout'lar arası toparlanma ve beslenme, yanınıza alacaklarınız (CrossFit resmî hakem kursu/kural kaynakları)" },
+  { id: "ilk-hyrox", cat: "hyrox", title: "İlk HYROX yarışınızdan önce yapmanız gerekenler", brief: "İlk HYROX'una girecek sporcu için: kategori seçimi (Open, Pro, Doubles, Relay), istasyon sırası ve standartlar, Roxzone, tempo stratejisi, yarış günü kontrol listesi (HYROX resmî kural kitabı)" },
+  { id: "ilk-trail", cat: "doga", title: "İlk trail koşunuzdan önce bilmeniz gerekenler", brief: "İlk patika/trail yarışına girecek koşucu için: parkur uzunluğu ve irtifa farkı, zorunlu malzeme, ayakkabı seçimi, kontrol noktaları ve zaman sınırları (cut-off), inişte ve çıkışta tempo (ITRA ve organizatör kuralları)" },
+  { id: "ilk-yari-maraton", cat: "kosu", title: "10K'dan yarı maratona geçiş", brief: "10K koşan amatörün ilk yarı maratonuna hazırlanması: haftalık hacim artışı, uzun koşu, yarışta su ve enerji alımı, yarış öncesi azaltma (araştırmalar ve antrenman kılavuzları)" },
+  { id: "yaris-gunu-beslenme", cat: "bilim", title: "Yarış sabahı ne yemeli?", brief: "Kısa (5-10K) ve uzun (yarı maraton ve üstü) yarışlar ile HYROX/CrossFit yarış günü için yarış öncesi öğün zamanlaması ve karbonhidrat miktarı (ISSN ve ACSM spor beslenmesi önerileri)" },
   { id: "kurek-erg-teknik", cat: "su", title: "Ergometrede doğru kürek tekniği", brief: "Kürek ergometresinde çekiş sırası (bacak, gövde, kol), damper ayarı ve sık yapılan hatalar (Concept2 ve World Rowing kaynakları)" },
   { id: "athx-format", cat: "fonksiyonel", title: "ATHX yarış formatı", brief: "ATHX hibrit fitness yarışının bölümleri, kategorileri ve puanlama sistemi (organizatörün resmî kuralları)" },
   { id: "run-ultra-trail", cat: "doga", title: "Trail ve ultra yarışlarında zorunlu malzeme", brief: "Trail ve ultra yarışlarında istenen zorunlu malzeme listesi ve ITRA/UTMB puan sistemi (resmî kaynaklar)" },

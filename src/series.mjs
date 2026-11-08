@@ -11,10 +11,10 @@ import { safeGet } from "./safe-net.mjs";
 // Aday ipuçları: Google News RSS başlıkları (yazar bunları başlangıç noktası olarak kullanır, yine de her satırı kendisi doğrular)
 const gnews = (q) => `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=tr&gl=TR&ceid=TR:tr`;
 const HINTS = {
-  "tr-haftasi": [
-    '"dünya şampiyonu" OR "Avrupa şampiyonu" OR "altın madalya" OR "gümüş madalya" OR "bronz madalya" milli sporcu when:8d',
-    '"milli güreşçi" OR "milli boksör" OR "milli judocu" OR "milli tekvandocu" OR "milli karateci" OR "milli eskrimci" when:8d',
-    '"milli halterci" OR "milli yüzücü" OR "milli okçu" OR "milli cimnastikçi" OR "milli atıcı" OR "milli kürekçi" OR "milli atlet" when:8d',
+  "kayit-acik": [
+    '"kayıtları başladı" OR "kayıtlar açıldı" OR "kayıtları açıldı" koşu OR maraton OR trail when:30d',
+    'HYROX OR CrossFit OR ATHX OR throwdown kayıt OR "kayıtlar" when:30d',
+    '"yarı maratonu" OR "halk koşusu" OR "10K" OR "ultra trail" kayıt when:30d',
   ],
   race: [
     '"yarı maratonu" OR "maratonu" OR "halk koşusu" when:21d',
@@ -32,7 +32,6 @@ async function hints(id, from, to) {
       const d = new Date(m[2]);
       if (isNaN(d)) continue;
       // Yarış serilerinde yayın tarihi değil yarış tarihi önemli: son 21 günün duyuruları aday; başarı serisinde yalnızca dönem içi
-      if (id === "tr-haftasi" && (d < new Date(from.getTime() - 864e5) || d > new Date(to.getTime() + 2 * 864e5))) continue;
       out.push(`- ${m[1].replace(/<!\[CDATA\[|\]\]>/g, "").replace(/&amp;/g, "&").replace(/[<>]/g, "").trim()} (${d.toISOString().slice(0, 10)})`);
     }
   }
@@ -50,7 +49,7 @@ const isoWeek = (d) => {
 };
 
 const RACE_COLS = ["Tarih", "Yarış", "Şehir", "Branş"];
-const RACE_RULES = `Yalnızca dayanıklılık ve hibrit fitness yarışları: koşu (yol, maraton, yarı maraton, trail, ultra, dağ koşusu), triatlon/duatlon/aquatlon, açık su yüzmesi, kürek ve indoor rowing, granfondo, OCR, HYROX/CrossFit/ATHX ve benzeri hibrit fitness yarışmaları. Takım sporları, dövüş sporları, halter, jimnastik, havuz yüzmesi, tırmanış ve benzerleri YOK.
+const RACE_RULES = `Yalnızca herkesin katılabildiği yarışlar: halk koşuları (5K, 10K, 15K, yarı maraton, maraton), trail, ultra ve dağ koşuları, CrossFit yarışmaları (throwdown, takım yarışları), HYROX, ATHX, DEKA ve benzeri hibrit fitness yarışları, OCR, amatör triatlon/duatlon/aquatlon, açık su yüzme yarışları, granfondo, kürek/indoor rowing yarışları. Profesyonel/elit branş müsabakaları (havuz yüzmesi, güreş, halter, pist atletizmi vb.) YOK.
 Büyük organizasyonlar kadar belediye koşuları ve yerel amatör yarışlar da listeye girsin. Branşları ve şehirleri çeşitlendir: tek bir takvim sayfasıyla yetinme; TAF yol ve dağ koşusu takvimi, Türkiye Triatlon Federasyonu takvimi, granfondo takvimi, organizatör siteleri ve yerel haberleri ayrı ayrı ara.
 Faydalı takvimler: RaceTurkiye (raceturkiye.com), TAF koşu platformu (kosu.taf.org.tr), federasyon faaliyet takvimleri. Ama her satırın tarihini ORGANİZATÖRÜN resmî sitesinden teyit et; kaynaklar çelişirse resmî siteyi esas al.
 Çok günlü etkinliklerde resmî sitedeki tarih aralığının tamamını yaz (ör. "13-15 Kas").
@@ -73,20 +72,17 @@ export const SERIES = [
     task: (c) => `GÖREV: ${fmt(c.from)} Cumartesi ve ${fmt(c.to)} Pazar günleri TÜRKİYE'de düzenlenecek bireysel spor yarışlarını bul (en az 3, en fazla 14). Tarih sırasına göre diz.\n${RACE_RULES}`,
   },
   {
-    id: "tr-haftasi",
+    id: "kayit-acik",
     due: (d) => d.getDay() === 1 && d.getHours() >= 9, // pazartesi sabahı
-    key: (d) => `tr-haftasi:${isoWeek(d)}`,
-    ctx: (d) => { const from = addDays(d, -7), to = addDays(d, -1); return { from, to, range: `${from.getDate()} ${AY[from.getMonth()]}-${to.getDate()} ${AY[to.getMonth()]}` }; },
-    columns: ["Sporcu", "Branş", "Derece", "Yarışma"], min: 3, max: 14,
-    cover: (c) => ({ kicker: "HAFTANIN DERECELERİ", title: `${c.range}: uluslararası yarışlarda Türk sporcular`, subtitle: "Geçen hafta madalya kazanan ve ilk üçe giren Türk sporcular." }),
-    tableTitle: "Haftanın dereceleri",
-    intro: (c, names, n) => `${c.range} haftasında uluslararası yarışlarda ${n} Türk sporcu dereceye girdi: ${names}.`,
-    end: { title: "Tebrikler!", body: "Gözümüzden kaçan dereceyi yorumlara yazın, listeye ekleyelim." },
-    imageQueries: ["athlete podium medal", "olympic weightlifting snatch", "freestyle wrestling match"], cat: "basari",
-    task: (c) => `GÖREV: ${fmt(c.from)} ile ${fmt(c.to)} arasında Türk sporcuların dayanıklılık ve hibrit fitness sporlarında (koşu, maraton, trail/ultra, kürek, triatlon, HYROX, CrossFit, ATHX ve benzeri) uluslararası yarışlarda (dünya/Avrupa şampiyonası, dünya kupası, büyük maraton, uluslararası yarış) kazandığı madalyaları ve ilk 3 derecelerini bul (en az 3, en fazla 14). Önce altınlar.
-Takım sporları, dövüş sporları, halter, jimnastik, okçuluk, havuz yüzmesi ve tırmanış YOK. Paralimpik sporcuların bu branşlardaki dereceleri de dâhil.
-Sporcu: ad soyad (haberin kendisi olan sporcu, doğru yazımıyla). Branş tek kelime (Koşu, Maraton, Trail, Kürek, Triatlon, HYROX, CrossFit...). Derece: "Altın", "Gümüş", "Bronz" ya da "1." gibi; gerekirse sıklet/mesafe ekle (ör. "Altın, 67 kg"), en fazla 18 karakter. Yarışma: kısa resmî ad, en fazla 32 karakter.
-Her satırı federasyon, organizatör ya da güvenilir ulusal basın (AA vb.) sayfasından DOĞRULA, URL'sini url alanına yaz. Tarih aralığı dışındaki ya da doğrulanamayan derece listeye girmez.`,
+    key: (d) => `kayit-acik:${isoWeek(d)}`,
+    ctx: (d) => { const from = addDays(d, 7), to = addDays(d, 70); return { from, to, range: `${from.getDate()} ${AY[from.getMonth()]}-${to.getDate()} ${AY[to.getMonth()]}` }; },
+    columns: RACE_COLS, min: 4, max: 14,
+    cover: () => ({ kicker: "KAYITLAR AÇIK", title: "Kaydı açık yarışlar", subtitle: "Önümüzdeki haftalarda Türkiye'de koşulacak, kaydı hâlâ açık yarışlardan bir seçki." }),
+    intro: (c, names, n) => `Kaydı açık ${n} yarış: ${names}.`,
+    tableTitle: "Kayıtlar açık",
+    end: { title: "Hangisine kayıt oldunuz?", body: "Kaydı açık başka bir yarış biliyorsanız yorumlara yazın, listeye ekleyelim." },
+    imageQueries: ["marathon runners city street", "trail running race", "hyrox sled push"], cat: "yaris",
+    task: (c) => `GÖREV: ${fmt(c.from)} ile ${fmt(c.to)} arasında TÜRKİYE'de düzenlenecek ve KAYDI ŞU AN AÇIK olan yarışları bul (en az 4, en fazla 14). Tarih sırasına göre diz. Her satır için kaydın açık olduğunu organizatörün kayıt sayfasından ya da resmî duyurusundan doğrula; kaydı kapanmış ya da tükenmiş yarışı koyma.\n${RACE_RULES}`,
   },
   {
     id: "aylik",
@@ -184,11 +180,11 @@ export async function writeSeries({ s, ctx }, feedback = "") {
   const post = {
     slides: [{ type: "cover", ...s.cover(ctx) }, ...tables, { type: "end", ...s.end }],
     caption: [
-      s.intro(ctx, (() => { const ns = rows.map((r) => r.cells[s.id === "tr-haftasi" ? 0 : 1]); return ns.length > 1 ? `${ns.slice(0, -1).join(", ")} ve ${ns.at(-1)}` : ns.join(""); })(), rows.length),
-      s.id === "tr-haftasi" ? "Dereceler ve yarışmalar sonraki slaytlarda." : "Tarih, şehir ve branş bilgileri sonraki slaytlarda. Kayıt ve güncel bilgi için organizatörün resmî sitesine bakın.",
+      s.intro(ctx, (() => { const ns = rows.map((r) => r.cells[1]); return ns.length > 1 ? `${ns.slice(0, -1).join(", ")} ve ${ns.at(-1)}` : ns.join(""); })(), rows.length),
+      "Tarih, şehir ve branş bilgileri sonraki slaytlarda. Kayıt ve güncel bilgi için organizatörün resmî sitesine bakın.",
       s.end.title,
     ].join("\n\n"), hashtags: [...new Set([...(res.hashtags ?? []), "#hibritportal"])].slice(0, 10),
-    imageQueries: branchQueries.length ? branchQueries : s.imageQueries, primarySource: cleanSeriesSource(res.primarySource) || (s.id === "tr-haftasi" ? "Federasyonlar ve haber ajansları" : "Organizatörlerin resmî siteleri"),
+    imageQueries: branchQueries.length ? branchQueries : s.imageQueries, primarySource: cleanSeriesSource(res.primarySource) || "Organizatörlerin resmî siteleri",
     evidence: rows.map((r) => ({ claim: r.cells.join(" | "), url: r.url })), eventName: "", officialSite: "", officialInstagram: "",
   };
   // Doğrulayıcıya en çeşitli kaynaklar gitsin (aynı alan adından birden çok URL yerine farklı siteler)

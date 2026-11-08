@@ -35,6 +35,19 @@ function candidates(html, base) {
   return [...new Set(out.filter(Boolean))];
 }
 
+/** Bilinen bir logo görseli (ör. circle21 resmî kaydındaki yarış logosu). Döner: { buf, source } ya da null */
+export async function logoFromUrl(url) {
+  if (!/^https:\/\//i.test(url ?? "")) return null;
+  const raw = await get(url, true);
+  if (!raw || raw.length < 300) return null;
+  try {
+    const meta = await sharp(raw, { density: 300 }).metadata();
+    if (!meta.width || meta.width < 64 || meta.height < 32) return null;
+    const buf = await sharp(raw, { density: 300 }).trim().resize({ height: 120, width: 420, fit: "inside" }).png().toBuffer();
+    return { buf, source: url };
+  } catch { return null; }
+}
+
 /** Döner: { buf (PNG, yükseklik 120px), source } ya da null */
 export async function fetchEventLogo(officialSite) {
   if (!/^https:\/\//i.test(officialSite ?? "")) return null;

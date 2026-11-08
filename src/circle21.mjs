@@ -35,11 +35,37 @@ export async function circle21Events() {
     address: strip(d.competition_address), instagram: d.instagram ?? "", website: d.website ?? "",
     organizer: strip(d.organized_by).slice(0, 400), info: strip(d.info).slice(0, 2500),
     published: d.published_at ?? d.created_at, onsite: !!d.onsite, country: d.country,
+    // Yarış logosu: önce özgün yükleme (media/logo), yoksa küçük önizleme
+    logo: (d.media ?? []).find((m) => m.collection_name === "logo")?.original_url || d.logo || "",
   }));
   return cache;
 }
 
-/** Resmî kayıt metni (yazar ve doğrulayıcı için güvenilir veri). Kategori listesi bilerek verilmez (bkz. yazar kuralı). */
+/** Organizatörün Instagram hesabı: yalnızca yapılandırılmış "instagram" alanından, doğrulanmış kullanıcı adı. */
+export function c21Handle(e) {
+  const m = String(e?.instagram ?? "").match(/^https?:\/\/(?:www\.)?instagram\.com\/([A-Za-z0-9_.]{2,30})\/?(?:\?.*)?$/);
+  return m ? m[1] : "";
+}
+
+/**
+ * Doğrulayıcıya "güvenilir referans" olarak giden kısım: yalnızca kodun biçimlediği yapılandırılmış alanlar
+ * (ad, tarihler, kayıt dönemi, ücret, şehir). Organizatörün serbest metni (açıklama, organizatör yazısı) burada YOK.
+ */
+export function c21Facts(e) {
+  const name = String(e.name ?? "").replace(/[^\p{L}\p{N} .'&-]/gu, "").slice(0, 80);
+  const city = (e.address.match(/\d{5}\s+([^/,]+)\/([^,]+)/) ?? []).slice(1).map((x) => x.trim()).join(", ");
+  const fee = /^\d+(\.\d+)? [A-Z]{3}$/.test(e.fee) ? e.fee : "";
+  return [
+    `Resmî ad: ${name}`,
+    `Yarış tarihleri: ${day(e.start)} - ${day(e.end)}`,
+    e.regFrom || e.regTo ? `Kayıt dönemi: ${day(e.regFrom)} - ${day(e.regTo)}` : "",
+    fee ? `Kayıt ücreti: ${fee}` : "",
+    city ? `Yer: ${city}` : "",
+    `Biçim: ${e.onsite ? "yüz yüze" : "çevrim içi"}`,
+  ].filter(Boolean).join("\n");
+}
+
+/** Resmî kayıt metni (yazar için kaynak; serbest metin alanları güvenilmez veridir). Kategori listesi bilerek verilmez (bkz. yazar kuralı). */
 export function c21Text(e) {
   return [
     `Resmî ad: ${e.name}`,
@@ -78,9 +104,11 @@ export async function circle21Reference(text) {
     const place = (e.address.match(/\d{5}\s+([^/,]+)\/([^,]+)/) ?? []).slice(1).map((x) => norm(x.trim())).filter((x) => x.length > 3);
     if (place.some((p) => t.includes(p))) score += 1;
     if (/crossfit|fonksiyonel|hyrox|hibrit|yarisma|sampiyona/.test(t)) score += 0.5;
-    if (score >= 1.5 && (!best || score > best.score)) best = { score, event: e };
+    // Yalnızca şehir + branş eşleşmesi: yarış bugün sürüyor ya da ±3 gün içindeyse kabul (aynı şehirde başka yarışla karışmasın)
+    const near = s - 3 * 864e5 <= now && now <= en + 3 * 864e5;
+    if ((score >= 2.5 || (score >= 1.5 && near)) && (!best || score > best.score)) best = { score, event: e };
   }
-  return best ? { event: best.event, text: c21Text(best.event) } : null;
+  return best ? { event: best.event, text: c21Text(best.event), facts: c21Facts(best.event), handle: c21Handle(best.event) } : null;
 }
 
 /** Haber adayları: son 10 günde yayımlanan yeni yarışlar (duyuru) ve kaydı 7 gün içinde kapanacak yarışlar. */
@@ -92,8 +120,8 @@ export async function circle21Candidates() {
     if (!(start > now)) continue;
     const pub = Date.parse(e.published ?? 0), regTo = Date.parse(e.regTo ?? 0);
     const base = {
-      eventName: e.name, url: e.url, source: "circle21 resmî kayıt sayfası", feedCat: "crossfit", date: new Date().toISOString(), ageH: 0,
-      snippet: c21Text(e).slice(0, 1500), text: c21Text(e),
+      eventName: e.name, url: e.url, logo: e.logo, source: "circle21 resmî kayıt sayfası", feedCat: "crossfit", date: new Date().toISOString(), ageH: 0,
+      snippet: c21Text(e).slice(0, 1500), text: c21Text(e), facts: c21Facts(e), handle: c21Handle(e),
     };
     if (now - pub < 10 * 864e5) out.push({ ...base, id: `c21:${e.id}`, title: `Yeni yarış duyurusu (resmî kayıt platformu): ${e.name}, ${day(e.start)}` });
     else if (regTo > now && regTo - now < 7 * 864e5) out.push({ ...base, id: `c21son:${e.id}`, title: `Kayıtlar ${day(e.regTo)} tarihinde kapanıyor: ${e.name}, yarış ${day(e.start)}` });

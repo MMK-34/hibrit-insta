@@ -19,7 +19,7 @@ import { INTRO_IMAGES, INTRO_CAPTION } from "./intro.mjs";
 import { verifyGate, logRejected, failText } from "./verify.mjs";
 import { scheduleFollowups, dueFollowup, markFollowup, followupInput, loadFollowups, norm } from "./followups.mjs";
 import { loadStock, saveStock } from "./stock.mjs";
-import { fetchEventLogo, fetchInstagramLogo } from "./logo.mjs";
+import { fetchEventLogo, fetchInstagramLogo, logoFromUrl } from "./logo.mjs";
 import { POSTING } from "./config.mjs";
 import { dueSeries, SERIES } from "./series.mjs";
 import { writeSeries } from "./series.mjs";
@@ -280,10 +280,11 @@ async function prepareVerified(pick, srcItems, sourceName) {
     : await circle21Reference(srcItems.map((s) => `${s.title} ${s.text || s.snippet || ""}`).join(" ")).catch(() => null);
   if (c21) {
     log("circle21 resmî kaydı eşleşti:", c21.event.name);
-    srcItems = [...srcItems, { id: `c21ref:${c21.event.id}`, url: c21.event.url, title: `Resmî kayıt: ${c21.event.name}`, source: "circle21 resmî kayıt sayfası", text: c21.text }];
+    srcItems = [...srcItems, { id: `c21ref:${c21.event.id}`, logo: c21.event.logo, facts: c21.facts, handle: c21.handle, url: c21.event.url, title: `Resmî kayıt: ${c21.event.name}`, source: "circle21 resmî kayıt sayfası", text: c21.text }];
   }
   const ownC21 = srcItems.find((s) => s.id.startsWith("c21"));
-  const referenceData = ownC21 ? `circle21 resmî kayıt platformu verisi (organizatörün kendi girdiği kayıt):\n${ownC21.text}` : "";
+  // Güvenilir referans: yalnızca kodun biçimlediği yapılandırılmış alanlar (serbest metin yazara kaynak olarak gider, burada yok)
+  const referenceData = ownC21?.facts ? `circle21 resmî kayıt platformu, yapılandırılmış alanlar (ad, tarihler, kayıt dönemi, ücret, yer):\n${ownC21.facts}` : "";
   for (let attempt = 1; attempt <= 2; attempt++) {
     const draft = await writePost(pick, srcItems, feedback);
     if (!draft.factsOk) { log("Kaynak yetersiz:", srcItems[0].title); lastFails = [{ model: "yazar", item: "kaynak", note: "factsOk=false" }]; break; }
@@ -301,7 +302,9 @@ async function prepareVerified(pick, srcItems, sourceName) {
     // Görselsiz post yok: konuya uygun foto bulunamazsa paylaşılmaz.
     // Önce etkinliğin kendi fotoğrafı (resmî site, resmî Instagram, kaynak haber); eksik kalırsa görsel denetimden geçen stok foto
     const topic = [g.post.eventName, srcItems[0].title, g.post.slides[0]?.title].filter(Boolean).join(" | ");
-    if (!g.post.officialInstagram && ownC21) { const m = String(ownC21.text).match(/instagram\.com\/([\w.]+)/i); if (m) g.post.officialInstagram = m[1]; }
+    if (ownC21?.logo) g.post.eventLogoUrl = ownC21.logo;
+    // Organizatör hesabı yalnızca kaydın yapılandırılmış instagram alanından (doğrulanmış kullanıcı adı)
+    if (!g.post.officialInstagram && ownC21?.handle) g.post.officialInstagram = ownC21.handle;
     const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 4), category: pick.category });
     if (!photos.length) { log(`Foto bulunamadı (kategori ${pick.category}, sorgular: ${(g.post.imageQueries ?? []).join(" | ")}).`); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
@@ -395,8 +398,9 @@ async function pickPhotos({ post, pages, topic, want, category }) {
 async function renderAndPublish({ post, photos }, { category, sourceName, ids, kind, title, srcUrls = [], onPublished = null }) {
   const slug = `${today}/${Date.now().toString(36)}`;
   const outDir = path.join("out", slug);
-  // Etkinlik logosu: önce resmî site, sonra resmî Instagram profil fotoğrafı
-  const eventLogo = (post.officialSite ? await fetchEventLogo(post.officialSite).catch(() => null) : null)
+  // Etkinlik logosu: önce circle21 resmî kaydındaki yarış logosu, sonra resmî site, sonra resmî Instagram profil fotoğrafı
+  const eventLogo = (post.eventLogoUrl ? await logoFromUrl(post.eventLogoUrl).catch(() => null) : null)
+    ?? (post.officialSite ? await fetchEventLogo(post.officialSite).catch(() => null) : null)
     ?? (post.officialInstagram ? await fetchInstagramLogo(post.officialInstagram).catch(() => null) : null);
   if (eventLogo) log("Etkinlik logosu:", eventLogo.source);
   const files = await renderPost({ ...post, photos, eventLogo, category, source: sourceName, dateLabel }, outDir);

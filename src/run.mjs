@@ -443,7 +443,9 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   // Ortak gönderi (Collab) daveti: yalnızca izlenen Türkiye/bölge organizatörüne, aynı hesaba 30 günde en çok bir kez (davet bombardımanı yok)
   state.collabInvites ??= {};
   const lastInvite = evHandle ? Date.parse(state.collabInvites[evHandle] ?? 0) : 0;
-  const collaborators = evHandle && IG_WATCH_TR.includes(evHandle) && Date.now() - lastInvite > 30 * 864e5 ? [evHandle] : [];
+  // Kullanıcı kararı (2026-11-08): Collab davetleri hesap biraz tanınana kadar KAPALI. Açmak için COLLAB_ON = true.
+  const COLLAB_ON = false;
+  const collaborators = COLLAB_ON && evHandle && IG_WATCH_TR.includes(evHandle) && Date.now() - lastInvite > 30 * 864e5 ? [evHandle] : [];
   const res = await publish(urls, caption, { collaborators });
   if (collaborators.length) { state.collabInvites[evHandle] = new Date().toISOString(); log("Collab daveti gönderildi:", `@${evHandle}`); }
   state.posts.push({ day: today, ids, kind, photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, cover: urls[0], title, headline: post.slides[0]?.title, eventName: post.eventName || undefined, at: new Date().toISOString() });

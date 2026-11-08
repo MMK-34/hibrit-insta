@@ -15,7 +15,9 @@ const URL_RE = new RegExp(
 );
 // Temizlikten sonra kalan link benzeri ifade (harfle başlayan etiket + nokta/[.]/(.)/。 + boşluksuz, TAMAMI küçük harf 2+ harf):
 // varsa post REDDEDİLİR (silinmez). "St.Louis", "açıldı.Ücret" gibi büyük harfle devam eden geçişler etkilenmez.
-const LINKISH_RE = /(?<![\p{L}\p{N}\-.])[\p{L}][\p{L}\p{N}\-]+(?:\.|\[\.\]|\(\.\)|。)\p{Ll}{2,}(?![\p{L}\p{N}])/u;
+// Büyük/küçük harf fark etmeksizin beyaz listedeki TLD ile biten alan adı (harfle başlayan etiket): temizlikten sonra kalırsa ret
+const DOMAIN_ANYCASE_RE = new RegExp(String.raw`(?<![\p{L}\p{N}\-.])\p{L}[\p{L}\p{N}\-]+${DOT}(?:${TLDS})(?![\p{L}\p{N}\-])`, "iu");
+const LINKISH_RE =/(?<![\p{L}\p{N}\-.])[\p{L}][\p{L}\p{N}\-]+(?:\.|\[\.\]|\(\.\)|。)\p{Ll}{2,}(?![\p{L}\p{N}])/u;
 const MAX_SLIDES = 10, MAX_TAGS = 12, MAX_TAG_LEN = 30, MAX_CAPTION = 2200;
 const MENTION_RE = /(^|\s)@[\w.]{2,30}/g;
 const BAD = /(casino|bahis|(?<![\p{L}])(?:\d*x?bet|bets?10|betboo|tipobet|superbet|jojobet|mobilbet|betist|bet)(?![\p{L}])|kripto|crypto|airdrop|dm\s*at|link\s*bio|bio'?daki\s*link|whatsapp|telegram|onlyfans|indirim\s*kodu|promo\s*code)/iu;
@@ -96,6 +98,9 @@ export function guardPost(post, { sourceName }) {
   const eventName = clean(post.eventName ?? "").slice(0, 80);
   const lk = `${all} ${eventName}`.match(LINKISH_RE);
   if (lk) return { ok: false, reason: `link benzeri ifade: "${lk[0]}" (alan adı/link yazma; nokta sonrası boşluk bırak)` };
+  // URL_RE yalnızca küçük harfli TLD'leri siler; büyük harfli alan adı ("HYROX.COM", "Site.Org") silinmez ama yayınlanmaz: reddedilir
+  const dm = `${all} ${eventName}`.match(DOMAIN_ANYCASE_RE);
+  if (dm) return { ok: false, reason: `alan adı benzeri ifade: "${dm[0]}" (alan adı yazma; nokta sonrası boşluk bırak)` };
   const officialSite = /^https:\/\/[^\s"'<>]+$/i.test(post.officialSite ?? "") ? post.officialSite : "";
   const officialInstagram = /^[\w.]{2,30}$/.test(String(post.officialInstagram ?? "").replace(/^@/, "")) ? String(post.officialInstagram).replace(/^@/, "") : "";
   return { ok: true, post: { slides, caption, eventName, officialSite, officialInstagram, imageQueries: (post.imageQueries ?? []).map((q) => clean(q).slice(0, 60)).slice(0, 4), brand: BRAND.handle } };

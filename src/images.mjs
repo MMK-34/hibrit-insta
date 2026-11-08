@@ -69,25 +69,57 @@ const LOCAL_ALT = {
   "olimpik-archery-target": "Okçuluk hedefine saplanmış oklar",
   "olimpik-archery-bow": "Okçuluk sahasında yay geren sporcu ve hedefler",
   "olimpik-rings": "Jimnastik halkaları",
+  "dovus-karate": "Beyaz karate kıyafetli, siyah kuşaklı sporcu",
+  "dovus-karate-2": "Karate antrenmanında iki sporcu",
+  "dovus-taekwondo": "Tekvando müsabakasında tekme atan sporcu",
+  "dovus-kickbox": "Ringde kick boks maçı",
+  "dovus-boxing-match": "Kasklı iki amatör boksörün maçı",
+  "dovus-boxing-match-2": "Seyirci önünde ringde boks maçı",
+  "olimpik-fencing": "Eskrim düellosunda hamle yapan sporcular",
+  "olimpik-gymnast": "Salonda havada takla atan cimnastikçi",
+  "olimpik-shooting": "Atıcılık hedef kâğıdında isabetler",
+  "doga-trail": "Dağ manzarasında patika koşusu yapan koşucu",
+  "doga-trail-2": "Orman patikasında koşan sporcu",
+  "doga-bouldering": "Tırmanış salonunda bouldering yapan sporcu",
+  "doga-ski": "Karlı ormanda kros kayağı yapan sporcu",
+  "kosu-triathlon": "Triatlonda koşu etabındaki sporcular",
+  "kosu-triathlon-swim": "Triatlonda denizden çıkan yüzücüler",
+  "kosu-triathlon-bike": "Triatlon geçiş alanında bisikletler",
+  "kosu-sprint": "Pistte start bloğundan çıkan sprinter",
+  "kosu-longjump": "Uzun atlamada kuma inen sporcu",
+  "kosu-javelin": "Cirit atan sporcu",
+  "su-openwater": "Açık denizde yüzen sporcular",
+  "su-erg": "Kürek ergometresinde antrenman",
+  "su-sailing": "Açık denizde yarışan yelkenliler",
+  "su-sup": "Ayakta kürek (SUP) tahtasında kürek çeken sporcu",
+  "su-canoe": "Gölde kano yarışı",
+  "bisiklet-velodrome": "Velodromda pist bisikleti süren sporcu",
+  "fonksiyonel-calisthenics": "Amuda kalkarak kalistenik hareketi yapan sporcu",
+  "fonksiyonel-ocr": "Engelli koşuda çamurda ilerleyen sporcu",
+  "kuvvet-strongman": "Ağır torba taşıyan strongman sporcusu",
 };
 
 const LOCAL_BY_CAT = {
   hyrox: ["hyrox-sled", "hyrox-sled-2", "sled-stadium", "sled-water", "rower", "medball-rack", "kb-rack", "run-start", "chalk-hands"],
   crossfit: ["comp-overhead", "comp-lift", "comp-women", "comp-barbell", "comp-crowd", "comp-judge", "comp-rings", "comp-win", "comp-night-tr", "comp-pullups-tr", "rope-climb", "box-jumps", "barbell-floor", "overhead-woman"],
-  kosu: ["run-marathon", "run-start", "run-finish", "run-track", "silhouette", "hero-alt"],
-  fonksiyonel: ["kb-floor", "kb-rack", "medball-rack", "ropes", "rings-gym", "box-jumps", "chalk-hands", "barbell-mist", "gym-industrial", "athlete-rest"],
+  kosu: ["run-marathon", "run-start", "run-finish", "run-track", "silhouette", "hero-alt", "doga-trail", "doga-trail-2", "kosu-triathlon", "kosu-triathlon-swim", "kosu-triathlon-bike", "kosu-sprint", "kosu-longjump", "kosu-javelin"],
+  fonksiyonel: ["kb-floor", "kb-rack", "medball-rack", "ropes", "rings-gym", "box-jumps", "chalk-hands", "barbell-mist", "gym-industrial", "athlete-rest", "fonksiyonel-calisthenics", "fonksiyonel-ocr"],
   bilim: ["athlete-rest", "barbell-mist", "run-track", "chalk-hands", "kb-floor", "gym-industrial"],
-  kuvvet: ["kuvvet-weightlifting", "kuvvet-snatch", "barbell-floor", "chalk-hands"],
-  dovus: ["dovus-wrestling", "dovus-wrestling-2", "dovus-boxing-gym", "dovus-judo"],
-  su: ["su-swim-race", "su-swim-back", "su-rowing", "su-kayak"],
-  bisiklet: ["bisiklet-road", "bisiklet-mtb"],
-  doga: ["doga-climb-hand", "doga-climb-wall", "doga-mountain"],
-  olimpik: ["olimpik-archery-target", "olimpik-archery-bow", "olimpik-rings"],
+  kuvvet: ["kuvvet-weightlifting", "kuvvet-snatch", "kuvvet-strongman", "barbell-floor", "chalk-hands"],
+  dovus: ["dovus-wrestling", "dovus-wrestling-2", "dovus-boxing-gym", "dovus-boxing-match", "dovus-boxing-match-2", "dovus-judo", "dovus-karate", "dovus-karate-2", "dovus-taekwondo", "dovus-kickbox"],
+  su: ["su-swim-race", "su-swim-back", "su-openwater", "su-rowing", "su-erg", "su-kayak", "su-canoe", "su-sailing", "su-sup"],
+  bisiklet: ["bisiklet-road", "bisiklet-mtb", "bisiklet-velodrome", "kosu-triathlon-bike"],
+  doga: ["doga-climb-hand", "doga-climb-wall", "doga-bouldering", "doga-mountain", "doga-trail", "doga-trail-2", "doga-ski"],
+  olimpik: ["olimpik-archery-target", "olimpik-archery-bow", "olimpik-rings", "olimpik-gymnast", "olimpik-fencing", "olimpik-shooting"],
   // Seri postları (çok branşlı listeler): tüm branş fotoğrafları; sorgu eşleşmesi listedeki branşlarınkini seçer
-  yaris: ["run-marathon", "run-start", "run-finish", "comp-win", "comp-field", "bisiklet-road", "bisiklet-mtb", "su-swim-race", "su-swim-back", "su-rowing", "su-kayak", "dovus-wrestling", "dovus-wrestling-2", "dovus-boxing-gym", "dovus-judo", "kuvvet-weightlifting", "kuvvet-snatch", "doga-climb-wall", "doga-mountain", "olimpik-archery-target", "olimpik-archery-bow", "olimpik-rings", "hyrox-sled", "comp-overhead"],
-  basari: ["run-marathon", "run-start", "run-finish", "comp-win", "comp-field", "bisiklet-road", "bisiklet-mtb", "su-swim-race", "su-swim-back", "su-rowing", "su-kayak", "dovus-wrestling", "dovus-wrestling-2", "dovus-boxing-gym", "dovus-judo", "kuvvet-weightlifting", "kuvvet-snatch", "doga-climb-wall", "doga-mountain", "olimpik-archery-target", "olimpik-archery-bow", "olimpik-rings", "hyrox-sled", "comp-overhead"],
   genel: ["comp-field", "comp-crowd", "gym-flags", "hero-gym", "run-marathon", "comp-win", "barbell-floor"],
 };
+// Seri postları (çok branşlı listeler): tüm branş fotoğrafları; sorgu eşleşmesi listedeki branşlarınkini seçer
+LOCAL_BY_CAT.yaris = [...new Set(["run-marathon", "run-start", "run-finish", "comp-win", "comp-field", "hyrox-sled", "comp-overhead",
+  ...["kosu", "kuvvet", "dovus", "su", "bisiklet", "doga", "olimpik"].flatMap((k) => LOCAL_BY_CAT[k])])];
+LOCAL_BY_CAT.basari = LOCAL_BY_CAT.yaris;
+// Bu kategorilerde sorguyla eşleşmeyen havuz fotoğrafı kullanılmaz (başka branşın fotoğrafı yanıltır)
+const MULTI_SPORT = new Set(["kosu", "kuvvet", "dovus", "su", "bisiklet", "doga", "olimpik", "yaris", "basari"]);
 
 async function getJson(url, headers = {}) {
   try {
@@ -157,9 +189,17 @@ export async function findImages(queries, n, category, usedIds = new Set()) {
   let locals = hasLocal ? [...LOCAL_BY_CAT[category ?? "genel"]].sort(() => Math.random() - 0.5) : [];
   // Çok branşlı kategorilerde (dövüş, su, olimpik...) sorgudaki sporla eşleşen fotoğraflar varsa yalnızca onlar kullanılır:
   // güreş haberine boks ringi, yüzme haberine kano fotoğrafı gelmesin.
-  const SPORT = { swim: /swim|pool/, rowing: /row/, kayak: /kayak|canoe|paddl/, wrestling: /wrestl/, boxing: /box/, judo: /judo|martial/,
+  // Anahtar = foto id'sinde geçen parça; değer = o fotoğrafı uygun kılan İngilizce sorgu sözcükleri
+  const SPORT = { swim: /swim|pool/, rowing: /row/, kayak: /kayak|canoe|paddl/, wrestling: /wrestl/, boxing: /box(?!ing day)/, judo: /judo/,
     weightlifting: /weightlift|snatch|clean|jerk/, snatch: /weightlift|snatch/, road: /road|cycl/, mtb: /mountain bik|mtb/,
-    climb: /climb|boulder/, marathon: /marathon|runner|running/, start: /marathon|runner|running/, finish: /marathon|runner|running/, sled: /hyrox|sled/, overhead: /crossfit/, mountain: /mountain(?! bik)|summit|alpin/, archery: /archer|arrow/, rings: /gymnast|rings/ };
+    climb: /climb|boulder/, marathon: /marathon|runner|running/, start: /marathon|runner|running/, finish: /marathon|runner|running/, sled: /hyrox|sled/, overhead: /crossfit/, mountain: /mountain(?! bik| run)|summit|alpin/, archery: /archer|arrow/, rings: /gymnast|rings/,
+    karate: /karate|kumite|kata\b/, taekwondo: /taekwondo|tekvando/, kickbox: /kickbox|kick box|muay/, fencing: /fenc|epee|sabre|foil/,
+    trail: /trail|ultra|mountain run|skyrun/, triathlon: /triathlon|ironman|duathlon|aquathlon|transition/, openwater: /open water|openwater|sea swim|channel swim/,
+    erg: /ergomet|rowing machine|indoor row|concept2/, sprint: /sprint|athletics|track and field|100m|200m|400m|hurdle/, longjump: /long jump|triple jump|high jump/,
+    javelin: /javelin|discus|shot put|hammer throw|throw/, gymnast: /gymnast|vault|balance beam|floor exercise/, bouldering: /boulder|climb/,
+    ski: /\bski\b|skiing|skier|biathlon/, sailing: /sail|regatta|yacht/, sup: /stand up paddle|\bsup\b|paddleboard/, canoe: /canoe|kayak/,
+    velodrome: /velodrome|track cycling|keirin/, shooting: /shooting|rifle|pistol|shotgun|skeet/, calisthenics: /calisthenic|street workout|handstand/,
+    ocr: /obstacle|\bocr\b|spartan|mud run|tough mudder/, strongman: /strongman|atlas stone|log press|yoke/ };
   const fits = (id, q) => Object.entries(SPORT).some(([k, re]) => id.includes(k) && re.test(q.toLowerCase()));
   // Sorgu sırasıyla dönüşümlü seçim: her sorgudan (branştan) önce birer fotoğraf, sonra kalanlar
   const perQuery = queries.map((q) => locals.filter((id) => fits(id, q)));
@@ -174,6 +214,9 @@ export async function findImages(queries, n, category, usedIds = new Set()) {
     const m2 = [];
     for (let i = 0; pq.some((l) => l.length > i); i++) for (const l of pq) if (l[i] && !m2.includes(l[i])) m2.push(l[i]);
     if (m2.length) locals = m2;
+    // Çok branşlı kategoride hiç eşleşme yoksa kategori havuzundan rastgele foto KONMAZ (karate haberine güreş fotoğrafı gibi):
+    // Openverse denenir, o da yoksa post fotoğrafsız kalır ve paylaşılmaz
+    else if (MULTI_SPORT.has(category)) locals = [];
   }
   const usedLocal = new Set(out.map((o) => o.id));
   for (let i = 0; out.length < n && i < locals.length; i++) {
@@ -181,6 +224,6 @@ export async function findImages(queries, n, category, usedIds = new Set()) {
     if (fs.existsSync(f) && !usedLocal.has(`local:${locals[i]}`)) out.push({ id: `local:${locals[i]}`, buf: fs.readFileSync(f), credit: "Foto: Pexels", alt: LOCAL_ALT[locals[i]] ?? locals[i], license: "Pexels lisansı" });
   }
   // Son çare: Openverse (filigranlı/ilgisiz kaynaklar elenir)
-  for (const q of queries) { if (out.length < (hasLocal ? Math.min(n, 1) : n)) await take(await openverse(q, n)); }
+  for (const q of queries) { if (out.length < (hasLocal && locals.length ? Math.min(n, 1) : n)) await take(await openverse(q, n)); }
   return out;
 }

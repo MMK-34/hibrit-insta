@@ -172,11 +172,11 @@ export async function writeSeries({ s, ctx }, feedback = "") {
     tables.push({ type: "table", title: tables.length ? `${s.tableTitle} (devam)` : s.tableTitle, columns: s.columns, rows: rows.slice(i, i + 7).map((r) => r.cells), barCol: -1 });
   }
   // Fotoğraflar listedeki branşlardan: en sık geçen branşların foto sorguları
-  const BQ = { güreş: "freestyle wrestling match", boks: "boxing ring", judo: "judo", halter: "olympic weightlifting snatch", powerlifting: "olympic weightlifting snatch",
-    yüzme: "swimmer pool race", "açık su": "swimmer pool race", kürek: "rowing boat", kano: "kayak", sup: "kayak", bisiklet: "road cycling race", granfondo: "road cycling race",
+  const BQ = { güreş: "freestyle wrestling match", "kick boks": "kickboxing fight", boks: "boxing match", judo: "judo", karate: "karate kumite", tekvando: "taekwondo match", eskrim: "fencing duel", atıcılık: "shooting target", halter: "olympic weightlifting snatch", powerlifting: "olympic weightlifting snatch",
+    "açık su": "open water swimming", yüzme: "swimmer pool race", kürek: "rowing boat", kano: "canoe race", sup: "stand up paddle", yelken: "sailing regatta", bisiklet: "road cycling race", granfondo: "road cycling race",
     mtb: "mountain bike race", tırmanış: "climbing wall", okçuluk: "archery", cimnastik: "gymnastics rings", jimnastik: "gymnastics rings",
     koşu: "marathon runners", atletizm: "marathon runners", maraton: "marathon runners", trail: "trail running race", ultra: "trail running race",
-    triatlon: "road cycling race", aquatlon: "swimmer pool race", oryantiring: "trail running race", duatlon: "road cycling race", hyrox: "hyrox sled", crossfit: "crossfit competition" };
+    triatlon: "triathlon race", aquatlon: "triathlon swim", oryantiring: "trail running race", duatlon: "triathlon race", ocr: "obstacle course race", engel: "obstacle course race", kayak: "cross country skiing", strongman: "strongman", kalistenik: "calisthenics", hyrox: "hyrox sled", crossfit: "crossfit competition" };
   const bi = s.columns.indexOf("Branş");
   const counts = {};
   for (const r of rows) { const b = String(r.cells[bi] ?? "").toLocaleLowerCase("tr"); const q = Object.entries(BQ).find(([k]) => b.includes(k))?.[1]; if (q) counts[q] = (counts[q] ?? 0) + 1; }

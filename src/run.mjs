@@ -293,7 +293,7 @@ async function prepareVerified(pick, srcItems, sourceName) {
     : await circle21Reference(srcItems.map((s) => `${s.title} ${s.text || s.snippet || ""}`).join(" ")).catch(() => null);
   if (c21) {
     log("circle21 resmî kaydı eşleşti:", c21.event.name);
-    srcItems = [...srcItems, { id: `c21ref:${c21.event.id}`, logo: c21.event.logo, facts: c21.facts, handle: c21.handle, url: c21.event.url, title: `Resmî kayıt: ${c21.event.name}`, source: "circle21 resmî kayıt sayfası", text: c21.text }];
+    srcItems = [...srcItems, { id: `c21ref:${c21.event.id}`, logo: c21.event.logo, facts: c21.facts, handle: c21.handle, url: c21.event.url, title: `Resmî kayıt: ${c21.event.name}`, source: "circle21 resmî kayıt sayfası", text: dropCategories(c21.text) }];
   }
   const ownC21 = srcItems.find((s) => s.id.startsWith("c21"));
   // Güvenilir referans: yalnızca kodun biçimlediği yapılandırılmış alanlar (serbest metin yazara kaynak olarak gider, burada yok)

@@ -274,7 +274,8 @@ async function prepareVerified(pick, srcItems, sourceName) {
     const photos = await findImages(g.post.imageQueries ?? [], Math.min(g.post.slides.length, 4), pick.category, usedPhotos);
     if (!photos.length) { log(`Foto bulunamadı (kategori ${pick.category}, sorgular: ${(g.post.imageQueries ?? []).join(" | ")}).`); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
-    const gate = await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName });
+    // Statik seri (haftanın sorusu): olgu iddiası yok, doğrulayıcıya gerek yok
+    const gate = s.static ? { ok: true, fails: [] } : await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName });
     if (gate.ok) { log(`Doğrulama geçti (deneme ${attempt}).`); bump("approved"); return { post: g.post, photos, sourceName: srcName }; }
     lastFails = gate.fails;
     feedback = failText(gate.fails);
@@ -294,14 +295,15 @@ async function publishSeries({ s, key, ctx }) {
   st.tries++; bump("drafts"); saveState();
   let feedback = "";
   for (let attempt = 1; attempt <= 2; attempt++) {
-    const w = await writeSeries({ s, ctx }, feedback);
+    const w = s.static ? { post: s.build(ctx), sourceUrls: [] } : await writeSeries({ s, ctx }, feedback);
     if (!w) { log("Seri: yeterli doğrulanmış veri yok."); return false; }
     const sourceName = w.post.primarySource;
     const g = guardPost(w.post, { sourceName });
     if (!g.ok) { log("Seri süzgeçten geçmedi:", g.reason); feedback = g.reason; continue; }
     const photos = await findImages(g.post.imageQueries ?? s.imageQueries, Math.min(g.post.slides.length, 3), s.cat ?? "genel", usedPhotos);
     if (!photos.length) { log("Seri: foto yok."); return false; }
-    const gate = await verifyGate(g.post, { sourceUrls: w.sourceUrls, photos, sourceName, referenceData: w.referenceData ?? "", rowEvidence: w.post.evidence, budget: { webSearch: 6, webFetch: 16 }, skipItems: ["kaynak_satiri"] });
+    // Statik seri (haftanın sorusu): olgu iddiası yok, doğrulayıcıya gerek yok
+    const gate = s.static ? { ok: true, fails: [] } : await verifyGate(g.post, { sourceUrls: w.sourceUrls, photos, sourceName, referenceData: w.referenceData ?? "", rowEvidence: w.post.evidence, budget: { webSearch: 6, webFetch: 16 }, skipItems: ["kaynak_satiri"] });
     if (gate.ok) {
       bump("approved");
       const res = await renderAndPublish({ post: g.post, photos }, { category: s.cat ?? "genel", sourceName, ids: [`seri:${key}`], kind: "seri", title: g.post.slides[0]?.title, srcUrls: w.sourceUrls, onPublished: (r) => { st.done = true; st.media = r.id; saveState(); } });
@@ -451,7 +453,14 @@ try {
   // hour >= 21: 20:10 yedeği ve 20:xx'e kayan 19:30 özeti erken göndermez; 22:10 yedeği yalnızca 21:30 düştüyse gönderir.
   const d = state.daily?.[today];
   if (r !== SKIPPED && !DRY && hour >= 21 && d && !d.summarySent) {
-    const msg = `📊 ${today}: ${d.drafts} taslak, ${d.approved} onay, ${d.rejected} red, ${state.posts.filter((p) => p.day === today && p.media).length} paylaşım`;
+    const done = state.posts.filter((p) => p.day === today && p.media);
+    let rej = [];
+    try { rej = JSON.parse(fs.readFileSync("state/rejected.json", "utf8")).filter((r) => String(r.at ?? "").slice(0, 10) === new Date().toISOString().slice(0, 10)); } catch {}
+    const msg = [
+      `📊 Günlük özet ${today}: ${done.length} paylaşım, ${d.drafts} taslak, ${d.approved} onay, ${d.rejected} red.`,
+      done.length ? "\nPaylaşılanlar:\n" + done.map((p) => `- ${p.headline ?? p.title ?? p.kind} (${p.kind}) ${p.permalink ?? ""}`).join("\n") : "\nBugün paylaşım yok.",
+      rej.length ? "\nElenen taslaklar:\n" + rej.slice(-8).map((r) => `- ${String(r.title ?? "").slice(0, 90)}: ${(r.fails ?? []).slice(0, 2).map((f) => `${f.item}`).join(", ")}`).join("\n") : "",
+    ].join("\n");
     log(msg);
     await notify(msg);
     d.summarySent = true;

@@ -25,6 +25,19 @@ const HINTS = {
 async function hints(id, from, to) {
   const qs = HINTS[id] ?? HINTS.race;
   const out = [];
+  // Hibrit Portal sitesinin yarış takvimi (hafta sonu listesi): ipucudur, yazar yine organizatör sitesinden doğrular
+  if (id === "hafta-sonu") {
+    try {
+      const r = await safeGet("https://hibritportal.com/bu-hafta/index.json", { timeout: 15000, maxBytes: 2e6 });
+      const j = r?.ok ? JSON.parse(r.buf.toString("utf8")) : null;
+      const day = (d) => d.toISOString().slice(0, 10);
+      for (const e of [...(j?.weekend ?? []), ...(j?.thisWeek ?? [])]) {
+        if (!e?.name || !e.startDate || e.city === "Online") continue;
+        if (e.endDate < day(from) || e.startDate > day(to)) continue;
+        out.push(`- ${String(e.name).replace(/[<>]/g, "")} | ${e.city ?? "?"}, ${e.country ?? "?"} | ${e.startDate}${e.endDate && e.endDate !== e.startDate ? `-${e.endDate}` : ""} | ${e.url ?? ""} (Hibrit Portal takvimi)`);
+      }
+    } catch { /* site erişilemezse yalnızca haber ipuçları */ }
+  }
   for (const q of qs) {
     const r = await safeGet(gnews(q), { timeout: 15000, maxBytes: 2e6 }).catch(() => null);
     if (!r?.ok) continue;

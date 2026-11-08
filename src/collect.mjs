@@ -157,7 +157,8 @@ export async function crossfitCourses() {
 export async function courseCandidates() {
   const list = await crossfitCourses();
   const cutoff = Date.now() - 10 * 864e5;
-  return list.filter((c) => Date.parse(c.published) > cutoff).map((c) => ({
+  // Tekil duyuru yalnızca Türkiye'deki kurslar: yurt dışı kurslar rutin, editör reddediyor; onlar aylık kurs tablosunda yer alır
+  return list.filter((c) => Date.parse(c.published) > cutoff && c.country === "TR").map((c) => ({
     id: `cfcourse:${c.id}`, eventName: `${c.course} ${c.city}`,
     title: `${c.course}: ${c.city} (${c.countryTr}), ${c.start}${c.end !== c.start ? ` - ${c.end}` : ""}, ev sahibi ${c.host}`,
     url: c.url, source: "CrossFit kurs takvimi", feedCat: "crossfit", date: new Date().toISOString(), ageH: 0,

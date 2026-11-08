@@ -121,6 +121,8 @@ export async function circle21Candidates() {
   for (const e of await circle21Events()) {
     const start = Date.parse(e.start ?? 0);
     if (!(start > now)) continue;
+    // Kullanıcı kuralı: salon (box) içi yarışmalar ve simülasyonlar duyurulmaz (Wolf Haven hariç; o Instagram izlemesinden gelir)
+    if (/\bbox\b|simulation|simülasyon|in-?house|50%/i.test(`${e.name} ${e.instagram}`)) continue;
     const pub = Date.parse(e.published ?? 0), regTo = Date.parse(e.regTo ?? 0);
     const base = {
       eventName: e.name, url: e.url, logo: e.logo, source: "circle21 resmî kayıt sayfası", feedCat: "crossfit", date: new Date().toISOString(), ageH: 0,

@@ -9,7 +9,7 @@
 // Türkiye ve yakın bölge: yarış organizatörleri (tüm yeni paylaşımlar)
 export const IG_WATCH_TR = [
   // CrossFit / fonksiyonel fitness yarışları
-  "alsancakteam_series", "olympos.games", "vu.box", "eurasiathrowdown", "battleofanatolia", "xchallenge.tr", "elitefitnessgames",
+  "alsancakteam_series", "olympos.games", "eurasiathrowdown", "battleofanatolia", "xchallenge.tr", "elitefitnessgames",
   "istanbulcitychampionship", "wsiathleticchamp", "expothrowdown", "quattrogamestr",
   // Resmî HYROX Türkiye ve hibrit/CrossFit topluluk ve fuar hesapları
   "hyroxturk", "hybridx_turkiye", "metcon.turkiye", "exposportfair",

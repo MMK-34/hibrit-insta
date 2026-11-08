@@ -144,7 +144,7 @@ export async function crossfitCourses() {
     return (j?.seminars?.features ?? []).map((f) => f.properties ?? {})
       .filter((p) => COURSE_COUNTRIES[p.country] && p.status === "Active" && !p.is_private && !p.is_online && p.start_date && Date.parse(p.start_date) > now)
       .map((p) => ({
-        id: p.id, course: String(p.name ?? "").split(",")[0].replace(/s+-s+[^-]+$/, "").trim(), cityEn: p.city, city: CITY_TR[p.city] ?? p.city, country: p.country, countryTr: COURSE_COUNTRIES[p.country],
+        id: p.id, course: String(p.name ?? "").split(",")[0].replace(/\s+-\s+[^-]+$/, "").trim(), cityEn: p.city, city: CITY_TR[p.city] ?? p.city, country: p.country, countryTr: COURSE_COUNTRIES[p.country],
         host: String(p.location_name ?? "").trim(), start: p.start_date.slice(0, 10), end: String(p.end_date ?? p.start_date).slice(0, 10),
         url: /^https:\/\//.test(p.seminar_url ?? "") ? p.seminar_url : "https://www.crossfit.com/courses-near-you", price: p.price ?? "", language: p.language ?? "",
         published: p.date_published ?? "", waitlisted: !!p.is_waitlisted,

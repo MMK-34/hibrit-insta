@@ -1,129 +1,129 @@
 {
-  "updated": "2026-11-07T21:20:02.049Z",
+  "updated": "2026-11-08T07:37:56.480Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 93,
-      "fetchedAt": "2026-11-07T21:19:35.762Z"
+      "count": 88,
+      "fetchedAt": "2026-11-08T07:37:08.757Z"
     },
     "hyrox": {
       "ok": true,
       "count": 16,
-      "fetchedAt": "2026-11-07T21:20:02.036Z"
+      "fetchedAt": "2026-11-08T07:37:56.473Z"
     }
   },
   "items": [
     {
-      "id": "hyrox-hyrox-valencia",
+      "id": "hyrox-2026-valencia",
       "name": "HYROX Valencia 2026",
       "eventSlug": null,
       "type": "hyrox",
       "city": "Valencia",
       "country": "Spain",
-      "startDate": "2026-10-15",
+      "startDate": "2026-10-14",
       "endDate": "2026-10-18",
       "status": "confirmed",
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-valencia"
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-valencia"
     },
     {
-      "id": "hyrox-hyrox-sao-paulo-2",
-      "name": "HYROX Sao Paulo 2026",
+      "id": "hyrox-2026-sao-paulo",
+      "name": "HYROX São Paulo 2026",
       "eventSlug": null,
       "type": "hyrox",
-      "city": "Sao Paulo",
+      "city": "São Paulo",
       "country": "Brazil",
       "startDate": "2026-10-17",
-      "endDate": "2026-10-18",
+      "endDate": "2026-10-19",
       "status": "confirmed",
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-sao-paulo-2"
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-sao-paulo"
     },
     {
-      "id": "hyrox-hyrox-tampa",
+      "id": "hyrox-2026-tampa",
       "name": "HYROX Tampa 2026",
       "eventSlug": null,
       "type": "hyrox",
       "city": "Tampa",
-      "country": "United States",
+      "country": "USA",
       "startDate": "2026-10-22",
-      "endDate": "2026-10-25",
+      "endDate": "2026-10-26",
       "status": "confirmed",
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-tampa"
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-tampa"
     },
     {
-      "id": "hyrox-hyrox-abu-dhabi",
+      "id": "hyrox-2026-abu-dhabi",
       "name": "HYROX Abu Dhabi 2026",
       "eventSlug": null,
       "type": "hyrox",
       "city": "Abu Dhabi",
       "country": "United Arab Emirates",
-      "startDate": "2026-10-23",
+      "startDate": "2026-10-22",
       "endDate": "2026-10-25",
       "status": "confirmed",
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-abu-dhabi"
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-abu-dhabi"
     },
     {
-      "id": "hyrox-hyrox-birmingham",
+      "id": "hyrox-2026-birmingham",
       "name": "HYROX Birmingham 2026",
       "eventSlug": null,
       "type": "hyrox",
       "city": "Birmingham",
-      "country": "United Kingdom",
+      "country": "UK",
       "startDate": "2026-10-27",
-      "endDate": "2026-11-01",
+      "endDate": "2026-11-02",
       "status": "confirmed",
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-birmingham"
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-birmingham"
     },
     {
-      "id": "hyrox-intersport-hyrox-hamburg",
+      "id": "hyrox-2026-hamburg",
       "name": "HYROX Hamburg 2026",
       "eventSlug": null,
       "type": "hyrox",
       "city": "Hamburg",
       "country": "Germany",
+      "startDate": "2026-10-27",
+      "endDate": "2026-11-01",
+      "status": "confirmed",
+      "url": "https://hyrox.com/find-my-race/",
+      "source": "hyrox",
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-hamburg"
+    },
+    {
+      "id": "hyrox-2026-nice",
+      "name": "HYROX Nice 2026",
+      "eventSlug": null,
+      "type": "hyrox",
+      "city": "Nice",
+      "country": "France",
       "startDate": "2026-10-28",
       "endDate": "2026-11-01",
       "status": "confirmed",
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-intersport-hyrox-hamburg"
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-nice"
     },
     {
-      "id": "hyrox-hyrox-mexico-city",
+      "id": "hyrox-2026-mexico-city",
       "name": "HYROX Mexico City 2026",
       "eventSlug": null,
       "type": "hyrox",
       "city": "Mexico City",
       "country": "Mexico",
       "startDate": "2026-10-29",
-      "endDate": "2026-11-01",
+      "endDate": "2026-11-02",
       "status": "confirmed",
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-mexico-city"
-    },
-    {
-      "id": "hyrox-hyrox-nice-s26-27",
-      "name": "HYROX Nice 2026",
-      "eventSlug": null,
-      "type": "hyrox",
-      "city": "Nice",
-      "country": "France",
-      "startDate": "2026-10-29",
-      "endDate": "2026-11-01",
-      "status": "confirmed",
-      "url": "https://hyrox.com/find-my-race/",
-      "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-nice-s26-27"
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-mexico-city"
     },
     {
       "id": "battle-of-anatolia-2026-11",
@@ -167,60 +167,74 @@
       "source": "https://socal.wodapalooza.com/"
     },
     {
-      "id": "hyrox-hyrox-barcelona-2",
+      "id": "hyrox-2026-barcelona",
       "name": "HYROX Barcelona 2026",
       "eventSlug": null,
       "type": "hyrox",
       "city": "Barcelona",
       "country": "Spain",
-      "startDate": "2026-11-11",
+      "startDate": "2026-11-10",
       "endDate": "2026-11-15",
       "status": "confirmed",
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-barcelona-2"
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-barcelona"
     },
     {
-      "id": "hyrox-hyrox-dublin",
+      "id": "hyrox-2026-duesseldorf",
+      "name": "HYROX Düsseldorf 2026",
+      "eventSlug": null,
+      "type": "hyrox",
+      "city": "Düsseldorf",
+      "country": "Germany",
+      "startDate": "2026-11-10",
+      "endDate": "2026-11-15",
+      "status": "confirmed",
+      "url": "https://hyrox.com/find-my-race/",
+      "source": "hyrox",
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-duesseldorf"
+    },
+    {
+      "id": "hyrox-2026-dublin",
       "name": "HYROX Dublin 2026",
       "eventSlug": null,
       "type": "hyrox",
       "city": "Dublin",
       "country": "Ireland",
       "startDate": "2026-11-11",
-      "endDate": "2026-11-15",
+      "endDate": "2026-11-16",
       "status": "confirmed",
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-dublin"
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-dublin"
     },
     {
-      "id": "hyrox-hyrox-dusseldorf",
-      "name": "HYROX Dusseldorf 2026",
-      "eventSlug": null,
-      "type": "hyrox",
-      "city": "Dusseldorf",
-      "country": "Germany",
-      "startDate": "2026-11-11",
-      "endDate": "2026-11-15",
-      "status": "confirmed",
-      "url": "https://hyrox.com/find-my-race/",
-      "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-dusseldorf"
-    },
-    {
-      "id": "hyrox-hyrox-denver",
+      "id": "hyrox-2026-denver",
       "name": "HYROX Denver 2026",
       "eventSlug": null,
       "type": "hyrox",
       "city": "Denver",
-      "country": "United States",
+      "country": "USA",
+      "startDate": "2026-11-12",
+      "endDate": "2026-11-16",
+      "status": "confirmed",
+      "url": "https://hyrox.com/find-my-race/",
+      "source": "hyrox",
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-denver"
+    },
+    {
+      "id": "hyrox-2026-seoul",
+      "name": "HYROX Seoul 2026",
+      "eventSlug": null,
+      "type": "hyrox",
+      "city": "Seoul",
+      "country": "South Korea",
       "startDate": "2026-11-12",
       "endDate": "2026-11-15",
       "status": "confirmed",
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-denver"
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-seoul"
     },
     {
       "id": "circle21-842248f2-a177-4606-a283-6ab8f1f77d6e",
@@ -245,46 +259,18 @@
       "website": "www.pamplonaarenagames.net"
     },
     {
-      "id": "circle21-67d5d73e-d5ac-4a08-91d6-9f3dde9c54bd",
-      "name": "MO-Fitness GAMES",
+      "id": "hyrox-2026-cairo",
+      "name": "HYROX Cairo 2026",
       "eventSlug": null,
-      "type": "crossfit",
-      "country": "Birleşik Krallık",
-      "startDate": "2026-11-14",
-      "endDate": "2026-11-14",
+      "type": "hyrox",
+      "city": "Cairo",
+      "country": "Cairo",
+      "startDate": "2026-11-13",
+      "endDate": "2026-11-15",
       "status": "confirmed",
-      "url": "https://circle21.events/event?competitionId=67d5d73e-d5ac-4a08-91d6-9f3dde9c54bd",
-      "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/345333/conversions/Blue-and-Black-Modern-Swimming-Competition-Instagram-Post---2-l_thumb.jpg",
-      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/345325/conversions/Blue-and-Black-Modern-Swimming-Competition-Instagram-Post---2-s_thumb.jpg",
-      "imageCredit": "circle21 / organizatör",
-      "registration": {
-        "to": "2026-11-08",
-        "fee": "50.00 GBP"
-      },
-      "instagram": "https://instagram.com/elysiumtrainingclub"
-    },
-    {
-      "id": "circle21-bcafbe92-8c35-4c16-94ea-04575da560e2",
-      "name": "ISCA PAIRS WINTER THROWDOWN",
-      "eventSlug": null,
-      "type": "crossfit",
-      "city": "Exeter EX2 8NJ",
-      "country": "Birleşik Krallık",
-      "startDate": "2026-11-14",
-      "endDate": "2026-11-14",
-      "status": "confirmed",
-      "url": "https://circle21.events/event?competitionId=bcafbe92-8c35-4c16-94ea-04575da560e2",
-      "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/425728/conversions/Copy-of-Copy-of-TIMETABLE-(1440-x-600-px)-l_thumb.jpg",
-      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/425544/conversions/Crossfit-Fitness-Gym-Badge-Logo-(2)-s_thumb.jpg",
-      "imageCredit": "circle21 / organizatör",
-      "registration": {
-        "to": "2026-11-08",
-        "fee": "80.00 GBP"
-      },
-      "instagram": "https://instagram.com/CrossFitISCA",
-      "website": "www.crossfitica.co.uk"
+      "url": "https://hyrox.com/find-my-race/",
+      "source": "hyrox",
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-cairo"
     },
     {
       "id": "circle21-0a24fc99-78d3-44b2-a9e1-8efddd74f5b2",
@@ -308,34 +294,6 @@
       "maxParticipants": 100
     },
     {
-      "id": "hyrox-hyrox-cairo",
-      "name": "HYROX Cairo 2026",
-      "eventSlug": null,
-      "type": "hyrox",
-      "city": "Cairo",
-      "country": "Egypt",
-      "startDate": "2026-11-14",
-      "endDate": "2026-11-15",
-      "status": "confirmed",
-      "url": "https://hyrox.com/find-my-race/",
-      "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-cairo"
-    },
-    {
-      "id": "hyrox-hyrox-seoul",
-      "name": "HYROX Seoul 2026",
-      "eventSlug": null,
-      "type": "hyrox",
-      "city": "Seoul",
-      "country": "South Korea",
-      "startDate": "2026-11-14",
-      "endDate": "2026-11-15",
-      "status": "confirmed",
-      "url": "https://hyrox.com/find-my-race/",
-      "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-seoul"
-    },
-    {
       "id": "athens-throwdown-2026-11",
       "name": "Athens Throwdown 2027 — kayıt açılışı",
       "eventSlug": "athens-throwdown",
@@ -350,40 +308,32 @@
       "note": "Saat 12:00 (Yunanistan)."
     },
     {
-      "id": "circle21-13d0d16a-bc5c-4a6b-9b66-6957f7ae6950",
-      "name": "SHEPTON MALLET HYROX SIM @ Iron ladies Fitness",
-      "eventSlug": null,
-      "type": "hyrox",
-      "city": "Shepton Mallet BA4 5BY",
-      "country": "Birleşik Krallık",
-      "startDate": "2026-11-15",
-      "endDate": "2026-11-22",
-      "status": "confirmed",
-      "url": "https://circle21.events/event?competitionId=13d0d16a-bc5c-4a6b-9b66-6957f7ae6950",
-      "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/442918/conversions/IMG_8045-l_thumb.jpg",
-      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/442892/conversions/IMG_8041-s_thumb.jpg",
-      "imageCredit": "circle21 / organizatör",
-      "registration": {
-        "to": "2026-11-08",
-        "fee": "70.00 GBP"
-      },
-      "instagram": "https://instagram.com/iron.ladiesfitness",
-      "website": "www.ironladiesfitness.co.uk"
-    },
-    {
-      "id": "hyrox-hyrox-dallas",
+      "id": "hyrox-2026-dallas",
       "name": "HYROX Dallas 2026",
       "eventSlug": null,
       "type": "hyrox",
       "city": "Dallas",
-      "country": "United States",
+      "country": "USA",
       "startDate": "2026-11-18",
+      "endDate": "2026-11-23",
+      "status": "confirmed",
+      "url": "https://hyrox.com/find-my-race/",
+      "source": "hyrox",
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-dallas"
+    },
+    {
+      "id": "hyrox-2026-guangzhou",
+      "name": "HYROX Guangzhou 2026",
+      "eventSlug": null,
+      "type": "hyrox",
+      "city": "Guangzhou",
+      "country": "China",
+      "startDate": "2026-11-19",
       "endDate": "2026-11-22",
       "status": "confirmed",
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-dallas"
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-guangzhou"
     },
     {
       "id": "circle21-a56ca4c3-9515-4969-990e-e1520ed3774c",
@@ -448,20 +398,6 @@
       },
       "instagram": "https://instagram.com/TURFGAMESme",
       "website": "https://turfgames.com"
-    },
-    {
-      "id": "hyrox-hyrox-poznan",
-      "name": "HYROX Poznan 2026",
-      "eventSlug": null,
-      "type": "hyrox",
-      "city": "Poznan",
-      "country": "Poland",
-      "startDate": "2026-11-20",
-      "endDate": "2026-11-22",
-      "status": "confirmed",
-      "url": "https://hyrox.com/find-my-race/",
-      "source": "hyrox",
-      "sourceUrl": "https://www.hyranking.com/event/s9-hyrox-poznan"
     },
     {
       "id": "circle21-98e14e5c-9584-469e-8383-58baeeb71bb0",
@@ -530,49 +466,6 @@
       "website": "www.crossfest.co.uk"
     },
     {
-      "id": "circle21-01740522-ec60-49a9-927e-0be2f4747d1d",
-      "name": "PICENUM THROWDOWN 2026 XII^ Edizione TEAMof3",
-      "eventSlug": null,
-      "type": "crossfit",
-      "city": "Ascoli Piceno",
-      "country": "İtalya",
-      "startDate": "2026-11-21",
-      "endDate": "2026-11-22",
-      "status": "confirmed",
-      "url": "https://circle21.events/event?competitionId=01740522-ec60-49a9-927e-0be2f4747d1d",
-      "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/301615/conversions/photo-output-l_thumb.jpg",
-      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/301496/conversions/logo-picenum-2023_sfonfo-nero-s_thumb.jpg",
-      "imageCredit": "circle21 / organizatör",
-      "registration": {
-        "to": "2026-11-08",
-        "fee": "255.00 EUR"
-      },
-      "instagram": "https://instagram.com/picenumthrowdown"
-    },
-    {
-      "id": "circle21-3ba78503-71f1-4c46-bdbb-62ec5ae1ac5c",
-      "name": "Austrian Throwdown 2026",
-      "eventSlug": null,
-      "type": "crossfit",
-      "city": "Wiener Neustadt",
-      "country": "Avusturya",
-      "startDate": "2026-11-21",
-      "endDate": "2026-11-22",
-      "status": "confirmed",
-      "url": "https://circle21.events/event?competitionId=3ba78503-71f1-4c46-bdbb-62ec5ae1ac5c",
-      "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/167572/conversions/10-(2)-l_thumb.jpg",
-      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/155189/conversions/7-s_thumb.jpg",
-      "imageCredit": "circle21 / organizatör",
-      "registration": {
-        "to": "2026-11-08",
-        "fee": "0.00 EUR"
-      },
-      "instagram": "https://instagram.com/AustrianThrowdown",
-      "website": "austrianthrowdown.at"
-    },
-    {
       "id": "circle21-8d8fbcdd-3f17-46de-8369-843e3fb4b3cc",
       "name": "Hyrox Simulation G10 - Fürstenland, 21. November 2026",
       "eventSlug": null,
@@ -592,19 +485,6 @@
         "fee": "0.00 CHF"
       },
       "instagram": "https://www.instagram.com/crossfitgleis10"
-    },
-    {
-      "id": "hyrox-guangzhou-2026-11",
-      "name": "HYROX Guangzhou",
-      "eventSlug": null,
-      "type": "hyrox",
-      "city": "Guangzhou",
-      "country": "Çin",
-      "startDate": "2026-11-21",
-      "endDate": "2026-11-22",
-      "status": "announced",
-      "url": "https://hyrox.com/find-your-race/",
-      "source": "https://www.gowod.app/blog/hyrox-2026-race-calendar-events-info-and-where-to-buy-tickets"
     },
     {
       "id": "hyrox-rio-de-janeiro-2026-11",

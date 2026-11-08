@@ -554,5 +554,56 @@
         "note": "Bu konu ancak 2026 edisyonunun duyurusu olarak yeniden yazılabilir: 6-8 Kasım 2026, Atlantique Holiday Club Kuşadası, 8. edisyon, yeni HYBRID kategorisi. Ancak kayıt dönemi 25 Eylül 2026'da kapanıyor, duyurunun zamanlaması buna göre kontrol edilmeli. Mevcut taslak küçük düzeltmelerle yayımlanamaz."
       }
     ]
+  },
+  {
+    "at": "2026-11-08T19:44:34.671Z",
+    "title": "Yeni yarış duyurusu (resmî kayıt platformu): VU BOX HYROX-style 50%, 19 Aralık 2026",
+    "url": "https://circle21.events/events/vu-box-hyrox-style-50",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "metin çok uzun, kısalt (yarım cümle olmasın): slayt 4 madde 1 136>125"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-08T19:45:41.010Z",
+    "title": "CrossFit Level 1 Certificate Course: Dubai (BAE), 2027-01-23 - 2027-01-24, ev sahibi CrossFit WH",
+    "url": "https://registrations.crossfit.com/dubaijanuary2027",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "Haber değeri yetersiz: CrossFit'in resmî takviminde dünya genelinde sürekli yüzlerce Level 1 kursu yer alıyor. Dubai'deki tek bir rutin kurs kaydı, Türkiye'deki kitle için haber ya da duyuru değeri taşımıyor."
+      },
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "Kapsam dışı: Post herkesin katılabildiği bir yarışı ya da yarışa hazırlığı değil, yurt dışında yapılacak ücretli bir antrenörlük sertifika kursunu anlatıyor. Bu yüzden ticari bir kurs ilanına yakın duruyor."
+      },
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "Tarafsızlık: 'Türkiye'den kolay ulaşılabilen Dubai… seçeneklerden biri' cümlesi kaynakta yok. Bu, yazarın kendi yorumu ve yönlendirmesi."
+      },
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "Doğruluk: 'CrossFit antrenörlüğüne başlangıç sertifikası' tanımı kaynakta ve kanıt URL'sinde açıkça geçmiyor. Kaynaktaki ev sahibi salon (CrossFit WH), ücret (1.150 dolar) ve kursun İngilizce yapılacağı bilgisi ise posta alınmamış."
+      },
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "İçerik zayıf: Post tek bir kapak slaydından oluşuyor ve başlık ile alt başlıktaki bilgiyi yalnızca tekrar ediyor. Caption'daki 'hangi şehri tercih edersiniz?' sorusu da etkileşim amaçlı ve içeriği boş."
+      },
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "Resmî Instagram hesabı ('crossfittraining') kanıt listesinde doğrulanmamış."
+      }
+    ]
   }
 ]

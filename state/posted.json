@@ -242,13 +242,27 @@
         "cfcourse:rf1055063"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-08",
+      "ids": [
+        "c21:3c8a793c-c983-40c9-9df1-c1e365c268bf"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-08",
+      "ids": [
+        "cfcourse:rf1089118"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
     "2026-11-08": {
-      "drafts": 25,
+      "drafts": 27,
       "approved": 6,
-      "rejected": 16,
+      "rejected": 18,
       "summarySent": true
     }
   },
@@ -259,5 +273,5 @@
     "at": "2026-11-08T12:01:48.087Z"
   },
   "series": {},
-  "lastRunAt": "2026-11-08T18:42:01.218Z"
+  "lastRunAt": "2026-11-08T19:41:44.415Z"
 }

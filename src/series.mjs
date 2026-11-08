@@ -50,7 +50,7 @@ const isoWeek = (d) => {
 };
 
 const RACE_COLS = ["Tarih", "Yarış", "Şehir", "Branş"];
-const RACE_RULES = `Yalnızca bireysel sporlar: koşu (yol, trail, ultra), triatlon/duatlon/aquatlon, yüzme/açık su, kürek, kano/SUP, bisiklet (yol, granfondo, MTB), tırmanış/bouldering, OCR, HYROX/CrossFit/fonksiyonel yarışmalar, halter/powerlifting/strongman ve benzeri. Futbol, basketbol, voleybol, hentbol, at yarışı ve motor sporları YOK.
+const RACE_RULES = `Yalnızca dayanıklılık ve hibrit fitness yarışları: koşu (yol, maraton, yarı maraton, trail, ultra, dağ koşusu), triatlon/duatlon/aquatlon, açık su yüzmesi, kürek ve indoor rowing, granfondo, OCR, HYROX/CrossFit/ATHX ve benzeri hibrit fitness yarışmaları. Takım sporları, dövüş sporları, halter, jimnastik, havuz yüzmesi, tırmanış ve benzerleri YOK.
 Büyük organizasyonlar kadar belediye koşuları ve yerel amatör yarışlar da listeye girsin. Branşları ve şehirleri çeşitlendir: tek bir takvim sayfasıyla yetinme; TAF yol ve dağ koşusu takvimi, Türkiye Triatlon Federasyonu takvimi, granfondo takvimi, organizatör siteleri ve yerel haberleri ayrı ayrı ara.
 Faydalı takvimler: RaceTurkiye (raceturkiye.com), TAF koşu platformu (kosu.taf.org.tr), federasyon faaliyet takvimleri. Ama her satırın tarihini ORGANİZATÖRÜN resmî sitesinden teyit et; kaynaklar çelişirse resmî siteyi esas al.
 Çok günlü etkinliklerde resmî sitedeki tarih aralığının tamamını yaz (ör. "13-15 Kas").
@@ -65,7 +65,7 @@ export const SERIES = [
     key: (d) => `hafta-sonu:${isoWeek(d)}`,
     ctx: (d) => { const sat = addDays(d, (6 - d.getDay() + 7) % 7 || 7), sun = addDays(sat, 1); return { from: sat, to: sun, range: sat.getMonth() === sun.getMonth() ? `${sat.getDate()}-${sun.getDate()} ${AY[sun.getMonth()]}` : `${sat.getDate()} ${AY[sat.getMonth()]}-${sun.getDate()} ${AY[sun.getMonth()]}` }; },
     columns: RACE_COLS, min: 3, max: 14,
-    cover: (c) => ({ kicker: c.range, title: "Türkiye'de bu hafta sonu hangi yarışlar var?", subtitle: "Koşudan triatlona, yüzmeden bisiklete hafta sonu yarışlarından bir seçki." }),
+    cover: (c) => ({ kicker: c.range, title: "Türkiye'de bu hafta sonu hangi yarışlar var?", subtitle: "Hafta sonu Türkiye'de düzenlenecek yarışlardan bir seçki." }),
     intro: (c, names, n) => `Bu hafta sonu (${c.range}) Türkiye'de ${n} yarış var: ${names}.`,
     tableTitle: "Bu hafta sonu",
     end: { title: "Bu hafta sonu hangi yarıştasınız?", body: "Listede olmayan yarışı yorumlara yazın, takvime ekleyelim." },
@@ -83,9 +83,9 @@ export const SERIES = [
     intro: (c, names, n) => `${c.range} haftasında uluslararası yarışlarda ${n} Türk sporcu dereceye girdi: ${names}.`,
     end: { title: "Tebrikler!", body: "Gözümüzden kaçan dereceyi yorumlara yazın, listeye ekleyelim." },
     imageQueries: ["athlete podium medal", "olympic weightlifting snatch", "freestyle wrestling match"], cat: "basari",
-    task: (c) => `GÖREV: ${fmt(c.from)} ile ${fmt(c.to)} arasında Türk sporcuların BİREYSEL sporlarda uluslararası yarışlarda (dünya/Avrupa şampiyonası, dünya kupası, uluslararası turnuva, büyük maraton/triatlon) kazandığı madalyaları ve ilk 3 derecelerini bul (en az 3, en fazla 14). Önce altınlar.
-Futbol, basketbol, voleybol, hentbol ve diğer takım sporları YOK. Paralimpik sporcuların dereceleri de dâhil.
-Sporcu: ad soyad (haberin kendisi olan sporcu, doğru yazımıyla). Branş tek kelime (Güreş, Halter, Boks, Judo, Okçuluk, Yüzme, Atletizm, Tırmanış, Kürek, Bisiklet...). Derece: "Altın", "Gümüş", "Bronz" ya da "1." gibi; gerekirse sıklet/mesafe ekle (ör. "Altın, 67 kg"), en fazla 18 karakter. Yarışma: kısa resmî ad, en fazla 32 karakter.
+    task: (c) => `GÖREV: ${fmt(c.from)} ile ${fmt(c.to)} arasında Türk sporcuların dayanıklılık ve hibrit fitness sporlarında (koşu, maraton, trail/ultra, kürek, triatlon, HYROX, CrossFit, ATHX ve benzeri) uluslararası yarışlarda (dünya/Avrupa şampiyonası, dünya kupası, büyük maraton, uluslararası yarış) kazandığı madalyaları ve ilk 3 derecelerini bul (en az 3, en fazla 14). Önce altınlar.
+Takım sporları, dövüş sporları, halter, jimnastik, okçuluk, havuz yüzmesi ve tırmanış YOK. Paralimpik sporcuların bu branşlardaki dereceleri de dâhil.
+Sporcu: ad soyad (haberin kendisi olan sporcu, doğru yazımıyla). Branş tek kelime (Koşu, Maraton, Trail, Kürek, Triatlon, HYROX, CrossFit...). Derece: "Altın", "Gümüş", "Bronz" ya da "1." gibi; gerekirse sıklet/mesafe ekle (ör. "Altın, 67 kg"), en fazla 18 karakter. Yarışma: kısa resmî ad, en fazla 32 karakter.
 Her satırı federasyon, organizatör ya da güvenilir ulusal basın (AA vb.) sayfasından DOĞRULA, URL'sini url alanına yaz. Tarih aralığı dışındaki ya da doğrulanamayan derece listeye girmez.`,
   },
   {

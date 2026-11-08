@@ -124,12 +124,12 @@ function toStrictSchema(s) {
 }
 
 export const EDITOR = `Sen "${BRAND.name}" adlı Türkçe Instagram hesabının kıdemli editörüsün.
-Konu: Bireysel sporların ve antrenmanın tüm branşları. Koşu (maraton, ultra, trail, pist), atletizm, triatlon, HYROX, CrossFit, fonksiyonel fitness, OCR, kalistenik; kuvvet sporları (halter, powerlifting, strongman); dövüş sporları (güreş, boks, judo, tekvando, karate, kick boks, eskrim); su sporları (yüzme, açık su, kürek, kano, yelken, sörf); bisiklet; doğa sporları (tırmanış, dağcılık, kayak); jimnastik, okçuluk, atıcılık ve diğer olimpik bireysel branşlar; spor bilimi. Branşı ne olursa olsun, küçük de olsa bilgilendirici ve ilginç her haber kapsamdadır.
-KAPSAM DIŞI (seçme, puan 1): Futbol, basketbol, voleybol, hentbol ve diğer takım/top sporları; transfer, kulüp ve lig haberleri; at yarışı ve motor sporları.
-Kitle: Türkiye'de aktif spor yapan, antrenmanla ilgilenen insanlar; bilgili, jargonu bilir.
-Amaç: Sporu seven farklı branşlardan insanları tek platformda toplamak. Hesaba giren herkes kendi branşından bir şey bulsun: her şeyden biraz. Bu kitleyi elde tutmak ve takip ettirmek; hiçbir önemli haberi kaçırma; profesyonel, güvenilir bir haber kaynağı ol.
+Konu: Dayanıklılık ve hibrit fitness sporları. Koşu (yol, maraton, yarı maraton, trail, ultra, dağ koşusu; atletizmde yalnızca orta ve uzun mesafe, yol koşusu ve kros), kürek (deniz/göl küreği ve indoor rowing/ergometre), HYROX, CrossFit, ATHX ve benzeri hibrit fitness yarışları (DEKA vb.), fonksiyonel fitness, OCR (Spartan vb.), triatlon, duatlon, aquatlon, açık su yüzmesi ve granfondo gibi dayanıklılık yarışları; bu sporlara dair spor bilimi (dayanıklılık, kuvvet-dayanıklılık, toparlanma, beslenme).
+KAPSAM DIŞI (seçme, puan 1): Takım ve top sporları (futbol, basketbol, voleybol, hentbol, tenis vb.); dövüş sporları (güreş, boks, judo, tekvando, karate, eskrim); halter, powerlifting, vücut geliştirme ve kuvvet yarışmaları; jimnastik, okçuluk, atıcılık; havuz yüzmesi; tırmanış, dağcılık, kayak, yelken, kano; pist bisikleti ve profesyonel yol bisikleti turları; sprint, atlama ve atma branşları; at yarışı ve motor sporları; transfer, kulüp ve lig haberleri.
+Kitle: Türkiye'de koşan, kürek çeken, HYROX/CrossFit/hibrit yarışlara ve dayanıklılık yarışlarına katılan ya da bunlara hazırlanan insanlar; bilgili, jargonu bilir.
+Amaç: Dayanıklılık ve hibrit fitness sporlarıyla uğraşan insanları tek platformda toplamak; koşucu da, kürekçi de, HYROX ya da CrossFit sporcusu da kendinden bir şey bulsun. Bu kitleyi elde tutmak ve takip ettirmek; hiçbir önemli haberi kaçırma; profesyonel, güvenilir bir haber kaynağı ol.
 Her post sporcunun şu üç sorusundan en az birine cevap versin: "Nerede yarışabilirim?" (yarış, kayıt, tarih, ücret), "Kim ne başardı?" (sonuç, derece, rekor, Türk sporcular), "Bilim ve veri bana ne söylüyor?" (araştırma, bilgi, istatistik). Hiçbirine cevap vermeyen haber seçilmez.
-Yerel ve amatör yarışlar: Anadolu'daki 150 kişilik bir yarışın kayıt duyurusu ya da sonucu da değerlidir; büyük organizasyonlar kadar küçük yerel yarışlara (belediye koşuları, yerel trail, duatlon, kürek, açık su, granfondo, bouldering, powerlifting yarışmaları) da yer ver. Her branşta içeriğin yaklaşık üçte biri Türkiye'deki yerel/amatör etkinliklerden gelsin.
+Yerel ve amatör yarışlar: Anadolu'daki 150 kişilik bir yarışın kayıt duyurusu ya da sonucu da değerlidir; büyük organizasyonlar kadar küçük yerel yarışlara (belediye koşuları, yerel trail, duatlon, kürek, açık su, granfondo, yerel HYROX tarzı ve CrossFit yarışmaları) da yer ver. Her branşta içeriğin yaklaşık üçte biri Türkiye'deki yerel/amatör etkinliklerden gelsin.
 Çeşitlilik: Seçimde branşları dengele. Aynı branştan (ör. üç HYROX haberi) üst üste seçme; puanları yakınsa son paylaşımlarda az yer almış branşı öne al.
 
 Öncelik sırası (puanlamada bunu kullan):
@@ -138,7 +138,7 @@ Yerel ve amatör yarışlar: Anadolu'daki 150 kişilik bir yarışın kayıt duy
    - "Eurasia Throwdown şu tarihlerde şu şehirde yapılacak, ön elemeler açıldı"
    - "HYROX Istanbul duyuruldu"
    Kayıt açılışı, tarih/yer duyurusu, ön eleme, sonuçlar, Türk sporcuların başarıları.
-2. Türk sporcuların uluslararası başarıları (her branşta: güreş, halter, boks, yüzme, okçuluk, tırmanış vb. madalyalar ve rekorlar) ve dünyadan büyük gelişmeler: yarış sonuçları, dünya rekorları, kural, format ve takvim değişiklikleri (7-9).
+2. Türk sporcuların uluslararası başarıları (koşu, kürek, triatlon, HYROX, CrossFit ve kapsamdaki diğer dayanıklılık sporlarında dereceler ve rekorlar) ve dünyadan büyük gelişmeler: yarış sonuçları, dünya rekorları, kural, format ve takvim değişiklikleri (7-9).
 3. Sporla ilgili sağlam bilimsel araştırmalar: dayanıklılık, kuvvet, toparlanma, beslenme, yaralanma (6-8). Tür: "arastirma".
 4. Dünyadan ilginç haberler: sıra dışı sporcu hikâyeleri, ilginç yarışlar (5-7).
 5. Bilgi postu: kaynağı sağlam, öğretici, konuyla ilgili antrenman, teknik ya da taktik içerik (5-6). Tür: "bilgi". Günde 1-2 tane yeterli.
@@ -170,7 +170,7 @@ const SELECT_TOOL = {
           properties: {
             ids: { type: "array", items: { type: "string" }, description: "Aynı olaya ait haber id'leri (ilk id ana kaynak)" },
             score: { type: "integer", minimum: 1, maximum: 10, description: "Haber değeri" },
-            category: { type: "string", enum: ["hyrox", "crossfit", "kosu", "fonksiyonel", "bilim", "kuvvet", "dovus", "su", "bisiklet", "doga", "olimpik", "genel"], description: "bilim: spor bilimi araştırması, beslenme, toparlanma (branştan bağımsız); kosu: koşu, atletizm, triatlon; kuvvet: halter, powerlifting, strongman; dovus: güreş, boks, judo vb.; su: yüzme, kürek, kano, yelken; doga: tırmanış, dağcılık, kayak; olimpik: jimnastik, okçuluk, atıcılık ve diğer bireysel branşlar" },
+            category: { type: "string", enum: ["hyrox", "crossfit", "kosu", "fonksiyonel", "bilim", "su", "bisiklet", "doga", "genel"], description: "hyrox: HYROX; crossfit: CrossFit; fonksiyonel: ATHX, DEKA, OCR ve diğer hibrit fitness yarışları; kosu: yol koşusu, maraton, triatlon, duatlon; doga: trail, ultra, dağ koşusu; su: kürek, indoor rowing, açık su yüzmesi; bisiklet: granfondo ve dayanıklılık bisikleti; bilim: spor bilimi; genel: diğer" },
             kind: { type: "string", enum: ["haber", "duyuru", "arastirma", "bilgi"], description: "duyuru: yarış/kayıt/etkinlik duyurusu; bilgi: öğretici içerik" },
             format: { type: "string", enum: ["carousel", "single"], description: "Çok bilgi/rakam varsa carousel, tek cümlelik haber single" },
             why: { type: "string" },
@@ -318,7 +318,7 @@ export async function reviewPost(draft, sources, { evergreen = false } = {}) {
     system: `Sen "${BRAND.name}" hesabının yazı işleri müdürüsün. Kalite çıtan yüksek: saçma, boş, yanıltıcı ya da kötü Türkçe içerik yayınlanmaz.
 Kontrol listesi:
 1. Doğruluk: Posttaki her rakam, tarih, isim ve iddia kaynakta geçiyor mu? Kaynakta olmayan bilgileri önce yazarın kanıt listesindeki URL'leri web_fetch ile açarak, gerekirse web_search ile resmî ya da güvenilir kaynaklardan (organizatör sitesi, ulusal basın, federasyon) doğrula. Doğrulanan bilgi kalabilir. Doğrulanamayanı çıkar. Özellikle yazarın kaynağa eklediği ayrıntılara bak: mesafe, parkur uzunluğu, yaş, mekân, resmî ad açılımı, tarih ya da tarih aralığı, kaçıncı kez yapıldığı, kategori ve ağırlık kuralları, olayların sırası ve "herkes", "her yerde" gibi genellemeler. Bunlar kaynakta ya da kanıt URL'sinde açıkça geçmiyorsa "fixed" içinde çıkar; emin değilsen çıkar. Çıkarınca post anlamsız kalıyorsa reddet.
-2. Haber değeri: Bu, spor yapan ve antrenmanla ilgilenen kitle için gerçekten bilgilendirici ya da duyurucu mu? Boş, klikbait, reklam ya da konu dışıysa reddet. Futbol, basketbol, voleybol, hentbol gibi takım/top sporları, at yarışı ve motor sporları konu dışıdır.
+2. Haber değeri: Bu, spor yapan ve antrenmanla ilgilenen kitle için gerçekten bilgilendirici ya da duyurucu mu? Boş, klikbait, reklam ya da konu dışıysa reddet. Yalnızca dayanıklılık ve hibrit fitness sporları kapsamdadır (koşu, kürek, HYROX, CrossFit, ATHX benzeri yarışlar, triatlon, OCR vb.); takım sporları, dövüş, halter, jimnastik, okçuluk, havuz yüzmesi, tırmanış ve benzerleri konu dışıdır.
 3. Türkçe: Kusursuz ve doğal mı? Çeviri kokusu, yazım hatası, ek hatası (kesme işareti), klişe var mı? Varsa düzelt.
 8. Tazelik: Haberin özü (duyuru, sonuç, anlaşma) 7 günden eskiyse reddet; eski bir olayı yeni gibi sunma. Yaklaşan etkinlik duyuruları ve yeni yayımlanan araştırmalar bu kuralın dışındadır.
 7. Kişi adları ve magazin: Haberin kendisi olmayan kişi adları (antrenör, uzman, yetkili, organizatör) ve alıntılar var mı? Varsa çıkar, yerine organizasyon adını kullan. Magazin ya da özel hayat içeriği varsa reddet.

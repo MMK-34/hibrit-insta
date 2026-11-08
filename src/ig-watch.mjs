@@ -17,7 +17,7 @@ export const IG_WATCH_TR = [
 ];
 // Dünya: büyük CrossFit / HYROX / OCR organizasyonları (az sayıda, yalnızca son paylaşımlar)
 export const IG_WATCH_GLOBAL = [
-  "hyroxworld", "hyroxuk", "crossfitgames", "crossfit", "worldfitnessproject", "rogueinvitational", "wodapalooza",
+  "hyroxworld", "hyroxuk", "athx_games", "crossfitgames", "crossfit", "worldfitnessproject", "rogueinvitational", "wodapalooza",
   "frenchthrowdown", "lowlandsthrowdown", "italianshowdown", "syndicatecrown", "torianpro", "spartanrace",
 ];
 export const IG_WATCH = [...IG_WATCH_TR, ...IG_WATCH_GLOBAL];

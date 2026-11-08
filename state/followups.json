@@ -18,5 +18,25 @@
     "createdDay": "2026-11-08",
     "due": "2026-11-17",
     "status": "bekliyor"
+  },
+  {
+    "key": "leapmotorhyroxbarcelona",
+    "type": "gecmis",
+    "eventName": "Leapmotor HYROX Barcelona",
+    "officialSite": "https://hyrox.com",
+    "category": "hyrox",
+    "createdDay": "2026-11-09",
+    "due": "2026-11-13",
+    "status": "bekliyor"
+  },
+  {
+    "key": "leapmotorhyroxbarcelona",
+    "type": "wodlar",
+    "eventName": "Leapmotor HYROX Barcelona",
+    "officialSite": "https://hyrox.com",
+    "category": "hyrox",
+    "createdDay": "2026-11-09",
+    "due": "2026-11-18",
+    "status": "bekliyor"
   }
 ]

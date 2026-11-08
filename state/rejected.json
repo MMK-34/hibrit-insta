@@ -605,5 +605,57 @@
         "note": "Resmî Instagram hesabı ('crossfittraining') kanıt listesinde doğrulanmamış."
       }
     ]
+  },
+  {
+    "at": "2026-11-08T22:27:19.819Z",
+    "title": "@kackarbyutmb Instagram paylaşımı: Registration for all is now open! 🔥",
+    "url": "https://www.instagram.com/reel/DfZIQcxgQpO/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-08T22:27:39.659Z",
+    "title": "@athensthrowdown Instagram paylaşımı: Athens Throwdown is part of the 2027 World Fitness Series. 🌍",
+    "url": "https://www.instagram.com/p/DfaF9UtBJ-a/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-08T22:28:44.815Z",
+    "title": "@olympos.games Instagram paylaşımı: Ana sponsorumuz ve ev sahibimiz: 4x4 Sport Center.",
+    "url": "https://www.instagram.com/p/DfZCSTzCAEI/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "link benzeri ifade: \"olympos.games\" (alan adı/link yazma; nokta sonrası boşluk bırak)"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-08T22:30:20.945Z",
+    "title": "@varnathrowdown Instagram paylaşımı: For the first time in the competition’s history, we’ll have teams of two!",
+    "url": "https://www.instagram.com/p/DfaJy_NOtft/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar"
+      }
+    ]
   }
 ]

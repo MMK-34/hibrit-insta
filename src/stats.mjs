@@ -110,18 +110,18 @@ function trByYear(D) {
   const cfN = tr.filter(({ e }) => e.type === "crossfit").length, hxN = total - cfN;
   const firstHx = Math.min(...tr.filter(({ e }) => e.type === "hyrox").map(({ ed }) => Number(ed.year)));
 
-  const lab = (r) => (r.from === r.to ? String(r.from) : `${r.from}–${r.to}`);
+  const lab = (r) => (r.from === r.to ? String(r.from) : `${r.from}-${r.to}`);
   return {
     id: "stat-tr-yillara-gore", cat: "genel",
     title: "Türkiye'de yılda kaç yarışma yapılıyor?",
     dataText: [
       `Kaynak: ${SOURCE_NAME} (cal/src/data/events). Referans tarih: ${D.ref}.`,
       `Yöntem: Türkiye'deki yarışmaların referans tarihe kadar yapılmış edisyonları yıl bazında sayıldı. Arşiv tam bir sayım DEĞİLDİR: büyük/öne çıkan yarışmaları kapsar; kutu (box) içi yerel yarışmaların çoğu arşivde yok, gerçek sayı daha yüksektir.`,
-      `- Arşivde Türkiye'den ${nEvents} farklı yarışma, toplam ${total} edisyon var (${minY}–${maxY}).`,
+      `- Arşivde Türkiye'den ${nEvents} farklı yarışma, toplam ${total} edisyon var (${minY}-${maxY}).`,
       `- Tür dağılımı: CrossFit ${cfN} edisyon, HYROX ${hxN} edisyon. Arşivdeki ilk Türkiye HYROX'u ${firstHx} yılında.`,
       older.length ? `- ${startY} öncesi: ${older.length} edisyon (${older.map(({ e, ed }) => `${e.name} ${ed.year}`).join(", ")}). Tabloda gösterilmiyor.` : "",
       ...rows.map((r) => `- ${lab(r)}: CrossFit ${r.cf}, HYROX ${r.hx}, toplam ${r.cf + r.hx}`),
-      `- ${full[0]}–${full[full.length - 1]} (${full.length} tam yıl) ortalaması: yılda ${fmt1(avg)} yarışma (arşivde kayıtlı olanlar).`,
+      `- ${full[0]}-${full[full.length - 1]} (${full.length} tam yıl) ortalaması: yılda ${fmt1(avg)} yarışma (arşivde kayıtlı olanlar).`,
       `- ${D.refYear} yılında referans tarihe kadar: ${curN} yarışma. Takvimde ${D.refYear} yılının kalanı için ${restOfYear.length} Türkiye yarışması daha var (${restOfYear.map((i) => `${i.name}${i.status === "expected" ? " [tarih tahmini]" : ""}`).join("; ")}).`,
       `- Takvimde referans tarihten sonrası için toplam ${upTR.length} Türkiye yarışması listeleniyor (${upTR.filter((i) => i.status === "expected").length} tanesinin tarihi tahmini).`,
       undated.length ? `- Tarihi kesin olmayan ama yılı bilinen edisyonlar sayıma dahil: ${undated.join(", ")}.` : "",
@@ -130,7 +130,7 @@ function trByYear(D) {
       columns: ["Yıl", "CrossFit", "HYROX", "Toplam"],
       rows: rows.map((r) => [lab(r), fmt(r.cf), fmt(r.hx), fmt(r.cf + r.hx)]),
     },
-    note: `${SOURCE_NAME}, ${startY}–${maxY} (${total - older.length} edisyon). Tam sayım değil.`,
+    note: `${SOURCE_NAME}, ${startY}-${maxY} (${total - older.length} edisyon). Tam sayım değil.`,
     sourceName: SOURCE_NAME,
     sourceUrls: officialUrls(tr.map(({ e }) => e.website), tr.map(({ ed }) => ed.source)),
   };
@@ -194,10 +194,10 @@ function calCountries(D) {
   let rows = all.slice(0, MAX_ROWS);
   if (rank > MAX_ROWS) rows = [...all.slice(0, MAX_ROWS - 1), all[rank - 1]];
   const months = items.map((i) => i.startDate.slice(0, 7)).sort();
-  const c21 = items.filter((i) => i.source === "circle21");
+  const c21 = items.filter((i) => i.source === "circle21" && i.type === "crossfit");
   const c21uk = c21.filter((i) => normCountry(i.country) === "Birleşik Krallık").length;
   const [y0, m0] = months[0].split("-").map(Number), [y1, m1] = months[months.length - 1].split("-").map(Number);
-  const span = `${AYLAR_UZUN[m0 - 1]} ${y0} – ${AYLAR_UZUN[m1 - 1]} ${y1}`;
+  const span = `${AYLAR_UZUN[m0 - 1]} ${y0} - ${AYLAR_UZUN[m1 - 1]} ${y1}`;
   return {
     id: "stat-takvim-ulkeler", cat: "genel",
     title: "Yarışma takviminde en çok yarışma olan ülkeler",
@@ -241,7 +241,7 @@ function calMonths(D) {
     title: "Önümüzdeki 7 ay: ay ay yarışma takvimi",
     dataText: [
       `Kaynak: Hibrit Portal yarışma takvimi (cal/src/data/calendar.json, güncelleme ${D.ref}).`,
-      `Yöntem: Takvimdeki yarışmalar başlangıç tarihinin ayına göre sayıldı (${rows[0].long} – ${rows[rows.length - 1].long}). Online etapları ve tarihi tahmini kayıtları da içerir.`,
+      `Yöntem: Takvimdeki yarışmalar başlangıç tarihinin ayına göre sayıldı (${rows[0].long} - ${rows[rows.length - 1].long}). Online etapları ve tarihi tahmini kayıtları da içerir.`,
       ...rows.map((r) => `- ${r.long}: ${r.cf + r.hx} yarışma (CrossFit ${r.cf}, HYROX ${r.hx})`),
       `- Bu 7 ayda toplam ${inWin} yarışma. En yoğun ay: ${busiest.long} (${busiest.cf + busiest.hx}). En sakin ay: ${quiet.long} (${quiet.cf + quiet.hx}). HYROX için en yoğun ay: ${hxTop.long} (${hxTop.hx}).`,
       `- Bu pencereden sonrası için takvimde yalnızca ${later} kayıt var.`,
@@ -344,7 +344,7 @@ function crossfitMovements(D) {
     dataText: [
       `Kaynak: ${SOURCE_NAME} — workout metinleri kayıtlı CrossFit edisyonları. Referans tarih: ${D.ref}.`,
       `Yöntem: Her workout'un hareket listesi hareket ailelerine ayrıldı (ör. "chest-to-bar pull-up" ve "burpee pull-up" → Pull-up ailesi). Bir aile bir workout'ta birden fazla geçse de 1 sayıldı. Sayı = o aileyi içeren workout sayısı.`,
-      `- Örneklem: ${wos.length} workout, ${eds.size} edisyon, ${comps.size} farklı yarışma, ${Math.min(...years)}–${Math.max(...years)}. Bunların ${openN} tanesi CrossFit Open workout'u (sonuçları en çok o etkiliyor). ${verified} workout kaynakta doğrulanmış olarak işaretli.`,
+      `- Örneklem: ${wos.length} workout, ${eds.size} edisyon, ${comps.size} farklı yarışma, ${Math.min(...years)}-${Math.max(...years)}. Bunların ${openN} tanesi CrossFit Open workout'u (sonuçları en çok o etkiliyor). ${verified} workout kaynakta doğrulanmış olarak işaretli.`,
       ...fam.slice(0, 10).map((f) => `- ${f.name}: ${f.n}/${wos.length} workout (${pct(f.n, wos.length)}); Türkiye yarışmalarında ${f.tr}/${trW.length}`),
       `- Tek tek hareket adı olarak en sık: ${rawTop.map(([k, v]) => `${k} (${v})`).join(", ")}.`,
       `- Türkiye alt örneklemi çok küçük: yalnızca ${trW.length} workout (${trEds.join(", ")}). Türkiye için "en sık hareket" genellemesi YAPILMAMALI; sadece bu sayılar verilebilir.`,
@@ -353,7 +353,7 @@ function crossfitMovements(D) {
       columns: ["Hareket ailesi", "Workout", "Oran", `TR (${trW.length})`],
       rows: rows.map((f) => [f.name, fmt(f.n), pct(f.n, wos.length), fmt(f.tr)]),
     },
-    note: `${SOURCE_NAME}, ${Math.min(...years)}–${Math.max(...years)}, ${comps.size} yarışmadan ${wos.length} workout.`,
+    note: `${SOURCE_NAME}, ${Math.min(...years)}-${Math.max(...years)}, ${comps.size} yarışmadan ${wos.length} workout.`,
     sourceName: SOURCE_NAME,
     sourceUrls: topUrls(wos.map(({ ed }) => ed.source)),
   };
@@ -376,13 +376,13 @@ function durations(D) {
     dataText: [
       `Kaynak: ${SOURCE_NAME}. Referans tarih: ${D.ref}.`,
       `Yöntem: Başlangıç ve bitiş tarihi kayıtlı, yapılmış edisyonların süresi gün olarak hesaplandı (bitiş − başlangıç + 1). Online ve haftalarca süren etaplar (CrossFit Open) hariç. Bazı tarihler kaynakta "doğrulanmadı" notu taşıyor.`,
-      `- Örneklem: ${xs.length} edisyon (${Math.min(...years)}–${Math.max(...years)}): Türkiye ${trX.length}, yurt dışı ${inX.length}.`,
+      `- Örneklem: ${xs.length} edisyon (${Math.min(...years)}-${Math.max(...years)}): Türkiye ${trX.length}, yurt dışı ${inX.length}.`,
       ...rows.map(([lab, a, b]) => `- ${lab}: Türkiye ${a}, yurt dışı ${b}`),
       `- Ortalama süre: Türkiye ${fmt1(avg(trX))} gün, yurt dışı ${fmt1(avg(inX))} gün.`,
       `- Yurt dışı örneklemi büyük uluslararası yarışmalardan oluşuyor (${inComps.join(", ")}); bu yüzden karşılaştırma "Türkiye vs. dünyanın büyük yarışmaları" olarak okunmalı.`,
     ].join("\n"),
     table: { columns: ["Süre", "Türkiye", "Yurt dışı"], rows },
-    note: `${SOURCE_NAME}, ${Math.min(...years)}–${Math.max(...years)}, ${xs.length} edisyon (Open hariç).`,
+    note: `${SOURCE_NAME}, ${Math.min(...years)}-${Math.max(...years)}, ${xs.length} edisyon (Open hariç).`,
     sourceName: SOURCE_NAME,
     sourceUrls: officialUrls(xs.map(({ e }) => e.website), xs.map(({ ed }) => ed.source)),
   };

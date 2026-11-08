@@ -4,14 +4,14 @@ export const INTRO_IMAGE = "assets/tanitim.jpg";
 
 export const INTRO_CAPTION = `Hibrit Portal yayında.
 
-Spor dünyasından haberleri, yarış duyurularını ve antrenman bilgilerini tek yerde topluyoruz.
+Yarış duyurularını, sonuçları, araştırmaları ve antrenman bilgisini tek yerde topluyoruz.
 
 Bu hesapta neler paylaşacağız:
-▪️ Türkiye'deki ve yakın ülkelerdeki yarış duyuruları, kayıt tarihleri
-▪️ Yarış sonuçları ve Türk sporcuların başarıları
-▪️ Spor bilimi araştırmaları ve antrenman bilgileri
-▪️ Yarışma arşivinden istatistikler
+• Türkiye'de ve yakın ülkelerde yarış duyuruları, kayıt tarihleri
+• Yarış sonuçları ve Türk sporcuların dereceleri
+• Spor bilimi araştırmaları ve antrenman bilgisi
+• Yarışma arşivimizden istatistikler
 
-Takip edin, gelişmeleri kaçırmayın.
+Her paylaşımın sonunda kaynağı var. Takip edin.
 
-#hibritportal #spor #sporhaberleri #antrenman #sporbilimi #türksporu`;
+#hibritportal #sporhaberleri #antrenman #sporbilimi #türksporu`;

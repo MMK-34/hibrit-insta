@@ -64,12 +64,12 @@ export const SERIES = [
     key: (d) => `hafta-sonu:${isoWeek(d)}`,
     ctx: (d) => { const sat = addDays(d, (6 - d.getDay() + 7) % 7 || 7), sun = addDays(sat, 1); return { from: sat, to: sun, range: `${sat.getDate()}-${sun.getDate()} ${AY[sun.getMonth()]}` }; },
     columns: RACE_COLS, min: 3, max: 14,
-    cover: (c) => ({ kicker: "BU HAFTA SONU", title: "Hafta sonu Türkiye'de hangi yarışlar var?", subtitle: `${c.range} hafta sonu düzenlenecek yarışlardan bir seçki.` }),
-    intro: (c, names) => `${c.range} hafta sonu Türkiye'de düzenlenecek yarışlardan bir seçki: ${names}.`,
+    cover: (c) => ({ kicker: c.range, title: "Türkiye'de bu hafta sonu hangi yarışlar var?", subtitle: "Koşudan triatlona, yüzmeden bisiklete hafta sonu yarışlarından bir seçki." }),
+    intro: (c, names, n) => `Bu hafta sonu (${c.range}) Türkiye'de ${n} yarış var: ${names}.`,
     tableTitle: "Bu hafta sonu",
-    end: { title: "Bu hafta sonu hangi yarıştasın?", body: "Listede olmayan bir yarış varsa yorumlara yaz, takvimimize ekleyelim." },
+    end: { title: "Bu hafta sonu hangi yarıştasınız?", body: "Listede olmayan yarışı yorumlara yazın, takvime ekleyelim." },
     imageQueries: ["marathon runners city street", "trail running race", "road cycling race"], cat: "yaris",
-    task: (c) => `GÖREV: ${fmt(c.from)} cumartesi ve ${fmt(c.to)} pazar günleri TÜRKİYE'de düzenlenecek bireysel spor yarışlarını bul (en az 3, en fazla 14). Tarih sırasına göre diz.\n${RACE_RULES}`,
+    task: (c) => `GÖREV: ${fmt(c.from)} Cumartesi ve ${fmt(c.to)} Pazar günleri TÜRKİYE'de düzenlenecek bireysel spor yarışlarını bul (en az 3, en fazla 14). Tarih sırasına göre diz.\n${RACE_RULES}`,
   },
   {
     id: "tr-haftasi",
@@ -77,13 +77,13 @@ export const SERIES = [
     key: (d) => `tr-haftasi:${isoWeek(d)}`,
     ctx: (d) => { const from = addDays(d, -7), to = addDays(d, -1); return { from, to, range: `${from.getDate()} ${AY[from.getMonth()]}-${to.getDate()} ${AY[to.getMonth()]}` }; },
     columns: ["Sporcu", "Branş", "Derece", "Yarışma"], min: 3, max: 14,
-    cover: (c) => ({ kicker: "TÜRK SPORCULARIN HAFTASI", title: `${c.range}: madalyalar ve dereceler`, subtitle: "Geçen hafta uluslararası yarışlarda dereceye giren Türk sporcular." }),
+    cover: (c) => ({ kicker: "HAFTANIN DERECELERİ", title: `${c.range}: uluslararası yarışlarda Türk sporcular`, subtitle: "Geçen hafta madalya kazanan ve ilk üçe giren Türk sporcular." }),
     tableTitle: "Haftanın dereceleri",
-    intro: (c, names) => `${c.range} haftasında uluslararası yarışlarda dereceye giren Türk sporcular: ${names}. Tebrikler!`,
-    end: { title: "Tebrikler!", body: "Gözümüzden kaçan bir derece varsa yorumlara yaz." },
+    intro: (c, names, n) => `${c.range} haftasında uluslararası yarışlarda ${n} Türk sporcu dereceye girdi: ${names}.`,
+    end: { title: "Tebrikler!", body: "Gözümüzden kaçan dereceyi yorumlara yazın, listeye ekleyelim." },
     imageQueries: ["athlete podium medal", "olympic weightlifting snatch", "freestyle wrestling match"], cat: "basari",
     task: (c) => `GÖREV: ${fmt(c.from)} ile ${fmt(c.to)} arasında Türk sporcuların BİREYSEL sporlarda uluslararası yarışlarda (dünya/Avrupa şampiyonası, dünya kupası, uluslararası turnuva, büyük maraton/triatlon) kazandığı madalyaları ve ilk 3 derecelerini bul (en az 3, en fazla 14). Önce altınlar.
-Futbol, basketbol, voleybol, hentbol ve diğer takım sporları YOK. Para sporcuların başarıları dahil.
+Futbol, basketbol, voleybol, hentbol ve diğer takım sporları YOK. Paralimpik sporcuların dereceleri de dâhil.
 Sporcu: ad soyad (haberin kendisi olan sporcu, doğru yazımıyla). Branş tek kelime (Güreş, Halter, Boks, Judo, Okçuluk, Yüzme, Atletizm, Tırmanış, Kürek, Bisiklet...). Derece: "Altın", "Gümüş", "Bronz" ya da "1." gibi; gerekirse sıklet/mesafe ekle (ör. "Altın, 67 kg"), en fazla 18 karakter. Yarışma: kısa resmî ad, en fazla 32 karakter.
 Her satırı federasyon, organizatör ya da güvenilir ulusal basın (AA vb.) sayfasından DOĞRULA, URL'sini url alanına yaz. Tarih aralığı dışındaki ya da doğrulanamayan derece listeye girmez.`,
   },
@@ -93,10 +93,10 @@ Her satırı federasyon, organizatör ya da güvenilir ulusal basın (AA vb.) sa
     key: (d) => { const n = new Date(d.getFullYear(), d.getMonth() + 1, 1); return `aylik:${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, "0")}`; },
     ctx: (d) => { const from = new Date(d.getFullYear(), d.getMonth() + 1, 1), to = new Date(d.getFullYear(), d.getMonth() + 2, 0); return { from, to, range: `${AY[from.getMonth()]} ${from.getFullYear()}` }; },
     columns: RACE_COLS, min: 5, max: 21,
-    cover: (c) => ({ kicker: "AYLIK YARIŞ TAKVİMİ", title: `${c.range} yarış takvimi`, subtitle: "Gelecek ay Türkiye'de düzenlenecek yarışlardan bir seçki. Kaydet, planını yap." }),
+    cover: (c) => ({ kicker: c.range, title: `Türkiye'de ${AY[c.from.getMonth()].toLocaleLowerCase("tr")} ayı yarış takvimi`, subtitle: "Gelecek ay Türkiye'de düzenlenecek yarışlardan bir seçki." }),
     tableTitle: "Yarış takvimi",
-    intro: (c, names) => `${c.range} ayında Türkiye'de düzenlenecek yarışlardan bir seçki: ${names}.`,
-    end: { title: "Bu ay hangi yarıştasın?", body: "Kaydet, arkadaşlarınla paylaş. Eksik yarışı yorumlara yaz." },
+    intro: (c, names, n) => `${AY[c.from.getMonth()]} ayında Türkiye'de ${n} yarış listeledik: ${names}.`,
+    end: { title: "Gelecek ay hangi yarıştasınız?", body: "Listede olmayan yarışı yorumlara yazın, takvime ekleyelim." },
     imageQueries: ["marathon runners city street", "triathlon swim start", "road cycling race"], cat: "yaris",
     task: (c) => `GÖREV: ${fmt(c.from)} ile ${fmt(c.to)} arasında TÜRKİYE'de düzenlenecek bireysel spor yarışlarını bul (en az 5, en fazla 21). Tarih sırasına göre diz. Her branştan en az bir yarış bulmaya çalış.\n${RACE_RULES}`,
   },
@@ -173,11 +173,11 @@ export async function writeSeries({ s, ctx }, feedback = "") {
   const post = {
     slides: [{ type: "cover", ...s.cover(ctx) }, ...tables, { type: "end", ...s.end }],
     caption: [
-      s.intro(ctx, rows.map((r) => r.cells[s.id === "tr-haftasi" ? 0 : 1]).join(", ")),
-      s.id === "tr-haftasi" ? "Dereceler ve yarışmalar kaydırmalı tabloda." : "Tarihler, şehirler ve branşlar kaydırmalı tabloda. Kayıt ve son bilgiler için organizatörlerin resmî sitelerine göz atın.",
+      s.intro(ctx, (() => { const ns = rows.map((r) => r.cells[s.id === "tr-haftasi" ? 0 : 1]); return ns.length > 1 ? `${ns.slice(0, -1).join(", ")} ve ${ns.at(-1)}` : ns.join(""); })(), rows.length),
+      s.id === "tr-haftasi" ? "Dereceler ve yarışmalar sonraki slaytlarda." : "Tarih, şehir ve branş bilgileri sonraki slaytlarda. Kayıt ve güncel bilgi için organizatörün resmî sitesine bakın.",
       s.end.title,
     ].join("\n\n"), hashtags: [...new Set([...(res.hashtags ?? []), "#hibritportal"])].slice(0, 10),
-    imageQueries: branchQueries.length ? branchQueries : s.imageQueries, primarySource: s.id === "tr-haftasi" ? "federasyonlar ve haber ajansları" : "organizatör siteleri ve federasyonlar",
+    imageQueries: branchQueries.length ? branchQueries : s.imageQueries, primarySource: s.id === "tr-haftasi" ? "Federasyonlar ve haber ajansları" : "Organizatörlerin resmî siteleri",
     evidence: rows.map((r) => ({ claim: r.cells.join(" | "), url: r.url })), eventName: "", officialSite: "", officialInstagram: "",
   };
   // Doğrulayıcıya en çeşitli kaynaklar gitsin (aynı alan adından birden çok URL yerine farklı siteler)

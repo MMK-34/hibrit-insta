@@ -34,8 +34,9 @@ export const CATEGORY = {
   hyrox: { label: "HYROX" },
   crossfit: { label: "CROSSFIT" },
   kosu: { label: "KOŞU" },
-  fonksiyonel: { label: "FONKSİYONEL" },
-  kuvvet: { label: "KUVVET" },
+  fonksiyonel: { label: "FONKSİYONEL FİTNESS" },
+  bilim: { label: "SPOR BİLİMİ" },
+  kuvvet: { label: "KUVVET SPORLARI" },
   dovus: { label: "DÖVÜŞ SPORLARI" },
   su: { label: "SU SPORLARI" },
   bisiklet: { label: "BİSİKLET" },
@@ -48,7 +49,10 @@ export const CATEGORY = {
 
 // satori-html HTML varlıklarını (&amp; vb.) çözmez: "&" olduğu gibi kalır, < > etiket açamasın diye benzer işaretlere çevrilir
 const esc = (s = "") => String(s).replace(/</g, "‹").replace(/>/g, "›");
-const trUpper = (s = "") => String(s).replace(/i/g, "İ").replace(/ı/g, "I").toUpperCase();
+// Türkçe büyük harf (i -> İ). İngilizce marka ve terimler (CrossFit, SkiErg, Ironman, Rowing, Fitness...) düz büyütülür:
+// w/x/q içeren, -ing ile biten ya da listedeki sözcükler İngilizce sayılır.
+const EN_WORD = /^(crossfit|skierg|ironman|mixed|rowing|fitness|elite|division|invitational|semifinals?|finals?|triathlon|triathlete|cycling|climbing|science|daily|giro|italia|physiology|journal|international|medicine|nutrition|series|qualifiers?|sprint|swim|swimming|running|rulebook|games|open|online|index|world|championships?|marathon|half|hyrox|wings|life|time|timing|invitational|pro|rx|wod|wodapalooza|rogue|boxrox|slowtwitch|swimswam|gripped|alpinist|irunfar|letsrun|cyclingnews|runner's|runners|trail|ultra-trail|utmb|ironman|strongman|powerlifting|deadlift|squat|bench|snatch|clean|jerk|thruster|muscle-up|pull-up|wall|ball|sled|push|pull|burpee|farmers|carry|lunges|rig|skiing|erg|concept2|velo|outside|pinkbike|fitnessvolt)$/i;
+const trUpper = (s = "") => String(s).split(/(\s+|[·|/()])/).map((w) => (EN_WORD.test(w) || /[wxq]/i.test(w) || /ing$/i.test(w) ? w.toUpperCase() : w.replace(/i/g, "İ").replace(/ı/g, "I").toUpperCase())).join("");
 
 /** Başlık uzunluğuna göre font boyutu (Big Shoulders dar; büyük punto kaldırır) */
 function headSize(text, big = 150) {

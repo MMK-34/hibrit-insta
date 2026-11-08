@@ -134,9 +134,9 @@ Yerel ve amatör yarışlar: Anadolu'daki 150 kişilik bir yarışın kayıt duy
 
 Öncelik sırası (puanlamada bunu kullan):
 1. Türkiye'deki yarış ve etkinlik haberleri (en yüksek puan, 8-10). Örnekler:
-   - "İstanbul Maratonu bu yıl boğazda koşulacak, kayıtlar açıldı"
+   - "İstanbul Maratonu 1 Kasım'da Boğaz'da koşulacak, kayıtlar açıldı"
    - "Eurasia Throwdown şu tarihlerde şu şehirde yapılacak, ön elemeler açıldı"
-   - "HYROX İstanbul duyuruldu"
+   - "HYROX Istanbul duyuruldu"
    Kayıt açılışı, tarih/yer duyurusu, ön eleme, sonuçlar, Türk sporcuların başarıları.
 2. Türk sporcuların uluslararası başarıları (her branşta: güreş, halter, boks, yüzme, okçuluk, tırmanış vb. madalyalar ve rekorlar) ve dünyadan büyük gelişmeler: yarış sonuçları, dünya rekorları, kural, format ve takvim değişiklikleri (7-9).
 3. Sporla ilgili sağlam bilimsel araştırmalar: dayanıklılık, kuvvet, toparlanma, beslenme, yaralanma (6-8). Tür: "arastirma".
@@ -169,7 +169,7 @@ const SELECT_TOOL = {
           properties: {
             ids: { type: "array", items: { type: "string" }, description: "Aynı olaya ait haber id'leri (ilk id ana kaynak)" },
             score: { type: "integer", minimum: 1, maximum: 10, description: "Haber değeri" },
-            category: { type: "string", enum: ["hyrox", "crossfit", "kosu", "fonksiyonel", "kuvvet", "dovus", "su", "bisiklet", "doga", "olimpik", "genel"], description: "kosu: koşu, atletizm, triatlon; kuvvet: halter, powerlifting, strongman; dovus: güreş, boks, judo vb.; su: yüzme, kürek, kano, yelken; doga: tırmanış, dağcılık, kayak; olimpik: jimnastik, okçuluk, atıcılık ve diğer bireysel branşlar" },
+            category: { type: "string", enum: ["hyrox", "crossfit", "kosu", "fonksiyonel", "bilim", "kuvvet", "dovus", "su", "bisiklet", "doga", "olimpik", "genel"], description: "bilim: spor bilimi araştırması, beslenme, toparlanma (branştan bağımsız); kosu: koşu, atletizm, triatlon; kuvvet: halter, powerlifting, strongman; dovus: güreş, boks, judo vb.; su: yüzme, kürek, kano, yelken; doga: tırmanış, dağcılık, kayak; olimpik: jimnastik, okçuluk, atıcılık ve diğer bireysel branşlar" },
             kind: { type: "string", enum: ["haber", "duyuru", "arastirma", "bilgi"], description: "duyuru: yarış/kayıt/etkinlik duyurusu; bilgi: öğretici içerik" },
             format: { type: "string", enum: ["carousel", "single"], description: "Çok bilgi/rakam varsa carousel, tek cümlelik haber single" },
             why: { type: "string" },
@@ -240,7 +240,7 @@ const POST_TOOL = {
 
 export async function writePost(pick, sources, feedback = "") {
   const kindNote = {
-    duyuru: "Bu bir YARIŞ/ETKİNLİK DUYURUSU. Okur postu kapattığında şunları bilmeli (kaynakta varsa): etkinlik adı, tarih, şehir/mekân, kim katılabilir (kategori/seviye), kayıt ya da ön eleme ne zaman açılıyor/kapanıyor, ücret, nereden kayıt olunur (site adı, link değil). Kapak başlığı haberi söylesin: 'İstanbul Maratonu kayıtları açıldı', 'HYROX İstanbul'un tarihi belli oldu'. Karoselde bu bilgileri madde madde ver.",
+    duyuru: "Bu bir YARIŞ/ETKİNLİK DUYURUSU. Okur postu kapattığında şunları bilmeli (kaynakta varsa): etkinlik adı, tarih, şehir/mekân, kim katılabilir (kategori/seviye), kayıt ya da ön eleme ne zaman açılıyor/kapanıyor, ücret, nereden kayıt olunur (site adı, link değil). Kapak başlığı haberi söylesin: 'İstanbul Maratonu kayıtları açıldı', 'HYROX Istanbul'un tarihi belli oldu'. Karoselde bu bilgileri madde madde ver.",
     arastirma: "Bu bir ARAŞTIRMA postu: çalışmanın ne bulduğunu, kimde yapıldığını ve sporcuya pratik anlamını yaz; abartma, 'kanıtlandı' deme.",
     bilgi: "Bu bir BİLGİ postu: öğretici, uygulanabilir, kaydedilmeye değer olsun. Kapak merak uyandırsın.",
     haber: "",
@@ -256,10 +256,10 @@ export async function writePost(pick, sources, feedback = "") {
     system: `${EDITOR}
 Yazım kuralları (Türkçe spor gazeteciliği):
 - Dil: Doğal, akıcı, kusursuz Türkçe. Bir Türk spor editörü yazmış gibi olmalı; çeviri kokusu olmamalı. Yazım ve noktalama TDK'ye uygun olmalı (özel adlara gelen ekler kesme işaretiyle ayrılır: HYROX'ta, İstanbul'da).
-- Başlık: Haberi söyler, geniş zamanla değil haber kipiyle yazılır: "açıldı", "duyuruldu", "kırıldı", "belli oldu". Merak uyandırır ama yanıltmaz; klikbait yok.
+- Başlık: Haberi söyler; olmuş olay görülen geçmiş zamanla yazılır ("açıldı", "duyuruldu", "kırıldı", "belli oldu"), ileri tarihli duyuruda "-acak" ("1 Kasım'da koşulacak"). Merak uyandırır ama yanıltmaz; klikbait yok.
 - İçerik: Kim, ne, nerede, ne zaman, neden önemli sorularına cevap ver. Rakam ve tarihleri somut yaz (ör. "14 Aralık 2026", "3:20/km", "1 saat 2 dakika"). Okura bir şey öğret ya da haber ver; dolgu cümle kurma.
 - TARAFSIZLIK (kesin kural): Yalnızca olanı aktar. Yorum, değerlendirme, yargı, eleştiri, övgü ya da tahmin yok. Tartışma yaratabilecek, taraf tutan, kişileri, kurumları ya da markaları kötüleyen veya kıyaslayan ifade yok. Doping, sakatlık, kural ihlali, hakem kararı ya da anlaşmazlık haberlerinde yalnızca resmî açıklamayı aktar, sonuç çıkarma. "Skandal", "şok", "olay yarattı", "tepki çekti" gibi ifadeler kullanma. Sondaki soru da tarafsız olmalı; kışkırtıcı ya da "kim haklı?" tarzı soru sorma. Uygun örnekler: "Siz de katılacak mısınız?", "Hangi kategoride yarışıyorsunuz?".
-- HABER KANALI DİLİ (kesin kural): Bu bir haber kanalı; magazin, dedikodu, özel hayat, kişisel polemik yok. Başarı haberlerinde (özellikle Türk sporcular ve takımlar) kısa ve içten bir tebrik cümlesi uygundur: "Tebrikler!" gibi. Abartılı övgü kullanma.
+- HABER KANALI DİLİ (kesin kural): Bu bir haber kanalı; magazin, dedikodu, özel hayat, kişisel polemik yok. Başarı haberlerinde (özellikle Türk sporcular ve takımlar) tek bir kısa tebrik cümlesi uygundur ("Tebrikler."); postta en fazla 1 ünlem. Başarıyı derece, süre, sıklet ve rakip sayısıyla anlat; övgü sıfatı kullanma.
 - KİŞİ ADLARI (kesin kural): Kişi adı verme; organizasyon, kulüp ya da takım adını kullan. Antrenör, uzman, yetkili ya da organizatör adı ve onların sözlerinden alıntı KULLANMA. Tek istisna: haberin kendisi olan sporcu (kazanan, rekor kıran, derece yapan Türk sporcu). Onun adını doğru yazımıyla bir kez ver.
 - RESMÎ İSİMLER (kesin kural): Etkinlik, yarış, organizatör, kulüp, salon ve sporcu adlarını resmî yazımıyla kullan. Haber metni etkinliğe genel bir ad veriyorsa ("Kuşadası'nda CrossFit şampiyonası" gibi) web_search ile etkinliğin resmî adını bul (organizatörün sitesi ya da sosyal medyası) ve onu kullan; örneğin "Alsancak Team Series". Kapak başlığında ve caption'ın ilk satırında resmî ad geçsin. Sporcu adlarını doğru yazdığından emin değilsen o adı kullanma. eventName, officialSite ve officialInstagram alanlarını doldur (yalnızca resmî hesap ve siteler).
 - İNSAN EDİTÖR GİBİ YAZ (kesin kural): Metin yapay zekâ üretimi gibi görünmemeli. Uzun tire (—) kullanma, virgül ya da nokta kullan. "Peki ya...?", "İşte ...", "Bilmeniz gereken", "Sizin için derledik", "Keşfedin", "Hadi gelin", "Merak ettiniz mi?" gibi kalıplar yok. Her cümleyi üçlü listeyle bitirme. Her paragrafa aynı ritimle başlama. Gereksiz sıfat yok. Bir spor gazetesinin muhabiri gibi düz, bilgili ve kısa yaz.
@@ -272,6 +272,16 @@ Yazım kuralları (Türkçe spor gazeteciliği):
 - Caption yapısı: 1. satır HABERİN KENDİSİ, en fazla 70 karakter, varsa rakamla (ör. "İstanbul Maratonu'na 41.400 koşucu kayıt yaptırdı", "Yusuf Kerem Yerhan 100 m kelebekte bronz madalya kazandı"). Yasak açılışlar: "Bu hafta", "Heyecan dorukta", "Spor dünyası", "Büyük bir", "Herkesin merak ettiği". 2. satır tek cümle bağlam. Ardından 2-4 kısa paragraf ya da madde: ayrıntılar ve sporcuya anlamı. Caption tek başına anlaşılsın; "detaylar slaytlarda", "yorumlara yaz" gibi tuzak cümle kurma. En sonda habere özgü, tarafsız tek soru. 2000 karakteri geçme. Emoji en fazla 2 tane, slaytlarda hiç yok. Link, URL ve @kullanıcı adı koyma; kaynak satırını yazma (sistem en sona ekler).
 - Kapak başlığı: en fazla 8 kelime, varsa tek bir rakam içersin ("41.400 koşucu", "1:05.31", "13 ülke"). Kicker: etkinlik varsa etkinliğin kısa resmî adı (İSTANBUL MARATONU, HYROX İZMİR), yoksa haber türü (SON DAKİKA, YARIŞ RAPORU, ARAŞTIRMA).
 - Son slayt sorusu habere özgü olsun: yarış adı, mesafe, sporcu ya da sayıyı içersin ("Latmos Ultra'da 38K mi 60K mı koşuyorsun?", "Sen 2K kürek testini kaçta çekiyorsun?"). Genel "Siz ne düşünüyorsunuz?" yasak.
+- YAZIM (TDK, kesin kurallar):
+  · Kesme: özel ad + çekim eki kesmeli (HYROX'ta, Latmos Ultra'da, TAF'ın, 2026'da, %55'i, 70.3'te); kurum adlarına gelen ekler kesmesiz (Türkiye Atletizm Federasyonunun); yapım eki kesmesiz (İstanbullu); yabancı adlarda ek okunuşa göre (Ironman'de, Nike'ın).
+  · Üleştirme sayıları yazıyla: birer, ikişer, altışar ("2'şer" yazılmaz). de/da bağlacı ayrı, bulunma eki bitişik ve uyumlu (pistte, HYROX'ta); ki bağlacı ayrı, eki bitişik (yarıştaki). Düzeltme işareti: resmî, millî, dâhil, hâlâ, mekân.
+  · Büyük harf: başlıklar cümle düzeninde; gün/ay adı yalnızca belirli tarihle büyük ("7 Kasım Cumartesi", ama "cumartesi günü", "kasım ayında"); iki noktadan sonra tam cümle yoksa küçük harf. Boğaz, Anadolu, Ege özel ad.
+  · Tarih "14 Kasım 2026"; aralık "14-15 Kasım" (kısa çizgi, boşluksuz). Göreli zaman yok ("bugün", "yarın", "bu yıl", "geçen hafta"); tarih yaz. Saat "09.00"; derece ve süre "2:01:09", "53:22"; tempo "4:10/km".
+  · Sayılar: ondalık virgül (2,5 km; %12,5); binlik nokta yalnızca 5+ hanede ya da para/kişi sayısında (42.195 m; 12.500 koşucu; 1.500 TL); ölçülerde 4 hane ayraçsız (1000 m); yüzde önde bitişik (%55); birim boşluklu, noktasız (102 kg); sıra sayısı "5. sırada"; cümle içinde 1-10 yazıyla, tablo ve istatistikte rakamla.
+  · Terimler: race=yarış, athlete=sporcu, registration=kayıt, course=parkur, weight class=sıklet, recovery=toparlanma, endurance=dayanıklılık, strength=kuvvet, pace=tempo, qualifier=ön eleme, online=çevrim içi. İngilizce kalır: HYROX/CrossFit hareket adları küçük harfle (sled push, wall ball, burpee broad jump), kategori ve etkinlik adları resmî yazımla (Open, Pro Doubles, Doubles Women, Elite 15, HYROX Istanbul, IRONMAN 70.3), WOD, Rx, trail, ultra, granfondo. Marka yazımı korunur (CrossFit, SkiErg).
+  · Hitap: okura "siz" (yazın, bakın). Yorum çağrısı tek biçim: "yorumlara yazın". Ünlem en fazla 1, üç nokta yok, uzun tire yok, düz kesme (').
+  · Yasak kalıplar: "Not:", "Unutmayın", "Özetle", "Kısacası", "Sonuç olarak", "Peki", "Gelin", "mutlaka", "harika", "muhteşem", "inanılmaz", "efsane", "tarihi başarı", "başarıya imza attı", "damga vurdu", "ipi göğüsledi", "destan yazdı", "göz doldurdu", "adından söz ettirdi", "performans sergiledi", "kıyasıya mücadele", "ter döktü", "sporseverler", "yolculuk", "deneyim", "önemli", "kritik", "dikkat çekici", "etkileyici", "oldukça", "son derece", "gerçekten", "kesinlikle".
+  · Araştırma postu: dergi adı ve yıl, örneklem (kaç kişi, kim), ölçülen etki; "bilim insanları/uzmanlar" gibi muğlak özne yok; "kanıtladı" yerine "buldu", "gösterdi"; tek çalışmadan genel öneri çıkarma.
 - Hashtag: 5-8 adet, konuya özgü. Sıra: etkinlik etiketi (#istanbulmaratonu) > branş Türkçe > branş İngilizce > şehir > #hibritportal. #spor, #motivasyon, #fitnessmotivation gibi genel etiketler yasak. Branş setleri:
   koşu: #koşu #maraton #yarımaraton #running #runningturkey | trail: #trailrunning #patikakoşusu #ultratrail #ultrarunning | triatlon: #triatlon #triathlon #duatlon #swimbikerun
   yüzme: #yüzme #swimming #açıksuyüzme #openwaterswimming | kürek/kano: #kürek #rowing #indoorrowing #kano | bisiklet: #bisiklet #cycling #granfondo #mtb

@@ -281,7 +281,9 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   if (eventLogo) log("Etkinlik logosu:", eventLogo.source);
   const files = await renderPost({ ...post, photos, eventLogo, category, source: sourceName, dateLabel }, outDir);
   // guard: temizlenmiş metin + "Kaynak: ..." + hashtag; foto kredisi Kaynak satırının altına eklenir
-  const credits = [...new Set(photos.map((p) => String(p.credit ?? "").replace(/^Foto:\s*/i, "").replace(/[^\p{L}\p{N} .\/,()'-]/gu, "").trim()).filter(Boolean))].join(", ").slice(0, 120);
+  // Yalnızca sabit sağlayıcı adı yazılır (fotoğrafçı adı dış kaynaktan gelir, caption'a girmez; görselde kalır)
+  const provider = (p) => (/pexels/i.test(`${p.license} ${p.credit}`) ? "Pexels" : /openverse|cc/i.test(`${p.license} ${p.credit}`) ? "Openverse (CC lisansı)" : "");
+  const credits = [...new Set(photos.map(provider).filter(Boolean))].join(", ");
   const caption = credits ? post.caption.replace(/(\nKaynak: [^\n]*)/, `$1\nFoto: ${credits}`) : post.caption;
   fs.writeFileSync(path.join(outDir, "caption.txt"), `${caption}\n\n---\n${srcUrls.join("\n")}\n`);
   log(`Üretildi: ${outDir} (${files.length} slayt)`);

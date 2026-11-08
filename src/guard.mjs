@@ -18,11 +18,11 @@ const URL_RE = new RegExp(
 const LINKISH_RE = /(?<![\p{L}\p{N}\-.])[\p{L}][\p{L}\p{N}\-]+(?:\.|\[\.\]|\(\.\)|。)\p{Ll}{2,}(?![\p{L}\p{N}])/u;
 const MAX_SLIDES = 10, MAX_TAGS = 12, MAX_TAG_LEN = 30, MAX_CAPTION = 2200;
 const MENTION_RE = /(^|\s)@[\w.]{2,30}/g;
-const BAD = /(casino|bahis|bet\b|kripto|crypto|airdrop|dm\s*at|link\s*bio|bio'?daki\s*link|whatsapp|telegram|onlyfans|indirim\s*kodu|promo\s*code)/i;
-const TOPIC = /(hyrox|crossfit|maraton|marathon|koşu|kosu|run|wod|antrenman|fitness|yarış|yaris|sporcu|atlet|kuvvet|dayanıklılık|ultra|throwdown|games|open|elite|sled|wall ball|burpee|rowing|kürek|halter|barbell|kettlebell|araştırma|çalışma|yüz(me|ücü)|güreş|boks|judo|tekvando|karate|eskrim|bisiklet|pedal|tırmanış|dağcı|okçu|cimnastik|jimnastik|atıcı|kano|kayak|yelken|triatlon|duatlon|aquatlon|madalya|şampiyon|rekor|derece|kupa|federasyon|powerlifting|strongman|kalistenik|spartan|parkur)/i;
+const BAD = /(casino|bahis|\bbet\b|kripto|crypto|airdrop|dm\s*at|link\s*bio|bio'?daki\s*link|whatsapp|telegram|onlyfans|indirim\s*kodu|promo\s*code)/i;
+const TOPIC = /(hyrox|crossfit|maraton|marathon|koşu|kosu|\brun\b|wod|antrenman|fitness|yarış|yaris|sporcu|atlet|kuvvet|dayanıklılık|\bultra\b|throwdown|\bgames\b|\bopen\b|elite|sled|wall ball|burpee|rowing|kürek|halter|barbell|kettlebell|araştırma|çalışma|yüz(me|ücü)|güreş|boks|judo|tekvando|karate|eskrim|bisiklet|pedal|tırmanış|dağcı|okçu|cimnastik|jimnastik|atıcı|kano|kayak|yelken|triatlon|duatlon|aquatlon|madalya|şampiyon|rekor|derece|kupa|federasyon|powerlifting|strongman|kalistenik|spartan|parkur)/i;
 
 const FIELDS = ["kicker", "title", "subtitle", "body", "label", "value"];
-const clean = (t = "") => String(t).normalize("NFKC").replace(/\s*[—–]\s*/g, ", ").replace(URL_RE, "").replace(MENTION_RE, "$1").replace(/[ \t]{2,}/g, " ").trim();
+const clean = (t = "") => String(t).normalize("NFKC").replace(/[’‘]/g, "'").replace(/\s*—\s*/g, ", ").replace(/–/g, "-").replace(URL_RE, "").replace(MENTION_RE, "$1").replace(/[ \t]{2,}/g, " ").trim();
 
 /** Post'u temizler ve doğrular. { ok, reason, post } döner. */
 export function guardPost(post, { sourceName }) {
@@ -63,10 +63,12 @@ export function guardPost(post, { sourceName }) {
   });
   if (tooLong.length) return { ok: false, reason: `metin çok uzun, kısalt (yarım cümle olmasın): ${tooLong.join("; ")}` };
 
-  let caption = clean(post.caption ?? "").replace(/\n?\s*kaynak\s*:.*$/gim, "").trim().slice(0, 1900);
+  let caption = clean(post.caption ?? "").replace(/^\s*kaynak\s*:.*$/gim, "").trim().slice(0, 1900);
   // Hashtag: her biri en fazla 30 karakter (# hariç; uzunsa atılır), tekrarsız, en fazla 12
   const tags = [...new Set((post.hashtags ?? []).map((h) => "#" + String(h).normalize("NFKC").replace(/^#+/, "").replace(/[^\p{L}\p{N}_]/gu, "")))]
     .filter((h) => h.length > 2 && h.length - 1 <= MAX_TAG_LEN).slice(0, MAX_TAGS);
+  // Marka etiketi her postta (kural): yoksa eklenir, yer yoksa son etiketin yerine
+  if (!tags.some((h) => h.toLowerCase() === "#hibritportal")) { if (tags.length >= MAX_TAGS) tags.pop(); tags.push("#hibritportal"); }
   // Kaynak her açıklamanın sonunda (kullanıcı kuralı)
   // Kaynak adı da süzülür: yalnızca harf, rakam, boşluk ve . ' & , - karakterleri; en fazla 60 karakter
   const src = String(sourceName ?? "").normalize("NFKC").replace(/[^\p{L}\p{N} .'&,-]/gu, "").replace(/\s+/g, " ").trim().slice(0, 60) || "Hibrit Portal derlemesi";
@@ -79,7 +81,16 @@ export function guardPost(post, { sourceName }) {
   const all = [caption, ...slides.flatMap((s) => [...FIELDS.map((k) => s[k]), ...(s.bullets ?? [])])].filter(Boolean).join(" ");
   if (BAD.test(all)) return { ok: false, reason: "yasaklı ifade (spam/reklam şüphesi)" };
   if (!TOPIC.test(all)) return { ok: false, reason: "konu dışı görünüyor" };
-  if (/(skandal|şok|olay yarattı|tepki çekti|rezalet|utanç|hezimet|fiyasko)/i.test(all)) return { ok: false, reason: "tarafsızlık: yargılayıcı ifade" };
+  const judge = all.match(/(skandal|şok|olay yarattı|tepki çekti|rezalet|utanç|hezimet|fiyasko|tartışma yarattı|rezil|facia|felaket|yerden yere|destan yazdı|damga vurdu|ezip geçti|silip süpürdü|ders verdi|yerle bir|efsanevi|muhteşem|inanılmaz|mükemmel|çılgın|harika)/i);
+  if (judge) return { ok: false, reason: `tarafsızlık: yargılayıcı ifade ("${judge[0]}")` };
+  // Kişi sözü / alıntı (kural: antrenör, yetkili, uzman alıntısı yok)
+  // \b Türkçe harflerde çalışmaz (ş, ğ, İ...): harf-öncesi/sonrası lookaround kullanılır
+  const quote = all.match(/(?<!\p{L})(söyledi|dedi|ifade etti|sözlerini|şöyle konuştu|diye konuştu|dile getirdi)(?!\p{L})/iu);
+  if (quote) return { ok: false, reason: `alıntı/kişi sözü var ("${quote[0]}"); yalnızca olanı aktar` };
+  // Yapay zekâ ve "içerik üretici" kalıpları
+  const cliche = all.match(/(^|[\s.!?])(bir not:|not:|unutmayın|peki ya|hadi |keşfedin|derledik|işte karşınızda|sporseverler)/i);
+  if (cliche) return { ok: false, reason: `kalıp ifade ("${cliche[2]}"); haber dili kullan` };
+  if ((all.match(/!/g) ?? []).length > 1) return { ok: false, reason: "birden fazla ünlem; en fazla 1" };
   if (/ignore (all|previous)|önceki talimat|system prompt/i.test(all)) return { ok: false, reason: "talimat enjeksiyonu şüphesi" };
   const eventName = clean(post.eventName ?? "").slice(0, 80);
   const lk = `${all} ${eventName}`.match(LINKISH_RE);

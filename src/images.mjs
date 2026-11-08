@@ -74,6 +74,7 @@ const LOCAL_BY_CAT = {
   crossfit: ["comp-overhead", "comp-lift", "comp-women", "comp-barbell", "comp-crowd", "comp-judge", "comp-rings", "comp-win", "comp-night-tr", "comp-pullups-tr", "rope-climb", "box-jumps", "barbell-floor", "overhead-woman"],
   kosu: ["run-marathon", "run-start", "run-finish", "run-track", "silhouette", "hero-alt"],
   fonksiyonel: ["kb-floor", "kb-rack", "medball-rack", "ropes", "rings-gym", "box-jumps", "chalk-hands", "barbell-mist", "gym-industrial", "athlete-rest"],
+  bilim: ["athlete-rest", "barbell-mist", "run-track", "chalk-hands", "kb-floor", "gym-industrial"],
   kuvvet: ["kuvvet-weightlifting", "kuvvet-snatch", "barbell-floor", "chalk-hands"],
   dovus: ["dovus-wrestling", "dovus-wrestling-2", "dovus-boxing-gym", "dovus-judo"],
   su: ["su-swim-race", "su-swim-back", "su-rowing", "su-kayak"],

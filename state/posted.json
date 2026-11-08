@@ -90,12 +90,32 @@
       "skipped": "hata",
       "err": "s is not defined",
       "at": "2026-11-08T13:45:34.722Z"
+    },
+    {
+      "day": "2026-11-08",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiygFBVV95cUxQLVp3NnFNN2lHbHVDQVBIYktpQmRZb3ExMzlUSnBPZUNub1RmZWd6QUpxSnI3UHhQM1RBTlRJeVQwNE5NeW1ZbXBMSDljMUxQTGQ4UnNER2phZFZ2RzRfaUcwa0lObl9RSHBVRXhrdU9NOXZ6MmNGRXpULVFBRkZnVGhlVTV0UUl2ZlN5Y2I0d0RVYUlmeERhSmdGSGRWdjZ2aFhlTjM4TEtFbV9FZW5fU0lXM0tBa0JoN1RfbmhlRlowX1ZfZVhnaUpR",
+        "https://news.google.com/rss/articles/CBMikwFBVV95cUxNenREZnZQeVh6Z0QzVk5HdmE1Q3I2ckRnT2JGRE1Sb2c1c1JPNmQzem9GaTYwTTI3US0td2JVck1maHlzTkhNOUJaekxfaTNhYWg5d0tHX0RIQkpxazQ4Rm5FSWoyV3hUQ2x3RVYycUFnQXpObm03UU95R3ByTnNnNFZhb0NjcEUyNVFLdTlGUmNaRms",
+        "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPcUNnR1lLWlhlM2NJQUdQZkFER2JCZE81RUZ2STVNMFZRcEZtRzF6ZVU4eGhINWNxNkNyRTg1aEU5aGtTX2I5NjBlN0ZUejc2R084c2p4SlpYMFdQZnA1X3pUQnZGZE94ckJER2hsbDJENGNqenM1NUViTVdWUVFoLUFNYkdmajdqZElRN2dtaC1ldGQ0XzJuRmdrWUJSZlJ2dWY5NC1SdWtBVGt6VnJZTVIxWFNwdHZVUW1B0gFXQVVfeXFMTWNFZ1drQzFkWmV0RE54UV9XNFpiYi1aQWtHR3hVam1VVlBQRUpITGYtZzZNZGIzdXluOEluWk1laHNUTk1kTjVIbmt0TDlVZjhucVJrbzdv"
+      ],
+      "kind": "haber",
+      "photos": [
+        "local:bisiklet-road"
+      ],
+      "media": "18110299892360518",
+      "permalink": "https://www.instagram.com/p/DffALLWFPBv/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-08/mw7y0obp/01.jpg",
+      "title": "UCI Gran Fondo World Series Antalya 2026’da 44 ülkeden 963 sporcu pedal çevirdi İhlas Haber Ajansı",
+      "headline": "UCI Gran Fondo World Series Antalya'da 963 sporcu yarıştı",
+      "eventName": "UCI Gran Fondo World Series Antalya",
+      "at": "2026-11-08T14:46:06.207Z",
+      "story": "18159455869517027"
     }
   ],
   "daily": {
     "2026-11-08": {
-      "drafts": 8,
-      "approved": 1,
+      "drafts": 9,
+      "approved": 2,
       "rejected": 4
     }
   },
@@ -106,5 +126,5 @@
     "at": "2026-11-08T12:01:48.087Z"
   },
   "series": {},
-  "lastRunAt": "2026-11-08T13:41:42.118Z"
+  "lastRunAt": "2026-11-08T14:41:51.995Z"
 }

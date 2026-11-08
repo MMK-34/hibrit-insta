@@ -24,7 +24,10 @@ export const IG_WATCH_GLOBAL = [
   "frenchthrowdown", "lowlandsthrowdown", "italianshowdown", "syndicatecrown", "torianpro", "spartanrace",
   "fallseriesthrowdown", "germanthrowdown", "theamsterdamthrowdown", "lxgameslisboa", "ubl_italianchampionship", "uaestormgames", "fareastthrowdown",
 ];
-export const IG_WATCH = [...IG_WATCH_TR, ...IG_WATCH_GLOBAL];
+// Salonlar (box): kendi yarışmalarını düzenleyen salonlar. Çoğu paylaşım antrenman olduğu için yalnızca yarışma geçen paylaşımlar aday olur.
+export const IG_WATCH_BOX = [];
+export const IG_WATCH = [...IG_WATCH_TR, ...IG_WATCH_GLOBAL, ...IG_WATCH_BOX];
+const COMP_RE = /yar[ıi][sş]ma|yar[ıi][sş]|competition|throwdown|games|challenge|championship|şampiyona|in-house|inhouse|kay[ıi]t|registration|qualifier|ön eleme|leaderboard/i;
 
 const HANDLE = /^[A-Za-z0-9_.]{2,30}$/;
 let warned = false;
@@ -38,7 +41,8 @@ async function discover(handle, limit = 8) {
   try {
     const r = await fetch(`https://${host}/v23.0/${id}?fields=${encodeURIComponent(f)}&access_token=${t}`, { signal: AbortSignal.timeout(15000) });
     const j = await r.json();
-    if (j?.error) return { ok: false, perm: j.error.code === 10 || j.error.code === 200, media: [] };
+    // code 4 / 32 / 613: uygulama istek sınırı (saatlik); çağıran okumayı bu çalışmada bırakır
+    if (j?.error) return { ok: false, perm: j.error.code === 10 || j.error.code === 200, limit: [4, 17, 32, 613].includes(j.error.code), media: [] };
     return { ok: true, media: j?.business_discovery?.media?.data ?? [] };
   } catch { return { ok: false, perm: false, media: [] }; }
 }
@@ -50,13 +54,18 @@ export async function igWatchCandidates(extra = []) {
   const cutoff = Date.now() - 3 * 864e5;
   const out = [];
   const curatedSet = new Set([...IG_WATCH, ...env].map((h) => String(h).replace(/^@/, "").trim()));
+  // İstek sınırı (saatte ~200): dünya hesapları ve salonlar 3 saatte bir okunur, Türkiye/bölge organizatörleri her saat
+  const slowHour = new Date().getUTCHours() % 3 === 0;
   for (const h of handles) {
+    const box = IG_WATCH_BOX.includes(h);
+    if ((IG_WATCH_GLOBAL.includes(h) || box) && !slowHour) continue;
     // Elle seçilmiş liste (IG_WATCH / ortam değişkeni) güvenilir organizatör hesabıdır; circle21 kaydından gelen hesaplar doğrulanmamış sayılır
     const curated = curatedSet.has(h);
     const global = IG_WATCH_GLOBAL.includes(h);
     // Dünya hesaplarından son 2 günün en çok 3 paylaşımı (aday listesi şişmesin); Türkiye/bölge hesaplarından son 3 gün
     const res = await discover(h, global ? 3 : 8);
     if (!res.ok) {
+      if (res.limit) { console.warn("Instagram izleme: uygulama istek sınırı doldu; bu çalışmada kalan hesaplar atlandı."); return out; }
       if (res.perm) {
         if (!warned) console.warn("Instagram izleme: Business Discovery izni yok (Facebook sayfası bağlantısı gerekli); atlandı.");
         warned = true;
@@ -68,6 +77,7 @@ export async function igWatchCandidates(extra = []) {
       const ts = Date.parse(m.timestamp ?? 0);
       const cap = String(m.caption ?? "").trim();
       if (ts < (global ? Date.now() - 2 * 864e5 : cutoff) || cap.length < 40) continue;
+      if (box && !COMP_RE.test(cap)) continue;
       const images = [m.media_type === "IMAGE" ? m.media_url : null, ...(m.children?.data ?? []).filter((c) => c.media_type === "IMAGE").map((c) => c.media_url)].filter(Boolean).slice(0, 6);
       out.push({
         id: `ig:${m.id}`, handle: h, curated, url: m.permalink, images,

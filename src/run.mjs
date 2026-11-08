@@ -342,17 +342,22 @@ ${feedback.slice(0, 1200)}`);
 /** Görselleri üretir, (dry değilse) yükleyip paylaşır, state'e yazar. Paylaşım sonucunu döner. */
 /** Elle yeniden paylaşım: "URL | kategori | kaynak adı | başlık". Tam hat (yazar, editör, süzgeç, foto, doğrulama) çalışır. */
 async function repostOne(spec) {
-  const [link, category = "genel", srcName = "", title = ""] = String(spec).split("|").map((x) => x.trim());
-  if (!/^https:\/\//.test(link)) { log("Yeniden paylaşım: geçersiz URL."); return; }
-  const url = await resolveNewsUrl(link);
-  const text = await articleText(url);
-  const host = new URL(url).hostname.replace(/^www\./, "");
-  const sourceName = srcName || host;
-  const item = { id: link, url, title: title || text.slice(0, 120), source: sourceName, text };
-  const pick = { ids: [link], score: 10, category, kind: "haber", format: "carousel", why: "elle yeniden paylaşım" };
-  const ready = await prepareVerified(pick, [item], sourceName);
-  if (!ready) { await notify(`⚠️ Hibrit Portal: yeniden paylaşım doğrulamadan geçmedi (${title || url}).`); return; }
-  const res = await renderAndPublish(ready, { category, sourceName: ready.sourceName ?? sourceName, ids: pick.ids, kind: "haber", title: item.title, srcUrls: [url] });
+  // İlk alan birden çok URL olabilir (boşluk ya da virgülle): hepsi kaynak olarak yazara verilir
+  const [links, category = "genel", srcName = "", title = ""] = String(spec).split("|").map((x) => x.trim());
+  const list = links.split(/[\s,]+/).filter((u) => /^https:\/\//.test(u)).slice(0, 3);
+  if (!list.length) { log("Yeniden paylaşım: geçersiz URL."); return; }
+  const items = [];
+  for (const link of list) {
+    const url = await resolveNewsUrl(link);
+    const text = await articleText(url);
+    const host = new URL(url).hostname.replace(/^www\./, "");
+    items.push({ id: link, url, title: title || text.slice(0, 120), source: items.length ? host : (srcName || host), text });
+  }
+  const sourceName = items[0].source;
+  const pick = { ids: items.map((i) => i.id), score: 10, category, kind: "haber", format: "carousel", why: "elle yeniden paylaşım" };
+  const ready = await prepareVerified(pick, items, sourceName);
+  if (!ready) { await notify(`⚠️ Hibrit Portal: yeniden paylaşım doğrulamadan geçmedi (${title || items[0].url}).`); return; }
+  const res = await renderAndPublish(ready, { category, sourceName: ready.sourceName ?? sourceName, ids: pick.ids, kind: "haber", title: items[0].title, srcUrls: items.map((i) => i.url) });
   if (res) log("Yeniden paylaşıldı:", res.permalink ?? res.id);
 }
 

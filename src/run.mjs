@@ -12,7 +12,8 @@ import { eventPhotos, screenPhotos } from "./event-photos.mjs";
 import { circle21Candidates, circle21Reference, circle21Events, c21Handle } from "./circle21.mjs";
 import { igWatchCandidates, verifiedEventHandle, IG_WATCH_TR } from "./ig-watch.mjs";
 import { selectNews, writePost, reviewPost, creditProbe, isCreditError } from "./plan.mjs";
-import { renderPost, renderStory } from "./render.mjs";
+import { renderPost, renderStory, renderCountdown } from "./render.mjs";
+import { countdownsDue } from "./countdown.mjs";
 import { uploadFiles } from "./upload-github.mjs";
 import { publish, preflight, publishStory } from "./publish.mjs";
 import { notify } from "./notify.mjs";
@@ -161,6 +162,7 @@ async function main() {
   // Canlıya alınınca ilk paylaşım: tanıtım postu (bir kez)
   if (!state.intro && !DRY) return publishIntro();
   if (STOCK) return publishStock();
+  try { await publishCountdowns(); } catch (e) { log("Geri sayım hatası:", String(e.message).slice(0, 200)); }
   try { await processApprovals(); } catch (e) { if (isCreditError(e)) throw e; log("Onay kontrolü hatası:", String(e.message).slice(0, 200)); }
   try { await draftStatForApproval(); } catch (e) { if (isCreditError(e)) throw e; log("İstatistik taslağı hatası:", String(e.message).slice(0, 200)); }
   // Tekrarlayan seriler (hafta sonu yarışları, Türk sporcuların haftası, aylık takvim): günde bir kez, sabah 9'dan sonra
@@ -469,6 +471,25 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     } catch (e) { log("Hikâye paylaşılamadı (post yayında):", String(e.message).slice(0, 300)); }
   }
   return res;
+}
+
+// ---------- Geri sayım hikâyeleri (yalnızca büyük yarışlar) ----------
+// Sabah 09:00 sonrası ilk çalışmada; günde en çok 3 hikâye; her eşik (30/14/7/3/1 gün) bir kez.
+async function publishCountdowns() {
+  if (DRY || hour < 9) return;
+  state.countdowns ??= {};
+  const due = (await countdownsDue()).filter((c) => !state.countdowns[c.key]).slice(0, 3);
+  for (const c of due) {
+    const eventLogo = c.logoUrl ? await logoFromUrl(c.logoUrl).catch(() => null) : null;
+    const dir = path.join("out", today, "countdown");
+    fs.mkdirSync(dir, { recursive: true });
+    const file = await renderCountdown({ ...c, unit: "gün", eventLogo }, path.join(dir, `${Date.now().toString(36)}.jpg`));
+    const [url] = await uploadFiles([file], `${today}/countdown-${Date.now().toString(36)}`);
+    const st = await publishStory(url);
+    state.countdowns[c.key] = new Date().toISOString();
+    saveState();
+    log(`Geri sayım hikâyesi: ${c.title} (${c.kicker} ${c.number} gün)`, st.id);
+  }
 }
 
 // ---------- Onaylı istatistik postları ----------

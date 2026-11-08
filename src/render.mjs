@@ -51,7 +51,7 @@ export const CATEGORY = {
 const esc = (s = "") => String(s).replace(/</g, "‹").replace(/>/g, "›");
 // Türkçe büyük harf (i -> İ). İngilizce marka ve terimler (CrossFit, SkiErg, Ironman, Rowing, Fitness...) düz büyütülür:
 // w/x/q içeren, -ing ile biten ya da listedeki sözcükler İngilizce sayılır.
-const EN_WORD = /^(crossfit|skierg|ironman|mixed|rowing|fitness|elite|division|invitational|semifinals?|finals?|triathlon|triathlete|cycling|climbing|science|daily|giro|italia|physiology|journal|international|medicine|nutrition|series|qualifiers?|sprint|swim|swimming|running|rulebook|games|open|online|index|world|championships?|marathon|half|hyrox|wings|life|time|timing|invitational|pro|rx|wod|wodapalooza|rogue|boxrox|slowtwitch|swimswam|gripped|alpinist|irunfar|letsrun|cyclingnews|runner's|runners|trail|ultra-trail|utmb|ironman|strongman|powerlifting|deadlift|squat|bench|snatch|clean|jerk|thruster|muscle-up|pull-up|wall|ball|sled|push|pull|burpee|farmers|carry|lunges|rig|skiing|erg|concept2|velo|outside|pinkbike|fitnessvolt)$/i;
+const EN_WORD = /^(eurasia|throwdown|olympos|alsancak|team|athx|deka|crossfit|skierg|ironman|mixed|rowing|fitness|elite|division|invitational|semifinals?|finals?|triathlon|triathlete|cycling|climbing|science|daily|giro|italia|physiology|journal|international|medicine|nutrition|series|qualifiers?|sprint|swim|swimming|running|rulebook|games|open|online|index|world|championships?|marathon|half|hyrox|wings|life|time|timing|invitational|pro|rx|wod|wodapalooza|rogue|boxrox|slowtwitch|swimswam|gripped|alpinist|irunfar|letsrun|cyclingnews|runner's|runners|trail|ultra-trail|utmb|ironman|strongman|powerlifting|deadlift|squat|bench|snatch|clean|jerk|thruster|muscle-up|pull-up|wall|ball|sled|push|pull|burpee|farmers|carry|lunges|rig|skiing|erg|concept2|velo|outside|pinkbike|fitnessvolt)$/i;
 const trUpper = (s = "") => String(s).split(/(\s+|[·|/()])/).map((w) => (EN_WORD.test(w) || /[wxq]/i.test(w) || /ing$/i.test(w) ? w.toUpperCase() : w.replace(/i/g, "İ").replace(/ı/g, "I").toUpperCase())).join("");
 
 /** Başlık uzunluğuna göre font boyutu (Big Shoulders dar; büyük punto kaldırır) */
@@ -297,6 +297,45 @@ export async function renderStory(coverFile, outFile) {
   const buf = await sharp({ create: { width: SW, height: SH, channels: 3, background: C.ink } })
     .composite([{ input: coverFile, left: 0, top }, { input: label, left: 0, top: 0 }])
     .jpeg({ quality: 90, mozjpeg: true }).toBuffer();
+  fs.writeFileSync(outFile, buf);
+  return outFile;
+}
+
+/**
+ * Geri sayım hikâye kartı (1080x1920): "HYROX İSTANBUL'A / 7 / GÜN".
+ * c: { kicker, number, unit, title, date, place, eventLogo?: {buf} }
+ */
+export async function renderCountdown(c, outFile) {
+  const SW = 1080, SH = 1920;
+  const L = await brandLogo();
+  let logo = "";
+  if (c.eventLogo?.buf) {
+    const m = await sharp(c.eventLogo.buf).metadata();
+    const h = 110, w = Math.min(420, Math.round((m.width / m.height) * h));
+    logo = `<div style="display:flex;align-self:flex-start;background:${C.paper};padding:18px 26px;border-radius:8px;margin-bottom:56px"><img src="data:image/png;base64,${c.eventLogo.buf.toString("base64")}" style="width:${w}px;height:${Math.round(w * m.height / m.width)}px" /></div>`;
+  }
+  const num = String(c.number);
+  const markup = `<div style="display:flex;width:${SW}px;height:${SH}px;background:${C.ink};font-family:Body;color:${C.paper}"><div style="display:flex;flex-direction:column;width:${SW - 2 * PAD}px;height:${SH - 520}px;margin:260px ${PAD}px 260px ${PAD}px">
+    <div style="display:flex">${logoHtml(L)}</div>
+    <div style="display:flex;flex-direction:column;flex:1;justify-content:center">
+      ${logo}
+      <div style="display:flex;width:110px;height:10px;background:${C.red};margin-bottom:34px"></div>
+      <div style="display:flex;font-weight:700;font-size:40px;letter-spacing:4px;color:${C.red}">${esc(trUpper(c.kicker))}</div>
+      <div style="display:flex;align-items:flex-end;margin-top:10px">
+        <div style="display:flex;font-family:Head;font-weight:800;font-size:${num.length > 2 ? 360 : 460}px;line-height:0.86;color:${C.paper}">${esc(num)}</div>
+        <div style="display:flex;font-family:Head;font-weight:800;font-size:130px;line-height:1;color:${C.paper};margin-left:24px;margin-bottom:34px">${esc(trUpper(c.unit))}</div>
+      </div>
+      <div style="display:flex;margin-top:46px">${head(c.title, headSize(c.title, 110))}</div>
+      <div style="display:flex;font-size:42px;color:${C.text2};margin-top:30px">${esc([c.date, c.place].filter(Boolean).join(" · "))}</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:34px;font-weight:600">
+      <div style="display:flex">hibritportal</div>
+      <div style="display:flex;color:${C.text3};font-size:28px;letter-spacing:3px">GERİ SAYIM</div>
+    </div>
+  </div></div>`;
+  const svg = await satori(html(markup), { width: SW, height: SH, fonts: FONTS });
+  const png = new Resvg(svg, { fitTo: { mode: "width", value: SW } }).render().asPng();
+  const buf = await sharp(png).jpeg({ quality: 90, mozjpeg: true }).toBuffer();
   fs.writeFileSync(outFile, buf);
   return outFile;
 }

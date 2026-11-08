@@ -30,6 +30,7 @@ async function hints(id, from, to) {
     if (!r?.ok) continue;
     for (const m of r.buf.toString("utf8").matchAll(/<item>[\s\S]*?<title>([\s\S]*?)<\/title>[\s\S]*?<pubDate>([\s\S]*?)<\/pubDate>[\s\S]*?<\/item>/g)) {
       const d = new Date(m[2]);
+      if (isNaN(d)) continue;
       // Yarış serilerinde yayın tarihi değil yarış tarihi önemli: son 21 günün duyuruları aday; başarı serisinde yalnızca dönem içi
       if (id === "tr-haftasi" && (d < new Date(from.getTime() - 864e5) || d > new Date(to.getTime() + 2 * 864e5))) continue;
       out.push(`- ${m[1].replace(/<!\[CDATA\[|\]\]>/g, "").replace(/&amp;/g, "&").replace(/[<>]/g, "").trim()} (${d.toISOString().slice(0, 10)})`);
@@ -62,7 +63,7 @@ export const SERIES = [
     id: "hafta-sonu",
     due: (d) => d.getDay() === 4 && d.getHours() >= 17, // perşembe akşamı (17:30 çalışması; 19:30 ve 21:30 yedek)
     key: (d) => `hafta-sonu:${isoWeek(d)}`,
-    ctx: (d) => { const sat = addDays(d, (6 - d.getDay() + 7) % 7 || 7), sun = addDays(sat, 1); return { from: sat, to: sun, range: `${sat.getDate()}-${sun.getDate()} ${AY[sun.getMonth()]}` }; },
+    ctx: (d) => { const sat = addDays(d, (6 - d.getDay() + 7) % 7 || 7), sun = addDays(sat, 1); return { from: sat, to: sun, range: sat.getMonth() === sun.getMonth() ? `${sat.getDate()}-${sun.getDate()} ${AY[sun.getMonth()]}` : `${sat.getDate()} ${AY[sat.getMonth()]}-${sun.getDate()} ${AY[sun.getMonth()]}` }; },
     columns: RACE_COLS, min: 3, max: 14,
     cover: (c) => ({ kicker: c.range, title: "Türkiye'de bu hafta sonu hangi yarışlar var?", subtitle: "Koşudan triatlona, yüzmeden bisiklete hafta sonu yarışlarından bir seçki." }),
     intro: (c, names, n) => `Bu hafta sonu (${c.range}) Türkiye'de ${n} yarış var: ${names}.`,
@@ -152,13 +153,13 @@ export async function writeSeries({ s, ctx }, feedback = "") {
     tool: SERIES_TOOL, model: MODEL_WRITE, maxTokens: 6000, webSearch: 15, webFetch: 20,
   });
   const rows = (res.rows ?? [])
-    .filter((r) => /^https:\/\//.test(r.url ?? "") && (r.cells ?? []).length === s.columns.length && r.cells.every((c) => String(c ?? "").trim()))
+    .filter((r) => /^https:\/\//.test(r.url ?? "") && URL.canParse(r.url) && (r.cells ?? []).length === s.columns.length && r.cells.every((c) => String(c ?? "").trim() && String(c).trim().length <= 40))
     .slice(0, s.max);
   if (!res.enough || rows.length < s.min) { console.log(`seri ${s.id}: enough=${res.enough}, geçerli satır ${rows.length}/${(res.rows ?? []).length}`); return null; }
   // Tablo: slayt başına en fazla 7 satır
   const tables = [];
   for (let i = 0; i < rows.length; i += 7) {
-    tables.push({ type: "table", title: tables.length ? `${s.tableTitle} (devam)` : s.tableTitle, columns: s.columns, rows: rows.slice(i, i + 7).map((r) => r.cells) });
+    tables.push({ type: "table", title: tables.length ? `${s.tableTitle} (devam)` : s.tableTitle, columns: s.columns, rows: rows.slice(i, i + 7).map((r) => r.cells), barCol: -1 });
   }
   // Fotoğraflar listedeki branşlardan: en sık geçen branşların foto sorguları
   const BQ = { güreş: "freestyle wrestling match", boks: "boxing ring", judo: "judo", halter: "olympic weightlifting snatch", powerlifting: "olympic weightlifting snatch",

@@ -161,7 +161,8 @@ async function main() {
       if (!srcItems.length) continue;
       for (const s of srcItems) if (!s.id.startsWith("cal:")) s.text = await articleText(s.url);
       // Kaynak adı: takvim kayıtlarında organizatör sitesi
-      const sourceName = srcItems[0].id.startsWith("cal:") ? (() => { try { return new URL(srcItems[0].url).hostname.replace(/^www\./, ""); } catch { return "Yarış takvimi"; } })() : srcItems[0].source;
+      // Takvim kaydı: alan adı yazılmaz (guard link sayar); etkinliğin resmî sitesi olarak belirtilir
+      const sourceName = srcItems[0].id.startsWith("cal:") ? (srcItems[0].eventName ? `${srcItems[0].eventName} resmî sitesi` : "Organizatörün resmî sitesi") : srcItems[0].source;
 
       const ready = await prepareVerified(pick, srcItems, sourceName);
       processed++;
@@ -257,7 +258,7 @@ async function publishSeries({ s, key, ctx }) {
     const gate = await verifyGate(g.post, { sourceUrls: w.sourceUrls, photos, sourceName, rowEvidence: w.post.evidence, budget: { webSearch: 6, webFetch: 16 }, skipItems: ["kaynak_satiri"] });
     if (gate.ok) {
       bump("approved");
-      const res = await renderAndPublish({ post: g.post, photos }, { category: s.cat ?? "genel", sourceName, ids: [`seri:${key}`], kind: "seri", title: g.post.slides[0]?.title, srcUrls: w.sourceUrls });
+      const res = await renderAndPublish({ post: g.post, photos }, { category: s.cat ?? "genel", sourceName, ids: [`seri:${key}`], kind: "seri", title: g.post.slides[0]?.title, srcUrls: w.sourceUrls, onPublished: (r) => { st.done = true; st.media = r.id; saveState(); } });
       if (res && !DRY) { st.done = true; st.media = res.id; saveState(); }
       return !!res;
     }
@@ -272,7 +273,7 @@ ${feedback.slice(0, 1200)}`);
 }
 
 /** Görselleri üretir, (dry değilse) yükleyip paylaşır, state'e yazar. Paylaşım sonucunu döner. */
-async function renderAndPublish({ post, photos }, { category, sourceName, ids, kind, title, srcUrls = [] }) {
+async function renderAndPublish({ post, photos }, { category, sourceName, ids, kind, title, srcUrls = [], onPublished = null }) {
   const slug = `${today}/${Date.now().toString(36)}`;
   const outDir = path.join("out", slug);
   // Etkinlik logosu: önce resmî site, sonra resmî Instagram profil fotoğrafı
@@ -294,6 +295,8 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   for (const id of ids ?? []) postedIds.add(id);
   for (const p of photos) if (!String(p.id).startsWith("local:")) usedPhotos.add(p.id);
   saveState(); // paylaşım hemen kalıcı: sonraki adım çökse de aynı haber tekrar paylaşılmaz
+  // Çağıranın tamamlanma işareti (seri done / takip "paylaşıldı") hikâye adımından ÖNCE yazılır: zaman aşımında tekrar yayın olmasın
+  if (onPublished) { try { onPublished(res); } catch (e) { log("Tamamlanma işareti yazılamadı:", e.message); } }
   log("Yayında:", res.permalink);
   await notify(`✅ Paylaşıldı (${kind})\n${post.slides[0]?.title}\n${res.permalink}`);
   // Hikâye: kapak 9:16 karta alınır ve Story olarak paylaşılır (erişim için). Hata ana postu etkilemez.
@@ -323,7 +326,7 @@ async function publishFollowup() {
     const { pick, sources } = followupInput(fu);
     const ready = await prepareVerified(pick, sources, "Hibrit Portal arşivi");
     if (!ready) { if (!DRY) markFollowup(fu, "reddedildi"); return false; }
-    const res = await renderAndPublish(ready, { category: pick.category, sourceName: ready.sourceName, ids: [sources[0].id], kind: "takip", title: sources[0].title, srcUrls: [sources[0].url] });
+    const res = await renderAndPublish(ready, { category: pick.category, sourceName: ready.sourceName, ids: [sources[0].id], kind: "takip", title: sources[0].title, srcUrls: [sources[0].url], onPublished: () => markFollowup(fu, "paylaşıldı") });
     if (!DRY) markFollowup(fu, res ? "paylaşıldı" : "hata");
     return Boolean(res) || DRY;
   } catch (e) {

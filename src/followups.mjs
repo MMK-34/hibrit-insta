@@ -40,7 +40,7 @@ export function saveFollowups(list) {
   fs.renameSync(`${FILE}.tmp`, FILE);
 }
 
-export const norm = (s = "") => String(s).toLocaleLowerCase("tr").replace(/[^a-z0-9ğüşıöç]/g, "");
+export const norm = (s = "") => String(s).toLocaleLowerCase("tr").replace(/ı/g, "i").replace(/[^a-z0-9ğüşöç]/g, "");
 
 /** Duyuru paylaşıldığında takip postlarını planlar (aynı etkinlik 120 gün içinde ikinci kez planlanmaz). */
 export function scheduleFollowups({ eventName, officialSite, category }, today) {

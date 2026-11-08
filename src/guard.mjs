@@ -18,7 +18,7 @@ const URL_RE = new RegExp(
 const LINKISH_RE = /(?<![\p{L}\p{N}\-.])[\p{L}][\p{L}\p{N}\-]+(?:\.|\[\.\]|\(\.\)|。)\p{Ll}{2,}(?![\p{L}\p{N}])/u;
 const MAX_SLIDES = 10, MAX_TAGS = 12, MAX_TAG_LEN = 30, MAX_CAPTION = 2200;
 const MENTION_RE = /(^|\s)@[\w.]{2,30}/g;
-const BAD = /(casino|bahis|\bbet\b|kripto|crypto|airdrop|dm\s*at|link\s*bio|bio'?daki\s*link|whatsapp|telegram|onlyfans|indirim\s*kodu|promo\s*code)/i;
+const BAD = /(casino|bahis|(?<![\p{L}])(?:\d*x?bet|bets?10|betboo|tipobet|superbet|jojobet|mobilbet|betist|bet)(?![\p{L}])|kripto|crypto|airdrop|dm\s*at|link\s*bio|bio'?daki\s*link|whatsapp|telegram|onlyfans|indirim\s*kodu|promo\s*code)/iu;
 const TOPIC = /(hyrox|crossfit|maraton|marathon|koşu|kosu|\brun\b|wod|antrenman|fitness|yarış|yaris|sporcu|atlet|kuvvet|dayanıklılık|\bultra\b|throwdown|\bgames\b|\bopen\b|elite|sled|wall ball|burpee|rowing|kürek|halter|barbell|kettlebell|araştırma|çalışma|yüz(me|ücü)|güreş|boks|judo|tekvando|karate|eskrim|bisiklet|pedal|tırmanış|dağcı|okçu|cimnastik|jimnastik|atıcı|kano|kayak|yelken|triatlon|duatlon|aquatlon|madalya|şampiyon|rekor|derece|kupa|federasyon|powerlifting|strongman|kalistenik|spartan|parkur)/i;
 
 const FIELDS = ["kicker", "title", "subtitle", "body", "label", "value"];
@@ -71,14 +71,15 @@ export function guardPost(post, { sourceName }) {
   if (!tags.some((h) => h.toLowerCase() === "#hibritportal")) { if (tags.length >= MAX_TAGS) tags.pop(); tags.push("#hibritportal"); }
   // Kaynak her açıklamanın sonunda (kullanıcı kuralı)
   // Kaynak adı da süzülür: yalnızca harf, rakam, boşluk ve . ' & , - karakterleri; en fazla 60 karakter
-  const src = String(sourceName ?? "").normalize("NFKC").replace(/[^\p{L}\p{N} .'&,-]/gu, "").replace(/\s+/g, " ").trim().slice(0, 60) || "Hibrit Portal derlemesi";
+  const src = String(sourceName ?? "").normalize("NFKC").replace(URL_RE, "").replace(/[^\p{L}\p{N} .'&,-]/gu, "").replace(/\s+/g, " ").trim().slice(0, 60) || "Hibrit Portal derlemesi";
   // Son açıklama en fazla 2200 karakter: gerekirse gövde kısaltılır; "Kaynak:" satırı ve etiketler korunur
   const tail = `\n\nKaynak: ${src}${tags.length ? `\n\n${tags.join(" ")}` : ""}`;
   const room = MAX_CAPTION - tail.length;
   if (caption.length > room) caption = caption.slice(0, Math.max(0, room - 1)).replace(/\s+\S*$/, "").trimEnd() + "…";
   caption = `${caption}${tail}`;
 
-  const all = [caption, ...slides.flatMap((s) => [...FIELDS.map((k) => s[k]), ...(s.bullets ?? [])])].filter(Boolean).join(" ");
+  // Tablo sütun/satır/notları da denetlenir (seri satırları web sayfalarından türeyen model çıktısıdır)
+  const all = [caption, ...slides.flatMap((s) => [...FIELDS.map((k) => s[k]), ...(s.bullets ?? []), ...(s.columns ?? []), ...(s.rows ?? []).flat(), s.note])].filter(Boolean).join(" ");
   if (BAD.test(all)) return { ok: false, reason: "yasaklı ifade (spam/reklam şüphesi)" };
   if (!TOPIC.test(all)) return { ok: false, reason: "konu dışı görünüyor" };
   const judge = all.match(/(skandal|şok|olay yarattı|tepki çekti|rezalet|utanç|hezimet|fiyasko|tartışma yarattı|rezil|facia|felaket|yerden yere|destan yazdı|damga vurdu|ezip geçti|silip süpürdü|ders verdi|yerle bir|efsanevi|muhteşem|inanılmaz|mükemmel|çılgın|harika)/i);

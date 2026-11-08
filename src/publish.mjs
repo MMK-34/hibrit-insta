@@ -114,7 +114,7 @@ export async function publishStory(imageUrl) {
   const me = userId();
   const c = await retry("IG hikâye container", () => call("POST", `${me}/media`, { image_url: imageUrl, media_type: "STORIES" }));
   await waitReady(c.id);
-  const pub = await retry("IG hikâye yayın", () => call("POST", `${me}/media_publish`, { creation_id: c.id }), 2);
+  const pub = await call("POST", `${me}/media_publish`, { creation_id: c.id }); // yeniden deneme yok: yanıt kaybolursa çift hikâye riski
   return { id: pub.id };
 }
 

@@ -49,7 +49,7 @@ export function pageImages(html, base) {
 async function instagramMedia(username) {
   const u = String(username ?? "").replace(/^@/, "").trim();
   if (!/^[\w.]{2,30}$/.test(u)) return [];
-  const t = process.env.IG_ACCESS_TOKEN, id = process.env.IG_USER_ID;
+  const t = process.env.IG_DISCOVERY_TOKEN || process.env.IG_ACCESS_TOKEN, id = process.env.IG_USER_ID;
   if (!t || !id) return [];
   const host = t.startsWith("IGAA") ? "graph.instagram.com" : "graph.facebook.com";
   const f = `business_discovery.username(${u}){media.limit(15){media_url,media_type,timestamp,children{media_url,media_type}}}`;

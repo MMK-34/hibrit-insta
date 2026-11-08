@@ -77,7 +77,7 @@ export async function fetchEventLogo(officialSite) {
 export async function fetchInstagramLogo(username) {
   const u = String(username ?? "").replace(/^@/, "").trim();
   if (!/^[\w.]{2,30}$/.test(u)) return null;
-  const t = process.env.IG_ACCESS_TOKEN, id = process.env.IG_USER_ID;
+  const t = process.env.IG_DISCOVERY_TOKEN || process.env.IG_ACCESS_TOKEN, id = process.env.IG_USER_ID;
   if (!t || !id) return null;
   const host = t.startsWith("IGAA") ? "graph.instagram.com" : "graph.facebook.com";
   const j = await fetch(`https://${host}/v23.0/${id}?fields=${encodeURIComponent(`business_discovery.username(${u}){profile_picture_url}`)}&access_token=${t}`)

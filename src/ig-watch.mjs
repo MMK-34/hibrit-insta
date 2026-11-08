@@ -11,7 +11,8 @@ const HANDLE = /^[A-Za-z0-9_.]{2,30}$/;
 let warned = false;
 
 async function discover(handle) {
-  const t = process.env.IG_ACCESS_TOKEN, id = process.env.IG_USER_ID;
+  // Business Discovery: Facebook sayfası token'ı (IG_DISCOVERY_TOKEN, süresiz) gerekir; yayın token'ı bu izne sahip değil
+  const t = process.env.IG_DISCOVERY_TOKEN || process.env.IG_ACCESS_TOKEN, id = process.env.IG_USER_ID;
   if (!t || !id) return { ok: false, perm: false, media: [] };
   const host = t.startsWith("IGAA") ? "graph.instagram.com" : "graph.facebook.com";
   const f = `business_discovery.username(${handle}){username,media.limit(8){id,caption,timestamp,permalink,media_type,media_url,children{media_url,media_type}}}`;

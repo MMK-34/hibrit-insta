@@ -1,5 +1,5 @@
 // RSS/Atom toplama + makale metni çekme (yalnızca özetlemek için; yayına kopyalanmaz).
-import { safeGet } from "./safe-net.mjs";
+import { safeGet, urlAllowed } from "./safe-net.mjs";
 import { XMLParser } from "fast-xml-parser";
 import { FEEDS, POSTING } from "./config.mjs";
 
@@ -58,6 +58,36 @@ export async function collect() {
 }
 
 /** Seçilen haberin makale metni (özet doğruluğu için). Google News linkleri yönlendirmeli; olmazsa snippet kullanılır. */
+/**
+ * Google News RSS bağlantısını (news.google.com/rss/articles/...) yayıncının asıl adresine çözer.
+ * Bu bağlantılar JS ile yönlendirir: düz fetch sayfa metni vermez, doğrulayıcı da açamaz (url_too_long).
+ * Yöntem: makale sayfasındaki imza (data-n-a-sg) ve zaman damgası (data-n-a-ts) ile Google'ın batchexecute ucu.
+ * Yalnızca sabit news.google.com adresine istek atılır. Hata ya da beklenmeyen yanıtta özgün URL döner.
+ */
+export async function resolveNewsUrl(url) {
+  const m = String(url ?? "").match(/^https:\/\/news\.google\.com\/(?:rss\/)?articles\/([A-Za-z0-9_-]+)/);
+  if (!m) return url;
+  const id = m[1];
+  const headers = { "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)", "accept-language": "tr-TR,tr;q=0.9" };
+  try {
+    const page = await fetch(`https://news.google.com/rss/articles/${id}`, { headers, signal: AbortSignal.timeout(15000) }).then((r) => (r.ok ? r.text() : ""));
+    const sg = page.match(/data-n-a-sg="([^"]+)"/)?.[1], ts = page.match(/data-n-a-ts="(\d+)"/)?.[1];
+    if (!sg || !ts) return url;
+    const req = [[["Fbv4je", JSON.stringify(["garturlreq", [["X", "X", ["X", "X"], null, null, 1, 1, "US:en", null, 1, null, null, null, null, null, 0, 1], "X", "X", 1, [1, 1, 1], 1, 1, null, 0, 0, null, 0], id, Number(ts), sg]), null, "generic"]]];
+    const r = await fetch("https://news.google.com/_/DotsSplashUi/data/batchexecute", {
+      method: "POST", headers: { ...headers, "content-type": "application/x-www-form-urlencoded;charset=UTF-8" },
+      body: `f.req=${encodeURIComponent(JSON.stringify(req))}`, signal: AbortSignal.timeout(15000),
+    });
+    if (!r.ok) return url;
+    const t = await r.text();
+    const j = JSON.parse(t.slice(t.indexOf("\n\n") + 2));
+    const out = JSON.parse(j?.[0]?.[2] ?? "null")?.[1];
+    // Yalnızca geçerli, herkese açık https adresi kabul edilir
+    if (typeof out === "string" && /^https:\/\//.test(out) && URL.canParse(out) && urlAllowed(out, { allowHttp: false }) && !/news\.google\.com/.test(out)) return out;
+  } catch { /* çözülemedi: özgün URL */ }
+  return url;
+}
+
 export async function articleText(url) {
   const page = await get(url, 20000);
   if (!page) return "";

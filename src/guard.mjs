@@ -11,7 +11,7 @@ const LABEL = String.raw`[\p{L}\p{N}][\p{L}\p{N}\-]*`;
 const URL_RE = new RegExp(
   String.raw`(?:[hH][tT][tT][pP][sS]?:\/\/|[wW]{3}\.)\S+`
   + String.raw`|(?<![\p{L}\p{N}\-.])${LABEL}(?:${DOT}${LABEL})*${DOT}(?:${TLDS})(?![\p{L}\p{N}\-])(?:[\/?#]\S*)?`,
-  "giu",
+  "gu", // "i" YOK: TLD yalnızca küçük harf ("Elite 15.Me", "belli.Co" silinmesin); http/www büyük-küçük harf sınıflarla yakalanır
 );
 // Temizlikten sonra kalan link benzeri ifade (harfle başlayan etiket + nokta/[.]/(.)/。 + boşluksuz, TAMAMI küçük harf 2+ harf):
 // varsa post REDDEDİLİR (silinmez). "St.Louis", "açıldı.Ücret" gibi büyük harfle devam eden geçişler etkilenmez.

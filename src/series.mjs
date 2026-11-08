@@ -142,6 +142,16 @@ const SERIES_TOOL = {
   },
 };
 
+/** Yazarın primarySource'unu Kaynak satırı için süzer: alan adı/link benzeri parçalar atılır, boşluklar toplanır,
+ *  en fazla 60 karakter (son virgülden kesilir). Boş ya da muğlaksa ("çeşitli kaynaklar", "organizatör siteleri") "" döner. */
+export function cleanSeriesSource(raw) {
+  const LINKY = /\S*(?:[hH][tT][tT][pP][sS]?:\/\/|[wW]{3}\.|(?:\.|\[\.\]|\(\.\))\p{L}{2,})\S*/gu;
+  let t = String(raw ?? "").normalize("NFKC").split(",").map((p) => p.replace(LINKY, "").replace(/\s+/g, " ").trim()).filter(Boolean).join(", ");
+  if (t.length > 60) { const i = t.slice(0, 61).lastIndexOf(","); t = i > 0 ? t.slice(0, i).trim() : ""; }
+  if (!t || /çeşitli|ulusal bas[ıi]n|kaynaklar[ıi]?$|siteler[ıi]?$/iu.test(t)) return "";
+  return t.charAt(0).toLocaleUpperCase("tr") + t.slice(1);
+}
+
 /** Seri verisini web aramasıyla toplar ve post taslağına çevirir. Döner: { post, sourceUrls } ya da null (yetersiz veri). */
 export async function writeSeries({ s, ctx }, feedback = "") {
   const strip = (t = "") => String(t).replace(/</g, "‹").replace(/>/g, "›");
@@ -178,7 +188,7 @@ export async function writeSeries({ s, ctx }, feedback = "") {
       s.id === "tr-haftasi" ? "Dereceler ve yarışmalar sonraki slaytlarda." : "Tarih, şehir ve branş bilgileri sonraki slaytlarda. Kayıt ve güncel bilgi için organizatörün resmî sitesine bakın.",
       s.end.title,
     ].join("\n\n"), hashtags: [...new Set([...(res.hashtags ?? []), "#hibritportal"])].slice(0, 10),
-    imageQueries: branchQueries.length ? branchQueries : s.imageQueries, primarySource: s.id === "tr-haftasi" ? "Federasyonlar ve haber ajansları" : "Organizatörlerin resmî siteleri",
+    imageQueries: branchQueries.length ? branchQueries : s.imageQueries, primarySource: cleanSeriesSource(res.primarySource) || (s.id === "tr-haftasi" ? "Federasyonlar ve haber ajansları" : "Organizatörlerin resmî siteleri"),
     evidence: rows.map((r) => ({ claim: r.cells.join(" | "), url: r.url })), eventName: "", officialSite: "", officialInstagram: "",
   };
   // Doğrulayıcıya en çeşitli kaynaklar gitsin (aynı alan adından birden çok URL yerine farklı siteler)

@@ -4,6 +4,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import sharp from "sharp";
+import { safeGet } from "./safe-net.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 // Yerel yedek fotoğraflar repo içinde (Actions'ta yalnızca insta reposu klonlanır; ../public/img orada yok)
@@ -110,12 +112,26 @@ async function openverse(q, n) {
   }));
 }
 
-async function download(url) {
+// sharp metadata() AVIF dosyalarını "heif" olarak raporlar; heif yalnızca AV1 sıkıştırmalıysa (AVIF) kabul edilir
+const IMG_FORMATS = new Set(["jpeg", "png", "webp", "gif", "avif", "tiff"]);
+const MAX_BYTES = 12e6;
+
+// Dış fotoğraf indirme (Pexels/Openverse URL'leri): SSRF korumalı safeGet, yalnızca https, gövde 12 MB ile sınırlı.
+// Gövde gerçek bir görsel değilse (HTML sayfası, kesik dosya vb.) null döner; findImages o adayı atlar,
+// böylece bozuk veri renderPost'taki sharp'a ulaşıp ücretli API çağrılarından sonra çalışmayı düşürmez.
+export async function download(url) {
   try {
-    const r = await fetch(url, { headers: { "user-agent": UA }, signal: AbortSignal.timeout(30000) });
-    if (!r.ok) return null;
-    const b = Buffer.from(await r.arrayBuffer());
-    return b.length > 20000 ? b : null;
+    const r = await safeGet(url, { timeout: 20000, maxBytes: MAX_BYTES, headers: { "user-agent": UA }, allowHttp: false });
+    if (!r?.ok || r.buf.length <= 20000) return null;
+    // safeGet sınırı aşan gövdeyi sessizce keser (ok:true döner): sınıra çok yakın gövde kesik sayılır
+    if (r.buf.length >= MAX_BYTES - 256 * 1024) return null;
+    const m = await sharp(r.buf).metadata();
+    const avif = m.format === "heif" && m.compression === "av1";
+    if ((!IMG_FORMATS.has(m.format) && !avif) || (m.width ?? 0) < 400) return null;
+    // Tam çözme denemesi, render.mjs toUri ile birebir aynı boru hattı: kesik/bozuk dosya (ör. EOI'siz JPEG) burada elenir
+    await sharp(r.buf).rotate().resize(1080, 1350, { fit: "cover", position: "attention" })
+      .grayscale().linear(1.12, -10).jpeg({ quality: 82 }).toBuffer();
+    return r.buf;
   } catch { return null; }
 }
 

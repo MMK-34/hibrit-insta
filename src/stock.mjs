@@ -1,6 +1,6 @@
 // Stok (kalıcı bilgi) postları: önceden yazılır, kontrol edilir, kuyrukta bekler.
 // Haber paylaşılmayan günlerde akşam çalışmasında sırayla paylaşılır.
-//   node src/stock.mjs            -> kuyruk 4'ün altındaysa 6'ya tamamla (çalışma başına en fazla 3 yeni)
+//   node src/stock.mjs            -> kuyruk 4'ün altındaysa 6'ya tamamla (çalışma başına en fazla 1 yeni; günde en fazla 3 deneme)
 //   node src/stock.mjs --add 2    -> 2 yeni stok üret
 import "dotenv/config";
 import fs from "node:fs";
@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 import { writePost, reviewPost } from "./plan.mjs";
 import { guardPost } from "./guard.mjs";
 import { verifyGate, logRejected, failText } from "./verify.mjs";
-import { STOCK_TOPICS } from "./config.mjs";
+import { STOCK_TOPICS, POSTING } from "./config.mjs";
 import { statTopics } from "./stats.mjs";
 
 // Tablo başlıkları veriyi arşivle sınırlar (genelleme yok); takvim verisi kullanan konularda kaynak "arşiv ve takvim"
@@ -37,14 +37,56 @@ function topicPool() {
 
 const FILE = "state/stock.json";
 const DRY = process.argv.includes("--dry");
+const DAILY_MAX = 3; // günde (İstanbul takvim günü) en fazla stok üretim denemesi: maliyet emniyeti
+const FAIL_MAX = 2, FAIL_REST_DAYS = 30; // FAIL_MAX kez düşen konu, son düşüşten sonra FAIL_REST_DAYS gün denenmez
+
+/** İstanbul takvim günü: "YYYY-MM-DD" */
+export const istDay = (d = new Date()) =>
+  new Intl.DateTimeFormat("en-CA", { timeZone: POSTING.timezone, year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
+const dayDiff = (a, b) => (Date.parse(`${b}T00:00:00Z`) - Date.parse(`${a}T00:00:00Z`)) / 864e5;
+
+/** Konu dinlenmede mi: en az FAIL_MAX başarısızlık ve sonuncusu FAIL_REST_DAYS günden yeni (tarih bozuksa dinlenmede sayılmaz). */
+export function isResting(st, id, today) {
+  const f = st.fails?.[id];
+  if (!f || !(f.n >= FAIL_MAX)) return false;
+  const d = dayDiff(f.last, today);
+  return Number.isFinite(d) && d < FAIL_REST_DAYS;
+}
+
+/** Sıradaki konu (durumu değiştirmez): kuyrukta ve dinlenmede olmayan ilk kullanılmamış konu;
+ *  yoksa (liste bitti) baştan ilk uygun konu; hiç uygun konu yoksa null. */
+export function pickTopic(st, pool, today) {
+  const inQueue = new Set((st.queue ?? []).map((q) => q.topic));
+  const used = st.used ?? [];
+  const ok = (t) => !inQueue.has(t.id) && !isResting(st, t.id, today);
+  return pool.find((t) => ok(t) && !used.includes(t.id)) ?? pool.find(ok) ?? null;
+}
+
+/** Konu sonucu: başarıda sayaç silinir, başarısızlıkta artar ve tarih güncellenir. */
+export function noteTopicResult(st, id, ok, today) {
+  st.fails ??= {};
+  if (ok) delete st.fails[id];
+  else st.fails[id] = { n: (st.fails[id]?.n ?? 0) + 1, last: today };
+}
+
+/** Bugün kalan üretim denemesi. */
+export function dailyLeft(st, today) {
+  return st.daily?.day === today ? Math.max(0, DAILY_MAX - (st.daily.attempts ?? 0)) : DAILY_MAX;
+}
+
+export function countAttempt(st, today) {
+  if (st.daily?.day !== today) st.daily = { day: today, attempts: 0 };
+  st.daily.attempts = (st.daily.attempts ?? 0) + 1;
+}
 
 /** Dosya yoksa boş kuyruk; dosya bozuksa HATA (üzerine yazılmasın diye). */
 export function loadStock() {
-  if (!fs.existsSync(FILE)) return { queue: [], used: [] };
+  if (!fs.existsSync(FILE)) return { queue: [], used: [], fails: {} };
   let st;
   try { st = JSON.parse(fs.readFileSync(FILE, "utf8")); } catch (e) { throw new Error(`${FILE} bozuk (JSON okunamadı), dokunulmadı: ${e.message}`); }
   st.queue ??= [];
   st.used ??= [];
+  st.fails ??= {}; // eski dosyada yok: { [konuId]: { n, last: "YYYY-MM-DD" } }
   return st;
 }
 
@@ -55,14 +97,8 @@ export function saveStock(st) {
   fs.renameSync(`${FILE}.tmp`, FILE);
 }
 
-async function makeOne(st) {
-  const inQueue = new Set(st.queue.map((q) => q.topic));
-  const POOL = topicPool();
-  let topic = POOL.find((t) => !st.used.includes(t.id) && !inQueue.has(t.id));
-  if (!topic) { st.used = []; topic = POOL.find((t) => !inQueue.has(t.id)); } // liste bitti: başa dön
-  if (!topic) return null;
-  st.used.push(topic.id);
-
+// Konu seçimi ve deneme sayımı fillStock'ta; burada yalnızca üretim. null = bu konu düştü.
+async function makeOne(topic) {
   const pick = { kind: "bilgi", format: "carousel", category: topic.cat, score: 6 };
   const sources = topic.stat ? [{
     id: `stock:${topic.id}`, source: topic.sourceName, title: topic.title, url: topic.sourceUrls?.[0] ?? "",
@@ -113,14 +149,24 @@ ${failText(gate.fails).slice(0, 800)}`);
   return { id: `stock:${topic.id}:${Date.now().toString(36)}`, topic: topic.id, category: topic.cat, sourceName, post: g.post, createdAt: new Date().toISOString() };
 }
 
-/** Kuyruk min'in altındaysa target'a tamamlar (çalışma başına en fazla maxNew). force: koşulsuz bu kadar üret. */
-export async function fillStock({ min = 4, target = 6, maxNew = 3, force = 0 } = {}) {
+/** Kuyruk min'in altındaysa target'a tamamlar (çalışma başına en fazla maxNew). force: koşulsuz bu kadar üret.
+ *  Her iki durumda da günlük DAILY_MAX deneme sınırı geçerli; uygun konu kalmazsa durur. */
+export async function fillStock({ min = 4, target = 6, maxNew = 1, force = 0 } = {}) {
   const st = loadStock();
+  const today = istDay();
   let need = force || (st.queue.length < min ? Math.min(target - st.queue.length, maxNew) : 0);
   let tries = 0;
   const maxTries = need + 3;
   while (need > 0 && tries++ < maxTries) {
-    const item = await makeOne(st);
+    if (dailyLeft(st, today) <= 0) { console.log(`stok: günlük deneme sınırı (${DAILY_MAX}) doldu, yarın devam`); break; }
+    const topic = pickTopic(st, topicPool(), today);
+    if (!topic) { console.log("stok: uygun konu yok (hepsi kuyrukta ya da dinlenmede)"); break; }
+    if (st.used.includes(topic.id)) st.used = []; // liste bitti: başa dön
+    st.used.push(topic.id);
+    countAttempt(st, today);
+    saveStock(st); // deneme üretimden önce yazılır: çalışma çökse de sayılır
+    const item = await makeOne(topic);
+    noteTopicResult(st, topic.id, !!item, today);
     if (item) {
       st.queue.push(item);
       need--;

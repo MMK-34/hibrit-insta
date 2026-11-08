@@ -4,6 +4,9 @@ on:
   schedule:
     # TR saati = UTC+3 -> 07:30, 09:30, 11:30, 13:30, 15:30, 17:30, 19:30, 21:30 (2 saatte bir)
     - cron: "30 4-18/2 * * *"
+    # Yedek: her ana slottan 40 dk sonra (GitHub cron'u düşürebilir/geciktirebilir). Ana slot son 80 dk içinde
+    # çalıştıysa run.mjs hiçbir şey yapmadan çıkar (yalnızca GITHUB_EVENT_NAME=schedule için).
+    - cron: "10 5-19/2 * * *"
   workflow_dispatch:
     inputs:
       mode:
@@ -42,6 +45,7 @@ jobs:
         run: node scripts/sync-calendar.mjs || echo "takvim hatası, son sağlam veri korundu"
 
       - name: Haber seç, üret, paylaş
+        id: paylas
         # Adımın kendi zaman aşımı: iş (60 dk) bitmeden "Durumu kaydet" mutlaka çalışsın
         timeout-minutes: 40
         env:
@@ -54,6 +58,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
+          # GITHUB_EVENT_NAME (schedule / workflow_dispatch) Actions'ta varsayılan olarak tanımlı; run.mjs 80 dk kapısında kullanır
         run: |
           case "$MODE" in
             dry) node src/run.mjs --dry ;;
@@ -63,7 +68,8 @@ jobs:
           esac
 
       - name: Stok postları tamamla (kuyruk 4'ün altındaysa 6'ya; değilse işlem yapmaz)
-        if: ${{ !cancelled() && github.event.inputs.mode != 'dry' }}
+        # 80 dk kapısında atlanan (yedek cron) çalışmada stok tamamlanmaz
+        if: ${{ !cancelled() && github.event.inputs.mode != 'dry' && steps.paylas.outputs.skipped != 'true' }}
         timeout-minutes: 15
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -76,6 +82,7 @@ jobs:
         with: { name: onizleme, path: out/ }
 
       - name: Durumu kaydet
+        id: kaydet
         if: ${{ always() && github.event.inputs.mode != 'dry' }}
         run: |
           git config user.name "hibrit-bot"
@@ -88,4 +95,14 @@ jobs:
             git rebase --abort 2>/dev/null || true
             sleep 5
           done
-          echo "durum gönderilemedi (3 deneme)"; exit 1
+          echo "durum gönderilemedi (3 deneme)"
+          echo "push_failed=true" >> "$GITHUB_OUTPUT"
+          exit 1
+
+      # Gönderilemeyen durum kaybolmasın: state/ klasörü artifact olarak saklanır (elle geri yüklenebilir)
+      - name: Durum yedeği (push başarısız)
+        if: ${{ always() && steps.kaydet.outputs.push_failed == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: state-yedek-${{ github.run_id }}
+          path: state/

@@ -5,7 +5,7 @@
 import "dotenv/config";
 import fs from "node:fs";
 import path from "node:path";
-import { collect, articleText, upcomingEvents } from "./collect.mjs";
+import { collect, articleText, upcomingEvents, resolveNewsUrl } from "./collect.mjs";
 import { findImages } from "./images.mjs";
 import { selectNews, writePost, reviewPost } from "./plan.mjs";
 import { renderPost, renderStory } from "./render.mjs";
@@ -59,8 +59,8 @@ const postedIds = new Set(state.posts.flatMap((p) => p.ids ?? []));
 const usedPhotos = new Set(state.posts.flatMap((p) => p.photos ?? []).filter((id) => !id.startsWith("local:")));
 const todayPosts = state.posts.filter((p) => p.day === today && p.media);
 const todayCount = todayPosts.length;
-// Bilgi + araştırma postları günde en fazla 2 (haberlerin arasına serpiştirilir)
-const infoToday = todayPosts.filter((p) => p.kind === "bilgi" || p.kind === "arastirma").length;
+// Bilgi + araştırma postları günde en fazla 2 (haberlerin arasına serpiştirilir); çalışma içinde paylaşıldıkça artar
+let infoToday = todayPosts.filter((p) => p.kind === "bilgi" || p.kind === "arastirma").length;
 
 // Günlük özet sayaçları: taslak / onay / red
 state.daily ??= {};
@@ -89,8 +89,44 @@ for (const sig of ["SIGTERM", "SIGINT"]) {
   });
 }
 
+/**
+ * Son IG paylaşımlarının caption ilk satırları (durum dosyası kaybolursa tekrar önleme). Salt okunur GET;
+ * state'te kayıtlı medya atlanır (onların başlıkları zaten listede). Hata -> log + boş liste.
+ */
+async function recentIgCaptions(limit = 12) {
+  try {
+    const token = process.env.IG_ACCESS_TOKEN, id = process.env.IG_USER_ID;
+    if (!token || !id) return [];
+    const host = token.startsWith("IGAA") ? "graph.instagram.com" : "graph.facebook.com";
+    const qs = new URLSearchParams({ fields: "caption,timestamp", limit: String(limit), access_token: token });
+    const r = await fetch(`https://${host}/v23.0/${id}/media?${qs}`, { signal: AbortSignal.timeout(20000) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok || j.error) throw new Error(`HTTP ${r.status} ${JSON.stringify(j.error ?? j).slice(0, 200)}`);
+    const known = new Set(state.posts.map((p) => p.media).filter(Boolean));
+    return (j.data ?? []).filter((m) => !known.has(m.id)).map((m) => String(m.caption ?? "").split("\n")[0].trim().slice(0, 160)).filter(Boolean);
+  } catch (e) {
+    log("IG son paylaşımlar okunamadı, devam:", String(e?.message ?? e).slice(0, 200));
+    return [];
+  }
+}
+let igTitles = []; // state'te olmayan son IG paylaşımlarının başlıkları (selectNews tekrar önleme)
+const SKIPPED = Symbol("atlandı"); // 80 dk kapısında atlanan çalışma: özet/alarm da çalışmaz
+
 async function main() {
   let published = false, processed = 0, publishedCount = 0;
+  // Yedek cron: ana slot çalıştıysa (son 80 dk) zamanlanmış çalışma hiçbir şey yapmaz. Elle (workflow_dispatch) çalışmalar atlanmaz.
+  const SCHEDULED = process.env.GITHUB_EVENT_NAME === "schedule";
+  if (!DRY && !FORCE && !STOCK && SCHEDULED && state.lastRunAt) {
+    const ago = (Date.now() - new Date(state.lastRunAt).getTime()) / 60e3;
+    if (ago >= 0 && ago < 80) {
+      log(`Son çalışma ${Math.round(ago)} dk önce; atlandı`);
+      // Workflow'daki stok tamamlama adımı da atlansın
+      try { if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, "skipped=true\n"); } catch {}
+      return SKIPPED;
+    }
+  }
+  // Yalnızca zamanlanmış çalışmalar işaretlenir: elle (stok/force/test) çalışma sıradaki zamanlanmış slotu iptal etmesin
+  if (!DRY && SCHEDULED) { state.lastRunAt = new Date().toISOString(); saveState(); }
   if (!DRY && todayCount >= MAX_PER_DAY) return log(`Günlük limit dolu (${todayCount}).`);
   if (!DRY) {
     // 48 saat alarmı için ilk canlı çalışma zamanı
@@ -102,6 +138,8 @@ async function main() {
     } catch (e) {
       throw new Error(`Instagram ön kontrolü başarısız, ücretli çağrı yapılmadı: ${e.message}`);
     }
+    // Durum kaybına karşı: son 12 IG paylaşımının başlığı da tekrar önleme listesine girer
+    igTitles = await recentIgCaptions(12);
   }
   // Canlıya alınınca ilk paylaşım: tanıtım postu (bir kez)
   if (!state.intro && !DRY) return publishIntro();
@@ -127,7 +165,12 @@ async function main() {
     items = [...news, ...(await upcomingEvents())];
     log(`${items.length} aday`, JSON.stringify(report));
     // Tekrar önleme: son ~30 paylaşımın başlıkları seçime verilir; takvim adayları takip serisi / son başlıklarla eşleşirse elenir
-    const recentTitles = state.posts.filter((p) => p.media).slice(-30).flatMap((p) => [p.headline, p.title]).filter(Boolean);
+    // IG başlıkları sona eklenir (selectNews son 30'u kullanır), aynı/eşdeğer başlık iki kez girmez
+    const stateTitles = state.posts.filter((p) => p.media).slice(-30).flatMap((p) => [p.headline, p.title]).filter(Boolean);
+    const seenNorm = new Set(stateTitles.map(norm));
+    const igExtra = igTitles.filter((t) => { const k = norm(t); if (!k || seenNorm.has(k)) return false; seenNorm.add(k); return true; });
+    if (igExtra.length) log(`IG'de state dışı ${igExtra.length} paylaşım başlığı tekrar önlemeye eklendi.`);
+    const recentTitles = [...stateTitles, ...igExtra];
     let fuKeys = new Set();
     try { fuKeys = new Set(loadFollowups().map((f) => f.key)); } catch (e) { log("Takip listesi okunamadı:", e.message); }
     const recentNorm = recentTitles.map(norm);
@@ -159,7 +202,8 @@ async function main() {
       if (pick.score < need) { log(`Eşik altı (${pick.kind} ${pick.score} < ${need}), bekleniyor.`); continue; }
       const srcItems = (pick.ids ?? []).map((id) => items.find((i) => i.id === id)).filter(Boolean).slice(0, 3);
       if (!srcItems.length) continue;
-      for (const s of srcItems) if (!s.id.startsWith("cal:")) s.text = await articleText(s.url);
+      // Google News bağlantısı yayıncının asıl adresine çözülür (yazar tam metni okur, doğrulayıcı sayfayı açabilir); id değişmez (tekrar önleme)
+      for (const s of srcItems) if (!s.id.startsWith("cal:")) { s.url = await resolveNewsUrl(s.url); s.text = await articleText(s.url); }
       // Kaynak adı: takvim kayıtlarında organizatör sitesi
       // Takvim kaydı: alan adı yazılmaz (guard link sayar); etkinliğin resmî sitesi olarak belirtilir
       const sourceName = srcItems[0].id.startsWith("cal:") ? (srcItems[0].eventName ? `${srcItems[0].eventName} resmî sitesi` : "Organizatörün resmî sitesi") : srcItems[0].source;
@@ -176,6 +220,7 @@ async function main() {
       if (res) {
         published = true;
         publishedCount++;
+        if (isInfo) infoToday++; // aynı çalışmada ikinci bilgi/araştırma postu kotayı aşmasın
         // Duyuruysa takip serisini planla (+4 gün geçmiş edisyonlar, +9 gün geçmiş antrenmanlar)
         if (pick.kind === "duyuru" && ready.post.eventName) {
           try {
@@ -401,17 +446,20 @@ async function publishStock() {
 }
 
 try {
-  await main();
-  // Günlük özet: son çalışmada (21:30) log + bildirim
+  const r = await main();
+  // Günlük özet: son çalışmada (21:30) log + bildirim; gecikmeli/yedek çalışmada ikinci kez gönderilmez.
+  // hour >= 21: 20:10 yedeği ve 20:xx'e kayan 19:30 özeti erken göndermez; 22:10 yedeği yalnızca 21:30 düştüyse gönderir.
   const d = state.daily?.[today];
-  if (!DRY && hour >= 20 && d) {
+  if (r !== SKIPPED && !DRY && hour >= 21 && d && !d.summarySent) {
     const msg = `📊 ${today}: ${d.drafts} taslak, ${d.approved} onay, ${d.rejected} red, ${state.posts.filter((p) => p.day === today && p.media).length} paylaşım`;
     log(msg);
     await notify(msg);
+    d.summarySent = true;
+    saveState();
   }
   // Sağlık alarmı: 48 saattir hiç paylaşım yoksa (hiç paylaşım olmadıysa: ilk canlı çalışmadan bu yana) iş "başarısız" biter,
   // GitHub hesap sahibine e-posta atar.
-  if (!DRY) {
+  if (r !== SKIPPED && !DRY) {
     const last = state.posts.filter((p) => p.media && p.at).map((p) => p.at).sort().pop();
     const ref = last ?? state.deployedAt;
     if (ref && Date.now() - new Date(ref).getTime() > 48 * 36e5) {

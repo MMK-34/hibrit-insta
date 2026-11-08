@@ -1,0 +1,54 @@
+name: media dalı temizliği
+
+on:
+  schedule:
+    # Her ayın 1'i 03:17 UTC (TR 06:17): paylaşım saatlerinin (04:30-18:30 UTC) dışında
+    - cron: "17 3 1 * *"
+  workflow_dispatch:
+    inputs:
+      keep_days:
+        description: "Son kaç günün klasörleri kalsın (en az 60; posted.json 60 günü tutar)"
+        required: false
+        type: number
+        default: 90
+      dry_run:
+        description: "Sadece neyin silineceğini yaz, hiçbir şeyi değiştirme"
+        required: false
+        type: boolean
+        default: false
+
+# Paylaşım iş akışıyla aynı grup: paylaşım sürerken asla çalışmaz
+concurrency:
+  group: post
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: media dalını al
+        uses: actions/checkout@v4
+        with:
+          ref: media
+          fetch-depth: 1
+          path: media
+
+      # Betik main'de; media ağacının içine değil yanına alınır (yoksa "git add -A" onu da ekler)
+      - name: Betiği main'den al
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+          path: tools
+          sparse-checkout: scripts
+
+      - name: Eski klasörleri sil, media'yı tek commit'e indir
+        working-directory: media
+        env:
+          KEEP_DAYS: ${{ inputs.keep_days || 90 }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+        run: bash ../tools/scripts/prune-media.sh

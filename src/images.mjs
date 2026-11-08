@@ -136,6 +136,14 @@ async function pexels(q, n) {
   return (j?.photos ?? []).map((p) => ({ id: `pexels:${p.id}`, url: p.src.large2x, credit: `Foto: ${p.photographer} / Pexels`, alt: p.alt ?? "", license: "Pexels lisansı" }));
 }
 
+// Pixabay: ücretsiz anahtar, Pixabay İçerik Lisansı (atıf gerekmez). Görsel indirilip kendi sunucumuzdan kullanılır.
+async function pixabay(q, n) {
+  const key = process.env.PIXABAY_API_KEY;
+  if (!key) return [];
+  const j = await getJson(`https://pixabay.com/api/?key=${encodeURIComponent(key)}&q=${encodeURIComponent(q.slice(0, 100))}&image_type=photo&orientation=vertical&category=sports&safesearch=true&min_width=1000&per_page=${Math.max(n * 3, 10)}`);
+  return (j?.hits ?? []).filter((h) => h.largeImageURL).map((h) => ({ id: `pixabay:${h.id}`, url: h.largeImageURL, credit: "Foto: Pixabay", alt: String(h.tags ?? ""), license: "Pixabay İçerik Lisansı" }));
+}
+
 async function openverse(q, n) {
   const j = await getJson(`https://api.openverse.org/v1/images/?q=${encodeURIComponent(q)}&license=cc0,pdm&size=large&page_size=${Math.max(n * 3, 10)}&mature=false`);
   const BLOCK = /rawpixel|department of defense|u\.s\. army|army|navy|air force|marine|military|wheelchair|paralymp/i;
@@ -183,6 +191,7 @@ export async function findImages(queries, n, category, usedIds = new Set()) {
     }
   };
   for (const q of queries) { if (out.length < n) await take(await pexels(q, n)); }
+  for (const q of queries) { if (out.length < n) await take(await pixabay(q, n)); }
   // Yerel kütüphane (seçilmiş, konuyla ilgili Pexels fotoğrafları) Openverse'ten önce gelir: Openverse kalitesi değişken
   // Karışık sıra: aynı kategoride postlar hep aynı fotoğrafla açılmasın
   // Yerel kütüphanesi olmayan branşlarda (yüzme, güreş, bisiklet vb.) alakasız salon fotoğrafı konmaz

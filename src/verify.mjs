@@ -14,7 +14,7 @@ export const CHECK_ITEMS = [
   ["sporcu", "Sporcu adı ve ülkesi doğru (kişi adı yoksa pass)"],
   ["alinti_yok", "Antrenör, uzman ya da yetkili alıntısı yok; haberin kendisi olmayan kişi adı yok"],
   ["kaynak_satiri", "Caption sonundaki 'Kaynak:' satırı, verilen orijinal kaynak URL'lerinden birinin yayıncısını (site, kurum, dergi) ya da postun açıkça dayandığı bir kaynağı gösteriyor; haber ajansı kredisi (İHA, AA, DHA) aranmaz"],
-  ["gorsel", "Fotoğraflar konuyla ilgili (açıklamalarına göre) ve lisansı serbest (Pexels/CC); haber sitesi fotoğrafı değil"],
+  ["gorsel", "Fotoğraflar konuyla ilgili (açıklamalarına göre) ve lisansı serbest (Pexels, Pixabay ya da CC0/kamu malı); haber sitesi fotoğrafı değil"],
   ["baslik", "Türkçe başlık ve kapak kaynağı abartmıyor, yanıltmıyor; tarafsız, yargısız"],
 ];
 

@@ -411,5 +411,59 @@
         "note": "12 ülke ve yaklaşık 500 sporcu doğru. Ancak 'Dereceye girenler kupa ve madalya alacak' ifadesi kaynaklarda yok. Kaynaklar sporcuların kupa ve madalya hedefiyle yarıştığını söylüyor. Ödül dağıtımı ya da derece alanların ne alacağı belirtilmiyor. Bu ifade hem slayttan hem caption'dan çıkarılmalı ya da 'kupa ve madalya hedefiyle' diye düzeltilmeli."
       }
     ]
+  },
+  {
+    "at": "2026-11-08T18:42:27.685Z",
+    "title": "AA Kürek Yarışı'nda birinciliği Kürek Tasarımcıları takımı elde etti",
+    "url": "https://aa.com.tr/tr/spor/aa-kurek-yarisinda-birinciligi-kurek-tasarimcilari-takimi-elde-etti/4115473",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-08T18:46:16.766Z",
+    "title": "Yaklaşan yarış: HYROX Cairo 2026 (Cairo, Cairo) 2026-11-13 – 2026-11-15",
+    "url": "https://hyrox.com/find-my-race/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "yer",
+        "note": "Mekân doğru: Egypt's International Exhibition Center Hall 4, Nasr City, Kahire. Ancak postun 'bölgede İstanbul, İzmir, Dubai, Abu Dhabi, Şarika ve Doha'da da yarış var' iddiasının tamamı doğrulanamadı. Bu liste için bakılan kaynaklarda şehirler dağınık çıktı. Doha için yalnızca 2023/24 ve 2024 sezonuna ait kayıtlar buldum, güncel sezon kaydı bulamadım. Şüphe olduğu için fail."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-08T18:47:34.923Z",
+    "title": "Hybrid Level 2 Seminar - Athens: Atina (Yunanistan), 2026-11-28, ev sahibi Dark Ace CrossFit",
+    "url": "https://registrations.crossfit.com/athenshl2november2026",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "Konu dışı: Bu bir yarış ya da yarış hazırlığı haberi değil. Ücretli bir CrossFit antrenörlük sertifika kursunun takvim kaydı. Kapsam, herkesin katılabildiği yarışlar ve bu yarışlara hazırlıkla sınırlı."
+      },
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "Haber değeri düşük: Atina'da tek bir salonda yapılacak kursun takvime eklenmesi haber sayılmaz. Ücret ve kayıt yönlendirmesi öne çıktığı için içerik reklam gibi duruyor. Türkiye'deki kitle için de doğrudan bir karşılığı yok."
+      },
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "Doğruluk notu: Kaynakta kursun adı 'Hybrid Level 2 Seminar - Athens' olarak geçiyor. 'CrossFit Hybrid Level 2 Certificate Course' adı ise kaynak metinde yok, yalnızca yazarın kanıt listesinde var. Ayrıca 'Hybrid' formatındaki kurslarda çevrim içi bölüm de bulunabilir. Kaynak bunu açıklamadığı için yalnızca '28 Kasım'da Atina'da yapılacak' demek eksik ya da yanıltıcı olabilir."
+      },
+      {
+        "model": "editör",
+        "item": "editör",
+        "note": "Kapanıştaki soru ('takviminize uyuyor mu?') etkileşim için eklenmiş, bilgi taşımıyor ve tanıtım havasını güçlendiriyor."
+      }
+    ]
   }
 ]

@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-08T18:30:09.616Z",
+  "updated": "2026-11-08T18:42:00.757Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 88,
-      "fetchedAt": "2026-11-08T18:29:10.514Z"
+      "count": 89,
+      "fetchedAt": "2026-11-08T18:40:58.018Z"
     },
     "hyrox": {
       "ok": true,
       "count": 16,
-      "fetchedAt": "2026-11-08T18:30:09.606Z"
+      "fetchedAt": "2026-11-08T18:42:00.746Z"
     }
   },
   "items": [
@@ -3136,6 +3136,26 @@
       "url": "https://turkiye.hyrox.com/",
       "source": "https://turkiye.hyrox.com/?past=true",
       "note": "Açıklanmadı; 2026 örüntüsüne (Eylül) göre tahmini, kaynaksız."
+    },
+    {
+      "id": "circle21-2bf87c84-6a8f-4656-99fb-2b1b66c99752",
+      "name": "360 Throwdown",
+      "eventSlug": null,
+      "type": "crossfit",
+      "city": "Hamburg-Nord",
+      "country": "Almanya",
+      "startDate": "2027-09-04",
+      "endDate": "2027-09-05",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=2bf87c84-6a8f-4656-99fb-2b1b66c99752",
+      "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/462874/conversions/WhatsApp-Image-2026-11-08-at-16.14.56-s_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/462874/conversions/WhatsApp-Image-2026-11-08-at-16.14.56-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
+      "registration": {
+        "to": "2027-08-30",
+        "fee": "0.00 EUR"
+      }
     },
     {
       "id": "circle21-793bb42a-f209-47a5-a4b5-ef5f2e598c0f",

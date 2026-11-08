@@ -29,7 +29,10 @@ export async function igWatchCandidates(extra = []) {
   const handles = [...new Set([...IG_WATCH, ...extra, ...env].map((h) => String(h ?? "").replace(/^@/, "").trim()).filter((h) => HANDLE.test(h)))].slice(0, 40);
   const cutoff = Date.now() - 3 * 864e5;
   const out = [];
+  const curatedSet = new Set([...IG_WATCH, ...env].map((h) => String(h).replace(/^@/, "").trim()));
   for (const h of handles) {
+    // Elle seçilmiş liste (IG_WATCH / ortam değişkeni) güvenilir organizatör hesabıdır; circle21 kaydından gelen hesaplar doğrulanmamış sayılır
+    const curated = curatedSet.has(h);
     const res = await discover(h);
     if (!res.ok) {
       if (res.perm) {
@@ -45,9 +48,9 @@ export async function igWatchCandidates(extra = []) {
       if (ts < cutoff || cap.length < 40) continue;
       const images = [m.media_type === "IMAGE" ? m.media_url : null, ...(m.children?.data ?? []).filter((c) => c.media_type === "IMAGE").map((c) => c.media_url)].filter(Boolean).slice(0, 6);
       out.push({
-        id: `ig:${m.id}`, handle: h, url: m.permalink, images,
+        id: `ig:${m.id}`, handle: h, curated, url: m.permalink, images,
         title: `@${h} Instagram paylaşımı: ${cap.split("\n")[0].slice(0, 140)}`,
-        source: `@${h} (resmî Instagram hesabı)`, feedCat: "genel",
+        source: curated ? `@${h} (izlenen organizatör hesabı)` : `@${h} (circle21 kaydından bulunan hesap, doğrulanmamış)`, feedCat: "genel",
         date: new Date(ts).toISOString(), ageH: Math.round((Date.now() - ts) / 36e5),
         snippet: cap.slice(0, 600), text: cap.slice(0, 3000),
       });

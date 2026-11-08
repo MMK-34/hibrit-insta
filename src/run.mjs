@@ -312,14 +312,15 @@ async function prepareVerified(pick, srcItems, sourceName) {
     const topic = [g.post.eventName, srcItems[0].title, g.post.slides[0]?.title].filter(Boolean).join(" | ");
     if (ownC21?.logo) g.post.eventLogoUrl = ownC21.logo;
     const igSrc = srcItems.find((s) => s.id.startsWith("ig:"));
-    if (!g.post.officialInstagram && igSrc?.handle) g.post.officialInstagram = igSrc.handle;
+    if (!g.post.officialInstagram && igSrc?.curated && igSrc.handle) g.post.officialInstagram = igSrc.handle;
     // Organizatör hesabı yalnızca kaydın yapılandırılmış instagram alanından (doğrulanmış kullanıcı adı)
     if (!g.post.officialInstagram && ownC21?.handle) g.post.officialInstagram = ownC21.handle;
     const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 4), category: pick.category });
     if (!photos.length) { log(`Foto bulunamadı (kategori ${pick.category}, sorgular: ${(g.post.imageQueries ?? []).join(" | ")}).`); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
     // Açılamayan kaynakların (Instagram paylaşımı) metni doğrulayıcıya güvenilmez kaynak metni olarak verilir
-    const sourceTexts = srcItems.filter((s) => s.id.startsWith("ig:")).map((s) => ({ label: s.source, url: s.url, text: s.text }));
+    // Doğrulanmamış hesabın metni birincil kanıt sayılmaz: iddialar bağımsız kaynakla (circle21 kaydı ya da web) teyit edilmeli
+    const sourceTexts = srcItems.filter((s) => s.id.startsWith("ig:")).map((s) => ({ label: s.curated ? s.source : `${s.source}: BİRİNCİL KANIT DEĞİL, her iddiayı bağımsız bir kaynakla teyit et; teyit edilemeyen iddia fail`, url: s.url, text: s.text }));
     const gate = await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName, referenceData, sourceTexts });
     if (gate.ok) { log(`Doğrulama geçti (deneme ${attempt}).`); bump("approved"); return { post: g.post, photos, sourceName: srcName }; }
     lastFails = gate.fails;

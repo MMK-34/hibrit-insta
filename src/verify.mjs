@@ -15,7 +15,7 @@ export const CHECK_ITEMS = [
   ["alinti_yok", "Antrenör, uzman ya da yetkili alıntısı yok; haberin kendisi olmayan kişi adı yok"],
   ["kaynak_satiri", "Caption sonundaki 'Kaynak:' satırı, verilen orijinal kaynak URL'lerinden birinin yayıncısını (site, kurum, dergi) ya da postun açıkça dayandığı bir kaynağı gösteriyor; haber ajansı kredisi (İHA, AA, DHA) aranmaz"],
   ["gorsel", "Fotoğraflar konuyla ilgili (açıklamalarına göre). Lisans: Pexels, Pixabay, CC0/kamu malı ya da 'Etkinlik görseli' (organizatörün sitesi/Instagram'ı, haber sayfası ya da ajans fotoğrafı; görsel denetimden geçmiş) kabul"],
-  ["kategori", "Yarış kategorileri/divizyonları sayılıyorsa kaynaktaki TAM liste; yalnızca bazı kategorileri sayan eksik liste yok (ya hepsi ya hiçbiri)"],
+  ["kategori", "Postta yarış kategorisi/divizyonu adı (Elite, RX, Scaled, Beginner, Advanced, Master, Teen vb.) HİÇ geçmiyor; geçiyorsa ok=false. Etkinlik adı resmî kayıttaki (circle21 verilmişse oradaki) resmî ad"],
   ["baslik", "Türkçe başlık ve kapak kaynağı abartmıyor, yanıltmıyor; tarafsız, yargısız"],
 ];
 

@@ -8,6 +8,7 @@ import path from "node:path";
 import { collect, articleText, upcomingEvents, resolveNewsUrl, courseCandidates } from "./collect.mjs";
 import { findImages } from "./images.mjs";
 import { eventPhotos, screenPhotos } from "./event-photos.mjs";
+import { circle21Candidates, circle21Reference } from "./circle21.mjs";
 import { selectNews, writePost, reviewPost, creditProbe, isCreditError } from "./plan.mjs";
 import { renderPost, renderStory } from "./render.mjs";
 import { uploadFiles } from "./upload-github.mjs";
@@ -179,7 +180,7 @@ async function main() {
   let items = [], picks = [];
   try {
     const { items: news, report } = await collect();
-    items = [...news, ...(await upcomingEvents()), ...(await courseCandidates())];
+    items = [...news, ...(await upcomingEvents()), ...(await courseCandidates()), ...(await circle21Candidates().catch(() => []))];
     log(`${items.length} aday`, JSON.stringify(report));
     // Tekrar önleme: son ~30 paylaşımın başlıkları seçime verilir; takvim adayları takip serisi / son başlıklarla eşleşirse elenir
     // IG başlıkları sona eklenir (selectNews son 30'u kullanır), aynı/eşdeğer başlık iki kez girmez
@@ -221,10 +222,10 @@ async function main() {
       const srcItems = (pick.ids ?? []).map((id) => items.find((i) => i.id === id)).filter(Boolean).slice(0, 3);
       if (!srcItems.length) continue;
       // Google News bağlantısı yayıncının asıl adresine çözülür (yazar tam metni okur, doğrulayıcı sayfayı açabilir); id değişmez (tekrar önleme)
-      for (const s of srcItems) if (!s.id.startsWith("cal:") && !s.id.startsWith("cfcourse:")) { s.url = await resolveNewsUrl(s.url); s.text = await articleText(s.url); }
+      for (const s of srcItems) if (!s.id.startsWith("cal:") && !s.id.startsWith("cfcourse:") && !s.id.startsWith("c21")) { s.url = await resolveNewsUrl(s.url); s.text = await articleText(s.url); }
       // Kaynak adı: takvim kayıtlarında organizatör sitesi
       // Takvim kaydı: alan adı yazılmaz (guard link sayar); etkinliğin resmî sitesi olarak belirtilir
-      const sourceName = srcItems[0].id.startsWith("cfcourse:") ? "CrossFit resmî kurs takvimi" : srcItems[0].id.startsWith("cal:") ? (srcItems[0].eventName ? `${String(srcItems[0].eventName).replace(/s+(20dd|kayıt.*|online.*|qualifier.*|(.*))$/i, "").replace(/s+20dd.*$/, "").trim()} resmî sitesi` : "Organizatörün resmî sitesi") : srcItems[0].source;
+      const sourceName = srcItems[0].id.startsWith("c21") ? "circle21 resmî kayıt sayfası" : srcItems[0].id.startsWith("cfcourse:") ? "CrossFit resmî kurs takvimi" : srcItems[0].id.startsWith("cal:") ? (srcItems[0].eventName ? `${String(srcItems[0].eventName).replace(/s+(20dd|kayıt.*|online.*|qualifier.*|(.*))$/i, "").replace(/s+20dd.*$/, "").trim()} resmî sitesi` : "Organizatörün resmî sitesi") : srcItems[0].source;
 
       const ready = await prepareVerified(pick, srcItems, sourceName);
       processed++;
@@ -274,6 +275,15 @@ async function prepareVerified(pick, srcItems, sourceName) {
   bump("drafts");
   saveState(); // günlük taslak tavanı süreç kesilse de doğru sayılsın
   let feedback = "", lastFails = [];
+  // Türkiye'deki bir yarıştan bahsediyorsa circle21 resmî kaydı (resmî ad, tarihler, kayıt dönemi) ek kaynak ve güvenilir referans olur
+  const c21 = srcItems.some((s) => s.id.startsWith("c21")) ? null
+    : await circle21Reference(srcItems.map((s) => `${s.title} ${s.text || s.snippet || ""}`).join(" ")).catch(() => null);
+  if (c21) {
+    log("circle21 resmî kaydı eşleşti:", c21.event.name);
+    srcItems = [...srcItems, { id: `c21ref:${c21.event.id}`, url: c21.event.url, title: `Resmî kayıt: ${c21.event.name}`, source: "circle21 resmî kayıt sayfası", text: c21.text }];
+  }
+  const ownC21 = srcItems.find((s) => s.id.startsWith("c21"));
+  const referenceData = ownC21 ? `circle21 resmî kayıt platformu verisi (organizatörün kendi girdiği kayıt):\n${ownC21.text}` : "";
   for (let attempt = 1; attempt <= 2; attempt++) {
     const draft = await writePost(pick, srcItems, feedback);
     if (!draft.factsOk) { log("Kaynak yetersiz:", srcItems[0].title); lastFails = [{ model: "yazar", item: "kaynak", note: "factsOk=false" }]; break; }
@@ -291,10 +301,11 @@ async function prepareVerified(pick, srcItems, sourceName) {
     // Görselsiz post yok: konuya uygun foto bulunamazsa paylaşılmaz.
     // Önce etkinliğin kendi fotoğrafı (resmî site, resmî Instagram, kaynak haber); eksik kalırsa görsel denetimden geçen stok foto
     const topic = [g.post.eventName, srcItems[0].title, g.post.slides[0]?.title].filter(Boolean).join(" | ");
+    if (!g.post.officialInstagram && ownC21) { const m = String(ownC21.text).match(/instagram\.com\/([\w.]+)/i); if (m) g.post.officialInstagram = m[1]; }
     const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 4), category: pick.category });
     if (!photos.length) { log(`Foto bulunamadı (kategori ${pick.category}, sorgular: ${(g.post.imageQueries ?? []).join(" | ")}).`); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
-    const gate = await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName });
+    const gate = await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName, referenceData });
     if (gate.ok) { log(`Doğrulama geçti (deneme ${attempt}).`); bump("approved"); return { post: g.post, photos, sourceName: srcName }; }
     lastFails = gate.fails;
     feedback = failText(gate.fails);

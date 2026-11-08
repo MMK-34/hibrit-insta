@@ -9,7 +9,7 @@ import { collect, articleText, upcomingEvents, resolveNewsUrl, courseCandidates 
 import { findImages } from "./images.mjs";
 import { eventPhotos, screenPhotos } from "./event-photos.mjs";
 import { circle21Candidates, circle21Reference, circle21Events, c21Handle } from "./circle21.mjs";
-import { igWatchCandidates } from "./ig-watch.mjs";
+import { igWatchCandidates, verifiedEventHandle } from "./ig-watch.mjs";
 import { selectNews, writePost, reviewPost, creditProbe, isCreditError } from "./plan.mjs";
 import { renderPost, renderStory } from "./render.mjs";
 import { uploadFiles } from "./upload-github.mjs";
@@ -427,7 +427,10 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   // Foto kredisi yazılmaz: yalnızca atıf gerektirmeyen fotoğraflar kullanılır (Pexels lisansı, Openverse'te CC0 / kamu malı)
   // Etkinliğin kendi fotoğrafı kullanıldıysa kaynağı açıklamada belirtilir (görselde yazı yok)
   const evSrc = [...new Set(photos.filter((p) => String(p.id).startsWith("event:")).map((p) => p.source))];
-  const caption = evSrc.length && /Kaynak:[^\n]*/.test(post.caption) ? post.caption.replace(/(Kaynak:[^\n]*)/, `$1\nGörsel: ${evSrc.join(", ")}`) : post.caption;
+  let caption = evSrc.length && /Kaynak:[^\n]*/.test(post.caption) ? post.caption.replace(/(Kaynak:[^\n]*)/, `$1\nGörsel: ${evSrc.join(", ")}`) : post.caption;
+  // Etkinliğin Instagram hesabı tıklanabilir @etiket olarak (yalnızca doğrulanmış hesap): okur yarışın sayfasına girebilsin
+  const evHandle = post.officialInstagram ? await verifiedEventHandle(post.officialInstagram, post.eventName).catch(() => "") : "";
+  if (evHandle && !caption.includes(`@${evHandle}`) && /\nKaynak:/.test(caption)) caption = caption.replace(/\nKaynak:/, `\nYarışın Instagram hesabı: @${evHandle}\n\nKaynak:`);
   fs.writeFileSync(path.join(outDir, "caption.txt"), `${caption}\n\n---\n${srcUrls.join("\n")}\n`);
   log(`Üretildi: ${outDir} (${files.length} slayt)`);
   if (DRY) { log(`Caption:\n${caption}`); return null; }

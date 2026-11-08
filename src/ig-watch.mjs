@@ -10,15 +10,19 @@
 export const IG_WATCH_TR = [
   // CrossFit / fonksiyonel fitness yarışları
   "alsancakteam_series", "olympos.games", "vu.box", "eurasiathrowdown", "battleofanatolia", "xchallenge.tr", "elitefitnessgames",
+  "istanbulcitychampionship", "wsiathleticchamp", "expothrowdown", "quattrogamestr",
+  // Resmî HYROX Türkiye ve hibrit/CrossFit topluluk ve fuar hesapları
+  "hyroxturk", "hybridx_turkiye", "metcon.turkiye", "exposportfair",
   // Koşu, trail ve ultra
   "cappadociaultratrail", "kackarbyutmb", "lycianwayultramarathon", "uludagultratrail", "runtalyamarathon", "bodrumyarimaratonu", "trabzonyarimaratonu",
   // Yakın bölge (Türk sporcuların sık gittiği yarışlar)
-  "athensthrowdown", "tiranathrowdown", "belgradegames", "bulgariathrowdown", "hyroxgreece",
+  "athensthrowdown", "tiranathrowdown", "belgradegames", "bulgariathrowdown", "varnathrowdown", "hyroxgreece",
 ];
 // Dünya: büyük CrossFit / HYROX / OCR organizasyonları (az sayıda, yalnızca son paylaşımlar)
 export const IG_WATCH_GLOBAL = [
   "hyroxworld", "hyroxuk", "athx_games", "crossfitgames", "crossfit", "worldfitnessproject", "rogueinvitational", "wodapalooza",
   "frenchthrowdown", "lowlandsthrowdown", "italianshowdown", "syndicatecrown", "torianpro", "spartanrace",
+  "fallseriesthrowdown", "germanthrowdown", "theamsterdamthrowdown", "lxgameslisboa", "ubl_italianchampionship", "uaestormgames", "fareastthrowdown",
 ];
 export const IG_WATCH = [...IG_WATCH_TR, ...IG_WATCH_GLOBAL];
 

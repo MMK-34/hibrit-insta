@@ -1,0 +1,421 @@
+{
+  "queue": [
+    {
+      "id": "stock:hyrox-sled:mw70qyad",
+      "topic": "hyrox-sled",
+      "category": "hyrox",
+      "sourceName": "Red Bull",
+      "post": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "HYROX rehberi",
+            "title": "HYROX'ta kızak ağırlıkları: hangi kategori ne iter?",
+            "subtitle": "Kategoriye göre sled push ve sled pull yükleri, kızağın kendi ağırlığı dahil."
+          },
+          {
+            "type": "stat",
+            "label": "Open Kadın sled push yükü (kızak dahil)",
+            "value": "102 kg"
+          },
+          {
+            "type": "text",
+            "title": "Open Kadın",
+            "bullets": [
+              "Sled push: 102 kg, kızak dahil",
+              "Sled pull: 78 kg, kızak dahil",
+              "Women Doubles (Open) ve kadın Relay sporcuları da bu yüklerle yarışıyor"
+            ]
+          },
+          {
+            "type": "text",
+            "title": "Open Erkek ve Pro Kadın",
+            "bullets": [
+              "Sled push: 152 kg, kızak dahil",
+              "Sled pull: 103 kg, kızak dahil",
+              "Open Erkek ile Pro Kadın aynı ağırlıklarla yarışıyor",
+              "Men Doubles (Open), Mixed Doubles ve erkek Relay sporcuları da bu yükleri kullanıyor"
+            ]
+          },
+          {
+            "type": "text",
+            "title": "Pro Erkek",
+            "bullets": [
+              "Sled push: 202 kg, kızak dahil",
+              "Sled pull: 153 kg, kızak dahil",
+              "Doubles Pro kategorisinde de Pro ağırlıkları kullanılıyor"
+            ]
+          },
+          {
+            "type": "text",
+            "title": "Antrenmanda nasıl kullanılır?",
+            "bullets": [
+              "Yazılan rakamlar plakanın değil, kızakla birlikte toplam yükün karşılığı",
+              "Salonda kızağın boş ağırlığını öğrenip plakayı ona göre ekleyin",
+              "Mixed Relay'de her sporcu kendi cinsiyetinin Open yüküyle yarışıyor"
+            ]
+          },
+          {
+            "type": "end",
+            "title": "Siz hangi kategoride yarışıyorsunuz?",
+            "body": "Kızak antrenmanında hangi yükle çalıştığınızı yorumlarda yazın, postu kaydedin."
+          }
+        ],
+        "caption": "HYROX'ta sled push ve sled pull istasyonlarındaki ağırlıklar kategoriye göre değişiyor ve yazılan rakamlara kızağın kendisi de dahil.\n\nOpen Kadın kategorisinde sled push 102 kg, sled pull 78 kg. Aynı yükler Women Doubles (Open) ve kadın Relay sporcuları için de geçerli.\n\nOpen Erkek kategorisinde sled push 152 kg, sled pull 103 kg. Pro Kadın, Men Doubles (Open), Mixed Doubles ve erkek Relay sporcuları da aynı ağırlıklarla yarışıyor.\n\nPro Erkek kategorisinde sled push 202 kg, sled pull 153 kg.\n\nSalonda kızak çalışırken önce kızağın boş ağırlığını öğrenin, plakayı buna göre ekleyin. Böylece yarış yükünü doğru simüle edersiniz. Güncel değerler için yarışacağınız sezonun resmî HYROX kural kitabını da kontrol edin.\n\nSiz kızak antrenmanında hangi yükle çalışıyorsunuz? 🛷\n\nKaynak: Red Bull\n\n#hyrox #hyroxturkiye #sledpush #sledpull #hibritantrenman #fonksiyonelfitness #hyroxtraining #kondisyon",
+        "eventName": "HYROX",
+        "officialSite": "https://hyrox.com",
+        "officialInstagram": "hyroxworld",
+        "imageQueries": [
+          "hyrox sled push race",
+          "sled pull rope fitness competition",
+          "weighted sled push gym training",
+          "functional fitness competition sled"
+        ],
+        "brand": "@hibritportal"
+      },
+      "createdAt": "2026-11-07T23:12:45.589Z"
+    },
+    {
+      "id": "stock:stat-tr-yillara-gore:mw728mzt",
+      "topic": "stat-tr-yillara-gore",
+      "category": "genel",
+      "sourceName": "Hibrit Portal yarışma arşivi",
+      "post": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "Veri",
+            "title": "Arşivimizdeki ilk Türkiye HYROX yılı: 2026",
+            "subtitle": "Arşivimizdeki 17 Türkiye edisyonunun 3'ü HYROX ve üçü de 2026'da yapıldı."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Yıl",
+              "CrossFit",
+              "HYROX",
+              "Toplam"
+            ],
+            "rows": [
+              [
+                "2020",
+                "1",
+                "0",
+                "1"
+              ],
+              [
+                "2021",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "2022",
+                "3",
+                "0",
+                "3"
+              ],
+              [
+                "2023",
+                "2",
+                "0",
+                "2"
+              ],
+              [
+                "2024",
+                "2",
+                "0",
+                "2"
+              ],
+              [
+                "2025",
+                "2",
+                "0",
+                "2"
+              ],
+              [
+                "2026",
+                "1",
+                "3",
+                "4"
+              ]
+            ],
+            "note": "Hibrit Portal yarışma arşivi, 2020, 2026 (14 edisyon). Tam sayım değil.",
+            "title": "Arşivimizde yıllara göre Türkiye yarışmaları"
+          },
+          {
+            "type": "text",
+            "title": "Arşivimiz neyi kapsıyor?",
+            "bullets": [
+              "2015 ile 2026 arasında Türkiye'den 9 farklı yarışma ve toplam 17 edisyon",
+              "Edisyonların 14'ü CrossFit, 3'ü HYROX",
+              "Tabloda yer almayan 2020 öncesi edisyonlar: Battle of Anatolia 2019, Istanbul Throwdown 2019, Istanbul Throwdown 2015",
+              "Arşiv tam sayım değil. Box içi yerel yarışmaların çoğu yok, gerçek sayı daha yüksek."
+            ]
+          },
+          {
+            "type": "text",
+            "title": "2026'nın kalanında takvimimizde 4 yarışma daha var",
+            "bullets": [
+              "Battle of Anatolia 2026/2027 (tarih tahmini)",
+              "Kuşadası Uluslararası CrossFit Şampiyonası 2026 (tarih tahmini)",
+              "VU BOX HYROX-style 50%",
+              "Olympos Games"
+            ]
+          },
+          {
+            "type": "end",
+            "title": "Arşivimizde eksik gördüğünüz bir yarışma var mı?",
+            "body": "Katıldığınız ya da bildiğiniz yarışmaları yorumlara yazın, takvimimize ekleyelim."
+          }
+        ],
+        "caption": "Arşivimizdeki ilk Türkiye HYROX yılı 2026 oldu. Kayıtlı 17 Türkiye edisyonunun 3'ü HYROX ve üçü de bu yıl yapıldı.\n\nHibrit Portal yarışma arşivinde 2015 ile 2026 arasında Türkiye'den 9 farklı yarışma ve toplam 17 edisyon yer alıyor. Bunların 14'ü CrossFit, 3'ü HYROX. 2022 ile 2025 arasındaki dört tam yılda arşivimize yılda ortalama 2,25 yarışma girdi. 2026'da ise 7 Kasım'a kadar bu sayı 4'e ulaştı.\n\nTakvimimizde yılın kalanı için 4 Türkiye yarışması daha var: Battle of Anatolia 2026/2027 ve Kuşadası Uluslararası CrossFit Şampiyonası 2026 (ikisinin de tarihi tahmini), VU BOX HYROX-style 50% ve Olympos Games.\n\nBir not: Bu sayım Türkiye'deki tüm yarışmaları kapsamıyor. Arşivimizde büyük ve öne çıkan organizasyonlar yer alıyor, box içi yerel yarışmaların çoğu yok. Gerçek sayı daha yüksek.\n\nArşivimizde eksik gördüğünüz bir yarışma var mı? Yorumlara yazın, takvimimize ekleyelim. 📊\n\nKaynak: Hibrit Portal yarışma arşivi\n\n#crossfit #crossfitturkiye #hyrox #hyroxturkiye #fonksiyonelfitness #yarışmatakvimi #hibritantrenman #crossfitcompetition #fitnessyarışması",
+        "eventName": "",
+        "officialSite": "",
+        "officialInstagram": "",
+        "imageQueries": [
+          "crossfit competition barbell",
+          "hyrox race sled push",
+          "functional fitness competition crowd",
+          "crossfit athletes competition floor"
+        ],
+        "brand": "@hibritportal"
+      },
+      "createdAt": "2026-11-07T23:54:30.377Z"
+    },
+    {
+      "id": "stock:stat-tr-sehirler:mw72etke",
+      "topic": "stat-tr-sehirler",
+      "category": "genel",
+      "sourceName": "Hibrit Portal yarışma arşivi ve takvimi",
+      "post": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "Veri",
+            "title": "Arşivimizde lider İstanbul: Şehri belli 22 kaydın 12'si",
+            "subtitle": "Hibrit Portal arşivinde ve takviminde yarışmaların hangi şehirlerde toplandığına baktık."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Şehir",
+              "Geçmiş",
+              "Yaklaşan",
+              "Toplam"
+            ],
+            "rows": [
+              [
+                "İstanbul",
+                "9",
+                "3",
+                "12"
+              ],
+              [
+                "Ankara",
+                "4",
+                "0",
+                "4"
+              ],
+              [
+                "İzmir",
+                "1",
+                "1",
+                "2"
+              ],
+              [
+                "Kuşadası",
+                "1",
+                "1",
+                "2"
+              ],
+              [
+                "Antalya",
+                "0",
+                "1",
+                "1"
+              ],
+              [
+                "Samsun",
+                "0",
+                "1",
+                "1"
+              ]
+            ],
+            "note": "Arşiv + takvim, 22 kayıt (şehri belirsiz 3 kayıt hariç).",
+            "title": "Arşivimizde ve takvimimizde şehirlere göre"
+          },
+          {
+            "type": "stat",
+            "label": "Şehri belli kayıtlarda İstanbul'un payı",
+            "value": "%55"
+          },
+          {
+            "type": "text",
+            "title": "Şehirlere göre dağılım",
+            "bullets": [
+              "İstanbul: 12 kayıt. 9'u arşivde, 3'ü takvimde.",
+              "Ankara: 4 kayıt. Dördü de yapılmış edisyon, takvimde yarışma yok.",
+              "İzmir ve Kuşadası: 2'şer kayıt. Her birinin 1 kaydı arşivde, 1 kaydı takvimde.",
+              "Antalya ve Samsun: 1'er kayıt. İkisi de takvimdeki yaklaşan yarışmalar."
+            ]
+          },
+          {
+            "type": "text",
+            "title": "Veri neyi kapsıyor?",
+            "bullets": [
+              "Toplam 25 kayıt: arşivde 17 yapılmış edisyon, takvimde 8 yaklaşan yarışma.",
+              "Yaklaşan 8 yarışmanın 5'inin tarihi tahmini.",
+              "Yeri doğrulanmamış ya da birden fazla şehir yazan 3 kayıt sıralamaya alınmadı.",
+              "Arşiv tam bir sayım değil, büyük yarışmaları kapsıyor. Referans tarih: 7 Kasım 2026."
+            ]
+          },
+          {
+            "type": "end",
+            "title": "Sizin şehrinizde yarışma var mı?",
+            "body": "Takvimimizde olmayan bir yarışma biliyorsanız yorumlarda şehir ve adıyla yazın."
+          }
+        ],
+        "caption": "Hibrit Portal yarışma arşivinde lider şehir İstanbul: şehri belli 22 kaydın 12'si, yani %55'i burada 📍\n\nArşivimizdeki 17 yapılmış edisyonu ve takvimimizdeki 8 yaklaşan yarışmayı şehir şehir saydık. İstanbul'u 4 kayıtla Ankara izliyor. Ankara'daki dört kaydın dördü de geçmiş edisyon, takvimde şu an Ankara'da yarışma yok. İzmir ve Kuşadası 2'şer, Antalya ve Samsun 1'er kayıtla listede yer alıyor. Antalya ve Samsun'daki kayıtların ikisi de yaklaşan yarışmalar.\n\nŞehir bilgisi mekândan alındı, mekân yoksa yarışmanın şehri kullanıldı. Yeri doğrulanmamış ya da birden fazla şehir yazan 3 kayıt sıralamaya katılmadı. Yaklaşan 8 yarışmanın 5'inin tarihi henüz tahmini.\n\nBu veri tüm Türkiye'yi değil, yalnızca Hibrit Portal arşivini ve takvimini kapsıyor. Arşiv tam bir sayım değil, büyük yarışmalara odaklanıyor. Referans tarih 7 Kasım 2026.\n\nŞehrinizde takvimimize girmesi gereken bir yarışma var mı? Yorumlarda yazın.\n\nKaynak: Hibrit Portal yarışma arşivi ve takvimi\n\n#crossfit #crossfitturkiye #hyrox #hyroxturkiye #fonksiyonelfitness #yarışmatakvimi #istanbul #hibritantrenman #fitnesscompetition #hibritportal",
+        "eventName": "",
+        "officialSite": "",
+        "officialInstagram": "",
+        "imageQueries": [
+          "crossfit competition arena crowd",
+          "functional fitness competition athletes",
+          "istanbul city skyline sport",
+          "fitness competition barbell stage"
+        ],
+        "brand": "@hibritportal"
+      },
+      "createdAt": "2026-11-07T23:59:18.830Z"
+    },
+    {
+      "id": "stock:stat-takvim-ulkeler:mw72h2lq",
+      "topic": "stat-takvim-ulkeler",
+      "category": "genel",
+      "sourceName": "Hibrit Portal yarışma arşivi ve takvimi",
+      "post": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "Veri",
+            "title": "Takvimimizde en çok yarışma Birleşik Krallık'ta",
+            "subtitle": "Yeri belli 191 yarışmanın 46'sı tek ülkede. Türkiye de ilk beşte."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Ülke",
+              "CrossFit",
+              "HYROX",
+              "Toplam"
+            ],
+            "rows": [
+              [
+                "Birleşik Krallık",
+                "38",
+                "8",
+                "46"
+              ],
+              [
+                "Almanya",
+                "14",
+                "4",
+                "18"
+              ],
+              [
+                "İspanya",
+                "13",
+                "5",
+                "18"
+              ],
+              [
+                "ABD",
+                "1",
+                "13",
+                "14"
+              ],
+              [
+                "İtalya",
+                "4",
+                "4",
+                "8"
+              ],
+              [
+                "Türkiye",
+                "5",
+                "3",
+                "8"
+              ],
+              [
+                "Fransa",
+                "2",
+                "5",
+                "7"
+              ]
+            ],
+            "note": "Hibrit Portal takvimi, Ekim 2026, Ekim 2027, 191 yarışma.",
+            "highlight": [
+              5
+            ],
+            "title": "Takvimimizde en çok yer alan ülkeler"
+          },
+          {
+            "type": "stat",
+            "label": "Birleşik Krallık'ın takvimimizdeki payı (46 yarışma)",
+            "value": "%24"
+          },
+          {
+            "type": "text",
+            "title": "Sıralamadan öne çıkanlar",
+            "bullets": [
+              "Birleşik Krallık'taki 46 yarışmanın 38'i CrossFit, 8'i HYROX.",
+              "Almanya ve İspanya 18'er yarışmayla Birleşik Krallık'ın ardından geliyor.",
+              "ABD'deki 14 yarışmanın 13'ü HYROX, yalnızca 1'i CrossFit.",
+              "Türkiye 8 yarışmayla (CrossFit 5, HYROX 3) İtalya ile birlikte 5. sırada."
+            ]
+          },
+          {
+            "type": "text",
+            "title": "Veriyi okurken",
+            "bullets": [
+              "Kapsam: Ekim 2026 ile Ekim 2027 arasındaki Hibrit Portal takvimi (güncelleme: 7 Kasım 2026).",
+              "Takvimde 198 yarışma var: 106 CrossFit, 92 HYROX. HYROX sayısına simülasyonlar ve HYROX tarzı yerel etkinlikler de dahil.",
+              "Online ya da yeri açıklanmamış 7 kayıt hariç tutuldu. Kalan 191 kayıt 36 ülkeye dağılıyor.",
+              "CrossFit kayıtlarından 93'ü circle21 platformundan geliyor ve bunların 41'i Birleşik Krallık'ta."
+            ]
+          },
+          {
+            "type": "end",
+            "title": "Bu sezon hangi ülkede yarışacaksınız?",
+            "body": "Takvimimizde olmayan bir yarışma biliyorsanız yorumlarda paylaşın, arşive ekleyelim."
+          }
+        ],
+        "caption": "Hibrit Portal yarışma takviminde en çok yarışma Birleşik Krallık'ta: Yeri belli 191 yarışmanın 46'sı, yani %24'ü 📊\n\nEkim 2026 ile Ekim 2027 arasındaki takvimimizde 106 CrossFit ve 92 HYROX olmak üzere 198 yarışma yer alıyor (HYROX sayısına simülasyonlar ve HYROX tarzı yerel etkinlikler de dahil). Online ya da yeri açıklanmamış 7 kaydı hariç tuttuk. Kalan 191 yarışma 36 ülkeye dağılıyor. Almanya ve İspanya 18'er yarışmayla Birleşik Krallık'ın ardından geliyor. ABD'de ise tablo farklı: 14 yarışmanın 13'ü HYROX.\n\nTürkiye 8 yarışmayla (5 CrossFit, 3 HYROX) İtalya ile birlikte 5. sırada. Fransa 7, Hollanda ve İsviçre 6'şar, BAE ise 5 yarışmayla listede yer alıyor.\n\nVeriyi okurken bir noktaya dikkat edin: CrossFit kayıtlarının 93'ü circle21 platformundan geliyor ve bunların 41'i Birleşik Krallık'ta. Bu yüzden sıralama dünyada en çok yarışma yapılan ülkeleri değil, bizim takvimimizde en çok yer alan ülkeleri gösteriyor. Örneklem sınırlı; takvim güncellendikçe tablo da değişebilir.\n\nBu sezon yurt dışında yarışmayı düşünüyor musunuz, hangi ülke listenizde?\n\nKaynak: Hibrit Portal yarışma arşivi ve takvimi\n\n#crossfit #hyrox #hyroxturkiye #crossfitturkiye #yarışmatakvimi #fonksiyonelfitness #hibritantrenman #functionalfitness #fitnesscompetition",
+        "eventName": "",
+        "officialSite": "",
+        "officialInstagram": "",
+        "imageQueries": [
+          "crossfit competition athletes arena",
+          "hyrox race sled push",
+          "functional fitness competition crowd",
+          "world map fitness events"
+        ],
+        "brand": "@hibritportal"
+      },
+      "createdAt": "2026-11-08T00:01:03.854Z"
+    }
+  ],
+  "used": [
+    "hyrox-sled",
+    "hyrox-format",
+    "hyrox-divisions",
+    "stat-tr-yillara-gore",
+    "hyrox-roxzone",
+    "hyrox-wallball",
+    "stat-tr-sehirler",
+    "crossfit-open",
+    "stat-takvim-ulkeler"
+  ]
+}

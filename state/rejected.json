@@ -225,5 +225,41 @@
         "note": "Tablo slaytının başlığı \"Yarışma takviminde en çok yarışma olan ülkeler\" sistem uyarısıyla çelişiyor ve dünya geneli iddiası gibi okunuyor. \"Takvimimizde en çok yer alan ülkeler\" olmalı. Slayt 4'ün üçüncü maddesi \"etkinlikl\" diye yarım kesilmiş. Kapak başlığı \"Takvimimizin zirvesinde\" kabul edilebilir."
       }
     ]
+  },
+  {
+    "at": "2026-11-07T23:44:17.610Z",
+    "title": "HYROX formatı: 8 km koşu + 8 istasyon",
+    "url": "stok",
+    "kind": "stok",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak_satiri",
+        "note": "'Kaynak: HYROX Rulebook' yanlış gösteriyor. İstasyon ve kategori bilgileri hyrox.com/the-fitness-race sayfasından geliyor. Rulebook sayfası yalnızca PDF bağlantılarını içeriyor ve Roxzone'un toplam süreye dahil olduğunu doğrulamadım. Doğrusu: 'Kaynak: HYROX (hyrox.com/the-fitness-race)'."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "sayilar",
+        "note": "Postun kaynak gösterdiği 26/27 Rulebook (Singles, Doubles ve Relay) sled push ve sled pull için 50 m = 4 x 12,5 m yazıyor. Taslaktaki '2 x 25 m' ifadesi güncel kurala uymuyor; doğrusu '50 m (4 x 12,5 m)' ya da yalnızca '50 m'. Bu bilgiyi sportanalytics.es ve roxlyfe.com da doğruluyor. Taslaktaki 2 x 25 m, hyrox.com/the-fitness-race sayfasındaki eski tablodan alınmış. Diğer sayılar doğru: 8 x 1 km, SkiErg 1000 m, burpee broad jump 80 m, rowing 1000 m, farmers carry 200 m, lunges 100 m, 100 wall ball, relay'de dört kişi ve kişi başı 2 x 1 km."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "kaynak_satiri",
+        "note": "Caption'da 'Kaynak: HYROX Rulebook' yazıyor. Oysa '2 x 25 m' bilgisi ve kapaktaki 'resmî siteye göre' ifadesi 'The Fitness Race' sayfasından geliyor. Rulebook bu sayıyla çelişiyor (4 x 12,5 m). Ya sayılar Rulebook'a göre düzeltilmeli ya da kaynak satırı 'hyrox.com, The Fitness Race' olarak değiştirilmeli."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-07T23:51:46.694Z",
+    "title": "HYROX kategorileri: Open, Pro, Doubles, Relay",
+    "url": "stok",
+    "kind": "stok",
+    "fails": [
+      {
+        "model": "claude-opus-5-5",
+        "item": "sayilar",
+        "note": "Format sayıları kaynakla uyumlu: 8x1 km, 1000 m, 50 m, 80 m, 200 m, 100 m ve 100 tekrar. Open ağırlıkları da doğru (152/102, 103/78, 24/16, 20/10, 6/4 kg); Red Bull da bunları doğruluyor. Yüzde 60-70 ve 1-2 hafta bilgisi kaynakta var. Sorun karma takım yükünde: The Gym Group karma Relay'de herkesin erkek Open ağırlığı kullandığını yazıyor. Red Bull ise karma Relay'de erkeklerin erkek, kadınların kadın ağırlıklarını kullandığını söylüyor. Postta 'karma yarışlarda erkek Open ağırlıkları geçerli' ifadesi Relay cümlesinin hemen arkasında genel kural gibi duruyor. Kaynaklar çeliştiği için resmî HYROX kural kitabından doğrulanmalı. Doğrulanamazsa bu cümle karma Doubles ile sınırlanmalı, karma Relay iddiası çıkarılmalı."
+      }
+    ]
   }
 ]

@@ -59,11 +59,42 @@
         "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPTmJGUFB0QXU0T0ZQVURqbUU4aXVMc2llWWtlV0h0ejFLZ3o3eWtEV2FUOWhoUGlfQ0NIbEhsT1NoOW9JdGtQM1A3eVR0X0l3d21XcVJKU2gyY0tGRHRMNFI3T25TUkl6LVh5RXIxaDd0ajUtNE9Fdk1BRXVsRl9faGd2VWpSN3pBSlpBM1hKbVZhRmVmS2RPaVVBdzJyVnZPb243c3V6RURxVEZ3TE9zclpremFwOTNLdV9JdHJUMEM"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-08",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMikwFBVV95cUxOZHpSbkZqN0dnWUFCNTBRa3Uwa284X08xemc1RWFsTFZzVVpMOEotR1VOREt3R1poRFNQUVFpdDdyejhXb19iSTNIMHEwV3Nwc3FLTEw4SzJUY1hxS3l6TjRDWk5fMHR2dUdKdU5SY2lZSktFYUh2REw0SVpiTnBWR2tkc3dpUWdSOGQ2Z1pQelBLeEk",
+        "https://news.google.com/rss/articles/CBMikwFBVV95cUxNOUI0Uk55Nnk4eG5YRlhWWEw4RTVIOE9tR05lZVZrX1RsaWFIaTY4eGVtZUplbzRIeXFsMjlkQ21RQ29rM05ZM3FIT2x6ZXhSX0cxc0VzdlpaWGoxNFNfeDhTdTNDX05LeW5VdVR1eEUtUTZ6QUlfaC1hbTZGeUdlWWh4TG9OcjZtQzZfUTd6YlpobzA",
+        "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNT3pxckhJbW96bUFpemlXUV8yR3lPcWRQS1VyaXhhVjR3TXk2UG1XbmJfMU1WZzJPS1lQczFUb0U0YUtZb3pWNUZBTlYySlQ3aGJ2VEZPci03THlyVlkxcUp6STlrWHlrOHBSTW4yTWJKQnAxRmNwSlZ3ZkE4dW5WNXBNRlRJSkw1S1h5RFQ0WHJjMjJjdVg0bVBhYUFidTZnNHVDS0JJc3p6R04yUUMxTkt0WUt4dFpIbEZTdzBwNURIblF2M1RFbw"
+      ],
+      "skipped": "hata",
+      "err": "s is not defined",
+      "at": "2026-11-08T13:43:06.785Z"
+    },
+    {
+      "day": "2026-11-08",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQaE1Md1g3UkEwdXlQaFAzZ2czYU55UmNaWERWSS1IWXppMGVvTU1pV1hEMmdtb2NvMFFSVW9qOTBJUDM3UEdHNXNQMWRUaVdDN2VHUm1TdUszdEV1ZnY0cVc5cEdPYllnSUM4a3Zlc3I0N2lCeEdidmFZbWh3SUUteFR4TUxoN2J0MzhNdlFsU3hoOXp2cTBqMG0zVE9CSW1hRHUyZG5GMnE",
+        "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOblBVdXlOLUNHc1djYm4xbVZRUS1NZk5pQnlEZkFndkdxU3RtVEhHeWpzV3FRMmJ3OUpKbnpFc0pYSkk1QXE0NHY3SkZ3Zzg4M0ZJOVh6Wk8tOGE3alBmNDdoajNwdnc4cUJOUXVqTlpEN0FZalFZS1dNTE12QTlRYS1Mb3dIZ1dEVVFYU014RVhoeDRTWnhXSkdic3QxQzV0c194SEF6RUJoc2NVc1pwWWxZWUNDdTBkRS13SXEwQWw0YmQtWko4aW1ZZFpyU1hR0gFXQVVfeXFMT2hKSFhoZnJMd2FqTDhxaTAxNmxQeUp4MDVDd0NZQ2p3TEh3bmc2QURpZVl3alBhd3RBMkdzbnRiNERvZ0ppdHdZTkptODlpN0ljZTZYSGNB"
+      ],
+      "skipped": "hata",
+      "err": "s is not defined",
+      "at": "2026-11-08T13:44:26.388Z"
+    },
+    {
+      "day": "2026-11-08",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiswFBVV95cUxNNmJTUTRYUXNnYU1VMjROYWZmZHNsXzdWWi1FYjY3RDdBV1dVeUl6OEdneW1SU3RwaWJJMFhFNVhxNGxvRVo3VF9rZkM4SFVZd0VmSENFcURkM0JOX1NwdjVlZ2x2cFVWQkRfa0MyXzJWMS1pcW5idjNxaFR1T2VnWDQzYTIxUkpjdGdUemlBVDg5c09ONkFzYmJfcHdoRERPMElHTjk3X0MyXzhMQzBEcUtsVQ",
+        "https://news.google.com/rss/articles/CBMijwFBVV95cUxQNXlsdERMM3JPUVpjU2xkN0JqeGdCNTRMNEZxYzBFbWozTDNoVmtGSFYtU24xZmNQenNnTHROeTg4Y2x4MmROWmhJRjhfODdCWmlBUGY3TzNEaXdQV2VrZXBqV0p1dWl5XzJCX2dDdUJRY1JZR3U2T2ZBeE02ZWxxSlQyVGt5S19EZlBNWGV4MA"
+      ],
+      "skipped": "hata",
+      "err": "s is not defined",
+      "at": "2026-11-08T13:45:34.722Z"
     }
   ],
   "daily": {
     "2026-11-08": {
-      "drafts": 5,
+      "drafts": 8,
       "approved": 1,
       "rejected": 4
     }
@@ -74,5 +105,6 @@
     "permalink": "https://www.instagram.com/p/DfetYFTFuaP/",
     "at": "2026-11-08T12:01:48.087Z"
   },
-  "series": {}
+  "series": {},
+  "lastRunAt": "2026-11-08T13:41:42.118Z"
 }

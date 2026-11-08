@@ -115,7 +115,8 @@ const SKIPPED = Symbol("atlandı"); // 45 dk kapısında atlanan çalışma: öz
 async function main() {
   let published = false, processed = 0, publishedCount = 0;
   // Yedek cron: ana slot çalıştıysa (son 45 dk) zamanlanmış çalışma hiçbir şey yapmaz. Elle (workflow_dispatch) çalışmalar atlanmaz.
-  const SCHEDULED = process.env.GITHUB_EVENT_NAME === "schedule";
+  // GitHub zamanlayıcısı ya da dış zamanlayıcı (Cloudflare Worker, trigger=cron): ikisi de aynı 45 dk kapısından geçer
+  const SCHEDULED = process.env.GITHUB_EVENT_NAME === "schedule" || process.env.TRIGGER === "cron";
   if (!DRY && !FORCE && !STOCK && SCHEDULED && state.lastRunAt) {
     const ago = (Date.now() - new Date(state.lastRunAt).getTime()) / 60e3;
     if (ago >= 0 && ago < 45) {
@@ -206,7 +207,7 @@ async function main() {
       for (const s of srcItems) if (!s.id.startsWith("cal:")) { s.url = await resolveNewsUrl(s.url); s.text = await articleText(s.url); }
       // Kaynak adı: takvim kayıtlarında organizatör sitesi
       // Takvim kaydı: alan adı yazılmaz (guard link sayar); etkinliğin resmî sitesi olarak belirtilir
-      const sourceName = srcItems[0].id.startsWith("cal:") ? (srcItems[0].eventName ? `${srcItems[0].eventName} resmî sitesi` : "Organizatörün resmî sitesi") : srcItems[0].source;
+      const sourceName = srcItems[0].id.startsWith("cal:") ? (srcItems[0].eventName ? `${String(srcItems[0].eventName).replace(/s+(20dd|kayıt.*|online.*|qualifier.*|(.*))$/i, "").replace(/s+20dd.*$/, "").trim()} resmî sitesi` : "Organizatörün resmî sitesi") : srcItems[0].source;
 
       const ready = await prepareVerified(pick, srcItems, sourceName);
       processed++;

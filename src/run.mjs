@@ -1,3 +1,4 @@
+import crypto from "node:crypto";
 // Ana akış. Saatte bir çalışır (07:30-22:30 TR). Çalışma başına en fazla POSTING.perRun post.
 // Sabah ilk çalışma ve akşam son çalışma, gün boş geçmesin diye eşiği düşürür.
 //   node src/run.mjs          -> gerçek paylaşım
@@ -474,11 +475,11 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
 // kullanıcı e-postayı "ONAY <kod>" ya da "RET <kod>" diye yanıtlar -> sonraki saatlik çalışmada onaylanan paylaşılır.
 async function queueForApproval({ caption, urls, ids, kind, title, post, photos, srcUrls }) {
   state.pendingApprovals ??= {};
-  const code = `s${Date.now().toString(36).slice(-5)}`;
+  const code = `s${crypto.randomBytes(4).toString("hex")}`;
   state.pendingApprovals[code] = { caption, urls, ids, kind, title, headline: post.slides[0]?.title, eventName: post.eventName || undefined, photos: photos.map((p) => p.id), srcUrls, at: new Date().toISOString() };
   saveState();
   log("Onaya gönderildi:", code);
-  await notify(`📊 ONAY BEKLEYEN İSTATİSTİK POSTU (kod: ${code})\n\nBu post sen onaylamadan paylaşılmayacak.\n\nOnaylamak için bu e-postayı yalnızca şu kelimelerle yanıtla:  ONAY ${code}\nİstemiyorsan:  RET ${code}\n\n--- Açıklama ---\n${caption}\n\n--- Görseller ---\n${urls.join("\n")}\n\n--- Kaynaklar ---\n${srcUrls.join("\n")}`);
+  await notify(`📊 ONAY BEKLEYEN İSTATİSTİK POSTU (kod: ${code})\n\nBu post sen onaylamadan paylaşılmayacak.\n\nOnaylamak için bu e-postayı yanıtla; yanıtın İLK satırına önce ONAY kelimesini, bir boşluk, sonra yukarıdaki kodu yaz.\nİstemiyorsan aynı şekilde RET kelimesini ve kodu yaz.\n\n--- Açıklama ---\n${caption}\n\n--- Görseller ---\n${urls.join("\n")}\n\n--- Kaynaklar ---\n${srcUrls.join("\n")}`);
   return { held: true, code };
 }
 
@@ -497,11 +498,15 @@ async function processApprovals() {
   const owner = String(process.env.GH_REPO ?? "").split("/")[0].toLowerCase();
   const since = new Date(Math.min(...codes.map((c) => Date.parse(pend[c].at)))).toISOString();
   const issues = (await ghApi("/issues?state=open&per_page=100")) ?? [];
-  const rep = issues.filter((i) => i.title === "Bot raporları (otomatik)" && !i.pull_request).sort((a, b) => a.number - b.number)[0];
+  // notify.mjs ile aynı güvenilir issue süzgeci: yalnızca sahibin ya da botun açtığı rapor issue'su
+  const rep = issues.filter((i) => i.title === "Bot raporları (otomatik)" && !i.pull_request && [owner, "github-actions[bot]"].includes(String(i.user?.login ?? "").toLowerCase())).sort((a, b) => a.number - b.number)[0];
   const comments = rep ? (await ghApi(`/issues/${rep.number}/comments?since=${since}&per_page=100`)) ?? [] : [];
   for (const c of comments) {
-    if (String(c.user?.login ?? "").toLowerCase() !== owner) continue;
-    for (const m of String(c.body ?? "").matchAll(/\b(ONAY|RET)\s+(s[a-z0-9]{3,8})\b/gi)) {
+    // Yalnızca depo sahibinin (insan hesabı) yorumu; botun kendi bildirimleri ve uygulama yorumları sayılmaz
+    if (String(c.user?.login ?? "").toLowerCase() !== owner || c.user?.type !== "User" || c.performed_via_github_app) continue;
+    // Komut yalnızca ilk alıntı olmayan satırda ve satırın tamamı olmalı (e-posta yanıtındaki alıntı metni sayılmaz)
+    const first = String(c.body ?? "").split(/\r?\n/).map((l) => l.trim()).find((l) => l && !l.startsWith(">")) ?? "";
+    for (const m of [first.match(/^(ONAY|RET)\s+(s[0-9a-f]{8})$/i)].filter(Boolean)) {
       const code = m[2].toLowerCase(), item = pend[code];
       if (!item) continue;
       delete pend[code]; saveState();

@@ -7,6 +7,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { collect, articleText, upcomingEvents, resolveNewsUrl, courseCandidates } from "./collect.mjs";
 import { findImages } from "./images.mjs";
+import { eventPhotos, screenPhotos } from "./event-photos.mjs";
 import { selectNews, writePost, reviewPost, creditProbe, isCreditError } from "./plan.mjs";
 import { renderPost, renderStory } from "./render.mjs";
 import { uploadFiles } from "./upload-github.mjs";
@@ -286,7 +287,9 @@ async function prepareVerified(pick, srcItems, sourceName) {
     const g = guardPost(draft, { sourceName: srcName });
     if (!g.ok) { log("Süzgeçten geçmedi:", g.reason); lastFails = [{ model: "süzgeç", item: "süzgeç", note: g.reason }]; feedback = failText(lastFails); continue; }
     // Görselsiz post yok: konuya uygun foto bulunamazsa paylaşılmaz.
-    const photos = await findImages(g.post.imageQueries ?? [], Math.min(g.post.slides.length, 4), pick.category, usedPhotos);
+    // Önce etkinliğin kendi fotoğrafı (resmî site, resmî Instagram, kaynak haber); eksik kalırsa görsel denetimden geçen stok foto
+    const topic = [g.post.eventName, srcItems[0].title, g.post.slides[0]?.title].filter(Boolean).join(" | ");
+    const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 4), category: pick.category });
     if (!photos.length) { log(`Foto bulunamadı (kategori ${pick.category}, sorgular: ${(g.post.imageQueries ?? []).join(" | ")}).`); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
     const gate = await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName });
@@ -335,6 +338,26 @@ ${feedback.slice(0, 1200)}`);
 }
 
 /** Görselleri üretir, (dry değilse) yükleyip paylaşır, state'e yazar. Paylaşım sonucunu döner. */
+async function pickPhotos({ post, pages, topic, want, category }) {
+  // Etkinlik fotoğrafları önceki postlarda kullanılmış olabilir (aynı etkinliğin takip/hikaye postu): tekrar kullanılabilir
+  const ev = await eventPhotos({ pages, instagram: post.officialInstagram, topic, n: want })
+    .catch((e) => { if (isCreditError(e)) throw e; log("Etkinlik fotoğrafı hatası:", String(e?.message ?? e).slice(0, 160)); return []; });
+  if (ev.length) log(`Etkinlik fotoğrafı: ${ev.length} (${[...new Set(ev.map((p) => p.source))].join(", ")})`);
+  // Belirli bir etkinlikten bahseden postta YALNIZCA o etkinliğin fotoğrafı kullanılır, stok foto konmaz.
+  // Etkinliğe ait fotoğraf bulunamazsa post paylaşılmaz; az fotoğraf varsa slaytlarda sırayla tekrar eder.
+  if (post.eventName) {
+    const own = ev.filter((p) => p.specific);
+    if (!own.length) log(`Etkinliğe ait fotoğraf bulunamadı (${post.eventName}); stok foto konmaz, post paylaşılmaz.`);
+    return own;
+  }
+  const need = want - ev.length;
+  if (need <= 0) return ev;
+  const cands = await findImages(post.imageQueries ?? [], need + 3, category, new Set([...usedPhotos, ...ev.map((p) => p.id)]));
+  const stock = (await screenPhotos(cands, topic, "stock")).slice(0, need);
+  if (cands.length > stock.length) log(`Görsel denetim: ${cands.length - stock.length} stok foto konuyla ilgisiz bulundu, kullanılmadı.`);
+  return [...ev, ...stock];
+}
+
 async function renderAndPublish({ post, photos }, { category, sourceName, ids, kind, title, srcUrls = [], onPublished = null }) {
   const slug = `${today}/${Date.now().toString(36)}`;
   const outDir = path.join("out", slug);
@@ -346,7 +369,9 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   // guard: temizlenmiş metin + "Kaynak: ..." + hashtag; foto kredisi Kaynak satırının altına eklenir
   // Yalnızca sabit sağlayıcı adı yazılır (fotoğrafçı adı dış kaynaktan gelir, caption'a girmez; görselde kalır)
   // Foto kredisi yazılmaz: yalnızca atıf gerektirmeyen fotoğraflar kullanılır (Pexels lisansı, Openverse'te CC0 / kamu malı)
-  const caption = post.caption;
+  // Etkinliğin kendi fotoğrafı kullanıldıysa kaynağı açıklamada belirtilir (görselde yazı yok)
+  const evSrc = [...new Set(photos.filter((p) => String(p.id).startsWith("event:")).map((p) => p.source))];
+  const caption = evSrc.length && /Kaynak:[^\n]*/.test(post.caption) ? post.caption.replace(/(Kaynak:[^\n]*)/, `$1\nGörsel: ${evSrc.join(", ")}`) : post.caption;
   fs.writeFileSync(path.join(outDir, "caption.txt"), `${caption}\n\n---\n${srcUrls.join("\n")}\n`);
   log(`Üretildi: ${outDir} (${files.length} slayt)`);
   if (DRY) { log(`Caption:\n${caption}`); return null; }

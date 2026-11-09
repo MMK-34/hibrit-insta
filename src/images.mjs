@@ -174,7 +174,7 @@ export async function download(url) {
     if ((!IMG_FORMATS.has(m.format) && !avif) || (m.width ?? 0) < 400) return null;
     // Tam çözme denemesi, render.mjs toUri ile birebir aynı boru hattı: kesik/bozuk dosya (ör. EOI'siz JPEG) burada elenir
     await sharp(r.buf).rotate().resize(1080, 1350, { fit: "cover", position: "attention" })
-      .grayscale().linear(1.12, -10).jpeg({ quality: 82 }).toBuffer();
+      .modulate({ saturation: 0.92 }).linear(1.06, -6).jpeg({ quality: 84 }).toBuffer();
     return r.buf;
   } catch { return null; }
 }

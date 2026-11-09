@@ -272,16 +272,17 @@ async function cropTo(buf, focus, bw, bh, fy) {
   return sharp(await sharp(data).resize(sw, sh, { fit: "fill" }).toBuffer()).extract({ left, top, width: bw, height: bh }).toBuffer();
 }
 
-const style = (img) => img.grayscale().linear(1.12, -10).jpeg({ quality: 82 }).toBuffer();
+// Fotoğraflar renkli (kullanıcı kararı, 2026-11-09): hafif kontrast, doygunluk biraz kısık; koyu zemin ve kırmızı vurgu ile uyumlu kalır
+const style = (img) => img.modulate({ saturation: 0.92 }).linear(1.06, -6).jpeg({ quality: 84 }).toBuffer();
 
-/** Ham foto -> { uri: 1080x1350 (fotoğraf üstteki görünen alanda, altı koyu zemin), bandUri: 1080x620 } siyah-beyaz (marka stili) JPEG data URI */
+/** Ham foto -> { uri: 1080x1350 (fotoğraf üstteki görünen alanda, altı koyu zemin), bandUri: 1080x620 } renkli JPEG data URI */
 async function toUri(buf, focus) {
   const top = await cropTo(buf, focus, W, VIS_FULL, 0.45);
   // Fotoğrafın alt kenarı zemine keskin girmesin: son ~420px yumuşak bir eğriyle (ease) zemin rengine erir
   const FADE = 420, steps = 12;
   const stops = Array.from({ length: steps + 1 }, (_, i) => { const t = i / steps; return `<stop offset="${t}" stop-color="${C.ink}" stop-opacity="${(t * t * (3 - 2 * t)).toFixed(3)}"/>`; }).join("");
   const fade = Buffer.from(`<svg width="${W}" height="${FADE}" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">${stops}</linearGradient></defs><rect width="${W}" height="${FADE}" fill="url(#g)"/></svg>`);
-  // composite sharp hattında en son uygulanır: önce birleştirip PNG al, siyah-beyaz stil sonra
+  // composite sharp hattında en son uygulanır: önce birleştirip PNG al, renk/kontrast ayarı sonra
   const merged = await sharp({ create: { width: W, height: H, channels: 3, background: C.ink } }).composite([{ input: top, left: 0, top: 0 }, { input: fade, left: 0, top: VIS_FULL - FADE }]).png().toBuffer();
   const full = await style(sharp(merged));
   const band = await style(sharp(await cropTo(buf, focus, W, BAND_H, 0.5)));

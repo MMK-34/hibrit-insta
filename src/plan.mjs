@@ -254,11 +254,13 @@ const POST_TOOL = {
       eventName: { type: "string", description: "Haber bir etkinlik/yarış hakkındaysa RESMÎ adı, organizatörün kullandığı yazımla (örn. 'Alsancak Team Series', 'HYROX Istanbul', 'Eurasia Throwdown'). Etkinlik yoksa boş." },
       officialSite: { type: "string", description: "Etkinliğin ya da organizatörün resmî web sitesi (https://...). Bilinmiyorsa boş. Haber sitesi değil." },
       officialInstagram: { type: "string", description: "Etkinliğin ya da organizatörün resmî Instagram kullanıcı adı (@ olmadan). Emin değilsen boş." },
+      athleteName: { type: "string", description: "Haber TEK bir sporcunun başarısı/derecesi/hikâyesi hakkındaysa (ör. 'X birinci oldu', 'Y rekor kırdı') o sporcunun adı soyadı, postta yazdığın doğru yazımla. Takım, çift ya da birden çok sporcu öne çıkıyorsa yalnızca birinci olanı yaz. Bir sporcu öne çıkmıyorsa boş." },
+      athleteInstagram: { type: "string", description: "athleteName doluysa sporcunun KENDİ Instagram kullanıcı adı (@ olmadan); yalnızca okuduğun bir sayfada (organizatör, haber, sporcunun profili) açıkça gördüysen. Emin değilsen boş." },
       imageQueries: { type: "array", items: { type: "string" }, minItems: 2, maxItems: 4, description: "Stok foto aramak için İngilizce sorgular, en spesifikten genele. Örn: 'hyrox sled push race', 'marathon runners city street', 'olympic weightlifting snatch', 'freestyle wrestling match', 'swimmer pool race'. Kişi adı kullanma." },
       caption: { type: "string" },
       hashtags: { type: "array", items: { type: "string" }, maxItems: 12 },
     },
-    required: ["factsOk", "slides", "primarySource", "evidence", "eventName", "officialSite", "officialInstagram", "imageQueries", "caption", "hashtags"],
+    required: ["factsOk", "slides", "primarySource", "evidence", "eventName", "officialSite", "officialInstagram", "athleteName", "athleteInstagram", "imageQueries", "caption", "hashtags"],
   },
 };
 

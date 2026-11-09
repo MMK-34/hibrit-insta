@@ -8,7 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { collect, articleText, upcomingEvents, resolveNewsUrl, courseCandidates } from "./collect.mjs";
 import { findImages } from "./images.mjs";
-import { eventPhotos, screenPhotos } from "./event-photos.mjs";
+import { eventPhotos, screenPhotos, personPhotos } from "./event-photos.mjs";
 import { circle21Candidates, circle21Reference, circle21Events, circle21ById, c21Handle, c21Text, c21Facts } from "./circle21.mjs";
 import { igWatchCandidates, verifiedEventHandle, IG_WATCH_TR } from "./ig-watch.mjs";
 import { selectNews, writePost, reviewPost, creditProbe, isCreditError } from "./plan.mjs";
@@ -431,6 +431,30 @@ async function repostOne(spec) {
 }
 
 async function pickPhotos({ post, pages, topic, want, category, images = [] }) {
+  // Haber tek bir sporcunun başarısıysa (kullanıcı kuralı): kapakta o sporcunun fotoğrafı olur
+  let person = [];
+  if (post.athleteName) {
+    person = await personPhotos({ name: post.athleteName, instagram: post.athleteInstagram, pages, topic: `${post.athleteName} | ${topic}`, n: Math.min(2, want), usedIds: usedPhotos })
+      .catch((e) => { if (isCreditError(e)) throw e; log("Sporcu fotoğrafı hatası:", String(e?.message ?? e).slice(0, 160)); return []; });
+    if (person.length) log(`Sporcu fotoğrafı: ${person.length} (${post.athleteName}; ${[...new Set(person.map((p) => p.source))].join(", ")})`);
+    else log(`Sporcunun fotoğrafı bulunamadı (${post.athleteName}); etkinlik/konu fotoğrafı kullanılacak.`);
+    if (person.length >= want) return person;
+    for (const p of person) usedPhotos.add(p.id);
+  }
+  const rest = await pickEventPhotos({ post, pages, topic, want: want - person.length, category, images, noStock: !!post.athleteName });
+  if (post.athleteName && !person.length && !rest.length) log(`Sporcu haberi için ne sporcunun ne etkinliğin fotoğrafı bulundu; stok fotoğrafla paylaşılmaz (${post.athleteName}).`);
+  return [...person, ...rest];
+}
+
+/** Kullanıcı kuralı: fotoğraf haberin konusuna ait olmalı. Sporcu haberinde kapak sporcunun ya da etkinliğin kendi fotoğrafı; etkinlik fotoğrafı bulunduysa stok karışmaz. */
+function photoRuleOk(post, photos) {
+  if (!photos.length) return "fotoğraf yok";
+  if (post.athleteName && !(photos[0].person || photos.every((p) => p.specific))) return `sporcu haberi (${post.athleteName}) ama kapakta sporcunun/etkinliğin kendi fotoğrafı yok`;
+  if (photos.some((p) => p.specific) && photos.some((p) => !p.specific)) return "etkinliğin kendi fotoğrafları ile stok fotoğraf karışmış";
+  return "";
+}
+
+async function pickEventPhotos({ post, pages, topic, want, category, images = [], noStock = false }) {
   // Etkinlik fotoğrafları önceki postlarda kullanılmış olabilir (aynı etkinliğin takip/hikaye postu): tekrar kullanılabilir
   const ev = await eventPhotos({ pages, instagram: post.officialInstagram, topic, n: want, eventName: post.eventName, images, usedIds: usedPhotos })
     .catch((e) => { if (isCreditError(e)) throw e; log("Etkinlik fotoğrafı hatası:", String(e?.message ?? e).slice(0, 160)); return []; });
@@ -440,8 +464,10 @@ async function pickPhotos({ post, pages, topic, want, category, images = [] }) {
   if (post.eventName) {
     const own = ev.filter((p) => p.specific);
     if (own.length) return own;
+    if (noStock) return [];
     log(`Etkinliğe ait fotoğraf bulunamadı (${post.eventName}); konuyla ilgili stok fotoğraf kullanılacak.`);
   }
+  if (noStock) return ev.filter((p) => p.specific);
   const need = want - ev.length;
   if (need <= 0) return ev;
   const cands = await findImages(post.imageQueries ?? [], need + 3, category, new Set([...usedPhotos, ...ev.map((p) => p.id)]));
@@ -451,6 +477,12 @@ async function pickPhotos({ post, pages, topic, want, category, images = [] }) {
 }
 
 async function renderAndPublish({ post, photos }, { category, sourceName, ids, kind, title, srcUrls = [], onPublished = null, hold = false }) {
+  const bad = photoRuleOk(post, photos);
+  if (bad) {
+    log("Fotoğraf kuralı: yayınlanmadı:", bad);
+    await push(`Fotoğraf kuralı nedeniyle paylaşılmadı: ${String(post.slides[0]?.title ?? "").slice(0, 100)}\nNeden: ${bad}`, { title: "Fotoğraf" });
+    return null;
+  }
   const slug = `${today}/${Date.now().toString(36)}`;
   const outDir = path.join("out", slug);
   // Etkinlik logosu: önce circle21 resmî kaydındaki yarış logosu, sonra resmî site, sonra resmî Instagram profil fotoğrafı
@@ -461,7 +493,7 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   let logoUse = eventLogo;
   let files = await renderPost({ ...post, photos, eventLogo: logoUse, category, source: sourceName, dateLabel }, outDir);
   // Tasarım denetçisi (yayın öncesi görsel bütünlük): sorun varsa bir kez düzeltip yeniden çizer; hâlâ sorunluysa yayınlamaz
-  const dtopic = [post.eventName, post.slides[0]?.title].filter(Boolean).join(" | ");
+  const dtopic = [post.athleteName ? `Haberin kahramanı sporcu: ${post.athleteName}` : "", post.eventName, post.slides[0]?.title].filter(Boolean).join(" | ");
   const dc = await designCheck(files, { topic: dtopic });
   if (!dc.ok) {
     log("Tasarım denetimi:", dc.issues.map((i) => `${i.slide}: ${i.problem} (${i.fix})`).join(" | "));
@@ -469,7 +501,8 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     const badIdx = new Set(dc.issues.filter((i) => i.fix === "foto_degistir" && photos.length).map((i) => (i.slide - 1) % photos.length));
     if (badIdx.size) {
       const keep = photos.filter((_, i) => !badIdx.has(i));
-      const extra = await findImages(post.imageQueries ?? [], badIdx.size + 2, category, new Set([...usedPhotos, ...photos.map((p) => p.id)]));
+      const ownOnly = post.athleteName || photos.some((p) => p.specific);
+      const extra = ownOnly ? [] : await findImages(post.imageQueries ?? [], badIdx.size + 2, category, new Set([...usedPhotos, ...photos.map((p) => p.id)]));
       const fresh = (await screenPhotos(extra, dtopic, "stock")).slice(0, badIdx.size);
       if (keep.length + fresh.length) photos = [...keep, ...fresh];
     }

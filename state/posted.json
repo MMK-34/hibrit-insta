@@ -452,24 +452,8 @@
       "headline": "Ekinoks Atatürk Dağ Koşusu'na 815 sporcu katıldı",
       "eventName": "3. Geleneksel Ekinoks Atatürk Dağ Koşusu",
       "at": "2026-11-09T13:32:26.054Z",
-      "audit": {
-        "slides": [
-          {
-            "type": "cover",
-            "kicker": "Yarış raporu",
-            "title": "Ekinoks Atatürk Dağ Koşusu'na 815 sporcu katıldı",
-            "subtitle": "Kemalpaşa Gölpark'ta başlayan 3. Geleneksel Ekinoks Atatürk Dağ Koşusu'nda sporcular 6 ve 12 kilometrelik parkurlarda yarıştı."
-          }
-        ],
-        "caption": "Ekinoks Atatürk Dağ Koşusu'na 815 sporcu katıldı\nKemalpaşa'da düzenlenen 3. Geleneksel Ekinoks Atatürk Dağ Koşusu, 10 Kasım Atatürk'ü Anma Günü etkinlikleri kapsamında yapıldı.\n\nYarışlar Kemalpaşa Gölpark'tan başladı. Sporcular 6 ve 12 kilometrelik iki parkurda koştu. Organizasyonda Türkiye dağ koşusu tarihinin rekor katılımına ulaşıldığı bildirildi.\n\nYarışı Kemalpaşa Belediyesi ile İzmir İl ve İlçe Spor Müdürlükleri birlikte düzenledi. Dereceye girenlere kupa, madalya ve para ödülü verildi.\n\nEkinoks Atatürk Dağ Koşusu'nda 6 km'yi mi koştun, 12 km'yi mi?\nBu yarışta tanıdığın biri var mı? Ona gönder.\n\nKaynak: Haber Gündemim\nGörsel: yeniizmir.com\n\n#ekinoksatatürkdağkoşusu #patikakoşusu #dağkoşusu #trailrunning #kemalpaşa #izmir #hibritportal",
-        "srcUrls": [
-          "https://www.habergundemim.com/kemalpasada-rekor-katilimli-3-ekinoks-ataturk-dag-kosusu-4387657",
-          "https://uk.style.yahoo.com/m-tasting-pennies-crossfit-goat-120000104.html",
-          "https://www.haberege.com.tr/kemalpasada-rekor-katilim-3-ekinoks-ataturk-dag-kosusu-4382329"
-        ],
-        "eventName": "3. Geleneksel Ekinoks Atatürk Dağ Koşusu"
-      },
-      "story": "18230767351327123"
+      "story": "18230767351327123",
+      "audited": "kucuk_sorun"
     },
     {
       "day": "2026-11-09",
@@ -490,61 +474,56 @@
       "headline": "Wonder Woman's Cup kayıtları 27 Kasım'da açılıyor",
       "eventName": "Wonder Womans Cup",
       "at": "2026-11-09T13:37:25.838Z",
+      "story": "18117960407111022",
+      "audited": "kucuk_sorun"
+    },
+    {
+      "day": "2026-11-09",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQZmdqN1l2ek4zc2pJRDJYeC1zVWQ3RkdqUlA5dm84YVI1VFNwUGVhU0lzSHpfZHhmMkJnMHluNW45aXhXTk1VcG05d0V2MUVtejFHVzFqb3puV3VmbXRZNTZTZGNRRm4xbXlJbnQ4bHgtNlZqS3ljRVhkQU0xZWlldjJhZWpnQmh4",
+        "https://news.google.com/rss/articles/CBMitgFBVV95cUxONFhwVEQwTHBVVmFhelg3SWFwN1RmcjdabWJ3LXBfcVdSUWVtY01kazlOQk5wd3RfM240Z1RLTTU5WGxzNmFId1AyYXJyVWhtdGtkRnNzVUwzVUxOQ0lQa1dwVG9HRm9vLWhrbTkzNzFmOEJqNHQ5N0M5Y0NvVFlpWnZzb2xIaEI3cEN5TEJyb0o2aGk5Ul96X0ZoNEhId1A4UHA0ZlRXeDJobngzT1VNWEJib1BCZw",
+        "https://news.google.com/rss/articles/CBMiggFBVV95cUxPZFpJR25QUW9vY3IxUkNnVnVyb0VOWE5jS3JoOHY2MWI5VWdlRmRXNDViMTNvZHFlemFqWDQ1eE9vSWE1dWxfazNONTdGVUgxVjBrTjdtSl9JVDEwOFVRZUI1WUw2b1BXMFlMODhtNjljbzY5OGVsWG9lR1ZMbHBhcmVn"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:af279405aa0a839a"
+      ],
+      "media": "18181953109436866",
+      "permalink": "https://www.instagram.com/p/DfhlKqzF-Jr/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-09/mw9dkmub/01.jpg",
+      "title": "Demre’de St. Nicholas Yarı Maratonu heyecanı başlıyor!",
+      "headline": "St. Nicholas Yarı Maratonu kayıtları 23 Kasım'da kapanıyor",
+      "eventName": "St. Nicholas Yarı Maratonu",
+      "at": "2026-11-09T14:47:43.549Z",
       "audit": {
         "slides": [
           {
             "type": "cover",
-            "kicker": "WONDER WOMAN'S CUP",
-            "title": "Wonder Woman's Cup kayıtları 27 Kasım'da açılıyor",
-            "subtitle": "Yarış, 6-7 Mart 2027'de İstanbul Zeytinburnu'ndaki Biruni Üniversitesi'nde yapılacak."
-          },
-          {
-            "type": "stat",
-            "label": "Kayıt ücreti",
-            "value": "150 USD"
-          },
-          {
-            "type": "text",
-            "title": "Yarışın künyesi",
-            "bullets": [
-              "Ad: Wonder Woman's Cup 2027",
-              "Tarih: 6-7 Mart 2027",
-              "Yer: Biruni Üniversitesi, Zeytinburnu/İstanbul",
-              "Biçim: Yüz yüze yarışma"
-            ]
-          },
-          {
-            "type": "text",
-            "title": "Kayıt bilgileri",
-            "bullets": [
-              "Kayıt açılışı: 27 Kasım 2026",
-              "Son kayıt: 25 Şubat 2027",
-              "Kayıt ücreti: 150 USD",
-              "Kayıtlar circle21 platformu üzerinden yapılacak"
-            ]
-          },
-          {
-            "type": "text",
-            "title": "İkinci kez düzenleniyor",
-            "bullets": [
-              "İlk yarış 8 Mart 2026'da yapıldı",
-              "Organizatör, ilk yılın ardından Darüşşafaka'ya bağış yapıldığını açıkladı",
-              "Organizatöre göre kadınları destekleyen erkek sporcular da etkinlikte yer alacak"
-            ]
-          },
-          {
-            "type": "end",
-            "title": "Wonder Woman's Cup 2027'de yarışacak mısınız?",
-            "body": "Yorumlara yazın."
+            "kicker": "ST. NICHOLAS YARI MARATONU",
+            "title": "St. Nicholas Yarı Maratonu kayıtları 23 Kasım'da kapanıyor",
+            "subtitle": "Demre'de 6 Aralık 2026'da 21K, 12K ve 5K parkurlarda koşulacak yarışın kayıtları resmî internet sitesinden yapılıyor."
           }
         ],
-        "caption": "Wonder Woman's Cup 2027 kayıtları 27 Kasım'da açılıyor\nİlki 8 Mart 2026'da yapılan kadınlara özel CrossFit ve fitness yarışması, ikinci kez İstanbul'da düzenlenecek.\n\nYarış 6-7 Mart 2027'de Zeytinburnu'ndaki Biruni Üniversitesi'nde yüz yüze yapılacak. Kayıtlar 27 Kasım 2026'da açılıp 25 Şubat 2027'de kapanacak. Kayıt ücreti 150 USD. Kayıtlar circle21 platformu üzerinden yapılacak.\n\nOrganizatör, ilk yılın ardından Darüşşafaka'ya bağış yapıldığını açıkladı. Organizatöre göre 2027'de kadın sporcuları destekleyen erkek sporcular da etkinlikte yer alacak.\n\nWonder Woman's Cup 2027'de yarışacak mısınız?\nBirlikte yarışmak istediğiniz arkadaşınıza gönderin.\n\nKaynak: circle21 resmî kayıt sayfası\n\n#wonderwomanscup #crossfit #fonksiyonelantrenman #crossfitturkiye #istanbul #amatörspor #hibritportal",
+        "caption": "St. Nicholas Yarı Maratonu'na kayıtlar 23 Kasım 2026'da kapanıyor.\nAntalya'nın Demre ilçesindeki yarış 6 Aralık 2026'da, 3. Noel Baba Festivali'nin son gününde koşulacak.\n\nÜç mesafe var: 21K Santa, 12K Myra ve 5K Demre. Parkurların tamamı asfalt.\n\n21K, saat 08.30'da Aziz Nikolaos Anıt Müzesi önünden başlıyor. Rota Myra ve Andriake antik kentleri, Çayağzı Limanı, Sülüklü Plajı ve Demre Sahili'nden geçiyor. Çayağzı yolunda iki tur atılıyor, süre sınırı 3 saat.\n\n12K aynı noktadan 08.45'te başlıyor. 5K ise Demre Sahili'nde 12.00'de koşulacak.\n\nKayıtlar yarışın resmî internet sitesinden yapılıyor. Organizasyon Demre Belediyesinin ana sponsorluğunda, Türkiye Atletizm Federasyonunun desteğiyle düzenleniyor.\n\nDemre'de 21K mı, 12K mı, 5K mı koşacaksınız?\nBirlikte koşmak istediğiniz arkadaşınıza gönderin.\n\nKaynak: Antalya Körfez Gazetesi\nGörsel: antalyakorfez.com\n\n#stnicholasyarımaratonu #koşu #yarımaraton #running #runningturkey #demre #antalya #hibritportal",
         "srcUrls": [
-          "https://circle21.events/events/wonder-womans-cup-2026"
+          "https://www.antalyakorfez.com/demrede-st-nicholas-yari-maratonu-heyecani-basliyor",
+          "https://www.iha.com.tr/istanbul-haberleri/st-nicholas-yari-maratonu-demrenin-tarihi-rotalarinda-kosulacak-513492678",
+          "https://gazetekalem.com.tr/st-nicholas-yari-maratonu-5-6-aralikta-kosulacak/"
         ],
-        "eventName": "Wonder Womans Cup"
+        "eventName": "St. Nicholas Yarı Maratonu"
       },
-      "story": "18117960407111022"
+      "story": "18660493423026739"
+    },
+    {
+      "day": "2026-11-09",
+      "ids": [
+        "ig:18414134989090401",
+        "ig:18112071674459429",
+        "ig:17999848863012440",
+        "ig:17878708023636196",
+        "ig:18196784653400964"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -555,9 +534,9 @@
       "summarySent": true
     },
     "2026-11-09": {
-      "drafts": 20,
-      "approved": 7,
-      "rejected": 13
+      "drafts": 22,
+      "approved": 8,
+      "rejected": 14
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -573,7 +552,7 @@
       "media": "18017207690993316"
     }
   },
-  "lastRunAt": "2026-11-09T13:27:29.353Z",
+  "lastRunAt": "2026-11-09T14:41:53.306Z",
   "collabInvites": {},
   "countdowns": {}
 }

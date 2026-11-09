@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-09T13:42:11.331Z",
+  "updated": "2026-11-09T14:41:52.812Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 88,
-      "fetchedAt": "2026-11-09T13:40:54.089Z"
+      "fetchedAt": "2026-11-09T14:40:59.597Z"
     },
     "hyrox": {
       "ok": true,
       "count": 16,
-      "fetchedAt": "2026-11-09T13:42:11.321Z"
+      "fetchedAt": "2026-11-09T14:41:52.802Z"
     }
   },
   "items": [
@@ -3134,6 +3134,7 @@
         "to": "2027-08-30",
         "fee": "0.00 EUR"
       },
+      "instagram": "https://instagram.com/360.throwdown",
       "website": "https://www.360functional.de/"
     },
     {

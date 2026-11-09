@@ -38,5 +38,25 @@
     "createdDay": "2026-11-09",
     "due": "2026-11-18",
     "status": "bekliyor"
+  },
+  {
+    "key": "stnicholasyarimaratonu",
+    "type": "gecmis",
+    "eventName": "St. Nicholas Yarı Maratonu",
+    "officialSite": "https://stnicholashalfmarathon.com",
+    "category": "kosu",
+    "createdDay": "2026-11-09",
+    "due": "2026-11-13",
+    "status": "bekliyor"
+  },
+  {
+    "key": "stnicholasyarimaratonu",
+    "type": "wodlar",
+    "eventName": "St. Nicholas Yarı Maratonu",
+    "officialSite": "https://stnicholashalfmarathon.com",
+    "category": "kosu",
+    "createdDay": "2026-11-09",
+    "due": "2026-11-18",
+    "status": "bekliyor"
   }
 ]

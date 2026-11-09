@@ -829,5 +829,33 @@
         "note": "Postta kategori adı geçmiyor, ancak etkinlik adı resmî kayıttaki 'Wonder Womans Cup' ile uyuşmuyor ('Wonder Woman's Cup 2027')."
       }
     ]
+  },
+  {
+    "at": "2026-11-09T14:51:29.964Z",
+    "title": "@alsancakteam_series Instagram paylaşımı: INDIVIDUAL ELITE MEN TOP 3",
+    "url": "https://www.instagram.com/p/Dfg-maFI_jX/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "sayilar",
+        "note": "Kaynak, etkinliğin 2026'da 8. edisyonu olduğunu söylüyor. 'Atlantique Holiday Club'da 8. kez düzenlendi' ifadesi, mekânın her edisyonda aynı olduğunu varsayıyor. Bunu hiçbir kaynakta doğrulayamadım. Doğrusu: '8. edisyon'."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak_satiri",
+        "note": "Caption'daki satırda 'alsancakteamseries Instagram' yazıyor. Doğru hesap adı alsancakteam_series. Alt çizgi eksik ve bu, posttaki kaynak adıyla da tutmuyor."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "kaynak_satiri",
+        "note": "Caption'da 'Kaynak: alsancakteamseries Instagram' yazıyor. Resmî hesabın adı alt çizgiyle 'alsancakteam_series'. Düzeltme: 'Kaynak: @alsancakteam_series Instagram'."
+      }
+    ]
   }
 ]

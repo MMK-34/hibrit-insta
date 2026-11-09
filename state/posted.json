@@ -553,6 +553,13 @@
       "at": "2026-11-09T16:47:59.361Z",
       "story": "18105625646570812",
       "audited": "dogru"
+    },
+    {
+      "day": "2026-11-09",
+      "ids": [
+        "ig:17913426984475237"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -563,9 +570,10 @@
       "summarySent": true
     },
     "2026-11-09": {
-      "drafts": 25,
+      "drafts": 26,
       "approved": 10,
-      "rejected": 15
+      "rejected": 16,
+      "summarySent": true
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -581,7 +589,7 @@
       "media": "18017207690993316"
     }
   },
-  "lastRunAt": "2026-11-09T17:41:44.327Z",
+  "lastRunAt": "2026-11-09T18:41:53.072Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {
@@ -607,7 +615,11 @@
       "at": "2026-11-09T17:42:32.163Z",
       "publishAt": "2026-11-10T09:05",
       "expiresDay": "2026-11-10",
-      "label": "ÖZEL GÜN POSTU"
+      "label": "ÖZEL GÜN POSTU",
+      "approved": "s9257cb94"
     }
-  }
+  },
+  "dmSeen": [],
+  "dmPins": {},
+  "dmErr": "2026-11-09"
 }

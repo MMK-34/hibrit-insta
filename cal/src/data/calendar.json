@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-09T17:41:43.938Z",
+  "updated": "2026-11-09T18:41:52.791Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 90,
-      "fetchedAt": "2026-11-09T17:40:55.477Z"
+      "count": 91,
+      "fetchedAt": "2026-11-09T18:40:54.464Z"
     },
     "hyrox": {
       "ok": true,
       "count": 16,
-      "fetchedAt": "2026-11-09T17:41:43.930Z"
+      "fetchedAt": "2026-11-09T18:41:52.785Z"
     }
   },
   "items": [
@@ -936,6 +936,27 @@
         "fee": "50.00 EUR"
       },
       "instagram": "https://instagram.com/blitzseries"
+    },
+    {
+      "id": "circle21-51705e04-2a55-44fd-865f-ba2d58cac793",
+      "name": "971 Hybrid",
+      "eventSlug": null,
+      "type": "crossfit",
+      "city": "Ajman Cornich",
+      "country": "BAE",
+      "startDate": "2026-12-05",
+      "endDate": "2026-12-05",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=51705e04-2a55-44fd-865f-ba2d58cac793",
+      "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/463408/conversions/WhatsApp-Image-2026-11-09-at-19.57.15-s_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/463408/conversions/WhatsApp-Image-2026-11-09-at-19.57.15-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
+      "registration": {
+        "to": "2026-12-02",
+        "fee": "0.00 EUR"
+      },
+      "instagram": "https://instagram.com/971hybrid"
     },
     {
       "id": "hyrox-milan-2026-12",

@@ -885,5 +885,18 @@
         "note": "1. ve 2. fotoğraflar (2024 Chicago ve New York maratonları) kaynak sayfada yer alıyor ve konuyla ilgili. 4. fotoğraf bir Color Run eğlence koşusunu gösteriyor; maraton antrenmanı ve yarış mevsimi konusuyla ilgisi zayıf ve yanıltıcı olabilir. Maratonla ilgili bir görselle değiştirilmeli."
       }
     ]
+  },
+  {
+    "at": "2026-11-09T18:45:34.553Z",
+    "title": "@crossfitgames Instagram paylaşımı: Here’s some important information about 2027 Team Qualifiers!",
+    "url": "https://www.instagram.com/p/Dfh9Z0SFNnD/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "foto",
+        "item": "gorsel",
+        "note": "foto yok"
+      }
+    ]
   }
 ]

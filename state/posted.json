@@ -560,6 +560,14 @@
         "ig:17913426984475237"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-09",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMirgFBVV95cUxPQUlPMlJXTWJhWHB2MFZYTmIwc3hFeDA0YkFWWkU4Wjc0OU8yQUZfYVVmdjU3UXBTRkJIZ2docm16ckw0enhsS1RzdFd5OWx1d0Vjbll6SFhsUEtHcGpMVm9FZ0hLTy1sZ3l3SXRRcmlVX2V4cU9keTJWY3FvOVBRTTZBWnJOMVFoRzVoZ2ZOMlZETWloZG5Qc1FTM0RtMHdMSzdwY3VZOVVUXzA1d2c",
+        "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOcXNqY2ktREtzT2xRYkhIcXg4c180U2lRcHJrVHN1QWlLWk1jSExCbUw3bXFJYUFHVS1lTjY4VE04cTRUYjJXQ1F1aUt1R0VCNnpwdUJPNlRmVjFURlloUlBQeUY0MG9zZWRwX1pjLWpPMGdOc2V2MDl6VXRZblM5SkhzcThXOUF6MERmM3pVVjdnMmYwdHF1NFp4TTl0ejFOckhjNEZDek1iekdCazEwUzhYbEktbU4t"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -570,9 +578,9 @@
       "summarySent": true
     },
     "2026-11-09": {
-      "drafts": 26,
+      "drafts": 27,
       "approved": 10,
-      "rejected": 16,
+      "rejected": 17,
       "summarySent": true
     }
   },
@@ -589,7 +597,7 @@
       "media": "18017207690993316"
     }
   },
-  "lastRunAt": "2026-11-09T18:41:53.072Z",
+  "lastRunAt": "2026-11-09T19:41:54.845Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {
@@ -620,6 +628,8 @@
     }
   },
   "dmSeen": [],
-  "dmPins": {},
+  "dmPins": {
+    "1mehmetkuyucu": "1647030993575389"
+  },
   "dmErr": "2026-11-09"
 }

@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-09T18:41:52.791Z",
+  "updated": "2026-11-09T19:41:54.172Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 91,
-      "fetchedAt": "2026-11-09T18:40:54.464Z"
+      "fetchedAt": "2026-11-09T19:40:52.943Z"
     },
     "hyrox": {
       "ok": true,
       "count": 16,
-      "fetchedAt": "2026-11-09T18:41:52.785Z"
+      "fetchedAt": "2026-11-09T19:41:54.158Z"
     }
   },
   "items": [
@@ -949,12 +949,12 @@
       "status": "confirmed",
       "url": "https://circle21.events/event?competitionId=51705e04-2a55-44fd-865f-ba2d58cac793",
       "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/463408/conversions/WhatsApp-Image-2026-11-09-at-19.57.15-s_thumb.jpg",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/463422/conversions/WhatsApp-Image-2026-11-09-at-19.51.27-l_thumb.jpg",
       "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/463408/conversions/WhatsApp-Image-2026-11-09-at-19.57.15-s_thumb.jpg",
       "imageCredit": "circle21 / organizatör",
       "registration": {
         "to": "2026-12-02",
-        "fee": "0.00 EUR"
+        "fee": "0.00 AED"
       },
       "instagram": "https://instagram.com/971hybrid"
     },

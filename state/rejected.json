@@ -898,5 +898,18 @@
         "note": "foto yok"
       }
     ]
+  },
+  {
+    "at": "2026-11-09T19:47:11.846Z",
+    "title": "Demre’de tarih ve spor buluşuyor: St. Nicholas Yarı Maratonu 6 Aralık’ta",
+    "url": "https://www.turkiyeturizm.com/demrede-tarih-ve-spor-bulusuyor-st-nicholas-yari-maratonu-6-aralikta-81938h.htm",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "metin çok uzun, kısalt (yarım cümle olmasın): slayt 3 body 263>240"
+      }
+    ]
   }
 ]

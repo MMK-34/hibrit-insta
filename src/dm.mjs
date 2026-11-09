@@ -48,7 +48,7 @@ export async function dmTips(seen = new Set(), pins = {}) {
 export function dmCategory(text) {
   const s = String(text).toLowerCase();
   if (/hyrox/.test(s)) return "hyrox";
-  if (/crossfit|throwdown|wod|team series|games/.test(s)) return "crossfit";
+  if (/crossfit|throwdown|wod|team series|games|open/.test(s)) return "crossfit";
   if (/trail|ultra|dağ|dag koşu/.test(s)) return "doga";
   if (/maraton|marathon|koşu|kosu|\brun\b|10k|5k|21k/.test(s)) return "kosu";
   if (/triatlon|triathlon|ironman|duatlon/.test(s)) return "yaris";

@@ -15,7 +15,7 @@ import { selectNews, writePost, reviewPost, creditProbe, isCreditError } from ".
 import { renderPost, renderStory, renderCountdown, renderSpecial } from "./render.mjs";
 import { upcomingSpecial, specialContent } from "./special-days.mjs";
 import { dmTips, dmCategory } from "./dm.mjs";
-import { countdownsDue } from "./countdown.mjs";
+import { countdownsDue, BIG_RACES } from "./countdown.mjs";
 import { uploadFiles } from "./upload-github.mjs";
 import { publish, preflight, publishStory, deleteMedia, publishReel } from "./publish.mjs";
 import { auditPublished, MODEL as AUDIT_MODEL_2 } from "./audit.mjs";
@@ -555,6 +555,23 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     audit: { slides: post.slides, caption, srcUrls, eventName: post.eventName || "", country: post.country || "", place: post.place || "" } });
   for (const id of ids ?? []) postedIds.add(id);
   for (const p of photos) usedPhotos.add(p.id); // aynı çalışmadaki sonraki postlarda da tekrar yok
+  // Büyük yarış duyurusu: 15-20 sn kısa Reels sırasına (her akşam bulutta üretilir, onaya gelir). Sayı sınırı yok; aynı yarış için 10 günde bir.
+  try {
+    const key = `${post.eventName ?? ""} ${post.slides[0]?.title ?? ""}`;
+    if (["duyuru", "haber"].includes(kind) && BIG_RACES.some((re) => re.test(key))) {
+      const qf = "state/short-queue.json";
+      const q = fs.existsSync(qf) ? JSON.parse(fs.readFileSync(qf, "utf8")) : [];
+      state.shortReels ??= [];
+      const ev = norm(post.eventName || post.slides[0]?.title || "").slice(0, 60);
+      const recent = state.shortReels.some((x) => x.ev === ev && Date.now() - Date.parse(x.at ?? 0) < 10 * 864e5);
+      if (!recent && !q.some((x) => x.ev === ev)) {
+        q.push({ media: res.id, ev, at: new Date().toISOString() });
+        state.shortReels = [...state.shortReels, { ev, at: new Date().toISOString() }].slice(-100);
+        fs.writeFileSync(qf, JSON.stringify(q, null, 2) + "\n");
+        log("Kısa Reels sırasına eklendi:", post.eventName || post.slides[0]?.title);
+      }
+    }
+  } catch (e) { log("Kısa Reels sırası yazılamadı:", String(e.message).slice(0, 120)); }
   saveState(); // paylaşım hemen kalıcı: sonraki adım çökse de aynı haber tekrar paylaşılmaz
   // Çağıranın tamamlanma işareti (seri done / takip "paylaşıldı") hikâye adımından ÖNCE yazılır: zaman aşımında tekrar yayın olmasın
   if (onPublished) { try { onPublished(res); } catch (e) { log("Tamamlanma işareti yazılamadı:", e.message); } }

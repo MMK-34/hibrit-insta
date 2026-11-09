@@ -1,12 +1,21 @@
-name: Haftalık bülten Reels
+name: Reels (haftalık bülten + kısa duyuru)
 
-# Kullanıcı kuralı: bilgisayar kapalıyken de çalışır. Her pazar 17:00 (TR) haftanın doğrulanmış haberlerinden
-# bülten videosu üretilir, onaya gönderilir; ONAY gelince post.yml (processApprovals) Reels olarak paylaşır.
+# Kullanıcı kuralı: bilgisayar kapalıyken de çalışır.
+#  - Pazar 17:00 (TR): haftanın doğrulanmış haberlerinden bülten videosu
+#  - Her akşam 20:00 (TR): büyük yarış duyurusu sırada varsa 15-20 sn kısa Reels (sıra boşsa hiçbir şey kurulmaz)
+# İkisi de onaya gönderilir; ONAY gelince post.yml (processApprovals) Reels olarak paylaşır.
 on:
   schedule:
-    - cron: "0 14 * * 0" # pazar 17:00 TR
+    - cron: "0 14 * * 0" # pazar 17:00 TR: haftalık bülten
+    - cron: "0 17 * * *" # her gün 20:00 TR: kısa duyuru sırası
   workflow_dispatch:
     inputs:
+      mode:
+        description: "weekly = haftalık bülten, short = kısa duyuru sırası"
+        required: false
+        type: choice
+        options: [weekly, short]
+        default: weekly
       dry:
         description: "true = yalnızca video üret (yükleme ve onay yok), video artifact olarak indirilebilir"
         required: false
@@ -29,15 +38,29 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
+      - name: Mod
+        id: mod
+        run: |
+          MODE="${{ github.event.inputs.mode }}"
+          if [ "${{ github.event.schedule }}" = "0 17 * * *" ]; then MODE=short; fi
+          [ -z "$MODE" ] && MODE=weekly
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          SKIP=false
+          if [ "$MODE" = short ] && [ "$(node -e 'try{console.log(JSON.parse(require("fs").readFileSync("state/short-queue.json","utf8")).length)}catch{console.log(0)}')" = "0" ]; then SKIP=true; echo "kısa Reels sırası boş"; fi
+          echo "skip=$SKIP" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-node@v4
+        if: ${{ steps.mod.outputs.skip != 'true' }}
         with: { node-version: 22, cache: npm }
-      - run: npm ci
+      - if: ${{ steps.mod.outputs.skip != 'true' }}
+        run: npm ci
       - name: ffmpeg ve yazı tipleri
+        if: ${{ steps.mod.outputs.skip != 'true' }}
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg fonts-noto-color-emoji >/dev/null
           ffmpeg -version | head -1
-      - name: Bülten üret ve onaya gönder
+      - name: Video üret ve onaya gönder
+        if: ${{ steps.mod.outputs.skip != 'true' }}
         timeout-minutes: 45
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
@@ -51,11 +74,16 @@ jobs:
           GH_REPO: ${{ github.repository }}
           HYPERFRAMES_NO_TELEMETRY: "1"
         run: |
-          if [ "${{ github.event.inputs.dry }}" = "true" ]; then node reels/weekly.mjs --dry; else node reels/weekly.mjs; fi
+          ARGS=""
+          [ "${{ steps.mod.outputs.mode }}" = short ] && ARGS="--short"
+          [ "${{ github.event.inputs.dry }}" = "true" ] && ARGS="$ARGS --dry"
+          node reels/weekly.mjs $ARGS
       - name: Video (artifact)
-        if: ${{ always() }}
+        if: ${{ always() && steps.mod.outputs.skip != 'true' }}
         uses: actions/upload-artifact@v4
         with:
-          name: bulten
-          path: reels/bulten-*/bulten-*.mp4
+          name: reels-video
+          path: |
+            reels/bulten-*/bulten-*.mp4
+            reels/kisa-*/kisa-*.mp4
           if-no-files-found: ignore

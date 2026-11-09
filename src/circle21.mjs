@@ -27,7 +27,24 @@ export async function circle21Events() {
   if (cache) return cache;
   const lists = await Promise.all([page("upcoming=1&page=1&per_page=200"), page("live=1&page=1&per_page=100"), page("finished=1&page=1&per_page=100")]);
   const seen = new Set();
-  cache = lists.flat().filter((d) => d && COUNTRIES.has(d.country) && !seen.has(d.id) && seen.add(d.id)).map((d) => ({
+  cache = lists.flat().filter((d) => d && COUNTRIES.has(d.country) && !seen.has(d.id) && seen.add(d.id)).map(toEvent);
+  return cache;
+}
+
+/** Tek bir circle21 yarışı (kimliğiyle). Listelerde görünmeyen (kaydı henüz açılmamış) yarışlar için. */
+export async function circle21ById(id) {
+  if (!/^[0-9a-f-]{36}$/i.test(String(id ?? ""))) return null;
+  try {
+    const r = await safeGet(`${API}/${id}`, { timeout: 25000, maxBytes: 4e6, headers: { "user-agent": UA, accept: "application/json" }, allowHttp: false });
+    if (!r?.ok) return null;
+    const j = JSON.parse(r.buf.toString("utf8"));
+    const d = j?.data ?? j;
+    return d?.id && d.public ? toEvent(d) : null;
+  } catch { return null; }
+}
+
+function toEvent(d) {
+  return {
     id: d.id, name: String(d.name ?? "").replace(/\s+/g, " ").trim(), slug: d.slug,
     url: `https://circle21.events/events/${d.slug}`,
     start: d.date_from, end: d.date_to, regFrom: d.registration_from, regTo: d.registration_to,
@@ -37,8 +54,7 @@ export async function circle21Events() {
     published: d.published_at ?? d.created_at, onsite: !!d.onsite, country: d.country,
     // Yarış logosu: önce özgün yükleme (media/logo), yoksa küçük önizleme
     logo: (d.media ?? []).find((m) => m.collection_name === "logo")?.original_url || d.logo || "",
-  }));
-  return cache;
+  };
 }
 
 /** Organizatörün Instagram hesabı: yalnızca yapılandırılmış "instagram" alanından, doğrulanmış kullanıcı adı. */

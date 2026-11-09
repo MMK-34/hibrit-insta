@@ -9,7 +9,7 @@ import path from "node:path";
 import { collect, articleText, upcomingEvents, resolveNewsUrl, courseCandidates } from "./collect.mjs";
 import { findImages } from "./images.mjs";
 import { eventPhotos, screenPhotos } from "./event-photos.mjs";
-import { circle21Candidates, circle21Reference, circle21Events, c21Handle } from "./circle21.mjs";
+import { circle21Candidates, circle21Reference, circle21Events, circle21ById, c21Handle, c21Text, c21Facts } from "./circle21.mjs";
 import { igWatchCandidates, verifiedEventHandle, IG_WATCH_TR } from "./ig-watch.mjs";
 import { selectNews, writePost, reviewPost, creditProbe, isCreditError } from "./plan.mjs";
 import { renderPost, renderStory, renderCountdown } from "./render.mjs";
@@ -397,6 +397,15 @@ async function repostOne(spec) {
   if (!list.length) { log("Yeniden paylaşım: geçersiz URL."); return; }
   const items = [];
   for (const link of list) {
+    // circle21 kayıt sayfası: sayfa JS ile çizildiği için metin resmî API'den alınır (resmî ad, tarihler, kayıt dönemi, ücret)
+    const c21id = (link.match(/circle21\.events\/.*competitionId=([0-9a-f-]{36})/i) ?? [])[1];
+    if (c21id) {
+      const ev = await circle21ById(c21id);
+      if (!ev) { log("Yeniden paylaşım: circle21 kaydı okunamadı."); return; }
+      const text = dropCategories(c21Text(ev));
+      items.push({ id: `c21:${ev.id}`, url: ev.url, title: title || ev.name, source: "circle21 resmî kayıt sayfası", text, snippet: text.slice(0, 1500), facts: c21Facts(ev), handle: c21Handle(ev), logo: ev.logo });
+      continue;
+    }
     const url = await resolveNewsUrl(link);
     const text = await articleText(url);
     const host = new URL(url).hostname.replace(/^www\./, "");

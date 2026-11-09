@@ -12,7 +12,8 @@ import { eventPhotos, screenPhotos, personPhotos } from "./event-photos.mjs";
 import { circle21Candidates, circle21Reference, circle21Events, circle21ById, c21Handle, c21Text, c21Facts } from "./circle21.mjs";
 import { igWatchCandidates, verifiedEventHandle, IG_WATCH_TR } from "./ig-watch.mjs";
 import { selectNews, writePost, reviewPost, creditProbe, isCreditError } from "./plan.mjs";
-import { renderPost, renderStory, renderCountdown } from "./render.mjs";
+import { renderPost, renderStory, renderCountdown, renderSpecial } from "./render.mjs";
+import { upcomingSpecial, specialContent } from "./special-days.mjs";
 import { countdownsDue } from "./countdown.mjs";
 import { uploadFiles } from "./upload-github.mjs";
 import { publish, preflight, publishStory, deleteMedia } from "./publish.mjs";
@@ -174,6 +175,12 @@ async function main() {
   try { await auditRecentPosts(); } catch (e) { if (isCreditError(e)) throw e; log("Denetim hatası:", String(e.message).slice(0, 200)); }
   try { await publishCountdowns(); } catch (e) { log("Geri sayım hatası:", String(e.message).slice(0, 200)); }
   try { await processApprovals(); } catch (e) { if (isCreditError(e)) throw e; log("Onay kontrolü hatası:", String(e.message).slice(0, 200)); }
+  try { await draftSpecialDay(); } catch (e) { log("Özel gün taslağı hatası:", String(e.message).slice(0, 200)); }
+  {
+    const sp = upcomingSpecial(now);
+    if (sp && sp.daysLeft === 0 && sp.spec.blockMorning && hour < 12 && !state.posts.some((p) => p.media && (p.ids ?? []).includes(`ozel:${sp.key}`)))
+      return log("Anma günü: özel post paylaşılmadan öğlene kadar başka post atılmaz.");
+  }
   try { await draftStatForApproval(); } catch (e) { if (isCreditError(e)) throw e; log("İstatistik taslağı hatası:", String(e.message).slice(0, 200)); }
   // Tekrarlayan seriler (hafta sonu yarışları, Türk sporcuların haftası, aylık takvim): günde bir kez, sabah 9'dan sonra
   if (SERIES_FORCE || (budgetLeft() && !draftCapReached() && todayCount < MAX_PER_DAY)) {
@@ -618,13 +625,13 @@ async function publishCountdowns() {
 // Kullanıcı kuralı: yarış istatistikleri (katılımcı sayısı, Türk sporcu sayısı vb.) KULLANICI ONAYI olmadan paylaşılmaz.
 // Akış: haftada bir taslak -> doğrulama -> görseller yüklenir -> "Bot raporları" issue'suna önizleme (e-posta) ->
 // kullanıcı e-postayı "ONAY <kod>" ya da "RET <kod>" diye yanıtlar -> sonraki saatlik çalışmada onaylanan paylaşılır.
-async function queueForApproval({ caption, urls, ids, kind, title, post, photos, srcUrls }) {
+async function queueForApproval({ caption, urls, ids, kind, title, post, photos, srcUrls, publishAt = "", expiresDay = "", label = "İSTATİSTİK POSTU" }) {
   state.pendingApprovals ??= {};
   const code = `s${crypto.randomBytes(4).toString("hex")}`;
-  state.pendingApprovals[code] = { caption, urls, ids, kind, title, headline: post.slides[0]?.title, eventName: post.eventName || undefined, photos: photos.map((p) => p.id), srcUrls, at: new Date().toISOString() };
+  state.pendingApprovals[code] = { caption, urls, ids, kind, title, headline: post.slides[0]?.title, eventName: post.eventName || undefined, photos: photos.map((p) => p.id), srcUrls, at: new Date().toISOString(), publishAt: publishAt || undefined, expiresDay: expiresDay || undefined, label };
   saveState();
   log("Onaya gönderildi:", code);
-  await notify(`📊 ONAY BEKLEYEN İSTATİSTİK POSTU (kod: ${code})\n\nBu post sen onaylamadan paylaşılmayacak.\n\nOnaylamak için bu e-postayı yanıtla; yanıtın İLK satırına önce ONAY kelimesini, bir boşluk, sonra yukarıdaki kodu yaz.\nİstemiyorsan aynı şekilde RET kelimesini ve kodu yaz.\n\n--- Açıklama ---\n${caption}\n\n--- Görseller ---\n${urls.join("\n")}\n\n--- Kaynaklar ---\n${srcUrls.join("\n")}`);
+  await notify(`📊 ONAY BEKLEYEN ${label} (kod: ${code})\n\nBu post sen onaylamadan paylaşılmayacak.${publishAt ? ` Onaylarsan ${publishAt.replace("T", " ")} (TR saati) sonrasındaki ilk çalışmada paylaşılır.` : ""}\n\nOnaylamak için bu e-postayı yanıtla; yanıtın İLK satırına önce ONAY kelimesini, bir boşluk, sonra yukarıdaki kodu yaz.\nİstemiyorsan aynı şekilde RET kelimesini ve kodu yaz.\n\n--- Açıklama ---\n${caption}\n\n--- Görseller ---\n${urls.join("\n")}\n\n--- Kaynaklar ---\n${srcUrls.join("\n")}`);
   return { held: true, code };
 }
 
@@ -653,9 +660,16 @@ async function processApprovals() {
     const first = String(c.body ?? "").split(/\r?\n/).map((l) => l.trim()).find((l) => l && !l.startsWith(">")) ?? "";
     for (const m of [first.match(/^(ONAY|RET)\s+(s[0-9a-f]{8})$/i)].filter(Boolean)) {
       const code = m[2].toLowerCase(), item = pend[code];
-      if (!item) continue;
+      if (!item || item.approved) continue;
+      if (m[1].toUpperCase() === "RET") { delete pend[code]; saveState(); log("Onay bekleyen post reddedildi:", code); continue; }
+      // Zamanlı post (özel gün): onay kaydedilir, vakti gelince aşağıda paylaşılır
+      if (item.publishAt && nowLocal() < item.publishAt) {
+        item.approved = code; saveState();
+        log("Onaylandı, vakti gelince paylaşılacak:", code, item.publishAt);
+        await push(`Onayın alındı: ${String(item.title ?? "").slice(0, 80)}. ${item.publishAt.replace("T", " ")} sonrası paylaşılacak.`, { title: "Onay alındı", level: "ok" });
+        continue;
+      }
       delete pend[code]; saveState();
-      if (m[1].toUpperCase() === "RET") { log("İstatistik postu reddedildi:", code); continue; }
       try {
         const res = await publish(item.urls, item.caption);
         state.posts.push({ day: today, ids: item.ids, kind: item.kind, photos: item.photos, media: res.id, permalink: res.permalink, cover: item.urls[0], title: item.title, headline: item.headline, eventName: item.eventName, approved: code, at: new Date().toISOString() });
@@ -669,8 +683,56 @@ async function processApprovals() {
       }
     }
   }
-  for (const c of Object.keys(pend)) if (Date.now() - Date.parse(pend[c].at) > 7 * 864e5) { delete pend[c]; log("Onay süresi doldu, taslak düştü:", c); }
+  // Onaylanmış zamanlı postlar: vakti geldiyse paylaşılır
+  for (const code of Object.keys(pend)) {
+    const item = pend[code];
+    if (!item.approved || nowLocal() < (item.publishAt ?? "")) continue;
+    delete pend[code]; saveState();
+    try {
+      const res = await publish(item.urls, item.caption);
+      state.posts.push({ day: today, ids: item.ids, kind: item.kind, photos: item.photos, media: res.id, permalink: res.permalink, cover: item.urls[0], title: item.title, headline: item.headline, approved: code, at: new Date().toISOString() });
+      saveState();
+      log("Onaylı zamanlı post yayında:", res.permalink);
+      await notify(`✅ Onayladığın post paylaşıldı (${code})\n${res.permalink}`);
+    } catch (e) {
+      if (isCreditError(e)) throw e;
+      pend[code] = item; saveState();
+      log("Onaylı post paylaşılamadı, sonraki çalışmada tekrar denenecek:", String(e.message).slice(0, 200));
+    }
+  }
+  for (const c of Object.keys(pend)) {
+    // Özel gün postu o gün geçince düşer (ertesi gün paylaşılmaz); diğerleri 7 gün sonra
+    if (pend[c].expiresDay ? today > pend[c].expiresDay : Date.now() - Date.parse(pend[c].at) > 7 * 864e5) { delete pend[c]; log("Onay süresi doldu, taslak düştü:", c); }
+  }
   saveState();
+}
+
+/** TR yerel saat "YYYY-MM-DDTHH:MM" (zamanlı onaylı postlar için). */
+function nowLocal() {
+  const d = trNow();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}T${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+}
+
+/**
+ * Millî/özel gün postu (kullanıcı kuralı): 2 gün öncesinden sabit, elle yazılmış metinle çizilir ve ONAYA gönderilir.
+ * Onay gelmezse paylaşılmaz; onay gelirse günün sabahı (publishHour:05 sonrası ilk çalışma) paylaşılır.
+ */
+async function draftSpecialDay() {
+  const up = upcomingSpecial(now);
+  if (!up || DRY) return;
+  state.specials ??= {};
+  if (state.specials[up.key]) return;
+  const c = specialContent(up.spec, up.year);
+  const slug = `${today}/ozel-${up.spec.id}`;
+  const outDir = path.join("out", slug);
+  fs.mkdirSync(outDir, { recursive: true });
+  const file = await renderSpecial(c, path.join(outDir, "01.jpg"));
+  const urls = await uploadFiles([file], slug);
+  const publishAt = `${up.date}T${String(up.spec.publishHour).padStart(2, "0")}:05`;
+  const r = await queueForApproval({ caption: c.caption, urls, ids: [`ozel:${up.key}`], kind: "ozel", title: c.title, post: { slides: [{ title: c.title }] }, photos: [], srcUrls: [], publishAt, expiresDay: up.date, label: "ÖZEL GÜN POSTU" });
+  state.specials[up.key] = { code: r.code, at: new Date().toISOString() };
+  saveState();
+  await push(`Özel gün postu onayını bekliyor: ${c.title}\nGörsel: ${urls[0]}\nOnay: rapor issue'suna "ONAY ${r.code}" yaz.`, { title: "Onay gerekli", level: "approve", click: urls[0] });
 }
 
 /** Haftada bir (salı 12:00 sonrası): son paylaşılan yarışlardan birinin katılım istatistiği taslağı, onaya gönderilir. */

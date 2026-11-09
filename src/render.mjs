@@ -382,3 +382,31 @@ export async function renderPost(post, outDir) {
   }
   return files;
 }
+
+/**
+ * Millî/özel gün kartı (1080x1350, tek slayt): fotoğraf yok, sade tipografi.
+ * c: { kicker, title, subtitle, mood: "anma" | "bayram", photo?: { buf, focus } }. Anma: kırmızı yok; bayram: kırmızı vurgu çizgisi.
+ * Fotoğraf (elle seçilmiş, kamu malı arşiv fotoğrafı) üstte, yumuşak geçişle zemine erir; yazılar altta.
+ */
+export async function renderSpecial(c, outFile) {
+  const L = await brandLogo();
+  const ph = c.photo?.buf ? await toUri(c.photo.buf, c.photo.focus) : null;
+  const accent = c.mood === "anma" ? C.paper : C.red;
+  const markup = `<div style="display:flex;flex-direction:column;width:${W}px;height:${H}px;background:${C.ink};position:relative;font-family:Body;color:${C.paper}">
+    ${ph ? photoLayer(ph, "full") : ""}
+    <div style="display:flex;position:relative;padding:64px ${PAD}px 0 ${PAD}px">${logoHtml(L)}</div>
+    <div style="display:flex;position:relative;flex-direction:column;flex:1;justify-content:${ph ? "flex-end" : "center"};padding:0 ${PAD}px ${ph ? 56 : 0}px ${PAD}px">
+      <div style="display:flex;width:110px;height:${c.mood === "anma" ? 4 : 10}px;background:${accent};margin-bottom:38px"></div>
+      <div style="display:flex;font-weight:700;font-size:34px;letter-spacing:5px;color:${c.mood === "anma" ? C.text2 : C.red};margin-bottom:30px">${esc(trUpper(c.kicker))}</div>
+      ${head(c.title, Math.min(headSize(c.title, 130), ph ? 92 : 118))}
+      <div style="display:flex;font-size:${ph ? 32 : 38}px;line-height:1.4;color:${C.text2};margin-top:${ph ? 26 : 40}px">${esc(c.subtitle)}</div>
+    </div>
+    <div style="display:flex;position:relative;padding:0 ${PAD}px 60px ${PAD}px">
+      <div style="display:flex;font-family:Body;font-weight:600;font-size:28px;color:${C.paper}">${esc(BRAND.handle.replace(/^@/, ""))}</div>
+    </div>
+  </div>`;
+  const svg = await satori(html(markup), { width: W, height: H, fonts: FONTS });
+  const png = new Resvg(svg, { fitTo: { mode: "width", value: W } }).render().asPng();
+  fs.writeFileSync(outFile, await sharp(png).jpeg({ quality: 92, mozjpeg: true }).toBuffer());
+  return outFile;
+}

@@ -309,7 +309,7 @@ async function main() {
  */
 // Kaynak metinlerden yarış kategorisi cümleleri çıkarılır: yazar kategori adı yazmasın (kural: kategori yazılmaz)
 const CAT_WORDS = /\b(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX|Masters?|Teens?|Hybrid)\b/;
-const dropCategories = (txt) => String(txt ?? "").split(/(?<=[.!?])s+/).filter((s) => !(/kategori|divizyon|division|categor/i.test(s) && CAT_WORDS.test(s))).join(" ");
+const dropCategories = (txt) => String(txt ?? "").split(/(?<=[.!?])\s+/).filter((s) => !(/kategori|divizyon|division|categor/i.test(s) && CAT_WORDS.test(s))).join(" ");
 
 async function prepareVerified(pick, srcItems, sourceName) {
   srcItems = srcItems.map((s) => ({ ...s, text: dropCategories(s.text), snippet: dropCategories(s.snippet) }));
@@ -552,7 +552,7 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     // Haftalık bülten Reels'i video ararken kullanır: yarışın doğrulanmış hesabı, haberin sporcusu
     ig: evHandle || undefined, athlete: post.athleteName || undefined, athleteIg: post.athleteInstagram || undefined,
     // Yayın sonrası denetim için (denetimden sonra silinir)
-    audit: { slides: post.slides, caption, srcUrls, eventName: post.eventName || "" } });
+    audit: { slides: post.slides, caption, srcUrls, eventName: post.eventName || "", country: post.country || "", place: post.place || "" } });
   for (const id of ids ?? []) postedIds.add(id);
   for (const p of photos) usedPhotos.add(p.id); // aynı çalışmadaki sonraki postlarda da tekrar yok
   saveState(); // paylaşım hemen kalıcı: sonraki adım çökse de aynı haber tekrar paylaşılmaz
@@ -583,6 +583,7 @@ async function auditRecentPosts() {
   const due = state.posts.filter((p) => p.audit && p.media && !p.audited && Date.now() - Date.parse(p.at ?? 0) > 20 * 60e3 && Date.now() - Date.parse(p.at ?? 0) < 48 * 36e5).slice(0, 2);
   for (const p of due) {
     let r = await auditPublished(p.audit);
+    if (r.verdict === "hata") { p.auditTries = (p.auditTries ?? 0) + 1; if (p.auditTries < 3) { saveState(); continue; } log("Denetim 3 kez yapılamadı:", p.headline ?? p.title); await push(`Yayın sonrası denetim yapılamadı (3 deneme): ${String(p.headline ?? p.title ?? "").slice(0, 100)}`, { title: "Denetim", level: "warn" }); }
     // Silme yalnızca İKİ bağımsız denetçi (Opus + Sonnet, ayrı çağrılar) de "yanlis" derse; tek denetçinin kararı yetmez
     if (r.verdict === "yanlis") {
       const r2 = await auditPublished(p.audit, AUDIT_MODEL_2);
@@ -610,6 +611,7 @@ async function auditRecentPosts() {
 // Sabah 09:00 sonrası ilk çalışmada; günde en çok 3 hikâye; her eşik (30/14/7/3/1 gün) bir kez.
 async function publishCountdowns() {
   if (DRY || hour < 9) return;
+  { const sp = upcomingSpecial(now); if (sp && sp.daysLeft === 0 && sp.spec.blockMorning && hour < 12 && !state.posts.some((p) => p.media && (p.ids ?? []).includes(`ozel:${sp.key}`))) return; }
   state.countdowns ??= {};
   const due = (await countdownsDue()).filter((c) => !state.countdowns[c.key]).slice(0, 3);
   for (const c of due) {
@@ -650,13 +652,13 @@ async function ghApi(pathname) {
 async function processApprovals() {
   state.pendingApprovals ??= {};
   const pend = state.pendingApprovals;
-  // Haftalık bülten Reels'i bilgisayarda üretilir (reels/weekly.mjs) ve state/reel-queue.json'a yazılır: buradan onay kuyruğuna alınır
+  // Haftalık bülten Reels'i bulutta üretilir (reels.yml -> reels/weekly.mjs) ve state/reel-queue.json'a yazılır: buradan onay kuyruğuna alınır
   try {
     const qf = "state/reel-queue.json";
     const q = fs.existsSync(qf) ? JSON.parse(fs.readFileSync(qf, "utf8")) : [];
     let moved = 0;
     for (const it of q) {
-      if (!/^r[0-9a-f]{8}$/.test(it.code ?? "") || !/^https:\/\/raw\.githubusercontent\.com\//.test(it.video ?? "")) continue;
+      if (!/^r[0-9a-f]{8}$/.test(it.code ?? "") || !String(it.video ?? "").startsWith(`https://raw.githubusercontent.com/${process.env.GH_REPO}/media/`)) continue;
       if (pend[it.code] || (state.reelsDone ?? []).includes(it.code)) continue;
       pend[it.code] = { video: it.video, caption: String(it.caption ?? "").slice(0, 2100), kind: "reel", title: it.title ?? "Haftalık bülten", ids: [`reel:${it.code}`], photos: [], urls: [it.video], srcUrls: [], at: it.at ?? new Date().toISOString(), label: "REELS" };
       moved++;
@@ -789,7 +791,7 @@ async function draftSpecialDay() {
 
 /** Haftada bir (salı 12:00 sonrası): son paylaşılan yarışlardan birinin katılım istatistiği taslağı, onaya gönderilir. */
 async function draftStatForApproval() {
-  const d = new Date();
+  const d = trNow();
   const week = `${d.getFullYear()}-${Math.ceil(((d - new Date(d.getFullYear(), 0, 1)) / 864e5 + 1) / 7)}`;
   if (d.getDay() !== 2 || d.getHours() < 12 || state.statWeek === week) return false;
   if (Object.keys(state.pendingApprovals ?? {}).length >= 2) return false;

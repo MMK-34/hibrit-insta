@@ -1,4 +1,4 @@
-// Haftalık bülten Reels'i (kullanıcı kararı, 2026-11-09): her pazar bu bilgisayarda çalışır.
+// Haftalık bülten Reels'i (kullanıcı kararı, 2026-11-09): her pazar bulutta (GitHub Actions, reels.yml) çalışır; bilgisayar kapalı olabilir.
 // 1) Son 7 günde paylaşılmış ve denetimden geçmiş postlardan en önemli 4-6 haberi seçer (yalnızca o postların açıklamalarındaki bilgiler)
 // 2) Seslendirme metnini yazar, ikinci bir model metni açıklamalarla karşılaştırır (yeni bilgi yok)
 // 3) Her habere görüntü bulur: yarışın kendi Instagram videosu -> sporcunun/etkinliğin kendi fotoğrafı -> konuya uygun stok video
@@ -23,6 +23,11 @@ import { designCheck } from "../src/design-check.mjs";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 process.chdir(ROOT);
 const DRY = process.argv.includes("--dry");
+// Beklenmeyen her hata telefona ve rapor issue'suna bildirilir (sessiz başarısızlık yok)
+for (const ev of ["uncaughtException", "unhandledRejection"]) process.on(ev, async (e) => {
+  console.error(e);
+  try { await notify(`⚠️ Haftalık bülten hatası: ${String(e?.message ?? e).slice(0, 300)}`); } finally { process.exit(1); }
+});
 const VOICE = process.env.EL_VOICE || "y3KmQ23j262kys1fjBGK"; // Mehmet K. (kullanıcı seçimi)
 const MODEL = process.env.REELS_MODEL || "claude-opus-5-5", CHECK_MODEL = "claude-sonnet-5-5";
 const ai = new Anthropic({ maxRetries: 2 });
@@ -126,7 +131,7 @@ async function igVideos(handle, eventName) {
 async function videoClip(file, topic, need, out) {
   const d = dur(file);
   if (d < need * 0.6) return false;
-  const times = [0.12, 0.3, 0.5, 0.7].map((x) => Math.max(0, Math.min(d - need, d * x)));
+  const times = [0.1, 0.25, 0.4, 0.55, 0.7, 0.85].map((x) => Math.max(0, Math.min(d - need, d * x)));
   const pics = times.map((t, k) => ({ id: `f${k}`, t, buf: frame(file, t, path.join(W, `fr${k}.jpg`)) }));
   const ok = await screenPhotos(pics, topic, "event");
   if (!ok.length) return false;
@@ -134,66 +139,69 @@ async function videoClip(file, topic, need, out) {
   return true;
 }
 
-const credits = new Set();
 const usedStock = new Set();
-const items = [];
-for (const [k, it] of plan.entries()) {
+// Sahne kuralı (kullanıcı): karede o yarışın sporcuları hareket hâlinde net görünmeli; manzara, kalabalık, poz/tanıtım sahnesi olmaz
+const SCENE = "Karede bu yarışın/branşın sporcuları yarışırken, antrenmanda ya da hareket hâlindeyken net görünmeli; yalnızca manzara, seyirci kalabalığı, poz/tanıtım/defile, konuşma ya da günlük hayat sahnesi uygun değil.";
+const toImg = (buf, img) => sharp(buf).rotate().resize(1200, 2120, { fit: "cover", position: "attention" }).jpeg({ quality: 90 }).toFile(img);
+
+/** Bir haber için görüntü bulur. skip: atlanacak adımlar ("own" kendi IG videosu, "photo" fotoğraflar). Döner: bülten öğesi ya da null. */
+async function getMedia(it, k, skip = new Set()) {
   const p = pool[it.n];
   const topic = `${p.eventName ?? ""} ${p.headline ?? ""}`.trim();
+  const strict = `${topic}. ${SCENE}`;
   const need = 9;
   const vid = path.join(A, `c${k}.mp4`), img = path.join(A, `p${k}.jpg`);
-  let got = "";
+  let got = "", credit = "";
   // a) yarışın / sporcunun kendi Instagram videosu
-  // Kayıtlı hesap yoksa izlenen organizatör listesinden etkinlik adıyla eşleşen hesap (ör. "Varda Ultra Trail" -> vardaultratrail)
+  // Kayıtlı hesap yoksa izlenen organizatör listesinden etkinlik adıyla eşleşen hesap (ör. "Varda Ultra Trail" -> vardaultratrail); şehir adı eşleşme sayılmaz
   const evWords = words(p.eventName ?? p.headline);
-  const watched = IG_WATCH.filter((h) => evWords.some((w) => w.length >= 5 && h.toLowerCase().includes(w))).slice(0, 2);
-  for (const h of [...new Set([p.ig, p.athleteIg, ...watched].filter(Boolean))]) {
+  const CITY_W = /^(istanbul|ankara|izmir|antalya|adana|bursa|mersin|kusadasi|bodrum|mugla|aydin|kemalpasa|belek|demre|city|turkiye|turkey|athens|belgrade|tirana|sofia|varna)$/;
+  const watched = IG_WATCH.filter((h) => evWords.some((w) => w.length >= 5 && !CITY_W.test(w) && h.toLowerCase().includes(w))).slice(0, 2);
+  if (!skip.has("own")) for (const h of [...new Set([p.ig, p.athleteIg, ...watched].filter(Boolean))]) {
     if (got) break;
     for (const m of (await igVideos(h, p.eventName)).slice(0, 3)) {
       const raw = path.join(W, `ig${k}.mp4`);
-      fs.writeFileSync(raw, Buffer.from(await (await fetch(m.media_url)).arrayBuffer()));
-      if (await videoClip(raw, topic, need, vid)) { got = "video"; credits.add(`@${h}`); break; }
+      fs.writeFileSync(raw, Buffer.from(await (await fetch(m.media_url, { signal: AbortSignal.timeout(120000) })).arrayBuffer()));
+      if (await videoClip(raw, strict, need, vid)) { got = "video"; credit = `@${h}`; break; }
     }
   }
-  // b) sporcu haberi: sporcunun kendi fotoğrafı; etkinlik: etkinliğin kendi fotoğrafı
-  if (!got) {
-    const ph = p.athlete
-      ? await personPhotos({ name: p.athlete, instagram: p.athleteIg, topic, n: 1 }).catch(() => [])
-      : [];
-    if (ph[0]) { await sharp(ph[0].buf).rotate().resize(1200, 2120, { fit: "cover", position: "attention" }).jpeg({ quality: 90 }).toFile(img); got = "photo"; credits.add(ph[0].source); }
+  // b) sporcu haberi: sporcunun kendi fotoğrafı (sporcu haberinde başka bir kişinin stok görüntüsü KULLANILMAZ)
+  if (!got && !skip.has("photo") && p.athlete) {
+    const ph = await personPhotos({ name: p.athlete, instagram: p.athleteIg, topic, n: 1 }).catch(() => []);
+    if (ph[0]) { await toImg(ph[0].buf, img); got = "photo"; credit = ph[0].source; }
   }
-  // b2) etkinliğin KENDİ fotoğrafı (yarışın sitesi, haberleri): ilgisiz stok videodan önce gelir
-  if (!got && p.eventName) {
-    const ph = (await eventPhotos({ eventName: p.eventName, topic, n: 2 }).catch(() => [])).filter((x) => x.specific);
-    if (ph[0]) { await sharp(ph[0].buf).rotate().resize(1200, 2120, { fit: "cover", position: "attention" }).jpeg({ quality: 90 }).toFile(img); got = "photo"; credits.add(ph[0].source); }
+  // b2) etkinliğin KENDİ fotoğrafı (yarışın sitesi, haberleri): stok videodan önce
+  if (!got && !skip.has("photo") && p.eventName) {
+    const ph = (await eventPhotos({ eventName: p.eventName, topic: strict, n: 2 }).catch(() => [])).filter((x) => x.specific);
+    if (ph[0]) { await toImg(ph[0].buf, img); got = "photo"; credit = ph[0].source; }
   }
-  // c) etkinlik haberi: konuya uygun stok video (sporcu haberinde değil); aynı stok video iki haberde kullanılmaz
+  // c) etkinlik haberi: konuya uygun gerçek stok video; aynı stok video iki haberde kullanılmaz
   if (!got && !p.athlete) {
     for (const q of it.stockQuery ?? []) {
       if (got) break;
-      const r = await fetch(`https://pixabay.com/api/videos/?key=${process.env.PIXABAY_API_KEY}&q=${encodeURIComponent(q)}&per_page=6&safesearch=true&video_type=film`).then((x) => x.json()).catch(() => ({}));
+      const r = await fetch(`https://pixabay.com/api/videos/?key=${process.env.PIXABAY_API_KEY}&q=${encodeURIComponent(q)}&per_page=6&safesearch=true&video_type=film`, { signal: AbortSignal.timeout(20000) }).then((x) => x.json()).catch(() => ({}));
       for (const h of (r.hits ?? []).filter((h) => h.duration >= 6 && !usedStock.has(h.id)).slice(0, 4)) {
         const v = h.videos.large?.url ? h.videos.large : h.videos.medium;
         const raw = path.join(W, `px${h.id}.mp4`);
-        fs.writeFileSync(raw, Buffer.from(await (await fetch(v.url)).arrayBuffer()));
-        // videonun başı, ortası ve sonu ayrı ayrı denetlenir: üçü de gerçek çekim ve konuyla ilgili olmalı (animasyon/gökyüzü kareleri elenir)
+        fs.writeFileSync(raw, Buffer.from(await (await fetch(v.url, { signal: AbortSignal.timeout(120000) })).arrayBuffer()));
+        usedStock.add(h.id);
+        // videonun başı, ortası ve sonu ayrı ayrı denetlenir: üçü de gerçek çekim ve konuyla ilgili olmalı
         const fr = [0.15, 0.5, 0.85].map((x, i) => ({ id: `s${i}`, buf: frame(raw, Math.max(0.3, h.duration * x), path.join(W, `px${i}.jpg`)) }));
-        const shot = await screenPhotos(fr, `${topic}. Gerçek kamera çekimi olmalı; animasyon, 3D, illüstrasyon, grafik ok=false. Karede sporcular net görünmeli; karenin çoğu gökyüzü, yol ya da boş alan ise ok=false.`, "stock");
-        // denetlenen bölümden kesilir (başı değil): ekrana giren kareler denetimden geçen karelerdir
-        if (shot.length === fr.length) { const st = Math.max(0.3, h.duration * 0.15); vertical(raw, st, Math.min(need + 1, h.duration - st), vid); usedStock.add(h.id); got = "video"; credits.add("Pixabay"); break; }
+        const shot = await screenPhotos(fr, `${strict} Gerçek kamera çekimi olmalı; animasyon, 3D, illüstrasyon, grafik ok=false. Karenin çoğu gökyüzü, yol ya da boş alan ise ok=false.`, "stock");
+        if (shot.length === fr.length) { const st = Math.max(0.3, h.duration * 0.15); vertical(raw, st, Math.min(need + 1, h.duration - st), vid); got = "video"; credit = "Pixabay"; break; }
       }
     }
   }
-  // d) son çare: etkinliğin fotoğrafı
-  if (!got) {
-    const ph = await eventPhotos({ eventName: p.eventName, topic, n: 1 }).catch(() => []);
-    if (ph[0]) { await sharp(ph[0].buf).rotate().resize(1200, 2120, { fit: "cover", position: "attention" }).jpeg({ quality: 90 }).toFile(img); got = "photo"; credits.add(ph[0].source); }
-  }
-  if (!got) { log("görüntü bulunamadı, haber çıkarıldı:", it.headline); continue; }
-  // giriş ızgarası için fotoğraf: videodan bir kare
+  if (!got) return null;
   if (got === "video") await sharp(frame(vid, 1.5, path.join(W, `g${k}.jpg`))).resize(1200, 2120, { fit: "cover" }).jpeg({ quality: 88 }).toFile(img);
-  items.push({ ...it, photo: `p${k}.jpg`, ...(got === "video" ? { clips: [{ video: `c${k}.mp4`, from: 0 }] } : {}) });
-  log(`görüntü (${got}):`, it.headline);
+  log(`görüntü (${got}, ${credit}):`, it.headline);
+  return { ...it, k, credit, photo: `p${k}.jpg`, ...(got === "video" ? { clips: [{ video: `c${k}.mp4`, from: 0 }] } : {}) };
+}
+
+const items = [];
+for (const [k, it] of plan.entries()) {
+  const m = await getMedia(it, k);
+  if (m) items.push(m); else log("görüntü bulunamadı, haber çıkarıldı:", it.headline);
 }
 if (items.length < 3) { log("görüntü bulunan haber 3ten az"); await push("Haftalık bülten hazırlanmadı: yeterli görüntü bulunamadı.", { title: "Bülten", level: "warn" }); process.exit(0); }
 
@@ -223,7 +231,9 @@ async function produce(list) {
     const j = await r.json();
     if (!j.audio_base64) throw new Error(`ElevenLabs ses: ${JSON.stringify(j).slice(0, 200)}`);
     fs.writeFileSync(path.join(A, `v${i}.mp3`), Buffer.from(j.audio_base64, "base64"));
-    fs.writeFileSync(path.join(AL, `a${i}.json`), JSON.stringify(j.alignment));
+    const al = j.alignment ?? j.normalized_alignment;
+    if (!al?.character_end_times_seconds?.length) throw new Error("ElevenLabs hizalama verisi yok");
+    fs.writeFileSync(path.join(AL, `a${i}.json`), JSON.stringify(al));
   }
   fs.writeFileSync(path.join(DIR, "bulletin.json"), JSON.stringify({ date: today, intro: { title: "Haftanın\nözeti", sub: `${n} haber · ${dateTr}` }, outro: { title: "Ayrıntılar\nprofilde", handle: "@hibritportal" }, items: list }, null, 2));
   sh("node", [path.join("reels", "build.mjs"), DIR]);
@@ -246,7 +256,14 @@ await produce(final);
 let bad = await qa(final);
 if (bad.length) {
   log("kalite kontrolü:", bad.map((b) => `${final[b.k]?.headline}: ${b.problem}`).join(" | "));
-  final = final.filter((_, k) => !bad.some((b) => b.k === k));
+  // Sorunlu sahne hemen çıkarılmaz: önce kendi videosu/fotoğrafı atlanarak gerçek stok video denenir (sporcu haberinde yok)
+  const next = [];
+  for (const [k, it] of final.entries()) {
+    if (!bad.some((b) => b.k === k)) { next.push(it); continue; }
+    const m = await getMedia(it, it.k, new Set(["own", "photo"]));
+    if (m) next.push(m); else log("yerine uygun görüntü yok, haber çıkarıldı:", it.headline);
+  }
+  final = next;
   if (final.length < 3) { await push(`Haftalık bülten onaya gönderilmedi: kalite kontrolünden geçen sahne 3'ten az.\n${bad.map((b) => b.problem).join(" | ").slice(0, 300)}`, { title: "Bülten", level: "warn" }); process.exit(0); }
   await produce(final);
   bad = await qa(final);
@@ -255,7 +272,7 @@ if (bad.length) {
 const N = final.length;
 
 // ---------- 6) onay ----------
-const caption = hats(`Haftanın özeti: ${N} haber\n\n${final.map((i) => `• ${i.headline}`).join("\n")}\n\nHaberlerin ayrıntısı profilde.\n\nGörüntüler: ${[...credits].join(", ")}\n\n#hibritportal #haftanınözeti #crossfit #hyrox #koşu #trail`);
+const caption = hats(`Haftanın özeti: ${N} haber\n\n${final.map((i) => `• ${i.headline}`).join("\n")}\n\nHaberlerin ayrıntısı profilde.\n\nGörüntüler: ${[...new Set(final.map((i) => i.credit).filter(Boolean))].join(", ")}\n\n#hibritportal #haftanınözeti #crossfit #hyrox #koşu #trail`);
 if (DRY) { log("DRY: yükleme ve onay yok.\n" + caption); process.exit(0); }
 const [url] = await uploadFiles([out], `reels/${today}`);
 const code = `r${crypto.randomBytes(4).toString("hex")}`;

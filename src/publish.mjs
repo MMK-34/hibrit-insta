@@ -170,7 +170,8 @@ export async function deleteMedia(mediaId) {
   let last = "";
   for (const token of [process.env.IG_ACCESS_TOKEN, process.env.IG_DISCOVERY_TOKEN].filter(Boolean)) {
     try {
-      const r = await fetch(`https://graph.facebook.com/v23.0/${mediaId}?access_token=${token}`, { method: "DELETE", signal: AbortSignal.timeout(30000) });
+      const host = String(token).startsWith("IGAA") ? "graph.instagram.com" : "graph.facebook.com";
+      const r = await fetch(`https://${host}/v23.0/${mediaId}?access_token=${token}`, { method: "DELETE", signal: AbortSignal.timeout(30000) });
       const j = await r.json().catch(() => ({}));
       if (r.ok && (j.success === true || j === true)) return { ok: true };
       last = JSON.stringify(j.error ?? j).slice(0, 200);

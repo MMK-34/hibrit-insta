@@ -101,6 +101,7 @@ export function c21Text(e) {
 }
 
 const norm = (s) => String(s ?? "").toLocaleLowerCase("tr").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i");
+const CITY = new Set(["istanbul", "ankara", "izmir", "antalya", "bursa", "adana", "mersin", "kocaeli", "eskisehir", "samsun", "trabzon", "konya", "kayseri", "gaziantep", "mugla", "bodrum", "aydin", "kusadasi", "denizli", "nicosia", "lefkosa", "girne", "kyrenia", "famagusta", "gazimagusa", "cyprus", "kibris", "turkiye", "turkey", "city"]);
 const STOP = new Set(["2025", "2026", "2027", "the", "games", "series", "team", "crossfit", "challenge", "cup", "throwdown", "hyrox", "style", "and"]);
 
 /**
@@ -116,12 +117,14 @@ export async function circle21Reference(text) {
     const s = Date.parse(e.start ?? 0), en = Date.parse(e.end ?? e.start ?? 0);
     if (!(s - 25 * 864e5 <= now + 60 * 864e5 && en + 25 * 864e5 >= now)) continue;
     let score = 0;
-    const words = norm(e.name).split(/[^a-z0-9]+/).filter((w) => w.length > 3 && !STOP.has(w));
-    if (words.some((w) => t.includes(w))) score += 2;
     // Adresteki ilçe/il ("09400 Kuşadası/Aydın")
     const place = (e.address.match(/\d{5}\s+([^/,]+)\/([^,]+)/) ?? []).slice(1).map((x) => norm(x.trim())).filter((x) => x.length > 3);
+    // Ayırt edici ad kelimesi: şehir/ilçe adı sayılmaz (ör. "İstanbul City Championship" -> "istanbul" tek başına eşleştirmez)
+    const words = norm(e.name).split(/[^a-z0-9]+/).filter((w) => w.length > 3 && !STOP.has(w) && !CITY.has(w) && !place.includes(w));
+    if (words.some((w) => t.includes(w))) score += 2;
     if (place.some((p) => t.includes(p))) score += 1;
-    if (/crossfit|fonksiyonel|hyrox|hibrit|yarisma|sampiyona/.test(t)) score += 0.5;
+    if (/crossfit|fonksiyonel|hyrox|hibrit|throwdown|wod/.test(t)) score += 0.5;
+    else continue; // koşu, bisiklet vb. haberler circle21 (CrossFit/fonksiyonel) kaydına bağlanmaz
     // Yalnızca şehir + branş eşleşmesi: yarış bugün sürüyor ya da ±3 gün içindeyse kabul (aynı şehirde başka yarışla karışmasın)
     const near = s - 3 * 864e5 <= now && now <= en + 3 * 864e5;
     if ((score >= 2.5 || (score >= 1.5 && near)) && (!best || score > best.score)) best = { score, event: e };

@@ -62,10 +62,10 @@ export function guardPost(post, { sourceName }) {
   if (!slides.length) return { ok: false, reason: "slayt yok" };
   // Kesin kural: yarış kategorisi/divizyonu adı yazılmaz (eksik liste yanıltıcı olur). Model kurala uymazsa kod durdurur.
   const allText = JSON.stringify(slides) + " " + String(post.caption ?? "");
-  if (/kategori|divizyon|division/i.test(allText) && /\b(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX'?|Masters?|Teens?|Hybrid)\b/.test(allText))
+  if ((/kategori|divizyon|division/i.test(allText) && /\b(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX'?|Masters?|Teens?|Hybrid)\b/.test(allText)) || /\b(Beginner|Scaled|Intermediate|Advanced|RX|Masters|Teens|Elite 15|Pro Doubles|Pro Division|Doubles (Women|Men|Mixed)|Relay)\b/.test(allText))
     return { ok: false, reason: "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar" };
   // Kesin kural (kullanıcı): ücret/fiyat yazılmaz; isteyen resmî sayfadan bakar
-  if (/(kayıt|katılım|giriş)\s*ücret|ücreti\b|(\d[\d.,]*\s*(TL|₺|\$|USD|EUR|€|euro|dolar|lira)\b)|((\$|€|₺)\s*\d)/i.test(allText))
+  if (/(kayıt|katılım|giriş)\s*ücret|ücreti(?!\p{L})|\d[\d.,]*\s*(TL|USD|EUR|euro|dolar|lira)(?!\p{L})|\d[\d.,]*\s*[₺$€]|[₺$€]\s*\d/iu.test(allText))
     return { ok: false, reason: "ücret/fiyat yazılmış: kayıt ücreti ve fiyatları tamamen çıkar" };
   const LIMIT = { title: 100, body: 240, subtitle: 160, kicker: 40, label: 60, value: 10 };
   const tooLong = [];

@@ -14,7 +14,7 @@ on:
         default: false
 
 concurrency:
-  group: reels
+  group: post # post.yml ile aynı: state/ ve reel-queue.json aynı anda yazılmaz
   cancel-in-progress: false
 
 permissions:

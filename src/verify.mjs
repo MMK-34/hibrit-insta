@@ -82,7 +82,7 @@ ${e(referenceData)}
 
 ` : "";
   const payload = `${ref}TASLAK POST:
-${e(JSON.stringify({ slides: post.slides, caption: post.caption, eventName: post.eventName }, null, 1))}
+${e(JSON.stringify({ slides: post.slides, caption: post.caption, eventName: post.eventName, konumRozeti: [post.country, post.place].filter(Boolean).join(" · ") }, null, 1))}
 
 ORİJİNAL KAYNAK URL'LERİ (web_fetch ile aç):
 ${sourceUrls.filter(Boolean).map((u) => `- ${e(u)}`).join("\n") || "(yok)"}

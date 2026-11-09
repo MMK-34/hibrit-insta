@@ -35,7 +35,7 @@ async function githubReport(text) {
  */
 export async function push(text, { title = "Hibrit Portal", level = "info", click = "" } = {}) {
   const topic = process.env.NTFY_TOPIC;
-  if (!topic || !/^[A-Za-z0-9_-]{16,64}$/.test(topic) || process.argv.includes("--dry")) return;
+  if (!topic || !/^[A-Za-z0-9_-]{16,64}$/.test(topic) || process.argv.includes("--dry")) { console.log("[bildirim atlandı]", String(text).slice(0, 200)); return; }
   const tags = { info: "hourglass_flowing_sand", ok: "white_check_mark", warn: "warning", approve: "bell" }[level] ?? "information_source";
   const priority = { info: "3", ok: "3", warn: "5", approve: "4" }[level] ?? "3";
   try {
@@ -69,7 +69,7 @@ export async function notify(text) {
       });
     } catch { /* bildirim hatası paylaşımı durdurmaz */ }
   }
-  if (/^(⚠️|📊)/u.test(String(text))) {
+  if (/^(⚠️|📊|🎬)/u.test(String(text))) {
     try { await githubReport(text); } catch { /* rapor hatası paylaşımı durdurmaz */ }
   }
 }

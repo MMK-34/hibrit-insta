@@ -18,6 +18,7 @@ import { screenPhotos, personPhotos, eventPhotos } from "../src/event-photos.mjs
 import { uploadFiles } from "../src/upload-github.mjs";
 import { notify, push } from "../src/notify.mjs";
 import { IG_WATCH } from "../src/ig-watch.mjs";
+import { designCheck } from "../src/design-check.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 process.chdir(ROOT);
@@ -161,7 +162,7 @@ for (const [k, it] of plan.entries()) {
   if (!got && !p.athlete) {
     for (const q of it.stockQuery ?? []) {
       if (got) break;
-      const r = await fetch(`https://pixabay.com/api/videos/?key=${process.env.PIXABAY_API_KEY}&q=${encodeURIComponent(q)}&per_page=6&safesearch=true`).then((x) => x.json()).catch(() => ({}));
+      const r = await fetch(`https://pixabay.com/api/videos/?key=${process.env.PIXABAY_API_KEY}&q=${encodeURIComponent(q)}&per_page=6&safesearch=true&video_type=film`).then((x) => x.json()).catch(() => ({}));
       for (const h of (r.hits ?? []).filter((h) => h.duration >= 6).slice(0, 4)) {
         const v = h.videos.large?.url ? h.videos.large : h.videos.medium;
         const raw = path.join(W, `px${h.id}.mp4`);
@@ -186,36 +187,59 @@ for (const [k, it] of plan.entries()) {
 }
 if (items.length < 3) { await push("Haftalık bülten hazırlanmadı: yeterli görüntü bulunamadı.", { title: "Bülten", level: "warn" }); process.exit(0); }
 
-// ---------- 4) ses + müzik ----------
-const N = items.length;
-const lines = [`Hibrit Portal'da haftanın özeti. ${NUM_TR[N][0].toUpperCase() + NUM_TR[N].slice(1)} haberde geçen hafta.`, ...items.map((i) => i.line), "Haberlerin ayrıntısı profilde. Takipte kal."];
+// ---------- 4) müzik (bir kez) ----------
 const EL = { "xi-api-key": process.env.ELEVENLABS_API_KEY, "content-type": "application/json" };
-for (const [i, text] of lines.entries()) {
-  const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE}/with-timestamps?output_format=mp3_44100_128`, { method: "POST", headers: EL, body: JSON.stringify({ text, model_id: "eleven_v3", language_code: "tr", voice_settings: { stability: 0.5 } }) });
-  const j = await r.json();
-  if (!j.audio_base64) throw new Error(`ElevenLabs ses: ${JSON.stringify(j).slice(0, 200)}`);
-  fs.writeFileSync(path.join(A, `v${i}.mp3`), Buffer.from(j.audio_base64, "base64"));
-  fs.writeFileSync(path.join(AL, `a${i}.json`), JSON.stringify(j.alignment));
-}
 const mr = await fetch("https://api.elevenlabs.io/v1/music?output_format=mp3_44100_128", { method: "POST", headers: EL, body: JSON.stringify({ prompt: "Light, upbeat, modern instrumental background music for a weekly sports news recap video. Driving but soft electronic beat around 118 BPM, warm synth chords, subtle plucks, motivating and positive, unobtrusive under a voiceover, no vocals, steady energy, clean ending.", music_length_ms: 60000, force_instrumental: true }) });
 if (!mr.ok) throw new Error(`ElevenLabs müzik: ${mr.status} ${(await mr.text()).slice(0, 200)}`);
 fs.writeFileSync(path.join(A, "music.mp3"), Buffer.from(await mr.arrayBuffer()));
-
-// ---------- 5) çizim ----------
 for (const f of ["Inter-600.ttf", "Inter-700.ttf", "BigShouldersDisplay-ExtraBold.ttf"]) fs.copyFileSync(path.join("fonts", f), path.join(A, "fonts", f));
 for (const f of ["wordmark.svg", "logo-mark.svg"]) fs.writeFileSync(path.join(A, f), fs.readFileSync(path.join("assets", f), "utf8").replace(/currentColor/g, "#f3efe7"));
 for (const f of ["whoosh.mp3", "hit.mp3"]) if (fs.existsSync(path.join("reels", "sfx", f))) fs.copyFileSync(path.join("reels", "sfx", f), path.join(A, f));
 const dateTr = new Date().toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Istanbul" });
-fs.writeFileSync(path.join(DIR, "bulletin.json"), JSON.stringify({ date: today, intro: { title: "Haftanın\nözeti", sub: `${N} haber · ${dateTr}` }, outro: { title: "Ayrıntılar\nprofilde", handle: "@hibritportal" }, items }, null, 2));
-sh("node", [path.join("reels", "build.mjs"), DIR]);
-const npx = process.platform === "win32" ? "npx.cmd" : "npx";
-sh(npx, ["hyperframes@0.9.26", "render", "-o", "raw.mp4", "--skill=hyperframes"], { cwd: DIR, shell: process.platform === "win32" });
 const out = path.join(DIR, `bulten-${today}.mp4`);
-sh("ffmpeg", ["-loglevel", "error", "-y", "-i", path.join(DIR, "raw.mp4"), "-c:v", "libx264", "-crf", "22", "-preset", "medium", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out]);
-log("video:", out, (fs.statSync(out).size / 1e6).toFixed(1), "MB");
+
+// ---------- 5) ses + çizim (+ son kalite kontrolü, gerekirse bir kez yeniden) ----------
+async function produce(list) {
+  const n = list.length;
+  const lines = [`Hibrit Portal'da haftanın özeti. ${NUM_TR[n][0].toUpperCase() + NUM_TR[n].slice(1)} haberde geçen hafta.`, ...list.map((i) => i.line), "Haberlerin ayrıntısı profilde. Takipte kal."];
+  for (const [i, text] of lines.entries()) {
+    const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE}/with-timestamps?output_format=mp3_44100_128`, { method: "POST", headers: EL, body: JSON.stringify({ text, model_id: "eleven_v3", language_code: "tr", voice_settings: { stability: 0.5 } }) });
+    const j = await r.json();
+    if (!j.audio_base64) throw new Error(`ElevenLabs ses: ${JSON.stringify(j).slice(0, 200)}`);
+    fs.writeFileSync(path.join(A, `v${i}.mp3`), Buffer.from(j.audio_base64, "base64"));
+    fs.writeFileSync(path.join(AL, `a${i}.json`), JSON.stringify(j.alignment));
+  }
+  fs.writeFileSync(path.join(DIR, "bulletin.json"), JSON.stringify({ date: today, intro: { title: "Haftanın\nözeti", sub: `${n} haber · ${dateTr}` }, outro: { title: "Ayrıntılar\nprofilde", handle: "@hibritportal" }, items: list }, null, 2));
+  sh("node", [path.join("reels", "build.mjs"), DIR]);
+  const npx = process.platform === "win32" ? "npx.cmd" : "npx";
+  sh(npx, ["hyperframes@0.9.26", "render", "-o", "raw.mp4", "--skill=hyperframes"], { cwd: DIR, shell: process.platform === "win32" });
+  sh("ffmpeg", ["-loglevel", "error", "-y", "-i", path.join(DIR, "raw.mp4"), "-c:v", "libx264", "-crf", "22", "-preset", "medium", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out]);
+  log("video:", out, (fs.statSync(out).size / 1e6).toFixed(1), "MB");
+}
+
+/** Son kalite kontrolü: her haber sahnesinden bir kare; tasarım denetçisi bakar. Döner: sorunlu haberlerin sırası (0'dan) ve nedenleri. */
+async function qa(list) {
+  const scenes = JSON.parse(fs.readFileSync(path.join(DIR, "scenes.json"), "utf8")).filter((s) => s.i >= 1 && s.i <= list.length);
+  const files = scenes.map((s) => { const f = path.join(W, `qa${s.i}.jpg`); frame(out, (s.start + s.dur * 0.6).toFixed(2), f); return f; });
+  const r = await designCheck(files, { topic: `Haftalık spor haberleri bülteni (dikey video kareleri). Her kare bir haber: ${list.map((x, k) => `${k + 1}) ${x.headline}`).join("; ")}. Görüntü gerçek kamera çekimi ve haberin branşına uygun olmalı; animasyon/CGI/soyut desen, boş gökyüzü ya da konusuz sahne ciddi sorundur.` });
+  return r.issues.filter((x) => x.fix !== "yok").map((x) => ({ k: x.slide - 1, problem: x.problem }));
+}
+
+let final = items;
+await produce(final);
+let bad = await qa(final);
+if (bad.length) {
+  log("kalite kontrolü:", bad.map((b) => `${final[b.k]?.headline}: ${b.problem}`).join(" | "));
+  final = final.filter((_, k) => !bad.some((b) => b.k === k));
+  if (final.length < 3) { await push(`Haftalık bülten onaya gönderilmedi: kalite kontrolünden geçen sahne 3'ten az.\n${bad.map((b) => b.problem).join(" | ").slice(0, 300)}`, { title: "Bülten", level: "warn" }); process.exit(0); }
+  await produce(final);
+  bad = await qa(final);
+  if (bad.length) { await push(`Haftalık bülten onaya gönderilmedi: ikinci kalite kontrolü de geçmedi.\n${bad.map((b) => b.problem).join(" | ").slice(0, 300)}`, { title: "Bülten", level: "warn" }); process.exit(0); }
+}
+const N = final.length;
 
 // ---------- 6) onay ----------
-const caption = hats(`Haftanın özeti: ${N} haber\n\n${items.map((i) => `• ${i.headline}`).join("\n")}\n\nHaberlerin ayrıntısı profilde.\n\nGörüntüler: ${[...credits].join(", ")}\n\n#hibritportal #haftanınözeti #crossfit #hyrox #koşu #trail`);
+const caption = hats(`Haftanın özeti: ${N} haber\n\n${final.map((i) => `• ${i.headline}`).join("\n")}\n\nHaberlerin ayrıntısı profilde.\n\nGörüntüler: ${[...credits].join(", ")}\n\n#hibritportal #haftanınözeti #crossfit #hyrox #koşu #trail`);
 if (DRY) { log("DRY: yükleme ve onay yok.\n" + caption); process.exit(0); }
 const [url] = await uploadFiles([out], `reels/${today}`);
 const code = `r${crypto.randomBytes(4).toString("hex")}`;

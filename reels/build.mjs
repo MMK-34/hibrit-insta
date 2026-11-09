@@ -212,4 +212,6 @@ tl.seek(0);
 </html>
 `;
 fs.writeFileSync(path.join(dir, "index.html"), out);
+// Sahne zamanları (son kalite kontrolü her haber sahnesinden kare alır)
+fs.writeFileSync(path.join(dir, "scenes.json"), JSON.stringify(segs.map((s) => ({ i: s.i, start: r2(s.start), dur: r2(s.dur) }))));
 console.log("index.html yazıldı; süre", TOTAL, "s; sahne", segs.length);

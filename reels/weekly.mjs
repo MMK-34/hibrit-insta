@@ -166,8 +166,10 @@ for (const [k, it] of plan.entries()) {
         const v = h.videos.large?.url ? h.videos.large : h.videos.medium;
         const raw = path.join(W, `px${h.id}.mp4`);
         fs.writeFileSync(raw, Buffer.from(await (await fetch(v.url)).arrayBuffer()));
-        const shot = await screenPhotos([{ id: "s", buf: frame(raw, Math.min(3, h.duration / 2), path.join(W, "px.jpg")) }], topic, "stock");
-        if (shot.length) { vertical(raw, 0.5, Math.min(need + 1, h.duration - 0.5), vid); got = "video"; credits.add("Pixabay"); break; }
+        // videonun başı, ortası ve sonu ayrı ayrı denetlenir: üçü de gerçek çekim ve konuyla ilgili olmalı (animasyon/gökyüzü kareleri elenir)
+        const fr = [0.15, 0.5, 0.85].map((x, i) => ({ id: `s${i}`, buf: frame(raw, Math.max(0.3, h.duration * x), path.join(W, `px${i}.jpg`)) }));
+        const shot = await screenPhotos(fr, `${topic}. Gerçek kamera çekimi olmalı; animasyon, 3D, illüstrasyon, grafik ok=false. Karede sporcular net görünmeli; karenin çoğu gökyüzü, yol ya da boş alan ise ok=false.`, "stock");
+        if (shot.length === fr.length) { vertical(raw, 0.5, Math.min(need + 1, h.duration - 0.5), vid); got = "video"; credits.add("Pixabay"); break; }
       }
     }
   }

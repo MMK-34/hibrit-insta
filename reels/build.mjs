@@ -17,7 +17,7 @@ const up = (s) => String(s).toLocaleUpperCase("tr");
 const r2 = (x) => Math.round(x * 100) / 100;
 const n = B.items.length;
 
-const PRE = 0.45, HOLD = 1.2, X = 0.35; // ses öncesi boşluk, ses sonrası bekleme, geçiş
+const PRE = 0.25, HOLD = 0.55, X = 0.2; // ses öncesi boşluk, ses sonrası bekleme, geçiş
 const segs = [];
 let t = 0;
 for (let i = 0; i <= n + 1; i++) {
@@ -95,8 +95,8 @@ let html = "", js = "", sfx = "";
 let rootVideos = "";
 function mediaHtml(it, i, st, du) {
   if (!it.clips?.length) return `<img src="assets/${esc(it.photo)}" />`;
-  let at = r2(st + 0.18), out = "";
-  du = r2(du - 0.18);
+  let at = r2(st + 0.1), out = "";
+  du = r2(du - 0.1);
   it.clips.forEach((c, k) => {
     const last = k === it.clips.length - 1;
     const d = last ? r2(st + du - at) : r2(Math.min(c.dur ?? 3, st + du - at));
@@ -152,10 +152,10 @@ for (const s of segs) {
     const z = it.clips?.length ? 1.05 : 1.12;
     if (!vid) js += `tl.fromTo("#m${s.i}", { scale: 1.0, x: ${s.i % 2 ? -20 : 20}, force3D: true }, { scale: ${z}, x: ${s.i % 2 ? 20 : -20}, force3D: true, duration: ${du}, ease: "none" }, ${st});\n`;
     js += `tl.fromTo("#pg${s.i}", { scaleX: 0 }, { scaleX: 1, duration: ${r2(s.dur)}, ease: "none" }, ${st});\n`;
-    js += `tl.fromTo("#k${s.i}", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, ${r2(st + 0.3)});\n`;
-    words.forEach((_, k) => { js += `tl.fromTo("#h${s.i}_${k}", { opacity: 0, y: 70, scale: 1.15 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "back.out(1.8)" }, ${r2(st + 0.42 + k * 0.09)});\n`; });
+    js += `tl.fromTo("#k${s.i}", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.22, ease: "power3.out" }, ${r2(st + 0.15)});\n`;
+    words.forEach((_, k) => { js += `tl.fromTo("#h${s.i}_${k}", { opacity: 0, y: 70, scale: 1.15 }, { opacity: 1, y: 0, scale: 1, duration: 0.26, ease: "back.out(1.8)" }, ${r2(st + 0.22 + k * 0.06)});\n`; });
     if (it.stat) {
-      const sAt = r2(st + 0.75);
+      const sAt = r2(st + 0.5);
       js += `tl.fromTo("#sn${s.i}", { opacity: 0, scale: 0.6, transformOrigin: "left bottom" }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, ${sAt});\n`;
       if (it.statLabel) js += `tl.fromTo("#sl${s.i}", { opacity: 0 }, { opacity: 1, duration: 0.3 }, ${r2(sAt + 0.3)});\n`;
       const plain = String(it.stat).replace(/\./g, "");
@@ -165,9 +165,9 @@ for (const s of segs) {
   }
   if (s.i >= 1) {
     // geçiş: önceki sahnenin üstünden kırmızı silme, yeni sahne silmenin arkasında belirir
-    html += `<div id="w${s.i}" class="clip wipe" data-start="${r2(st - 0.05)}" data-duration="0.5" data-track-index="2" style="z-index:40"></div>\n`;
-    js += `tl.fromTo("#w${s.i}", { x: -1080 }, { x: 1080, duration: 0.5, ease: "power2.inOut" }, ${r2(st - 0.05)});\n`;
-    js += `tl.fromTo("#s${s.i}", { opacity: 0 }, { opacity: 1, duration: 0.01 }, ${r2(st + 0.18)});\n`;
+    html += `<div id="w${s.i}" class="clip wipe" data-start="${r2(st - 0.05)}" data-duration="0.32" data-track-index="2" style="z-index:40"></div>\n`;
+    js += `tl.fromTo("#w${s.i}", { x: -1080 }, { x: 1080, duration: 0.32, ease: "power3.inOut" }, ${r2(st - 0.05)});\n`;
+    js += `tl.fromTo("#s${s.i}", { opacity: 0 }, { opacity: 1, duration: 0.01 }, ${r2(st + 0.1)});\n`;
   }
   html += `<audio id="v${s.i}" src="assets/v${s.i}.mp3" data-start="${r2(s.voiceAt)}" data-duration="${r2(s.voiceLen)}" data-track-index="5" data-volume="1"></audio>\n`;
 }

@@ -532,22 +532,8 @@
       "headline": "HYROX Dublin, 11-15 Kasım 2026'da Royal Dublin Society'de",
       "eventName": "HYROX Dublin",
       "at": "2026-11-09T16:45:34.469Z",
-      "audit": {
-        "slides": [
-          {
-            "type": "cover",
-            "kicker": "HYROX DUBLIN",
-            "title": "HYROX Dublin, 11-15 Kasım 2026'da Royal Dublin Society'de",
-            "subtitle": "Yarış, Ballsbridge'deki RDS'te yapılacak. Biletler HYROX'un resmî etkinlik sayfasında satışta."
-          }
-        ],
-        "caption": "HYROX Dublin, 11-15 Kasım 2026'da Royal Dublin Society'de\n\nHYROX, İrlanda'nın başkentindeki yarışı beş günlük bir programla düzenleyecek.\n\nYarış, Dublin'in Ballsbridge semtindeki Royal Dublin Society'de (RDS) yapılacak. Sporcu ve seyirci biletleri HYROX'un resmî sitesindeki etkinlik sayfasından satılıyor.\n\nOrganizatörün açıklamasına göre bireysel start saatleri yarıştan yaklaşık 3 gün önce yayımlanacak ve start saati değişikliğine izin verilmiyor. Flex Add-On satın alan sporcular, yarıştan 1 gün öncesine kadar iade ya da bilet değişikliği talep edebiliyor.\n\nHYROX Dublin'de bireysel mi yoksa çift olarak mı yarışmayı düşünürsün?\n\nBirlikte yarışmak istediğin arkadaşına gönder.\n\nYarışın Instagram hesabı: @hyroxworld\n\nKaynak: HYROX Dublin resmî sitesi\n\n#hyroxdublin #hyrox #hyroxturkiye #fonksiyonelantrenman #hibrityarış #dublin #hibritportal",
-        "srcUrls": [
-          "https://hyrox.com/find-my-race/"
-        ],
-        "eventName": "HYROX Dublin"
-      },
-      "story": "18016097528976519"
+      "story": "18016097528976519",
+      "audited": "dogru"
     },
     {
       "day": "2026-11-09",
@@ -565,22 +551,8 @@
       "headline": "Siria Meha, German Throwdown 2026'da 7 etabın hepsini kazandı",
       "eventName": "German Throwdown 2026",
       "at": "2026-11-09T16:47:59.361Z",
-      "audit": {
-        "slides": [
-          {
-            "type": "cover",
-            "kicker": "Yarış raporu",
-            "title": "Siria Meha, German Throwdown 2026'da 7 etabın hepsini kazandı",
-            "subtitle": "Erkeklerde Jan Finkenberg birinci oldu. Yarışma 7-8 Kasım 2026'da Berlin Tempelhof Havalimanı'nda yapıldı."
-          }
-        ],
-        "caption": "Siria Meha, German Throwdown 2026'da 7 etabın hepsini kazandı\n\nGerman Throwdown 2026, 7-8 Kasım 2026'da Berlin'deki Tempelhof Havalimanı'nda düzenlendi. Kadınlarda Siria Meha 7 etabın tamamında birinci oldu. Julia Jakobsen ikinci, Melanie Vettori üçüncü sırada yer aldı.\n\nErkeklerde Jan Finkenberg birinci oldu. Thomas Strøier ikinci, Miguel Fontes üçüncü sırayı aldı.\n\nGelecek sezon German Throwdown'u takviminize almayı düşünüyor musunuz?\nBu yarışta tanıdığınız biri var mı? Ona gönderin.\n\nKaynak: The Barbell Spin\nGörsel: germanthrowdown.de\n\n#germanthrowdown #crossfit #fonksiyonelantrenman #crossfitcompetition #berlin #hibritportal",
-        "srcUrls": [
-          "https://thebarbellspin.com/competition/siria-meha-jan-finkenberg-win-2026-german-throwdown/"
-        ],
-        "eventName": "German Throwdown 2026"
-      },
-      "story": "18105625646570812"
+      "story": "18105625646570812",
+      "audited": "dogru"
     }
   ],
   "daily": {
@@ -609,7 +581,33 @@
       "media": "18017207690993316"
     }
   },
-  "lastRunAt": "2026-11-09T16:41:49.325Z",
+  "lastRunAt": "2026-11-09T17:41:44.327Z",
   "collabInvites": {},
-  "countdowns": {}
+  "countdowns": {},
+  "specials": {
+    "10-kasim:2026": {
+      "code": "s9257cb94",
+      "at": "2026-11-09T17:42:33.300Z"
+    }
+  },
+  "pendingApprovals": {
+    "s9257cb94": {
+      "caption": "Cumhuriyetimizin kurucusu Gazi Mustafa Kemal Atatürk'ü ebediyete intikalinin 88. yılında saygı, sevgi ve özlemle anıyoruz.\n\n#10Kasım #Atatürk #AtatürküAnıyoruz",
+      "urls": [
+        "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-09/ozel-10-kasim/01.jpg"
+      ],
+      "ids": [
+        "ozel:10-kasim:2026"
+      ],
+      "kind": "ozel",
+      "title": "Gazi Mustafa Kemal Atatürk'ü saygı ve özlemle anıyoruz",
+      "headline": "Gazi Mustafa Kemal Atatürk'ü saygı ve özlemle anıyoruz",
+      "photos": [],
+      "srcUrls": [],
+      "at": "2026-11-09T17:42:32.163Z",
+      "publishAt": "2026-11-10T09:05",
+      "expiresDay": "2026-11-10",
+      "label": "ÖZEL GÜN POSTU"
+    }
+  }
 }

@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-09T15:41:50.833Z",
+  "updated": "2026-11-09T16:41:48.830Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 89,
-      "fetchedAt": "2026-11-09T15:40:54.112Z"
+      "count": 90,
+      "fetchedAt": "2026-11-09T16:40:56.621Z"
     },
     "hyrox": {
       "ok": true,
       "count": 16,
-      "fetchedAt": "2026-11-09T15:41:50.826Z"
+      "fetchedAt": "2026-11-09T16:41:48.820Z"
     }
   },
   "items": [
@@ -988,7 +988,7 @@
       "name": "APHOBOS x ATHX Simulation",
       "eventSlug": null,
       "type": "crossfit",
-      "city": "Bromley",
+      "city": "Bromley BR2 9JH",
       "country": "Birleşik Krallık",
       "startDate": "2026-12-06",
       "endDate": "2026-12-06",
@@ -998,7 +998,9 @@
       "registration": {
         "to": "2026-12-04",
         "fee": "50.00 GBP"
-      }
+      },
+      "instagram": "https://instagram.com/AphobosCrossfit",
+      "website": "www.apoboscrossfit.com"
     },
     {
       "id": "hyrox-melbourne-2026-12",
@@ -3002,6 +3004,28 @@
       "url": "https://hyrox.com/",
       "source": "https://endurance.biz/2026/industry-news/targeting-2-million-athletes-hyrox-expands-global-calendar-for-2026-27-season/",
       "note": "HYROX'un 20 Temmuz 2026 duyurusu (endurance.biz aktarımı)."
+    },
+    {
+      "id": "circle21-217fee13-e832-4f2f-a1c2-31e499fe8d61",
+      "name": "El Legado del Bisonte 2027",
+      "eventSlug": null,
+      "type": "crossfit",
+      "city": "Cantabria",
+      "country": "İspanya",
+      "startDate": "2027-06-11",
+      "endDate": "2027-06-13",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=217fee13-e832-4f2f-a1c2-31e499fe8d61",
+      "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/463340/conversions/WhatsApp-Image-2026-11-09-at-14.59.36-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/463355/conversions/wodbusterSinCrossFit-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
+      "registration": {
+        "to": "2027-04-30",
+        "fee": "439.00 EUR"
+      },
+      "instagram": "https://www.instagram.com/legadodelbisonte",
+      "website": "legadobisonte.com"
     },
     {
       "id": "circle21-e9e8a614-c2b5-4c30-bb38-32ff7cabda43",

@@ -58,5 +58,25 @@
     "createdDay": "2026-11-09",
     "due": "2026-11-18",
     "status": "bekliyor"
+  },
+  {
+    "key": "hyroxdublin",
+    "type": "gecmis",
+    "eventName": "HYROX Dublin",
+    "officialSite": "https://hyrox.com/event/hyrox-dublin/",
+    "category": "hyrox",
+    "createdDay": "2026-11-09",
+    "due": "2026-11-13",
+    "status": "bekliyor"
+  },
+  {
+    "key": "hyroxdublin",
+    "type": "wodlar",
+    "eventName": "HYROX Dublin",
+    "officialSite": "https://hyrox.com/event/hyrox-dublin/",
+    "category": "hyrox",
+    "createdDay": "2026-11-09",
+    "due": "2026-11-18",
+    "status": "bekliyor"
   }
 ]

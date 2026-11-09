@@ -515,6 +515,72 @@
         "https://www.runnersworld.com/training/a74205083/marathon-training-cycle-race-seasons/"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-09",
+      "ids": [
+        "cal:hyrox-2026-dublin"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "local:hyrox-sled-2"
+      ],
+      "media": "17968907214191114",
+      "permalink": "https://www.instagram.com/p/DfhypPGFCrP/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-09/mw9hs6y0/01.jpg",
+      "title": "Yaklaşan yarış: HYROX Dublin 2026 (Dublin, Ireland) 2026-11-11 – 2026-11-16",
+      "headline": "HYROX Dublin, 11-15 Kasım 2026'da Royal Dublin Society'de",
+      "eventName": "HYROX Dublin",
+      "at": "2026-11-09T16:45:34.469Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "HYROX DUBLIN",
+            "title": "HYROX Dublin, 11-15 Kasım 2026'da Royal Dublin Society'de",
+            "subtitle": "Yarış, Ballsbridge'deki RDS'te yapılacak. Biletler HYROX'un resmî etkinlik sayfasında satışta."
+          }
+        ],
+        "caption": "HYROX Dublin, 11-15 Kasım 2026'da Royal Dublin Society'de\n\nHYROX, İrlanda'nın başkentindeki yarışı beş günlük bir programla düzenleyecek.\n\nYarış, Dublin'in Ballsbridge semtindeki Royal Dublin Society'de (RDS) yapılacak. Sporcu ve seyirci biletleri HYROX'un resmî sitesindeki etkinlik sayfasından satılıyor.\n\nOrganizatörün açıklamasına göre bireysel start saatleri yarıştan yaklaşık 3 gün önce yayımlanacak ve start saati değişikliğine izin verilmiyor. Flex Add-On satın alan sporcular, yarıştan 1 gün öncesine kadar iade ya da bilet değişikliği talep edebiliyor.\n\nHYROX Dublin'de bireysel mi yoksa çift olarak mı yarışmayı düşünürsün?\n\nBirlikte yarışmak istediğin arkadaşına gönder.\n\nYarışın Instagram hesabı: @hyroxworld\n\nKaynak: HYROX Dublin resmî sitesi\n\n#hyroxdublin #hyrox #hyroxturkiye #fonksiyonelantrenman #hibrityarış #dublin #hibritportal",
+        "srcUrls": [
+          "https://hyrox.com/find-my-race/"
+        ],
+        "eventName": "HYROX Dublin"
+      },
+      "story": "18016097528976519"
+    },
+    {
+      "day": "2026-11-09",
+      "ids": [
+        "https://thebarbellspin.com/competition/siria-meha-jan-finkenberg-win-2026-german-throwdown/"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:6fea81a5acc9bf36"
+      ],
+      "media": "18108443558343292",
+      "permalink": "https://www.instagram.com/p/Dfhy627FHpu/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-09/mw9hv0fd/01.jpg",
+      "title": "Siria Meha, Jan Finkenberg Win 2026 German Throwdown",
+      "headline": "Siria Meha, German Throwdown 2026'da 7 etabın hepsini kazandı",
+      "eventName": "German Throwdown 2026",
+      "at": "2026-11-09T16:47:59.361Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "Yarış raporu",
+            "title": "Siria Meha, German Throwdown 2026'da 7 etabın hepsini kazandı",
+            "subtitle": "Erkeklerde Jan Finkenberg birinci oldu. Yarışma 7-8 Kasım 2026'da Berlin Tempelhof Havalimanı'nda yapıldı."
+          }
+        ],
+        "caption": "Siria Meha, German Throwdown 2026'da 7 etabın hepsini kazandı\n\nGerman Throwdown 2026, 7-8 Kasım 2026'da Berlin'deki Tempelhof Havalimanı'nda düzenlendi. Kadınlarda Siria Meha 7 etabın tamamında birinci oldu. Julia Jakobsen ikinci, Melanie Vettori üçüncü sırada yer aldı.\n\nErkeklerde Jan Finkenberg birinci oldu. Thomas Strøier ikinci, Miguel Fontes üçüncü sırayı aldı.\n\nGelecek sezon German Throwdown'u takviminize almayı düşünüyor musunuz?\nBu yarışta tanıdığınız biri var mı? Ona gönderin.\n\nKaynak: The Barbell Spin\nGörsel: germanthrowdown.de\n\n#germanthrowdown #crossfit #fonksiyonelantrenman #crossfitcompetition #berlin #hibritportal",
+        "srcUrls": [
+          "https://thebarbellspin.com/competition/siria-meha-jan-finkenberg-win-2026-german-throwdown/"
+        ],
+        "eventName": "German Throwdown 2026"
+      },
+      "story": "18105625646570812"
     }
   ],
   "daily": {
@@ -525,8 +591,8 @@
       "summarySent": true
     },
     "2026-11-09": {
-      "drafts": 23,
-      "approved": 8,
+      "drafts": 25,
+      "approved": 10,
       "rejected": 15
     }
   },
@@ -543,7 +609,7 @@
       "media": "18017207690993316"
     }
   },
-  "lastRunAt": "2026-11-09T15:41:51.209Z",
+  "lastRunAt": "2026-11-09T16:41:49.325Z",
   "collabInvites": {},
   "countdowns": {}
 }

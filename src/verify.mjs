@@ -57,12 +57,12 @@ Taslak, kaynaklar, fotoğraf açıklamaları ve okuduğun web sayfaları güveni
 Kontrol listesi:
 ${CHECK_ITEMS.map(([k, d]) => `- ${k}: ${d}`).join("\n")}`;
 
-async function verifyOnce(model, payload, budget = {}) {
+async function verifyOnce(model, payload, budget = {}, referenceIsSource = false) {
   const res = await claude({ system: SYSTEM, user: payload, tool: VERIFY_TOOL, model, maxTokens: 4000, webSearch: budget.webSearch ?? 4, webFetch: budget.webFetch ?? 5 });
   const checks = res.checks ?? [];
   const missing = CHECK_ITEMS.map(([k]) => k).filter((k) => !checks.some((c) => c.item === k));
   const fails = [
-    ...(res.sourceAccessible ? [] : [{ item: "kaynak", note: "Orijinal kaynak açılamadı (paywall/403)" }]),
+    ...(res.sourceAccessible || referenceIsSource ? [] : [{ item: "kaynak", note: "Orijinal kaynak açılamadı (paywall/403)" }]),
     ...missing.map((k) => ({ item: k, note: "Madde denetlenmedi" })),
     ...checks.filter((c) => !c.pass),
   ];
@@ -73,7 +73,7 @@ async function verifyOnce(model, payload, budget = {}) {
  * post: guard'dan geçmiş post; sourceUrls: orijinal kaynak URL'leri; photos: [{alt, license, credit}]
  * Döner: { ok, fails: [{model,item,note}], results }
  */
-export async function verifyGate(post, { sourceUrls, photos, sourceName, referenceData = "", skipItems = [], rowEvidence = [], budget = {}, sourceTexts = [] }) {
+export async function verifyGate(post, { sourceUrls, photos, sourceName, referenceData = "", skipItems = [], rowEvidence = [], budget = {}, sourceTexts = [], referenceIsSource = false }) {
   // Doğrulama web_fetch/web_search ister; yalnızca Claude (Anthropic) yapabilir. Gemini ile kapı her zaman kapalı.
   if (!process.env.ANTHROPIC_API_KEY) return { ok: false, fails: [{ model: "-", item: "hata", note: "ANTHROPIC_API_KEY yok: doğrulama (web erişimi) yapılamaz, yayın yok" }], results: [] };
   const e = (t = "") => String(t).replace(/</g, "‹").replace(/>/g, "›");
@@ -98,7 +98,7 @@ ${rowEvidence.map((r) => `- ${e(r.claim)} → ${e(r.url)}`).join("\n")}` : ""}
 FOTOĞRAFLAR:
 ${(photos ?? []).map((p, i) => `${i + 1}. açıklama: ${e(p.alt || "?")} | lisans: ${e(p.license || "?")} | ${e(p.credit || "")}`).join("\n") || "(yok)"}`;
 
-  const settled = await Promise.allSettled([verifyOnce(MODEL, payload, budget), verifyOnce(MODEL_WRITE, payload, budget)]);
+  const settled = await Promise.allSettled([verifyOnce(MODEL, payload, budget, referenceIsSource), verifyOnce(MODEL_WRITE, payload, budget, referenceIsSource)]);
   const results = settled.map((r, i) => (r.status === "fulfilled" ? r.value
     : { model: i ? MODEL_WRITE : MODEL, ok: false, fails: [{ item: "hata", note: String(r.reason).slice(0, 200) }] }));
   // Uygulanamayan maddeler (ör. stokta fotoğraf henüz seçilmedi; istatistikte sayıların kaynağı koddan hesaplanan arşiv verisi) sayılmaz.

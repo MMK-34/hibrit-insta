@@ -340,8 +340,14 @@ async function prepareVerified(pick, srcItems, sourceName) {
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
     // Açılamayan kaynakların (Instagram paylaşımı) metni doğrulayıcıya güvenilmez kaynak metni olarak verilir
     // Doğrulanmamış hesabın metni birincil kanıt sayılmaz: iddialar bağımsız kaynakla (circle21 kaydı ya da web) teyit edilmeli
-    const sourceTexts = srcItems.filter((s) => s.id.startsWith("ig:")).map((s) => ({ label: s.curated ? s.source : `${s.source}: BİRİNCİL KANIT DEĞİL, her iddiayı bağımsız bir kaynakla teyit et; teyit edilemeyen iddia fail`, url: s.url, text: s.text }));
-    const gate = await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName, referenceData, sourceTexts });
+    const sourceTexts = [
+      ...srcItems.filter((s) => s.id.startsWith("ig:")).map((s) => ({ label: s.curated ? s.source : `${s.source}: BİRİNCİL KANIT DEĞİL, her iddiayı bağımsız bir kaynakla teyit et; teyit edilemeyen iddia fail`, url: s.url, text: s.text })),
+      // circle21 kayıt sayfası tarayıcıda çizildiği için denetçi açamıyor: organizatörün kendi girdiği kayıt metni birincil kaynak olarak verilir
+      ...srcItems.filter((s) => s.id.startsWith("c21")).map((s) => ({ label: "circle21 resmî kayıt sayfası (organizatörün kendi girdiği kayıt ve açıklama; birincil kaynak)", url: s.url, text: s.text })),
+    ];
+    // Kaynak yalnızca circle21 ise "sayfa açılamadı" kuralı uygulanmaz (veri resmî API'den geldi)
+    const referenceIsSource = !!ownC21 && srcItems.every((s) => s.id.startsWith("c21"));
+    const gate = await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName, referenceData, sourceTexts, referenceIsSource });
     if (gate.ok) { log(`Doğrulama geçti (deneme ${attempt}).`); await push(`İki doğrulayıcı da onayladı, görseller hazırlanıyor: ${String(g.post.slides[0]?.title ?? "").slice(0, 120)}`, { title: "Doğrulandı" }); bump("approved"); return { post: g.post, photos, sourceName: srcName }; }
     lastFails = gate.fails;
     feedback = failText(gate.fails);

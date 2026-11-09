@@ -17,6 +17,7 @@ import sharp from "sharp";
 import { screenPhotos, personPhotos, eventPhotos } from "../src/event-photos.mjs";
 import { uploadFiles } from "../src/upload-github.mjs";
 import { notify, push } from "../src/notify.mjs";
+import { IG_WATCH } from "../src/ig-watch.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 process.chdir(ROOT);
@@ -138,7 +139,10 @@ for (const [k, it] of plan.entries()) {
   const vid = path.join(A, `c${k}.mp4`), img = path.join(A, `p${k}.jpg`);
   let got = "";
   // a) yarışın / sporcunun kendi Instagram videosu
-  for (const h of [p.ig, p.athleteIg].filter(Boolean)) {
+  // Kayıtlı hesap yoksa izlenen organizatör listesinden etkinlik adıyla eşleşen hesap (ör. "Varda Ultra Trail" -> vardaultratrail)
+  const evWords = words(p.eventName ?? p.headline);
+  const watched = IG_WATCH.filter((h) => evWords.some((w) => w.length >= 5 && h.toLowerCase().includes(w))).slice(0, 2);
+  for (const h of [...new Set([p.ig, p.athleteIg, ...watched].filter(Boolean))]) {
     if (got) break;
     for (const m of (await igVideos(h, p.eventName)).slice(0, 3)) {
       const raw = path.join(W, `ig${k}.mp4`);

@@ -53,7 +53,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 #root { position: relative; width: 1080px; height: 1920px; background: var(--ink); font-family: "Body", sans-serif; color: var(--paper); overflow: hidden; }
 .scene { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--ink); }
 .ph { position: absolute; left: 0; top: 140px; width: 1080px; height: 1200px; overflow: hidden; }
-.ph img { position: absolute; left: -80px; top: -60px; width: 1240px; height: 1320px; object-fit: cover; }
+.ph img { position: absolute; left: -80px; top: -60px; width: 1240px; height: 1320px; object-fit: cover; will-change: transform; backface-visibility: hidden; }
 .fade { position: absolute; left: 0; top: 140px; width: 1080px; height: 1200px;
   background: linear-gradient(180deg, rgba(14,15,18,0.85) 0%, rgba(14,15,18,0) 18%, rgba(14,15,18,0) 52%, rgba(14,15,18,0.7) 78%, #0e0f12 100%); }
 .bar { position: absolute; left: 90px; top: 186px; width: 900px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
@@ -71,7 +71,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--
 .intro .sub { position: absolute; left: 90px; top: 1340px; width: 900px; font-weight: 700; font-size: 34px; letter-spacing: 5px; color: var(--text2); }
 .strips { position: absolute; left: 0; top: 200px; width: 1080px; height: 760px; display: flex; gap: 8px; }
 .strips div { flex: 1; overflow: hidden; position: relative; }
-.strips img { position: absolute; left: -200px; top: 0; width: 620px; height: 760px; object-fit: cover; }
+.strips img { position: absolute; left: -200px; top: 0; width: 620px; height: 760px; object-fit: cover; will-change: transform; backface-visibility: hidden; }
 .outro .big { position: absolute; left: 90px; top: 760px; width: 900px; font-family: "Head", sans-serif; font-weight: 800; font-size: 120px; line-height: 0.95; }
 .outro .handle { position: absolute; left: 90px; top: 1060px; font-weight: 700; font-size: 44px; color: var(--red); }
 .outro .logo { position: absolute; left: 90px; top: 560px; display: flex; align-items: center; gap: 20px; }
@@ -100,7 +100,7 @@ for (const s of segs) {
 </div>\n`;
     js += `tl.fromTo("#introTitle", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);\n`;
     js += `tl.fromTo("#introSub", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.5);\n`;
-    B.items.slice(0, 4).forEach((_, k) => { js += `tl.fromTo("#st${k}", { scale: 1.15, y: ${k % 2 ? 40 : -40} }, { scale: 1.02, y: 0, duration: ${r2(s.dur + 0.3)}, ease: "none" }, 0);\n`; });
+    B.items.slice(0, 4).forEach((_, k) => { js += `tl.fromTo("#st${k}", { scale: 1.18, y: ${k % 2 ? 60 : -60}, force3D: true }, { scale: 1.0, y: 0, force3D: true, duration: ${r2(s.dur + 0.3)}, ease: "none" }, 0);\n`; });
   } else if (s.i === n + 1) {
     html += `<div id="s${s.i}" class="clip scene outro" data-start="${st}" data-duration="${du}" data-track-index="1" style="z-index:${s.i + 1}">
   <div class="logo" id="oLogo"><img class="mk" src="assets/logo-mark.svg" /><img class="wm" src="assets/wordmark.svg" /></div>
@@ -119,7 +119,7 @@ for (const s of segs) {
   <div class="txt"><div class="redline" id="rl${s.i}"></div><div class="kicker">${esc(up(it.kicker))}</div><div class="head" id="h${s.i}">${esc(up(it.headline))}</div></div>
 </div>\n`;
     js += `tl.fromTo("#s${s.i}", { x: 1080 }, { x: 0, duration: 0.3, ease: "power3.out" }, ${st});\n`;
-    js += `tl.fromTo("#im${s.i}", { scale: 1.0 }, { scale: 1.09, duration: ${du}, ease: "none" }, ${st});\n`;
+    js += `tl.fromTo("#im${s.i}", { scale: 1.0, x: ${s.i % 2 ? -30 : 30}, force3D: true }, { scale: 1.16, x: ${s.i % 2 ? 30 : -30}, force3D: true, duration: ${du}, ease: "none" }, ${st});\n`;
     js += `tl.fromTo("#rl${s.i}", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.35, ease: "power2.out" }, ${r2(st + 0.25)});\n`;
     js += `tl.fromTo("#h${s.i}", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, ${r2(st + 0.3)});\n`;
   }

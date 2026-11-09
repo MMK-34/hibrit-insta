@@ -657,5 +657,18 @@
         "note": "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar"
       }
     ]
+  },
+  {
+    "at": "2026-11-09T06:48:02.558Z",
+    "title": "kayit-acik:2026-W46",
+    "url": "seri",
+    "kind": "seri",
+    "fails": [
+      {
+        "model": "-",
+        "item": "seri",
+        "note": "- [claude-sonnet-5-5] tarih: Çatalkaya Ultra'nın parkur başlangıçları 21.11 (74K, 45K, 29K) ve 22.11 (14K, 5K). Tabloda \"20-22 Kas\" yazıyor, doğrusu 21-22 Kasım. Okuduğum sayfada 20 Kasım'a ait bir program yok. Diğer tarihler kaynaklarla uyumlu: Gazi 22 Kas, KEŞİFRUN 22 Kas, Göbeklitepe 6 Ara, Mersin 13 Ara, Quattro 13 Ara, Atatürk Koşusu 27 Ara.\n- [claude-sonnet-5-5] baslik: Başlık ve kicker tüm yarışlar için kaydın açık olduğunu söylüyor. Çatalkaya Ultra sayfasında son kayıt tarihi 4 Kasım 202"
+      }
+    ]
   }
 ]

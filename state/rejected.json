@@ -758,5 +758,58 @@
         "note": "42K, 10K, halk koşusu, 18 yaş ve göğüs numarası/kit dağıtımı yapılmayacağı bilgileri doğrulandı. \"Yarışı bitiren her sporcu madalya alacak\" iddiasını okuduğum hiçbir kaynakta bulamadım. Statüde yalnızca madalya ve kupa töreninden söz ediliyor. Araç sınırı: Mersin Portal haber metninin tamamını okuyamadım."
       }
     ]
+  },
+  {
+    "at": "2026-11-09T13:04:32.884Z",
+    "title": "Wonder Woman's Cup 2027 İstanbul'da, kayıtlar 27 Kasım'da açılıyor",
+    "url": "https://circle21.events/events/wonder-womans-cup-2026",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "tarih",
+        "note": "6-7 Mart 2027, 27 Kasım 2026 ve 25 Şubat 2027 sistem verisiyle uyuşuyor. Ancak captiondaki 'İlki 8 Mart 2026'da düzenlenen' ve 'ikinci yılında' ifadelerini hiçbir kaynakta doğrulayamadım. Circle21 sayfası boş döndü. Araç sınırı: ikinci arama yapılamadı. Doğrulanamayan olgusal iddia olduğu için fail."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "yer",
+        "note": "Sistem verisinde yalnızca Zeytinburnu, İstanbul var. 'Biruni Üniversitesi' mekânını hiçbir kaynakta doğrulayamadım. Arama sonuçları yalnızca üniversitenin Zeytinburnu'nda olduğunu gösteriyor, yarışla bağlantı kurmuyor. Araç sınırı: ikinci arama yapılamadı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "baslik",
+        "note": "Alt başlıktaki 'Biruni Üniversitesi'nde yapılacak' iddiası doğrulanamadı. Başlığın İstanbul ve tarih kısmı sistem verisiyle uyuşuyor."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "tarih",
+        "note": "6-7 Mart 2027 ile 27 Kasım 2026-25 Şubat 2027 kayıt tarihleri circle21 sistem verisiyle uyuşuyor. Ancak captiondaki 'İlki 8 Mart 2026'da düzenlenen' ifadesi doğrulanamadı. Haberler 2026 yarışmasının 8 Mart Kadınlar Günü kapsamında yapıldığını yazıyor ama kesin yarış tarihini ve bunun ilk yarışma olduğunu belirtmiyor. Araç sınırı: circle21 sayfası boş döndü."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "yer",
+        "note": "Sistem verisi yalnızca 'Zeytinburnu, İstanbul' diyor. Biruni Üniversitesi 2026 yarışmasının mekânıydı; 2027 yarışmasının Biruni'de yapılacağını gösteren bir kaynak yok. 2027 için mekân olarak yalnızca Zeytinburnu/İstanbul yazılmalı."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "sayilar",
+        "note": "150 USD kayıt ücreti sistem verisiyle uyuşuyor. Ancak 'ikinci yılında' ifadesi, yani yarışmanın kaçıncı kez yapıldığı, hiçbir kaynakta doğrulanamadı."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "baslik",
+        "note": "Kapak alt başlığında 'Biruni Üniversitesi'nde yapılacak' yazıyor. Bu, 2027 yarışması için doğrulanmamış bir mekân iddiası ve yanıltıcı olabilir. Alt başlıkta mekân olarak Zeytinburnu/İstanbul kullanılmalı."
+      }
+    ]
   }
 ]

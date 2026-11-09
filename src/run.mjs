@@ -65,7 +65,11 @@ try {
 const deletedTimes = {};
 for (const p of state.posts) if (p.deleted) for (const id of p.ids ?? []) deletedTimes[id] = (deletedTimes[id] ?? 0) + 1;
 const postedIds = new Set(state.posts.filter((p) => !p.deleted || (p.ids ?? []).some((id) => deletedTimes[id] >= 2)).flatMap((p) => p.ids ?? []));
-const usedPhotos = new Set(state.posts.flatMap((p) => p.photos ?? []).filter((id) => !id.startsWith("local:")));
+// Kullanıcı kuralı: son 10 postta kullanılan HİÇBİR fotoğraf (kütüphane ve etkinlik fotoğrafları dahil) tekrar kullanılmaz.
+// Stok sitelerinden (Pixabay/Openverse) gelen fotoğraflar ise hiç tekrar kullanılmaz.
+const RECENT_PHOTO_POSTS = 10;
+const recentPhotos = new Set(state.posts.filter((p) => p.media || p.deleted).slice(-RECENT_PHOTO_POSTS).flatMap((p) => p.photos ?? []));
+const usedPhotos = new Set([...state.posts.flatMap((p) => p.photos ?? []).filter((id) => !id.startsWith("local:") && !id.startsWith("event:")), ...recentPhotos]);
 const todayPosts = state.posts.filter((p) => p.day === today && p.media);
 const todayCount = todayPosts.length;
 // Bilgi + araştırma postları günde en fazla 2 (haberlerin arasına serpiştirilir); çalışma içinde paylaşıldıkça artar
@@ -427,7 +431,7 @@ async function repostOne(spec) {
 
 async function pickPhotos({ post, pages, topic, want, category, images = [] }) {
   // Etkinlik fotoğrafları önceki postlarda kullanılmış olabilir (aynı etkinliğin takip/hikaye postu): tekrar kullanılabilir
-  const ev = await eventPhotos({ pages, instagram: post.officialInstagram, topic, n: want, eventName: post.eventName, images })
+  const ev = await eventPhotos({ pages, instagram: post.officialInstagram, topic, n: want, eventName: post.eventName, images, usedIds: usedPhotos })
     .catch((e) => { if (isCreditError(e)) throw e; log("Etkinlik fotoğrafı hatası:", String(e?.message ?? e).slice(0, 160)); return []; });
   if (ev.length) log(`Etkinlik fotoğrafı: ${ev.length} (${[...new Set(ev.map((p) => p.source))].join(", ")})`);
   // Belirli bir etkinlikten bahseden postta o etkinliğin fotoğrafı varsa YALNIZCA onlar kullanılır (slaytlarda sırayla tekrar eder).
@@ -481,7 +485,7 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     // Yayın sonrası denetim için (denetimden sonra silinir)
     audit: { slides: post.slides, caption, srcUrls, eventName: post.eventName || "" } });
   for (const id of ids ?? []) postedIds.add(id);
-  for (const p of photos) if (!String(p.id).startsWith("local:")) usedPhotos.add(p.id);
+  for (const p of photos) usedPhotos.add(p.id); // aynı çalışmadaki sonraki postlarda da tekrar yok
   saveState(); // paylaşım hemen kalıcı: sonraki adım çökse de aynı haber tekrar paylaşılmaz
   // Çağıranın tamamlanma işareti (seri done / takip "paylaşıldı") hikâye adımından ÖNCE yazılır: zaman aşımında tekrar yayın olmasın
   if (onPublished) { try { onPublished(res); } catch (e) { log("Tamamlanma işareti yazılamadı:", e.message); } }

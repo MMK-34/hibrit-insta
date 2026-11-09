@@ -233,7 +233,7 @@ export async function findImages(queries, n, category, usedIds = new Set()) {
   const usedLocal = new Set(out.map((o) => o.id));
   for (let i = 0; out.length < n && i < locals.length; i++) {
     const f = path.join(LOCAL, `${locals[i]}.webp`);
-    if (fs.existsSync(f) && !usedLocal.has(`local:${locals[i]}`)) out.push({ id: `local:${locals[i]}`, buf: fs.readFileSync(f), credit: "Foto: Pexels", alt: LOCAL_ALT[locals[i]] ?? locals[i], license: "Pexels lisansı" });
+    if (fs.existsSync(f) && !usedLocal.has(`local:${locals[i]}`) && !usedIds.has(`local:${locals[i]}`)) out.push({ id: `local:${locals[i]}`, buf: fs.readFileSync(f), credit: "Foto: Pexels", alt: LOCAL_ALT[locals[i]] ?? locals[i], license: "Pexels lisansı" });
   }
   // Yerelde uygun foto yoksa Pixabay (etiket alaka süzgeçli)
   for (const q of queries) { if (out.length < (locals.length ? Math.min(n, 1) : n)) await take(await pixabay(q, n)); }

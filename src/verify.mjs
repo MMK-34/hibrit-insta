@@ -9,7 +9,7 @@ import { MODEL, MODEL_WRITE } from "./config.mjs";
 export const CHECK_ITEMS = [
   ["tarih", "Tarih(ler) kaynakla birebir uyumlu (yoksa: 'uygulanamaz' notuyla pass)"],
   ["yer", "Yer / şehir / mekân doğru"],
-  ["resmi_ad", "Yarışma, organizatör ve kurum adları resmî yazımla"],
+  ["resmi_ad", "Yarışma, organizatör ve kurum adları resmî yazımla. Organizatörün kendi metnindeki yazım (kesme işareti, büyük/küçük harf farkı) ve tarihle doğrulanan edisyon yılı eklemek (ör. \"Wonder Woman’s Cup 2027\") geçerlidir; ad değiştirmek ya da başka bir etkinlik adı kullanmak geçersizdir"],
   ["sayilar", "Sayılar doğru: sporcu sayısı, süre, ağırlık, mesafe, sıralama, ücret"],
   ["sporcu", "Sporcu adı ve ülkesi doğru (kişi adı yoksa pass)"],
   ["alinti_yok", "Antrenör, uzman ya da yetkili alıntısı yok; haberin kendisi olmayan kişi adı yok"],

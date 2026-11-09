@@ -811,5 +811,23 @@
         "note": "Kapak alt başlığında 'Biruni Üniversitesi'nde yapılacak' yazıyor. Bu, 2027 yarışması için doğrulanmamış bir mekân iddiası ve yanıltıcı olabilir. Alt başlıkta mekân olarak Zeytinburnu/İstanbul kullanılmalı."
       }
     ]
+  },
+  {
+    "at": "2026-11-09T13:09:13.346Z",
+    "title": "Wonder Woman's Cup 2027 İstanbul'da, kayıtlar 27 Kasım'da açılıyor",
+    "url": "https://circle21.events/events/wonder-womans-cup-2026",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "resmi_ad",
+        "note": "Resmî kayıt adı 'Wonder Womans Cup'. Postta 'Wonder Woman's Cup 2027' kullanılıyor. Açıklama metni 'Wonder Woman's Cup' yazıyor ama eventName resmî kayıttaki adla uyuşmuyor ve '2027' eklenmiş. Resmî kayıt adı kullanılmalı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kategori",
+        "note": "Postta kategori adı geçmiyor, ancak etkinlik adı resmî kayıttaki 'Wonder Womans Cup' ile uyuşmuyor ('Wonder Woman's Cup 2027')."
+      }
+    ]
   }
 ]

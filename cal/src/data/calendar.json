@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-09T12:59:33.713Z",
+  "updated": "2026-11-09T13:07:05.454Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 88,
-      "fetchedAt": "2026-11-09T12:58:37.069Z"
+      "fetchedAt": "2026-11-09T13:06:08.773Z"
     },
     "hyrox": {
       "ok": true,
       "count": 16,
-      "fetchedAt": "2026-11-09T12:59:33.704Z"
+      "fetchedAt": "2026-11-09T13:07:05.445Z"
     }
   },
   "items": [
@@ -3133,7 +3133,8 @@
       "registration": {
         "to": "2027-08-30",
         "fee": "0.00 EUR"
-      }
+      },
+      "website": "https://www.360functional.de/"
     },
     {
       "id": "circle21-793bb42a-f209-47a5-a4b5-ef5f2e598c0f",

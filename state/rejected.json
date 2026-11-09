@@ -727,5 +727,36 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-09T12:48:57.096Z",
+    "title": "Noel Baba'nın izinden: St. Nicholas Yarı Maratonu için geri sayım",
+    "url": "https://www.cumhuriyet.com.tr/diger-sporlar/noel-baba-nin-izinden-st-nicholas-yari-maratonu-icin-geri-sayim-2554717",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "gorsel",
+        "note": "Fotoğraf 1 (Demre kaya mezarları, cumhuriyet.com.tr) konuyla ilgili. Fotoğraf 2 (göl kıyısında dağ manzarası, gazetekalem.com.tr) Demre'yi göstermiyor; gazetekalem.com.tr de verilen kaynaklar arasında değil. Konuyla ilgisi doğrulanamadı."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "gorsel",
+        "note": "1. görsel konuyla ilgili: Demre kaya mezarları önünde koşucular, kaynak Cumhuriyet. 2. görselde göl kıyısı ve dağ manzarası var. Bu, asfalt ve Akdeniz kıyısındaki Demre parkuruyla uyuşmuyor; muhtemelen başka bir yarışa ait. Ayrıca gazetekalem.com.tr verilen kaynaklar arasında yok. Görsel değiştirilmeli."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-09T12:53:49.134Z",
+    "title": "8. Uluslararası Mersin Maratonu İçin Kayıtlar Başladı! Son Başvuru 8 Aralık",
+    "url": "https://www.mersinportal.com/8-uluslararasi-mersin-maratonu-icin-kayitlar-basladi-son-basvuru-8-aralik",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "sayilar",
+        "note": "42K, 10K, halk koşusu, 18 yaş ve göğüs numarası/kit dağıtımı yapılmayacağı bilgileri doğrulandı. \"Yarışı bitiren her sporcu madalya alacak\" iddiasını okuduğum hiçbir kaynakta bulamadım. Statüde yalnızca madalya ve kupa töreninden söz ediliyor. Araç sınırı: Mersin Portal haber metninin tamamını okuyamadım."
+      }
+    ]
   }
 ]

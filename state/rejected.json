@@ -696,5 +696,36 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-09T10:47:11.248Z",
+    "title": "Demre'nin Tarihi Rotalarında St. Nicholas Yarı Maratonu Koşulacak",
+    "url": "https://ajansturkhaber.com/haber/demrenin-tarihi-rotalarinda-st-nicholas-yari-maratonu-kosulacak-427959",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak_satiri",
+        "note": "Postta 'Kaynak: Hibrit Portal derlemesi' yazıyor. Bu, verilen kaynakların yayıncısı (Ajans Türk Haber / ajansturkhaber.com) değil. Satır orijinal yayıncıyı göstermeli."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "kaynak_satiri",
+        "note": "Caption'daki satır 'Kaynak: Hibrit Portal derlemesi' diyor. Bu ad, orijinal kaynağın yayıncısı değil ve post bu yayına dayanmıyor. Bilgilerin geldiği yer Ajansturkhaber olduğu için satır 'Kaynak: Ajansturkhaber' olmalı."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-09T10:50:35.425Z",
+    "title": "PN: La Croisée des Chemins’te psikolojik tahakküm üzerine bir komedi",
+    "url": "https://www.sortiraparis.com/tr/pariste-ne-gormeli/tiyatro/articles/357728-yol-ayriminda-tahakkum-uzerine-bir-komedi",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

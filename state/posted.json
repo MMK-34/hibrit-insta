@@ -360,6 +360,22 @@
         "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPV2J1dDdYWUo1NzR3VEgzM0s2SjVacXc2RFEwVy1wZHowUGRLcjl4STNJU21YWkFoNWZFRi1XWF9jdU5lazNRejJLaF9obElwYllYaDdKQk52WENsUGUxYmhOMHRyWFpBNWxUYzNQQW54VHYzQWRrTHVqRk9mRjY3b0tNOTluWjlBSWVXei1qWnFOdUxDSEhxRG9WTGg3SjBMbXdVVURFV3BBN2s"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-09",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOUXRUZTFUb0tkWHRjb29sYmJhdEk3dkRUZkI5ZkhVcENnd01jQ1lfZ3hYT0NtNmdMMk43MVJ0eW5jWHpveWlqS2VGWkNfMFFUWlU2a0k4Q1N4YXBWaHhzaVdSbjdhd0lzX1ZsSlp0Vm8xUk5rdDJYNXRIS0JyblZya2l3cjljT2JZVHVXbml0MHhrN1RGRmVz",
+        "https://news.google.com/rss/articles/CBMipgFBVV95cUxQeE1GSVQxYjRWN29sbGNKTjhfYk8wUlRPZXgxS2EycWFoQzhnbk9LYTFBVW1jWHBsd3l0NnliaHJDMWM5QXdjRGp5blpWci1VMkxSMVU4TkE3OE1CMXVPUUY4eHkyNmY0LUxuX19QTUNUdnpxSUhiVFEtcW1kWld2bTF5UXMtWVdXdDd0R01ZbnFJMDNUZER2TU40NWU1Rk9CSnVBbnNB"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-09",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMitwFBVV95cUxNWXNYVGtBUk9ramVCOExvcFA2SWp4RFZvSTBZOXl0Mm5mdkVQVVpCaWpyRmZfaC1VS0hUSjluRjNYeDE1M1FpbGF0MkdWYUZZNjBrbktBUk15MnFXbDJuNW1vTlJiUEdzNHlaTTYxTlgzWVBJSFBmaUZUbnRTbEVRMjd0ZHdBZXBKUUdWQXdTd2lnckxsRW1LLVNSZ25nSGRNc0NSRlFuU2tNVTdjSnpuUHRMYzRiLW8",
+        "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQNC1jeDVSRUdPeVp0SkNGdkRBTGF4QVhHdjNXUk8ySkhfbU9VRC14WlRTbUJiR0xTZG5feDRqQTREUjZqRkRfTjRlWDR0OVVpcnF1SG1UQjRhZWNzNnFaZEpwT040MjI4NGVySktLSTFxME5HREQ2TUVUQ1NSSWI4V2hiaUNvaEVPbEIxdG5VakR4blJQY3hfeWl4eTFSU1I2TFdtRnlZa3dFdw"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -370,9 +386,9 @@
       "summarySent": true
     },
     "2026-11-09": {
-      "drafts": 10,
+      "drafts": 12,
       "approved": 3,
-      "rejected": 7
+      "rejected": 9
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -388,7 +404,7 @@
       "media": "18017207690993316"
     }
   },
-  "lastRunAt": "2026-11-09T09:41:46.741Z",
+  "lastRunAt": "2026-11-09T10:41:52.756Z",
   "collabInvites": {},
   "countdowns": {}
 }

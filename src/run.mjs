@@ -17,6 +17,7 @@ import { countdownsDue } from "./countdown.mjs";
 import { uploadFiles } from "./upload-github.mjs";
 import { publish, preflight, publishStory, deleteMedia } from "./publish.mjs";
 import { auditPublished, MODEL as AUDIT_MODEL_2 } from "./audit.mjs";
+import { designCheck } from "./design-check.mjs";
 import { notify, push } from "./notify.mjs";
 import { guardPost } from "./guard.mjs";
 import { INTRO_IMAGES, INTRO_CAPTION } from "./intro.mjs";
@@ -457,7 +458,31 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     ?? (post.officialSite ? await fetchEventLogo(post.officialSite).catch(() => null) : null)
     ?? (post.officialInstagram ? await fetchInstagramLogo(post.officialInstagram).catch(() => null) : null);
   if (eventLogo) log("Etkinlik logosu:", eventLogo.source);
-  const files = await renderPost({ ...post, photos, eventLogo, category, source: sourceName, dateLabel }, outDir);
+  let logoUse = eventLogo;
+  let files = await renderPost({ ...post, photos, eventLogo: logoUse, category, source: sourceName, dateLabel }, outDir);
+  // Tasarım denetçisi (yayın öncesi görsel bütünlük): sorun varsa bir kez düzeltip yeniden çizer; hâlâ sorunluysa yayınlamaz
+  const dtopic = [post.eventName, post.slides[0]?.title].filter(Boolean).join(" | ");
+  const dc = await designCheck(files, { topic: dtopic });
+  if (!dc.ok) {
+    log("Tasarım denetimi:", dc.issues.map((i) => `${i.slide}: ${i.problem} (${i.fix})`).join(" | "));
+    if (dc.issues.some((i) => i.fix === "logo_kaldir")) logoUse = null;
+    const badIdx = new Set(dc.issues.filter((i) => i.fix === "foto_degistir" && photos.length).map((i) => (i.slide - 1) % photos.length));
+    if (badIdx.size) {
+      const keep = photos.filter((_, i) => !badIdx.has(i));
+      const extra = await findImages(post.imageQueries ?? [], badIdx.size + 2, category, new Set([...usedPhotos, ...photos.map((p) => p.id)]));
+      const fresh = (await screenPhotos(extra, dtopic, "stock")).slice(0, badIdx.size);
+      if (keep.length + fresh.length) photos = [...keep, ...fresh];
+    }
+    files = await renderPost({ ...post, photos, eventLogo: logoUse, category, source: sourceName, dateLabel }, outDir);
+    const dc2 = await designCheck(files, { topic: dtopic });
+    if (!dc2.ok) {
+      const why = dc2.issues.map((i) => `slayt ${i.slide}: ${i.problem}`).join(" | ");
+      log("Tasarım denetimi ikinci kez geçmedi, yayınlanmadı:", why);
+      await push(`Tasarım denetimi geçmedi, post paylaşılmadı: ${String(post.slides[0]?.title ?? "").slice(0, 100)}\nNeden: ${why.slice(0, 300)}`, { title: "Tasarım" });
+      return null;
+    }
+    log("Tasarım düzeltildi ve denetimden geçti.");
+  }
   // guard: temizlenmiş metin + "Kaynak: ..." + hashtag; foto kredisi Kaynak satırının altına eklenir
   // Yalnızca sabit sağlayıcı adı yazılır (fotoğrafçı adı dış kaynaktan gelir, caption'a girmez; görselde kalır)
   // Foto kredisi yazılmaz: yalnızca atıf gerektirmeyen fotoğraflar kullanılır (Pexels lisansı, Openverse'te CC0 / kamu malı)

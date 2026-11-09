@@ -43,7 +43,7 @@ export async function logoFromUrl(url) {
   try {
     const meta = await sharp(raw, { density: 300 }).metadata();
     if (!meta.width || meta.width < 64 || meta.height < 32) return null;
-    const buf = await sharp(raw, { density: 300 }).trim().resize({ height: 120, width: 420, fit: "inside" }).png().toBuffer();
+    const buf = await sharp(raw, { density: 300 }).trim().resize({ height: 360, width: 900, fit: "inside", withoutEnlargement: true }).png().toBuffer();
     return { buf, source: url };
   } catch { return null; }
 }
@@ -63,7 +63,7 @@ export async function fetchEventLogo(officialSite) {
       const meta = await img.metadata();
       const minW = url.includes("s2/favicons") ? 128 : 64;
       if (!meta.width || meta.width < minW || meta.height < 32) continue;
-      const buf = await sharp(raw, { density: 300 }).trim().resize({ height: 120, width: 420, fit: "inside" }).png().toBuffer();
+      const buf = await sharp(raw, { density: 300 }).trim().resize({ height: 360, width: 900, fit: "inside", withoutEnlargement: true }).png().toBuffer();
       return { buf, source: url };
     } catch { /* desteklenmeyen biçim: sıradakini dene */ }
   }

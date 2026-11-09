@@ -202,7 +202,9 @@ function tableHtml(s) {
 const T = {
   cover: (s, ctx) => frame({ ...ctx, photoMode: "full", footerRight: ctx.total > 1 ? "KAYDIR →" : ctx.date, inner: `
     <div style="display:flex;flex-direction:column;justify-content:flex-end;flex:1;padding-bottom:52px">
-      ${ctx.eventLogo ? `<div style="display:flex;align-self:flex-start;background:${ctx.eventLogo.chip};border:2px solid ${ctx.eventLogo.border};padding:12px 18px;border-radius:6px;margin-bottom:30px"><img src="${ctx.eventLogo.uri}" style="width:${ctx.eventLogo.w}px;height:${ctx.eventLogo.h}px" /></div>` : ""}
+      ${ctx.eventLogo ? (ctx.eventLogo.tile
+        ? `<div style="display:flex;align-self:flex-start;margin-bottom:36px;border-radius:22px;overflow:hidden;border:3px solid ${C.paper}"><img src="${ctx.eventLogo.uri}" style="width:${ctx.eventLogo.w}px;height:${ctx.eventLogo.h}px" /></div>`
+        : `<div style="display:flex;align-self:flex-start;background:${ctx.eventLogo.chip};border:2px solid ${ctx.eventLogo.border};padding:20px 28px;border-radius:12px;margin-bottom:36px"><img src="${ctx.eventLogo.uri}" style="width:${ctx.eventLogo.w}px;height:${ctx.eventLogo.h}px" /></div>`) : ""}
       ${tag(ctx, s.kicker)}
       ${head(s.title, headSize(s.title, 150))}
       ${s.subtitle ? `<div style="display:flex;font-size:36px;line-height:1.35;color:${C.text2};margin-top:30px">${esc(s.subtitle)}</div>` : ""}
@@ -346,16 +348,27 @@ export async function renderPost(post, outDir) {
   const total = post.slides.length;
   const photos = [];
   for (const p of post.photos ?? []) photos.push({ ...(await toUri(p.buf, p.focus)), credit: p.credit });
-  // Etkinlik logosu (yükseklik 64px'e ölçeklenir); açık renk logo koyu rozette, koyu logo açık rozette
+  // Etkinlik logosu kapakta belirgin gösterilir (kullanıcı isteği: daha büyük ve görünür).
+  //  - Saydam zeminli logo: renk kontrastına göre açık ya da koyu rozet içinde, yükseklik 120px (geniş logolar en çok 520px)
+  //  - Saydam olmayan kare/fotoğraf logo (ör. Instagram profil görseli): rozetsiz, köşeleri yuvarlatılmış 190px kare karo
   let eventLogo = null;
   if (post.eventLogo?.buf) {
     const m = await sharp(post.eventLogo.buf).metadata();
-    const h = 64, w = Math.min(320, Math.round((m.width / m.height) * h));
+    const ratio = m.width / m.height;
     const { data, info } = await sharp(post.eventLogo.buf).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-    let sum = 0, cnt = 0;
-    for (let i = 0; i < data.length; i += info.channels) if (data[i + 3] > 128) { sum += 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2]; cnt++; }
+    let sum = 0, cnt = 0, transparent = 0;
+    for (let i = 0; i < data.length; i += info.channels) {
+      if (data[i + 3] > 128) { sum += 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2]; cnt++; }
+      if (data[i + 3] < 200) transparent++;
+    }
     const light = cnt && sum / cnt > 150;
-    eventLogo = { uri: `data:image/png;base64,${post.eventLogo.buf.toString("base64")}`, w, h: Math.round(w * m.height / m.width), chip: light ? C.ink : C.paper, border: light ? C.line : C.paper };
+    const opaque = transparent / (info.width * info.height) < 0.02;
+    // Saydam olmayan logolar (kendi zemini olan) rozetsiz, yuvarlatılmış karo olarak gösterilir; kare olanlar büyük
+    const tile = opaque;
+    const h = tile ? 190 : 120;
+    const w = tile ? Math.round(190 * ratio) : Math.min(520, Math.round(ratio * h));
+    eventLogo = { uri: `data:image/png;base64,${post.eventLogo.buf.toString("base64")}`, w, h: Math.round(w / ratio), tile,
+      chip: light ? C.ink : C.paper, border: light ? C.line : C.paper };
   }
   const files = [];
   for (let i = 0; i < total; i++) {

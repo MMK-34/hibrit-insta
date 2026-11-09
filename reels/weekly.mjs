@@ -199,9 +199,15 @@ if (items.length < 3) { log("görüntü bulunan haber 3ten az"); await push("Haf
 
 // ---------- 4) müzik (bir kez) ----------
 const EL = { "xi-api-key": process.env.ELEVENLABS_API_KEY, "content-type": "application/json" };
-const mr = await fetch("https://api.elevenlabs.io/v1/music?output_format=mp3_44100_128", { method: "POST", headers: EL, body: JSON.stringify({ prompt: "Light, upbeat, modern instrumental background music for a weekly sports news recap video. Driving but soft electronic beat around 118 BPM, warm synth chords, subtle plucks, motivating and positive, unobtrusive under a voiceover, no vocals, steady energy, clean ending.", music_length_ms: 60000, force_instrumental: true }) });
-if (!mr.ok) throw new Error(`ElevenLabs müzik: ${mr.status} ${(await mr.text()).slice(0, 200)}`);
-fs.writeFileSync(path.join(A, "music.mp3"), Buffer.from(await mr.arrayBuffer()));
+// Müzik: ElevenLabs yoğunluk (429/5xx) verirse 3 kez yeniden denenir; yine olmazsa depodaki yedek müzik kullanılır
+let musicOk = false;
+for (let i = 0; i < 4 && !musicOk; i++) {
+  if (i) await new Promise((r) => setTimeout(r, 30000 * i));
+  const mr = await fetch("https://api.elevenlabs.io/v1/music?output_format=mp3_44100_128", { method: "POST", headers: EL, body: JSON.stringify({ prompt: "Light, upbeat, modern instrumental background music for a weekly sports news recap video. Driving but soft electronic beat around 118 BPM, warm synth chords, subtle plucks, motivating and positive, unobtrusive under a voiceover, no vocals, steady energy, clean ending.", music_length_ms: 60000, force_instrumental: true }) }).catch(() => null);
+  if (mr?.ok) { fs.writeFileSync(path.join(A, "music.mp3"), Buffer.from(await mr.arrayBuffer())); musicOk = true; }
+  else log("müzik denemesi başarısız:", mr?.status ?? "ağ", mr ? (await mr.text()).slice(0, 120) : "");
+}
+if (!musicOk) { fs.copyFileSync(path.join("reels", "sfx", "music-yedek.mp3"), path.join(A, "music.mp3")); log("yedek müzik kullanıldı"); }
 for (const f of ["Inter-600.ttf", "Inter-700.ttf", "BigShouldersDisplay-ExtraBold.ttf"]) fs.copyFileSync(path.join("fonts", f), path.join(A, "fonts", f));
 for (const f of ["wordmark.svg", "logo-mark.svg"]) fs.writeFileSync(path.join(A, f), fs.readFileSync(path.join("assets", f), "utf8").replace(/currentColor/g, "#f3efe7"));
 for (const f of ["whoosh.mp3", "hit.mp3"]) if (fs.existsSync(path.join("reels", "sfx", f))) fs.copyFileSync(path.join("reels", "sfx", f), path.join(A, f));

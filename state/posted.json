@@ -325,6 +325,92 @@
       "at": "2026-11-08T22:40:46.581Z",
       "story": "18120907619060307",
       "audited": "kucuk_sorun"
+    },
+    {
+      "day": "2026-11-09",
+      "ids": [
+        "seri:kayit-acik:2026-W46"
+      ],
+      "kind": "seri",
+      "photos": [
+        "local:run-finish",
+        "local:doga-trail",
+        "local:run-start"
+      ],
+      "media": "18017207690993316",
+      "permalink": "https://www.instagram.com/p/Dfg1ol2k8-a/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-09/mw8ypdi1/01.jpg",
+      "title": "Kaydı açık yarışlar",
+      "headline": "Kaydı açık yarışlar",
+      "at": "2026-11-09T07:52:31.618Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "KAYITLAR AÇIK",
+            "title": "Kaydı açık yarışlar",
+            "subtitle": "Önümüzdeki haftalarda Türkiye'de koşulacak, kaydı hâlâ açık yarışlardan bir seçki."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Tarih",
+              "Yarış",
+              "Şehir",
+              "Branş"
+            ],
+            "rows": [
+              [
+                "22 Kas",
+                "KEŞİFRUN NİLÜFER - 10K",
+                "Bursa",
+                "Koşu"
+              ],
+              [
+                "28-29 Kas",
+                "Kar Spor İda Ultra",
+                "Balıkesir",
+                "Trail"
+              ],
+              [
+                "6 Ara",
+                "10. GÖBEKLİTEPE YARI MARATONU",
+                "Şanlıurfa",
+                "Koşu"
+              ],
+              [
+                "26-27 Ara",
+                "Antalya Ultra",
+                "Antalya",
+                "Trail"
+              ],
+              [
+                "27 Ara",
+                "91. Büyük Atatürk Koşusu",
+                "Ankara",
+                "Koşu"
+              ]
+            ],
+            "barCol": -1,
+            "title": "Kayıtlar açık"
+          },
+          {
+            "type": "end",
+            "title": "Hangisine kayıt oldunuz?",
+            "body": "Kaydı açık başka bir yarış biliyorsanız yorumlara yazın, listeye ekleyelim."
+          }
+        ],
+        "caption": "Kaydı açık 5 yarış: KEŞİFRUN NİLÜFER - 10K, Kar Spor İda Ultra, 10. GÖBEKLİTEPE YARI MARATONU, Antalya Ultra ve 91. Büyük Atatürk Koşusu.\n\nTarih, şehir ve branş bilgileri sonraki slaytlarda. Kayıt ve güncel bilgi için organizatörün resmî sitesine bakın.\n\nHangisine kayıt oldunuz?\n\nKaynak: TAF, RaceTurkiye, Antalya Ultra\n\n#koşu #trailrunning #yarımaraton #ultramaraton #yarıştakvimi #halkkoşusu #hibritportal",
+        "srcUrls": [
+          "https://kosu.taf.org.tr/kesifrun-nilufer-10k",
+          "https://www.raceturkiye.com/tr/race/ida-ultra",
+          "https://www.antalyaultra.org/en/",
+          "https://kosu.taf.org.tr/10-gobeklitepe-yari-maratonu",
+          "https://kosu.taf.org.tr/91-buyuk-ataturk-kosusu"
+        ],
+        "eventName": ""
+      },
+      "story": "17956857936329771"
     }
   ],
   "daily": {
@@ -335,8 +421,8 @@
       "summarySent": true
     },
     "2026-11-09": {
-      "drafts": 7,
-      "approved": 2,
+      "drafts": 8,
+      "approved": 3,
       "rejected": 5
     }
   },
@@ -348,10 +434,12 @@
   },
   "series": {
     "kayit-acik:2026-W46": {
-      "tries": 1
+      "tries": 2,
+      "done": true,
+      "media": "18017207690993316"
     }
   },
-  "lastRunAt": "2026-11-09T06:41:48.262Z",
+  "lastRunAt": "2026-11-09T07:41:55.937Z",
   "collabInvites": {},
   "countdowns": {}
 }

@@ -105,7 +105,7 @@ export async function screenPhotos(photos, topic, mode = "stock") {
     : `Bunlar stok fotoğraflar. Gerçek kamera çekimi olmalı: animasyon, 3D, illüstrasyon, grafik ya da yapay görüntü ise ok=false. ok=true YALNIZCA fotoğraf haberin konusundaki branşı/sahneyi doğru gösteriyorsa (ör. CrossFit haberi için CrossFit/fonksiyonel fitness yarışması ya da antrenmanı; koşu haberi için koşucular; HYROX için sled, kürek ergometresi, koşu). Başka branş, ilgisiz ya da yanıltıcı sahne, okunaklı başka marka/etkinlik adı varsa ok=false. Fotoğraftaki kişiler yarışın katılımcı profiline uymalı: kadınlara özel yarışta (adında women/woman/kadın/ladies geçen ya da konu kadın sporcularsa) fotoğrafta kadın sporcular olmalı, erkek ağırlıklı fotoğraf ok=false.`;
   try {
     const res = await ai().messages.create({
-      model: VISION_MODEL, max_tokens: 1200,
+      model: VISION_MODEL, max_tokens: 4000,
       messages: [{ role: "user", content: [...content, { type: "text", text: `Haberin konusu: ${String(topic).slice(0, 400)}
 
 ${rule}

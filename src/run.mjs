@@ -558,7 +558,11 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   // Büyük yarış duyurusu: 15-20 sn kısa Reels sırasına (her akşam bulutta üretilir, onaya gelir). Sayı sınırı yok; aynı yarış için 10 günde bir.
   try {
     const key = `${post.eventName ?? ""} ${post.slides[0]?.title ?? ""}`;
-    if (["duyuru", "haber"].includes(kind) && BIG_RACES.some((re) => re.test(key))) {
+    // Kullanıcı kuralı (2026-11-10): kısa video YALNIZCA Türkiye'deki büyük yarışlara (HYROX/ATHX Türkiye, Eurasia, Alsancak, büyük koşular...).
+    // Yurt dışı yarışlar yalnızca görselli post olarak kalır.
+    const inTR = /^t[üu]rkiye$/i.test(String(post.country ?? "").trim()) || /(İstanbul|Istanbul|İzmir|Izmir|Antalya|Ankara|Bursa|Kuşadası|Kusadasi|Bodrum|Kapadokya|Cappadocia|Kaçkar|Kackar|Uludağ|Uludag|Likya|Lycian|Türkiye|Turkey)/i.test(key);
+    const big = BIG_RACES.some((re) => re.test(key)) || /\bATHX\b/i.test(key);
+    if (["duyuru", "haber"].includes(kind) && big && inTR && !/World Championships?|Dünya Şampiyonası|CrossFit Open/i.test(key)) {
       const qf = "state/short-queue.json";
       const q = fs.existsSync(qf) ? JSON.parse(fs.readFileSync(qf, "utf8")) : [];
       state.shortReels ??= [];

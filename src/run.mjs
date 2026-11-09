@@ -716,7 +716,8 @@ async function processApprovals() {
 async function publishDmTip() {
   if (DRY || todayCount >= MAX_PER_DAY) return false;
   state.dmSeen ??= [];
-  const { tips, error } = await dmTips(new Set(state.dmSeen));
+  state.dmPins ??= {};
+  const { tips, error } = await dmTips(new Set(state.dmSeen), state.dmPins);
   if (error) { if (state.dmErr !== today) { state.dmErr = today; saveState(); log("DM'ler okunamadı:", error); } return false; }
   const tip = tips[0];
   if (!tip) return false;

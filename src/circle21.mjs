@@ -54,6 +54,8 @@ function toEvent(d) {
     published: d.published_at ?? d.created_at, onsite: !!d.onsite, country: d.country,
     // Yarış logosu: önce özgün yükleme (media/logo), yoksa küçük önizleme
     logo: (d.media ?? []).find((m) => m.collection_name === "logo")?.original_url || d.logo || "",
+    // Organizatörün yüklediği kapak/galeri görselleri (etkinlik fotoğrafı adayı; görsel denetimden geçer)
+    images: [...new Set([...(d.media ?? []).filter((m) => ["cover", "gallery", "images", "photos"].includes(m.collection_name) && /\.(jpe?g|png|webp)$/i.test(m.original_url ?? "")).map((m) => m.original_url), d.cover].filter((u) => /^https:\/\//.test(u ?? "")))].slice(0, 6),
   };
 }
 
@@ -141,7 +143,7 @@ export async function circle21Candidates() {
     if (/\bbox\b|simulation|simülasyon|in-?house|50%/i.test(`${e.name} ${e.instagram}`)) continue;
     const pub = Date.parse(e.published ?? 0), regTo = Date.parse(e.regTo ?? 0);
     const base = {
-      eventName: e.name, url: e.url, logo: e.logo, source: "circle21 resmî kayıt sayfası", feedCat: "crossfit", date: new Date().toISOString(), ageH: 0,
+      eventName: e.name, url: e.url, logo: e.logo, images: e.images, source: "circle21 resmî kayıt sayfası", feedCat: "crossfit", date: new Date().toISOString(), ageH: 0,
       snippet: c21Text(e).slice(0, 1500), text: c21Text(e), facts: c21Facts(e), handle: c21Handle(e),
     };
     if (now - pub < 10 * 864e5) out.push({ ...base, id: `c21:${e.id}`, title: `Yeni yarış duyurusu (resmî kayıt platformu): ${e.name}, ${day(e.start)}` });

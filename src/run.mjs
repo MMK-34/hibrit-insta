@@ -307,7 +307,7 @@ async function prepareVerified(pick, srcItems, sourceName) {
     : await circle21Reference(srcItems.map((s) => `${s.title} ${s.text || s.snippet || ""}`).join(" ")).catch(() => null);
   if (c21) {
     log("circle21 resmî kaydı eşleşti:", c21.event.name);
-    srcItems = [...srcItems, { id: `c21ref:${c21.event.id}`, logo: c21.event.logo, facts: c21.facts, handle: c21.handle, url: c21.event.url, title: `Resmî kayıt: ${c21.event.name}`, source: "circle21 resmî kayıt sayfası", text: dropCategories(c21.text) }];
+    srcItems = [...srcItems, { id: `c21ref:${c21.event.id}`, images: c21.event.images, logo: c21.event.logo, facts: c21.facts, handle: c21.handle, url: c21.event.url, title: `Resmî kayıt: ${c21.event.name}`, source: "circle21 resmî kayıt sayfası", text: dropCategories(c21.text) }];
   }
   const ownC21 = srcItems.find((s) => s.id.startsWith("c21"));
   // Güvenilir referans: yalnızca kodun biçimlediği yapılandırılmış alanlar (serbest metin yazara kaynak olarak gider, burada yok)
@@ -335,7 +335,7 @@ async function prepareVerified(pick, srcItems, sourceName) {
     if (!g.post.officialInstagram && igSrc?.curated && igSrc.handle) g.post.officialInstagram = igSrc.handle;
     // Organizatör hesabı yalnızca kaydın yapılandırılmış instagram alanından (doğrulanmış kullanıcı adı)
     if (!g.post.officialInstagram && ownC21?.handle) g.post.officialInstagram = ownC21.handle;
-    const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 4), category: pick.category });
+    const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 4), category: pick.category, images: srcItems.flatMap((s) => s.images ?? []) });
     if (!photos.length) { log(`Foto bulunamadı (kategori ${pick.category}, sorgular: ${(g.post.imageQueries ?? []).join(" | ")}).`); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
     // Açılamayan kaynakların (Instagram paylaşımı) metni doğrulayıcıya güvenilmez kaynak metni olarak verilir
@@ -409,7 +409,7 @@ async function repostOne(spec) {
       const ev = await circle21ById(c21id);
       if (!ev) { log("Yeniden paylaşım: circle21 kaydı okunamadı."); return; }
       const text = dropCategories(c21Text(ev));
-      items.push({ id: `c21:${ev.id}`, url: ev.url, title: title || ev.name, source: "circle21 resmî kayıt sayfası", text, snippet: text.slice(0, 1500), facts: c21Facts(ev), handle: c21Handle(ev), logo: ev.logo });
+      items.push({ id: `c21:${ev.id}`, url: ev.url, title: title || ev.name, source: "circle21 resmî kayıt sayfası", text, snippet: text.slice(0, 1500), facts: c21Facts(ev), handle: c21Handle(ev), logo: ev.logo, images: ev.images });
       continue;
     }
     const url = await resolveNewsUrl(link);
@@ -425,9 +425,9 @@ async function repostOne(spec) {
   if (res) log("Yeniden paylaşıldı:", res.permalink ?? res.id);
 }
 
-async function pickPhotos({ post, pages, topic, want, category }) {
+async function pickPhotos({ post, pages, topic, want, category, images = [] }) {
   // Etkinlik fotoğrafları önceki postlarda kullanılmış olabilir (aynı etkinliğin takip/hikaye postu): tekrar kullanılabilir
-  const ev = await eventPhotos({ pages, instagram: post.officialInstagram, topic, n: want, eventName: post.eventName })
+  const ev = await eventPhotos({ pages, instagram: post.officialInstagram, topic, n: want, eventName: post.eventName, images })
     .catch((e) => { if (isCreditError(e)) throw e; log("Etkinlik fotoğrafı hatası:", String(e?.message ?? e).slice(0, 160)); return []; });
   if (ev.length) log(`Etkinlik fotoğrafı: ${ev.length} (${[...new Set(ev.map((p) => p.source))].join(", ")})`);
   // Belirli bir etkinlikten bahseden postta o etkinliğin fotoğrafı varsa YALNIZCA onlar kullanılır (slaytlarda sırayla tekrar eder).

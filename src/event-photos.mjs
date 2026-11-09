@@ -102,7 +102,7 @@ export async function screenPhotos(photos, topic, mode = "stock") {
 - Gerçek bir fotoğraf (logo, afiş, broşür, grafik, ekran görüntüsü, harita, üzerinde çok yazı olan tasarım DEĞİL; küçük bir yazı ya da ajans/site filigranı sorun değil; büyük, fotoğrafı kaplayan filigran varsa ok=false).
 - Haberin konusundaki etkinliği, yarışı, mekânı ya da o etkinliğin branşındaki sporcuları gösteriyor (ör. konu bir CrossFit yarışıysa CrossFit yarışması/antrenmanı sahnesi; konu bir koşuysa koşucular). Başka branş, alakasız kişi portresi, ürün, yemek, manzara tek başına ok=false.
 - Sert, kanlı, uygunsuz ya da kimseyi küçük düşüren bir sahne değil.`
-    : `Bunlar stok fotoğraflar. ok=true YALNIZCA fotoğraf haberin konusundaki branşı/sahneyi doğru gösteriyorsa (ör. CrossFit haberi için CrossFit/fonksiyonel fitness yarışması ya da antrenmanı; koşu haberi için koşucular; HYROX için sled, kürek ergometresi, koşu). Başka branş, ilgisiz ya da yanıltıcı sahne, okunaklı başka marka/etkinlik adı varsa ok=false.`;
+    : `Bunlar stok fotoğraflar. ok=true YALNIZCA fotoğraf haberin konusundaki branşı/sahneyi doğru gösteriyorsa (ör. CrossFit haberi için CrossFit/fonksiyonel fitness yarışması ya da antrenmanı; koşu haberi için koşucular; HYROX için sled, kürek ergometresi, koşu). Başka branş, ilgisiz ya da yanıltıcı sahne, okunaklı başka marka/etkinlik adı varsa ok=false. Fotoğraftaki kişiler yarışın katılımcı profiline uymalı: kadınlara özel yarışta (adında women/woman/kadın/ladies geçen ya da konu kadın sporcularsa) fotoğrafta kadın sporcular olmalı, erkek ağırlıklı fotoğraf ok=false.`;
   try {
     const res = await ai().messages.create({
       model: VISION_MODEL, max_tokens: 1200,

@@ -75,12 +75,10 @@ export function c21Facts(e) {
   const clean = (x) => x.trim().replace(/[^\p{L}\p{N} .'-]/gu, "").slice(0, 40);
   const parts = (e.address.match(/\d{5}\s+([^/,]{2,40})\/([^,]{2,40})(?:,|$)/) ?? []).slice(1).map(clean).filter((x) => /^[\p{L} .'-]{2,40}$/u.test(x));
   const city = parts.length === 2 ? parts.join(", ") : "";
-  const fee = /^\d+(\.\d+)? [A-Z]{3}$/.test(e.fee) ? e.fee : "";
   return [
     `Resmî ad: ${name}`,
     `Yarış tarihleri: ${day(e.start)} - ${day(e.end)}`,
     e.regFrom || e.regTo ? `Kayıt dönemi: ${day(e.regFrom)} - ${day(e.regTo)}` : "",
-    fee ? `Kayıt ücreti: ${fee}` : "",
     city ? `Yer: ${city}` : "",
     `Biçim: ${e.onsite ? "yüz yüze" : "çevrim içi"}`,
   ].filter(Boolean).join("\n");
@@ -92,7 +90,6 @@ export function c21Text(e) {
     `Resmî ad: ${e.name}`,
     `Yarış tarihleri: ${day(e.start)} - ${day(e.end)}`,
     e.regFrom || e.regTo ? `Kayıt dönemi: ${day(e.regFrom)} - ${day(e.regTo)}` : "",
-    e.fee ? `Kayıt ücreti: ${e.fee}` : "",
     e.address ? `Adres: ${e.address}` : "",
     e.onsite ? "Biçim: yüz yüze (on-site)" : "Biçim: çevrim içi",
     e.instagram ? `Resmî Instagram: ${e.instagram}` : "",

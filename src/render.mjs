@@ -101,13 +101,13 @@ function photoLayer(photo, mode) {
 }
 
 /** Ortak çerçeve: foto, sol üstte logo, altta @hesap + sağda bilgi. Sağ üst köşe boş (IG sayacı). */
-function frame({ inner, footerRight, photo, photoMode, logo }) {
+function frame({ inner, footerRight, photo, photoMode, logo, location }) {
   const bg = photo
     ? photoLayer(photo, photoMode)
     : "";
   return `<div style="display:flex;flex-direction:column;width:${W}px;height:${H}px;background:${C.ink};position:relative;font-family:Body;color:${C.paper}">
     ${bg}
-    <div style="display:flex;position:relative;padding:64px ${PAD}px 0 ${PAD}px">${logoHtml(logo)}</div>
+    <div style="display:flex;position:relative;justify-content:space-between;align-items:center;padding:64px ${PAD}px 0 ${PAD}px">${logoHtml(logo)}${location ? `<div style="display:flex;align-items:center;background:rgba(14,15,18,0.72);border:1px solid rgba(255,255,255,0.28);border-radius:999px;padding:9px 18px;font-family:Body;font-weight:700;font-size:21px;letter-spacing:2px;color:${C.paper}"><div style="display:flex;width:9px;height:9px;border-radius:5px;background:${C.red};margin-right:11px"></div>${esc(trUpper(location))}</div>` : ""}</div>
     <div style="display:flex;position:relative;flex-direction:column;flex:1;padding:0 ${PAD}px">${inner}</div>
     <div style="display:flex;position:relative;justify-content:space-between;align-items:center;padding:0 ${PAD}px 60px ${PAD}px">
       <div style="display:flex;font-family:Body;font-weight:600;font-size:28px;color:${C.paper}">${esc(BRAND.handle.replace(/^@/, ""))}</div>
@@ -374,7 +374,8 @@ export async function renderPost(post, outDir) {
   const files = [];
   for (let i = 0; i < total; i++) {
     const photo = photos.length ? photos[i % photos.length] : null;
-    const buf = await renderSlide(post.slides[i], { cat: post.category, index: i + 1, total, source: post.source, date: post.dateLabel, photo, eventLogo: i === 0 ? eventLogo : null });
+    const location = [post.country, post.place].filter(Boolean).join(" · ").slice(0, 48);
+    const buf = await renderSlide(post.slides[i], { location, cat: post.category, index: i + 1, total, source: post.source, date: post.dateLabel, photo, eventLogo: i === 0 ? eventLogo : null });
     const f = path.join(outDir, `${String(i + 1).padStart(2, "0")}.jpg`);
     fs.writeFileSync(f, buf);
     files.push(f);

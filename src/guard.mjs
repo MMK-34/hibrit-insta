@@ -25,7 +25,9 @@ const BAD = /(casino|bahis|(?<![\p{L}])(?:\d*x?bet|bets?10|betboo|tipobet|superb
 const TOPIC = /(hyrox|crossfit|maraton|marathon|koşu|kosu|\brun\b|wod|antrenman|fitness|yarış|yaris|sporcu|atlet|kuvvet|dayanıklılık|\bultra\b|throwdown|\bgames\b|\bopen\b|elite|sled|wall ball|burpee|rowing|kürek|halter|barbell|kettlebell|araştırma|çalışma|yüz(me|ücü)|güreş|boks|judo|tekvando|karate|eskrim|bisiklet|pedal|tırmanış|dağcı|okçu|cimnastik|jimnastik|atıcı|kano|kayak|yelken|triatlon|duatlon|aquatlon|madalya|şampiyon|rekor|derece|kupa|federasyon|powerlifting|strongman|kalistenik|spartan|parkur)/i;
 
 const FIELDS = ["kicker", "title", "subtitle", "body", "label", "value"];
-const clean = (t = "") => String(t).normalize("NFKC").replace(/[’‘]/g, "'").replace(/\s*—\s*/g, ", ").replace(/–/g, "-").replace(URL_RE, "").replace(MENTION_RE, "$1").replace(/[ \t]{2,}/g, " ").trim();
+// Kullanıcı kuralı: şapkalı harf yok (hâlâ -> hala, resmî -> resmi)
+const HAT = { "â": "a", "Â": "A", "î": "i", "Î": "İ", "û": "u", "Û": "U" };
+const clean = (t = "") => String(t).normalize("NFKC").replace(/[âÂîÎûÛ]/g, (c) => HAT[c]).replace(/[’‘]/g, "'").replace(/\s*—\s*/g, ", ").replace(/–/g, "-").replace(URL_RE, "").replace(MENTION_RE, "$1").replace(/[ \t]{2,}/g, " ").trim();
 
 /** Post'u temizler ve doğrular. { ok, reason, post } döner. */
 export function guardPost(post, { sourceName }) {
@@ -62,6 +64,9 @@ export function guardPost(post, { sourceName }) {
   const allText = JSON.stringify(slides) + " " + String(post.caption ?? "");
   if (/kategori|divizyon|division/i.test(allText) && /\b(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX'?|Masters?|Teens?|Hybrid)\b/.test(allText))
     return { ok: false, reason: "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar" };
+  // Kesin kural (kullanıcı): ücret/fiyat yazılmaz; isteyen resmî sayfadan bakar
+  if (/(kayıt|katılım|giriş)\s*ücret|ücreti\b|(\d[\d.,]*\s*(TL|₺|\$|USD|EUR|€|euro|dolar|lira)\b)|((\$|€|₺)\s*\d)/i.test(allText))
+    return { ok: false, reason: "ücret/fiyat yazılmış: kayıt ücreti ve fiyatları tamamen çıkar" };
   const LIMIT = { title: 100, body: 240, subtitle: 160, kicker: 40, label: 60, value: 10 };
   const tooLong = [];
   slides.forEach((s, i) => {
@@ -108,5 +113,10 @@ export function guardPost(post, { sourceName }) {
   if (dm) return { ok: false, reason: `alan adı benzeri ifade: "${dm[0]}" (alan adı yazma; nokta sonrası boşluk bırak)` };
   const officialSite = /^https:\/\/[^\s"'<>]+$/i.test(post.officialSite ?? "") ? post.officialSite : "";
   const officialInstagram = /^[\w.]{2,30}$/.test(String(post.officialInstagram ?? "").replace(/^@/, "")) ? String(post.officialInstagram).replace(/^@/, "") : "";
-  return { ok: true, post: { slides, caption, eventName, officialSite, officialInstagram, imageQueries: (post.imageQueries ?? []).map((q) => clean(q).slice(0, 60)).slice(0, 4), brand: BRAND.handle } };
+  const athleteName = clean(post.athleteName ?? "").replace(/[^\p{L} .'-]/gu, "").slice(0, 60);
+  const athleteInstagram = /^[\w.]{2,30}$/.test(String(post.athleteInstagram ?? "").replace(/^@/, "")) ? String(post.athleteInstagram).replace(/^@/, "") : "";
+  // Konum rozeti: yalnızca harf, boşluk, eğik çizgi; kısa
+  const loc = (x, n) => clean(x ?? "").replace(/[^\p{L} /'-]/gu, "").replace(/\s+/g, " ").trim().slice(0, n);
+  const country = loc(post.country, 24), place = loc(post.place, 32);
+  return { ok: true, post: { slides, caption, eventName, officialSite, officialInstagram, athleteName, athleteInstagram, country, place, imageQueries: (post.imageQueries ?? []).map((q) => clean(q).slice(0, 60)).slice(0, 4), brand: BRAND.handle } };
 }

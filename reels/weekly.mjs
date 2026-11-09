@@ -132,6 +132,7 @@ async function videoClip(file, topic, need, out) {
 }
 
 const credits = new Set();
+const usedStock = new Set();
 const items = [];
 for (const [k, it] of plan.entries()) {
   const p = pool[it.n];
@@ -158,19 +159,25 @@ for (const [k, it] of plan.entries()) {
       : [];
     if (ph[0]) { await sharp(ph[0].buf).rotate().resize(1200, 2120, { fit: "cover", position: "attention" }).jpeg({ quality: 90 }).toFile(img); got = "photo"; credits.add(ph[0].source); }
   }
-  // c) etkinlik haberi: konuya uygun stok video (sporcu haberinde değil)
+  // b2) etkinliğin KENDİ fotoğrafı (yarışın sitesi, haberleri): ilgisiz stok videodan önce gelir
+  if (!got && p.eventName) {
+    const ph = (await eventPhotos({ eventName: p.eventName, topic, n: 2 }).catch(() => [])).filter((x) => x.specific);
+    if (ph[0]) { await sharp(ph[0].buf).rotate().resize(1200, 2120, { fit: "cover", position: "attention" }).jpeg({ quality: 90 }).toFile(img); got = "photo"; credits.add(ph[0].source); }
+  }
+  // c) etkinlik haberi: konuya uygun stok video (sporcu haberinde değil); aynı stok video iki haberde kullanılmaz
   if (!got && !p.athlete) {
     for (const q of it.stockQuery ?? []) {
       if (got) break;
       const r = await fetch(`https://pixabay.com/api/videos/?key=${process.env.PIXABAY_API_KEY}&q=${encodeURIComponent(q)}&per_page=6&safesearch=true&video_type=film`).then((x) => x.json()).catch(() => ({}));
-      for (const h of (r.hits ?? []).filter((h) => h.duration >= 6).slice(0, 4)) {
+      for (const h of (r.hits ?? []).filter((h) => h.duration >= 6 && !usedStock.has(h.id)).slice(0, 4)) {
         const v = h.videos.large?.url ? h.videos.large : h.videos.medium;
         const raw = path.join(W, `px${h.id}.mp4`);
         fs.writeFileSync(raw, Buffer.from(await (await fetch(v.url)).arrayBuffer()));
         // videonun başı, ortası ve sonu ayrı ayrı denetlenir: üçü de gerçek çekim ve konuyla ilgili olmalı (animasyon/gökyüzü kareleri elenir)
         const fr = [0.15, 0.5, 0.85].map((x, i) => ({ id: `s${i}`, buf: frame(raw, Math.max(0.3, h.duration * x), path.join(W, `px${i}.jpg`)) }));
         const shot = await screenPhotos(fr, `${topic}. Gerçek kamera çekimi olmalı; animasyon, 3D, illüstrasyon, grafik ok=false. Karede sporcular net görünmeli; karenin çoğu gökyüzü, yol ya da boş alan ise ok=false.`, "stock");
-        if (shot.length === fr.length) { vertical(raw, 0.5, Math.min(need + 1, h.duration - 0.5), vid); got = "video"; credits.add("Pixabay"); break; }
+        // denetlenen bölümden kesilir (başı değil): ekrana giren kareler denetimden geçen karelerdir
+        if (shot.length === fr.length) { const st = Math.max(0.3, h.duration * 0.15); vertical(raw, st, Math.min(need + 1, h.duration - st), vid); usedStock.add(h.id); got = "video"; credits.add("Pixabay"); break; }
       }
     }
   }

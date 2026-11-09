@@ -303,22 +303,8 @@
       "headline": "Magnus Ditlev'den 7:19:17 ile tam mesafede dünya en iyisi",
       "eventName": "IRONMAN Florida",
       "at": "2026-11-08T22:34:54.761Z",
-      "audit": {
-        "slides": [
-          {
-            "type": "cover",
-            "kicker": "IRONMAN FLORIDA",
-            "title": "Magnus Ditlev'den 7:19:17 ile tam mesafede dünya en iyisi",
-            "subtitle": "Danimarkalı sporcu 7 Kasım 2026'da Panama City Beach'te 47:52 yüzme, 3:51:16 bisiklet ve 2:33:31 koşuyla yarışı kazandı."
-          }
-        ],
-        "caption": "Magnus Ditlev, IRONMAN Florida'yı 7:19:17 ile kazandı.\nDanimarkalı sporcunun derecesi, IRONMAN ve tam mesafe triatlonda bugüne kadar kaydedilen en hızlı süre oldu.\n\n7 Kasım 2026'da Panama City Beach'te yapılan yarışta Ditlev'in ara dereceleri: 47:52 yüzme, 3:51:16 bisiklet, 2:33:31 koşu.\n\nÖnceki en hızlı IRONMAN derecesi, IRONMAN Cozumel'de koşulan 7:21:12'ydi. Tam mesafedeki en iyi süre ise Challenge Roth'ta koşulan 7:21:04'tü. Ditlev'in 3:51:16'lık bisiklet derecesi de IRONMAN yarışlarındaki en hızlı bisiklet derecesi oldu.\n\nParkurlar ve koşullar birbirinden farklı olduğu için triatlonda resmî dünya rekoru tutulmuyor. Bu tür süreler \"dünya en iyisi\" olarak anılıyor.\n\nTam mesafe bir IRONMAN için hedefiniz hangi bitiş süresi?\n\nYarışın Instagram hesabı: @ironmantri\n\nKaynak: TRI247\nGörsel: slowtwitch.com\n\n#ironmanflorida #ironman #triatlon #triathlon #swimbikerun #hibritportal",
-        "srcUrls": [
-          "https://www.tri247.com/triathlon-news/elite/ironman-florida-2026-men-results-report-world-record"
-        ],
-        "eventName": "IRONMAN Florida"
-      },
-      "story": "18163895182499408"
+      "story": "18163895182499408",
+      "audited": "dogru"
     },
     {
       "day": "2026-11-09",
@@ -337,23 +323,8 @@
       "headline": "Leapmotor HYROX Barcelona 11-15 Kasım'da",
       "eventName": "Leapmotor HYROX Barcelona",
       "at": "2026-11-08T22:40:46.581Z",
-      "audit": {
-        "slides": [
-          {
-            "type": "cover",
-            "kicker": "YARIŞ TAKVİMİ",
-            "title": "Leapmotor HYROX Barcelona 11-15 Kasım'da",
-            "subtitle": "Yarış, Barselona'daki Fira Gran Vía fuar alanında yapılacak. Kayıt ve bilet bilgisi HYROX'un resmî sitesinde."
-          }
-        ],
-        "caption": "Leapmotor HYROX Barcelona 11-15 Kasım'da\n\n2026/27 sezonunun Avrupa ayaklarından Leapmotor HYROX Barcelona, 11-15 Kasım 2026 tarihlerinde Barselona'daki Fira Gran Vía fuar alanında yapılacak.\n\nKayıt ve bilet bilgileri, HYROX'un resmî sitesindeki yarış bulma sayfasında yer alıyor.\n\nKasımda Barselona'da yarışacak mısın?\nBirlikte yarışmak istediğin arkadaşına gönder.\n\nYarışın Instagram hesabı: @hyroxworld\n\nKaynak: HYROX Barcelona resmî sitesi\n\n#hyroxbarcelona #hyrox #hyroxturkiye #fonksiyonelantrenman #hibritportal",
-        "srcUrls": [
-          "https://hyrox.com/find-my-race/",
-          "https://hyrox.com/find-my-race/"
-        ],
-        "eventName": "Leapmotor HYROX Barcelona"
-      },
-      "story": "18120907619060307"
+      "story": "18120907619060307",
+      "audited": "kucuk_sorun"
     }
   ],
   "daily": {
@@ -376,6 +347,6 @@
     "at": "2026-11-08T12:01:48.087Z"
   },
   "series": {},
-  "lastRunAt": "2026-11-08T22:21:38.985Z",
+  "lastRunAt": "2026-11-09T04:41:55.836Z",
   "collabInvites": {}
 }

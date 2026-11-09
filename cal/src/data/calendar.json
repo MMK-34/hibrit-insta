@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-08T22:42:38.155Z",
+  "updated": "2026-11-09T04:41:55.164Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 89,
-      "fetchedAt": "2026-11-08T22:41:42.169Z"
+      "count": 88,
+      "fetchedAt": "2026-11-09T04:41:03.180Z"
     },
     "hyrox": {
       "ok": true,
       "count": 16,
-      "fetchedAt": "2026-11-08T22:42:38.146Z"
+      "fetchedAt": "2026-11-09T04:41:55.156Z"
     }
   },
   "items": [
@@ -420,28 +420,6 @@
       },
       "instagram": "https://www.instagram.com/the_999_challenge",
       "website": "www.999ergracing.com"
-    },
-    {
-      "id": "circle21-0640bc19-297a-4fb7-9003-d6a5c71f8d28",
-      "name": "DAY 1 - 1298 Battleground - The Cold War (Saturday)",
-      "eventSlug": null,
-      "type": "crossfit",
-      "city": "Grangemouth FK3 9XB",
-      "country": "Birleşik Krallık",
-      "startDate": "2026-11-21",
-      "endDate": "2026-11-21",
-      "status": "confirmed",
-      "url": "https://circle21.events/event?competitionId=0640bc19-297a-4fb7-9003-d6a5c71f8d28",
-      "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/304461/conversions/96456d05-f053-4e69-8a99-e1a527512092-l_thumb.jpg",
-      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/304460/conversions/96456d05-f053-4e69-8a99-e1a527512092-s_thumb.jpg",
-      "imageCredit": "circle21 / organizatör",
-      "registration": {
-        "to": "2026-11-09",
-        "fee": "60.00 GBP"
-      },
-      "instagram": "https://instagram.com/crossfit1298_falkirk",
-      "website": "https://crossfit1298.wixsite.com/falkirk"
     },
     {
       "id": "circle21-c7180f5a-2afb-41aa-a4e4-20484ad727a9",

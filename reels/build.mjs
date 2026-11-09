@@ -17,7 +17,7 @@ const up = (s) => String(s).toLocaleUpperCase("tr");
 const r2 = (x) => Math.round(x * 100) / 100;
 const n = B.items.length;
 
-const PRE = 0.25, HOLD = 0.55, X = 0.2; // ses öncesi boşluk, ses sonrası bekleme, geçiş
+const PRE = 0.2, HOLD = 0.4, X = 0.15; // ses öncesi boşluk, ses sonrası bekleme, geçiş
 const segs = [];
 let t = 0;
 for (let i = 0; i <= n + 1; i++) {
@@ -58,7 +58,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0e0f1
 .rv { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
 .media img, .media video { position: absolute; left: 0; top: 0; width: 1200px; height: 2120px; object-fit: cover; }
 .shade { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px;
-  background: linear-gradient(180deg, rgba(14,15,18,0.7) 0%, rgba(14,15,18,0) 16%, rgba(14,15,18,0) 36%, rgba(14,15,18,0.55) 50%, rgba(14,15,18,0.9) 62%, #0e0f12 78%); }
+  background: linear-gradient(180deg, rgba(14,15,18,0.5) 0%, rgba(14,15,18,0) 11%, rgba(14,15,18,0) 52%, rgba(14,15,18,0.55) 63%, rgba(14,15,18,0.88) 74%, rgba(14,15,18,0.97) 88%); }
 .top { position: absolute; left: 70px; top: 176px; width: 940px; }
 .prog { display: flex; gap: 10px; width: 940px; height: 8px; }
 .prog div { flex: 1; height: 8px; border-radius: 4px; background: rgba(243,239,231,0.28); overflow: hidden; position: relative; }
@@ -70,11 +70,11 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0e0f1
 .stat { display: flex; align-items: flex-end; gap: 22px; margin-top: 22px; }
 .stat .num { font-family: "Head", sans-serif; font-weight: 800; font-size: 150px; line-height: 1; height: 150px; color: #e8321e; }
 .stat .lab { font-weight: 700; font-size: 30px; letter-spacing: 3px; color: #cfc9be; padding-bottom: 18px; }
-.txt { position: absolute; left: 70px; top: 880px; width: 940px; }
+.txt { position: absolute; left: 70px; top: 1000px; width: 940px; }
 .kick { display: inline-block; background: #e8321e; color: #f3efe7; font-weight: 700; font-size: 28px; letter-spacing: 3px; padding: 10px 18px; border-radius: 6px; margin-bottom: 22px; }
 .head { font-family: "Head", sans-serif; font-weight: 800; font-size: 96px; line-height: 0.95; color: #f3efe7; }
 .head span { display: inline-block; margin-right: 22px; }
-.cap { position: absolute; left: 0; top: 740px; width: 1080px; text-align: center; overflow: visible; }
+.cap { position: absolute; left: 0; top: 900px; width: 1080px; text-align: center; overflow: visible; }
 .cap span { display: inline-block; font-weight: 700; font-size: 48px; line-height: 1.2; color: #0e0f12; background: #f3efe7; padding: 8px 22px; border-radius: 12px; max-width: 920px; }
 .wipe { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; background: #e8321e; }
 .intro .big { position: absolute; left: 70px; top: 980px; width: 940px; font-family: "Head", sans-serif; font-weight: 800; font-size: 190px; line-height: 0.88; }
@@ -159,15 +159,16 @@ for (const s of segs) {
       js += `tl.fromTo("#sn${s.i}", { opacity: 0, scale: 0.6, transformOrigin: "left bottom" }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, ${sAt});\n`;
       if (it.statLabel) js += `tl.fromTo("#sl${s.i}", { opacity: 0 }, { opacity: 1, duration: 0.3 }, ${r2(sAt + 0.3)});\n`;
       const plain = String(it.stat).replace(/\./g, "");
-      if (/^\d+$/.test(plain)) js += `{ const o = { v: 0 }, el = document.getElementById("sn${s.i}"); tl.fromTo(o, { v: 0 }, { v: ${Number(plain)}, duration: 0.9, ease: "power2.out", onUpdate: () => { el.textContent = Math.round(o.v).toLocaleString("tr-TR"); } }, ${sAt}); }\n`;
+      // yalnızca düz sayı ya da binlik noktalı sayı sayaç olur ("9." gibi sıra sayısı ve "7:19:17" sabit kalır)
+      if (/^\d{1,3}(\.\d{3})*$/.test(String(it.stat))) js += `{ const o = { v: 0 }, el = document.getElementById("sn${s.i}"); tl.fromTo(o, { v: 0 }, { v: ${Number(plain)}, duration: 0.9, ease: "power2.out", onUpdate: () => { el.textContent = Math.round(o.v).toLocaleString("tr-TR"); } }, ${sAt}); }\n`;
       sfx += `<audio id="sh${s.i}" src="assets/hit.mp3" data-start="${sAt}" data-duration="0.5" data-track-index="8" data-volume="0.5"></audio>\n`;
     }
   }
   if (s.i >= 1) {
     // geçiş: önceki sahnenin üstünden kırmızı silme, yeni sahne silmenin arkasında belirir
-    html += `<div id="w${s.i}" class="clip wipe" data-start="${r2(st - 0.05)}" data-duration="0.32" data-track-index="2" style="z-index:40"></div>\n`;
-    js += `tl.fromTo("#w${s.i}", { x: -1080 }, { x: 1080, duration: 0.32, ease: "power3.inOut" }, ${r2(st - 0.05)});\n`;
-    js += `tl.fromTo("#s${s.i}", { opacity: 0 }, { opacity: 1, duration: 0.01 }, ${r2(st + 0.1)});\n`;
+    html += `<div id="w${s.i}" class="clip wipe" data-start="${r2(st - 0.05)}" data-duration="0.24" data-track-index="2" style="z-index:40"></div>\n`;
+    js += `tl.fromTo("#w${s.i}", { x: -1080 }, { x: 1080, duration: 0.24, ease: "power3.inOut" }, ${r2(st - 0.05)});\n`;
+    js += `tl.fromTo("#s${s.i}", { opacity: 0 }, { opacity: 1, duration: 0.01 }, ${r2(st + 0.07)});\n`;
   }
   html += `<audio id="v${s.i}" src="assets/v${s.i}.mp3" data-start="${r2(s.voiceAt)}" data-duration="${r2(s.voiceLen)}" data-track-index="5" data-volume="1"></audio>\n`;
 }
@@ -199,7 +200,7 @@ ${html}
 ${caps}
 </div>
 ${sfx}
-<audio id="music" src="assets/music.mp3" data-start="0" data-duration="${TOTAL}" data-track-index="6" data-volume="0.2" data-fade-out="2.5"></audio>
+<audio id="music" src="assets/music.mp3" data-start="0" data-duration="${TOTAL}" data-track-index="6" data-volume="0.32" data-fade-out="2.5"></audio>
 </div>
 <script>
 const tl = gsap.timeline({ paused: true });

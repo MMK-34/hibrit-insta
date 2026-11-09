@@ -167,9 +167,9 @@ async function igVideos(handle, eventName, own = false) {
 async function videoClip(file, topic, need, out) {
   const d = dur(file);
   if (d < 3) return false;
-  const step = Math.max(1.5, d / 14);
+  const step = Math.max(1, d / 18);
   const times = [];
-  for (let t = 0.3; t < d - 0.5 && times.length < 14; t += step) times.push(t);
+  for (let t = 0.3; t < d - 0.5 && times.length < 18; t += step) times.push(t);
   const pics = times.map((t, k) => ({ id: `f${k}`, t, buf: frame(file, t, path.join(W, `fr${k}.jpg`)) }));
   const ok = new Set((await screenPhotos(pics, topic, "event")).map((p) => p.id));
   let best = null;
@@ -188,7 +188,7 @@ async function videoClip(file, topic, need, out) {
 
 const usedStock = new Set();
 // Sahne kuralı (kullanıcı): karede o yarışın sporcuları hareket hâlinde net görünmeli; manzara, kalabalık, poz/tanıtım sahnesi olmaz
-const SCENE = "Karede bu yarışın/branşın sporcuları yarışırken, antrenmanda ya da hareket hâlindeyken net görünmeli; yalnızca manzara, seyirci kalabalığı, poz/tanıtım/defile, konuşma ya da günlük hayat sahnesi uygun değil.";
+const SCENE = "Karede bu yarışın/branşın sporcuları yarışırken, antrenmanda ya da hareket hâlindeyken net görünmeli; yalnızca manzara, seyirci kalabalığı, poz/tanıtım/defile, konuşma ya da günlük hayat sahnesi uygun değil. Logo/yazı kartı, marka jeneriği, çok karanlık, bulanık ya da ağır filtreli kare de uygun değil.";
 const toImg = (buf, img) => sharp(buf).rotate().resize(1200, 2120, { fit: "cover", position: "attention" }).jpeg({ quality: 90 }).toFile(img);
 
 /** Bir haber için görüntü bulur. skip: atlanacak adımlar ("own" kendi IG videosu, "photo" fotoğraflar). Döner: bülten öğesi ya da null. */

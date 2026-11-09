@@ -353,6 +353,13 @@
         "https://news.google.com/rss/articles/CBMickFVX3lxTE8yVm0zeE9uQllOUko2ZHFCZHN4RWZVN3g0N3BmeXV6R0NjTlRhcy1FYkhYeVpYWXRqOE9tRWEwbEIwWUliUmFmNm8yRUtLbl82SF81LVR2cUtwdWFYd3o3R2d0NW1VMW1KdkVYeEZEMF92QQ"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-09",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPV2J1dDdYWUo1NzR3VEgzM0s2SjVacXc2RFEwVy1wZHowUGRLcjl4STNJU21YWkFoNWZFRi1XWF9jdU5lazNRejJLaF9obElwYllYaDdKQk52WENsUGUxYmhOMHRyWFpBNWxUYzNQQW54VHYzQWRrTHVqRk9mRjY3b0tNOTluWjlBSWVXei1qWnFOdUxDSEhxRG9WTGg3SjBMbXdVVURFV3BBN2s"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -363,9 +370,9 @@
       "summarySent": true
     },
     "2026-11-09": {
-      "drafts": 9,
+      "drafts": 10,
       "approved": 3,
-      "rejected": 6
+      "rejected": 7
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -381,7 +388,7 @@
       "media": "18017207690993316"
     }
   },
-  "lastRunAt": "2026-11-09T08:41:43.354Z",
+  "lastRunAt": "2026-11-09T09:41:46.741Z",
   "collabInvites": {},
   "countdowns": {}
 }

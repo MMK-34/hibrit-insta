@@ -683,5 +683,18 @@
         "note": "Postta Elite, RX gibi bir kategori adı yok. Ancak 'farklı kategorilerde dereceye giren' ifadesi kaynaklarda geçmiyor. Kaynaklar yalnızca 'dereceye giren sporcular' diyor. İfade çıkarılmalı."
       }
     ]
+  },
+  {
+    "at": "2026-11-09T09:44:24.389Z",
+    "title": "Dünyada Ses Getiren 2026 Uluslararası İstanbul Maratonu’nun Yankıları",
+    "url": "https://turksporajansi.com/2026/11/09/dunyada-ses-getiren-2026-uluslararasi-istanbul-maratonunun-yankilari/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

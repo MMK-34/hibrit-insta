@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-09T14:41:52.812Z",
+  "updated": "2026-11-09T15:41:50.833Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 88,
-      "fetchedAt": "2026-11-09T14:40:59.597Z"
+      "count": 89,
+      "fetchedAt": "2026-11-09T15:40:54.112Z"
     },
     "hyrox": {
       "ok": true,
       "count": 16,
-      "fetchedAt": "2026-11-09T14:41:52.802Z"
+      "fetchedAt": "2026-11-09T15:41:50.826Z"
     }
   },
   "items": [
@@ -981,6 +981,23 @@
       "registration": {
         "to": "2026-12-05",
         "fee": "30.00 GBP"
+      }
+    },
+    {
+      "id": "circle21-670df2c1-7f17-4cad-9dc4-8e624123a88c",
+      "name": "APHOBOS x ATHX Simulation",
+      "eventSlug": null,
+      "type": "crossfit",
+      "city": "Bromley",
+      "country": "Birleşik Krallık",
+      "startDate": "2026-12-06",
+      "endDate": "2026-12-06",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=670df2c1-7f17-4cad-9dc4-8e624123a88c",
+      "source": "circle21",
+      "registration": {
+        "to": "2026-12-04",
+        "fee": "50.00 GBP"
       }
     },
     {
@@ -3127,7 +3144,7 @@
       "status": "confirmed",
       "url": "https://circle21.events/event?competitionId=2bf87c84-6a8f-4656-99fb-2b1b66c99752",
       "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/462874/conversions/WhatsApp-Image-2026-11-08-at-16.14.56-s_thumb.jpg",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/463319/conversions/Salford-l_thumb.jpg",
       "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/462874/conversions/WhatsApp-Image-2026-11-08-at-16.14.56-s_thumb.jpg",
       "imageCredit": "circle21 / organizatör",
       "registration": {

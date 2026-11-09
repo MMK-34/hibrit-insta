@@ -857,5 +857,33 @@
         "note": "Caption'da 'Kaynak: alsancakteamseries Instagram' yazıyor. Resmî hesabın adı alt çizgiyle 'alsancakteam_series'. Düzeltme: 'Kaynak: @alsancakteam_series Instagram'."
       }
     ]
+  },
+  {
+    "at": "2026-11-09T15:48:05.611Z",
+    "title": "Don’t Get Locked Into a Spring or Fall Marathon Cycle. A Run Coach Explains Why You Should Race in Other Seasons.",
+    "url": "https://www.runnersworld.com/training/a74205083/marathon-training-cycle-race-seasons/",
+    "kind": "bilgi",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "tarih",
+        "note": "araç sınırı: Runner's World sayfası web_fetch'te url_not_allowed hatası verdi. Houston'ın ocakta yapıldığı doğrulandı. CIM'in aralık, Grandma's'ın haziran ve Gold Coast'un temmuz ayında yapıldığı okuduğum hiçbir kaynakta doğrulanamadı. Bu yüzden fail."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "gorsel",
+        "note": "4. fotoğraf (renk boyalı gülümseyen kadın, Color Run) maraton antrenman takvimi konusuyla ilgisiz. Diğer üç fotoğraf uygun."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "tarih",
+        "note": "Çalışmanın 2024'te Sports Medicine'de yayımlandığı Springer'da doğrulandı. Grandma's Marathon'un haziranda yapıldığı da aramada doğrulandı. Runner's World sayfası 'url_not_allowed' hatası verdiği için okunamadı; bu bir araç sınırıdır. California International Marathon'un aralıkta, Houston Marathon'un ocakta ve Gold Coast Marathon'un temmuzda yapıldığı okuyabildiğim kaynaklarda doğrulanamadı. Bu ayların Runner's World'e ait örnekler olduğu da doğrulanamadı."
+      },
+      {
+        "model": "claude-opus-5-5",
+        "item": "gorsel",
+        "note": "1. ve 2. fotoğraflar (2024 Chicago ve New York maratonları) kaynak sayfada yer alıyor ve konuyla ilgili. 4. fotoğraf bir Color Run eğlence koşusunu gösteriyor; maraton antrenmanı ve yarış mevsimi konusuyla ilgisi zayıf ve yanıltıcı olabilir. Maratonla ilgili bir görselle değiştirilmeli."
+      }
+    ]
   }
 ]

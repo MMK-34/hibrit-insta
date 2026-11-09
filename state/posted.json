@@ -495,24 +495,8 @@
       "headline": "St. Nicholas Yarı Maratonu kayıtları 23 Kasım'da kapanıyor",
       "eventName": "St. Nicholas Yarı Maratonu",
       "at": "2026-11-09T14:47:43.549Z",
-      "audit": {
-        "slides": [
-          {
-            "type": "cover",
-            "kicker": "ST. NICHOLAS YARI MARATONU",
-            "title": "St. Nicholas Yarı Maratonu kayıtları 23 Kasım'da kapanıyor",
-            "subtitle": "Demre'de 6 Aralık 2026'da 21K, 12K ve 5K parkurlarda koşulacak yarışın kayıtları resmî internet sitesinden yapılıyor."
-          }
-        ],
-        "caption": "St. Nicholas Yarı Maratonu'na kayıtlar 23 Kasım 2026'da kapanıyor.\nAntalya'nın Demre ilçesindeki yarış 6 Aralık 2026'da, 3. Noel Baba Festivali'nin son gününde koşulacak.\n\nÜç mesafe var: 21K Santa, 12K Myra ve 5K Demre. Parkurların tamamı asfalt.\n\n21K, saat 08.30'da Aziz Nikolaos Anıt Müzesi önünden başlıyor. Rota Myra ve Andriake antik kentleri, Çayağzı Limanı, Sülüklü Plajı ve Demre Sahili'nden geçiyor. Çayağzı yolunda iki tur atılıyor, süre sınırı 3 saat.\n\n12K aynı noktadan 08.45'te başlıyor. 5K ise Demre Sahili'nde 12.00'de koşulacak.\n\nKayıtlar yarışın resmî internet sitesinden yapılıyor. Organizasyon Demre Belediyesinin ana sponsorluğunda, Türkiye Atletizm Federasyonunun desteğiyle düzenleniyor.\n\nDemre'de 21K mı, 12K mı, 5K mı koşacaksınız?\nBirlikte koşmak istediğiniz arkadaşınıza gönderin.\n\nKaynak: Antalya Körfez Gazetesi\nGörsel: antalyakorfez.com\n\n#stnicholasyarımaratonu #koşu #yarımaraton #running #runningturkey #demre #antalya #hibritportal",
-        "srcUrls": [
-          "https://www.antalyakorfez.com/demrede-st-nicholas-yari-maratonu-heyecani-basliyor",
-          "https://www.iha.com.tr/istanbul-haberleri/st-nicholas-yari-maratonu-demrenin-tarihi-rotalarinda-kosulacak-513492678",
-          "https://gazetekalem.com.tr/st-nicholas-yari-maratonu-5-6-aralikta-kosulacak/"
-        ],
-        "eventName": "St. Nicholas Yarı Maratonu"
-      },
-      "story": "18660493423026739"
+      "story": "18660493423026739",
+      "audited": "dogru"
     },
     {
       "day": "2026-11-09",
@@ -522,6 +506,13 @@
         "ig:17999848863012440",
         "ig:17878708023636196",
         "ig:18196784653400964"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-09",
+      "ids": [
+        "https://www.runnersworld.com/training/a74205083/marathon-training-cycle-race-seasons/"
       ],
       "skipped": "doğrulama"
     }
@@ -534,9 +525,9 @@
       "summarySent": true
     },
     "2026-11-09": {
-      "drafts": 22,
+      "drafts": 23,
       "approved": 8,
-      "rejected": 14
+      "rejected": 15
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -552,7 +543,7 @@
       "media": "18017207690993316"
     }
   },
-  "lastRunAt": "2026-11-09T14:41:53.306Z",
+  "lastRunAt": "2026-11-09T15:41:51.209Z",
   "collabInvites": {},
   "countdowns": {}
 }

@@ -26,6 +26,7 @@ const DRY = process.argv.includes("--dry");
 // --short: büyük yarış duyurusu için 15-20 sn tek haberlik Reels (state/short-queue.json sırasından; kullanıcı kararı 2026-11-10)
 const SHORT = process.argv.includes("--short");
 const MIN = SHORT ? 1 : 3;
+const NEED = SHORT ? 22 : 9; // sahne için gereken video süresi (sn)
 const KIND = SHORT ? "KISA DUYURU REELS" : "HAFTALIK BÜLTEN REELS";
 const shortQ = SHORT && fs.existsSync("state/short-queue.json") ? JSON.parse(fs.readFileSync("state/short-queue.json", "utf8")) : [];
 if (SHORT && !shortQ.length) { console.log("kısa Reels sırası boş"); process.exit(0); }
@@ -133,7 +134,12 @@ log("seçilen:", plan.map((p) => p.headline).join(" | "));
 // ---------- 3) görüntüler ----------
 const dur = (f) => Number(sh("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).trim()) || 0;
 const frame = (f, t, out) => { sh("ffmpeg", ["-loglevel", "error", "-y", "-ss", String(t), "-i", f, "-frames:v", "1", "-vf", "scale=720:-2", out]); return fs.readFileSync(out); };
-const vertical = (f, from, len, out) => sh("ffmpeg", ["-loglevel", "error", "-y", "-ss", String(from), "-i", f, "-t", String(len), "-vf", "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30", "-an", "-c:v", "libx264", "-crf", "18", "-preset", "fast", out]);
+/** Kaynaktaki [from, from+len] bölümünü dikey 1080x1920 keser; sahne süresinden kısaysa yalnızca BU bölüm döngüye alınır (denetlenmemiş kare girmez). */
+const vertical = (f, from, len, out) => {
+  const seg = out.replace(/\.mp4$/, "-seg.mp4");
+  sh("ffmpeg", ["-loglevel", "error", "-y", "-ss", String(from), "-i", f, "-t", String(len), "-vf", "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30", "-an", "-c:v", "libx264", "-crf", "18", "-preset", "fast", seg]);
+  sh("ffmpeg", ["-loglevel", "error", "-y", "-stream_loop", "-1", "-i", seg, "-t", String(NEED + 1), "-c:v", "libx264", "-crf", "18", "-preset", "fast", "-an", out]);
+};
 const words = (s) => String(s ?? "").toLocaleLowerCase("tr").normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i").split(/[^a-z0-9]+/).filter((w) => w.length >= 4 && !/^(20\d\d|yaris|series|games|team|cup)$/.test(w));
 
 const GENERIC_W = /^(istanbul|ankara|izmir|antalya|adana|bursa|mersin|kusadasi|bodrum|mugla|aydin|kemalpasa|belek|demre|city|turkiye|turkey|athens|belgrade|tirana|sofia|varna|ultra|trail|maraton|marathon|kosu|kosusu|throwdown|games|series|team|crossfit|hyrox|fitness|challenge|championship|sampiyonasi|yarismasi|yari|half|world|international|uluslararasi|open|festival|cycling|bisiklet|granfondo|fondo|triathlon|triatlon|ironman)$/;
@@ -154,15 +160,29 @@ async function igVideos(handle, eventName, own = false) {
     .filter((m) => own || ws.some((w) => words(m.caption).includes(w)));
 }
 
-/** Videodan habere uyan bir bölüm seçer (görsel denetim); dikey 1080x1920 parça üretir. */
+/**
+ * Videodan habere uyan bölümü seçer: her ~2 sn'den bir kare görsel denetimden geçer; art arda geçen karelerin en uzun aralığı kesilir.
+ * Ekrana giren her an denetlenmiş bir aralıktan gelir (en az 3 sn). Döner: true/false.
+ */
 async function videoClip(file, topic, need, out) {
   const d = dur(file);
-  if (d < need * 0.6) return false;
-  const times = [0.1, 0.25, 0.4, 0.55, 0.7, 0.85].map((x) => Math.max(0, Math.min(d - need, d * x)));
+  if (d < 3) return false;
+  const step = Math.max(1.5, d / 14);
+  const times = [];
+  for (let t = 0.3; t < d - 0.5 && times.length < 14; t += step) times.push(t);
   const pics = times.map((t, k) => ({ id: `f${k}`, t, buf: frame(file, t, path.join(W, `fr${k}.jpg`)) }));
-  const ok = await screenPhotos(pics, topic, "event");
-  if (!ok.length) return false;
-  vertical(file, ok[0].t, Math.min(need + 1, d - ok[0].t), out);
+  const ok = new Set((await screenPhotos(pics, topic, "event")).map((p) => p.id));
+  let best = null;
+  for (let i = 0; i < pics.length; i++) {
+    if (!ok.has(pics[i].id)) continue;
+    let j = i;
+    while (j + 1 < pics.length && ok.has(pics[j + 1].id)) j++;
+    const len = (j - i + 1) * step;
+    if (!best || len > best.len) best = { from: Math.max(0, pics[i].t - step / 2), len };
+    i = j;
+  }
+  if (!best || best.len < 3) return false;
+  vertical(file, best.from, Math.min(best.len, need + 1, d - best.from), out);
   return true;
 }
 
@@ -176,7 +196,7 @@ async function getMedia(it, k, skip = new Set()) {
   const p = pool[it.n];
   const topic = `${p.eventName ?? ""} ${p.headline ?? ""}`.trim();
   const strict = `${topic}. ${SCENE}`;
-  const need = 9;
+  const need = NEED;
   const vid = path.join(A, `c${k}.mp4`), img = path.join(A, `p${k}.jpg`);
   let got = "", credit = "";
   // a) yarışın / sporcunun kendi Instagram videosu
@@ -184,6 +204,10 @@ async function getMedia(it, k, skip = new Set()) {
   const evWords = words(p.eventName ?? p.headline);
   // yalnızca yarışa özgü kelime (ör. "varda", "eurasia") hesap adında geçerse o hesap yarışın kendi hesabı sayılır
   const watched = IG_WATCH.filter((h) => distinct(p.eventName ?? "").some((w) => w.length >= 5 && h.toLowerCase().includes(w))).slice(0, 2);
+  // Markalı yarış serileri: yarışın kendi hesabı yoksa serinin resmî hesabı (ör. HYROX Dublin -> @hyroxworld yarış görüntüleri)
+  const key = `${p.eventName ?? ""} ${p.headline ?? ""}`;
+  const brand = /hyrox/i.test(key) ? ["hyroxworld", "hyroxturk"] : /crossfit (open|games)|semifinal/i.test(key) ? ["crossfitgames"] : /athx/i.test(key) ? ["athx_games"] : /ironman/i.test(key) ? ["ironmantri"] : [];
+  watched.push(...brand);
   if (!skip.has("own")) for (const h of [...new Set([p.ig, p.athleteIg, ...watched].filter(Boolean))]) {
     if (got) break;
     const own = h === p.ig || h === p.athleteIg || watched.includes(h);

@@ -17,7 +17,7 @@ import { upcomingSpecial, specialContent } from "./special-days.mjs";
 import { dmTips, dmCategory } from "./dm.mjs";
 import { countdownsDue } from "./countdown.mjs";
 import { uploadFiles } from "./upload-github.mjs";
-import { publish, preflight, publishStory, deleteMedia } from "./publish.mjs";
+import { publish, preflight, publishStory, deleteMedia, publishReel } from "./publish.mjs";
 import { auditPublished, MODEL as AUDIT_MODEL_2 } from "./audit.mjs";
 import { designCheck } from "./design-check.mjs";
 import { notify, push } from "./notify.mjs";
@@ -549,6 +549,8 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   const res = await publish(urls, caption, { collaborators });
   if (collaborators.length) { state.collabInvites[evHandle] = new Date().toISOString(); log("Collab daveti gönderildi:", `@${evHandle}`); }
   state.posts.push({ day: today, ids, kind, photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, cover: urls[0], title, headline: post.slides[0]?.title, eventName: post.eventName || undefined, at: new Date().toISOString(),
+    // Haftalık bülten Reels'i video ararken kullanır: yarışın doğrulanmış hesabı, haberin sporcusu
+    ig: evHandle || undefined, athlete: post.athleteName || undefined, athleteIg: post.athleteInstagram || undefined,
     // Yayın sonrası denetim için (denetimden sonra silinir)
     audit: { slides: post.slides, caption, srcUrls, eventName: post.eventName || "" } });
   for (const id of ids ?? []) postedIds.add(id);
@@ -646,7 +648,21 @@ async function ghApi(pathname) {
 
 /** Bekleyen onaylar: yalnızca depo sahibinin yorumları (e-posta yanıtı da yorum olur) geçerlidir. 7 günde yanıt yoksa düşer. */
 async function processApprovals() {
-  const pend = state.pendingApprovals ?? {};
+  state.pendingApprovals ??= {};
+  const pend = state.pendingApprovals;
+  // Haftalık bülten Reels'i bilgisayarda üretilir (reels/weekly.mjs) ve state/reel-queue.json'a yazılır: buradan onay kuyruğuna alınır
+  try {
+    const qf = "state/reel-queue.json";
+    const q = fs.existsSync(qf) ? JSON.parse(fs.readFileSync(qf, "utf8")) : [];
+    let moved = 0;
+    for (const it of q) {
+      if (!/^r[0-9a-f]{8}$/.test(it.code ?? "") || !/^https:\/\/raw\.githubusercontent\.com\//.test(it.video ?? "")) continue;
+      if (pend[it.code] || (state.reelsDone ?? []).includes(it.code)) continue;
+      pend[it.code] = { video: it.video, caption: String(it.caption ?? "").slice(0, 2100), kind: "reel", title: it.title ?? "Haftalık bülten", ids: [`reel:${it.code}`], photos: [], urls: [it.video], srcUrls: [], at: it.at ?? new Date().toISOString(), label: "REELS" };
+      moved++;
+    }
+    if (moved) { fs.writeFileSync(qf, "[]\n"); saveState(); log("Reels onay kuyruğuna alındı:", moved); }
+  } catch (e) { log("Reels kuyruğu okunamadı:", String(e.message).slice(0, 160)); }
   const codes = Object.keys(pend);
   if (!codes.length || DRY) return;
   const owner = String(process.env.GH_REPO ?? "").split("/")[0].toLowerCase();
@@ -660,7 +676,7 @@ async function processApprovals() {
     if (String(c.user?.login ?? "").toLowerCase() !== owner || c.user?.type !== "User" || c.performed_via_github_app) continue;
     // Komut yalnızca ilk alıntı olmayan satırda ve satırın tamamı olmalı (e-posta yanıtındaki alıntı metni sayılmaz)
     const first = String(c.body ?? "").split(/\r?\n/).map((l) => l.trim()).find((l) => l && !l.startsWith(">")) ?? "";
-    for (const m of [first.match(/^(ONAY|RET)\s+(s[0-9a-f]{8})$/i)].filter(Boolean)) {
+    for (const m of [first.match(/^(ONAY|RET)\s+([sr][0-9a-f]{8})$/i)].filter(Boolean)) {
       const code = m[2].toLowerCase(), item = pend[code];
       if (!item || item.approved) continue;
       if (m[1].toUpperCase() === "RET") { delete pend[code]; saveState(); log("Onay bekleyen post reddedildi:", code); continue; }
@@ -673,11 +689,12 @@ async function processApprovals() {
       }
       delete pend[code]; saveState();
       try {
-        const res = await publish(item.urls, item.caption);
+        const res = item.video ? await publishReel(item.video, item.caption) : await publish(item.urls, item.caption);
+        if (item.video) state.reelsDone = [...(state.reelsDone ?? []), code].slice(-50);
         state.posts.push({ day: today, ids: item.ids, kind: item.kind, photos: item.photos, media: res.id, permalink: res.permalink, cover: item.urls[0], title: item.title, headline: item.headline, eventName: item.eventName, approved: code, at: new Date().toISOString() });
         saveState();
-        log("Onaylı istatistik postu yayında:", res.permalink);
-        await notify(`✅ Onayladığın istatistik postu paylaşıldı (${code})\n${res.permalink}`);
+        log("Onaylı post yayında:", res.permalink);
+        await notify(`✅ Onayladığın ${item.video ? "Reels" : "post"} paylaşıldı (${code})\n${res.permalink}`);
       } catch (e) {
         if (isCreditError(e)) throw e;
         pend[code] = item; saveState();

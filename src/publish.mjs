@@ -128,6 +128,25 @@ export async function publishStory(imageUrl) {
   return { id: pub.id };
 }
 
+/**
+ * Reels paylaşımı: herkese açık MP4 URL'si (H.264/AAC, 9:16). Video işlenmesi birkaç dakika sürebilir.
+ * share_to_feed: profil ızgarasında da görünür.
+ */
+export async function publishReel(videoUrl, caption) {
+  const me = userId();
+  const c = await retry("IG reels container", () => call("POST", `${me}/media`, { media_type: "REELS", video_url: videoUrl, caption, share_to_feed: "true" }));
+  for (let i = 0; i < 60; i++) {
+    const { status_code, status } = await retry(`IG reels durum ${c.id}`, () => call("GET", c.id, { fields: "status_code,status" }));
+    if (status_code === "FINISHED") break;
+    if (status_code === "ERROR" || status_code === "EXPIRED") throw new Error(`IG reels ${c.id}: ${status_code} ${status ?? ""}`);
+    if (i === 59) throw new Error(`IG reels ${c.id}: zaman aşımı`);
+    await sleep(10000);
+  }
+  const pub = await call("POST", `${me}/media_publish`, { creation_id: c.id }); // yeniden deneme yok: çift paylaşım riski
+  const info = await call("GET", pub.id, { fields: "permalink" }).catch(() => ({}));
+  return { id: pub.id, permalink: info.permalink };
+}
+
 /** Ücretli çağrılardan önce token + hesap kontrolü. Başarısızsa hata fırlatır. */
 export async function preflight() {
   const me = userId();

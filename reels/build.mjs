@@ -200,7 +200,7 @@ ${html}
 ${caps}
 </div>
 ${sfx}
-<audio id="music" src="assets/music.mp3" data-start="0" data-duration="${TOTAL}" data-track-index="6" data-volume="0.32" data-fade-out="2.5"></audio>
+<audio id="music" src="assets/music.mp3" data-start="0" data-duration="${TOTAL}" data-track-index="6" data-volume="0.5" data-fade-out="2.5"></audio>
 </div>
 <script>
 const tl = gsap.timeline({ paused: true });

@@ -427,6 +427,77 @@
         "eventName": "UCI Gran Fondo World Series Antalya 2026"
       },
       "story": "17956243599269287"
+    },
+    {
+      "day": "2026-11-09",
+      "ids": [
+        "c21:00c74433-558d-45b6-8159-11aebf62510a"
+      ],
+      "kind": "haber",
+      "photos": [
+        "local:overhead-woman"
+      ],
+      "media": "18120080008801563",
+      "permalink": "https://www.instagram.com/p/DfhaYw2l0JW/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-09/mw9a6y7u/01.jpg",
+      "title": "Wonder Woman's Cup 2027 İstanbul'da, kayıtlar 27 Kasım'da açılıyor",
+      "headline": "Wonder Woman's Cup kayıtları 27 Kasım'da açılacak",
+      "eventName": "Wonder Woman's Cup 2027",
+      "at": "2026-11-09T13:13:38.187Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "Kayıt duyurusu",
+            "title": "Wonder Woman's Cup kayıtları 27 Kasım'da açılacak",
+            "subtitle": "Kadınlara özel CrossFit ve fitness yarışması 6-7 Mart 2027'de İstanbul'da, Biruni Üniversitesi'nde yapılacak."
+          },
+          {
+            "type": "stat",
+            "label": "Kayıt ücreti",
+            "value": "150 USD"
+          },
+          {
+            "type": "text",
+            "title": "Tarih ve kayıt",
+            "bullets": [
+              "Yarışma tarihi: 6-7 Mart 2027",
+              "Kayıt dönemi: 27 Kasım 2026-25 Şubat 2027",
+              "Kayıt ücreti: 150 USD",
+              "Kayıtlar circle21 platformu üzerinden alınacak"
+            ]
+          },
+          {
+            "type": "text",
+            "title": "Yarışma Zeytinburnu'nda yapılacak",
+            "bullets": [
+              "Mekân: Biruni Üniversitesi, Zeytinburnu/İstanbul",
+              "Yarışma yüz yüze yapılacak",
+              "Organizatöre göre kadın sporcuları destekleyen erkek sporcular da yarışmada yer alacak"
+            ]
+          },
+          {
+            "type": "text",
+            "title": "İlk yarışma 8 Mart 2026'da yapıldı",
+            "bullets": [
+              "Organizatör, etkinliği Türkiye'nin kadınlara özel ilk CrossFit ve fitness yarışması olarak tanımlıyor",
+              "Organizasyon aynı zamanda sosyal sorumluluk projesi olarak düzenleniyor",
+              "İlk yılda Darüşşafaka'ya bağış yapıldı"
+            ]
+          },
+          {
+            "type": "end",
+            "title": "6-7 Mart 2027'de Wonder Woman's Cup'ta yarışacak mısınız?",
+            "body": "Yorumlara yazın."
+          }
+        ],
+        "caption": "Wonder Woman's Cup 2027 kayıtları 27 Kasım'da açılacak\nKadınlara özel CrossFit ve fitness yarışması 6-7 Mart 2027'de İstanbul'da yapılacak.\n\nYarışma Zeytinburnu'ndaki Biruni Üniversitesi'nde yüz yüze düzenlenecek. Kayıtlar 27 Kasım 2026'da açılacak ve 25 Şubat 2027'ye kadar sürecek. Kayıt ücreti 150 USD.\n\nİlk yarışma 8 Mart 2026'da yapıldı. Organizatör etkinliği Türkiye'nin kadınlara özel ilk CrossFit ve fitness yarışması olarak tanımlıyor. İlk yılda Darüşşafaka'ya bağış yapıldı. Organizatöre göre kadın sporcuları destekleyen erkek sporcular da 2027'de yarışmada yer alacak.\n\n6-7 Mart 2027'de Wonder Woman's Cup'ta yarışacak mısınız?\nBirlikte yarışmak istediğiniz arkadaşınıza gönderin.\n\nKaynak: circle21 resmî kayıt sayfası\n\n#wonderwomanscup #crossfit #fonksiyonelantrenman #istanbul #amatörspor #hibritportal",
+        "srcUrls": [
+          "https://circle21.events/events/wonder-womans-cup-2026"
+        ],
+        "eventName": "Wonder Woman's Cup 2027"
+      },
+      "story": "18148484530591945"
     }
   ],
   "daily": {
@@ -437,8 +508,8 @@
       "summarySent": true
     },
     "2026-11-09": {
-      "drafts": 17,
-      "approved": 4,
+      "drafts": 18,
+      "approved": 5,
       "rejected": 13
     }
   },

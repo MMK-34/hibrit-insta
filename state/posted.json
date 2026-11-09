@@ -521,6 +521,81 @@
         "eventName": "3. Geleneksel Ekinoks Atatürk Dağ Koşusu"
       },
       "story": "18230767351327123"
+    },
+    {
+      "day": "2026-11-09",
+      "ids": [
+        "c21:00c74433-558d-45b6-8159-11aebf62510a"
+      ],
+      "kind": "haber",
+      "photos": [
+        "pixabay:3290293",
+        "pixabay:7530142",
+        "pixabay:7530143",
+        "pixabay:5210896"
+      ],
+      "media": "18131821846876466",
+      "permalink": "https://www.instagram.com/p/DfhdG3-jXlj/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-09/mw9b1hme/01.jpg",
+      "title": "Wonder Woman's Cup 2027 İstanbul'da, kayıtlar 27 Kasım'da açılıyor",
+      "headline": "Wonder Woman's Cup kayıtları 27 Kasım'da açılıyor",
+      "eventName": "Wonder Womans Cup",
+      "at": "2026-11-09T13:37:25.838Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "WONDER WOMAN'S CUP",
+            "title": "Wonder Woman's Cup kayıtları 27 Kasım'da açılıyor",
+            "subtitle": "Yarış, 6-7 Mart 2027'de İstanbul Zeytinburnu'ndaki Biruni Üniversitesi'nde yapılacak."
+          },
+          {
+            "type": "stat",
+            "label": "Kayıt ücreti",
+            "value": "150 USD"
+          },
+          {
+            "type": "text",
+            "title": "Yarışın künyesi",
+            "bullets": [
+              "Ad: Wonder Woman's Cup 2027",
+              "Tarih: 6-7 Mart 2027",
+              "Yer: Biruni Üniversitesi, Zeytinburnu/İstanbul",
+              "Biçim: Yüz yüze yarışma"
+            ]
+          },
+          {
+            "type": "text",
+            "title": "Kayıt bilgileri",
+            "bullets": [
+              "Kayıt açılışı: 27 Kasım 2026",
+              "Son kayıt: 25 Şubat 2027",
+              "Kayıt ücreti: 150 USD",
+              "Kayıtlar circle21 platformu üzerinden yapılacak"
+            ]
+          },
+          {
+            "type": "text",
+            "title": "İkinci kez düzenleniyor",
+            "bullets": [
+              "İlk yarış 8 Mart 2026'da yapıldı",
+              "Organizatör, ilk yılın ardından Darüşşafaka'ya bağış yapıldığını açıkladı",
+              "Organizatöre göre kadınları destekleyen erkek sporcular da etkinlikte yer alacak"
+            ]
+          },
+          {
+            "type": "end",
+            "title": "Wonder Woman's Cup 2027'de yarışacak mısınız?",
+            "body": "Yorumlara yazın."
+          }
+        ],
+        "caption": "Wonder Woman's Cup 2027 kayıtları 27 Kasım'da açılıyor\nİlki 8 Mart 2026'da yapılan kadınlara özel CrossFit ve fitness yarışması, ikinci kez İstanbul'da düzenlenecek.\n\nYarış 6-7 Mart 2027'de Zeytinburnu'ndaki Biruni Üniversitesi'nde yüz yüze yapılacak. Kayıtlar 27 Kasım 2026'da açılıp 25 Şubat 2027'de kapanacak. Kayıt ücreti 150 USD. Kayıtlar circle21 platformu üzerinden yapılacak.\n\nOrganizatör, ilk yılın ardından Darüşşafaka'ya bağış yapıldığını açıkladı. Organizatöre göre 2027'de kadın sporcuları destekleyen erkek sporcular da etkinlikte yer alacak.\n\nWonder Woman's Cup 2027'de yarışacak mısınız?\nBirlikte yarışmak istediğiniz arkadaşınıza gönderin.\n\nKaynak: circle21 resmî kayıt sayfası\n\n#wonderwomanscup #crossfit #fonksiyonelantrenman #crossfitturkiye #istanbul #amatörspor #hibritportal",
+        "srcUrls": [
+          "https://circle21.events/events/wonder-womans-cup-2026"
+        ],
+        "eventName": "Wonder Womans Cup"
+      },
+      "story": "18117960407111022"
     }
   ],
   "daily": {
@@ -531,8 +606,8 @@
       "summarySent": true
     },
     "2026-11-09": {
-      "drafts": 19,
-      "approved": 6,
+      "drafts": 20,
+      "approved": 7,
       "rejected": 13
     }
   },

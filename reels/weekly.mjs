@@ -136,14 +136,22 @@ const frame = (f, t, out) => { sh("ffmpeg", ["-loglevel", "error", "-y", "-ss", 
 const vertical = (f, from, len, out) => sh("ffmpeg", ["-loglevel", "error", "-y", "-ss", String(from), "-i", f, "-t", String(len), "-vf", "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30", "-an", "-c:v", "libx264", "-crf", "18", "-preset", "fast", out]);
 const words = (s) => String(s ?? "").toLocaleLowerCase("tr").normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i").split(/[^a-z0-9]+/).filter((w) => w.length >= 4 && !/^(20\d\d|yaris|series|games|team|cup)$/.test(w));
 
-async function igVideos(handle, eventName) {
+const GENERIC_W = /^(istanbul|ankara|izmir|antalya|adana|bursa|mersin|kusadasi|bodrum|mugla|aydin|kemalpasa|belek|demre|city|turkiye|turkey|athens|belgrade|tirana|sofia|varna|ultra|trail|maraton|marathon|kosu|kosusu|throwdown|games|series|team|crossfit|hyrox|fitness|challenge|championship|sampiyonasi|yarismasi|yari|half|world|international|uluslararasi|open|festival|cycling|bisiklet|granfondo|fondo|triathlon|triatlon|ironman)$/;
+const distinct = (s) => words(s).filter((w) => w.length >= 4 && !GENERIC_W.test(w));
+
+/**
+ * Hesabın videoları. Kısa duyuru Reels'inde (SHORT) son 2 yıl taranır: yarışın önceki edisyonlarının görüntüleri kullanılabilir.
+ * own=true: hesap yarışın kendi hesabı (açıklamada ad geçmesi gerekmez).
+ */
+async function igVideos(handle, eventName, own = false) {
   const t = process.env.IG_DISCOVERY_TOKEN, id = process.env.IG_USER_ID;
   if (!handle || !t) return [];
-  const f = `business_discovery.username(${handle}){media.limit(40){media_type,timestamp,caption,media_url}}`;
+  const f = `business_discovery.username(${handle}){media.limit(${SHORT ? 100 : 40}){media_type,timestamp,caption,media_url}}`;
   const j = await fetch(`https://graph.facebook.com/v23.0/${id}?fields=${encodeURIComponent(f)}&access_token=${t}`).then((r) => r.json()).catch(() => ({}));
-  const ws = words(eventName);
-  return (j.business_discovery?.media?.data ?? []).filter((m) => m.media_type === "VIDEO" && m.media_url && Date.parse(m.timestamp) > Date.now() - 12 * 864e5)
-    .filter((m) => !ws.length || ws.some((w) => words(m.caption).includes(w)) || words(handle).some((w) => ws.includes(w)) || ws.some((w) => handle.toLowerCase().includes(w)));
+  const ws = distinct(eventName);
+  const maxAge = (SHORT ? 730 : 12) * 864e5;
+  return (j.business_discovery?.media?.data ?? []).filter((m) => m.media_type === "VIDEO" && m.media_url && Date.parse(m.timestamp) > Date.now() - maxAge)
+    .filter((m) => own || ws.some((w) => words(m.caption).includes(w)));
 }
 
 /** Videodan habere uyan bir bölüm seçer (görsel denetim); dikey 1080x1920 parça üretir. */
@@ -174,11 +182,12 @@ async function getMedia(it, k, skip = new Set()) {
   // a) yarışın / sporcunun kendi Instagram videosu
   // Kayıtlı hesap yoksa izlenen organizatör listesinden etkinlik adıyla eşleşen hesap (ör. "Varda Ultra Trail" -> vardaultratrail); şehir adı eşleşme sayılmaz
   const evWords = words(p.eventName ?? p.headline);
-  const CITY_W = /^(istanbul|ankara|izmir|antalya|adana|bursa|mersin|kusadasi|bodrum|mugla|aydin|kemalpasa|belek|demre|city|turkiye|turkey|athens|belgrade|tirana|sofia|varna)$/;
-  const watched = IG_WATCH.filter((h) => evWords.some((w) => w.length >= 5 && !CITY_W.test(w) && h.toLowerCase().includes(w))).slice(0, 2);
+  // yalnızca yarışa özgü kelime (ör. "varda", "eurasia") hesap adında geçerse o hesap yarışın kendi hesabı sayılır
+  const watched = IG_WATCH.filter((h) => distinct(p.eventName ?? "").some((w) => w.length >= 5 && h.toLowerCase().includes(w))).slice(0, 2);
   if (!skip.has("own")) for (const h of [...new Set([p.ig, p.athleteIg, ...watched].filter(Boolean))]) {
     if (got) break;
-    for (const m of (await igVideos(h, p.eventName)).slice(0, 3)) {
+    const own = h === p.ig || h === p.athleteIg || watched.includes(h);
+    for (const m of (await igVideos(h, p.eventName, own)).slice(0, SHORT ? 5 : 3)) {
       const raw = path.join(W, `ig${k}.mp4`);
       fs.writeFileSync(raw, Buffer.from(await (await fetch(m.media_url, { signal: AbortSignal.timeout(120000) })).arrayBuffer()));
       if (await videoClip(raw, strict, need, vid)) { got = "video"; credit = `@${h}`; break; }
@@ -288,6 +297,12 @@ if (bad.length) {
   if (final.length < MIN) { if (SHORT) await dropShort(); await push(`Haftalık bülten onaya gönderilmedi: kalite kontrolünden geçen sahne 3'ten az.\n${bad.map((b) => b.problem).join(" | ").slice(0, 300)}`, { title: "Bülten", level: "warn" }); process.exit(0); }
   await produce(final);
   bad = await qa(final);
+  if (bad.length) {
+    // ikinci kez kalan sahne çıkarılır; kalanlar yeterliyse son kez çizilir (kalanlar iki kontrolden de geçti)
+    log("ikinci kalite kontrolü:", bad.map((b) => `${final[b.k]?.headline}: ${b.problem}`).join(" | "));
+    const kept = final.filter((_, k) => !bad.some((b) => b.k === k));
+    if (kept.length >= MIN) { final = kept; await produce(final); bad = []; }
+  }
   if (bad.length) { await push(`Haftalık bülten onaya gönderilmedi: ikinci kalite kontrolü de geçmedi.\n${bad.map((b) => b.problem).join(" | ").slice(0, 300)}`, { title: "Bülten", level: "warn" }); process.exit(0); }
 }
 const N = final.length;

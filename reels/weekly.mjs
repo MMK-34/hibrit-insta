@@ -302,9 +302,11 @@ async function qa(list) {
   const scenes = JSON.parse(fs.readFileSync(path.join(DIR, "scenes.json"), "utf8")).filter((s) => s.i >= 1 && s.i <= list.length);
   const files = scenes.map((s) => { const f = path.join(W, `qa${s.i}.jpg`); frame(out, (s.start + s.dur * 0.6).toFixed(2), f); return f; });
   const r = await designCheck(files, { topic: `Haftalık spor haberleri bülteni (dikey video kareleri). Her kare bir haber: ${list.map((x, k) => `${k + 1}) ${x.headline}`).join("; ")}. Görüntü gerçek kamera çekimi ve haberin branşına uygun olmalı; animasyon/CGI/soyut desen, boş gökyüzü ya da konusuz sahne ciddi sorundur.` });
+  brandSeen = !!r.brand;
   return r.issues.filter((x) => x.fix !== "yok").map((x) => ({ k: x.slide - 1, problem: x.problem }));
 }
 
+let brandSeen = false; // kullanıcı kuralı: videoda ticari marka görünürse açıklamaya "Reklam / Tanıtım"
 let final = items;
 await produce(final);
 let bad = await qa(final);
@@ -332,9 +334,10 @@ if (bad.length) {
 const N = final.length;
 
 // ---------- 6) onay ----------
-const caption = SHORT
+let caption = SHORT
   ? hats(`${final[0].headline}\n\nAyrıntılar profilde.\n\nGörüntüler: ${[...new Set(final.map((i) => i.credit).filter(Boolean))].join(", ")}\n\n#hibritportal #crossfit #hyrox #koşu #trail`)
   : hats(`Haftanın özeti: ${N} haber\n\n${final.map((i) => `• ${i.headline}`).join("\n")}\n\nHaberlerin ayrıntısı profilde.\n\nGörüntüler: ${[...new Set(final.map((i) => i.credit).filter(Boolean))].join(", ")}\n\n#hibritportal #haftanınözeti #crossfit #hyrox #koşu #trail`);
+if (brandSeen) caption = caption.replace(/\n\n#hibritportal/, "\n\nReklam / Tanıtım\n\n#hibritportal");
 if (DRY) { log("DRY: yükleme ve onay yok.\n" + caption); process.exit(0); }
 const [url] = await uploadFiles([out], `reels/${today}${SHORT ? "-kisa" : ""}`);
 const code = `r${crypto.randomBytes(4).toString("hex")}`;

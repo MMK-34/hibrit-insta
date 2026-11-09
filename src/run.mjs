@@ -504,6 +504,7 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   // Tasarım denetçisi (yayın öncesi görsel bütünlük): sorun varsa bir kez düzeltip yeniden çizer; hâlâ sorunluysa yayınlamaz
   const dtopic = [post.athleteName ? `Haberin kahramanı sporcu: ${post.athleteName}` : "", post.eventName, post.slides[0]?.title].filter(Boolean).join(" | ");
   const dc = await designCheck(files, { topic: dtopic });
+  let brandSeen = !!dc.brand;
   if (!dc.ok) {
     log("Tasarım denetimi:", dc.issues.map((i) => `${i.slide}: ${i.problem} (${i.fix})`).join(" | "));
     if (dc.issues.some((i) => i.fix === "logo_kaldir")) logoUse = null;
@@ -517,6 +518,7 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     }
     files = await renderPost({ ...post, photos, eventLogo: logoUse, category, source: sourceName, dateLabel }, outDir);
     const dc2 = await designCheck(files, { topic: dtopic });
+    brandSeen = !!dc2.brand;
     if (!dc2.ok) {
       const why = dc2.issues.map((i) => `slayt ${i.slide}: ${i.problem}`).join(" | ");
       log("Tasarım denetimi ikinci kez geçmedi, yayınlanmadı:", why);
@@ -531,6 +533,8 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   // Etkinliğin kendi fotoğrafı kullanıldıysa kaynağı açıklamada belirtilir (görselde yazı yok)
   const evSrc = [...new Set(photos.filter((p) => String(p.id).startsWith("event:")).map((p) => p.source))];
   let caption = evSrc.length && /Kaynak:[^\n]*/.test(post.caption) ? post.caption.replace(/(Kaynak:[^\n]*)/, `$1\nGörsel: ${evSrc.join(", ")}`) : post.caption;
+  // Kullanıcı kuralı (2026-11-10): görselde ticari marka belirgin görünüyorsa açıklamaya "Reklam / Tanıtım" yazılır
+  if (brandSeen && !/Reklam \/ Tanıtım/.test(caption)) caption = /\nKaynak:/.test(caption) ? caption.replace(/\nKaynak:/, "\nReklam / Tanıtım\n\nKaynak:") : `${caption}\n\nReklam / Tanıtım`;
   // Etkinliğin Instagram hesabı tıklanabilir @etiket olarak (yalnızca doğrulanmış hesap): okur yarışın sayfasına girebilsin
   const evHandle = post.officialInstagram ? await verifiedEventHandle(post.officialInstagram, post.eventName).catch(() => "") : "";
   if (evHandle && !caption.includes(`@${evHandle}`) && /\nKaynak:/.test(caption)) caption = caption.replace(/\nKaynak:/, `\nYarışın Instagram hesabı: @${evHandle}\n\nKaynak:`);

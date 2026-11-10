@@ -696,6 +696,24 @@
       "eventName": "8. Uluslararası Mersin Maratonu",
       "at": "2026-11-10T11:42:37.204Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-10",
+      "ids": [
+        "manual:wolves-throwdown-2026-kayit"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:wolves-throwdown-2026-kayit"
+      ],
+      "media": "17940223638402237",
+      "permalink": "https://www.instagram.com/p/Dfj7nQPDc8H/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wolves-throwdown-2026-kayit/01.jpg",
+      "title": "Wolves Throwdown 13 Aralık'ta İstanbul'da",
+      "headline": "Wolves Throwdown 13 Aralık'ta İstanbul'da",
+      "eventName": "Wolves Throwdown 2026",
+      "at": "2026-11-10T12:42:27.044Z",
+      "manual": true
     }
   ],
   "daily": {

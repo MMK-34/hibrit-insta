@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-10T10:41:49.573Z",
+  "updated": "2026-11-10T11:41:56.029Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 94,
-      "fetchedAt": "2026-11-10T10:40:59.178Z"
+      "fetchedAt": "2026-11-10T11:40:58.002Z"
     },
     "hyrox": {
       "ok": true,
       "count": 16,
-      "fetchedAt": "2026-11-10T10:41:49.563Z"
+      "fetchedAt": "2026-11-10T11:41:56.022Z"
     }
   },
   "items": [
@@ -1640,6 +1640,9 @@
       "status": "confirmed",
       "url": "https://circle21.events/event?competitionId=693578ce-5a5a-43de-9235-57ea09468ee7",
       "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/463690/conversions/Herz-und-Schwere_-Classics-Teams-Edition-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/463697/conversions/Logo-Classics-27-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
       "registration": {
         "to": "2027-01-15",
         "fee": "0.00 EUR"

@@ -680,6 +680,22 @@
         "ig:18081198002402621"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-10",
+      "ids": [
+        "manual:mersin-maratonu-2026-kayit"
+      ],
+      "kind": "duyuru",
+      "photos": [],
+      "media": "18097436366661099",
+      "permalink": "https://www.instagram.com/p/Dfj0w6iDGtA/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/mersin-maratonu-2026-kayit/01.jpg",
+      "title": "8. Uluslararası Mersin Maratonu kayıtları açıldı",
+      "headline": "8. Uluslararası Mersin Maratonu kayıtları açıldı",
+      "eventName": "8. Uluslararası Mersin Maratonu",
+      "at": "2026-11-10T11:42:37.204Z",
+      "manual": true
     }
   ],
   "daily": {

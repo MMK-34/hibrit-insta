@@ -568,6 +568,115 @@
         "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOcXNqY2ktREtzT2xRYkhIcXg4c180U2lRcHJrVHN1QWlLWk1jSExCbUw3bXFJYUFHVS1lTjY4VE04cTRUYjJXQ1F1aUt1R0VCNnpwdUJPNlRmVjFURlloUlBQeUY0MG9zZWRwX1pjLWpPMGdOc2V2MDl6VXRZblM5SkhzcThXOUF6MERmM3pVVjdnMmYwdHF1NFp4TTl0ejFOckhjNEZDek1iekdCazEwUzhYbEktbU4t"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-10",
+      "ids": [
+        "ozel:10-kasim:2026"
+      ],
+      "kind": "ozel",
+      "photos": [],
+      "media": "17948185680358526",
+      "permalink": "https://www.instagram.com/p/DfjSaapDYBi/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-09/ozel-10-kasim/01.jpg",
+      "title": "Gazi Mustafa Kemal Atatürk'ü saygı ve özlemle anıyoruz",
+      "headline": "Gazi Mustafa Kemal Atatürk'ü saygı ve özlemle anıyoruz",
+      "approved": "s9257cb94",
+      "at": "2026-11-10T06:42:21.949Z"
+    },
+    {
+      "day": "2026-11-10",
+      "ids": [
+        "seri:kurslar:2026-11"
+      ],
+      "kind": "seri",
+      "photos": [
+        "local:comp-overhead"
+      ],
+      "media": "18149320591528951",
+      "permalink": "https://www.instagram.com/p/DfjT0WRjfaE/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-10/mwac3e4m/01.jpg",
+      "title": "Yaklaşan CrossFit antrenörlük kursları",
+      "headline": "Yaklaşan CrossFit antrenörlük kursları",
+      "at": "2026-11-10T06:54:38.866Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "ANTRENÖRLÜK KURSLARI",
+            "title": "Yaklaşan CrossFit antrenörlük kursları",
+            "subtitle": "Abu Dabi, Dubai, Tiflis kurs takvimi."
+          },
+          {
+            "type": "table",
+            "columns": [
+              "Tarih",
+              "Kurs",
+              "Şehir",
+              "Düzenleyen"
+            ],
+            "rows": [
+              [
+                "14-15 Kas",
+                "CrossFit Level 1 Certificate Course",
+                "Abu Dabi",
+                "CrossFit Yas"
+              ],
+              [
+                "19-20 Ara",
+                "CrossFit Level 2 Certificate Course",
+                "Dubai",
+                "CrossFit WH"
+              ],
+              [
+                "16-17 Oca",
+                "CrossFit Level 1 Certificate Course",
+                "Tiflis",
+                "CrossFit 148"
+              ],
+              [
+                "23-24 Oca",
+                "CrossFit Level 1 Certificate Course",
+                "Dubai",
+                "CrossFit WH"
+              ]
+            ],
+            "barCol": -1,
+            "title": "Kurs takvimi"
+          },
+          {
+            "type": "end",
+            "title": "Hangi kursa katılmayı düşünüyorsunuz?",
+            "body": "Listede olmayan bir kurs varsa yorumlara yazın, ekleyelim."
+          }
+        ],
+        "caption": "Önümüzdeki aylarda açılacak 4 kurs: CrossFit Level 1 (Abu Dabi, 14-15 Kas), CrossFit Level 2 (Dubai, 19-20 Ara), CrossFit Level 1 (Tiflis, 16-17 Oca) ve CrossFit Level 1 (Dubai, 23-24 Oca).\n\nTarih, şehir ve ev sahibi salon bilgileri sonraki slaytlarda. Kayıt ve güncel bilgi için resmi kurs sayfasına bakın.\n\nHangi kursa katılmayı düşünüyorsunuz?\n\nKaynak: CrossFit resmî kurs takvimi\n\n#crossfit #crossfitlevel1 #crossfitcoach #antrenörlük #hibritportal",
+        "srcUrls": [
+          "https://registrations.crossfit.com/abudhabinovember2026",
+          "https://registrations.crossfit.com/dubail2december2026",
+          "https://registrations.crossfit.com/tbilisijanuary2027",
+          "https://registrations.crossfit.com/dubaijanuary2027"
+        ],
+        "eventName": "",
+        "country": "",
+        "place": ""
+      },
+      "story": "18100824245099662"
+    },
+    {
+      "day": "2026-11-10",
+      "ids": [
+        "ig:18075981287772101"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-10",
+      "ids": [
+        "https://thebarbellspin.com/competition/james-sprague-and-ellie-turner-secure-wins-at-athx-los-angeles/",
+        "ig:18081198002402621"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -582,6 +691,11 @@
       "approved": 10,
       "rejected": 17,
       "summarySent": true
+    },
+    "2026-11-10": {
+      "drafts": 5,
+      "approved": 1,
+      "rejected": 3
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -595,9 +709,14 @@
       "tries": 2,
       "done": true,
       "media": "18017207690993316"
+    },
+    "kurslar:2026-11": {
+      "tries": 1,
+      "done": true,
+      "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-10T05:41:50.707Z",
+  "lastRunAt": "2026-11-10T06:42:09.901Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {
@@ -606,30 +725,18 @@
       "at": "2026-11-09T17:42:33.300Z"
     }
   },
-  "pendingApprovals": {
-    "s9257cb94": {
-      "caption": "Cumhuriyetimizin kurucusu Gazi Mustafa Kemal Atatürk'ü ebediyete intikalinin 88. yılında saygı, sevgi ve özlemle anıyoruz.\n\n#10Kasım #Atatürk #AtatürküAnıyoruz",
-      "urls": [
-        "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-09/ozel-10-kasim/01.jpg"
-      ],
-      "ids": [
-        "ozel:10-kasim:2026"
-      ],
-      "kind": "ozel",
-      "title": "Gazi Mustafa Kemal Atatürk'ü saygı ve özlemle anıyoruz",
-      "headline": "Gazi Mustafa Kemal Atatürk'ü saygı ve özlemle anıyoruz",
-      "photos": [],
-      "srcUrls": [],
-      "at": "2026-11-09T17:42:32.163Z",
-      "publishAt": "2026-11-10T09:05",
-      "expiresDay": "2026-11-10",
-      "label": "ÖZEL GÜN POSTU",
-      "approved": "s9257cb94"
-    }
-  },
-  "dmSeen": [],
+  "pendingApprovals": {},
+  "dmSeen": [
+    "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDU0MDk0NTMwNDIxOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1OTMzMTc5NTg3NzcyNjc4NjozMzA5NzI2NDYyODY3ODM3ODMyNDg2NzA4NjE3MzYwMTc5MgZDZD",
+    "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDU0MDk0NTMwNDIxOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1OTMzMTc5NTg3NzcyNjc4NjozMzA5ODE3MDc1NzY4OTY1NjU1NTY4MzI4NjQxMDU5MjI1NgZDZD",
+    "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDU0MDk0NTMwNDIxOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1OTMzMTc5NTg3NzcyNjc4NjozMzA5ODI4Mjc1OTE5OTkxMTQzNzE1OTUzOTA5MjIyNjA0OAZDZD"
+  ],
   "dmPins": {
     "1mehmetkuyucu": "1647030993575389"
   },
-  "dmErr": "2026-11-09"
+  "dmErr": "2026-11-09",
+  "paused": {
+    "reason": "kredi",
+    "at": "2026-11-10T07:03:22.217Z"
+  }
 }

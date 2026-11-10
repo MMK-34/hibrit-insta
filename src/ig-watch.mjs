@@ -54,8 +54,11 @@ export async function igWatchCandidates(extra = []) {
   const cutoff = Date.now() - 3 * 864e5;
   const out = [];
   const curatedSet = new Set([...IG_WATCH, ...env].map((h) => String(h).replace(/^@/, "").trim()));
-  // İstek sınırı (saatte ~200): dünya hesapları ve salonlar 3 saatte bir okunur, Türkiye/bölge organizatörleri her saat
-  const slowHour = new Date().getUTCHours() % 3 === 0;
+  // Meta "aşırı otomasyon" uyarısı (2026-11-10, işletme hesabı geçici kısıtlandı): sorgu sıklığı düşük tutulur.
+  // Türkiye/bölge organizatörleri 3 saatte bir; dünya hesapları ve salonlar günde 3 kez (UTC 06, 12, 18).
+  const hr = new Date().getUTCHours();
+  if (hr % 3 !== 0) return [];
+  const slowHour = hr % 6 === 0 && hr !== 0;
   for (const h of handles) {
     const box = IG_WATCH_BOX.includes(h);
     if ((IG_WATCH_GLOBAL.includes(h) || box) && !slowHour) continue;

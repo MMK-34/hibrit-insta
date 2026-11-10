@@ -21,7 +21,7 @@ Bulut bot (post.yml, saatte bir) sırası gelen postu Claude API çağırmadan p
 - Yalnızca kaynak metinde olan bilgi; tahmin, yorum, abartı, övgü sıfatı yok. Haber kanalı dili, en fazla 1 ünlem.
 - Kişi adı: yalnızca haberin kendisi olan sporcu(lar) ve sonuç sıralaması.
 - Fotoğraf: etkinlik haberinde o etkinliğin kendi fotoğrafı; sporcu haberinde o sporcunun fotoğrafı; ilgisiz fotoğraf yok. Son 10 postta kullanılan fotoğraf tekrar yok. Marka belirgin görünüyorsa caption'a "Reklam / Tanıtım" satırı.
-- Günde en çok 5 post (bot + elle toplam). Aynı haberi tekrar etme (son 40 başlığa bak).
+- Günde en çok 5 post (bot + elle toplam); bunların en çok 1'i bilgi postu (kalıcı konu, resmî kaynaktan). Bilgi postunda konuya uygun stok fotoğraf kullanılabilir (`node manual/stock.mjs`); haberde kullanılmaz. Aynı haberi tekrar etme (son 40 başlığa bak).
 - Caption: 1. satır haberin kendisi (≤70 karakter); 2. satır bağlam; 2-4 kısa paragraf; habere özgü tek soru; tek çağrı cümlesi
   (duyuru: "Birlikte yarışmak istediğin arkadaşına gönder." / bilgi: "Yarış planın için kaydet." / sonuç: "Bu yarışta tanıdığın biri var mı? Ona gönder.").
   Link, URL, @kullanıcı adı yok; "Kaynak:" satırını yazma (sistem ekler).

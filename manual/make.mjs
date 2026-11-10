@@ -15,7 +15,7 @@ for (const s of specs) {
   if (!g.ok) { console.log("SÜZGEÇ:", s.id, g.reason); continue; }
   const post = { ...g.post, athleteName: s.post.athleteName, country: s.post.country, place: s.post.place };
   const photos = [];
-  for (const p of s.photos) photos.push({ id: `event:${s.id}`, buf: await sharp(`manual/work/${p.file}`).jpeg({ quality: 92 }).toBuffer(), credit: p.credit, source: p.credit });
+  for (const p of s.photos) photos.push({ id: p.id ?? `event:${s.id}`, buf: await sharp(`manual/work/${p.file}`).jpeg({ quality: 92 }).toBuffer(), credit: p.credit, source: p.credit });
   const [y, m, d] = s.publishAt.slice(0, 10).split("-").map(Number);
   const outDir = path.join("out", "manual", s.id);
   fs.mkdirSync(outDir, { recursive: true });
@@ -29,7 +29,7 @@ for (const s of specs) {
   if (q.some((x) => x.id === s.id)) { console.log("zaten sırada:", s.id); continue; }
   const urls = await uploadFiles(files, `manual/${s.id}`);
   const [story] = await uploadFiles([storyFile], `manual/${s.id}-story`);
-  q.push({ id: s.id, publishAt: s.publishAt, urls, story, caption, title: post.slides[0].title, kind: s.kind, category: s.category, eventName: post.eventName, srcUrl: s.srcUrl });
+  q.push({ id: s.id, publishAt: s.publishAt, urls, story, caption, photos: s.photos.map((p) => p.id ?? `event:${s.id}`), title: post.slides[0].title, kind: s.kind, category: s.category, eventName: post.eventName, srcUrl: s.srcUrl });
   console.log("sıraya alındı:", s.id, s.publishAt);
 }
 if (UP) fs.writeFileSync("state/manual-queue.json", JSON.stringify(q, null, 2) + "\n");

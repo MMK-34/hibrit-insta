@@ -148,7 +148,7 @@ async function publishManualQueue() {
   fs.writeFileSync(qf, JSON.stringify(q.filter((x) => x !== item), null, 2) + "\n");
   if (state.posts.some((p) => (p.ids ?? []).includes(`manual:${item.id}`))) return;
   const res = await publish(item.urls, item.caption);
-  state.posts.push({ day: today, ids: [`manual:${item.id}`], kind: item.kind ?? "haber", photos: [], media: res.id, permalink: res.permalink, cover: item.urls[0], title: item.title, headline: item.title, eventName: item.eventName, at: new Date().toISOString(), manual: true });
+  state.posts.push({ day: today, ids: [`manual:${item.id}`], kind: item.kind ?? "haber", photos: Array.isArray(item.photos) ? item.photos.map(String).slice(0, 10) : [], media: res.id, permalink: res.permalink, cover: item.urls[0], title: item.title, headline: item.title, eventName: item.eventName, at: new Date().toISOString(), manual: true });
   saveState();
   log("Hazır post yayında:", res.permalink);
   if (POSTING.stories && item.story) await publishStory(item.story).catch((e) => log("Hikâye paylaşılamadı:", String(e.message).slice(0, 120)));

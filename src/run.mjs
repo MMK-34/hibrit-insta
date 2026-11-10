@@ -134,8 +134,31 @@ async function recentIgCaptions(limit = 12) {
 let igTitles = []; // state'te olmayan son IG paylaşımlarının başlıkları (selectNews tekrar önleme)
 const SKIPPED = Symbol("atlandı"); // 45 dk kapısında atlanan çalışma: özet/alarm da çalışmaz
 
+/**
+ * state/manual-queue.json: [{ id, publishAt: "YYYY-MM-DDTHH:MM" (TR), urls: [...], caption, title, kind, category }]
+ * Görseller önceden çizilip yüklenmiştir; burada Claude çağrısı yok. Her çalışmada en çok 1 post.
+ */
+async function publishManualQueue() {
+  const qf = "state/manual-queue.json";
+  if (!fs.existsSync(qf)) return;
+  const q = JSON.parse(fs.readFileSync(qf, "utf8"));
+  const nowS = nowLocal();
+  const item = q.find((x) => x.publishAt && x.publishAt <= nowS && Array.isArray(x.urls) && x.urls.length && x.urls.every((u) => String(u).startsWith(`https://raw.githubusercontent.com/${process.env.GH_REPO}/media/`)));
+  if (!item) return;
+  fs.writeFileSync(qf, JSON.stringify(q.filter((x) => x !== item), null, 2) + "\n");
+  if (state.posts.some((p) => (p.ids ?? []).includes(`manual:${item.id}`))) return;
+  const res = await publish(item.urls, item.caption);
+  state.posts.push({ day: today, ids: [`manual:${item.id}`], kind: item.kind ?? "haber", photos: [], media: res.id, permalink: res.permalink, cover: item.urls[0], title: item.title, headline: item.title, eventName: item.eventName, at: new Date().toISOString(), manual: true });
+  saveState();
+  log("Hazır post yayında:", res.permalink);
+  if (POSTING.stories && item.story) await publishStory(item.story).catch((e) => log("Hikâye paylaşılamadı:", String(e.message).slice(0, 120)));
+  await push(`Hazır post paylaşıldı: ${String(item.title ?? "").slice(0, 100)}`, { title: "Paylaşıldı", level: "ok", click: res.permalink ?? "" });
+}
+
 async function main() {
   let published = false, processed = 0, publishedCount = 0;
+  // Elle hazırlanmış (Claude Code oturumunda yazılıp doğrulanmış) postlar: vakti gelince API kredisi olmadan paylaşılır
+  if (!DRY) try { await publishManualQueue(); } catch (e) { log("Hazır post sırası hatası:", String(e?.message ?? e).slice(0, 200)); }
   // Kredi bittiyse: ücretli işlem yok. Yalnızca 1 token'lık yoklama; kredi gelmişse kendiliğinden devam.
   if (state.paused?.reason === "kredi" && !DRY) {
     try { await creditProbe(); } catch (e) {

@@ -53,5 +53,26 @@
     "category": "hyrox",
     "eventName": "HYROX",
     "srcUrl": "https://hyrox.com/the-fitness-race/"
+  },
+  {
+    "id": "wolves-throwdown-2026-kayit",
+    "publishAt": "2026-11-10T15:40",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wolves-throwdown-2026-kayit/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wolves-throwdown-2026-kayit/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wolves-throwdown-2026-kayit/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wolves-throwdown-2026-kayit/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wolves-throwdown-2026-kayit/05.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wolves-throwdown-2026-kayit-story/story.jpg",
+    "caption": "Wolves Throwdown 13 Aralık'ta İstanbul'da\nYarışma 13 Aralık 2026 Pazar günü Wolf Haven Functional Training Club'da yapılacak.\n\nKayıtlar açık. Organizatör kontenjanların dolmakta olduğunu duyurdu.\n\nYarışma, CrossFit'e yeni başlayan ve daha önce yarışma deneyimi olmayan sporcular ile daha önce bir fonksiyonel fitness yarışmasında ilk 20'ye girememiş sporculara açık.\n\nKayıt için salona telefon ya da Instagram mesajı üzerinden ulaşılıyor. Antrenman içerikleri, saatler, kürsü ödülleri ve sponsorlar yakında açıklanacak.\n\n13 Aralık'ta Wolves Throwdown'da yarışacak mısın?\nBirlikte yarışmak istediğin arkadaşına gönder.\n\nKaynak: Wolf Haven\nGörsel: Wolf Haven\n\n#wolvesthrowdown #wolfhaven #crossfit #crossfitturkiye #hibritportal",
+    "photos": [
+      "event:wolves-throwdown-2026-kayit"
+    ],
+    "title": "Wolves Throwdown 13 Aralık'ta İstanbul'da",
+    "kind": "duyuru",
+    "category": "crossfit",
+    "eventName": "Wolves Throwdown 2026",
+    "srcUrl": "https://www.instagram.com/p/DfH1516I7CX/"
   }
 ]

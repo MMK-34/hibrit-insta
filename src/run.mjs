@@ -357,6 +357,8 @@ async function prepareVerified(pick, srcItems, sourceName) {
     // Doğrulanmamış hesabın metni birincil kanıt sayılmaz: iddialar bağımsız kaynakla (circle21 kaydı ya da web) teyit edilmeli
     const sourceTexts = [
       ...srcItems.filter((s) => s.id.startsWith("ig:")).map((s) => ({ label: s.curated ? s.source : `${s.source}: BİRİNCİL KANIT DEĞİL, her iddiayı bağımsız bir kaynakla teyit et; teyit edilemeyen iddia fail`, url: s.url, text: s.text })),
+      // DM ile gelen Instagram gönderisi: doğrulayıcı sayfayı açamıyor (403); gönderinin açıklaması verilir (güvenilmez, bağımsız teyit gerekir)
+      ...srcItems.filter((s) => s.id.startsWith("dm-ig:")).map((s) => ({ label: `${s.source} (DM ile iletilen gönderi): BİRİNCİL KANIT DEĞİL, her iddiayı bağımsız bir kaynakla teyit et; teyit edilemeyen iddia fail`, url: s.url, text: s.text })),
       // circle21 kayıt sayfası tarayıcıda çizildiği için denetçi açamıyor: organizatörün kendi girdiği kayıt metni birincil kaynak olarak verilir
       ...srcItems.filter((s) => s.id.startsWith("c21")).map((s) => ({ label: "circle21 resmî kayıt sayfası (organizatörün kendi girdiği kayıt ve açıklama; birincil kaynak)", url: s.url, text: s.text })),
     ];

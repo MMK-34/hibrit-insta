@@ -714,6 +714,24 @@
       "eventName": "Wolves Throwdown 2026",
       "at": "2026-11-10T12:42:27.044Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-10",
+      "ids": [
+        "manual:bilgi-hyrox-istasyon-kaslar-1110"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "local:hyrox-sled"
+      ],
+      "media": "18122911918821714",
+      "permalink": "https://www.instagram.com/p/DfkCiuHF_GP/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-istasyon-kaslar-1110/01.jpg",
+      "title": "HYROX'ta 8 istasyon hangi kasları çalıştırır?",
+      "headline": "HYROX'ta 8 istasyon hangi kasları çalıştırır?",
+      "eventName": "HYROX",
+      "at": "2026-11-10T13:43:00.246Z",
+      "manual": true
     }
   ],
   "daily": {

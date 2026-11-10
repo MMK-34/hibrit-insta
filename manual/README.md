@@ -13,7 +13,8 @@ Bulut bot (post.yml, saatte bir) sırası gelen postu Claude API çağırmadan p
 6. `git add state/manual-queue.json && git commit -m "..." && git pull --rebase && git push`
 
 ## Kurallar (kullanıcının kesin kuralları)
-- Odak: CrossFit, HYROX, ATHX, hibrit fitness; Türkiye'deki yarışlar ve Türk sporcular öncelikli. Dünyadaki büyük CrossFit/HYROX/ATHX yarışları da haberdir.
+- Odak: CrossFit, HYROX, ATHX, hibrit fitness; Türkiye'deki yarışlar ve Türk sporcular öncelikli. Dünyadaki büyük CrossFit/HYROX yarışları da haberdir.
+- ATHX: yurt dışındaki ATHX yarışları paylaşılmaz; yalnızca Türkiye'de olursa (kullanıcı kararı, 2026-11-10).
 - Koşu: yalnızca büyük/popüler yarışlar (İstanbul Maratonu, Runtalya, Mersin/Antalya/İzmir maratonları, Kapadokya, Kaçkar, Uludağ, Likya, Bodrum, maraton majorları) ve olağanüstü rekorlar. Belediye/halk koşuları ve küçük yerel koşular YOK.
 - Kurslar (CrossFit L1/L2, HYROX antrenör vb.) YALNIZCA Türkiye'de olduğunda.
 - Salonlar: yalnızca Wolf Haven; salon içi yarışmalar yok.

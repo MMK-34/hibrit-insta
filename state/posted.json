@@ -732,6 +732,24 @@
       "eventName": "HYROX",
       "at": "2026-11-10T13:43:00.246Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-10",
+      "ids": [
+        "manual:lauren-armstrong-hyrox-birmingham"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:lauren-armstrong-hyrox-birmingham"
+      ],
+      "media": "18135736525817027",
+      "permalink": "https://www.instagram.com/p/DfkXPxeDds9/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/lauren-armstrong-hyrox-birmingham/01.jpg",
+      "title": "Lauren Armstrong HYROX Birmingham'da 58:50 ile kazandı",
+      "headline": "Lauren Armstrong HYROX Birmingham'da 58:50 ile kazandı",
+      "eventName": "HYROX Birmingham 2026",
+      "at": "2026-11-10T16:43:56.464Z",
+      "manual": true
     }
   ],
   "daily": {

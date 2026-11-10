@@ -13,4 +13,5 @@ const day = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Istanbul"
 console.log("\nBUGÜN PAYLAŞILAN:", st.posts.filter((p) => p.day === day && p.media && !p.deleted).length, "| BOT DURAKLATILDI:", !!st.paused);
 console.log("SON 40 POST BAŞLIĞI:\n" + st.posts.filter((p) => p.media && !p.deleted).slice(-40).map((p) => `- ${p.headline ?? p.title}`).join("\n"));
 const q = JSON.parse(fs.readFileSync("state/manual-queue.json", "utf8"));
-console.log("HAZIR POST SIRASI:\n" + q.map((x) => `- ${x.publishAt} ${x.title}`).join("\n"));
+console.log("HAZIR POST SIRASI:\n" + q.map((x) => `- ${x.publishAt} [${x.kind}] ${x.title}`).join("\n"));
+console.log("BUGÜN BİLGİ POSTU VAR MI:", st.posts.some((p) => p.day === day && p.kind === "bilgi" && p.media) || q.some((x) => x.kind === "bilgi" && String(x.publishAt).startsWith(day)));

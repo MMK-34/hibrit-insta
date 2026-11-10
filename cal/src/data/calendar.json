@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-10T09:41:53.879Z",
+  "updated": "2026-11-10T10:41:49.573Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 93,
-      "fetchedAt": "2026-11-10T09:40:56.637Z"
+      "count": 94,
+      "fetchedAt": "2026-11-10T10:40:59.178Z"
     },
     "hyrox": {
       "ok": true,
       "count": 16,
-      "fetchedAt": "2026-11-10T09:41:53.871Z"
+      "fetchedAt": "2026-11-10T10:41:49.563Z"
     }
   },
   "items": [
@@ -1627,6 +1627,25 @@
       "url": "https://hyrox.com/find-your-race/",
       "source": "https://endurance.biz/2026/industry-news/targeting-2-million-athletes-hyrox-expands-global-calendar-for-2026-27-season/",
       "note": "Youngstars 6–7 Şubat."
+    },
+    {
+      "id": "circle21-693578ce-5a5a-43de-9235-57ea09468ee7",
+      "name": "Heart n Heavy Classics Teams Edition",
+      "eventSlug": null,
+      "type": "crossfit",
+      "city": "Hamburg",
+      "country": "Almanya",
+      "startDate": "2027-02-06",
+      "endDate": "2027-02-07",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=693578ce-5a5a-43de-9235-57ea09468ee7",
+      "source": "circle21",
+      "registration": {
+        "to": "2027-01-15",
+        "fee": "0.00 EUR"
+      },
+      "instagram": "https://instagram.com/heartnheavyclassics",
+      "website": "www.heartnheavy-crossfit.de"
     },
     {
       "id": "circle21-b3f5c60f-f227-45c9-a6c7-986c2be17c42",

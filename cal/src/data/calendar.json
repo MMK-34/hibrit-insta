@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-10T16:43:15.275Z",
+  "updated": "2026-11-10T17:42:16.876Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 94,
-      "fetchedAt": "2026-11-10T16:40:53.805Z"
+      "count": 93,
+      "fetchedAt": "2026-11-10T17:41:00.311Z"
     },
     "hyrox": {
       "ok": true,
       "count": 16,
-      "fetchedAt": "2026-11-10T16:43:15.262Z"
+      "fetchedAt": "2026-11-10T17:42:16.868Z"
     }
   },
   "items": [
@@ -1150,28 +1150,6 @@
         "fee": "240.00 GBP"
       },
       "instagram": "https://instagram.com/j2kell"
-    },
-    {
-      "id": "circle21-e4362e86-2cb1-4376-ba32-ee2a874dee06",
-      "name": "BF3 Hybrid Race 26",
-      "eventSlug": null,
-      "type": "crossfit",
-      "city": "Motherwell ML1 2TZ",
-      "country": "Birleşik Krallık",
-      "startDate": "2026-12-12",
-      "endDate": "2026-12-13",
-      "status": "confirmed",
-      "url": "https://circle21.events/event?competitionId=e4362e86-2cb1-4376-ba32-ee2a874dee06",
-      "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/455903/conversions/hybridrace26_cover_1440x600-l_thumb.jpg",
-      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/455902/conversions/hybridrace26_logo_400x400-s_thumb.jpg",
-      "imageCredit": "circle21 / organizatör",
-      "registration": {
-        "to": "2026-12-12",
-        "fee": "0.00 GBP"
-      },
-      "instagram": "https://instagram.com/britishfunctionalfitness",
-      "website": "www.britishfunctionalfitness.sport"
     },
     {
       "id": "hyrox-paris-2026-12",

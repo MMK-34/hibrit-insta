@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-10T07:41:51.074Z",
+  "updated": "2026-11-10T08:41:41.294Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 91,
-      "fetchedAt": "2026-11-10T07:40:53.096Z"
+      "count": 92,
+      "fetchedAt": "2026-11-10T08:40:53.664Z"
     },
     "hyrox": {
       "ok": true,
       "count": 16,
-      "fetchedAt": "2026-11-10T07:41:51.067Z"
+      "fetchedAt": "2026-11-10T08:41:41.284Z"
     }
   },
   "items": [
@@ -271,6 +271,26 @@
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
       "sourceUrl": "https://www.hyresult.com/event/s9-2026-cairo"
+    },
+    {
+      "id": "circle21-67d5d73e-d5ac-4a08-91d6-9f3dde9c54bd",
+      "name": "MO-Fitness GAMES",
+      "eventSlug": null,
+      "type": "crossfit",
+      "country": "Birleşik Krallık",
+      "startDate": "2026-11-14",
+      "endDate": "2026-11-14",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=67d5d73e-d5ac-4a08-91d6-9f3dde9c54bd",
+      "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/345333/conversions/Blue-and-Black-Modern-Swimming-Competition-Instagram-Post---2-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/345325/conversions/Blue-and-Black-Modern-Swimming-Competition-Instagram-Post---2-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
+      "registration": {
+        "to": "2026-11-12",
+        "fee": "50.00 GBP"
+      },
+      "instagram": "https://instagram.com/elysiumtrainingclub"
     },
     {
       "id": "circle21-0a24fc99-78d3-44b2-a9e1-8efddd74f5b2",
@@ -942,7 +962,6 @@
       "name": "971 Hybrid",
       "eventSlug": null,
       "type": "crossfit",
-      "city": "Ajman Cornich",
       "country": "BAE",
       "startDate": "2026-12-05",
       "endDate": "2026-12-05",

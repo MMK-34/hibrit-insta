@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-10T19:41:48.830Z",
+  "updated": "2026-11-10T20:34:01.442Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 93,
-      "fetchedAt": "2026-11-10T19:40:55.029Z"
+      "fetchedAt": "2026-11-10T20:32:27.288Z"
     },
     "hyrox": {
       "ok": true,
       "count": 16,
-      "fetchedAt": "2026-11-10T19:41:48.824Z"
+      "fetchedAt": "2026-11-10T20:34:01.433Z"
     }
   },
   "items": [
@@ -3102,13 +3102,14 @@
       "status": "confirmed",
       "url": "https://circle21.events/event?competitionId=e9e8a614-c2b5-4c30-bb38-32ff7cabda43",
       "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/455831/conversions/DSC09437-l_thumb.jpg",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/464085/conversions/Clash-l_thumb.jpg",
       "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/455752/conversions/COTB_Ninnik_Logo_neg_K-s_thumb.jpg",
       "imageCredit": "circle21 / organizatör",
       "registration": {
         "to": "2027-04-01",
         "fee": "380.00 CHF"
       },
+      "instagram": "https://instagram.com/clashofthebulls",
       "website": "www.clashofthebulls.com"
     },
     {

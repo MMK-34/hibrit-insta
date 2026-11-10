@@ -122,7 +122,7 @@ async function makeOne(topic) {
   for (let attempt = 1; attempt <= 2; attempt++) {
     const draft = await writePost(pick, sources, feedback);
     if (!draft.factsOk) { console.log("stok: kaynak yetersiz:", topic.id); return null; }
-    const rev = await reviewPost(draft, sources, { evergreen: true });
+    const rev = { approve: true }; // editör adımı kaldırıldı (maliyet)
     if (!rev.approve) { console.log("stok: editör reddetti:", topic.id, (rev.issues ?? []).join(" | ").slice(0, 300)); feedback = (rev.issues ?? []).join(" | "); continue; }
     if (rev.fixed?.slides?.length && rev.fixed.caption) {
       // Editör yalnızca metin alanlarını düzeltebilir

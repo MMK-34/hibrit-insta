@@ -2,7 +2,22 @@
 // Sağlayıcı: ANTHROPIC_API_KEY varsa Claude; yalnızca o yoksa GEMINI_API_KEY ile Gemini (web erişimi yok,
 // bu yüzden verify.mjs doğrulama kapısı Gemini ile hiçbir postu geçirmez).
 import Anthropic from "@anthropic-ai/sdk";
-import { MODEL, MODEL_WRITE, BRAND } from "./config.mjs";
+import { MODEL, MODEL_WRITE, BRAND, PRICES, WEB_SEARCH_USD } from "./config.mjs";
+
+/** Harcama sayacı: run.mjs günün harcamasını ve tavanı yükler; her çağrıdan sonra artar. Tavan aşılınca yeni çağrı yapılmaz. */
+export const spend = { usd: 0, limit: Infinity, onAdd: null };
+export class BudgetError extends Error {}
+export function addSpend(model, usage = {}) {
+  const [pi, po] = PRICES[model] ?? PRICES["claude-sonnet-5-5"];
+  const inTok = (usage.input_tokens ?? 0) + (usage.cache_creation_input_tokens ?? 0) * 1.25 + (usage.cache_read_input_tokens ?? 0) * 0.1;
+  const usd = (inTok * pi + (usage.output_tokens ?? 0) * po) / 1e6 + (usage.server_tool_use?.web_search_requests ?? 0) * WEB_SEARCH_USD;
+  spend.usd += usd;
+  spend.onAdd?.(usd);
+  return usd;
+}
+export function checkBudget() {
+  if (spend.usd >= spend.limit) throw new BudgetError(`Günlük API bütçesi doldu ($${spend.usd.toFixed(2)} / $${spend.limit})`);
+}
 
 const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 
@@ -58,7 +73,7 @@ export const isCreditError = (e) => e instanceof CreditError || /credit balance 
 /** Kredi yoklaması: en ucuz çağrı (1 token). Kredi yoksa CreditError fırlatır. */
 export async function creditProbe() {
   try {
-    await anthropic.messages.create({ model: "claude-haiku-5-5", max_tokens: 1, messages: [{ role: "user", content: "ok" }] });
+    await anthropic.messages.create({ model: "claude-haiku-5-5", max_tokens: 16, messages: [{ role: "user", content: "ok" }] });
     return true;
   } catch (e) {
     if (isCreditError(e)) throw new CreditError(String(e?.message ?? e).slice(0, 300));
@@ -74,6 +89,7 @@ export async function claude(args) {
 }
 
 async function claudeCall({ system, user, tool, maxTokens = 4000, model = MODEL, webSearch = 0, webFetch = 0, effortOverride = "" }) {
+  checkBudget();
   if (!process.env.ANTHROPIC_API_KEY) {
     if (process.env.GEMINI_API_KEY) return gemini({ system, user, tool, maxTokens });
     throw new Error("ANTHROPIC_API_KEY ya da GEMINI_API_KEY yok (.env)");
@@ -99,6 +115,7 @@ async function claudeCall({ system, user, tool, maxTokens = 4000, model = MODEL,
       betas: ["server-side-fallback-2026-07-01"],
       fallbacks: "default",
     }).finalMessage();
+    addSpend(res.model ?? model, res.usage);
     if (res.stop_reason !== "pause_turn") break;
     messages.push({ role: "assistant", content: res.content }); // uzun arama: kaldığı yerden devam
   }

@@ -12,7 +12,7 @@ import { findImages } from "./images.mjs";
 import { eventPhotos, screenPhotos, personPhotos } from "./event-photos.mjs";
 import { circle21Candidates, circle21Reference, circle21Events, circle21ById, c21Handle, c21Text, c21Facts } from "./circle21.mjs";
 import { igWatchCandidates, verifiedEventHandle, IG_WATCH_TR } from "./ig-watch.mjs";
-import { selectNews, writePost, reviewPost, creditProbe, isCreditError } from "./plan.mjs";
+import { selectNews, writePost, reviewPost, creditProbe, isCreditError, spend } from "./plan.mjs";
 import { renderPost, renderStory, renderCountdown, renderSpecial } from "./render.mjs";
 import { upcomingSpecial, specialContent } from "./special-days.mjs";
 import { dmTips, dmCategory } from "./dm.mjs";
@@ -82,6 +82,11 @@ let infoToday = todayPosts.filter((p) => p.kind === "bilgi" || p.kind === "arast
 // Günlük özet sayaçları: taslak / onay / red
 state.daily ??= {};
 function bump(k) { state.daily[today] ??= { drafts: 0, approved: 0, rejected: 0 }; state.daily[today][k]++; }
+// Günlük API harcaması (USD): her Claude çağrısı sayaca eklenir, tavan aşılınca o gün yeni ücretli çağrı yapılmaz
+state.daily[today] ??= { drafts: 0, approved: 0, rejected: 0 };
+spend.usd = state.daily[today].usd ?? 0;
+spend.limit = POSTING.dailyUsd ?? 2;
+spend.onAdd = () => { state.daily[today].usd = Math.round(spend.usd * 1000) / 1000; };
 
 const budgetLeft = () => Date.now() - START < BUDGET_MS;
 const draftCapReached = () => (state.daily[today]?.drafts ?? 0) >= MAX_DRAFTS_PER_DAY;
@@ -174,7 +179,7 @@ async function main() {
   // Canlıya alınınca ilk paylaşım: tanıtım postu (bir kez)
   if (!state.intro && !DRY) return publishIntro();
   if (STOCK) return publishStock();
-  try { await auditRecentPosts(); } catch (e) { if (isCreditError(e)) throw e; log("Denetim hatası:", String(e.message).slice(0, 200)); }
+  if (process.env.POST_AUDIT === "1") try { await auditRecentPosts(); } catch (e) { if (isCreditError(e)) throw e; log("Denetim hatası:", String(e.message).slice(0, 200)); }
   try { await publishCountdowns(); } catch (e) { log("Geri sayım hatası:", String(e.message).slice(0, 200)); }
   try { await processApprovals(); } catch (e) { if (isCreditError(e)) throw e; log("Onay kontrolü hatası:", String(e.message).slice(0, 200)); }
   try { await draftSpecialDay(); } catch (e) { log("Özel gün taslağı hatası:", String(e.message).slice(0, 200)); }
@@ -331,7 +336,7 @@ async function prepareVerified(pick, srcItems, sourceName) {
     const draft = await writePost(pick, srcItems, feedback);
     if (attempt === 1) await push(`Postu hazırlıyorum: ${String(srcItems[0].title).slice(0, 120)}`, { title: "Yazılıyor" });
     if (!draft.factsOk) { log("Kaynak yetersiz:", srcItems[0].title); lastFails = [{ model: "yazar", item: "kaynak", note: "factsOk=false" }]; break; }
-    const rev = await reviewPost(draft, srcItems, { evergreen: /^(fu|stock):/.test(srcItems[0].id) });
+    const rev = { approve: true }; // editör adımı kaldırıldı (maliyet): yazım -> süzgeç -> doğrulama
     if (!rev.approve) { log("Editör reddetti:", (rev.issues ?? []).join(" | ").slice(0, 400)); lastFails = (rev.issues ?? []).map((n) => ({ model: "editör", item: "editör", note: n })); feedback = failText(lastFails); continue; }
     // Editör yalnızca metin alanlarını düzeltebilir; resmî site/Instagram (dış adres) yazarın alanı olarak kalır
     if (rev.fixed?.slides?.length && rev.fixed.caption) {
@@ -369,7 +374,8 @@ async function prepareVerified(pick, srcItems, sourceName) {
     lastFails = gate.fails;
     feedback = failText(gate.fails);
     log(`Doğrulama düştü (deneme ${attempt}):\n${feedback.slice(0, 1200)}`);
-    await push(`Doğrulamadan geçmedi (deneme ${attempt}/2): ${String(srcItems[0].title).slice(0, 100)}\nNeden: ${feedback.replace(/\s+/g, " ").slice(0, 300)}`, { title: "Doğrulama" });
+    await push(`Doğrulamadan geçmedi: ${String(srcItems[0].title).slice(0, 100)}\nNeden: ${feedback.replace(/\s+/g, " ").slice(0, 300)}`, { title: "Doğrulama" });
+    break; // maliyet: doğrulamadan geçmeyen haber yeniden yazılmaz, sıradaki habere geçilir
   }
   bump("rejected");
   logRejected({ title: srcItems[0].title, url: srcItems[0].url, kind: pick.kind, fails: lastFails });

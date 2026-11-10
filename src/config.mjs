@@ -9,12 +9,14 @@ export const BRAND = {
 export const POSTING = {
   timezone: "Europe/Istanbul",
   // Sabit kota yok: haber oldukça paylaşılır. Bu sınırlar yalnızca spam/aşırı maliyet emniyeti.
-  maxPerDay: 30,
-  perRun: 4, // bir çalışmada en fazla (saatte bir çalışır)
-  // Ücretli taslak (yazım + iki doğrulayıcı) için günlük maliyet emniyeti
-  maxDraftsPerDay: 30,
-  // Bilgi + araştırma postları günde en fazla (haber ve hikâye sınırsız)
-  maxInfoPerDay: 4,
+  maxPerDay: 5, // kullanıcı kararı (2026-11-10): günde en çok 5 post (maliyet + Instagram için sağlıklı hacim)
+  perRun: 1, // bir çalışmada en fazla 1
+  // Ücretli taslak (yazım + doğrulama) için günlük emniyet
+  maxDraftsPerDay: 8,
+  // Günlük API harcama tavanı (USD): aşılınca o gün yeni ücretli çağrı yapılmaz
+  dailyUsd: 2,
+  // Bilgi + araştırma postları günde en fazla
+  maxInfoPerDay: 1,
   minPerDay: 1,
   // Haber yaşı sınırı (saat): bundan eski haber paylaşılmaz
   maxAgeHours: 48,
@@ -27,8 +29,12 @@ export const POSTING = {
 };
 
 // Seçim (çok aday, kısa çıktı) Sonnet; yazım ve editör kontrolü en iyi Türkçe için Opus.
-export const MODEL = "claude-sonnet-5-5";
-export const MODEL_WRITE = "claude-opus-5-5";
+// Maliyet kararı (2026-11-10): Opus kullanılmaz. Seçim ve ikinci doğrulayıcı Haiku (çok ucuz), yazım ve ana doğrulama Sonnet.
+export const MODEL = "claude-haiku-5-5";
+export const MODEL_WRITE = "claude-sonnet-5-5";
+// Fiyatlar (USD / milyon token; giriş, çıkış) ve web araması (USD / arama)
+export const PRICES = { "claude-haiku-5-5": [0.1, 0.5], "claude-sonnet-5-5": [2, 10], "claude-opus-5-5": [4, 20] };
+export const WEB_SEARCH_USD = 0.01;
 
 // RSS kaynakları. Metin kopyalanmaz; özet kendi cümlelerimizle yazılır, kaynak belirtilir.
 export const FEEDS = [

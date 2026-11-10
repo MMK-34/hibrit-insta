@@ -36,7 +36,7 @@ for (const ev of ["uncaughtException", "unhandledRejection"]) process.on(ev, asy
   try { await notify(`⚠️ Haftalık bülten hatası: ${String(e?.message ?? e).slice(0, 300)}`); } finally { process.exit(1); }
 });
 const VOICE = process.env.EL_VOICE || "y3KmQ23j262kys1fjBGK"; // Mehmet K. (kullanıcı seçimi)
-const MODEL = process.env.REELS_MODEL || "claude-opus-5-5", CHECK_MODEL = "claude-sonnet-5-5";
+const MODEL = process.env.REELS_MODEL || "claude-sonnet-5-5", CHECK_MODEL = "claude-sonnet-5-5";
 const ai = new Anthropic({ maxRetries: 2 });
 const log = (...a) => console.log(`[${new Date().toISOString().slice(11, 19)}]`, ...a);
 const sh = (cmd, args, opts = {}) => execFileSync(cmd, args, { stdio: ["ignore", "pipe", "pipe"], maxBuffer: 64e6, ...opts }).toString();

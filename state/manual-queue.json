@@ -1,1 +1,70 @@
-[]
+[
+  {
+    "id": "mersin-maratonu-2026-kayit",
+    "publishAt": "2026-11-10T14:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/mersin-maratonu-2026-kayit/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/mersin-maratonu-2026-kayit/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/mersin-maratonu-2026-kayit/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/mersin-maratonu-2026-kayit/04.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/mersin-maratonu-2026-kayit-story/story.jpg",
+    "caption": "8. Uluslararası Mersin Maratonu kayıtları açıldı\nYarış 13 Aralık 2026 Pazar günü Mersin'de koşulacak.\n\nSon başvuru tarihi 8 Aralık 2026. Kayıtların bu tarihe kadar tamamlanması gerekiyor.\n\nOrganizasyonda farklı ülkelerden ve Türkiye'nin çeşitli şehirlerinden sporcuların buluşması bekleniyor.\n\n13 Aralık'ta Mersin'de koşuyor musun?\nBirlikte yarışmak istediğin arkadaşına gönder.\n\nKaynak: Mersin Portal\nGörsel: mersinhaberci.com\n\n#mersinmaratonu #maraton #koşu #mersin #hibritportal",
+    "title": "8. Uluslararası Mersin Maratonu kayıtları açıldı",
+    "kind": "duyuru",
+    "category": "kosu",
+    "eventName": "8. Uluslararası Mersin Maratonu",
+    "srcUrl": "https://www.mersinportal.com/8-uluslararasi-mersin-maratonu-icin-kayitlar-basladi-son-basvuru-8-aralik"
+  },
+  {
+    "id": "athx-los-angeles-2026",
+    "publishAt": "2026-11-10T18:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athx-los-angeles-2026/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athx-los-angeles-2026/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athx-los-angeles-2026/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athx-los-angeles-2026/04.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athx-los-angeles-2026-story/story.jpg",
+    "caption": "ATHX Los Angeles'ta kazananlar James Sprague ve Ellie Turner\nATHX Los Angeles 2026, Kasım sonundaki Finals'ten önceki son yarıştı.\n\nSprague iki workout'ta birinci, kuvvet etabında üçüncü oldu. Erkeklerde Jorge Fernandez üçüncü, Wes Peters dördüncü sırada yer aldı. Kadınlarda Ellie Turner kazandı, Danica Sprague dördüncü oldu.\n\nHer ATHX yarışında ilk 4 sporcu, 27-29 Kasım'da Lizbon'da yapılacak ATHX Finals'e davet ediliyor.\n\nATHX Finals'te kimi izleyeceksin?\nBu yarışta tanıdığın biri var mı? Ona gönder.\n\nKaynak: The Barbell Spin\nGörsel: thebarbellspin.com\n\n#athx #hibritfitness #crossfit #hibritportal",
+    "title": "ATHX Los Angeles'ta kazananlar Sprague ve Turner",
+    "kind": "haber",
+    "category": "fonksiyonel",
+    "eventName": "ATHX Los Angeles",
+    "srcUrl": "https://thebarbellspin.com/competition/james-sprague-and-ellie-turner-secure-wins-at-athx-los-angeles/"
+  },
+  {
+    "id": "ironman-florida-crossfit-2026",
+    "publishAt": "2026-11-11T11:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/ironman-florida-crossfit-2026/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/ironman-florida-crossfit-2026/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/ironman-florida-crossfit-2026/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/ironman-florida-crossfit-2026/04.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/ironman-florida-crossfit-2026-story/story.jpg",
+    "caption": "Rich Froning IRONMAN Florida'yı 11:49:58'de bitirdi\nPanama City Beach'teki IRONMAN Florida'da CrossFit dünyasından birçok isim 140,6 millik yarışı tamamladı.\n\nFroning'in yanında Brandon Luckett, Rory McKernan, Austin Malleolo ve Heber Cannon da yarıştı. CrossFit sporcularının en hızlısı Luckett oldu.\n\nFroning yüzmeden Luckett'ın yalnızca 1 dakika gerisinde çıktı; farkı bisiklet açtı: Luckett 5:24, Froning 6:12. McKernan ile Cannon arasında ise yalnızca 26 saniye vardı.\n\nYarışın genel birincisi 7:19:17 ile Magnus Ditlev oldu.\n\nSen bir gün tam mesafe IRONMAN dener misin?\nBu yarışta tanıdığın biri var mı? Ona gönder.\n\nKaynak: The Barbell Spin\nGörsel: thebarbellspin.com\n\n#ironman #triatlon #crossfit #richfroning #hibritportal",
+    "title": "Rich Froning IRONMAN Florida'yı 11:49:58'de bitirdi",
+    "kind": "haber",
+    "category": "crossfit",
+    "eventName": "IRONMAN Florida",
+    "srcUrl": "https://thebarbellspin.com/competition/rich-froning-brandon-luckett-others-completed-ironman-triathlon/"
+  },
+  {
+    "id": "stephanie-case-antarktika-2026",
+    "publishAt": "2026-11-11T17:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/04.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026-story/story.jpg",
+    "caption": "Stephanie Case Antarktika'da 100 mil koşan ilk kadın oldu\n44 yaşındaki Kanadalı ultra koşucu, Doğu Antarktika'daki Queen Maud Land'de düzenlenen Antarctic Ice Ultra'yı 17 saat 31 dakika 39 saniyede tamamladı.\n\nGüvenlik nedeniyle parkur ana kamp çevresinde 4,2 kilometrelik bir tur. 100 mil (160,9 km) için bu tur 38 kez koşuldu, üstüne 300 metre eklendi.\n\nFırtına beklendiği için yarış gece 1'de, gecenin en soğuk saatinde başladı. Case her 10 turda bir yardım çadırında ısındı.\n\nSen en soğuk hangi havada koştun?\nBu haberi koşucu arkadaşına gönder.\n\nKaynak: CBC\nGörsel: ua.news\n\n#ultramaraton #antarktika #trail #koşu #hibritportal",
+    "title": "Stephanie Case Antarktika'da 100 mil koşan ilk kadın oldu",
+    "kind": "haber",
+    "category": "doga",
+    "eventName": "Antarctic Ice Ultra",
+    "srcUrl": "https://www.cbc.ca/news/canada/canadian-ultramarathon-antarctica-woman-stephanie-case-9.7415361"
+  }
+]

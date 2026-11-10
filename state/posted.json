@@ -661,7 +661,10 @@
         "country": "",
         "place": ""
       },
-      "story": "18100824245099662"
+      "story": "18100824245099662",
+      "deleted": true,
+      "deletedReason": "Kullanıcı kuralı: yalnızca Türkiye'deki kurslar duyurulur (liste tamamen yurt dışı kurslardı)",
+      "deletedAt": "2026-11-10T08:31:12.388Z"
     },
     {
       "day": "2026-11-10",

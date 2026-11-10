@@ -184,7 +184,7 @@ Her satırın tarihini ve resmî adını organizatörün sitesinden doğrula ve 
     tableTitle: "Kurs takvimi",
     end: { title: "Hangi kursa katılmayı düşünüyorsunuz?", body: "Listede olmayan bir kurs varsa yorumlara yazın, ekleyelim." },
     imageQueries: ["crossfit competition barbell", "hyrox sled push"], cat: "crossfit",
-    task: (c) => `GÖREV: ${fmt(c.from)} ile ${fmt(c.to)} arasında TÜRKİYE'de ve Türkiye'den kolay gidilebilecek yakın ülkelerde (Yunanistan, Bulgaristan, Kıbrıs, BAE vb.) düzenlenecek antrenörlük ve hakemlik kurslarını bul. CrossFit kursları resmî takvimden sistem tarafından eklenir; sen CrossFit DIŞINDAKİLERİ bul (0 da olabilir, bulamazsan enough=true ve boş rows ver): HYROX antrenör eğitimleri (HYROX Coach, Master Trainer; hyrox.com ve HYROX Academy), ATHX ve benzeri yarışların resmî eğitimleri. Tarih sırasına göre diz. Her satırı resmî kurs takviminden ya da düzenleyen salonun duyurusundan DOĞRULA ve URL'sini yaz; dolmuş ya da iptal edilmiş kursu koyma.
+    task: (c) => `GÖREV: ${fmt(c.from)} ile ${fmt(c.to)} arasında YALNIZCA TÜRKİYE'de düzenlenecek antrenörlük ve hakemlik kurslarını bul (kullanıcı kuralı: yurt dışındaki kurslar listeye girmez). CrossFit kursları resmî takvimden sistem tarafından eklenir; sen CrossFit DIŞINDAKİLERİ bul (0 da olabilir, bulamazsan enough=true ve boş rows ver): HYROX antrenör eğitimleri (HYROX Coach, Master Trainer; hyrox.com ve HYROX Academy), ATHX ve benzeri yarışların resmî eğitimleri. Tarih sırasına göre diz. Her satırı resmî kurs takviminden ya da düzenleyen salonun duyurusundan DOĞRULA ve URL'sini yaz; dolmuş ya da iptal edilmiş kursu koyma.
 Hücreler: Tarih "15-16 Kas" biçiminde; Kurs resmî adıyla en fazla 40 karakter ("CrossFit Level 1", "HYROX Coach Level 1" gibi); Şehir tek şehir adı; Düzenleyen ev sahibi salonun ya da kurumun adı, en fazla 40 karakter. Alan adı ya da link yazma.`,
   },
   {
@@ -263,7 +263,7 @@ export async function writeSeries({ s, ctx }, feedback = "") {
     const d = (iso) => { const [y, m, g] = iso.split("-").map(Number); return { g, m: AYK[m - 1] }; };
     const span = (a, b) => { const x = d(a), y = d(b); return a === b ? `${x.g} ${x.m}` : x.m === y.m ? `${x.g}-${y.g} ${y.m}` : `${x.g} ${x.m}-${y.g} ${y.m}`; };
     const toDay = ctx.to.toISOString().slice(0, 10);
-    official = (await crossfitCourses()).filter((c) => c.start <= toDay && !c.waitlisted && /^CrossFit Level \d Certificate Course$/.test(c.course))
+    official = (await crossfitCourses()).filter((c) => c.country === "TR" && c.start <= toDay && !c.waitlisted && /^CrossFit Level \d Certificate Course$/.test(c.course))
       .map((c) => ({ cells: [span(c.start, c.end), c.course.slice(0, 40), c.city, c.host.slice(0, 40)], url: c.url }))
       .filter((r) => r.cells.every((x) => String(x).trim()));
   }

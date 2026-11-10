@@ -66,5 +66,26 @@
     "category": "doga",
     "eventName": "Antarctic Ice Ultra",
     "srcUrl": "https://www.cbc.ca/news/canada/canadian-ultramarathon-antarctica-woman-stephanie-case-9.7415361"
+  },
+  {
+    "id": "bilgi-hyrox-istasyon-kaslar-1110",
+    "publishAt": "2026-11-10T16:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-istasyon-kaslar-1110/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-istasyon-kaslar-1110/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-istasyon-kaslar-1110/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-istasyon-kaslar-1110/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-istasyon-kaslar-1110/05.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-istasyon-kaslar-1110-story/story.jpg",
+    "caption": "HYROX'ta 8 istasyon hangi kasları çalıştırır?\nYarışta 1 km koşunun ardından 1 istasyon gelir ve bu düzen sekiz kez tekrarlanır.\n\nİlk istasyon 1000 m SkiErg: kol, omuz ve karın kaslarını hedefler. 50 m kızak itme alt vücudu, 50 m kızak çekme ise kalça, sırt, biseps ve gövdeyi çalıştırır.\n\n1000 m kürek yarışın ikinci yarısını başlatır. 200 m farmers carry üst sırt, karın ve kavrama gücü ister. Lunge uyluk ve kalçayı çalıştırır, son istasyon wall ball.\n\nHYROX'un önerisi: kızak itmeyi yarıştan önce en az bir kez dene ve zemini iyi tutan ayakkabı kullan. Yarış formatı dünyanın her yerinde aynı.\n\nSeni en çok hangi istasyon zorluyor?\nYarış planın için kaydet.\n\nKaynak: HYROX\nGörsel: Foto: Pexels\n\n#hyrox #hyroxturkiye #hibritfitness #fonksiyonelantrenman #hibritportal",
+    "photos": [
+      "local:hyrox-sled"
+    ],
+    "title": "HYROX'ta 8 istasyon hangi kasları çalıştırır?",
+    "kind": "bilgi",
+    "category": "hyrox",
+    "eventName": "HYROX",
+    "srcUrl": "https://hyrox.com/the-fitness-race/"
   }
 ]

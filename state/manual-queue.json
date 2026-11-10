@@ -32,5 +32,26 @@
     "category": "doga",
     "eventName": "Antarctic Ice Ultra",
     "srcUrl": "https://www.cbc.ca/news/canada/canadian-ultramarathon-antarctica-woman-stephanie-case-9.7415361"
+  },
+  {
+    "id": "lauren-armstrong-hyrox-birmingham",
+    "publishAt": "2026-11-10T19:40",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/lauren-armstrong-hyrox-birmingham/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/lauren-armstrong-hyrox-birmingham/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/lauren-armstrong-hyrox-birmingham/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/lauren-armstrong-hyrox-birmingham/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/lauren-armstrong-hyrox-birmingham/05.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/lauren-armstrong-hyrox-birmingham-story/story.jpg",
+    "caption": "Lauren Armstrong HYROX Birmingham'da 58:50 ile kazandı\nKuzey İrlandalı sporcu, HYROX Birmingham 2026'da kadınlarda birinci oldu.\n\n36 yaşındaki Armstrong, ulaşım alanında veri analisti olarak tam zamanlı çalışıyor ve iki çocuk büyütüyor. Haftada yaklaşık 10 saat antrenman yapıyor, haftalık koşu ortalaması yaklaşık 60 km.\n\nİlk tekli HYROX yarışını 2024'te Malaga'da yaklaşık 73 dakikada bitirdi. 2024 Nice yarışından sonra Aşil tendonu yırtığı, ardından kasık sakatlığı yaşadı; koşamadığı dönemlerde kuvvet çalıştı.\n\nBirmingham'da wall ball istasyonunu 3:46'da tamamladı. Önceki yarışlarda bu istasyonda 4 dakikanın üzerinde süreler yapmıştı.\n\nHaftada kaç saat antrenmanla HYROX'a hazırlanıyorsun?\nBu yarışta tanıdığın biri var mı? Ona gönder.\n\nReklam / Tanıtım\n\nKaynak: Rox Lyfe\nGörsel: roxlyfe.com\n\n#hyrox #hyroxbirmingham #hibritfitness #hyroxturkiye #hibritportal",
+    "photos": [
+      "event:lauren-armstrong-hyrox-birmingham"
+    ],
+    "title": "Lauren Armstrong HYROX Birmingham'da 58:50 ile kazandı",
+    "kind": "haber",
+    "category": "hyrox",
+    "eventName": "HYROX Birmingham 2026",
+    "srcUrl": "https://roxlyfe.com/lauren-armstrong/"
   }
 ]

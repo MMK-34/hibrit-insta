@@ -365,6 +365,8 @@ async function prepareVerified(pick, srcItems, sourceName) {
       // DM ile gelen Instagram gönderisi: doğrulayıcı sayfayı açamıyor (403); gönderinin açıklaması verilir (güvenilmez, bağımsız teyit gerekir)
       ...srcItems.filter((s) => s.id.startsWith("dm-ig:")).map((s) => ({ label: `DM ile iletilen Instagram gönderisi: BİRİNCİL KANIT DEĞİL, her iddiayı bağımsız bir kaynakla teyit et; teyit edilemeyen iddia fail`, url: s.url, text: s.text })),
       // circle21 kayıt sayfası tarayıcıda çizildiği için denetçi açamıyor: organizatörün kendi girdiği kayıt metni birincil kaynak olarak verilir
+      // Takip edilen haber sitesinden alınan metin: denetçi postu bununla karşılaştırır (web araması gerekmez)
+      ...srcItems.filter((s) => !/^(ig:|dm-ig:|c21)/.test(s.id) && String(s.text ?? "").length > 300).map((s) => ({ label: `Kaynak metni (${s.source})`, url: s.url, text: s.text })),
       ...srcItems.filter((s) => s.id.startsWith("c21")).map((s) => ({ label: "circle21 resmî kayıt sayfası (organizatörün kendi girdiği kayıt ve açıklama; birincil kaynak)", url: s.url, text: s.text })),
     ];
     // Kaynak yalnızca circle21 ise "sayfa açılamadı" kuralı uygulanmaz (veri resmî API'den geldi)

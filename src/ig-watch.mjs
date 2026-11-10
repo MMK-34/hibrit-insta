@@ -1,3 +1,4 @@
+import { isForeignAthx } from "./guard.mjs";
 // Organizatör Instagram hesaplarını izleme: yalnızca Instagram'da duyurulan yarışları (ör. @wonderwomanscup) kaçırmamak için.
 // Instagram Graph API "Business Discovery" ile herkese açık işletme/içerik üreticisi hesaplarının son paylaşımları okunur.
 // Gereken izin: Instagram hesabının bağlı olduğu bir Facebook sayfası + token'da pages_show_list / pages_read_engagement.
@@ -81,6 +82,7 @@ export async function igWatchCandidates(extra = []) {
       const cap = String(m.caption ?? "").trim();
       if (ts < (global ? Date.now() - 2 * 864e5 : cutoff) || cap.length < 40) continue;
       if (box && !COMP_RE.test(cap)) continue;
+      if (isForeignAthx(cap)) continue; // kullanıcı kuralı: yurt dışı ATHX yarışları aday olmaz
       const images = [m.media_type === "IMAGE" ? m.media_url : null, ...(m.children?.data ?? []).filter((c) => c.media_type === "IMAGE").map((c) => c.media_url)].filter(Boolean).slice(0, 6);
       out.push({
         id: `ig:${m.id}`, handle: h, curated, url: m.permalink, images,

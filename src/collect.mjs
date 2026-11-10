@@ -1,4 +1,5 @@
 // RSS/Atom toplama + makale metni çekme (yalnızca özetlemek için; yayına kopyalanmaz).
+import { isForeignAthx } from "./guard.mjs";
 import { safeGet, urlAllowed } from "./safe-net.mjs";
 import { XMLParser } from "fast-xml-parser";
 import { FEEDS, POSTING } from "./config.mjs";
@@ -52,7 +53,9 @@ export async function collect() {
   const uniq = out.filter((x) => {
     const k = x.title.toLowerCase().replace(/[^a-z0-9ğüşıöç]/g, "").slice(0, 60);
     if (seen.has(k) || seen.has(x.id)) return false;
-    seen.add(k); seen.add(x.id); return true;
+    seen.add(k); seen.add(x.id);
+    // Kullanıcı kuralı: yurt dışı ATHX haberleri aday bile olmaz (API harcanmasın)
+    return !isForeignAthx(`${x.title} ${x.snippet}`);
   }).sort((a, b) => b.date.localeCompare(a.date));
   return { items: uniq, report };
 }

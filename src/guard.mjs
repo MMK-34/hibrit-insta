@@ -29,6 +29,11 @@ const FIELDS = ["kicker", "title", "subtitle", "body", "label", "value"];
 const HAT = { "â": "a", "Â": "A", "î": "i", "Î": "İ", "û": "u", "Û": "U" };
 const clean = (t = "") => String(t).normalize("NFKC").replace(/[âÂîÎûÛ]/g, (c) => HAT[c]).replace(/[’‘]/g, "'").replace(/\s*—\s*/g, ", ").replace(/–/g, "-").replace(URL_RE, "").replace(MENTION_RE, "$1").replace(/[ \t]{2,}/g, " ").trim();
 
+// Kullanıcı kuralı (2026-11-10): ATHX yalnızca Türkiye'de olursa paylaşılır; yurt dışı ATHX yarışları (duyuru/sonuç) kapsam dışı.
+// ATHX'in genel formatını anlatan bilgi postu (belirli bir ülke yok) serbest.
+export const TR_PLACE = /(t[üu]rkiye|turkey|t[üu]rk\b|turkish|[İi]stanbul|[İi]zmir|antalya|ankara|bursa|ku[şs]adas[ıi]|bodrum|mersin|adana|eski[şs]ehir|kocaeli|konya|kayseri|gaziantep|samsun|trabzon|mu[ğg]la|denizli|ayd[ıi]n|kapadokya|cappadocia)/i;
+export const isForeignAthx = (text = "", country = "") => /\bATHX\b/i.test(String(text)) && (String(country).trim() ? !/^t[üu]rkiye$/i.test(String(country).trim()) : !TR_PLACE.test(String(text)));
+
 /** Post'u temizler ve doğrular. { ok, reason, post } döner. */
 export function guardPost(post, { sourceName }) {
   const slides = (post.slides ?? []).map((s) => {
@@ -93,6 +98,7 @@ export function guardPost(post, { sourceName }) {
   // Tablo sütun/satır/notları da denetlenir (seri satırları web sayfalarından türeyen model çıktısıdır)
   const all = [caption, ...slides.flatMap((s) => [...FIELDS.map((k) => s[k]), ...(s.bullets ?? []), ...(s.columns ?? []), ...(s.rows ?? []).flat(), s.note])].filter(Boolean).join(" ");
   if (BAD.test(all)) return { ok: false, reason: "yasaklı ifade (spam/reklam şüphesi)" };
+  if (post.country && isForeignAthx(all, post.country)) return { ok: false, reason: "yurt dışı ATHX yarışı (kullanıcı kuralı: ATHX yalnızca Türkiye'de olursa paylaşılır)" };
   if (!TOPIC.test(all)) return { ok: false, reason: "konu dışı görünüyor" };
   const judge = all.match(/(skandal|şok|olay yarattı|tepki çekti|rezalet|utanç|hezimet|fiyasko|tartışma yarattı|rezil|facia|felaket|yerden yere|destan yazdı|damga vurdu|ezip geçti|silip süpürdü|ders verdi|yerle bir|efsanevi|muhteşem|inanılmaz|mükemmel|çılgın|harika)/i);
   if (judge) return { ok: false, reason: `tarafsızlık: yargılayıcı ifade ("${judge[0]}")` };

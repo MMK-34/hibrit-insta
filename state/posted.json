@@ -802,6 +802,25 @@
       "eventName": "Spring Break Games Fitness Festival 2027",
       "at": "2026-11-11T10:42:32.662Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-11",
+      "ids": [
+        "manual:bilgi-crossfit-ders-yapisi"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "pixabay:3293468",
+        "pixabay:3293452"
+      ],
+      "media": "17920497603467359",
+      "permalink": "https://www.instagram.com/p/DfmZjnijUF6/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-crossfit-ders-yapisi/01.jpg",
+      "title": "Bir CrossFit dersi nasıl işler?",
+      "headline": "Bir CrossFit dersi nasıl işler?",
+      "eventName": "",
+      "at": "2026-11-11T11:42:39.967Z",
+      "manual": true
     }
   ],
   "daily": {

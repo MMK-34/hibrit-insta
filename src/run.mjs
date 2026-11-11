@@ -378,7 +378,7 @@ async function prepareVerified(pick, srcItems, sourceName) {
     if (!g.post.officialInstagram && igSrc?.curated && igSrc.handle) g.post.officialInstagram = igSrc.handle;
     // Organizatör hesabı yalnızca kaydın yapılandırılmış instagram alanından (doğrulanmış kullanıcı adı)
     if (!g.post.officialInstagram && ownC21?.handle) g.post.officialInstagram = ownC21.handle;
-    const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 4), category: pick.category, images: srcItems.flatMap((s) => s.images ?? []) });
+    const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 7), category: pick.category, images: srcItems.flatMap((s) => s.images ?? []) });
     if (!photos.length) { log(`Foto bulunamadı (kategori ${pick.category}, sorgular: ${(g.post.imageQueries ?? []).join(" | ")}).`); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
     // Açılamayan kaynakların (Instagram paylaşımı) metni doğrulayıcıya güvenilmez kaynak metni olarak verilir
@@ -506,7 +506,13 @@ async function pickEventPhotos({ post, pages, topic, want, category, images = []
   // Hiç bulunamazsa konuyla ilgili (görsel denetimden geçmiş) stok fotoğrafa düşülür.
   if (post.eventName) {
     const own = ev.filter((p) => p.specific);
-    if (own.length) return own;
+    // Kapak etkinliğin kendi fotoğrafı; diğer slaytlar için yetmezse konuyla ilgili gerçek stok fotoğraf eklenir (her slayt farklı)
+    if (own.length >= want || (own.length && noStock)) return own.slice(0, want);
+    if (own.length) {
+      const fill = await findImages(post.imageQueries ?? [], want - own.length + 3, category, new Set([...usedPhotos, ...own.map((p) => p.id)]));
+      const ok = (await screenPhotos(fill, topic, "stock")).slice(0, want - own.length);
+      return [...own, ...ok];
+    }
     if (noStock) return [];
     log(`Etkinliğe ait fotoğraf bulunamadı (${post.eventName}); konuyla ilgili stok fotoğraf kullanılacak.`);
   }

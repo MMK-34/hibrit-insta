@@ -26,6 +26,7 @@ Bulut bot (post.yml, saatte bir) sırası gelen postu Claude API çağırmadan p
 - Caption: 1. satır haberin kendisi (≤70 karakter); 2. satır bağlam; 2-4 kısa paragraf; habere özgü tek soru; tek çağrı cümlesi
   (duyuru: "Birlikte yarışmak istediğin arkadaşına gönder." / bilgi: "Yarış planın için kaydet." / sonuç: "Bu yarışta tanıdığın biri var mı? Ona gönder.").
   Link, URL, @kullanıcı adı yok; "Kaynak:" satırını yazma (sistem ekler).
+- Karoselde her slaytın fotoğrafı farklı ve konuyla ilgili olmalı (kullanıcı kuralı 2026-11-11): kapakta etkinliğin/sporcunun kendi fotoğrafı, sonra aynı etkinliğin diğer fotoğrafları (kaynak sayfa, organizatörün Instagram'ı). Yazılı afiş, ilgisiz stok (başka spor, bale vb.) KULLANMA; yetmezse kalan slaytlar fotoğrafsız kalır (posts.json photos sırası = slayt sırası). Tekrar eden fotoğraf yasak.
 - Konum rozeti: `country` (Türkçe ülke) ve `place` (il/şehir).
 
 ## posts.json biçimi

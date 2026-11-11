@@ -13,6 +13,9 @@ const AY = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "A
 for (const s of specs) {
   const g = guardPost({ ...s.post, imageQueries: ["sport"] }, { sourceName: s.sourceName });
   if (!g.ok) { console.log("SÜZGEÇ:", s.id, g.reason); continue; }
+  // Kullanıcı kuralı (2026-11-11): karoselde her slaytın fotoğrafı farklı ve konuyla ilgili
+  // Fotoğraf yetmezse kalan slaytlar fotoğrafsız (sade zemin) çizilir; ilgisiz fotoğraf ve tekrar yok
+  if (!s.photos.length || new Set(s.photos.map((p) => p.file)).size !== s.photos.length) { console.log("FOTOĞRAF:", s.id, "en az 1 ve birbirinden farklı fotoğraf gerekli"); continue; }
   const post = { ...g.post, athleteName: s.post.athleteName, country: s.post.country, place: s.post.place };
   const photos = [];
   for (const p of s.photos) photos.push({ id: p.id ?? `event:${s.id}`, buf: await sharp(`manual/work/${p.file}`).jpeg({ quality: 92 }).toBuffer(), credit: p.credit, source: p.credit });

@@ -1,22 +1,5 @@
 [
   {
-    "id": "stephanie-case-antarktika-2026",
-    "publishAt": "2026-11-11T17:30",
-    "urls": [
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/01.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/02.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/03.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/04.jpg"
-    ],
-    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026-story/story.jpg",
-    "caption": "Stephanie Case Antarktika'da 100 mil koşan ilk kadın oldu\n44 yaşındaki Kanadalı ultra koşucu, Doğu Antarktika'daki Queen Maud Land'de düzenlenen Antarctic Ice Ultra'yı 17 saat 31 dakika 39 saniyede tamamladı.\n\nGüvenlik nedeniyle parkur ana kamp çevresinde 4,2 kilometrelik bir tur. 100 mil (160,9 km) için bu tur 38 kez koşuldu, üstüne 300 metre eklendi.\n\nFırtına beklendiği için yarış gece 1'de, gecenin en soğuk saatinde başladı. Case her 10 turda bir yardım çadırında ısındı.\n\nSen en soğuk hangi havada koştun?\nBu haberi koşucu arkadaşına gönder.\n\nKaynak: CBC\nGörsel: ua.news\n\n#ultramaraton #antarktika #trail #koşu #hibritportal",
-    "title": "Stephanie Case Antarktika'da 100 mil koşan ilk kadın oldu",
-    "kind": "haber",
-    "category": "doga",
-    "eventName": "Antarctic Ice Ultra",
-    "srcUrl": "https://www.cbc.ca/news/canada/canadian-ultramarathon-antarctica-woman-stephanie-case-9.7415361"
-  },
-  {
     "id": "wfp-2027-spring-break-games",
     "publishAt": "2026-11-11T11:45",
     "urls": [
@@ -48,14 +31,35 @@
       "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-crossfit-ders-yapisi/05.jpg"
     ],
     "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-crossfit-ders-yapisi-story/story.jpg",
-    "caption": "Bir CrossFit dersi 4 bölümden oluşur\nCrossFit'in resmi sitesine göre derslerin çoğu aynı basit yapıyı izler.\n\nIsınmada vücut hazırlanır, nabız yükselir ve derste kullanılacak hareketler çalışılır. Ardından antrenör eşliğinde beceri ya da kuvvet çalışması gelir.\n\nGünün antrenmanı (WOD) seviyene, deneyimine ve hedefine göre uyarlanır. Ders, toparlanma ve soruların konuşulduğu soğumayla biter.\n\nHareket, ağırlık, tempo ve antrenman biçimi kişiye göre ayarlanabilir; sakatlık ve hareket kısıtları da hesaba katılır.\n\nDerste en çok zorlandığın bölüm hangisi?\nYarış planın için kaydet.\n\nKaynak: CrossFit\nGörsel: Pixabay\n\n#crossfit #wod #crossfitturkiye #hibritfitness #hibritportal",
+    "caption": "Bir CrossFit dersi 4 bölümden oluşur\nCrossFit'in resmi sitesine göre derslerin çoğu aynı basit yapıyı izler.\n\nIsınmada vücut hazırlanır, nabız yükselir ve derste kullanılacak hareketler çalışılır. Ardından antrenör eşliğinde beceri ya da kuvvet çalışması gelir.\n\nGünün antrenmanı (WOD) seviyene, deneyimine ve hedefine göre uyarlanır. Ders, toparlanma ve soruların konuşulduğu soğumayla biter.\n\nHareket, ağırlık, tempo ve antrenman biçimi kişiye göre ayarlanabilir; sakatlık ve hareket kısıtları da hesaba katılır.\n\nDerste en çok zorlandığın bölüm hangisi?\nYarış planın için kaydet.\n\nKaynak: CrossFit\nGörsel: Pixabay, Pixabay\n\n#crossfit #wod #crossfitturkiye #hibritfitness #hibritportal",
     "photos": [
-      "pixabay:3293468"
+      "pixabay:3293468",
+      "pixabay:3293452"
     ],
     "title": "Bir CrossFit dersi nasıl işler?",
     "kind": "bilgi",
     "category": "crossfit",
     "eventName": "",
     "srcUrl": "https://www.crossfit.com/what-is-crossfit"
+  },
+  {
+    "id": "stephanie-case-antarktika-2026",
+    "publishAt": "2026-11-11T17:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/04.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026-story/story.jpg",
+    "caption": "Stephanie Case Antarktika'da 100 mil koşan ilk kadın oldu\n44 yaşındaki Kanadalı ultra koşucu, Doğu Antarktika'daki Queen Maud Land'de düzenlenen Antarctic Ice Ultra'yı 17 saat 31 dakika 39 saniyede tamamladı.\n\nGüvenlik nedeniyle parkur ana kamp çevresinde 4,2 kilometrelik bir tur. 100 mil (160,9 km) için bu tur 38 kez koşuldu, üstüne 300 metre eklendi.\n\nFırtına beklendiği için yarış gece 1'de, gecenin en soğuk saatinde başladı. Case her 10 turda bir yardım çadırında ısındı.\n\nSen en soğuk hangi havada koştun?\nBu haberi koşucu arkadaşına gönder.\n\nKaynak: CBC\nGörsel: ua.news\n\n#ultramaraton #antarktika #trail #koşu #hibritportal",
+    "photos": [
+      "event:stephanie-case-antarktika-2026"
+    ],
+    "title": "Stephanie Case Antarktika'da 100 mil koşan ilk kadın oldu",
+    "kind": "haber",
+    "category": "doga",
+    "eventName": "Antarctic Ice Ultra",
+    "srcUrl": "https://www.cbc.ca/news/canada/canadian-ultramarathon-antarctica-woman-stephanie-case-9.7415361"
   }
 ]

@@ -373,7 +373,8 @@ export async function renderPost(post, outDir) {
   }
   const files = [];
   for (let i = 0; i < total; i++) {
-    const photo = photos.length ? photos[i % photos.length] : null;
+    // Kullanıcı kuralı (2026-11-11): karoselde her slaytın fotoğrafı farklı; fotoğraf yetmezse slayt fotoğrafsız (tekrar yok)
+    const photo = photos[i] ?? null;
     const location = [post.country, post.place].filter(Boolean).join(" · ").slice(0, 48);
     const buf = await renderSlide(post.slides[i], { location, cat: post.category, index: i + 1, total, source: post.source, date: post.dateLabel, photo, eventLogo: i === 0 ? eventLogo : null });
     const f = path.join(outDir, `${String(i + 1).padStart(2, "0")}.jpg`);

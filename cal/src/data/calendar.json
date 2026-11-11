@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-11T12:01:56.917Z",
+  "updated": "2026-11-11T12:15:07.420Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 94,
-      "fetchedAt": "2026-11-11T12:00:26.191Z"
+      "fetchedAt": "2026-11-11T12:14:02.645Z"
     },
     "hyrox": {
       "ok": true,
       "count": 19,
-      "fetchedAt": "2026-11-11T12:01:56.907Z"
+      "fetchedAt": "2026-11-11T12:15:07.412Z"
     }
   },
   "items": [

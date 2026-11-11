@@ -43,48 +43,6 @@
     "srcUrl": "https://www.crossfit.com/what-is-crossfit"
   },
   {
-    "id": "stephanie-case-antarktika-2026",
-    "publishAt": "2026-11-11T17:30",
-    "urls": [
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/01.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/02.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/03.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/04.jpg"
-    ],
-    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026-story/story.jpg",
-    "caption": "Stephanie Case Antarktika'da 100 mil koşan ilk kadın oldu\n44 yaşındaki Kanadalı ultra koşucu, Doğu Antarktika'daki Queen Maud Land'de düzenlenen Antarctic Ice Ultra'yı 17 saat 31 dakika 39 saniyede tamamladı.\n\nGüvenlik nedeniyle parkur ana kamp çevresinde 4,2 kilometrelik bir tur. 100 mil (160,9 km) için bu tur 38 kez koşuldu, üstüne 300 metre eklendi.\n\nFırtına beklendiği için yarış gece 1'de, gecenin en soğuk saatinde başladı. Case her 10 turda bir yardım çadırında ısındı.\n\nSen en soğuk hangi havada koştun?\nBu haberi koşucu arkadaşına gönder.\n\nKaynak: CBC\nGörsel: ua.news\n\n#ultramaraton #antarktika #trail #koşu #hibritportal",
-    "photos": [
-      "event:stephanie-case-antarktika-2026"
-    ],
-    "title": "Stephanie Case Antarktika'da 100 mil koşan ilk kadın oldu",
-    "kind": "haber",
-    "category": "doga",
-    "eventName": "Antarctic Ice Ultra",
-    "srcUrl": "https://www.cbc.ca/news/canada/canadian-ultramarathon-antarctica-woman-stephanie-case-9.7415361"
-  },
-  {
-    "id": "utmb-2027-alti-major",
-    "publishAt": "2026-11-12T12:30",
-    "urls": [
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/01.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/02.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/03.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/04.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/05.jpg"
-    ],
-    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major-story/story.jpg",
-    "caption": "UTMB World Series 2027'de altı Major yarışla\nİsviçre'deki Wildstrubel by UTMB ve ABD'deki HOKA Canyons Endurance Runs by UTMB 2027'de Major statüsü kazandı.\n\nDiğer dört Major: Val d'Aran (İspanya), Ultra-Trail Australia, Kodiak (ABD) ve Chiang Mai (Tayland).\n\nMajor yarışlarda bitiren sporcular normal yarışların iki katı Running Stones topluyor. 50K, 100K ve 100 mil mesafelerinde ilk 10 kadın ve erkek, Chamonix'teki UTMB Finals'e kuraya girmeden doğrudan katılıyor.\n\nCanyons 22-25 Nisan 2027'de Auburn'de koşulacak, kaydı açık. Wildstrubel 9-12 Eylül 2027'de; kaydı 17 Kasım'da UTMB Index sahiplerine, 19 Kasım'da herkese açılıyor.\n\n2027'de hangi UTMB yarışına gitmek isterdin?\nYarış planın için kaydet.\n\nKaynak: Canadian Running Magazine\nGörsel: runningmagazine.ca, runningmagazine.ca\n\n#utmb #trailrunning #ultramaraton #trail #hibritportal",
-    "photos": [
-      "event:utmb-2027-alti-major",
-      "event:utmb-2027-alti-major"
-    ],
-    "title": "UTMB 2027'de altı Major yarışla",
-    "kind": "haber",
-    "category": "doga",
-    "eventName": "UTMB World Series",
-    "srcUrl": "https://runningmagazine.ca/trail-running/utmb-expands-to-six-majors-for-2027-with-two-in-the-u-s/"
-  },
-  {
     "id": "kejelcha-yari-maraton-rekor-onay",
     "publishAt": "2026-11-12T10:30",
     "urls": [
@@ -104,5 +62,47 @@
     "category": "kosu",
     "eventName": "Buenos Aires Yarı Maratonu",
     "srcUrl": "https://marathonhandbook.com/kejelcha-half-marathon-world-record-ratified/"
+  },
+  {
+    "id": "stephanie-case-antarktika-2026",
+    "publishAt": "2026-11-11T17:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/04.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026-story/story.jpg",
+    "caption": "Antarktika'da 100 mil koşan ilk kadın oldu\n44 yaşındaki Kanadalı ultra koşucu Stephanie Case, Doğu Antarktika'daki Queen Maud Land'de düzenlenen Antarctic Ice Ultra'yı 17 saat 31 dakika 39 saniyede tamamladı.\n\nGüvenlik nedeniyle parkur ana kamp çevresinde 4,2 kilometrelik bir tur. 100 mil (160,9 km) için bu tur 38 kez koşuldu, üstüne 300 metre eklendi.\n\nFırtına beklendiği için yarış gece 1'de, gecenin en soğuk saatinde başladı. Case her 10 turda bir yardım çadırında ısındı.\n\nSen en soğuk hangi havada koştun?\nBu haberi koşucu arkadaşına gönder.\n\nKaynak: CBC\nGörsel: ua.news\n\n#ultramaraton #antarktika #trail #koşu #hibritportal",
+    "photos": [
+      "event:stephanie-case-antarktika-2026"
+    ],
+    "title": "Antarktika'da 100 mil koşan ilk kadın",
+    "kind": "haber",
+    "category": "doga",
+    "eventName": "Antarctic Ice Ultra",
+    "srcUrl": "https://www.cbc.ca/news/canada/canadian-ultramarathon-antarctica-woman-stephanie-case-9.7415361"
+  },
+  {
+    "id": "utmb-2027-alti-major",
+    "publishAt": "2026-11-12T12:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/05.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major-story/story.jpg",
+    "caption": "UTMB trail serisinde 2027'de 6 büyük (Major) yarış olacak\nİsviçre'deki Wildstrubel by UTMB ve ABD'deki HOKA Canyons Endurance Runs by UTMB 2027'de Major statüsü kazandı.\n\nDiğer dört Major: Val d'Aran (İspanya), Ultra-Trail Australia, Kodiak (ABD) ve Chiang Mai (Tayland).\n\nMajor yarışlarda bitiren sporcular normal yarışların iki katı Running Stones topluyor. 50K, 100K ve 100 mil mesafelerinde ilk 10 kadın ve erkek, Chamonix'teki UTMB Finals'e kuraya girmeden doğrudan katılıyor.\n\nCanyons 22-25 Nisan 2027'de Auburn'de koşulacak, kaydı açık. Wildstrubel 9-12 Eylül 2027'de; kaydı 17 Kasım'da UTMB Index sahiplerine, 19 Kasım'da herkese açılıyor.\n\n2027'de hangi UTMB yarışına gitmek isterdin?\nYarış planın için kaydet.\n\nKaynak: Canadian Running Magazine\nGörsel: runningmagazine.ca, runningmagazine.ca\n\n#utmb #trailrunning #ultramaraton #trail #hibritportal",
+    "photos": [
+      "event:utmb-2027-alti-major",
+      "event:utmb-2027-alti-major"
+    ],
+    "title": "UTMB trail serisinde 2027'de 6 büyük yarış",
+    "kind": "haber",
+    "category": "doga",
+    "eventName": "UTMB World Series",
+    "srcUrl": "https://runningmagazine.ca/trail-running/utmb-expands-to-six-majors-for-2027-with-two-in-the-u-s/"
   }
 ]

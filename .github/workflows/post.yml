@@ -57,10 +57,12 @@ jobs:
           for f in src/*.mjs; do node --check "$f"; done
           npx --no-install eslint -c scripts/eslint.config.mjs src/*.mjs # sürüm package-lock.json ile sabit
 
+      # Takvim kaynağı (ör. hyranking.com) yanıt vermezse komut 4 dk'da kesilir; bu adım paylaşımı asla engellemez
       - name: Yarış takvimi senkronu
         timeout-minutes: 5
+        continue-on-error: true
         working-directory: cal
-        run: node scripts/sync-calendar.mjs || echo "takvim hatası, son sağlam veri korundu"
+        run: timeout 240 node scripts/sync-calendar.mjs || echo "takvim hatası, son sağlam veri korundu"
 
       - name: Haber seç, üret, paylaş
         id: paylas

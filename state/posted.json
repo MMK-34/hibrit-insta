@@ -821,6 +821,24 @@
       "eventName": "",
       "at": "2026-11-11T11:42:39.967Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-11",
+      "ids": [
+        "manual:stephanie-case-antarktika-2026"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:stephanie-case-antarktika-2026"
+      ],
+      "media": "17876719422658410",
+      "permalink": "https://www.instagram.com/p/DfmuMpxDaGN/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/stephanie-case-antarktika-2026/01.jpg",
+      "title": "Antarktika'da 100 mil koşan ilk kadın",
+      "headline": "Antarktika'da 100 mil koşan ilk kadın",
+      "eventName": "Antarctic Ice Ultra",
+      "at": "2026-11-11T14:42:59.130Z",
+      "manual": true
     }
   ],
   "daily": {

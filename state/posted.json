@@ -784,6 +784,24 @@
       "eventName": "Wodapalooza Online Challenge & Qualifier 2026-2027",
       "at": "2026-11-11T09:42:48.038Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-11",
+      "ids": [
+        "manual:wfp-2027-spring-break-games"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:wfp-2027-spring-break-games"
+      ],
+      "media": "18155549122538526",
+      "permalink": "https://www.instagram.com/p/DfmSrcjDSo3/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wfp-2027-spring-break-games/01.jpg",
+      "title": "World Fitness Project 2027 takvimi 11 yarışa çıktı",
+      "headline": "World Fitness Project 2027 takvimi 11 yarışa çıktı",
+      "eventName": "Spring Break Games Fitness Festival 2027",
+      "at": "2026-11-11T10:42:32.662Z",
+      "manual": true
     }
   ],
   "daily": {

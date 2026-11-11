@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-11T09:42:06.834Z",
+  "updated": "2026-11-11T10:41:52.532Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 94,
-      "fetchedAt": "2026-11-11T09:40:57.599Z"
+      "fetchedAt": "2026-11-11T10:40:56.852Z"
     },
     "hyrox": {
       "ok": true,
       "count": 19,
-      "fetchedAt": "2026-11-11T09:42:06.826Z"
+      "fetchedAt": "2026-11-11T10:41:52.523Z"
     }
   },
   "items": [
@@ -991,15 +991,17 @@
       "name": "Challenge Peak",
       "eventSlug": null,
       "type": "crossfit",
-      "city": "Abu Dhabi Cricket & Sports Hub",
       "country": "BAE",
       "startDate": "2026-12-05",
       "endDate": "2026-12-05",
       "status": "confirmed",
       "url": "https://circle21.events/event?competitionId=977ffb4e-2ec4-4c5e-be86-bba601925aab",
       "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/464431/conversions/Circle21_Cover_1440x600_v2-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/464427/conversions/Circle21_Logo_400x400-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
       "registration": {
-        "to": "2026-12-03",
+        "to": "2026-12-02",
         "fee": "0.00 AED"
       },
       "instagram": "https://instagram.com/podiumevents.ae",
@@ -1615,6 +1617,9 @@
       "status": "confirmed",
       "url": "https://circle21.events/event?competitionId=9e3078b7-2d18-43b2-b075-dde55f84f683",
       "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/464453/conversions/Eingesetzt-11.-11.-2026,-um-11.35.20-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/464451/conversions/OnyxLogo-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
       "registration": {
         "to": "2027-02-07",
         "fee": "30.00 EUR"
@@ -2073,25 +2078,6 @@
       "note": "Elite Series Race 4: 12–13 Mart (confirmed). Genel yarış tarihi endurance.biz'den."
     },
     {
-      "id": "circle21-c104f4e1-c3e4-44bb-b8a2-4cb9d7a389d5",
-      "name": "The Battle of Beesbridge // Indy",
-      "eventSlug": null,
-      "type": "crossfit",
-      "country": "Birleşik Krallık",
-      "startDate": "2027-03-13",
-      "endDate": "2027-03-14",
-      "status": "confirmed",
-      "url": "https://circle21.events/event?competitionId=c104f4e1-c3e4-44bb-b8a2-4cb9d7a389d5",
-      "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/448781/conversions/The-Battle-of-Beersbridge-l_thumb.jpg",
-      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/448770/conversions/Untitled-design-s_thumb.jpg",
-      "imageCredit": "circle21 / organizatör",
-      "registration": {
-        "to": "2027-03-07",
-        "fee": "65.00 GBP"
-      }
-    },
-    {
       "id": "hyrox-taipei-2027-03",
       "name": "HYROX Taipei",
       "eventSlug": null,
@@ -2146,6 +2132,27 @@
       },
       "instagram": "https://instagram.com/12nullacht_throwdown",
       "website": "www.12nullacht-crossfit.com"
+    },
+    {
+      "id": "circle21-c104f4e1-c3e4-44bb-b8a2-4cb9d7a389d5",
+      "name": "The Battle of Beesbridge // Indy",
+      "eventSlug": null,
+      "type": "crossfit",
+      "country": "Birleşik Krallık",
+      "startDate": "2027-03-17",
+      "endDate": "2027-03-17",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=c104f4e1-c3e4-44bb-b8a2-4cb9d7a389d5",
+      "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/464459/conversions/Untitled-Design-(6)-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/464458/conversions/BeersbridGe-(1)-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
+      "registration": {
+        "to": "2027-03-07",
+        "fee": "65.00 GBP"
+      },
+      "instagram": "https://instagram.com/crosfit_tbb",
+      "website": "www.crossfit-tbb.com"
     },
     {
       "id": "hyrox-madrid-2027-03",

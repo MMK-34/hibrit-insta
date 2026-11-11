@@ -83,5 +83,31 @@
     "category": "doga",
     "eventName": "UTMB World Series",
     "srcUrl": "https://runningmagazine.ca/trail-running/utmb-expands-to-six-majors-for-2027-with-two-in-the-u-s/"
+  },
+  {
+    "id": "bilgi-hyrox-ilk-yaris-5-adim",
+    "publishAt": "2026-11-12T15:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-ilk-yaris-5-adim/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-ilk-yaris-5-adim/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-ilk-yaris-5-adim/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-ilk-yaris-5-adim/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-ilk-yaris-5-adim/05.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-ilk-yaris-5-adim/06.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-ilk-yaris-5-adim/07.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-ilk-yaris-5-adim-story/story.jpg",
+    "caption": "HYROX'ta ilk yarışına hazırlanmak için 5 adım\nHYROX herkes için bir yarış; ama ilk yarışa plansız girmek zor olabilir.\n\n1. Yarışını seç: Sana yakın ve hazırlanmaya zaman bırakan bir yarış seç, kayıt tarihlerini kaçırma.\n2. Antrenman yeri bul: Kızak, SkiErg ve kürek ergometresini yarıştan önce deneyebileceğin bir salon bul.\n3. İlk yarışta yalnız olma: Çift formatında iki kişi birlikte koşar ve istasyonları istediği gibi paylaşır; 4 kişilik takım formatında iş takımda bölünür.\n4. Formatı öğren: Yarış 8 kez 1 km koşu ve 1 istasyondan oluşur. Sıra: SkiErg, kızak itme, kızak çekme, burpee broad jump, kürek, farmers carry, sandbag lunge, wall ball.\n5. Koşuyu ve istasyonları birlikte çalış: Yarışta her istasyona koşudan sonra yorgun girersin, antrenmanda da öyle çalış.\n\nİlk HYROX'unu tek mi, çift mi koşacaksın?\nYarış planın için kaydet.\n\nKaynak: HYROX resmî sitesi\nGörsel: Pexels, Pexels, Pexels, Pexels\n\n#hyrox #hyroxtürkiye #hibritfitness #fonksiyoneltraining #hibritportal",
+    "photos": [
+      "local:hyrox-sled-2",
+      "local:run-start",
+      "local:sled-water",
+      "local:run-track"
+    ],
+    "title": "HYROX'ta ilk yarışına hazırlanmak için 5 adım",
+    "kind": "bilgi",
+    "category": "hyrox",
+    "eventName": "",
+    "srcUrl": "https://hyrox.com/the-fitness-race/"
   }
 ]

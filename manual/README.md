@@ -28,6 +28,7 @@ Bulut bot (post.yml, saatte bir) sırası gelen postu Claude API çağırmadan p
   (duyuru: "Birlikte yarışmak istediğin arkadaşına gönder." / bilgi: "Yarış planın için kaydet." / sonuç: "Bu yarışta tanıdığın biri var mı? Ona gönder.").
   Link, URL, @kullanıcı adı yok; "Kaynak:" satırını yazma (sistem ekler).
 - Karoselde her slaytın fotoğrafı farklı ve konuyla ilgili olmalı (kullanıcı kuralı 2026-11-11): kapakta etkinliğin/sporcunun kendi fotoğrafı, sonra aynı etkinliğin diğer fotoğrafları (kaynak sayfa, organizatörün Instagram'ı). Yazılı afiş, ilgisiz stok (başka spor, bale vb.) KULLANMA; yetmezse kalan slaytlar fotoğrafsız kalır (posts.json photos sırası = slayt sırası). Tekrar eden fotoğraf yasak.
+- AÇIKLAYICI OL (kullanıcı kuralı 2026-11-11): Az bilinen bir yarış, seri ya da kuruluş (WFP, ATHX, UTMB, Wodapalooza vb.) geçiyorsa caption'da 1-2 cümleyle ne olduğunu açıkla ("WFP nedir? ..."); bilgi kaynaktan ya da kuruluşun resmî sitesinden alınır.
 - Konum rozeti: `country` (Türkçe ülke) ve `place` (il/şehir).
 
 ## posts.json biçimi

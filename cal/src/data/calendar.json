@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-11T08:41:54.437Z",
+  "updated": "2026-11-11T09:42:06.834Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 94,
-      "fetchedAt": "2026-11-11T08:40:54.491Z"
+      "fetchedAt": "2026-11-11T09:40:57.599Z"
     },
     "hyrox": {
       "ok": true,
       "count": 19,
-      "fetchedAt": "2026-11-11T08:41:54.430Z"
+      "fetchedAt": "2026-11-11T09:42:06.826Z"
     }
   },
   "items": [
@@ -1000,7 +1000,7 @@
       "source": "circle21",
       "registration": {
         "to": "2026-12-03",
-        "fee": "0.00 EUR"
+        "fee": "0.00 AED"
       },
       "instagram": "https://instagram.com/podiumevents.ae",
       "website": "https://www.instagram.com/podiumevents.ae"
@@ -1063,6 +1063,9 @@
       "status": "confirmed",
       "url": "https://circle21.events/event?competitionId=670df2c1-7f17-4cad-9dc4-8e624123a88c",
       "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/464406/conversions/ATHX_Brand_Logos_-_APHOBOS_Black_1440x600-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/464403/conversions/Poster-2-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
       "registration": {
         "to": "2026-12-04",
         "fee": "50.00 GBP"

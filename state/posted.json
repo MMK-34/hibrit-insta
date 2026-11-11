@@ -766,6 +766,24 @@
       "eventName": "IRONMAN Florida",
       "at": "2026-11-11T08:42:30.175Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-11",
+      "ids": [
+        "manual:wodapalooza-online-hafta1-2026"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:wodapalooza-online-hafta1-2026"
+      ],
+      "media": "18008353754792805",
+      "permalink": "https://www.instagram.com/p/DfmL1vVF4Kk/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wodapalooza-online-hafta1-2026/01.jpg",
+      "title": "Wodapalooza online elemesinde 1. hafta: Felix ve Littlewood zirvede",
+      "headline": "Wodapalooza online elemesinde 1. hafta: Felix ve Littlewood zirvede",
+      "eventName": "Wodapalooza Online Challenge & Qualifier 2026-2027",
+      "at": "2026-11-11T09:42:48.038Z",
+      "manual": true
     }
   ],
   "daily": {

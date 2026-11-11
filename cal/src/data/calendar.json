@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-10T20:39:13.151Z",
+  "updated": "2026-11-11T04:41:48.928Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 93,
-      "fetchedAt": "2026-11-10T20:38:21.429Z"
+      "count": 91,
+      "fetchedAt": "2026-11-11T04:40:54.992Z"
     },
     "hyrox": {
       "ok": true,
-      "count": 16,
-      "fetchedAt": "2026-11-10T20:39:13.145Z"
+      "count": 19,
+      "fetchedAt": "2026-11-11T04:41:48.920Z"
     }
   },
   "items": [
@@ -237,28 +237,6 @@
       "sourceUrl": "https://www.hyresult.com/event/s9-2026-seoul"
     },
     {
-      "id": "circle21-842248f2-a177-4606-a283-6ab8f1f77d6e",
-      "name": "PAMPLONA ARENA GAMES 26",
-      "eventSlug": null,
-      "type": "crossfit",
-      "city": "Navarra",
-      "country": "İspanya",
-      "startDate": "2026-11-13",
-      "endDate": "2026-11-15",
-      "status": "confirmed",
-      "url": "https://circle21.events/event?competitionId=842248f2-a177-4606-a283-6ab8f1f77d6e",
-      "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/354199/conversions/BANNER-CIRCLE21-l_thumb.jpg",
-      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/344691/conversions/LOGO-PAMPLONA-26-s_thumb.jpg",
-      "imageCredit": "circle21 / organizatör",
-      "registration": {
-        "to": "2026-11-11",
-        "fee": "440.00 EUR"
-      },
-      "instagram": "https://www.instagram.com/pamplonarenagames/",
-      "website": "www.pamplonaarenagames.net"
-    },
-    {
       "id": "hyrox-2026-cairo",
       "name": "HYROX Cairo 2026",
       "eventSlug": null,
@@ -291,27 +269,6 @@
         "fee": "50.00 GBP"
       },
       "instagram": "https://instagram.com/elysiumtrainingclub"
-    },
-    {
-      "id": "circle21-0a24fc99-78d3-44b2-a9e1-8efddd74f5b2",
-      "name": "SOLO CLASSIC & WCN University",
-      "eventSlug": null,
-      "type": "crossfit",
-      "country": "İspanya",
-      "startDate": "2026-11-14",
-      "endDate": "2026-11-14",
-      "status": "confirmed",
-      "url": "https://circle21.events/event?competitionId=0a24fc99-78d3-44b2-a9e1-8efddd74f5b2",
-      "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/425109/conversions/BANNER-CIRCLE-21-(3)-l_thumb.jpg",
-      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/286219/conversions/SOLO-CLASSIC-45-(1)-s_thumb.jpg",
-      "imageCredit": "circle21 / organizatör",
-      "registration": {
-        "to": "2026-11-11",
-        "fee": "50.00 EUR"
-      },
-      "instagram": "https://instagram.com/clsc.comp",
-      "maxParticipants": 100
     },
     {
       "id": "athens-throwdown-2026-11",
@@ -354,6 +311,20 @@
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
       "sourceUrl": "https://www.hyresult.com/event/s9-2026-guangzhou"
+    },
+    {
+      "id": "hyrox-2026-poznan",
+      "name": "HYROX Poznan 2026",
+      "eventSlug": null,
+      "type": "hyrox",
+      "city": "Poznan",
+      "country": "Poland",
+      "startDate": "2026-11-19",
+      "endDate": "2026-11-22",
+      "status": "confirmed",
+      "url": "https://hyrox.com/find-my-race/",
+      "source": "hyrox",
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-poznan"
     },
     {
       "id": "circle21-a56ca4c3-9515-4969-990e-e1520ed3774c",
@@ -507,17 +478,18 @@
       "instagram": "https://www.instagram.com/crossfitgleis10"
     },
     {
-      "id": "hyrox-rio-de-janeiro-2026-11",
-      "name": "HYROX Rio de Janeiro",
+      "id": "hyrox-2026-rio-de-janeiro",
+      "name": "HYROX Rio de Janeiro 2026",
       "eventSlug": null,
       "type": "hyrox",
       "city": "Rio de Janeiro",
-      "country": "Brezilya",
+      "country": "Brazil",
       "startDate": "2026-11-21",
-      "endDate": "2026-11-21",
-      "status": "announced",
-      "url": "https://hyrox.com/find-your-race/",
-      "source": "https://www.gowod.app/blog/hyrox-2026-race-calendar-events-info-and-where-to-buy-tickets"
+      "endDate": "2026-11-23",
+      "status": "confirmed",
+      "url": "https://hyrox.com/find-my-race/",
+      "source": "hyrox",
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-rio-de-janeiro"
     },
     {
       "id": "circle21-61c3891c-afec-4ea7-9370-a43d324bd4c5",
@@ -582,6 +554,20 @@
         "fee": "0.00 USD"
       },
       "instagram": "https://www.instagram.com/dymatizearabia/"
+    },
+    {
+      "id": "hyrox-2026-singapore",
+      "name": "HYROX Singapore 2026",
+      "eventSlug": null,
+      "type": "hyrox",
+      "city": "Singapore",
+      "country": "Singapore",
+      "startDate": "2026-11-25",
+      "endDate": "2026-11-29",
+      "status": "confirmed",
+      "url": "https://hyrox.com/find-my-race/",
+      "source": "hyrox",
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-singapore"
     },
     {
       "id": "hyrox-utrecht-2026-11",

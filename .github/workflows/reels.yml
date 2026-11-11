@@ -52,7 +52,7 @@ jobs:
         if: ${{ steps.mod.outputs.skip != 'true' }}
         with: { node-version: 22, cache: npm }
       - if: ${{ steps.mod.outputs.skip != 'true' }}
-        run: npm ci
+        run: npm ci || (sleep 20 && npm ci) || (sleep 60 && npm ci) # npm kayıt kesintisine karşı 3 deneme
       - name: ffmpeg ve yazı tipleri
         if: ${{ steps.mod.outputs.skip != 'true' }}
         run: |

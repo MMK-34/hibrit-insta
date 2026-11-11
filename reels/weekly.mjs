@@ -281,8 +281,14 @@ async function produce(list) {
     ? ["Hibrit Portal'dan önemli duyuru.", ...list.map((i) => i.line), "Ayrıntılar profilde. Takipte kal."]
     : [`Hibrit Portal'da haftanın özeti. ${NUM_TR[n][0].toUpperCase() + NUM_TR[n].slice(1)} haberde geçen hafta.`, ...list.map((i) => i.line), "Haberlerin ayrıntısı profilde. Takipte kal."];
   for (const [i, text] of lines.entries()) {
-    const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE}/with-timestamps?output_format=mp3_44100_128`, { method: "POST", headers: EL, body: JSON.stringify({ text, model_id: "eleven_v3", language_code: "tr", voice_settings: { stability: 0.5 } }) });
-    const j = await r.json();
+    // Ses: ElevenLabs yoğunluk (429/5xx) ya da ağ hatası verirse 4 kez artan beklemeyle yeniden denenir
+    let j = {};
+    for (let k = 0; k < 4 && !j.audio_base64; k++) {
+      if (k) await new Promise((res) => setTimeout(res, 20000 * k));
+      const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE}/with-timestamps?output_format=mp3_44100_128`, { method: "POST", headers: EL, body: JSON.stringify({ text, model_id: "eleven_v3", language_code: "tr", voice_settings: { stability: 0.5 } }), signal: AbortSignal.timeout(90000) }).catch(() => null);
+      j = r ? await r.json().catch(() => ({})) : {};
+      if (!j.audio_base64) log("ses denemesi başarısız:", r?.status ?? "ağ", JSON.stringify(j).slice(0, 120));
+    }
     if (!j.audio_base64) throw new Error(`ElevenLabs ses: ${JSON.stringify(j).slice(0, 200)}`);
     fs.writeFileSync(path.join(A, `v${i}.mp3`), Buffer.from(j.audio_base64, "base64"));
     const al = j.alignment ?? j.normalized_alignment;

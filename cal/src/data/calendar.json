@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-11T05:42:05.389Z",
+  "updated": "2026-11-11T06:42:07.808Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 91,
-      "fetchedAt": "2026-11-11T05:40:52.110Z"
+      "count": 93,
+      "fetchedAt": "2026-11-11T06:41:00.642Z"
     },
     "hyrox": {
       "ok": true,
       "count": 19,
-      "fetchedAt": "2026-11-11T05:42:05.381Z"
+      "fetchedAt": "2026-11-11T06:42:07.798Z"
     }
   },
   "items": [
@@ -1405,6 +1405,27 @@
       "instagram": "https://www.instagram.com/theclash16.9/"
     },
     {
+      "id": "circle21-aae0dad0-ad7b-4935-b1f1-0c0dbb36748d",
+      "name": "Athens Throwdown 2027 Individuals Qualifiers",
+      "eventSlug": "athens-throwdown",
+      "type": "crossfit",
+      "country": "Yunanistan",
+      "startDate": "2027-01-11",
+      "endDate": "2027-01-26",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=aae0dad0-ad7b-4935-b1f1-0c0dbb36748d",
+      "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/369167/conversions/Athens-Throwdown-2027-Individuals-Qualifiers-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/261547/conversions/274007362_5446906268670654_8409688317908723684_n-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
+      "registration": {
+        "to": "2027-01-10",
+        "fee": "26.00 EUR"
+      },
+      "instagram": "https://www.instagram.com/athensthrowdown",
+      "website": "https://www.athensthrowdown.com/en/"
+    },
+    {
       "id": "athens-throwdown-2027-01",
       "name": "Athens Throwdown 2027 — online qualifier (bireysel)",
       "eventSlug": "athens-throwdown",
@@ -2384,6 +2405,28 @@
       },
       "instagram": "https://instagram.com/italian.teen.arena",
       "website": "https://www.instagram.com/italian.teen.arena/"
+    },
+    {
+      "id": "circle21-7e3314a6-2595-4dc5-a5c3-11dab0bded1c",
+      "name": "Athens Throwdown 2027 Teams Finals",
+      "eventSlug": "athens-throwdown",
+      "type": "crossfit",
+      "city": "Greece",
+      "country": "Yunanistan",
+      "startDate": "2027-04-16",
+      "endDate": "2027-04-18",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=7e3314a6-2595-4dc5-a5c3-11dab0bded1c",
+      "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/369169/conversions/Athens-Throwdown-2027-Finals-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/312912/conversions/274007362_5446906268670654_8409688317908723684_n-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
+      "registration": {
+        "to": "2027-04-15",
+        "fee": "0.00 EUR"
+      },
+      "instagram": "https://www.instagram.com/athensthrowdown",
+      "website": "https://www.athensthrowdown.com/en/"
     },
     {
       "id": "athens-throwdown-2027-04",

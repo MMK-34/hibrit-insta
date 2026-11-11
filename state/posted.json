@@ -750,6 +750,22 @@
       "eventName": "HYROX Birmingham 2026",
       "at": "2026-11-10T16:43:56.464Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-11",
+      "ids": [
+        "manual:ironman-florida-crossfit-2026"
+      ],
+      "kind": "haber",
+      "photos": [],
+      "media": "18169463533488703",
+      "permalink": "https://www.instagram.com/p/DfmE8ceFsPI/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/ironman-florida-crossfit-2026/01.jpg",
+      "title": "Rich Froning IRONMAN Florida'yı 11:49:58'de bitirdi",
+      "headline": "Rich Froning IRONMAN Florida'yı 11:49:58'de bitirdi",
+      "eventName": "IRONMAN Florida",
+      "at": "2026-11-11T08:42:30.175Z",
+      "manual": true
     }
   ],
   "daily": {

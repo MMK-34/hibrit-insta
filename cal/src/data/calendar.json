@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-11T07:42:02.140Z",
+  "updated": "2026-11-11T08:41:54.437Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 93,
-      "fetchedAt": "2026-11-11T07:40:53.382Z"
+      "count": 94,
+      "fetchedAt": "2026-11-11T08:40:54.491Z"
     },
     "hyrox": {
       "ok": true,
       "count": 19,
-      "fetchedAt": "2026-11-11T07:42:02.134Z"
+      "fetchedAt": "2026-11-11T08:41:54.430Z"
     }
   },
   "items": [
@@ -985,6 +985,25 @@
         "fee": "0.00 AED"
       },
       "instagram": "https://instagram.com/971hybrid"
+    },
+    {
+      "id": "circle21-977ffb4e-2ec4-4c5e-be86-bba601925aab",
+      "name": "Challenge Peak",
+      "eventSlug": null,
+      "type": "crossfit",
+      "city": "Abu Dhabi Cricket & Sports Hub",
+      "country": "BAE",
+      "startDate": "2026-12-05",
+      "endDate": "2026-12-05",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=977ffb4e-2ec4-4c5e-be86-bba601925aab",
+      "source": "circle21",
+      "registration": {
+        "to": "2026-12-03",
+        "fee": "0.00 EUR"
+      },
+      "instagram": "https://instagram.com/podiumevents.ae",
+      "website": "https://www.instagram.com/podiumevents.ae"
     },
     {
       "id": "hyrox-milan-2026-12",

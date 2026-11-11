@@ -61,5 +61,48 @@
     "category": "doga",
     "eventName": "Antarctic Ice Ultra",
     "srcUrl": "https://www.cbc.ca/news/canada/canadian-ultramarathon-antarctica-woman-stephanie-case-9.7415361"
+  },
+  {
+    "id": "kejelcha-yari-maraton-rekor-onay",
+    "publishAt": "2026-11-12T10:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kejelcha-yari-maraton-rekor-onay/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kejelcha-yari-maraton-rekor-onay/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kejelcha-yari-maraton-rekor-onay/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kejelcha-yari-maraton-rekor-onay/04.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kejelcha-yari-maraton-rekor-onay-story/story.jpg",
+    "caption": "Kejelcha'nın 56:51'i yarı maraton dünya rekoru olarak onaylandı\nWorld Athletics, Yomif Kejelcha'nın 23 Ağustos'ta Buenos Aires Yarı Maratonu'nda koştuğu dereceyi resmen tanıdı.\n\nEtiyopyalı sporcu, Jacob Kiplimo'nun Lizbon'da koştuğu 57:20'lik önceki rekoru 29 saniye geliştirdi. Onay yarıştan 78 gün sonra geldi.\n\nKejelcha 10K'yı 27:19'da, 20K'yı 54:04'te geçti; ikinci 10K'yı 26:45'te koştu. Yarışta ikinci olan Tadese Worku 59:20'de bitirdi.\n\nKejelcha'nın sıradaki yarışı 6 Aralık'taki Valencia Maratonu.\n\nSen yarı maratonu kaçta koşuyorsun?\nBu haberi koşucu arkadaşına gönder.\n\nReklam / Tanıtım\n\nKaynak: Marathon Handbook\nGörsel: marathonhandbook.com, marathonhandbook.com\n\n#yarımaraton #dünyarekoru #koşu #maraton #hibritportal",
+    "photos": [
+      "event:kejelcha-yari-maraton-rekor-onay",
+      "event:kejelcha-yari-maraton-rekor-onay"
+    ],
+    "title": "Kejelcha'nın 56:51'i dünya rekoru olarak onaylandı",
+    "kind": "haber",
+    "category": "kosu",
+    "eventName": "Buenos Aires Yarı Maratonu",
+    "srcUrl": "https://marathonhandbook.com/kejelcha-half-marathon-world-record-ratified/"
+  },
+  {
+    "id": "utmb-2027-alti-major",
+    "publishAt": "2026-11-12T12:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/05.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major-story/story.jpg",
+    "caption": "UTMB World Series 2027'de altı Major yarışla\nİsviçre'deki Wildstrubel by UTMB ve ABD'deki HOKA Canyons Endurance Runs by UTMB 2027'de Major statüsü kazandı.\n\nDiğer dört Major: Val d'Aran (İspanya), Ultra-Trail Australia, Kodiak (ABD) ve Chiang Mai (Tayland).\n\nMajor yarışlarda bitiren sporcular normal yarışların iki katı Running Stones topluyor. 50K, 100K ve 100 mil mesafelerinde ilk 10 kadın ve erkek, Chamonix'teki UTMB Finals'e kuraya girmeden doğrudan katılıyor.\n\nCanyons 22-25 Nisan 2027'de Auburn'de koşulacak, kaydı açık. Wildstrubel 9-12 Eylül 2027'de; kaydı 17 Kasım'da UTMB Index sahiplerine, 19 Kasım'da herkese açılıyor.\n\n2027'de hangi UTMB yarışına gitmek isterdin?\nYarış planın için kaydet.\n\nKaynak: Canadian Running Magazine\nGörsel: runningmagazine.ca, runningmagazine.ca\n\n#utmb #trailrunning #ultramaraton #trail #hibritportal",
+    "photos": [
+      "event:utmb-2027-alti-major",
+      "event:utmb-2027-alti-major"
+    ],
+    "title": "UTMB 2027'de altı Major yarışla",
+    "kind": "haber",
+    "category": "doga",
+    "eventName": "UTMB World Series",
+    "srcUrl": "https://runningmagazine.ca/trail-running/utmb-expands-to-six-majors-for-2027-with-two-in-the-u-s/"
   }
 ]

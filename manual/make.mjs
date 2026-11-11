@@ -17,8 +17,21 @@ for (const s of specs) {
   // Fotoğraf yetmezse kalan slaytlar fotoğrafsız (sade zemin) çizilir; ilgisiz fotoğraf ve tekrar yok
   if (!s.photos.length || new Set(s.photos.map((p) => p.file)).size !== s.photos.length) { console.log("FOTOĞRAF:", s.id, "en az 1 ve birbirinden farklı fotoğraf gerekli"); continue; }
   const post = { ...g.post, athleteName: s.post.athleteName, country: s.post.country, place: s.post.place };
-  const photos = [];
-  for (const p of s.photos) photos.push({ id: p.id ?? `event:${s.id}`, buf: await sharp(`manual/work/${p.file}`).jpeg({ quality: 92 }).toBuffer(), credit: p.credit, source: p.credit });
+  let photos = [];
+  for (const p of s.photos) photos.push({ id: p.id ?? `event:${s.id}`, buf: await sharp(`manual/work/${p.file}`).rotate().jpeg({ quality: 92 }).toBuffer(), credit: p.credit, source: p.credit });
+  // Kullanıcı kuralı (2026-11-11): karoselde her fotoğrafın en az %50'si diğerlerinden farklı.
+  // Fotoğraf slayt sayısından azsa: son fotoğraflardan başlayarak bazıları iki yarıya bölünür (yatay: sol/sağ, dikey: üst/alt; örtüşme %10).
+  // Bölünen fotoğrafın tamamı ayrıca kullanılmaz (yarısı tamamının içinde kalırdı). Yine yetmezse kalan slaytlar fotoğrafsız.
+  const need = s.post.slides.length;
+  const split = async (ph) => {
+    const m = await sharp(ph.buf).metadata();
+    const wide = m.width >= m.height;
+    const part = (i) => wide
+      ? { left: Math.round(m.width * 0.45 * i), top: 0, width: Math.round(m.width * 0.55), height: m.height }
+      : { left: 0, top: Math.round(m.height * 0.45 * i), width: m.width, height: Math.round(m.height * 0.55) };
+    return Promise.all([0, 1].map(async (i) => ({ ...ph, buf: await sharp(ph.buf).extract(part(i)).jpeg({ quality: 92 }).toBuffer() })));
+  };
+  if (s.split !== false) for (let k = photos.length - 1; k >= 0 && photos.length < need; k--) photos.splice(k, 1, ...(await split(photos[k])));
   const [y, m, d] = s.publishAt.slice(0, 10).split("-").map(Number);
   const outDir = path.join("out", "manual", s.id);
   fs.mkdirSync(outDir, { recursive: true });

@@ -839,6 +839,25 @@
       "eventName": "Antarctic Ice Ultra",
       "at": "2026-11-11T14:42:59.130Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-12",
+      "ids": [
+        "manual:kejelcha-yari-maraton-rekor-onay"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:kejelcha-yari-maraton-rekor-onay",
+        "event:kejelcha-yari-maraton-rekor-onay"
+      ],
+      "media": "18143725045728904",
+      "permalink": "https://www.instagram.com/p/DfojMNbDSnW/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kejelcha-yari-maraton-rekor-onay/01.jpg",
+      "title": "Yarı maratonda yeni dünya rekoru onaylandı",
+      "headline": "Yarı maratonda yeni dünya rekoru onaylandı",
+      "eventName": "Buenos Aires Yarı Maratonu",
+      "at": "2026-11-12T07:45:17.380Z",
+      "manual": true
     }
   ],
   "daily": {

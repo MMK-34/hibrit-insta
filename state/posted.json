@@ -917,6 +917,29 @@
       "eventName": "",
       "at": "2026-11-12T12:45:42.361Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-12",
+      "ids": [
+        "manual:bangkok-throwdown-2026-eventler"
+      ],
+      "kind": "haber",
+      "photos": [
+        "ig:bangkokthrowdown:18549295462054909-3",
+        "ig:bangkokthrowdown:18549295462054909-4",
+        "ig:bangkokthrowdown:18549295462054909-5",
+        "ig:bangkokthrowdown:18549295462054909-1",
+        "ig:bangkokthrowdown:18549295462054909-0",
+        "ig:bangkokthrowdown:18549295462054909-6"
+      ],
+      "media": "17981221518149416",
+      "permalink": "https://www.instagram.com/p/DfphHpMDj8e/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bangkok-throwdown-2026-eventler/01.jpg",
+      "title": "Bu CrossFit yarışında ninja parkuru da var",
+      "headline": "Bu CrossFit yarışında ninja parkuru da var",
+      "eventName": "Bangkok Throwdown 2026",
+      "at": "2026-11-12T16:46:30.074Z",
+      "manual": true
     }
   ],
   "daily": {

@@ -147,7 +147,13 @@ async function publishManualQueue() {
   if (!item) return;
   fs.writeFileSync(qf, JSON.stringify(q.filter((x) => x !== item), null, 2) + "\n");
   if (state.posts.some((p) => (p.ids ?? []).includes(`manual:${item.id}`))) return;
-  const res = await publish(item.urls, item.caption);
+  // Karoselde video varsa ve yayın hata verirse post kaybolmasın: video çıkarılıp yalnızca görsellerle bir kez daha denenir
+  const imgs = item.urls.filter((u) => !/\.mp4($|\?)/i.test(u));
+  const res = await publish(item.urls, item.caption).catch(async (e) => {
+    if (imgs.length === item.urls.length || !imgs.length) throw e;
+    log("Karosel videosu yayınlanamadı, video olmadan deneniyor:", String(e?.message ?? e).slice(0, 160));
+    return publish(imgs, item.caption);
+  });
   state.posts.push({ day: today, ids: [`manual:${item.id}`], kind: item.kind ?? "haber", photos: Array.isArray(item.photos) ? item.photos.map(String).slice(0, 10) : [], media: res.id, permalink: res.permalink, cover: item.urls[0], title: item.title, headline: item.title, eventName: item.eventName, at: new Date().toISOString(), manual: true });
   saveState();
   log("Hazır post yayında:", res.permalink);

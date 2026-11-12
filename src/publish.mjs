@@ -50,8 +50,8 @@ function userId() {
   return id;
 }
 
-async function waitReady(id) {
-  for (let i = 0; i < 30; i++) {
+async function waitReady(id, tries = 30) {
+  for (let i = 0; i < tries; i++) {
     const { status_code } = await retry(`IG durum ${id}`, () => call("GET", id, { fields: "status_code" }));
     if (status_code === "FINISHED") return;
     if (status_code === "ERROR" || status_code === "EXPIRED") throw new Error(`IG container ${id}: ${status_code}`);
@@ -92,11 +92,14 @@ export async function publish(imageUrls, caption, { collaborators = [] } = {}) {
   } else {
     const children = [];
     for (const url of imageUrls.slice(0, 10)) {
-      const c = await retry("IG karosel öğesi", () => call("POST", `${me}/media`, { image_url: url, is_carousel_item: "true" }));
-      children.push(c.id);
+      // Karoselde video öğesi (.mp4): Instagram işlemesi birkaç dakika sürebilir
+      const video = /\.mp4($|\?)/i.test(url);
+      const params = video ? { media_type: "VIDEO", video_url: url, is_carousel_item: "true" } : { image_url: url, is_carousel_item: "true" };
+      const c = await retry("IG karosel öğesi", () => call("POST", `${me}/media`, params));
+      children.push({ id: c.id, video });
     }
-    for (const id of children) await waitReady(id);
-    const c = await withCollab("IG karosel", { media_type: "CAROUSEL", children: children.join(","), caption });
+    for (const ch of children) await waitReady(ch.id, ch.video ? 90 : 30);
+    const c = await withCollab("IG karosel", { media_type: "CAROUSEL", children: children.map((ch) => ch.id).join(","), caption });
     await waitReady(c.id);
     creationId = c.id;
   }

@@ -877,6 +877,25 @@
       "eventName": "HYROX",
       "at": "2026-11-12T08:45:25.121Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-12",
+      "ids": [
+        "manual:utmb-2027-alti-major"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:utmb-2027-alti-major",
+        "event:utmb-2027-alti-major"
+      ],
+      "media": "18079512278733294",
+      "permalink": "https://www.instagram.com/p/Dfow8MIDiWO/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-alti-major/01.jpg",
+      "title": "UTMB trail serisinde 2027'de 6 büyük yarış",
+      "headline": "UTMB trail serisinde 2027'de 6 büyük yarış",
+      "eventName": "UTMB World Series",
+      "at": "2026-11-12T09:45:27.830Z",
+      "manual": true
     }
   ],
   "daily": {

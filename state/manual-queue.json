@@ -46,27 +46,5 @@
     "category": "hyrox",
     "eventName": "",
     "srcUrl": "https://hyrox.com/the-fitness-race/"
-  },
-  {
-    "id": "hyrox-arastirma-istasyon-farki",
-    "publishAt": "2026-11-12T11:30",
-    "urls": [
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-arastirma-istasyon-farki/01.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-arastirma-istasyon-farki/02.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-arastirma-istasyon-farki/03.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-arastirma-istasyon-farki/04.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-arastirma-istasyon-farki/05.jpg"
-    ],
-    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-arastirma-istasyon-farki-story/story.jpg",
-    "caption": "HYROX'ta fark koşuda değil, istasyonlarda açılıyor\nResmi HYROX yarış sonuçlarını inceleyen yeni bir çalışma, sporcular arasındaki farkın nerede oluştuğunu gösterdi.\n\nAraştırmacılar 6.081 erkek ve 2.341 kadın sporcunun sonuçlarını geriye dönük inceledi; 8 koşu bölümü ve 8 istasyonda harcanan süre payını hesapladı.\n\nKoşu temposu tüm performans gruplarında benzer bir şekil izledi. Küçük farklar yalnızca 1., 2. ve 8. kilometrede görüldü; kadın ve erkek sporcular arasındaki tempo farkı da çok küçüktü.\n\nAsıl fark istasyonlarda çıktı: Yavaş sporcular zamanı en çok ağırlıklı ve vücut ağırlığıyla yapılan istasyonlarda kaybetti. Kadınlarda SkiErg, burpee broad jump, kürek ve farmers carry; erkeklerde sandbag lunge ve wall ball istasyon süresinde daha büyük pay aldı. Araştırmacılara göre bu bulgular cinsiyete ve seviyeye göre tempo ve antrenman planı kurmak için bir çerçeve sunuyor.\n\nSen HYROX'ta en çok hangi istasyonda zaman kaybediyorsun?\nYarış planın için kaydet.\n\nKaynak: Hibrit Portal derlemesi\nGörsel: hyrox.com, hyrox.com\n\n#hyrox #hyroxtürkiye #hibritfitness #sporbilimi #hibritportal",
-    "photos": [
-      "event:hyrox-arastirma-istasyon-farki",
-      "event:hyrox-arastirma-istasyon-farki"
-    ],
-    "title": "HYROX'ta fark koşuda değil, istasyonlarda açılıyor",
-    "kind": "haber",
-    "category": "hyrox",
-    "eventName": "HYROX",
-    "srcUrl": "https://bioengineer.org/hyrox-pro-athletes-share-running-pacing-while-strength-station-times-differ/"
   }
 ]

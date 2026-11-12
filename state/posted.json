@@ -858,6 +858,25 @@
       "eventName": "Buenos Aires Yarı Maratonu",
       "at": "2026-11-12T07:45:17.380Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-12",
+      "ids": [
+        "manual:hyrox-arastirma-istasyon-farki"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:hyrox-arastirma-istasyon-farki",
+        "event:hyrox-arastirma-istasyon-farki"
+      ],
+      "media": "18130270069870293",
+      "permalink": "https://www.instagram.com/p/DfoqETrF4UA/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-arastirma-istasyon-farki/01.jpg",
+      "title": "HYROX'ta fark koşuda değil, istasyonlarda açılıyor",
+      "headline": "HYROX'ta fark koşuda değil, istasyonlarda açılıyor",
+      "eventName": "HYROX",
+      "at": "2026-11-12T08:45:25.121Z",
+      "manual": true
     }
   ],
   "daily": {

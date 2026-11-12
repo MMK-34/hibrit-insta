@@ -38,7 +38,7 @@ for (const s of specs) {
   const files = await renderPost({ ...post, photos, category: s.category, source: s.sourceName, dateLabel: `${d} ${AY[m - 1]} ${y}` }, outDir);
   const storyFile = path.join(outDir, "story.jpg");
   await renderStory(files[0], storyFile);
-  const caption = post.caption.replace(/(Kaynak:[^\n]*)/, `$1\nGörsel: ${s.photos.map((p) => p.credit).join(", ")}`);
+  const caption = post.caption.replace(/(Kaynak:[^\n]*)/, `$1\nGörsel: ${[...new Set(s.photos.map((p) => p.credit))].join(", ")}`);
   fs.writeFileSync(path.join(outDir, "caption.txt"), caption);
   console.log("çizildi:", s.id, files.length, "slayt");
   if (!UP) continue;

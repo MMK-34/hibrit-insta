@@ -896,6 +896,27 @@
       "eventName": "UTMB World Series",
       "at": "2026-11-12T09:45:27.830Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-12",
+      "ids": [
+        "manual:bilgi-hyrox-ilk-yaris-5-adim"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "local:hyrox-sled-2",
+        "local:run-start",
+        "local:sled-water",
+        "local:run-track"
+      ],
+      "media": "18123587830963757",
+      "permalink": "https://www.instagram.com/p/DfpFkE_k0-i/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-ilk-yaris-5-adim/01.jpg",
+      "title": "HYROX'ta ilk yarışına hazırlanmak için 5 adım",
+      "headline": "HYROX'ta ilk yarışına hazırlanmak için 5 adım",
+      "eventName": "",
+      "at": "2026-11-12T12:45:42.361Z",
+      "manual": true
     }
   ],
   "daily": {

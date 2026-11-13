@@ -983,6 +983,24 @@
       "eventName": "X Challenge 2027",
       "at": "2026-11-13T10:45:24.800Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-13",
+      "ids": [
+        "manual:kosu-ekonomik-etki-2026"
+      ],
+      "kind": "haber",
+      "photos": [
+        "aa:4122468-0"
+      ],
+      "media": "18225124600339688",
+      "permalink": "https://www.instagram.com/p/DfrpBW3DGLm/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-ekonomik-etki-2026/01.jpg",
+      "title": "Türkiye'de koşuların ekonomik etkisi iki katına çıkıyor",
+      "headline": "Türkiye'de koşuların ekonomik etkisi iki katına çıkıyor",
+      "eventName": "",
+      "at": "2026-11-13T12:34:01.906Z",
+      "manual": true
     }
   ],
   "daily": {

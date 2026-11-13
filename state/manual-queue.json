@@ -97,5 +97,30 @@
     "category": "crossfit",
     "eventName": "French Throwdown 2027",
     "srcUrl": "https://www.frenchthrowdown.com/en"
+  },
+  {
+    "id": "burgener-l1-istanbul-2027",
+    "publishAt": "2026-11-14T19:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/burgener-l1-istanbul-2027/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/burgener-l1-istanbul-2027/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/burgener-l1-istanbul-2027/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/burgener-l1-istanbul-2027/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/burgener-l1-istanbul-2027/05.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/burgener-l1-istanbul-2027-story/story.jpg",
+    "caption": "Burgener halter kursu İstanbul'a geliyor\nBurgener Weightlifting Level 1 kursu 3-4 Nisan 2027'de İstanbul'da, CrossFit Boomerang'da yapılacak.\n\nBurgener nedir? ABD merkezli Burgener Strength'in olimpik halter kursları. Level 1, olimpik halter üzerine 2 günlük bir kurs ve dünyanın birçok ülkesinde CrossFit salonlarında düzenleniyor.\n\nBurgener'in Nisan takviminde ABD, Fransa, İspanya ve Almanya'daki kursların yanında Türkiye'den yalnızca İstanbul var. Kayıt ve ayrıntılar Burgener Strength'in resmi sitesinde.\n\nHalter tekniğini geliştirmek için kursa katılır mısın?\nAntrenör arkadaşına gönder.\n\nKaynak: Burgener Strength resmî kurs takvimi\nGörsel: Burgener Strength\n\n#halter #weightlifting #crossfit #crossfittürkiye #hibritportal",
+    "photos": [
+      "ig:burgenerstrength:2462-0",
+      "ig:burgenerstrength:6598-2",
+      "ig:burgenerstrength:2462-3",
+      "ig:burgenerstrength:7043-0",
+      "ig:burgenerstrength:2462-2"
+    ],
+    "title": "Burgener halter kursu İstanbul'a geliyor",
+    "kind": "duyuru",
+    "category": "crossfit",
+    "eventName": "Burgener Weightlifting Level 1 İstanbul",
+    "srcUrl": "https://burgenerstrength.com"
   }
 ]

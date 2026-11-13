@@ -961,6 +961,28 @@
       "eventName": "Tirana Throwdown 2027",
       "at": "2026-11-12T16:52:05.039Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-13",
+      "ids": [
+        "manual:x-challenge-2027-nisan"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "ig:xchallenge.tr:3712-5",
+        "ig:xchallenge.tr:3712-2",
+        "ig:xchallenge.tr:5244-0",
+        "ig:xchallenge.tr:5244-10",
+        "ig:xchallenge.tr:5244-9"
+      ],
+      "media": "17896272624614910",
+      "permalink": "https://www.instagram.com/p/Dfrcl6tl1I4/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/x-challenge-2027-nisan/01.jpg",
+      "title": "X Challenge Nisan 2027'de geri dönüyor",
+      "headline": "X Challenge Nisan 2027'de geri dönüyor",
+      "eventName": "X Challenge 2027",
+      "at": "2026-11-13T10:45:24.800Z",
+      "manual": true
     }
   ],
   "daily": {

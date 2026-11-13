@@ -1020,6 +1020,28 @@
       "eventName": "",
       "at": "2026-11-13T13:45:16.022Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-14",
+      "ids": [
+        "manual:athx-the-twenty-2027"
+      ],
+      "kind": "haber",
+      "photos": [
+        "ig:athx_games:2274-2",
+        "ig:athx_games:2274-0",
+        "ig:athx_games:4416-0",
+        "ig:athx_games:0039-2",
+        "ig:athx_games:1780-0"
+      ],
+      "media": "17946618966089593",
+      "permalink": "https://www.instagram.com/p/DfsrV_6ibJV/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athx-the-twenty-2027/01.jpg",
+      "title": "ATHX en iyi 20 kadın ve 20 erkek için yeni seri başlatıyor",
+      "headline": "ATHX en iyi 20 kadın ve 20 erkek için yeni seri başlatıyor",
+      "eventName": "ATHX The Twenty 2027",
+      "at": "2026-11-13T22:13:33.693Z",
+      "manual": true
     }
   ],
   "daily": {
@@ -1051,6 +1073,11 @@
       "rejected": 0
     },
     "2026-11-13": {
+      "drafts": 0,
+      "approved": 0,
+      "rejected": 0
+    },
+    "2026-11-14": {
       "drafts": 0,
       "approved": 0,
       "rejected": 0

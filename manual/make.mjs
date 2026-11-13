@@ -12,6 +12,10 @@ const q = JSON.parse(fs.readFileSync("state/manual-queue.json", "utf8"));
 const q0 = new Set(q.map((x) => x.id)); // çalışma başındaki sıra
 const AY = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
 for (const s of specs) {
+  // Bot yalnızca TR 07:40-22:40 arasında çalışır (trigger-worker cron "40 4-19 * * *"): bu aralık dışındaki
+  // yayın saati gece ya da ertesi sabah sapıtır (2026-11-13 ATHX 23:30 hatası). Aralık dışı saat kabul edilmez.
+  const hm = String(s.publishAt ?? "").slice(11, 16);
+  if (!/^\d{2}:\d{2}$/.test(hm) || hm < "07:00" || hm > "22:30") { console.log("SAAT:", s.id, `publishAt ${hm || "yok"}: 07:00-22:30 arasında olmalı (bot 07:40-22:40 TR çalışır)`); continue; }
   const g = guardPost({ ...s.post, imageQueries: ["sport"] }, { sourceName: s.sourceName });
   if (!g.ok) { console.log("SÜZGEÇ:", s.id, g.reason); continue; }
   // Kullanıcı kuralı (2026-11-11): karoselde her slaytın fotoğrafı farklı ve konuyla ilgili

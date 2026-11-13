@@ -1,1 +1,46 @@
-[]
+[
+  {
+    "id": "hyrox-cruise-2026-ilk-tur",
+    "publishAt": "2026-11-13T13:45",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-cruise-2026-ilk-tur/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-cruise-2026-ilk-tur/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-cruise-2026-ilk-tur/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-cruise-2026-ilk-tur/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-cruise-2026-ilk-tur/05.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-cruise-2026-ilk-tur-story/story.jpg",
+    "caption": "HYROX ilk gemi turunu Akdeniz'de tamamladı\nHYROX Cruise, 21-25 Ekim 2026'da Palma de Mallorca'dan kalkıp Valencia ve Barcelona'ya uğrayarak Palma'ya döndü. Gemide 67 ülkeden 2.000 konuk vardı.\n\nHYROX Cruise nedir? HYROX'un yarış dışındaki etkinliklerini topladığı HYROX Experiences başlığındaki gemi turu. Mein Schiff 4 gemisinin güverteleri kürek ve kayak ergometreleri, dambıl, kettlebell ve kum torbalarıyla antrenman alanına çevrildi.\n\nHYROX'a göre dört günde 350 saatten fazla ders, atölye, panel ve hareket kliniği yapıldı. Limanlarda koşu kulübü etkinlikleri düzenlendi.\n\nHYROX, 2027'de antrenman otelleri ve antrenman kampları başlatmayı planladığını, ayrıntıları 2027 başında açıklayacağını bildirdi.\n\nGemide HYROX antrenmanı yapmak ister miydin?\nBirlikte yarışmak istediğin arkadaşına gönder.\nReklam / Tanıtım\n\nKaynak: Endurance Biz\nGörsel: Endurance Biz\n\n#hyrox #hyroxcruise #hyroxtraining #hibritfitness #hibritportal",
+    "photos": [
+      "event:hyrox-cruise-2026-ilk-tur",
+      "event:hyrox-cruise-2026-ilk-tur"
+    ],
+    "title": "HYROX ilk gemi turunu Akdeniz'de tamamladı",
+    "kind": "haber",
+    "category": "hyrox",
+    "eventName": "HYROX Cruise",
+    "srcUrl": "https://endurance.biz/2026/industry-news/hyrox-sets-sail-with-debut-of-high-seas-hyrox-cruise/"
+  },
+  {
+    "id": "bilgi-besin-zamanlamasi-issn",
+    "publishAt": "2026-11-13T14:48",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-besin-zamanlamasi-issn/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-besin-zamanlamasi-issn/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-besin-zamanlamasi-issn/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-besin-zamanlamasi-issn/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-besin-zamanlamasi-issn/05.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-besin-zamanlamasi-issn-story/story.jpg",
+    "caption": "Antrenmanda ne zaman ne yemeli? Derneğin 4 önerisi\nUluslararası Spor Beslenmesi Derneği (ISSN), sağlıklı ve egzersiz yapan yetişkinler için besin zamanlaması görüşünü 2017'de yayımladı. Öne çıkan dört nokta:\n\n1) Günde kilo başına 8-12 g karbonhidrat içeren beslenme glikojen depolarını en üst düzeye çıkarır. Bu depoları en çok yüksek hacimli egzersiz boşaltır.\n\n2) 60 dakikayı aşan yüksek şiddetli egzersizde saatte yaklaşık 30-60 g karbonhidrat alınması öneriliyor.\n\n3) Günlük toplam protein, yaklaşık 3 saatte bir eşit öğünlere bölünmeli; öğün başına 20-40 g kaliteli protein öneriliyor.\n\n4) Egzersizden hemen sonra ile 2 saat sonrası arasında alınan kaliteli protein kas protein sentezini artırır.\n\nUzun antrenmanda karbonhidrat alıyor musun?\nYarış planın için kaydet.\n\nKaynak: Journal of the International Society of Sports Nutrition 201\nGörsel: Foto: Pixabay\n\n#sporbeslenmesi #hyrox #crossfit #hibritfitness #hibritportal",
+    "photos": [
+      "pixabay:6245426",
+      "pixabay:8205189"
+    ],
+    "title": "Antrenmanda ne zaman ne yemeli? Spor beslenmesi derneğinin 4 önerisi",
+    "kind": "bilgi",
+    "category": "fonksiyonel",
+    "eventName": "",
+    "srcUrl": "https://doi.org/10.1186/s12970-017-0189-4"
+  }
+]

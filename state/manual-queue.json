@@ -73,5 +73,29 @@
     "category": "kosu",
     "eventName": "10. Uluslararası Bodrum Yarı Maratonu",
     "srcUrl": "https://www.instagram.com/p/Dfq8Ub4NhZg/"
+  },
+  {
+    "id": "french-throwdown-2027-gencler",
+    "publishAt": "2026-11-14T16:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/french-throwdown-2027-gencler/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/french-throwdown-2027-gencler/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/french-throwdown-2027-gencler/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/french-throwdown-2027-gencler/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/french-throwdown-2027-gencler/05.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/french-throwdown-2027-gencler-story/story.jpg",
+    "caption": "French Throwdown'da gençlere ayrı bölüm\nFrench Throwdown 2027'de 16-17 ve 18-19 yaş kız ve erkek sporcular kendi bölümlerinde yarışacak; workout'lar yaş grubuna göre uyarlanıyor.\n\nFrench Throwdown nedir? 2012'den beri Fransa'da düzenlenen ve Avrupa'nın dört bir yanından sporcuları buluşturan bir CrossFit yarışı. 2026'da 940 sporcu ve 500'den fazla salon katıldı.\n\nElemeler online ve üç workout ile yapılıyor: 1. workout 21 Ocak 2027'de, 2. ve 3. workout 28 Ocak 2027'de, Türkiye saatiyle 22:00'de açıklanacak. Final 14-16 Mayıs 2027'de Paris'teki Arena Grand Paris'te. Bu yıl iki kişilik yeni bir bölüm de eklendi. Kayıtlar açık.\n\nTürkiye'deki yarışlarda da gençlere ayrı bölüm olmalı mı?\nFotoğraflar French Throwdown'dan.\n\nKaynak: French Throwdown resmî sitesi ve Instagram hesabı\nGörsel: French Throwdown\n\n#frenchthrowdown #crossfit #gençsporcular #crossfityarışması #hibritportal",
+    "photos": [
+      "ig:frenchthrowdown:7180-0",
+      "ig:frenchthrowdown:2678-0",
+      "ig:frenchthrowdown:7776-0",
+      "ig:frenchthrowdown:8160-0"
+    ],
+    "title": "French Throwdown'da gençlere ayrı bölüm",
+    "kind": "duyuru",
+    "category": "crossfit",
+    "eventName": "French Throwdown 2027",
+    "srcUrl": "https://www.frenchthrowdown.com/en"
   }
 ]

@@ -1001,6 +1001,25 @@
       "eventName": "",
       "at": "2026-11-13T12:34:01.906Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-13",
+      "ids": [
+        "manual:bilgi-besin-zamanlamasi-issn"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "pixabay:6245426",
+        "pixabay:8205189"
+      ],
+      "media": "18150338041569256",
+      "permalink": "https://www.instagram.com/p/DfrxL3Sl2oS/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-besin-zamanlamasi-issn/01.jpg",
+      "title": "Antrenmanda ne zaman ne yemeli? Spor beslenmesi derneğinin 4 önerisi",
+      "headline": "Antrenmanda ne zaman ne yemeli? Spor beslenmesi derneğinin 4 önerisi",
+      "eventName": "",
+      "at": "2026-11-13T13:45:16.022Z",
+      "manual": true
     }
   ],
   "daily": {

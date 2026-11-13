@@ -87,8 +87,8 @@ export function guardPost(post, { sourceName }) {
   // Marka etiketi her postta (kural): yoksa eklenir, yer yoksa son etiketin yerine
   if (!tags.some((h) => h.toLowerCase() === "#hibritportal")) { if (tags.length >= MAX_TAGS) tags.pop(); tags.push("#hibritportal"); }
   // Kaynak her açıklamanın sonunda (kullanıcı kuralı)
-  // Kaynak adı da süzülür: yalnızca harf, rakam, boşluk ve . ' & , - karakterleri; en fazla 60 karakter
-  const src = String(sourceName ?? "").normalize("NFKC").replace(URL_RE, "").replace(/[^\p{L}\p{N} .'&,-]/gu, "").replace(/\s+/g, " ").trim().slice(0, 60) || "Hibrit Portal derlemesi";
+  // Kaynak adı da süzülür: yalnızca harf, rakam, boşluk ve . ' & , - karakterleri; en fazla 80 karakter, kelime sınırında
+  const src = String(sourceName ?? "").normalize("NFKC").replace(URL_RE, "").replace(/[^\p{L}\p{N} .'&,-]/gu, "").replace(/\s+/g, " ").trim().replace(/^(.{80}).+$/s, (m) => m.slice(0, 81).replace(/\s+\S*$/, "")) || "Hibrit Portal derlemesi"; // kelime ortasında kesilmez
   // Son açıklama en fazla 2200 karakter: gerekirse gövde kısaltılır; "Kaynak:" satırı ve etiketler korunur
   const tail = `\n\nKaynak: ${src}${tags.length ? `\n\n${tags.join(" ")}` : ""}`;
   const room = MAX_CAPTION - tail.length;

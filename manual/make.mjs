@@ -9,6 +9,7 @@ import { uploadFiles } from "../src/upload-github.mjs";
 const UP = process.argv.includes("--publish");
 const specs = JSON.parse(fs.readFileSync(process.env.SPEC || "manual/work/posts.json", "utf8")); // SPEC: ayrı dosya (zamanlanmış görevle çakışmasın)
 const q = JSON.parse(fs.readFileSync("state/manual-queue.json", "utf8"));
+const q0 = new Set(q.map((x) => x.id)); // çalışma başındaki sıra
 const AY = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
 for (const s of specs) {
   const g = guardPost({ ...s.post, imageQueries: ["sport"] }, { sourceName: s.sourceName });
@@ -48,4 +49,10 @@ for (const s of specs) {
   q.push({ id: s.id, publishAt: s.publishAt, urls, story, caption, photos: s.photos.map((p) => p.id ?? `event:${s.id}`), title: post.slides[0].title, kind: s.kind, category: s.category, eventName: post.eventName, srcUrl: s.srcUrl });
   console.log("sıraya alındı:", s.id, s.publishAt);
 }
-if (UP) fs.writeFileSync("state/manual-queue.json", JSON.stringify(q, null, 2) + "\n");
+// Yazmadan hemen önce sıra yeniden okunur ve yalnızca bu çalışmada eklenenler eklenir: aynı anda çalışan başka bir
+// elle post işleminin (ör. zamanlanmış görev) eklediği postlar silinmez
+if (UP) {
+  const cur = JSON.parse(fs.readFileSync("state/manual-queue.json", "utf8"));
+  for (const x of q) if (!q0.has(x.id) && !cur.some((y) => y.id === x.id)) cur.push(x);
+  fs.writeFileSync("state/manual-queue.json", JSON.stringify(cur, null, 2) + "\n");
+}

@@ -7,7 +7,7 @@ import { guardPost } from "../src/guard.mjs";
 import { renderPost, renderStory } from "../src/render.mjs";
 import { uploadFiles } from "../src/upload-github.mjs";
 const UP = process.argv.includes("--publish");
-const specs = JSON.parse(fs.readFileSync("manual/work/posts.json", "utf8"));
+const specs = JSON.parse(fs.readFileSync(process.env.SPEC || "manual/work/posts.json", "utf8")); // SPEC: ayrı dosya (zamanlanmış görevle çakışmasın)
 const q = JSON.parse(fs.readFileSync("state/manual-queue.json", "utf8"));
 const AY = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
 for (const s of specs) {

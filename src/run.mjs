@@ -144,9 +144,9 @@ async function publishManualQueue() {
   const q = JSON.parse(fs.readFileSync(qf, "utf8"));
   const nowS = nowLocal();
   const item = q.find((x) => x.publishAt && x.publishAt <= nowS && Array.isArray(x.urls) && x.urls.length && x.urls.every((u) => String(u).startsWith(`https://raw.githubusercontent.com/${process.env.GH_REPO}/media/`)));
-  if (!item) return;
+  if (!item) return false;
   fs.writeFileSync(qf, JSON.stringify(q.filter((x) => x !== item), null, 2) + "\n");
-  if (state.posts.some((p) => (p.ids ?? []).includes(`manual:${item.id}`))) return;
+  if (state.posts.some((p) => (p.ids ?? []).includes(`manual:${item.id}`))) return true; // zaten yayında: sıradan düştü, sıradakine geç
   // Karoselde video varsa ve yayın hata verirse post kaybolmasın: video çıkarılıp yalnızca görsellerle bir kez daha denenir
   const imgs = item.urls.filter((u) => !/\.mp4($|\?)/i.test(u));
   const res = await publish(item.urls, item.caption).catch(async (e) => {
@@ -159,12 +159,16 @@ async function publishManualQueue() {
   log("Hazır post yayında:", res.permalink);
   if (POSTING.stories && item.story) await publishStory(item.story).catch((e) => log("Hikâye paylaşılamadı:", String(e.message).slice(0, 120)));
   await push(`Hazır post paylaşıldı: ${String(item.title ?? "").slice(0, 100)}`, { title: "Paylaşıldı", level: "ok", click: res.permalink ?? "" });
+  return true;
 }
 
 async function main() {
   let published = false, processed = 0, publishedCount = 0;
   // Elle hazırlanmış (Claude Code oturumunda yazılıp doğrulanmış) postlar: vakti gelince API kredisi olmadan paylaşılır
-  if (!DRY) try { await publishManualQueue(); } catch (e) { log("Hazır post sırası hatası:", String(e?.message ?? e).slice(0, 200)); }
+  // Kullanıcı kararı (2026-11-14): haber hızlı yayınlanır; zamanı gelmiş hazır postların hepsi (çalışma başına en çok 3) hemen paylaşılır
+  if (!DRY) for (let k = 0; k < 3; k++) {
+    try { if (!(await publishManualQueue())) break; } catch (e) { log("Hazır post sırası hatası:", String(e?.message ?? e).slice(0, 200)); break; }
+  }
   // Kredi bittiyse: ücretli işlem yok. Yalnızca 1 token'lık yoklama; kredi gelmişse kendiliğinden devam.
   if (state.paused?.reason === "kredi" && !DRY) {
     try { await creditProbe(); } catch (e) {

@@ -9,7 +9,7 @@ export const BRAND = {
 export const POSTING = {
   timezone: "Europe/Istanbul",
   // Sabit kota yok: haber oldukça paylaşılır. Bu sınırlar yalnızca spam/aşırı maliyet emniyeti.
-  maxPerDay: 5, // kullanıcı kararı (2026-11-10): günde en çok 5 post (maliyet + Instagram için sağlıklı hacim)
+  maxPerDay: 10, // kullanıcı kararı (2026-11-14): günde en çok 10 post; haber hızlı yayınlanır (maliyet dailyUsd ile sınırlı)
   perRun: 1, // bir çalışmada en fazla 1
   // Ücretli taslak (yazım + doğrulama) için günlük emniyet
   maxDraftsPerDay: 8,

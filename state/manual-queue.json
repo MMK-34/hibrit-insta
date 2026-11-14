@@ -50,7 +50,7 @@
   },
   {
     "id": "burgener-l1-istanbul-2027",
-    "publishAt": "2026-11-14T19:30",
+    "publishAt": "2026-11-15T10:30",
     "urls": [
       "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/burgener-l1-istanbul-2027/01.jpg",
       "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/burgener-l1-istanbul-2027/02.jpg",
@@ -72,5 +72,29 @@
     "category": "crossfit",
     "eventName": "Burgener Weightlifting Level 1 İstanbul",
     "srcUrl": "https://burgenerstrength.com"
+  },
+  {
+    "id": "athens-throwdown-2027-kayit-acildi",
+    "publishAt": "2026-11-14T15:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athens-throwdown-2027-kayit-acildi/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athens-throwdown-2027-kayit-acildi/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athens-throwdown-2027-kayit-acildi/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athens-throwdown-2027-kayit-acildi/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athens-throwdown-2027-kayit-acildi/05.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athens-throwdown-2027-kayit-acildi/06.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athens-throwdown-2027-kayit-acildi-story/story.jpg",
+    "caption": "Athens Throwdown 2027'de kayıtlar açıldı\nYunanistan'daki Athens Throwdown'ın 2027 kayıtları bugün açıldı. Final 16-18 Nisan 2027'de Atina'da yapılacak.\n\nAthens Throwdown nedir? Atina'da düzenlenen ve Türk sporcuların da sık katıldığı uluslararası bir fonksiyonel fitness yarışı. 2027'de World Fitness Project serisinin eleme etaplarından biri; belirli bölümlerde kürsüye çıkanlar 2027 World Fitness Championship'e doğrudan katılım hakkı kazanıyor.\n\nBireysel sporcular online elemeden geçecek: workout'lar 11 Ocak 2027'de Türkiye saatiyle 10:00'da açıklanacak, skorlar için son gün 26 Ocak 2027. Finale 640 sporcu kalacak.\n\nTakımlar elemeye girmiyor; kayıt doğrudan finale götürüyor ve yerler ilk gelen alır usulüyle doluyor. 8 bölümde toplam 384 takım yeri var. Kayıtlar Circle21 üzerinden yapılıyor.\n\nAtina'ya takımla mı gideceksin, bireysel mi?\nBirlikte yarışmak istediğin arkadaşına gönder.\nFotoğraflar önceki Athens Throwdown yarışlarından.\n\nKaynak: Athens Throwdown resmî Instagram hesabı\nGörsel: Athens Throwdown\n\n#athensthrowdown #crossfit #crossfittürkiye #fonksiyonelfitness #hibritportal",
+    "photos": [
+      "ig:athensthrowdown:0881-1",
+      "ig:athensthrowdown:3161-0",
+      "ig:athensthrowdown:1080-0"
+    ],
+    "title": "Athens Throwdown 2027'de kayıtlar açıldı",
+    "kind": "duyuru",
+    "category": "crossfit",
+    "eventName": "Athens Throwdown 2027",
+    "srcUrl": "https://www.instagram.com/p/Dft8P6uHKGA/"
   }
 ]

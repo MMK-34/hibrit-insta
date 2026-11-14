@@ -1170,6 +1170,44 @@
       "eventName": "CrossFit Open",
       "at": "2026-11-14T11:44:14.307Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-14",
+      "ids": [
+        "manual:valencia-maratonu-kejelcha-cekildi"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:valencia-maratonu-kejelcha-cekildi",
+        "event:valencia-maratonu-kejelcha-cekildi",
+        "event:valencia-maratonu-kejelcha-cekildi"
+      ],
+      "media": "18108150353201233",
+      "permalink": "https://www.instagram.com/p/DfuqlKkFzo0/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/valencia-maratonu-kejelcha-cekildi/01.jpg",
+      "title": "Valencia Maratonu'nda dünya rekoru denemesi sakatlıkla bitti",
+      "headline": "Valencia Maratonu'nda dünya rekoru denemesi sakatlıkla bitti",
+      "eventName": "Valencia Maratonu",
+      "at": "2026-11-14T16:45:20.567Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-14",
+      "ids": [
+        "manual:wfp-finals-mayer-cournoyer-cekildi"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:wfp-finals-mayer-cournoyer-cekildi"
+      ],
+      "media": "18379256443245588",
+      "permalink": "https://www.instagram.com/p/DfuqrIfFz9M/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wfp-finals-mayer-cournoyer-cekildi/01.jpg",
+      "title": "WFP Finals'ta iki çekilme, yerlerine yedek sporcular geldi",
+      "headline": "WFP Finals'ta iki çekilme, yerlerine yedek sporcular geldi",
+      "eventName": "WFP Finals 2026",
+      "at": "2026-11-14T16:46:03.777Z",
+      "manual": true
     }
   ],
   "daily": {

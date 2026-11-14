@@ -1149,6 +1149,27 @@
       "eventName": "Burgener Weightlifting Level 1 İstanbul",
       "at": "2026-11-14T10:37:36.638Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-14",
+      "ids": [
+        "manual:bilgi-crossfit-open-nasil-isler"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "event:bilgi-crossfit-open-nasil-isler",
+        "event:bilgi-crossfit-open-nasil-isler",
+        "event:bilgi-crossfit-open-nasil-isler",
+        "event:bilgi-crossfit-open-nasil-isler"
+      ],
+      "media": "18135289255674068",
+      "permalink": "https://www.instagram.com/p/DfuIIRWESMp/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-crossfit-open-nasil-isler/01.jpg",
+      "title": "CrossFit Open nasıl işler?",
+      "headline": "CrossFit Open nasıl işler?",
+      "eventName": "CrossFit Open",
+      "at": "2026-11-14T11:44:14.307Z",
+      "manual": true
     }
   ],
   "daily": {

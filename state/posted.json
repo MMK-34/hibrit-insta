@@ -1084,6 +1084,71 @@
       "eventName": "Athens Throwdown 2027",
       "at": "2026-11-14T10:29:02.743Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-14",
+      "ids": [
+        "manual:bodrum-yari-maratonu-2027-kayit"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "ig:bodrumyarimaratonu:4529-0",
+        "ig:bodrumyarimaratonu:8871-1",
+        "ig:bodrumyarimaratonu:5518-0",
+        "ig:bodrumyarimaratonu:4529-1",
+        "ig:bodrumyarimaratonu:1996-0"
+      ],
+      "media": "17980241859159386",
+      "permalink": "https://www.instagram.com/p/DfuARz9jcPt/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bodrum-yari-maratonu-2027-kayit/01.jpg",
+      "title": "Bodrum Yarı Maratonu'nda kayıtlar açıldı",
+      "headline": "Bodrum Yarı Maratonu'nda kayıtlar açıldı",
+      "eventName": "10. Uluslararası Bodrum Yarı Maratonu",
+      "at": "2026-11-14T10:35:44.460Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-14",
+      "ids": [
+        "manual:french-throwdown-2027-gencler"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "ig:frenchthrowdown:7180-0",
+        "ig:frenchthrowdown:2678-0",
+        "ig:frenchthrowdown:7776-0",
+        "ig:frenchthrowdown:8160-0"
+      ],
+      "media": "18161479441511780",
+      "permalink": "https://www.instagram.com/p/DfuAYnjDbzu/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/french-throwdown-2027-gencler/01.jpg",
+      "title": "French Throwdown'da gençlere ayrı bölüm",
+      "headline": "French Throwdown'da gençlere ayrı bölüm",
+      "eventName": "French Throwdown 2027",
+      "at": "2026-11-14T10:36:41.557Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-14",
+      "ids": [
+        "manual:burgener-l1-istanbul-2027"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "ig:burgenerstrength:2462-0",
+        "ig:burgenerstrength:6598-2",
+        "ig:burgenerstrength:2462-3",
+        "ig:burgenerstrength:7043-0",
+        "ig:burgenerstrength:2462-2"
+      ],
+      "media": "18643567240006229",
+      "permalink": "https://www.instagram.com/p/DfuAgAMDSPq/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/burgener-l1-istanbul-2027/01.jpg",
+      "title": "Burgener halter kursu İstanbul'a geliyor",
+      "headline": "Burgener halter kursu İstanbul'a geliyor",
+      "eventName": "Burgener Weightlifting Level 1 İstanbul",
+      "at": "2026-11-14T10:37:36.638Z",
+      "manual": true
     }
   ],
   "daily": {

@@ -1208,6 +1208,64 @@
       "eventName": "WFP Finals 2026",
       "at": "2026-11-14T16:46:03.777Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-14",
+      "ids": [
+        "manual:lykos-yari-maratonu-2027-tarih"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "ig:lykosyarimaratonu:8977-2",
+        "ig:lykosyarimaratonu:6911-0",
+        "ig:lykosyarimaratonu:6911-2",
+        "ig:lykosyarimaratonu:6911-3",
+        "ig:lykosyarimaratonu:8977-1"
+      ],
+      "media": "17956536609321320",
+      "permalink": "https://www.instagram.com/p/Dfu2UqOF2av/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/lykos-yari-maratonu-2027-tarih/01.jpg",
+      "title": "Lykos Yarı Maratonu'nun 2027 tarihi belli oldu",
+      "headline": "Lykos Yarı Maratonu'nun 2027 tarihi belli oldu",
+      "eventName": "3. Lykos Yarı Maratonu",
+      "at": "2026-11-14T18:27:55.953Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-14",
+      "ids": [
+        "manual:valencia-maratonu-rekor-denemesi-iptal"
+      ],
+      "kind": "haber",
+      "photos": [
+        "web:runningmagazine:kejelcha-0"
+      ],
+      "media": "18397447063165962",
+      "permalink": "https://www.instagram.com/p/Dfu2a9mF5X7/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/valencia-maratonu-rekor-denemesi-iptal/01.jpg",
+      "title": "Valencia Maratonu'ndaki dünya rekoru umudu sakatlıkla söndü",
+      "headline": "Valencia Maratonu'ndaki dünya rekoru umudu sakatlıkla söndü",
+      "eventName": "Valencia Maratonu 2026",
+      "at": "2026-11-14T18:28:47.687Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-14",
+      "ids": [
+        "manual:athens-throwdown-3-saatte-1000-sporcu"
+      ],
+      "kind": "haber",
+      "photos": [
+        "ig:athensthrowdown:7159-1"
+      ],
+      "media": "18107532952995700",
+      "permalink": "https://www.instagram.com/p/Dfu2gjQl3ND/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athens-throwdown-3-saatte-1000-sporcu/01.jpg",
+      "title": "Athens Throwdown'da 3 saatte 1.000'den fazla sporcu kayıt yaptırdı",
+      "headline": "Athens Throwdown'da 3 saatte 1.000'den fazla sporcu kayıt yaptırdı",
+      "eventName": "Athens Throwdown 2027",
+      "at": "2026-11-14T18:29:33.787Z",
+      "manual": true
     }
   ],
   "daily": {

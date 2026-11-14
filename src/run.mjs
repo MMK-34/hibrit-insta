@@ -149,11 +149,22 @@ async function publishManualQueue() {
   if (state.posts.some((p) => (p.ids ?? []).includes(`manual:${item.id}`))) return true; // zaten yayında: sıradan düştü, sıradakine geç
   // Karoselde video varsa ve yayın hata verirse post kaybolmasın: video çıkarılıp yalnızca görsellerle bir kez daha denenir
   const imgs = item.urls.filter((u) => !/\.mp4($|\?)/i.test(u));
-  const res = await publish(item.urls, item.caption).catch(async (e) => {
-    if (imgs.length === item.urls.length || !imgs.length) throw e;
-    log("Karosel videosu yayınlanamadı, video olmadan deneniyor:", String(e?.message ?? e).slice(0, 160));
-    return publish(imgs, item.caption);
-  });
+  let res;
+  try {
+    res = await publish(item.urls, item.caption).catch(async (e) => {
+      if (imgs.length === item.urls.length || !imgs.length) throw e;
+      log("Karosel videosu yayınlanamadı, video olmadan deneniyor:", String(e?.message ?? e).slice(0, 160));
+      return publish(imgs, item.caption);
+    });
+  } catch (e) {
+    // Post kaybolmasın (2026-11-14: istek sınırı hatasında Lykos postu sıradan düştü): sıranın başına geri konur,
+    // sonraki çalışmalarda en çok 5 kez yeniden denenir; sonra bildirim gider.
+    item.tries = (item.tries ?? 0) + 1;
+    const cur = fs.existsSync(qf) ? JSON.parse(fs.readFileSync(qf, "utf8")) : [];
+    if (item.tries <= 5) { cur.unshift(item); fs.writeFileSync(qf, JSON.stringify(cur, null, 2) + "\n"); log(`Hazır post sıraya geri kondu (${item.tries}/5):`, item.id); }
+    else await push(`Hazır post 5 denemede yayınlanamadı: ${String(item.title ?? "").slice(0, 100)}`, { title: "Paylaşım hatası", level: "warn" }).catch(() => {});
+    throw e;
+  }
   state.posts.push({ day: today, ids: [`manual:${item.id}`], kind: item.kind ?? "haber", photos: Array.isArray(item.photos) ? item.photos.map(String).slice(0, 10) : [], media: res.id, permalink: res.permalink, cover: item.urls[0], title: item.title, headline: item.title, eventName: item.eventName, at: new Date().toISOString(), manual: true });
   saveState();
   log("Hazır post yayında:", res.permalink);

@@ -1064,6 +1064,26 @@
       "eventName": "Uludağ Premium Ultra Trail 2027",
       "at": "2026-11-14T07:45:19.652Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-14",
+      "ids": [
+        "manual:athens-throwdown-2027-kayit-acildi"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "ig:athensthrowdown:0881-1",
+        "ig:athensthrowdown:3161-0",
+        "ig:athensthrowdown:1080-0"
+      ],
+      "media": "18155705716527309",
+      "permalink": "https://www.instagram.com/p/Dft_hCHF2fh/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/athens-throwdown-2027-kayit-acildi/01.jpg",
+      "title": "Athens Throwdown 2027'de kayıtlar açıldı",
+      "headline": "Athens Throwdown 2027'de kayıtlar açıldı",
+      "eventName": "Athens Throwdown 2027",
+      "at": "2026-11-14T10:29:02.743Z",
+      "manual": true
     }
   ],
   "daily": {

@@ -1042,6 +1042,28 @@
       "eventName": "ATHX The Twenty 2027",
       "at": "2026-11-13T22:13:33.693Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-14",
+      "ids": [
+        "manual:uludag-ultra-trail-2027-kayit"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "ig:uludagultratrail:4155-0",
+        "ig:uludagultratrail:9560-1",
+        "ig:uludagultratrail:2587-0",
+        "ig:uludagultratrail:2587-1",
+        "ig:uludagultratrail:7041-1"
+      ],
+      "media": "18035326331695140",
+      "permalink": "https://www.instagram.com/p/DftsyI5DewT/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/uludag-ultra-trail-2027-kayit/01.jpg",
+      "title": "Uludağ Ultra Trail'de kayıtlar açıldı",
+      "headline": "Uludağ Ultra Trail'de kayıtlar açıldı",
+      "eventName": "Uludağ Premium Ultra Trail 2027",
+      "at": "2026-11-14T07:45:19.652Z",
+      "manual": true
     }
   ],
   "daily": {

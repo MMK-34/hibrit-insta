@@ -1342,6 +1342,26 @@
       "eventName": "HYROX Barcelona",
       "at": "2026-11-15T11:46:12.893Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-15",
+      "ids": [
+        "manual:bilgi-hyrox-tek-iki-dort-kisi"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "local:chalk-hands",
+        "local:medball-rack",
+        "local:rower"
+      ],
+      "media": "18101986175385939",
+      "permalink": "https://www.instagram.com/p/Dfwz6hMF2mq/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-tek-iki-dort-kisi/01.jpg",
+      "title": "HYROX'u tek başına yapmak zorunda değilsin",
+      "headline": "HYROX'u tek başına yapmak zorunda değilsin",
+      "eventName": "",
+      "at": "2026-11-15T12:45:22.454Z",
+      "manual": true
     }
   ],
   "daily": {

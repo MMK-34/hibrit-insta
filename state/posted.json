@@ -1266,6 +1266,46 @@
       "eventName": "Athens Throwdown 2027",
       "at": "2026-11-14T18:29:33.787Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-15",
+      "ids": [
+        "manual:balkan-kros-2026-turkiye-6-sampiyonluk"
+      ],
+      "kind": "haber",
+      "photos": [
+        "web:taf:balkan-kros-2026-1"
+      ],
+      "media": "17962980600247787",
+      "permalink": "https://www.instagram.com/p/Dfv8-pgF-fd/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/balkan-kros-2026-turkiye-6-sampiyonluk/01.jpg",
+      "title": "Türkiye krosta Balkan şampiyonu: 6 kategorinin 6'sında birincilik",
+      "headline": "Türkiye krosta Balkan şampiyonu: 6 kategorinin 6'sında birincilik",
+      "eventName": "Balkan Kros Şampiyonası",
+      "at": "2026-11-15T04:45:18.494Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-15",
+      "ids": [
+        "manual:olympos-games-2026-antalya"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "ig:olympos.games:6027-0",
+        "ig:olympos.games:9566-0",
+        "ig:olympos.games:0975-0",
+        "ig:olympos.games:8847-0",
+        "ig:olympos.games:4822-0"
+      ],
+      "media": "18105876473529828",
+      "permalink": "https://www.instagram.com/p/Dfv9D9IFyzF/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/olympos-games-2026-antalya/01.jpg",
+      "title": "Antalya'da salonlar altı kişilik takımlarla karşı karşıya geliyor",
+      "headline": "Antalya'da salonlar altı kişilik takımlarla karşı karşıya geliyor",
+      "eventName": "Olympos Games 2026",
+      "at": "2026-11-15T04:46:02.441Z",
+      "manual": true
     }
   ],
   "daily": {

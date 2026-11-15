@@ -1306,6 +1306,42 @@
       "eventName": "Olympos Games 2026",
       "at": "2026-11-15T04:46:02.441Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-15",
+      "ids": [
+        "manual:hyrox-kahire-2026-gokhan-kosar-kursu"
+      ],
+      "kind": "haber",
+      "photos": [
+        "web:sokgazetesi:hyrox-kahire-kosar-0"
+      ],
+      "media": "17999243688021884",
+      "permalink": "https://www.instagram.com/p/DfwtC3MGFi-/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-kahire-2026-gokhan-kosar-kursu/01.jpg",
+      "title": "Gökhan Koşar HYROX Kahire'de kürsüye çıktı",
+      "headline": "Gökhan Koşar HYROX Kahire'de kürsüye çıktı",
+      "eventName": "HYROX Kahire",
+      "at": "2026-11-15T11:45:21.205Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-15",
+      "ids": [
+        "manual:hyrox-barcelona-2026-bireysel-sonuclar"
+      ],
+      "kind": "haber",
+      "photos": [
+        "web:roxlyfe:hyrox-barcelona-2026-0"
+      ],
+      "media": "18075753884489864",
+      "permalink": "https://www.instagram.com/p/DfwtJBzGIxJ/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-barcelona-2026-bireysel-sonuclar/01.jpg",
+      "title": "HYROX Barcelona'da bireysel yarışların kazananları belli oldu",
+      "headline": "HYROX Barcelona'da bireysel yarışların kazananları belli oldu",
+      "eventName": "HYROX Barcelona",
+      "at": "2026-11-15T11:46:12.893Z",
+      "manual": true
     }
   ],
   "daily": {

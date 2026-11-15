@@ -33,6 +33,10 @@ if (SHORT && !shortQ.length) { console.log("kısa Reels sırası boş"); process
 // Beklenmeyen her hata telefona ve rapor issue'suna bildirilir (sessiz başarısızlık yok)
 for (const ev of ["uncaughtException", "unhandledRejection"]) process.on(ev, async (e) => {
   console.error(e);
+  // Kredi bitti: iş başarısız sayılmaz (GitHub hata e-postası gitmesin); kuyruk korunur, kredi gelince sonraki çalışmada üretilir. Ödeme yapılmaz.
+  if (/credit balance is too low|insufficient credit|spend limit|usage limit/i.test(String(e?.message ?? e))) {
+    try { await notify("⚠️ Haftalık bülten üretilemedi: Anthropic kredisi yok. Kredi yüklenince sonraki çalışmada denenir."); } finally { process.exit(0); }
+  }
   try { await notify(`⚠️ Haftalık bülten hatası: ${String(e?.message ?? e).slice(0, 300)}`); } finally { process.exit(1); }
 });
 const VOICE = process.env.EL_VOICE || "y3KmQ23j262kys1fjBGK"; // Mehmet K. (kullanıcı seçimi)

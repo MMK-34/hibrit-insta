@@ -1362,6 +1362,26 @@
       "eventName": "",
       "at": "2026-11-15T12:45:22.454Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-15",
+      "ids": [
+        "manual:crossfit-hybrid-l2-istanbul-2027"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "ig:crossfit34:5320-0",
+        "ig:crossfit34:5320-2",
+        "ig:crossfit34:2104-2"
+      ],
+      "media": "18126656846493711",
+      "permalink": "https://www.instagram.com/p/DfxGv0gj8Gj/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/crossfit-hybrid-l2-istanbul-2027/01.jpg",
+      "title": "CrossFit Level 2 kursu Şubat'ta İstanbul'da",
+      "headline": "CrossFit Level 2 kursu Şubat'ta İstanbul'da",
+      "eventName": "CrossFit Hybrid Level 2 İstanbul",
+      "at": "2026-11-15T15:29:59.677Z",
+      "manual": true
     }
   ],
   "daily": {

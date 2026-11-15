@@ -1382,6 +1382,26 @@
       "eventName": "CrossFit Hybrid Level 2 İstanbul",
       "at": "2026-11-15T15:29:59.677Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-15",
+      "ids": [
+        "manual:kapadokya-ultra-trail-eurosport-yayini-2026"
+      ],
+      "kind": "haber",
+      "photos": [
+        "ig:cappadociaultratrail:2249-0",
+        "ig:cappadociaultratrail:2249-1",
+        "ig:cappadociaultratrail:0945-8"
+      ],
+      "media": "17896964304613683",
+      "permalink": "https://www.instagram.com/p/DfxqJLdidGG/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kapadokya-ultra-trail-eurosport-yayini-2026/01.jpg",
+      "title": "Kapadokya Ultra Trail Eurosport'ta yayınlanacak",
+      "headline": "Kapadokya Ultra Trail Eurosport'ta yayınlanacak",
+      "eventName": "Cappadocia Ultra-Trail",
+      "at": "2026-11-15T20:39:09.151Z",
+      "manual": true
     }
   ],
   "daily": {

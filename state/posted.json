@@ -1439,6 +1439,24 @@
       "eventName": "HYROX Kahire",
       "at": "2026-11-16T11:45:19.450Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-16",
+      "ids": [
+        "manual:hyrox-dusseldorf-2026-sonuclar"
+      ],
+      "kind": "haber",
+      "photos": [
+        "web:roxlyfe:hyrox-dusseldorf-2026-0"
+      ],
+      "media": "18101659106544089",
+      "permalink": "https://www.instagram.com/p/DfzfkVMDWV9/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-dusseldorf-2026-sonuclar/01.jpg",
+      "title": "HYROX Düsseldorf'ta dünya şampiyonları 3 saniye farkla geçildi",
+      "headline": "HYROX Düsseldorf'ta dünya şampiyonları 3 saniye farkla geçildi",
+      "eventName": "HYROX Düsseldorf",
+      "at": "2026-11-16T13:45:18.311Z",
+      "manual": true
     }
   ],
   "daily": {

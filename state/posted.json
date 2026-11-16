@@ -1421,6 +1421,24 @@
       "eventName": "",
       "at": "2026-11-16T07:45:38.002Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-16",
+      "ids": [
+        "manual:hyrox-kahire-2026-bireysel-sonuclar"
+      ],
+      "kind": "haber",
+      "photos": [
+        "web:roxlyfe:hyrox-cairo-2026-0"
+      ],
+      "media": "17893840506455204",
+      "permalink": "https://www.instagram.com/p/DfzR1g3DfVZ/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-kahire-2026-bireysel-sonuclar/01.jpg",
+      "title": "HYROX Kahire'de bireysel yarışların kazananları belli oldu",
+      "headline": "HYROX Kahire'de bireysel yarışların kazananları belli oldu",
+      "eventName": "HYROX Kahire",
+      "at": "2026-11-16T11:45:19.450Z",
+      "manual": true
     }
   ],
   "daily": {

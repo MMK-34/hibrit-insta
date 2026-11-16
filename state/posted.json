@@ -1402,6 +1402,25 @@
       "eventName": "Cappadocia Ultra-Trail",
       "at": "2026-11-15T20:39:09.151Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-16",
+      "ids": [
+        "manual:bilgi-hyrox-zaman-cezalari"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "local:hyrox-sled",
+        "local:kb-rack"
+      ],
+      "media": "18397134922164646",
+      "permalink": "https://www.instagram.com/p/Dfy2YhVgfnW/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-hyrox-zaman-cezalari/01.jpg",
+      "title": "HYROX'ta zaman cezası getiren hatalar",
+      "headline": "HYROX'ta zaman cezası getiren hatalar",
+      "eventName": "",
+      "at": "2026-11-16T07:45:38.002Z",
+      "manual": true
     }
   ],
   "daily": {

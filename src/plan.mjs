@@ -15,8 +15,15 @@ export function addSpend(model, usage = {}) {
   spend.onAdd?.(usd);
   return usd;
 }
+/** Yapay zekâ çağrı sayacı (kullanıcı kuralı 2026-11-17: gereksiz çağrı yok). run.mjs çalışma başına ve günlük tavanı yükler. */
+export const calls = { n: 0, limit: Infinity, onAdd: null };
+export const callsLeft = () => calls.limit - calls.n;
+/** Her yapay zekâ çağrısından hemen önce çağrılır: harcama ve çağrı tavanını denetler, çağrıyı sayar. */
 export function checkBudget() {
   if (spend.usd >= spend.limit) throw new BudgetError(`Günlük API bütçesi doldu ($${spend.usd.toFixed(2)} / $${spend.limit})`);
+  if (calls.n >= calls.limit) throw new BudgetError(`Yapay zekâ çağrı tavanı doldu (${calls.n}/${calls.limit})`);
+  calls.n++;
+  calls.onAdd?.();
 }
 
 // Gemini yedeği (kullanıcı kararı 2026-11-17): Anthropic kredisi bitince ya da anahtar yoksa bot ücretsiz Gemini API ile devam eder.
@@ -52,11 +59,14 @@ function toGeminiParts(content) {
 }
 
 const sleep = (ms) => new Promise((s) => setTimeout(s, ms));
+let geminiDownUntil = 0;
 
 /** Tek Gemini çağrısı, model zinciri + yeniden deneme. schema verilirse JSON nesnesi, yoksa metin döner. */
 async function geminiCall({ system = "", content, schema = null, urlContext = false, maxTokens = 4000 }) {
   const key = process.env.GEMINI_API_KEY;
   if (!key) throw new Error("GEMINI_API_KEY yok");
+  // Az önce hiçbir model yanıt vermediyse boşuna bekleme: bu çalışmada 10 dk Gemini denenmez
+  if (Date.now() < geminiDownUntil) throw new Error("Gemini yanıt vermedi: kısa süre önce tüm modeller yoğundu");
   const errs = [];
   // İki tur: her turda her modele bir deneme (ücretsiz katmanda büyük modeller sık sık 503 verir); turlar arası 20 sn
   const done = new Set();
@@ -106,6 +116,7 @@ async function geminiCall({ system = "", content, schema = null, urlContext = fa
       }
     }
   }
+  geminiDownUntil = Date.now() + 10 * 60e3;
   throw new Error(`Gemini yanıt vermedi: ${errs.join("; ").slice(0, 400)}`);
 }
 
@@ -150,7 +161,7 @@ export async function claude(args) {
   try { return await claudeCall(args); } catch (e) {
     if (isCreditError(e)) {
       // Kredi bitti: Gemini anahtarı varsa aynı işi Gemini yapar (ödeme YAPILMAZ)
-      if (useGemini("Anthropic kredisi yok")) return gemini(args);
+      if (useGemini("Anthropic kredisi yok")) { calls.n = Math.max(0, calls.n - 1); checkBudget(); return gemini(args); }
       throw new CreditError(String(e?.message ?? e).slice(0, 300));
     }
     throw e;

@@ -3,7 +3,7 @@
 import fs from "node:fs";
 import sharp from "sharp";
 
-import { visionText, aiAvailable } from "./plan.mjs";
+import { visionText, aiAvailable, usingGemini } from "./plan.mjs";
 const MODEL = process.env.DESIGN_MODEL || "claude-haiku-5-5";
 
 /**
@@ -30,9 +30,19 @@ Yalnızca şu biçimde JSON döndür, başka metin yazma: {"issues":[{"slide":1,
   try {
     const txt = await visionText({ model: MODEL, content: [...content, { type: "text", text: rule }], maxTokens: 4000 });
     const j = JSON.parse(txt.slice(txt.indexOf("{"), txt.lastIndexOf("}") + 1) || "{}");
+    let brand = j.marka === true;
     const issues = (j.issues ?? []).filter((x) => x && Number.isInteger(x.slide) && x.slide >= 1 && x.slide <= files.length)
-      .map((x) => ({ slide: x.slide, problem: String(x.problem ?? "").slice(0, 200), fix: ["foto_degistir", "logo_kaldir"].includes(x.fix) ? x.fix : "yok" }));
-    return { ok: issues.length === 0, issues, brand: j.marka === true };
+      .map((x) => ({ slide: x.slide, problem: String(x.problem ?? "").slice(0, 200), fix: ["foto_degistir", "logo_kaldir"].includes(x.fix) ? x.fix : "yok" }))
+      // Fotoğraftaki marka (forma, sponsor, ekipman) tasarım hatası değildir: yalnızca "Reklam / Tanıtım" notu gerektirir
+      .filter((x) => {
+        const isBrand = /marka|sponsor|forma|giysi|kıyafet|tişört|üzerindeki|reklam/i.test(x.problem) && !/bozuk|bulanık|okunmuyor|taşıyor|kesil/i.test(x.problem);
+        if (isBrand) brand = true;
+        return !isBrand;
+      })
+      // Gemini (kredi yokken yedek) yazının fotoğraf üstünde durmasını (tasarımın kendisi) sorun sayıyor:
+      // onda yalnızca somut, düzeltilebilir sorunlar geçerli (foto değiştir, logo kaldır, taşan/kesilen/üst üste binen metin)
+      .filter((x) => !usingGemini() || x.fix !== "yok" || /taş|kesil|kesik|üst üste/i.test(x.problem));
+    return { ok: issues.length === 0, issues, brand };
   } catch (e) {
     if (/credit balance|billing|spend limit|usage limit/i.test(String(e?.message ?? e))) throw e;
     console.warn("tasarım denetimi yapılamadı:", String(e?.message ?? e).slice(0, 160));

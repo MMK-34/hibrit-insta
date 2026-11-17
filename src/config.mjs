@@ -15,6 +15,9 @@ export const POSTING = {
   maxDraftsPerDay: 8,
   // Günlük API harcama tavanı (USD): aşılınca o gün yeni ücretli çağrı yapılmaz
   dailyUsd: 2,
+  // Yapay zekâ çağrı tavanı (Claude ya da Gemini; kullanıcı kuralı 2026-11-17: gereksiz çağrı yok, döngü yok)
+  aiCallsPerRun: 25,
+  aiCallsPerDay: 120,
   // Bilgi + araştırma postları günde en fazla
   maxInfoPerDay: 1,
   minPerDay: 1,

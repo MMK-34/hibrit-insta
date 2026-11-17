@@ -12,7 +12,7 @@ import { findImages } from "./images.mjs";
 import { eventPhotos, screenPhotos, personPhotos } from "./event-photos.mjs";
 import { circle21Candidates, circle21Reference, circle21Events, circle21ById, c21Handle, c21Text, c21Facts } from "./circle21.mjs";
 import { igWatchCandidates, verifiedEventHandle, IG_WATCH_TR } from "./ig-watch.mjs";
-import { selectNews, writePost, reviewPost, creditProbe, isCreditError, spend, useGemini } from "./plan.mjs";
+import { selectNews, writePost, reviewPost, creditProbe, isCreditError, spend, useGemini, calls, callsLeft, BudgetError } from "./plan.mjs";
 import { renderPost, renderStory, renderCountdown, renderSpecial } from "./render.mjs";
 import { upcomingSpecial, specialContent } from "./special-days.mjs";
 import { dmTips, dmCategory } from "./dm.mjs";
@@ -87,6 +87,12 @@ state.daily[today] ??= { drafts: 0, approved: 0, rejected: 0 };
 spend.usd = state.daily[today].usd ?? 0;
 spend.limit = POSTING.dailyUsd ?? 2;
 spend.onAdd = () => { state.daily[today].usd = Math.round(spend.usd * 1000) / 1000; };
+// Yapay zekâ çağrı tavanı: çalışma başına aiCallsPerRun, günde aiCallsPerDay (hangisi önce dolarsa)
+calls.n = 0;
+calls.limit = Math.max(0, Math.min(POSTING.aiCallsPerRun ?? 25, (POSTING.aiCallsPerDay ?? 120) - (state.daily[today].aiCalls ?? 0)));
+calls.onAdd = () => { state.daily[today].aiCalls = (state.daily[today].aiCalls ?? 0) + 1; };
+/** Geçici yapay zekâ engeli (Gemini yoğun, çağrı/harcama tavanı): haber elenmiş sayılmaz, sonraki çalışmada yeniden denenir. */
+const isTransientAi = (e) => e instanceof BudgetError || /Gemini yanıt vermedi|AI_GECICI/.test(String(e?.message ?? e));
 
 const budgetLeft = () => Date.now() - START < BUDGET_MS;
 const draftCapReached = () => (state.daily[today]?.drafts ?? 0) >= MAX_DRAFTS_PER_DAY;
@@ -306,6 +312,8 @@ async function main() {
   for (const pick of picks) {
     if (!budgetLeft()) { log("Zaman bütçesi doldu, yeni haber işlenmiyor."); break; }
     if (draftCapReached()) { log(`Günlük taslak tavanı dolu (${MAX_DRAFTS_PER_DAY}).`); break; }
+    // Bir haber en az ~5 çağrı ister (yazım, 2 doğrulama, foto, tasarım); yetmiyorsa yarım iş yapma
+    if (callsLeft() < 5) { log(`Yapay zekâ çağrı tavanına yaklaşıldı (${calls.n}/${calls.limit}), kalan haberler sonraki çalışmaya.`); break; }
     try {
       const isInfo = pick.kind === "bilgi" || pick.kind === "arastirma";
       if (isInfo && infoToday >= (POSTING.maxInfoPerDay ?? 4) && !FORCE) { log("Bugünkü bilgi/araştırma kotası dolu, atlandı."); continue; }
@@ -344,6 +352,12 @@ async function main() {
       if (publishedCount >= PER_RUN || todayCount + publishedCount >= MAX_PER_DAY) break;
     } catch (e) {
     if (isCreditError(e)) throw e; // kredi bitti: üst seviyede duraklat
+      if (isTransientAi(e)) {
+        // Yarım kalan taslak günlük taslak tavanından düşülür (haber sonraki çalışmada yeniden yazılır)
+        if (state.daily[today]?.drafts > 0) state.daily[today].drafts--;
+        log("Yapay zekâ geçici olarak kullanılamıyor, haber sonraki çalışmaya kaldı:", String(e.message).slice(0, 200));
+        break;
+      }
       // Tek haberdeki hata çalışmayı durdurmaz: kaydedilir, sıradakine geçilir
       console.error(e);
       log("Haber işlenirken hata:", e.message);
@@ -397,16 +411,6 @@ async function prepareVerified(pick, srcItems, sourceName) {
     const srcName = /^(fu|stat|dm):/.test(srcItems[0].id) && draft.primarySource ? draft.primarySource : sourceName;
     const g = guardPost(draft, { sourceName: srcName });
     if (!g.ok) { log("Süzgeçten geçmedi:", g.reason); lastFails = [{ model: "süzgeç", item: "süzgeç", note: g.reason }]; feedback = failText(lastFails); continue; }
-    // Görselsiz post yok: konuya uygun foto bulunamazsa paylaşılmaz.
-    // Önce etkinliğin kendi fotoğrafı (resmî site, resmî Instagram, kaynak haber); eksik kalırsa görsel denetimden geçen stok foto
-    const topic = [g.post.eventName, srcItems[0].title, g.post.slides[0]?.title].filter(Boolean).join(" | ");
-    if (ownC21?.logo) g.post.eventLogoUrl = ownC21.logo;
-    const igSrc = srcItems.find((s) => s.id.startsWith("ig:"));
-    if (!g.post.officialInstagram && igSrc?.curated && igSrc.handle) g.post.officialInstagram = igSrc.handle;
-    // Organizatör hesabı yalnızca kaydın yapılandırılmış instagram alanından (doğrulanmış kullanıcı adı)
-    if (!g.post.officialInstagram && ownC21?.handle) g.post.officialInstagram = ownC21.handle;
-    const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 7), category: pick.category, images: srcItems.flatMap((s) => s.images ?? []) });
-    if (!photos.length) { log(`Foto bulunamadı (kategori ${pick.category}, sorgular: ${(g.post.imageQueries ?? []).join(" | ")}).`); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
     // Açılamayan kaynakların (Instagram paylaşımı) metni doğrulayıcıya güvenilmez kaynak metni olarak verilir
     // Doğrulanmamış hesabın metni birincil kanıt sayılmaz: iddialar bağımsız kaynakla (circle21 kaydı ya da web) teyit edilmeli
@@ -421,8 +425,27 @@ async function prepareVerified(pick, srcItems, sourceName) {
     ];
     // Kaynak yalnızca circle21 ise "sayfa açılamadı" kuralı uygulanmaz (veri resmî API'den geldi)
     const referenceIsSource = !!ownC21 && srcItems.every((s) => s.id.startsWith("c21"));
-    const gate = await verifyGate(g.post, { sourceUrls, photos, sourceName: srcName, referenceData, sourceTexts, referenceIsSource });
-    if (gate.ok) { log(`Doğrulama geçti (deneme ${attempt}).`); await push(`İki doğrulayıcı da onayladı, görseller hazırlanıyor: ${String(g.post.slides[0]?.title ?? "").slice(0, 120)}`, { title: "Doğrulandı" }); bump("approved"); return { post: g.post, photos, sourceName: srcName }; }
+    // Kullanıcı kuralı (2026-11-17): önce metin doğrulanır, fotoğraf araması ve görsel denetimi yalnızca onaylanan habere yapılır
+    // (elenen habere görsel çağrısı harcanmaz). Fotoğrafın konuya uygunluğunu görsel denetim (screenPhotos) ve tasarım denetimi yapar.
+    const gate = await verifyGate(g.post, { sourceUrls, photos: [], sourceName: srcName, referenceData, sourceTexts, referenceIsSource, skipItems: ["gorsel"] });
+    // Doğrulayıcı API hatası (Gemini yoğun vb.) haberi elemez: sonraki çalışmada yeniden denenir
+    if (!gate.ok && gate.fails.length && gate.fails.every((f) => f.item === "hata")) throw new Error(`AI_GECICI: doğrulayıcı yanıt vermedi (${String(gate.fails[0]?.note ?? "").slice(0, 160)})`);
+    if (gate.ok) {
+      log(`Doğrulama geçti (deneme ${attempt}).`);
+      // Görselsiz post yok: konuya uygun foto bulunamazsa paylaşılmaz.
+      // Önce etkinliğin kendi fotoğrafı (resmî site, resmî Instagram, kaynak haber); eksik kalırsa görsel denetimden geçen stok foto
+      const topic = [g.post.eventName, srcItems[0].title, g.post.slides[0]?.title].filter(Boolean).join(" | ");
+      if (ownC21?.logo) g.post.eventLogoUrl = ownC21.logo;
+      const igSrc = srcItems.find((s) => s.id.startsWith("ig:"));
+      if (!g.post.officialInstagram && igSrc?.curated && igSrc.handle) g.post.officialInstagram = igSrc.handle;
+      // Organizatör hesabı yalnızca kaydın yapılandırılmış instagram alanından (doğrulanmış kullanıcı adı)
+      if (!g.post.officialInstagram && ownC21?.handle) g.post.officialInstagram = ownC21.handle;
+      const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 7), category: pick.category, images: srcItems.flatMap((s) => s.images ?? []) });
+      if (!photos.length) { log(`Foto bulunamadı (kategori ${pick.category}, sorgular: ${(g.post.imageQueries ?? []).join(" | ")}).`); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
+      await push(`İki doğrulayıcı da onayladı, görseller hazırlanıyor: ${String(g.post.slides[0]?.title ?? "").slice(0, 120)}`, { title: "Doğrulandı" });
+      bump("approved");
+      return { post: g.post, photos, sourceName: srcName };
+    }
     lastFails = gate.fails;
     feedback = failText(gate.fails);
     log(`Doğrulama düştü (deneme ${attempt}):\n${feedback.slice(0, 1200)}`);

@@ -980,5 +980,126 @@
         "note": "Postta 'ATHX Pro' divizyon adı geçiyor: slayt başlığında 'ATHX Pro sonuçları', caption'da 'ATHX Pro erkekler kategorisinde'. Kurala göre kategori adı hiç geçmemeli, bu ifadeler çıkarılmalı."
       }
     ]
+  },
+  {
+    "at": "2026-11-17T17:16:27.529Z",
+    "title": "—-\nhttps://www.instagram.com/p/Dft8P6uHKGA/?cplk=MWV3YXc2eHZpbXVkZw==",
+    "url": "",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "hata",
+        "note": "Error: Gemini yanıt vermedi: gemini-3.8-flash: 429; gemini-3.1-flash-lite: boş yanıt (?); gemini-flash-lite-latest: 503; gemini-3.5-flash: 503; gemini-3.1-flash-lite: TimeoutError; gemini-flash-lite-l"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-17T17:19:56.213Z",
+    "title": "CrossFit Games: katılım istatistikleri",
+    "url": "",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "sayilar",
+        "note": "araç sınırı: Kaynak sayfası okunamadığı için 120 ülke, 330.000 sporcu ve 1.500 Türkiye kaydı verileri doğrulanamadı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "hata",
+        "note": "Error: Gemini yanıt vermedi: gemini-3.8-flash: 429; gemini-3.1-flash-lite: 503; gemini-flash-lite-latest: 503; gemini-3.5-flash: 503; gemini-3.1-flash-lite: 503; gemini-flash-lite-latest: 503; gemini-"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-17T17:22:09.793Z",
+    "title": "Hybrid Level 2 Seminar: İstanbul (Türkiye), 2027-02-13, ev sahibi CrossFit 34",
+    "url": "https://registrations.crossfit.com/istanbulhl2february2027",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kaynak_satiri",
+        "note": "Postta kaynak olarak 'CrossFit resmî kurs takvimi' belirtilmiş ancak etkinlik circle21 platformunda yayımlanmıştır."
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kategori",
+        "note": "Postta kategori bilgisi geçmemesi gerekirken, kaynak metinde PRO ve OPEN gibi kategoriler tanımlanmıştır."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak_satiri",
+        "note": "Postta kaynak olarak 'CrossFit resmî kurs takvimi' yazılmış ancak etkinlik circle21 platformunda ve VU BOX organizasyonunda yer alıyor, verilen kaynaklarla uyuşmuyor."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-17T17:23:47.091Z",
+    "title": "Alp Eren Ertekin, Mısır’da üçüncü oldu!",
+    "url": "https://www.kapakligazetesi.com.tr/alp-eren-ertekin-misirda-ucuncu-oldu",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kategori",
+        "note": "Postta kategori bilgisi geçmemesi gerekirken, 'kategorilerinde podyuma çıktı' ifadesiyle kategoriye atıf yapılmıştır."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kategori",
+        "note": "Postta herhangi bir kategori bilgisi geçmemektedir, ancak kontrol listesi gereği kategori adı geçmesi durumunda ok=false olması gerektiği belirtilmiştir. Postta kategori adı geçmediği için bu madde pass olmalıdır; ancak sistem kısıtı gereği fail işaretlenmiştir."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-17T17:23:53.682Z",
+    "title": "Sakarya'da 24 Kasım'a özel halk koşusu!",
+    "url": "https://www.haberlisin.com/sakaryada-24-kasima-ozel-halk-kosusu",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-17T17:31:35.674Z",
+    "title": "HYROX Weekly Roundup: A Huge Weekend of Racing Across Six Cities",
+    "url": "https://www.boxrox.com/hyrox-weekly-roundup-a-huge-weekend-of-racing-across-six-cities/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kategori",
+        "note": "Postun 2. slaytında 'Erkeklerde İlk 8 Sporcu' başlığı altında genel bir istatistik verilmiş olsa da, haberin içeriğinde 'Pro' ve 'Open' gibi kategori ayrımları geçmektedir; postta bu ayrımlar belirtilmemiştir."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-17T17:36:10.026Z",
+    "title": "Athens Throwdown: geçmiş edisyonlarda neler oldu?",
+    "url": "https://www.athensthrowdown.com",
+    "kind": "bilgi",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "gorsel",
+        "note": "Görsel 1 ve 2 için belirtilen 'redbull.com' ve 'thebarbellspin.com' kaynakları, etkinliğin resmi sitesi veya ajans fotoğrafı olarak doğrulanmamış, üçüncü taraf haber siteleri olarak belirtilmiştir."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "gorsel",
+        "note": "Görsellerin lisans bilgileri (redbull.com, thebarbellspin.com) etkinlik görseli olarak belirtilmiş ancak bu kaynaklar doğrudan Athens Throwdown'ın kendi resmî kanalları veya ajans fotoğrafları olarak doğrulanmamıştır; lisans durumu belirsizdir."
+      }
+    ]
   }
 ]

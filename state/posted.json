@@ -1530,6 +1530,34 @@
       "eventName": "CrossFit Games",
       "at": "2026-11-17T13:45:42.484Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-17",
+      "ids": [
+        "cfcourse:rf1091184"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-17",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMie0FVX3lxTFBvOE5kTjV6MVRGVVYtNzQ1OUttVW9RamQ1bW9hYmZNTWdQZk9IdVA1a1pKV2pOeW5SeG1xR3dBbGZHS2tHcjA3ZHFnVFJfOUkwSXk2SmFILThuUXpwTUlHUm5jRHF6d0ptSFNvTHpMeW51bkc1T2pvekd3UQ"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-17",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMicEFVX3lxTFBXN1o4SmJnd2p0ak9IUk5mUjlVaEpFR2NJTnFTLWVHaXZXZVhGdVlGZlV1V29jZzJQazhOMzF1T1JBQUZWc1d5alo1LTRaTnJpNUpXdW5KbElTMENXd0x4cmxuTTBtbWF5MFNyMGxTeC0"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-17",
+      "ids": [
+        "https://www.boxrox.com/hyrox-weekly-roundup-a-huge-weekend-of-racing-across-six-cities/"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -1581,9 +1609,9 @@
       "rejected": 0
     },
     "2026-11-17": {
-      "drafts": 0,
-      "approved": 0,
-      "rejected": 0
+      "drafts": 8,
+      "approved": 1,
+      "rejected": 7
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -1617,7 +1645,16 @@
   "dmSeen": [
     "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDU0MDk0NTMwNDIxOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1OTMzMTc5NTg3NzcyNjc4NjozMzA5NzI2NDYyODY3ODM3ODMyNDg2NzA4NjE3MzYwMTc5MgZDZD",
     "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDU0MDk0NTMwNDIxOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1OTMzMTc5NTg3NzcyNjc4NjozMzA5ODE3MDc1NzY4OTY1NjU1NTY4MzI4NjQxMDU5MjI1NgZDZD",
-    "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDU0MDk0NTMwNDIxOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1OTMzMTc5NTg3NzcyNjc4NjozMzA5ODI4MzA0MDg3Njg5NzI4OTI0NTIyNzc4NTEyNTg4OAZDZD"
+    "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"
   ],
   "dmPins": {
     "1mehmetkuyucu": "1647030993575389"
@@ -1626,5 +1663,9 @@
   "paused": {
     "reason": "kredi",
     "at": "2026-11-10T07:03:22.217Z"
-  }
+  },
+  "statEvents": [
+    "CrossFit Games"
+  ],
+  "statWeek": "2026-46"
 }

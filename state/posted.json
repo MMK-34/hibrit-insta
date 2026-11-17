@@ -1558,6 +1558,24 @@
         "https://www.boxrox.com/hyrox-weekly-roundup-a-huge-weekend-of-racing-across-six-cities/"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-17",
+      "ids": [
+        "manual:hyrox-dublin-2026-bireysel-sonuclar"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:hyrox-dublin-2026-bireysel-sonuclar"
+      ],
+      "media": "18386886556238728",
+      "permalink": "https://www.instagram.com/p/Df2fan_IDg5/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-dublin-2026-bireysel-sonuclar/01.jpg",
+      "title": "HYROX Dublin'de erkeklerde birincilik 4 saniye farkla geldi",
+      "headline": "HYROX Dublin'de erkeklerde birincilik 4 saniye farkla geldi",
+      "eventName": "HYROX Dublin",
+      "at": "2026-11-17T17:41:39.760Z",
+      "manual": true
     }
   ],
   "daily": {

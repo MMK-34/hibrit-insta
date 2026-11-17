@@ -1576,6 +1576,43 @@
       "eventName": "HYROX Dublin",
       "at": "2026-11-17T17:41:39.760Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-17",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMipwFBVV95cUxPczRqbFV3TGk5Q1RhWGZBTHJjNC1TT19fc1ZOckJHQ1BBa0hFUWhwcDEzWXg2eUdtelB5c0ZnemlLbWxTY19kanFvTmF0LWN3S3llNktqRTlYTjhUbVl6UXFpaGpKa2ZKcng0bm9IcGlWNmtNd1JlUE1lWU1fTGROSTNueklyVmJKRGVBN0JTaFBWOXRFd1dvVWpadTlzRVRDVDZEWnRncw",
+        "https://news.google.com/rss/articles/CBMimgFBVV95cUxNN1B4MXAyY3lnS0tGeWJhbXYzQmJPbjVJdllrdVdUMVppOFYya0NKR0lKLUQ1MnExcjRNY0NSS2lWbnlfay1OanlsaFcxR3RqRE1QNXZrT0FhcnZOWlhmOHJUOWxEMnlKOGU0c3Z4dGF4RVhyV0JwdFVEV3dSaDBYN3ZrLVp6d0k1c0ZFY2lCMzZkTTdxeXVaTDRB0gGaAUFVX3lxTE03UHgxcDJjeWdLS0Z5YmFtdjNCYk9uNUl2WWt1V1QxWmk4VjJrQ0pHSUotRDUycTFyNE1jQ1JLaVZueV9rLU5qeWxoVzFHdGpETVA1dmtPQWFydk5aWGY4clQ5bEQyeUo4ZTRzdnh0YXhFWHJXQnB0VURXd1JoMFg3dmstWnp3STVzRkVjaUIzNmRNN3F5dVpMNEE"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:d7ecaa96780bf494"
+      ],
+      "media": "18420147931085207",
+      "permalink": "https://www.instagram.com/p/Df2gLkEja6N/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-17/mwkzjgml/01.jpg",
+      "title": "Edirne Yarı Maratonu'nda sporcu sayısının artırılması hedefleniyor",
+      "headline": "Edirne Yarı Maratonu 1.071 sporcuyla sınırlı",
+      "eventName": "Edirne Yarı Maratonu",
+      "at": "2026-11-17T17:48:19.408Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "YARIŞ DUYURUSU",
+            "title": "Edirne Yarı Maratonu 1.071 sporcuyla sınırlı",
+            "subtitle": "Balkan Ülkeleri Dostluk Grubu Gençlik ve Spor Kulübü tarafından düzenlenen yarışta kontenjan 1.071 kişi olarak açıklandı."
+          }
+        ],
+        "caption": "Edirne Yarı Maratonu'nda kontenjan 1.071 sporcu ile sınırlandırıldı. 11 yıldır kesintisiz düzenlenen organizasyonda yoğun talep nedeniyle katılımcı sayısı sınırlı tutuluyor. Yarışın Edirne'deki koşu kültürünü geliştirmesi ve gençlerin spor organizasyonlarında deneyim kazanması hedefleniyor. Bu yarışta tanıdığın biri var mı? Ona gönder.\n\nReklam / Tanıtım\n\nKaynak: Milliyet\nGörsel: edirnesonhaber.com\n\n#edirneyarımaratonu #koşu #maraton #yarımaraton #running #runningturkey #hibritportal",
+        "srcUrls": [
+          "https://www.milliyet.com.tr/yerel-haberler/edirne/edirne-yari-maratonunda-sporcu-sayisinin-artir-7702564",
+          "https://www.haberler.com/amp/budder-baskani-akdag-a-gore-edirne-yari-maratonu-20436312-haberi/"
+        ],
+        "eventName": "Edirne Yarı Maratonu",
+        "country": "Türkiye",
+        "place": "Edirne"
+      },
+      "story": "17979276609174895"
     }
   ],
   "daily": {
@@ -1627,9 +1664,10 @@
       "rejected": 0
     },
     "2026-11-17": {
-      "drafts": 4,
-      "approved": 1,
-      "rejected": 7
+      "drafts": 5,
+      "approved": 2,
+      "rejected": 7,
+      "aiCalls": 6
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -1650,7 +1688,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-10T06:42:09.901Z",
+  "lastRunAt": "2026-11-17T17:46:29.801Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

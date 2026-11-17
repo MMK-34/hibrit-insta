@@ -79,5 +79,25 @@
     "createdDay": "2026-11-09",
     "due": "2026-11-18",
     "status": "bekliyor"
+  },
+  {
+    "key": "edirneyarimaratonu",
+    "type": "gecmis",
+    "eventName": "Edirne Yarı Maratonu",
+    "officialSite": "",
+    "category": "kosu",
+    "createdDay": "2026-11-17",
+    "due": "2026-11-21",
+    "status": "bekliyor"
+  },
+  {
+    "key": "edirneyarimaratonu",
+    "type": "wodlar",
+    "eventName": "Edirne Yarı Maratonu",
+    "officialSite": "",
+    "category": "kosu",
+    "createdDay": "2026-11-17",
+    "due": "2026-11-26",
+    "status": "bekliyor"
   }
 ]

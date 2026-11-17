@@ -1663,6 +1663,40 @@
         "place": "Miami"
       },
       "story": "17958620892036113"
+    },
+    {
+      "day": "2026-11-18",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiigFBVV95cUxOQzgya3lEcGpqWEplQUxBZXZMNEtsVnVod1VueDY1Uk1ZdUhsbmhpRWIyeXYyZW9CVlNiVENCUnR2dzZPRHVuRmRBbnNSUEZpeFRPX1h1dWhqMEx2OG9yMk1LNWRlendJdEJ6b1ZvZzFDbmxLb1F1U2RINDl1WFllNXFjZHVOQW9NelE"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:2676f509f93a4e72"
+      ],
+      "media": "17871818076660047",
+      "permalink": "https://www.instagram.com/p/Df3Bb3_l0gx/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-18/mwl9xc11/01.jpg",
+      "title": "How Concept2 Became the Backbone of Competitive Fitness",
+      "headline": "Concept2 yarış dünyasının temel taşı olmaya devam ediyor",
+      "at": "2026-11-17T22:39:01.615Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "CROSSFIT VE HİBRİT FİTNESS",
+            "title": "Concept2 yarış dünyasının temel taşı olmaya devam ediyor",
+            "subtitle": "CrossFit ve HYROX gibi büyük organizasyonlar, ekipman tercihlerini hassas ölçüm teknolojisi ve dayanıklılık sunan Concept2 makinelerinden yana kullanıyor."
+          }
+        ],
+        "caption": "Concept2, CrossFit ve HYROX gibi büyük yarışların temel ekipman sağlayıcısı olmaya devam ediyor. Hassas PM5 monitör teknolojisi ve yüksek dayanıklılık, markayı rekabetçi fitness dünyasında standart haline getiriyor. Yarış organizatörleri, sporcuların performansını anlık olarak takip etmeye olanak tanıyan ErgRace yazılımı sayesinde izleyici deneyimini de geliştirebiliyor. Siz antrenmanlarınızda Concept2 cihazlarını ne sıklıkla kullanıyorsunuz? Yarış planın için kaydet.\n\nReklam / Tanıtım\n\nKaynak: Athletech News\nGörsel: athletechnews.com\n\n#crossfit #hyrox #fonksiyonelantrenman #rowing #indoorrowing #hibritportal",
+        "srcUrls": [
+          "https://athletechnews.com/how-concept2-became-the-backbone-of-competitive-fitness/"
+        ],
+        "eventName": "",
+        "country": "",
+        "place": ""
+      },
+      "story": "17992636320118415"
     }
   ],
   "daily": {
@@ -1719,6 +1753,12 @@
       "rejected": 9,
       "aiCalls": 18,
       "summarySent": true
+    },
+    "2026-11-18": {
+      "drafts": 1,
+      "approved": 1,
+      "rejected": 0,
+      "aiCalls": 6
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -1739,7 +1779,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-17T19:44:42.559Z",
+  "lastRunAt": "2026-11-17T22:36:07.247Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

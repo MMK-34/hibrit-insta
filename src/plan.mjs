@@ -161,7 +161,7 @@ export async function claude(args) {
   try { return await claudeCall(args); } catch (e) {
     if (isCreditError(e)) {
       // Kredi bitti: Gemini anahtarı varsa aynı işi Gemini yapar (ödeme YAPILMAZ)
-      if (useGemini("Anthropic kredisi yok")) { calls.n = Math.max(0, calls.n - 1); checkBudget(); return gemini(args); }
+      if (useGemini("Anthropic kredisi yok")) return gemini(args); // çağrı claudeCall içinde zaten sayıldı (çift sayım yok)
       throw new CreditError(String(e?.message ?? e).slice(0, 300));
     }
     throw e;
@@ -388,6 +388,7 @@ Yazım kuralları (Türkçe spor gazeteciliği):
 - Başlık: Haberi söyler; olmuş olay görülen geçmiş zamanla yazılır ("açıldı", "duyuruldu", "kırıldı", "belli oldu"), ileri tarihli duyuruda "-acak" ("1 Kasım'da koşulacak"). Merak uyandırır ama yanıltmaz; klikbait yok.
 - İçerik: Kim, ne, nerede, ne zaman, neden önemli sorularına cevap ver. Rakam ve tarihleri somut yaz (ör. "14 Aralık 2026", "3:20/km", "1 saat 2 dakika"). Okura bir şey öğret ya da haber ver; dolgu cümle kurma.
 - TARAFSIZLIK (kesin kural): Yalnızca olanı aktar. Yorum, değerlendirme, yargı, eleştiri, övgü ya da tahmin yok. Tartışma yaratabilecek, taraf tutan, kişileri, kurumları ya da markaları kötüleyen veya kıyaslayan ifade yok. Doping, sakatlık, kural ihlali, hakem kararı ya da anlaşmazlık haberlerinde yalnızca resmî açıklamayı aktar, sonuç çıkarma. "Skandal", "şok", "olay yarattı", "tepki çekti" gibi ifadeler kullanma. Sondaki soru da tarafsız olmalı; kışkırtıcı ya da "kim haklı?" tarzı soru sorma. Uygun örnekler: "Siz de katılacak mısınız?", "Hangi kategoride yarışıyorsunuz?".
+- SAAT DİLİMİ (kesin kural): Kaynakta saat varsa ve kaynak Türkiye dışındaysa (ET, PT, CET, UTC vb.) saati Türkiye saatine çevirip öyle yaz (gerekirse tarihi de kaydır: ET 20.00 = TR ertesi gün 04.00) ve "Türkiye saatiyle" de; çeviremiyorsan saati yazma. Saat dilimi belirtilmemiş yabancı saati Türkiye saati gibi yazma.
 - ÜCRET (kesin kural): Kayıt ücreti, fiyat, para tutarı YAZMA; isteyen resmî sayfadan bakar.
 - YAZIM (kesin kural): Şapkalı harf kullanma: "hala", "resmi", "kar", "rekabetci" gibi şapkasız yaz (â, î, û yok).
 - KONUM: Haber belirli bir yerdeki yarış/etkinlik hakkındaysa country (Türkçe ülke adı, ör. "Türkiye", "Tayland") ve place (il/ilçe, ör. "Antalya/Serik", "Bangkok") alanlarını doldur; yalnızca kaynakta yazan yeri yaz, tahmin etme.

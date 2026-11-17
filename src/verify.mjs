@@ -7,7 +7,7 @@ import { claude, aiAvailable } from "./plan.mjs";
 import { MODEL, MODEL_WRITE } from "./config.mjs";
 
 export const CHECK_ITEMS = [
-  ["tarih", "Tarih(ler) kaynakla birebir uyumlu (yoksa: 'uygulanamaz' notuyla pass)"],
+  ["tarih", "Tarih(ler) kaynakla birebir uyumlu (yoksa: 'uygulanamaz' notuyla pass). Kaynakta yabancı saat dilimiyle (ET, PT, CET, UTC vb.) verilen saat postta Türkiye saatine doğru çevrilmiş ve 'Türkiye saatiyle' denmiş olmalı (ET = TR-8 saat kışın; tarih kayabilir); çevrilmeden yazılmışsa fail"],
   ["yer", "Yer / şehir / mekân doğru"],
   ["resmi_ad", "Yarışma, organizatör ve kurum adları resmî yazımla. Organizatörün kendi metnindeki yazım (kesme işareti, büyük/küçük harf farkı) ve tarihle doğrulanan edisyon yılı eklemek (ör. \"Wonder Woman’s Cup 2027\") geçerlidir; ad değiştirmek ya da başka bir etkinlik adı kullanmak geçersizdir"],
   ["sayilar", "Sayılar doğru: sporcu sayısı, süre, ağırlık, mesafe, sıralama, ücret"],

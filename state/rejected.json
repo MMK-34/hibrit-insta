@@ -1101,5 +1101,41 @@
         "note": "Görsellerin lisans bilgileri (redbull.com, thebarbellspin.com) etkinlik görseli olarak belirtilmiş ancak bu kaynaklar doğrudan Athens Throwdown'ın kendi resmî kanalları veya ajans fotoğrafları olarak doğrulanmamıştır; lisans durumu belirsizdir."
       }
     ]
+  },
+  {
+    "at": "2026-11-17T18:48:23.158Z",
+    "title": "@uludagultratrail Instagram paylaşımı: Gözlerini kapat ve Uludağ’da koşmayı hayal et!💙",
+    "url": "https://www.instagram.com/p/Df1IZgKAAMc/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "resmi_ad",
+        "note": "Resmi ad 'Uludağ Premium Ultra Trail'dir; postta 'Premium' ibaresi eksiktir."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-17T18:50:54.458Z",
+    "title": "@bodrumyarimaratonu Instagram paylaşımı: Yarışın her anı ayrı bir hikaye, ayrı bir eğlence… Hepsi birer film sahnesi gibi! 🎬🌊",
+    "url": "https://www.instagram.com/p/Df1II8oDQYg/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kategori",
+        "note": "Postta yarış kategorileri (21K, 10K, 5K) açıkça geçiyor; kurala göre postta yarış kategorisi/divizyonu adı HİÇ geçmemelidir."
+      }
+    ]
   }
 ]

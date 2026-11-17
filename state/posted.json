@@ -1613,6 +1613,56 @@
         "place": "Edirne"
       },
       "story": "17979276609174895"
+    },
+    {
+      "day": "2026-11-17",
+      "ids": [
+        "ig:18020754863973225"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-17",
+      "ids": [
+        "ig:18143460136716262"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-17",
+      "ids": [
+        "https://thebarbellspin.com/competition/faa-travel-delays-prompt-24-hour-extension-for-wodapalooza-online-qualifier/"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:e2106182d52f1cbf"
+      ],
+      "media": "17972834607178973",
+      "permalink": "https://www.instagram.com/p/Df2neZzmiFx/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-17/mwl1t66g/01.jpg",
+      "title": "FAA Travel Delays Prompt 24-Hour Extension for Wodapalooza Online Qualifier",
+      "headline": "Wodapalooza Online Qualifier'da süre uzatıldı",
+      "eventName": "Wodapalooza Miami Beach",
+      "at": "2026-11-17T18:52:08.521Z",
+      "ig": "wodapalooza",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "WODAPALOOZA",
+            "title": "Wodapalooza Online Qualifier'da süre uzatıldı",
+            "subtitle": "FAA kaynaklı uçuş rötarı nedeniyle skor girişleri 24 saat ertelendi."
+          }
+        ],
+        "caption": "Wodapalooza Online Qualifier'da skor giriş süresi 24 saat uzatıldı. FAA kaynaklı uçuş rötarları nedeniyle alınan bu kararla, skor gönderimleri 17 Kasım 2026 saat 20.00'ye, video yüklemeleri ise 18 Kasım 2026 saat 20.00'ye kadar yapılabilecek. Yarış planın için kaydet.\n\nReklam / Tanıtım\n\nYarışın Instagram hesabı: @wodapalooza\n\nKaynak: The Barbell Spin\nGörsel: wodapalooza.com\n\n#wodapalooza #crossfit #fonksiyonelantrenman #hibritportal",
+        "srcUrls": [
+          "https://thebarbellspin.com/competition/faa-travel-delays-prompt-24-hour-extension-for-wodapalooza-online-qualifier/"
+        ],
+        "eventName": "Wodapalooza Miami Beach",
+        "country": "Amerika Birleşik Devletl",
+        "place": "Miami"
+      },
+      "story": "17958620892036113"
     }
   ],
   "daily": {
@@ -1664,10 +1714,11 @@
       "rejected": 0
     },
     "2026-11-17": {
-      "drafts": 5,
-      "approved": 2,
-      "rejected": 7,
-      "aiCalls": 6
+      "drafts": 8,
+      "approved": 3,
+      "rejected": 9,
+      "aiCalls": 18,
+      "summarySent": true
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -1688,7 +1739,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-17T17:46:29.801Z",
+  "lastRunAt": "2026-11-17T18:44:39.241Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

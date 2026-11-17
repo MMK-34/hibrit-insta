@@ -1457,6 +1457,42 @@
       "eventName": "HYROX Düsseldorf",
       "at": "2026-11-16T13:45:18.311Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-17",
+      "ids": [
+        "manual:cf-games-2027-takim-elemesi-program"
+      ],
+      "kind": "haber",
+      "photos": [
+        "web:barbellspin:team-qualifier-2027-0"
+      ],
+      "media": "18128572522681168",
+      "permalink": "https://www.instagram.com/p/Df1scYPF4gW/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/cf-games-2027-takim-elemesi-program/01.jpg",
+      "title": "CrossFit Games takım elemesinde antrenmanlar Open'dan önce açıklanacak",
+      "headline": "CrossFit Games takım elemesinde antrenmanlar Open'dan önce açıklanacak",
+      "eventName": "CrossFit Games 2027",
+      "at": "2026-11-17T10:16:19.797Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-17",
+      "ids": [
+        "manual:xenom-miami-beach-fraser-2026"
+      ],
+      "kind": "haber",
+      "photos": [
+        "web:barbellspin:fraser-xenom-miami-0"
+      ],
+      "media": "17911147563327778",
+      "permalink": "https://www.instagram.com/p/Df1siyXl9fU/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/xenom-miami-beach-fraser-2026/01.jpg",
+      "title": "Beş kez Dünyanın En Fit Erkeği olan sporcu yeniden yarışıyor",
+      "headline": "Beş kez Dünyanın En Fit Erkeği olan sporcu yeniden yarışıyor",
+      "eventName": "XENOM Miami Beach",
+      "at": "2026-11-17T10:17:11.194Z",
+      "manual": true
     }
   ],
   "daily": {

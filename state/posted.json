@@ -1493,6 +1493,25 @@
       "eventName": "XENOM Miami Beach",
       "at": "2026-11-17T10:17:11.194Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-17",
+      "ids": [
+        "manual:bilgi-crossfit-5-gercek"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "pixabay:4006937",
+        "pixabay:7539138"
+      ],
+      "media": "18081386129419894",
+      "permalink": "https://www.instagram.com/p/Df12p1WmOXe/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-crossfit-5-gercek/01.jpg",
+      "title": "CrossFit'e başlamadan önce bilinmesi gereken 5 gerçek",
+      "headline": "CrossFit'e başlamadan önce bilinmesi gereken 5 gerçek",
+      "eventName": "",
+      "at": "2026-11-17T11:45:29.274Z",
+      "manual": true
     }
   ],
   "daily": {

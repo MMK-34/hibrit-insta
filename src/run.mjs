@@ -12,7 +12,7 @@ import { findImages } from "./images.mjs";
 import { eventPhotos, screenPhotos, personPhotos } from "./event-photos.mjs";
 import { circle21Candidates, circle21Reference, circle21Events, circle21ById, c21Handle, c21Text, c21Facts } from "./circle21.mjs";
 import { igWatchCandidates, verifiedEventHandle, IG_WATCH_TR } from "./ig-watch.mjs";
-import { selectNews, writePost, reviewPost, creditProbe, isCreditError, spend } from "./plan.mjs";
+import { selectNews, writePost, reviewPost, creditProbe, isCreditError, spend, useGemini } from "./plan.mjs";
 import { renderPost, renderStory, renderCountdown, renderSpecial } from "./render.mjs";
 import { upcomingSpecial, specialContent } from "./special-days.mjs";
 import { dmTips, dmCategory } from "./dm.mjs";
@@ -182,13 +182,19 @@ async function main() {
   }
   // Kredi bittiyse: ücretli işlem yok. Yalnızca 1 token'lık yoklama; kredi gelmişse kendiliğinden devam.
   if (state.paused?.reason === "kredi" && !DRY) {
+    let credit = true;
     try { await creditProbe(); } catch (e) {
-      if (isCreditError(e)) { log("Anthropic kredisi yok; bot duraklatıldı (ödeme yapılmaz)."); return SKIPPED; }
-      throw e;
+      if (!isCreditError(e)) throw e;
+      credit = false;
+      // Kullanıcı kararı (2026-11-17): kredi yokken ücretsiz Gemini API ile devam (ödeme yapılmaz)
+      if (!useGemini("Anthropic kredisi yok")) { log("Anthropic kredisi yok; bot duraklatıldı (ödeme yapılmaz)."); return SKIPPED; }
+      log("Anthropic kredisi yok; bot Gemini (ücretsiz) ile devam ediyor.");
     }
-    log("Anthropic kredisi yeniden var; bot devam ediyor.");
-    delete state.paused; saveState();
-    await notify("⚠️ Hibrit Portal: Anthropic kredisi yeniden kullanılabilir, bot paylaşımlara devam ediyor.");
+    if (credit) {
+      log("Anthropic kredisi yeniden var; bot devam ediyor.");
+      delete state.paused; saveState();
+      await notify("⚠️ Hibrit Portal: Anthropic kredisi yeniden kullanılabilir, bot paylaşımlara devam ediyor.");
+    }
   }
   // Yedek cron: ana slot çalıştıysa (son 45 dk) zamanlanmış çalışma hiçbir şey yapmaz. Elle (workflow_dispatch) çalışmalar atlanmaz.
   // GitHub zamanlayıcısı ya da dış zamanlayıcı (Cloudflare Worker, trigger=cron): ikisi de aynı 45 dk kapısından geçer

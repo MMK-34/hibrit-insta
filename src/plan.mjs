@@ -1,6 +1,6 @@
 // Yapay zekâ ile haber seçimi + Türkçe post yazımı. JSON çıktı araç çağrısı (function calling) ile zorlanır.
-// Sağlayıcı: ANTHROPIC_API_KEY varsa Claude; yalnızca o yoksa GEMINI_API_KEY ile Gemini (web erişimi yok,
-// bu yüzden verify.mjs doğrulama kapısı Gemini ile hiçbir postu geçirmez).
+// Sağlayıcı: Claude; Anthropic kredisi bitince ya da anahtar yoksa GEMINI_API_KEY ile ücretsiz Gemini
+// (web araması yok, kaynak URL'leri url_context ile okunur).
 import Anthropic from "@anthropic-ai/sdk";
 import { MODEL, MODEL_WRITE, BRAND, PRICES, WEB_SEARCH_USD } from "./config.mjs";
 
@@ -19,9 +19,21 @@ export function checkBudget() {
   if (spend.usd >= spend.limit) throw new BudgetError(`Günlük API bütçesi doldu ($${spend.usd.toFixed(2)} / $${spend.limit})`);
 }
 
-const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+// Gemini yedeği (kullanıcı kararı 2026-11-17): Anthropic kredisi bitince ya da anahtar yoksa bot ücretsiz Gemini API ile devam eder.
+// Ücretsiz katmanda Google araması yok; kaynak sayfaları url_context aracıyla okunur. Model yoğunsa (503) ya da kota dolarsa (429) sıradakine geçilir.
+const GEMINI_MODELS = (process.env.GEMINI_MODELS || "gemini-3.8-flash,gemini-3.1-flash-lite,gemini-flash-lite-latest,gemini-3.5-flash").split(",").map((x) => x.trim()).filter(Boolean);
+let geminiMode = !process.env.ANTHROPIC_API_KEY && !!process.env.GEMINI_API_KEY;
+export const geminiAvailable = () => !!process.env.GEMINI_API_KEY;
+export const usingGemini = () => geminiMode;
+export function useGemini(reason = "") {
+  if (!geminiMode && geminiAvailable()) console.warn(`Yapay zekâ sağlayıcısı Gemini'ye geçti${reason ? ` (${reason})` : ""}`);
+  geminiMode = geminiAvailable();
+  return geminiMode;
+}
+/** Bir yapay zekâ sağlayıcısı var mı (Claude ya da Gemini)? */
+export const aiAvailable = () => !!process.env.ANTHROPIC_API_KEY || geminiAvailable();
 
-// Gemini şeması OpenAPI alt kümesidir: desteklenmeyen anahtarları ayıkla
+// Gemini şeması JSON Schema alt kümesidir: desteklenmeyen anahtarları ayıkla
 function toGeminiSchema(s) {
   if (Array.isArray(s)) return s.map(toGeminiSchema);
   if (!s || typeof s !== "object") return s;
@@ -33,37 +45,89 @@ function toGeminiSchema(s) {
   return out;
 }
 
-async function gemini({ system, user, tool, maxTokens }) {
+/** Anthropic içerik bloklarını (text / base64 image) Gemini parçalarına çevirir. */
+function toGeminiParts(content) {
+  if (typeof content === "string") return [{ text: content }];
+  return content.map((b) => b.type === "image" ? { inline_data: { mime_type: b.source?.media_type ?? "image/jpeg", data: b.source?.data } } : { text: String(b.text ?? "") });
+}
+
+const sleep = (ms) => new Promise((s) => setTimeout(s, ms));
+
+/** Tek Gemini çağrısı, model zinciri + yeniden deneme. schema verilirse JSON nesnesi, yoksa metin döner. */
+async function geminiCall({ system = "", content, schema = null, urlContext = false, maxTokens = 4000 }) {
   const key = process.env.GEMINI_API_KEY;
-  for (let i = 0; i < 4; i++) {
-    let r;
-    try {
-    r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`, {
-      method: "POST",
-      signal: AbortSignal.timeout(120000),
-      headers: { "x-goog-api-key": key, "content-type": "application/json" },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: system }] },
-        contents: [{ role: "user", parts: [{ text: user }] }],
-        tools: [{ functionDeclarations: [{ name: tool.name, description: tool.description, parameters: toGeminiSchema(tool.input_schema) }] }],
-        toolConfig: { functionCallingConfig: { mode: "ANY", allowedFunctionNames: [tool.name] } },
-        generationConfig: { maxOutputTokens: maxTokens * 2, temperature: 0.6 },
-      }),
-    });
-    } catch (e) {
-      // Zaman aşımı / ağ hatası: bekleyip yeniden dene
-      console.warn(`Gemini isteği başarısız (${e?.name}): ${e?.message}`);
-      await new Promise((s) => setTimeout(s, 8000 * (i + 1)));
-      continue;
+  if (!key) throw new Error("GEMINI_API_KEY yok");
+  const errs = [];
+  // İki tur: her turda her modele bir deneme (ücretsiz katmanda büyük modeller sık sık 503 verir); turlar arası 20 sn
+  const done = new Set();
+  for (let i = 0; i < 2; i++) {
+    if (i) await sleep(20000);
+    for (const model of GEMINI_MODELS) {
+      if (done.has(model)) continue;
+      let r, j;
+      try {
+        r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+          method: "POST",
+          signal: AbortSignal.timeout(90000),
+          headers: { "x-goog-api-key": key, "content-type": "application/json" },
+          body: JSON.stringify({
+            ...(system ? { systemInstruction: { parts: [{ text: system }] } } : {}),
+            contents: [{ role: "user", parts: toGeminiParts(content) }],
+            ...(urlContext ? { tools: [{ url_context: {} }] } : {}),
+            generationConfig: {
+              maxOutputTokens: Math.max(maxTokens * 4, 16000), temperature: 0.4,
+              ...(schema ? { responseMimeType: "application/json", responseJsonSchema: toGeminiSchema(schema) } : {}),
+            },
+          }),
+        });
+        j = await r.json().catch(() => ({}));
+      } catch (e) {
+        errs.push(`${model}: ${e?.name}`);
+        continue;
+      }
+      if (r.status === 503 || r.status === 500) { errs.push(`${model}: ${r.status}`); continue; }
+      if (r.status === 429) {
+        errs.push(`${model}: 429`);
+        // Günlük kota dolduysa bu model bu çalışmada bir daha denenmez
+        if (/per.?day|daily/i.test(JSON.stringify(j))) done.add(model);
+        continue;
+      }
+      if (r.status === 404) { errs.push(`${model}: 404`); done.add(model); continue; }
+      if (!r.ok) throw new Error(`Gemini API ${r.status}: ${JSON.stringify(j).slice(0, 300)}`);
+      const cand = j.candidates?.[0];
+      const text = (cand?.content?.parts ?? []).filter((p) => typeof p.text === "string" && !p.thought).map((p) => p.text).join("").trim();
+      if (!text) { errs.push(`${model}: boş yanıt (${cand?.finishReason ?? j.promptFeedback?.blockReason ?? "?"})`); continue; }
+      if (!schema) return text;
+      try { return JSON.parse(text); } catch {
+        const a = text.indexOf("{"), b = text.lastIndexOf("}");
+        if (a >= 0 && b > a) { try { return JSON.parse(text.slice(a, b + 1)); } catch { /* sıradaki model */ } }
+        errs.push(`${model}: JSON ayrıştırılamadı`);
+        continue;
+      }
     }
-    if (r.status === 429 || r.status >= 500) { await new Promise((s) => setTimeout(s, 8000 * (i + 1))); continue; }
-    const j = await r.json();
-    if (!r.ok) throw new Error(`Gemini API ${r.status}: ${JSON.stringify(j).slice(0, 300)}`);
-    const call = j.candidates?.[0]?.content?.parts?.find((p) => p.functionCall)?.functionCall;
-    if (!call) throw new Error(`Gemini fonksiyon çağrısı dönmedi: ${JSON.stringify(j).slice(0, 200)}`);
-    return call.args;
   }
-  throw new Error("Gemini API tekrar denemeleri tükendi");
+  throw new Error(`Gemini yanıt vermedi: ${errs.join("; ").slice(0, 400)}`);
+}
+
+async function gemini({ system, user, tool, maxTokens, webSearch = 0, webFetch = 0 }) {
+  const web = !!(webSearch || webFetch);
+  const note = web ? "\n\nNot: Web araması yok. Gerekirse yalnızca metinde verilen URL'leri açabilirsin; açamadığın sayfadaki bilgiyi doğrulanmış sayma." : "";
+  return geminiCall({ system: `${system}${note}`, content: user, schema: tool.input_schema, urlContext: web, maxTokens });
+}
+
+/** Görsel denetimi (fotoğraf seçimi, tasarım kontrolü): Claude; kredi yoksa Gemini. Yanıt metnini döner. */
+export async function visionText({ model, content, maxTokens = 4000 }) {
+  checkBudget();
+  if (!geminiMode && process.env.ANTHROPIC_API_KEY) {
+    try {
+      const res = await anthropic.messages.create({ model, max_tokens: maxTokens, messages: [{ role: "user", content }] });
+      addSpend(model, res.usage);
+      return res.content.filter((x) => x.type === "text").map((x) => x.text).join("");
+    } catch (e) {
+      if (!(isCreditError(e) && useGemini("Anthropic kredisi yok"))) throw e;
+    }
+  }
+  return geminiCall({ content, maxTokens });
 }
 
 /** Anthropic kredisi bitti / faturalama engeli. Bot bu hatada durur; ödeme YAPILMAZ, kredi yüklenince kendiliğinden devam eder. */
@@ -82,8 +146,13 @@ export async function creditProbe() {
 }
 
 export async function claude(args) {
+  if (geminiMode) { checkBudget(); return gemini(args); }
   try { return await claudeCall(args); } catch (e) {
-    if (isCreditError(e)) throw new CreditError(String(e?.message ?? e).slice(0, 300));
+    if (isCreditError(e)) {
+      // Kredi bitti: Gemini anahtarı varsa aynı işi Gemini yapar (ödeme YAPILMAZ)
+      if (useGemini("Anthropic kredisi yok")) return gemini(args);
+      throw new CreditError(String(e?.message ?? e).slice(0, 300));
+    }
     throw e;
   }
 }
@@ -91,7 +160,7 @@ export async function claude(args) {
 async function claudeCall({ system, user, tool, maxTokens = 4000, model = MODEL, webSearch = 0, webFetch = 0, effortOverride = "" }) {
   checkBudget();
   if (!process.env.ANTHROPIC_API_KEY) {
-    if (process.env.GEMINI_API_KEY) return gemini({ system, user, tool, maxTokens });
+    if (useGemini("ANTHROPIC_API_KEY yok")) return gemini({ system, user, tool, maxTokens, webSearch, webFetch });
     throw new Error("ANTHROPIC_API_KEY ya da GEMINI_API_KEY yok (.env)");
   }
   const effort = effortOverride || "medium";

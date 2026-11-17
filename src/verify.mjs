@@ -3,7 +3,7 @@
 // web_search ile en az bir bağımsız ikinci kaynakta çapraz kontrol yapar ve kontrol listesinin her maddesine pass/fail verir.
 // Yayın kuralı: iki doğrulayıcı da TÜM maddelerde pass vermeli; kaynak açılamıyorsa (paywall/403) yayın yok.
 import fs from "node:fs";
-import { claude } from "./plan.mjs";
+import { claude, aiAvailable } from "./plan.mjs";
 import { MODEL, MODEL_WRITE } from "./config.mjs";
 
 export const CHECK_ITEMS = [
@@ -74,8 +74,8 @@ async function verifyOnce(model, payload, budget = {}, referenceIsSource = false
  * Döner: { ok, fails: [{model,item,note}], results }
  */
 export async function verifyGate(post, { sourceUrls, photos, sourceName, referenceData = "", skipItems = [], rowEvidence = [], budget = {}, sourceTexts = [], referenceIsSource = false }) {
-  // Doğrulama web_fetch/web_search ister; yalnızca Claude (Anthropic) yapabilir. Gemini ile kapı her zaman kapalı.
-  if (!process.env.ANTHROPIC_API_KEY) return { ok: false, fails: [{ model: "-", item: "hata", note: "ANTHROPIC_API_KEY yok: doğrulama (web erişimi) yapılamaz, yayın yok" }], results: [] };
+  // Doğrulama kaynağı açmayı ister: Claude (web_fetch/web_search) ya da Gemini (url_context). İkisi de yoksa kapı kapalı.
+  if (!aiAvailable()) return { ok: false, fails: [{ model: "-", item: "hata", note: "Yapay zekâ anahtarı yok: doğrulama yapılamaz, yayın yok" }], results: [] };
   const e = (t = "") => String(t).replace(/</g, "‹").replace(/>/g, "›");
   const ref = referenceData ? `SİSTEM VERİSİ (güvenilir; sistem tarafından Hibrit Portal arşivinden hesaplandı ya da resmî bir kaynaktan, ör. resmî CrossFit kurs takviminden, doğrudan çekildi). Posttaki sayılar, tarihler, şehirler ve adlar BU VERİYLE birebir uyuşuyorsa ilgili maddeler (sayilar, tarih, yer, resmi_ad) pass olur; aynı bilgiyi web'de ayrıca araman gerekmez. Bu veride olmayan her bilgiyi normal şekilde denetle:
 ${e(referenceData)}

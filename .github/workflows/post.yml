@@ -79,6 +79,7 @@ jobs:
           DM_TRUSTED: ${{ vars.DM_TRUSTED }} # DM ihbarı kabul edilen kişisel Instagram kullanıcı adı(ları)
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }} # telefon anlık bildirim (ntfy uygulaması)
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -101,6 +102,7 @@ jobs:
         timeout-minutes: 15
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
         run: node src/stock.mjs || echo "stok üretimi başarısız, kuyruk olduğu gibi kaldı"

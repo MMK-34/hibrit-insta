@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "id": "hyrox-denver-2026-quigley",
+    "publishAt": "2026-11-18T08:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-denver-2026-quigley/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-denver-2026-quigley/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-denver-2026-quigley/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-denver-2026-quigley/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-denver-2026-quigley/05.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-denver-2026-quigley-story/story.jpg",
+    "caption": "Olimpiyat atleti ilk HYROX yarışında birinci oldu\n2016 Rio Olimpiyatları'nda 3.000 metre engellide sekizinci olan Colleen Quigley, Denver'daki ilk HYROX yarışını kazandı.\n\nQuigley, 1.500'den fazla kadının yarıştığı yarışı 1:08:03 ile bitirdi ve ikinci Rachel Downey'nin (1:10:08) iki dakikadan fazla önünde tamamladı. Lisa Duncan 1:10:15 ile üçüncü oldu.\n\nFarkı koşuda açtı: 8 kilometrelik koşu bölümünü 32:18'de, kilometre başına ortalama 4:02 ile tamamladı. Bu, yarıştaki kadınlar arasında en hızlı toplam koşu süresiydi. İstasyonlarda ise 16. sıradaydı.\n\nYarış sonrası paylaşımında, yönünü şaşırdığı için kızak çekmeyi 4 yerine 6 kez yaptığını ve hakemin saymadığı tekrarlar nedeniyle fazladan wall ball attığını yazdı. Sol ayağındaki uzun süreli sakatlık nedeniyle pist yarışlarına ara veren Quigley, yaz aylarından beri ağırlık çalışıyor ve sekiz HYROX istasyonunu deniyor.\n\nKoşu geçmişi HYROX'ta ne kadar avantaj sağlar?\nBu yarışta tanıdığın biri var mı? Ona gönder.\n\nReklam / Tanıtım\n\nKaynak: Marathon Handbook\nGörsel: marathonhandbook.com\n\n#hyrox #hyroxdenver #hyroxturkiye #hibritfitness #hibritportal",
+    "photos": [
+      "event:hyrox-denver-2026-quigley"
+    ],
+    "title": "Olimpiyat atleti ilk HYROX yarışında birinci oldu",
+    "kind": "haber",
+    "category": "hyrox",
+    "eventName": "HYROX Denver",
+    "srcUrl": "https://marathonhandbook.com/colleen-quigley-hyrox-denver/"
+  },
+  {
+    "id": "bilgi-crossfit-kiz-isimli-benchmark",
+    "publishAt": "2026-11-18T09:40",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-crossfit-kiz-isimli-benchmark/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-crossfit-kiz-isimli-benchmark/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-crossfit-kiz-isimli-benchmark/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-crossfit-kiz-isimli-benchmark/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-crossfit-kiz-isimli-benchmark/05.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-crossfit-kiz-isimli-benchmark-story/story.jpg",
+    "caption": "CrossFit'te antrenmanlara neden kız isimleri verilir?\nAngie, Fran, Diane... Bu isimler, gelişimini ölçmek için zaman zaman tekrar edilen benchmark antrenmanlardır.\n\nCrossFit Journal'ın 2003'teki makalesine göre benchmark antrenmanlar, günün antrenmanında belirli aralıklarla yeniden yer alır ve sporcunun gelişimini ölçer. Diğer antrenmanlardan kadın ismiyle ayrılırlar. İlk altısının skoru süredir.\n\nİlk grup Angie, Barbara ve Chelsea yalnızca barfiks, şınav, mekik ve squattan oluşur. Angie yaklaşık 20 dakikalık kesintisiz iştir. Barbara 5 turdur ve turlar arasında 3 dakika dinlenilir. Chelsea'de 30 dakika boyunca her dakika başında 5 barfiks, 10 şınav ve 15 squat yapılır.\n\nİkinci grup Diane, Elizabeth ve Fran bir ağırlık hareketiyle bir vücut ağırlığı hareketini birleştirir: Diane'de deadlift ve amuda kalkıp şınav, Elizabeth'te clean ve halkada dips, Fran'de thruster ve barfiks. Üçü de 21-15-9 tekrarla yapılır. Makaleye göre bu antrenmanlar sporcunun zayıf yönünü ortaya çıkarır.\n\nSenin en iyi Fran süren ne?\nYarış planın için kaydet.\n\nKaynak: CrossFit Journal\nGörsel: Foto: Pixabay\n\n#crossfit #fran #crossfitturkiye #hibritfitness #hibritportal",
+    "photos": [
+      "pixabay:828744"
+    ],
+    "title": "CrossFit'te antrenmanlara neden kız isimleri verilir?",
+    "kind": "bilgi",
+    "category": "crossfit",
+    "eventName": "",
+    "srcUrl": "https://library.crossfit.com/free/pdf/13_03_Benchmark_Workouts.pdf"
+  }
+]

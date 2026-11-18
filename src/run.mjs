@@ -12,7 +12,7 @@ import { findImages } from "./images.mjs";
 import { eventPhotos, screenPhotos, personPhotos } from "./event-photos.mjs";
 import { circle21Candidates, circle21Reference, circle21Events, circle21ById, c21Handle, c21Text, c21Facts } from "./circle21.mjs";
 import { igWatchCandidates, verifiedEventHandle, IG_WATCH_TR } from "./ig-watch.mjs";
-import { selectNews, writePost, reviewPost, creditProbe, isCreditError, spend, useGemini, calls, callsLeft, BudgetError } from "./plan.mjs";
+import { selectNews, writePost, reviewPost, creditProbe, isCreditError, spend, useGemini, calls, callsLeft, BudgetError, usingGemini } from "./plan.mjs";
 import { renderPost, renderStory, renderCountdown, renderSpecial } from "./render.mjs";
 import { upcomingSpecial, specialContent } from "./special-days.mjs";
 import { dmTips, dmCategory } from "./dm.mjs";
@@ -332,6 +332,9 @@ async function main() {
       if (pick.score < need) { log(`Eşik altı (${pick.kind} ${pick.score} < ${need}), bekleniyor.`); continue; }
       const srcItems = (pick.ids ?? []).map((id) => items.find((i) => i.id === id)).filter(Boolean).slice(0, 3);
       if (!srcItems.length) continue;
+      // Gemini modunda web araması yok: tek dayanağı (küratörlü olmayan) Instagram gönderisi olan haber bağımsız kaynakla
+      // teyit edilemez, doğrulamadan hiç geçmez. Taslak hakkı ve çağrı yakmadan atla; tüketme (Claude dönünce yeniden aday olur).
+      if (usingGemini() && srcItems.every((s) => /^(ig:|dm-ig:)/.test(s.id) && !s.curated)) { log("Gemini modu: yalnızca Instagram kaynaklı, teyit edilemez; atlandı:", String(srcItems[0].title ?? "").slice(0, 80)); continue; }
       // Google News bağlantısı yayıncının asıl adresine çözülür (yazar tam metni okur, doğrulayıcı sayfayı açabilir); id değişmez (tekrar önleme)
       for (const s of srcItems) if (!s.id.startsWith("cal:") && !s.id.startsWith("cfcourse:") && !s.id.startsWith("c21") && !s.id.startsWith("ig:")) { s.url = await resolveNewsUrl(s.url); s.text = await articleText(s.url); }
       // Kaynak adı: takvim kayıtlarında organizatör sitesi

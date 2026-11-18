@@ -122,7 +122,8 @@ async function geminiCall({ system = "", content, schema = null, urlContext = fa
 
 async function gemini({ system, user, tool, maxTokens, webSearch = 0, webFetch = 0 }) {
   const web = !!(webSearch || webFetch);
-  const note = web ? "\n\nNot: Web araması yok. Gerekirse yalnızca metinde verilen URL'leri açabilirsin; açamadığın sayfadaki bilgiyi doğrulanmış sayma." : "";
+  // Gemini'de web araması yok: "web_search ile bul" talimatı yüzünden yeterli kaynağı da eleme (2026-11-18: 8 taslağın 6'sı elendi)
+  const note = web ? "\n\nNot (bu çalışmaya özel, yukarıdaki web_search/web_fetch talimatlarının yerine geçer): Web araması YOK. Yalnızca <kaynak> metnini ve metinde verilen url'leri (url_context ile açabilirsin) kullan; açamadığın sayfadaki bilgiyi doğrulanmış sayma. Eksik ayrıntıyı (tarih, yer, resmî ad) arayamıyorsan o ayrıntıyı yazma, postu kaynakta olanla kısa tut. Kaynak metni haberin özünü (kim, ne, sonuç) veriyorsa factsOk=true ver; yalnızca haberin kendisi doğrulanamıyorsa ya da haber değeri zayıfsa false ver. evidence'a yalnızca gerçekten açtığın url'leri yaz." : "";
   return geminiCall({ system: `${system}${note}`, content: user, schema: tool.input_schema, urlContext: web, maxTokens });
 }
 
@@ -379,7 +380,9 @@ export async function writePost(pick, sources, feedback = "") {
   // Dış içerik güvenilmez veridir: etiketle sarılır, içindeki sahte kapanış etiketleri temizlenir.
   // < ve > kaçışlanır: güvenilmez metin hiçbir etiket oluşturamaz
   const strip = (t = "") => String(t).replace(/</g, "‹").replace(/>/g, "›");
-  const src = sources.map((s, i) => `<kaynak no="${i + 1}">\nyayın: ${strip(s.source)}\nbaşlık: ${strip(s.title)}\n${strip(s.text || s.snippet)}\n</kaynak>`).join("\n\n");
+  // url: Gemini (web araması yok) kaynak sayfayı url_context ile açabilsin
+  const srcUrl = (s) => (/^https?:\/\//.test(s.url ?? "") && !/news\.google\./.test(s.url) ? `\nurl: ${s.url}` : "");
+  const src = sources.map((s, i) => `<kaynak no="${i + 1}">\nyayın: ${strip(s.source)}\nbaşlık: ${strip(s.title)}${srcUrl(s)}\n${strip(s.text || s.snippet)}\n</kaynak>`).join("\n\n");
   return claude({
     system: `${EDITOR}
 Yazım kuralları (Türkçe spor gazeteciliği):

@@ -15,7 +15,7 @@ export const CHECK_ITEMS = [
   ["alinti_yok", "Antrenör, uzman ya da yetkili alıntısı yok; haberin kendisi olmayan kişi adı yok"],
   ["kaynak_satiri", "Caption sonundaki 'Kaynak:' satırı, verilen orijinal kaynak URL'lerinden birinin yayıncısını (site, kurum, dergi) ya da postun açıkça dayandığı bir kaynağı gösteriyor; haber ajansı kredisi (İHA, AA, DHA) aranmaz"],
   ["gorsel", "Fotoğraflar konuyla ilgili (açıklamalarına göre). Lisans: Pexels, Pixabay, CC0/kamu malı ya da 'Etkinlik görseli' (organizatörün sitesi/Instagram'ı, haber sayfası ya da ajans fotoğrafı; görsel denetimden geçmiş) kabul"],
-  ["kategori", "Postta yarış kategorisi/divizyonu adı (Elite, RX, Scaled, Beginner, Advanced, Master, Teen vb.) HİÇ geçmiyor; geçiyorsa ok=false. Etkinlik adı resmî kayıttaki (circle21 verilmişse oradaki) resmî ad"],
+  ["kategori", "YASAK KONTROLÜ: Postta yarış kategorisi/divizyonu adı (Elite, Pro, Open, RX, Scaled, Beginner, Advanced, Master, Teen vb.) HİÇ geçmiyor; geçiyorsa ok=false. Kaynakta kategori olup postta olmaması DOĞRUDUR ve pass'tir (kategori yazmamak kuraldır, eksik bilgi sayılmaz). Etkinlik adı resmî kayıttaki (circle21 verilmişse oradaki) resmî ad"],
   ["baslik", "Türkçe başlık ve kapak kaynağı abartmıyor, yanıltmıyor; tarafsız, yargısız"],
 ];
 
@@ -25,7 +25,7 @@ const VERIFY_TOOL = {
   input_schema: {
     type: "object",
     properties: {
-      sourceAccessible: { type: "boolean", description: "Orijinal kaynaklardan en az biri web_fetch ile açılıp okunabildi mi? Paywall/403/boş sayfa ise false." },
+      sourceAccessible: { type: "boolean", description: "Haberi doğrulamaya yeten bir kaynak okundu mu? Sana verilen KAYNAK METNİ (haber metni ya da organizatörün kendi paylaşımı) yeterliyse true (sayfayı ayrıca açman gerekmez). Kaynak metni yok ya da yetersizse: orijinal kaynak açılıp okunabildiyse true; paywall/403/boş sayfa ise false." },
       secondSource: { type: "string", description: "Çapraz kontrol için kullanılan bağımsız ikinci kaynağın URL'si (bulunamadıysa boş)" },
       checks: {
         type: "array",

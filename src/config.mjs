@@ -13,6 +13,7 @@ export const POSTING = {
   perRun: 1, // bir çalışmada en fazla 1
   // Ücretli taslak (yazım + doğrulama) için günlük emniyet
   maxDraftsPerDay: 8,
+  maxDraftsPerDayGemini: 20, // Gemini (ücretsiz) modunda; aiCallsPerDay tavanı yine geçerli
   // Günlük API harcama tavanı (USD): aşılınca o gün yeni ücretli çağrı yapılmaz
   dailyUsd: 2,
   // Yapay zekâ çağrı tavanı (Claude ya da Gemini; kullanıcı kuralı 2026-11-17: gereksiz çağrı yok, döngü yok)

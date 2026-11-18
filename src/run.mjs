@@ -41,7 +41,9 @@ const DRY_COUNT = Number(process.argv[process.argv.indexOf("--count") + 1]) || 1
 const STATE = "state/posted.json";
 const PER_RUN = POSTING.perRun ?? 2;
 const MAX_PER_DAY = POSTING.maxPerDay ?? 12;
-const MAX_DRAFTS_PER_DAY = POSTING.maxDraftsPerDay ?? 12; // ücretli taslak üretimi için günlük tavan
+const MAX_DRAFTS_PAID = POSTING.maxDraftsPerDay ?? 12; // ücretli (Claude) taslak üretimi için günlük tavan
+// Gemini ücretsiz ama kaynak araması yok, daha çok taslak eleniyor: tavan daha yüksek (çağrı tavanı aiCallsPerDay yine bağlar)
+let MAX_DRAFTS_PER_DAY = MAX_DRAFTS_PAID;
 const BUDGET_MS = 30 * 60e3; // bu süreden sonra yeni haber/takip/stok işi başlatılmaz (adım zaman aşımı 40 dk)
 const STOCK_MAX_ATTEMPTS = 2;
 
@@ -195,6 +197,7 @@ async function main() {
       // Kullanıcı kararı (2026-11-17): kredi yokken ücretsiz Gemini API ile devam (ödeme yapılmaz)
       if (!useGemini("Anthropic kredisi yok")) { log("Anthropic kredisi yok; bot duraklatıldı (ödeme yapılmaz)."); return SKIPPED; }
       log("Anthropic kredisi yok; bot Gemini (ücretsiz) ile devam ediyor.");
+      MAX_DRAFTS_PER_DAY = POSTING.maxDraftsPerDayGemini ?? 20;
     }
     if (credit) {
       log("Anthropic kredisi yeniden var; bot devam ediyor.");
@@ -213,6 +216,14 @@ async function main() {
       try { if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, "skipped=true\n"); } catch {}
       return SKIPPED;
     }
+  }
+  // Yayın penceresi (kullanıcı kuralı: 07:00-22:30 TR). GitHub zamanlayıcısı saatlerce gecikebiliyor (2026-11-17: 19:50 UTC slotu
+  // 22:31 UTC'de çalıştı, 01:39 TR'de post çıktı): pencere dışındaki zamanlanmış çalışma hiçbir şey yapmaz.
+  const mins = now.getHours() * 60 + now.getMinutes();
+  if (!DRY && !FORCE && SCHEDULED && (mins < 7 * 60 || mins > 22 * 60 + 30)) {
+    log("Yayın penceresi dışında (07:00-22:30 TR); atlandı");
+    try { if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, "skipped=true\n"); } catch {}
+    return SKIPPED;
   }
   // Yalnızca zamanlanmış çalışmalar işaretlenir: elle (stok/force/test) çalışma sıradaki zamanlanmış slotu iptal etmesin
   if (!DRY && SCHEDULED) { state.lastRunAt = new Date().toISOString(); saveState(); }

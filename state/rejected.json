@@ -1186,5 +1186,49 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-18T05:33:35.843Z",
+    "title": "Colleen Quigley Runs 1:08:03 to Win Hyrox Denver Open",
+    "url": "https://marathonhandbook.com/colleen-quigley-hyrox-denver/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-18T05:34:04.982Z",
+    "title": "Texas DPS sends first-ever team to compete in HYROX Dallas",
+    "url": "https://www.kcentv.com/article/sports/local-sports/texas-dps-sends-first-ever-team-to-compete-in-hyrox-dallas/500-90842f32-e625-43cf-9c1b-06b437b98b7a",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-18T05:34:13.441Z",
+    "title": "2027 WFP Series Events: Dates Qualifying Spots",
+    "url": "https://thebarbellspin.com/competition/2027-wfp-series-events-dates-qualifying-spots/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kategori",
+        "note": "Postta 'Pro Individual' kategorisi belirtilmiştir, kural gereği kategori adı geçmemelidir."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kategori",
+        "note": "Postta 'Pro Individual' kategorisi geçiyor, kural gereği kategori adı geçmemeli."
+      }
+    ]
   }
 ]

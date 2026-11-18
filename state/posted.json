@@ -1753,6 +1753,45 @@
         "place": ""
       },
       "story": "17868722166679941"
+    },
+    {
+      "day": "2026-11-18",
+      "ids": [
+        "manual:hyrox-denver-2026-quigley"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:hyrox-denver-2026-quigley"
+      ],
+      "media": "18121113487781119",
+      "permalink": "https://www.instagram.com/p/Df3wsM6E_bC/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-denver-2026-quigley/01.jpg",
+      "title": "Olimpiyat atleti ilk HYROX yarışında birinci oldu",
+      "headline": "Olimpiyat atleti ilk HYROX yarışında birinci oldu",
+      "eventName": "HYROX Denver",
+      "at": "2026-11-18T05:31:55.444Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-18",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiakFVX3lxTE80cnd2cHNTRHl6TWNHRllKRjJobXhNbk82NnIzeXhSS0hyWHR2My01OWRadHp5MjBLblZ5amNMRjM1OVIzSzJFWlBUeW51YVNWd2Z2NnFiMmY5UThrejZ2WU9TZEJrSjJEMFE"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-18",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPVC1DWWZoRXRRUU5uTFdHSWVoOW1aR080NTJrZWhHYnRhNU9fUkRYR1Q1RzFFUVFQZ0Vxc2ZveTc1d3ZWdFUtemdnUG50b2Q4aGxNM3BERHgybVp5TEFCTE1RWWxOWm1iaTNzN2RzdmFmNFBQcVFoS0xneDNLY21neXpFeWJjY0Z0UjZQM0RsY1UzVzR2R2VlREtlbjltb1RsaUtyVXlLeVJLOElmLUpuVkR3TVpkN2xhV0VETjlkY0JMc2VMLUFScW9iU0piem9Ha1lpejdjZ0ROR0dtSUwzMkVvMVY"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-18",
+      "ids": [
+        "https://thebarbellspin.com/competition/2027-wfp-series-events-dates-qualifying-spots/"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -1811,10 +1850,10 @@
       "summarySent": true
     },
     "2026-11-18": {
-      "drafts": 5,
+      "drafts": 8,
       "approved": 2,
-      "rejected": 3,
-      "aiCalls": 18
+      "rejected": 6,
+      "aiCalls": 24
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",

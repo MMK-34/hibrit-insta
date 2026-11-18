@@ -1810,6 +1810,25 @@
       "eventName": "",
       "at": "2026-11-18T06:45:25.176Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-18",
+      "ids": [
+        "manual:hyrox-kahire-kapakli-kuzenler"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:hyrox-kahire-kapakli-kuzenler",
+        "event:hyrox-kahire-kapakli-kuzenler"
+      ],
+      "media": "18338486977274887",
+      "permalink": "https://www.instagram.com/p/Df3_8vfl1m7/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-kahire-kapakli-kuzenler/01.jpg",
+      "title": "Kapaklılı iki kuzen HYROX Kahire'de kürsüye çıktı",
+      "headline": "Kapaklılı iki kuzen HYROX Kahire'de kürsüye çıktı",
+      "eventName": "HYROX Kahire",
+      "at": "2026-11-18T07:45:12.872Z",
+      "manual": true
     }
   ],
   "daily": {
@@ -1892,7 +1911,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-18T06:45:38.557Z",
+  "lastRunAt": "2026-11-18T07:45:25.765Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

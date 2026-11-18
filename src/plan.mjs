@@ -381,7 +381,13 @@ export async function writePost(pick, sources, feedback = "") {
   // < ve > kaçışlanır: güvenilmez metin hiçbir etiket oluşturamaz
   const strip = (t = "") => String(t).replace(/</g, "‹").replace(/>/g, "›");
   // url: Gemini (web araması yok) kaynak sayfayı url_context ile açabilsin
-  const srcUrl = (s) => (/^https?:\/\//.test(s.url ?? "") && !/news\.google\./.test(s.url) ? `\nurl: ${s.url}` : "");
+  const srcUrl = (s) => {
+    try {
+      const u = new URL(s.url ?? "");
+      if (!/^https?:$/.test(u.protocol) || /(^|\.)news\.google\./.test(u.hostname)) return "";
+      return `\nurl: ${strip(u.href)}`; // href boşluk/satır sonunu kodlar, strip açılı ayraçları siler (etiket kaçışı yok)
+    } catch { return ""; }
+  };
   const src = sources.map((s, i) => `<kaynak no="${i + 1}">\nyayın: ${strip(s.source)}\nbaşlık: ${strip(s.title)}${srcUrl(s)}\n${strip(s.text || s.snippet)}\n</kaynak>`).join("\n\n");
   return claude({
     system: `${EDITOR}

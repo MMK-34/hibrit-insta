@@ -1697,6 +1697,62 @@
         "place": ""
       },
       "story": "17992636320118415"
+    },
+    {
+      "day": "2026-11-18",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMie0FVX3lxTE1WWVhZYm5yYkl5dnFKdXhfRzlyVXlyenhyMDdSLTlONWdqWEV4Vll2Qk1SSndfRVVreDdRdEd1SzZDRkU5VzVwU2l2ZzViS2lkZVppSzFaTF9GdkJwdGY1SjN2a1ZXaHZmVTIxREpJdW9rN3BvS2xpRVdDd9IBe0FVX3lxTE1WWVhZYm5yYkl5dnFKdXhfRzlyVXlyenhyMDdSLTlONWdqWEV4Vll2Qk1SSndfRVVreDdRdEd1SzZDRkU5VzVwU2l2ZzViS2lkZVppSzFaTF9GdkJwdGY1SjN2a1ZXaHZmVTIxREpJdW9rN3BvS2xpRVdDdw"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-18",
+      "ids": [
+        "https://thebarbellspin.com/crossfit-games/how-affiliate-owners-can-monetize-the-2027-crossfit-open-bulk-program/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-18",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQRGdqX0hYaVdMY1htdU1ma2MwdEZkRTQ2WS12bUpIRmc4dk5KTjFTSmE5QVlpdmpabEhPMkJXV0pvM1RnaHNSUXNjM2ZGRktRX1JlTHJ3MWU5WkN4TXgwd294cURwRjdzd2ZyUlNBbDNycFpISGgwOFNXdnV1aU5GS2xDNnBvMGxTYkpv"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-18",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiogFBVV95cUxPbzMybldEVk01ZUZsZ2xGTTJxLVNMWHdIYWJtRTVucFY5Wm8yR1NaU0VGMEVkbjN0YmlrUFpfcy1za1FraHo5dzJfMzh6bzhXNC1Ja29BUGM5a3JaLXJ3WjhRdXVFRkMxcVNLV2RRenFJa1FMYmI4VzJQbURQajBCT2ltbFhPZThYS2RndkFSY2ExQjZmalA4ZUU1VVNoOUJpbUE"
+      ],
+      "kind": "arastirma",
+      "photos": [
+        "event:eacfeecd5baaca38"
+      ],
+      "media": "18646147297033825",
+      "permalink": "https://www.instagram.com/p/Df3r3zElV6w/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-18/mwln6bir/01.jpg",
+      "title": "Ice Baths Effectively Speed Recovery but Can Hinder Strength Training Gains",
+      "headline": "Buz banyosu kas gelişimini yavaşlatabilir",
+      "at": "2026-11-18T04:49:44.695Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "ARAŞTIRMA",
+            "title": "Buz banyosu kas gelişimini yavaşlatabilir",
+            "subtitle": "15 çalışmanın incelendiği araştırmaya göre, buz banyosu toparlanmayı hızlandırsa da kuvvet antrenmanlarından alınan verimi düşürebiliyor.",
+            "body": "Edith Cowan Üniversitesi tarafından 3.200 sporcu üzerinde yapılan inceleme, buz banyosunun kas ağrılarını azalttığını ancak hipertrofi ve kuvvet kazanımlarını baskılayabildiğini gösterdi. Dayanıklılık sporcuları için bu risk gözlenmedi."
+          }
+        ],
+        "caption": "Buz banyosu kas ağrılarını azaltırken kuvvet kazanımlarını yavaşlatabilir. 3.200 sporcunun verileriyle yapılan yeni inceleme, buz banyosunun her sporcu için uygun olmadığını gösteriyor.\n\nAraştırma, buz banyosunun toparlanma için etkili bir araç olduğunu ancak kuvvet ve kas gelişimi odaklı antrenman yapanlarda uzun vadeli adaptasyonları baskılayabileceğini buldu. Dayanıklılık sporcularında ise bu olumsuz etki gözlenmedi.\n\nSiz antrenman sonrası toparlanma için buz banyosunu ne sıklıkla kullanıyorsunuz? Yarış planın için kaydet.\n\nKaynak: Hibrit Portal derlemesi\nGörsel: bioengineer.org\n\n#sporbilimi #antrenman #toparlanma #hibritportal",
+        "srcUrls": [
+          "https://bioengineer.org/ice-baths-effectively-speed-recovery-but-can-hinder-strength-training-gains/"
+        ],
+        "eventName": "",
+        "country": "",
+        "place": ""
+      },
+      "story": "17868722166679941"
     }
   ],
   "daily": {
@@ -1755,10 +1811,10 @@
       "summarySent": true
     },
     "2026-11-18": {
-      "drafts": 1,
-      "approved": 1,
-      "rejected": 0,
-      "aiCalls": 6
+      "drafts": 5,
+      "approved": 2,
+      "rejected": 3,
+      "aiCalls": 18
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -1779,7 +1835,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-17T22:36:07.247Z",
+  "lastRunAt": "2026-11-18T04:44:41.457Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

@@ -1137,5 +1137,54 @@
         "note": "Postta yarış kategorileri (21K, 10K, 5K) açıkça geçiyor; kurala göre postta yarış kategorisi/divizyonu adı HİÇ geçmemelidir."
       }
     ]
+  },
+  {
+    "at": "2026-11-18T04:47:13.950Z",
+    "title": "Kemer’de triatlon şöleni!",
+    "url": "https://www.kemergozcu.com/amp/haber/kemerde-triatlon-soleni-32740.html",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kategori",
+        "note": "Post metninde yarış kategorisi adları (M1, M2 ve M3 kategorileri) yer almaktadır; kurala göre kategori adı hiç geçmemelidir."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kategori",
+        "note": "Postta 'M1, M2 ve M3 kategorilerinde' ifadesi geçiyor; kural gereği kategorilerin (Elite, RX, vb. veya M1-M2-M3 gibi alt divizyonlar) postta hiç geçmemesi gerekiyor."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-18T04:47:16.458Z",
+    "title": "How Affiliate Owners Can Monetize the 2027 CrossFit Open Bulk Purchase Program",
+    "url": "https://thebarbellspin.com/crossfit-games/how-affiliate-owners-can-monetize-the-2027-crossfit-open-bulk-program/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-18T04:47:19.088Z",
+    "title": "Kars Triatlon Takımı Türkiye Finali’nde",
+    "url": "https://www.karsmanset.com/haber/kars-triatlon-takimi-turkiye-finalinde-1828607.htm",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

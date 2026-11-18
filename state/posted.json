@@ -1792,6 +1792,24 @@
         "https://thebarbellspin.com/competition/2027-wfp-series-events-dates-qualifying-spots/"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-18",
+      "ids": [
+        "manual:bilgi-crossfit-kiz-isimli-benchmark"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "pixabay:828744"
+      ],
+      "media": "18115348814142175",
+      "permalink": "https://www.instagram.com/p/Df35GdZDiZS/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-crossfit-kiz-isimli-benchmark/01.jpg",
+      "title": "CrossFit'te antrenmanlara neden kız isimleri verilir?",
+      "headline": "CrossFit'te antrenmanlara neden kız isimleri verilir?",
+      "eventName": "",
+      "at": "2026-11-18T06:45:25.176Z",
+      "manual": true
     }
   ],
   "daily": {
@@ -1874,7 +1892,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-18T05:44:41.059Z",
+  "lastRunAt": "2026-11-18T06:45:38.557Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

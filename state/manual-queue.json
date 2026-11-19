@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "id": "bilgi-yatmadan-once-beslenme",
+    "publishAt": "2026-11-19T09:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-yatmadan-once-beslenme/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-yatmadan-once-beslenme/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-yatmadan-once-beslenme/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-yatmadan-once-beslenme/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-yatmadan-once-beslenme/05.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-yatmadan-once-beslenme-story/story.jpg",
+    "caption": "Yatmadan önce yemek sporcuya zarar verir mi?\nAkşam antrenman yapanlar için araştırmaların söyledikleri.\n\nSosyal medyada yatmadan önceki 3 saatte yememe tavsiyesi yaygın. Spor beslenmesi sitesi mysportscience'ta yayımlanan derlemeye göre mevcut veriler, küçük bir atıştırmalığın sporcularda uykuya zarar verdiğini göstermiyor. Yemek uykusunu bozan sporcunun ise yememesi daha iyi olabilir.\n\n12 hafta kuvvet antrenmanı yapan 44 genç erkekte, her gece yatmadan önce 27,5 g protein ve 15 g karbonhidrat alan grup daha çok kuvvet kazandı. Uyluk kası kesit alanı bu grupta 8,4 cm2, plasebo grubunda 4,8 cm2 arttı.\n\nAkşam dayanıklılık antrenmanı yapan 36 genç erkekte yatmadan 30 dakika önce alınan 45 g protein, gece boyunca kas protein sentezini artırdı. Kazein ile peynir altı suyu proteini arasında fark çıkmadı. Sabah 10 km koşu öncesi gece içilen çikolatalı süt ise koşu süresini değiştirmedi.\n\nSen akşam antrenmanından sonra yatmadan önce bir şey yiyor musun?\n\nYarış planın için kaydet.\n\nKaynak: mysportscience\nGörsel: Foto: stevepb / CC0 1.0, Foto: Pixabay\n\n#beslenme #sporbeslenmesi #toparlanma #hyrox #crossfit #koşu #hibritportal",
+    "photos": [
+      "ov:52d10d9d-771e-4d3f-8c72-75cb641360f2",
+      "pixabay:1713468"
+    ],
+    "title": "Yatmadan önce yemek sporcuya zarar verir mi?",
+    "kind": "bilgi",
+    "category": "fonksiyonel",
+    "eventName": "",
+    "srcUrl": "https://www.mysportscience.com/post/eating-before-bed-athletes"
+  }
+]

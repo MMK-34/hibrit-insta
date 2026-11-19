@@ -1346,5 +1346,44 @@
         "note": "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar"
       }
     ]
+  },
+  {
+    "at": "2026-11-19T07:32:15.191Z",
+    "title": "Denizli’den Triatlonda iki Türkiye şampiyonu, Burak Eymen ve Nilüfer Feyza zirveye çıktı",
+    "url": "https://gazetesehir.com/amp/haber/29185901/denizliden-triatlonda-iki-turkiye-sampiyonu-burak-eymen-ve-nilufer-feyza-zirveye-cikti",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kategori",
+        "note": "Postta 'M3 Kızlar', 'M1 Erkekler' gibi yarış kategorileri geçmektedir; kural gereği bu ifadeler yasaktır."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-19T07:32:18.512Z",
+    "title": "Dereceye giren maratoncular ödüllendirildi",
+    "url": "https://m.haber7.com/spor/haber/2261790-dereceye-giren-maratoncular-odullendirildi",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-19T07:32:24.215Z",
+    "title": "Athens Throwdown: geçmiş yıllarda çıkan antrenmanlar",
+    "url": "https://www.athensthrowdown.com",
+    "kind": "bilgi",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

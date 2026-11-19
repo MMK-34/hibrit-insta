@@ -2023,6 +2023,39 @@
         "place": "İstanbul"
       },
       "story": "18343431307260400"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "manual:sidney-maratonu-doping-omur-boyu-men"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:sidney-maratonu-doping-omur-boyu-men"
+      ],
+      "media": "17912826735569077",
+      "permalink": "https://www.instagram.com/p/Df6i2G0IOoK/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/sidney-maratonu-doping-omur-boyu-men/01.jpg",
+      "title": "Olimpiyat maraton şampiyonu majorlardan ömür boyu men edildi",
+      "headline": "Olimpiyat maraton şampiyonu majorlardan ömür boyu men edildi",
+      "eventName": "Sidney Maratonu 2026",
+      "at": "2026-11-19T07:28:33.623Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOaHBCMGdBLVREeVBPaThfbGNfOWdXNTd1X2gzTHlBZU9md1pBRnMyc3hocFdRM0lzYzJYZ0NyTHg2c2VIblo5T214ZTgyYnlsblgwbWhCS1J4ZThxaVJaTUdPU3I5akhoekI0Ml9OMlduNndUSEJaVnN1ak9mUW5yQUZsR2Q3OWx2amhqOVlpbEVVckFSVENGdkRpaG0tQlZtNDgxX21xSFFteTVaNGZva1BfNHVheU5UVlNCcVNwaGhUcU1ReURQNNIByAFBVV95cUxOaHBCMGdBLVREeVBPaThfbGNfOWdXNTd1X2gzTHlBZU9md1pBRnMyc3hocFdRM0lzYzJYZ0NyTHg2c2VIblo5T214ZTgyYnlsblgwbWhCS1J4ZThxaVJaTUdPU3I5akhoekI0Ml9OMlduNndUSEJaVnN1ak9mUW5yQUZsR2Q3OWx2amhqOVlpbEVVckFSVENGdkRpaG0tQlZtNDgxX21xSFFteTVaNGZva1BfNHVheU5UVlNCcVNwaGhUcU1ReURQNA",
+        "https://news.google.com/rss/articles/CBMihgFBVV95cUxQTGVfUE1jeHgtNE9SbVlsZUxGZENaWkZhUWNUYldQMVUyY3BtNXlib0JDVjBZalM0X1U4ZFA3TFpqZExWSksxS3lUZUcyQXdqYzhSbXQwUTk5VV9WMXptSkNsaGZoekQ2bUI2WG1ycVZzUTltcjlnWHZlYmxHTk9TWUZPZzhoUQ"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiigFBVV95cUxQT1RySTJEeVVhWVBUVHZldGJ0cmlvV1BSY0VodE9sSjE3QlRFblNVTTYtNUl2Z2R2YjJrYW5odXRmXzlSeEd4R1lFbTBjV2pkREU3M2pHaTlGWWU4TUx2U1FlRkNIckd5OFdEcHVWczh4eGtadTduaGdIbm04azh2WXVEOU5zb25TV1E"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -2088,10 +2121,10 @@
       "summarySent": true
     },
     "2026-11-19": {
-      "drafts": 12,
+      "drafts": 15,
       "approved": 5,
-      "rejected": 7,
-      "aiCalls": 48
+      "rejected": 10,
+      "aiCalls": 54
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",

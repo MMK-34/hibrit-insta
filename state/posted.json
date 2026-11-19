@@ -2056,6 +2056,57 @@
         "https://news.google.com/rss/articles/CBMiigFBVV95cUxQT1RySTJEeVVhWVBUVHZldGJ0cmlvV1BSY0VodE9sSjE3QlRFblNVTTYtNUl2Z2R2YjJrYW5odXRmXzlSeEd4R1lFbTBjV2pkREU3M2pHaTlGWWU4TUx2U1FlRkNIckd5OFdEcHVWczh4eGtadTduaGdIbm04azh2WXVEOU5zb25TV1E"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMifEFVX3lxTE03ODBOVUxkNkVSbVRPc1NmbEVaTzFWUVhncmZzLUl2UUo1bk9UR1QtT0FtRGRNS0RPVGFRb2dqVlo4TnB4Y2hCeW5xbnZDRnRoVXN2UGtVazN3RGZuS2c5THBQYnJzVUdqX2ZvZ3dEUldZOHI4dmZmYzRXSko"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNRW10aWlBVVVEWE4tZWJnZHh0blJhMk5wc1ptZEo3NlF3M0stcV9XZHhheFRhZzZCM3QxOElsTXRYdzdFN0lSbXFzNDBJcTJjSHB2aGNHcDlxZlpCZi1aQjQwZTBwNjZ3MlY1aDdZdFZ0ZndhNVRoVHNMNlhNX1FfV2NwN2tjOVBlbFlr0gGQAUFVX3lxTE5LeEFnU1dzYXRRRWRDNi1hV1d2QWI1TWdZenJmazBmTGV1eFlneG9PN1daS3g1TlJNZlozTTJfckJrTVBsejRwOWRLOHNDZV91bWdIZ0stazdFMmJ0dkNsMVoycU1TRWhpZlN5ZGN4VnhtUXQ5eEtIR0lET0x2RW1raHhFRV9vLVlfa05YbHBDQg"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMif0FVX3lxTE9MYnk5Y053d041WXE5Z2tveXktNWZidThxVWl6MEFfZGVReEcxeXd2SG5WT1VZZGtkX1FRbndpZHJHY05uRDZlc3pqUy01eVpyOGlRM3Ewdk5ncVh5eWF4eXZ1Z1VkU0FjQlRaR2ktWmROd1VUdWRnNFBtQ2dpYUk"
+      ],
+      "kind": "hikaye",
+      "photos": [
+        "event:7d35b129806820c1"
+      ],
+      "media": "18135144817683787",
+      "permalink": "https://www.instagram.com/p/Df6lJOAF-jy/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-19/mwn901v8/01.jpg",
+      "title": "İki kuzen başarısıyla Kapaklı’nın gururu oldu",
+      "headline": "İki Türk sporcu HYROX Kahire'de 3. oldu",
+      "eventName": "HYROX Cairo",
+      "at": "2026-11-19T07:48:42.157Z",
+      "ig": "hyroxworld",
+      "athlete": "Alp Eren Ertekin",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "HYROX KAHİRE",
+            "title": "İki Türk sporcu HYROX Kahire'de 3. oldu",
+            "subtitle": "Alp Eren Ertekin ve Emin Oğulcan Kan, Mısır'daki yarışta üçüncülük kürsüsüne çıktı."
+          }
+        ],
+        "caption": "Alp Eren Ertekin ve Emin Oğulcan Kan HYROX Kahire'de 3. oldu\nİki sporcu, Mısır'da düzenlenen organizasyonda üçüncülük kürsüsüne çıktı.\n\nMısır'ın başkenti Kahire'de 14-15 Kasım tarihlerinde düzenlenen HYROX yarışında birlikte mücadele eden Alp Eren Ertekin ve Emin Oğulcan Kan, parkuru tamamlayarak üçüncülük elde etti.\n\nToplam 8 kilometrelik koşu ve 8 fonksiyonel egzersiz istasyonundan oluşan parkurda iki sporcu, gösterdikleri dereceyle podyuma çıkmayı başardı.\n\nTebrikler!\n\nHYROX yarışlarında çift olarak yarışmayı denediniz mi?\n\nBu yarışta tanıdığın biri var mı? Ona gönder.\n\nReklam / Tanıtım\n\nYarışın Instagram hesabı: @hyroxworld\n\nKaynak: Çerkezköy Haber\nGörsel: cerkezkoyhaber.com.tr\n\n#hyroxcairo #hyrox #hyroxturkiye #fonksiyonelantrenman #hibritportal",
+        "srcUrls": [
+          "https://cerkezkoyhaber.com.tr/iki-kuzen-basarisiyla-kapaklinin-gururu-oldu"
+        ],
+        "eventName": "HYROX Cairo",
+        "country": "Mısır",
+        "place": "Kahire"
+      },
+      "story": "18195561202404890"
     }
   ],
   "daily": {
@@ -2121,10 +2172,10 @@
       "summarySent": true
     },
     "2026-11-19": {
-      "drafts": 15,
-      "approved": 5,
-      "rejected": 10,
-      "aiCalls": 54
+      "drafts": 18,
+      "approved": 6,
+      "rejected": 12,
+      "aiCalls": 62
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2145,7 +2196,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-19T06:45:40.354Z",
+  "lastRunAt": "2026-11-19T07:44:50.982Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

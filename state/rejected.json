@@ -1385,5 +1385,31 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-19T07:46:39.641Z",
+    "title": "Sınırsız Dostluk Yarı Maratonu",
+    "url": "https://m.haber7.com/guncel/haber/2347710-sinirsiz-dostluk-yari-maratonu",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-19T07:46:42.515Z",
+    "title": "Ataşehir'de Hyrox antrenman dönemi başladı",
+    "url": "https://www.sonsaat.com.tr/haber/29179200/atasehirde-hyrox-antrenman-donemi-basladi",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

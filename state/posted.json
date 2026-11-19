@@ -2153,6 +2153,17 @@
         "place": "Gaziantep"
       },
       "story": "18084567587351724"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMikAFBVV95cUxPazJrTWhUVUpCMXRwc0NFUE9JdFRoa19tT3ZXd294UnFkZWU0RGVheTFEMGxDUnhTTFJUTXNBNUtodThublIxWGZHX3EzN3o0TExGZjV6Rmo0QWZYTWx4aldSTkpYZFlvemdUZEwyVF80NVk4T0Y1U3RGQ0ZSOERiY09uckRyQkl1R1pNcmhzRHc",
+        "https://news.google.com/rss/articles/CBMidkFVX3lxTE5RRnJsc3lSNkZmZHpMcWgtRy1temxwelZuU1NDUU5iQV94NUlWdEJPbGdsNmlQWkFnVWRHNFd2UzhtQUpKR0R0Y2hSSDhnMXBHNHRTSU1QTzA0Zll0U2lDRURyOVo5eXBFLWdlYUVPLTN6MU1mVnc",
+        "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQa21yM2NvYUhYMjlUbUZtOW1PV2NINnhRbDBpM204WkF4a1lQXzFIZkFwNEVwX0RhdzJwMXl1cmFNc2JmdUFrQjBTNE1uM01zcVBSYmk1RkxsZ1ZUZ2ktc2YyM3g5Q1hsMm5wZW9NcHRKaVNaQW1MNVN4NjJPRVVYbnpFalhTSWdKZWdaMFRsY3ZfR2VxQXFMRDVnYjhzYjF6cjhSRF81NVhibDVIYjVYRnRJc2djMzJYUGhGbnNtVEZoQVl0MFltdXFUanI4NG5vNkHSAVdBVV95cUxONlJqWlFvM0NqNC1Tc25GUC00RnlIamZIcWV1S1U3bWpHT1Vwc193SnpVV1VKanE5OU8xeENIQnQ4NDVILS1UUUhDRjVtaFhodVdlQjVFM1k",
+        "https://news.google.com/rss/articles/CBMixAFBVV95cUxNSnNFWHhOcWVzVllpVDVLY1I4dFBHZUxaMlRlM3BmU2tPanVnQVhGSUZLbEIwNFdSZ0hQRjZlaWRWVFRIUUJWUl9mMDlGVnRydV9iNk1UR1ZvSzlPUlNJUzdSb0M5TUhaQUlfRzkwMTQ0VkpIZkFKQXFZSGozRm5kNFRyV1c3WXhDbTZqMlBJTWJEdEdlU25iVmNwVWF5QTJzemR4SC1Ca3BDQ3E3dWlBTk9Pd3JxOUJ3T1h2bU01SU56SzFS0gHKAUFVX3lxTE40NmdlMmdOREFRbVY0VUk3d2hmdFN3enhaVDdEZ0p0RWRLMUl6SHZjcjZhX1ZMYWhyajFxdUljOHc3VnFtVkNBdW9GRVVhSmo4bXpCTXJwVk1ENm5aemdmSmk2Z3lDSzhNeEpVek1YaVpMMnk5UlF6SXlaSnI1UDN5TnRya2Q0RmNvSEpYakwtaXpTMWZBXzlSSkVaWERKSGljUlRUMDUyY0YwRmxuR2FpcHdhRTBacGV6RGFMVnQwTjBsUUVNQmxodUE",
+        "https://news.google.com/rss/articles/CBMinAFBVV95cUxNMXVadkJaYTZEeUJuVkROUEdXR0VfRjBYdzNYanZ1MjdzZ1d0Nm9SdlUxaGNQSUU1LW5LcmIyQnA1LUF2OFNUdXd0NWxfWFJpWVhlbGFSdmx2TnhJWG9UX1VySzFlR0V4UmlTaTViUVFyVUtEUTlRY1MyTjQzWlpkWVdIRjZSVWNmMEZlVDZCcTgtTENHX2V2QXZ3VG_SAZwBQVVfeXFMTTF1WnZCWmE2RHlCblZETlBHV0dFX0YwWHczWGp2dTI3c2dXdDZvUnZVMWhjUElFNS1uS3JiMkJwNS1BdjhTVHV3dDVsX1hSaVlYZWxhUnZsdk54SVhvVF9VcksxZUdFeFJpU2k1YlFRclVLRFE5UWNTMk40M1paZFlXSEY2UlVjZjBGZVQ2QnE4LUxDR19ldkF2d1Rv"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -2218,10 +2229,10 @@
       "summarySent": true
     },
     "2026-11-19": {
-      "drafts": 19,
+      "drafts": 20,
       "approved": 7,
-      "rejected": 12,
-      "aiCalls": 68
+      "rejected": 13,
+      "aiCalls": 72
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2242,7 +2253,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-19T08:44:38.453Z",
+  "lastRunAt": "2026-11-19T09:44:40.009Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

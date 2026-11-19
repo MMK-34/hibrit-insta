@@ -1411,5 +1411,18 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-19T09:47:52.565Z",
+    "title": "Antalya’daki Triatlon Türkiye Şampiyonası’na Denizli Damgası",
+    "url": "https://www.haberdenizli.com/antalyadaki-triatlon-turkiye-sampiyonasina-denizli-damgasi",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kategori",
+        "note": "Postta 'kendi kategorilerinde' ifadesi geçmektedir ancak kaynakta M1, M2, M3 gibi kategoriler açıkça belirtilmiştir. Postta kategori adı geçmemesi kural olsa da, 'kendi kategorilerinde' ibaresi genel bir kategori atıfı içerdiği için kontrol edilmiştir."
+      }
+    ]
   }
 ]

@@ -140,5 +140,25 @@
     "createdDay": "2026-11-19",
     "due": "2026-11-28",
     "status": "bekliyor"
+  },
+  {
+    "key": "gaziyarimaratonu",
+    "type": "gecmis",
+    "eventName": "Gazi Yarı Maratonu",
+    "officialSite": "",
+    "category": "kosu",
+    "createdDay": "2026-11-19",
+    "due": "2026-11-23",
+    "status": "bekliyor"
+  },
+  {
+    "key": "gaziyarimaratonu",
+    "type": "wodlar",
+    "eventName": "Gazi Yarı Maratonu",
+    "officialSite": "",
+    "category": "kosu",
+    "createdDay": "2026-11-19",
+    "due": "2026-11-28",
+    "status": "bekliyor"
   }
 ]

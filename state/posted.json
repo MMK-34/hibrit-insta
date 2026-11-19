@@ -2107,6 +2107,52 @@
         "place": "Kahire"
       },
       "story": "18195561202404890"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMimwFBVV95cUxNOVNFRG5VYmljUS1sSTFYaTZKdWk4c2U5WV9HdzNqcTJhZXdqSFZwODJmMHRDT2Q3QnYzODNfNWpRWEZRb0FWOXhwTl8xdzJhY3ZQeW1ZSDJzTWt3U1F1c3pOUDdzMXVUbWhnUEZiRGVBUE9oREcwcHNwSlhGYXJveVptQTF2OHdSWHoza2pDTXdUMlNZZnp2TXRwMA",
+        "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOUTIzeUd4aVF0a2ZkQi14UThDcHhLRFZRTVZod0k4WmRKR3h0LUIyVS1mdEZOQ21TMlZ3SFNaXzQ2TUR5RGFsamd3YjF6TmI4emE3cTJhMUlRRWVFX18tVnJKYlhpZWpUUm5mQW12MFRsQl9HcWc2d3NUQ0lvZThSNWxqQkNhajVQMDdPbGJKNWNGMHI3ZjVMVk1oR0owTDZWTThFdEJENWJ1VG8",
+        "https://news.google.com/rss/articles/CBMifEFVX3lxTFB4VU54VnQ2emNwX1FUY1p6RG5LOTZwMWlVYWxEWnJSR1E4RVlQeWRSWUFWbG4xd0drV0xWdzhHT1dqMWR2RHJOSEpNdjBJMkc5a0pWS3l2UmFqczR5a1NCbDRLcVBibEE3OHRRdFVfX3ZhVWtVM2ZBTkMyY0Q"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:15c15a24d72f59e6"
+      ],
+      "media": "18147038761610179",
+      "permalink": "https://www.instagram.com/p/Df6sM0WAArR/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-19/mwnb67sc/01.jpg",
+      "title": "Binlerce sporcu Gaziantep'te buluşacak! Yoğun ilgi bekleniyor",
+      "headline": "8. Gazi Yarı Maratonu 22 Kasım'da koşulacak",
+      "eventName": "Gazi Yarı Maratonu",
+      "at": "2026-11-19T08:50:20.209Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "YARIŞ DUYURUSU",
+            "title": "8. Gazi Yarı Maratonu 22 Kasım'da koşulacak",
+            "subtitle": "Gaziantep'te düzenlenecek 21K ve 10K yarışları için geri sayım başladı.",
+            "body": "Gaziantep Büyükşehir Belediyesi ve Türkiye Atletizm Federasyonu iş birliğiyle düzenlenen yarış, şehir savunmasında şehit düşenlerin anısına gerçekleşecek.",
+            "bullets": [
+              "Tarih: 22 Kasım 2026 Pazar",
+              "Başlangıç: Gaziantep Büyükşehir Belediyesi önü",
+              "Kategoriler: 21K (09.30), 10K (09.45), Halk Yürüyüşü (10.00)",
+              "Katılım: 18 yaşını doldurmuş sporcular"
+            ]
+          }
+        ],
+        "caption": "8. Gazi Yarı Maratonu 22 Kasım'da Gaziantep'te gerçekleşecek. Şehrin kurtuluş yıl dönümü anısına düzenlenen yarışta 21K ve 10K parkurları yer alıyor. 18 yaşını doldurmuş tüm sporcuların katılabileceği etkinlik Gaziantep Büyükşehir Belediyesi önünden start alacak. Yarış planın için kaydet.\n\nKaynak: Referans Gazetesi\nGörsel: referansgazetesi.com.tr\n\n#koşu #maraton #yarımaraton #running #runningturkey #gaziantep #hibritportal",
+        "srcUrls": [
+          "https://www.referansgazetesi.com.tr/binlerce-sporcu-gaziantepte-bulusacak-yogun-ilgi-bekleniyor",
+          "https://www.baskenthaber06.com/haber/gaziantepte-8-gazi-yari-maratonu-ve-halk-yuruyusu-duzenleniyor-334233/",
+          "https://www.ereglionder.com.tr/gaziantepte-8-gazi-yari-maratonu-basliyor"
+        ],
+        "eventName": "Gazi Yarı Maratonu",
+        "country": "Türkiye",
+        "place": "Gaziantep"
+      },
+      "story": "18084567587351724"
     }
   ],
   "daily": {
@@ -2172,10 +2218,10 @@
       "summarySent": true
     },
     "2026-11-19": {
-      "drafts": 18,
-      "approved": 6,
+      "drafts": 19,
+      "approved": 7,
       "rejected": 12,
-      "aiCalls": 62
+      "aiCalls": 68
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2196,7 +2242,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-19T07:44:50.982Z",
+  "lastRunAt": "2026-11-19T08:44:38.453Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

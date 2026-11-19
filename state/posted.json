@@ -1961,6 +1961,68 @@
         "place": ""
       },
       "story": "18274649068305686"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "manual:bilgi-yatmadan-once-beslenme"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "ov:52d10d9d-771e-4d3f-8c72-75cb641360f2",
+        "pixabay:1713468"
+      ],
+      "media": "17972901384187291",
+      "permalink": "https://www.instagram.com/p/Df6d6jBDR6b/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/bilgi-yatmadan-once-beslenme/01.jpg",
+      "title": "Yatmadan önce yemek sporcuya zarar verir mi?",
+      "headline": "Yatmadan önce yemek sporcuya zarar verir mi?",
+      "eventName": "",
+      "at": "2026-11-19T06:45:30.051Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMGpIRDZzMDBlT2FXM1VjMEdRMDdJUHpkTTdLZ3k0WWNyYVNaQU94Q3hsTkZGZ3lRWmlETkw5alUzSUdnSmR0c2ZfYlVVMlNRRUl6MGtmbmpxdmZOTFg2XzZjbDhGUVVSbWJhVUF6aW84MDI0azhzTkdvVjdHTlp5cFQzN0NoTmxMX2F0RXh6dzgxcVlsQUl4X1RXOGx4MHRKVHBqNXFOWlNnN3NrMGxlb2dBV2FEXzgxTWZPWEFRek54aUHSAcgBQVVfeXFMTmhwQjBnQS1URHlQT2k4X2xjXzlnVzU3dV9oM0x5QWVPZndaQUZzMnN4aHBXUTNJc2MyWGdDckx4NnNlSG5aOU9teGU4MmJ5bG5YMG1oQktSeGU4cWlSWk1HT1NyOWpIaHpCNDJfTjJXbjZ3VEhCWlZzdWpPZlFuckFGbEdkNzlsdmpoajlZaWxFVXJBUlRDRnZEaWhtLUJWbTQ4MV9tcUhRbXk1WjRmb2tQXzR1YXlOVFZTQnFTcGhoVHFNUXlEUDQ"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "ig:18097053842162870"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:16971ac7b247cf4e"
+      ],
+      "media": "18131773642934770",
+      "permalink": "https://www.instagram.com/p/Df6es6tIZ4Y/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-19/mwn6zopn/01.jpg",
+      "title": "@wolfhavencf Instagram paylaşımı: GUESS WHAT ?? 😎",
+      "headline": "Wolf Haven yarışması 13 Aralık 2026'da gerçekleşecek",
+      "eventName": "Wolf Haven Competition",
+      "at": "2026-11-19T06:52:22.115Z",
+      "ig": "wolfhavencf",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "WOLF HAVEN COMPETITION",
+            "title": "Wolf Haven yarışması 13 Aralık 2026'da gerçekleşecek",
+            "subtitle": "Wolf Haven Functional Training Club ev sahipliğinde düzenlenecek yarışmanın kayıtları devam ediyor."
+          }
+        ],
+        "caption": "Wolf Haven yarışması 13 Aralık 2026'da gerçekleşecek. İstanbul'da düzenlenecek organizasyon için kayıtlar Wolf Haven Functional Training Club üzerinden alınıyor. Yarışma detayları ve antrenman içerikleri organizatörün sosyal medya hesabından duyurulacak. Birlikte yarışmak istediğin arkadaşına gönder.\n\nKaynak: wolfhavencf Instagram\nGörsel: @wolfhavencf\n\n#crossfit #fonksiyonelantrenman #amatörspor #sporhaberleri #hibritportal",
+        "srcUrls": [
+          "https://www.instagram.com/p/Df4mQtath6-/"
+        ],
+        "eventName": "Wolf Haven Competition",
+        "country": "Türkiye",
+        "place": "İstanbul"
+      },
+      "story": "18343431307260400"
     }
   ],
   "daily": {
@@ -2026,10 +2088,10 @@
       "summarySent": true
     },
     "2026-11-19": {
-      "drafts": 9,
-      "approved": 3,
-      "rejected": 6,
-      "aiCalls": 33
+      "drafts": 12,
+      "approved": 5,
+      "rejected": 7,
+      "aiCalls": 48
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2050,7 +2112,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-19T05:44:37.655Z",
+  "lastRunAt": "2026-11-19T06:45:40.354Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

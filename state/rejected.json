@@ -1333,5 +1333,18 @@
         "note": "Postta 'Community Impact Award' ifadesi geçmektedir; kategori adı içerdiği için kural gereği faildir."
       }
     ]
+  },
+  {
+    "at": "2026-11-19T06:49:13.338Z",
+    "title": "Denizli’den Triatlonda iki Türkiye şampiyonu, Burak Eymen ve Nilüfer Feyza zirveye çıktı",
+    "url": "https://gazetesehir.com/haber/29185901/denizliden-triatlonda-iki-turkiye-sampiyonu-burak-eymen-ve-nilufer-feyza-zirveye-cikti",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar"
+      }
+    ]
   }
 ]

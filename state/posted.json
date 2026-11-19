@@ -1897,6 +1897,70 @@
         "place": "Cookeville"
       },
       "story": "17996406807067489"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "https://thebarbellspin.com/fitness/the-last-dance-hunter-mcintyre-to-retire-after-2026-2027-hyrox-season/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPYUFwekl2N2FxeTk0dHY5Q1FRWU9xQUxINUc4bUVuMFpiZ19YNG12RUgxTTBaYXc1VU5qa0xlMjdGME9VS05Ybno0WkNIdHRNZG43bTlOMElhTXVYWkVSZVpvajhXZ2JjQmhrUDJiVlpsSnBKN1MwaUtFSEZkVFVpSEVWRVZLRHdNWlQyNmFjcmhxZkN4S29wbDlsd3RHcm12b2hxSU1Mb1pDNEF5SDdDQ2V5WW9IYXpFWmhoemc1d0FRclU4YjJCMw"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMijgFBVV95cUxNMkpodHRuNFNoVXFtWFJlNnlRS3JFNzVVYlo0QjR0TDVPdU5ldmF0SVQ2bGpCdWRObHJ0Wm9oUUJXdzd3ZXpZb3FrcXo1dG5CYU9UMHhPSVNscGk3WHE4XzZpeU03aXRnZ0IwVktQLXRFa1g4UDgxXzVTWjVsT21LSmRNRUpaeV9wTXZnUXVR"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMigwFBVV95cUxQcTNGUVBmcjRVNmVoak9fcUVoVEM5V254RnBkTkRqVVVzMWQxekhGYzdaanpLc25ZUGRsMHRnUW85UEpXaXIyWjhtV1JzUndLUVRzdFZ2cG1JeFBmWDVGV2tjekxwTzFOM2Z1V1Z0aTVxMXh6bk1PWm9DaDdISEVhODFnQQ"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMic0FVX3lxTFBHUG05b0lsSWcybkpFX2ZRVG1YbElVU2ZodkNIU1Jfbk9GQ1UyQ25HUkJYUEt3OF9LTjlkNmtIUlpxeE1iMjZHcWlTR21QTmdfam1VWHUwc252SGI4X0JXNF9BM0NjbE9Lel9HclJYOXV6WTQ"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "event:2b6d06356dd1f622"
+      ],
+      "media": "18114826027891462",
+      "permalink": "https://www.instagram.com/p/Df6Xv-0l8UF/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-19/mwn4tqt2/01.jpg",
+      "title": "Hyrox Nedir, Kuralları Nelerdir ve Nasıl Hazırlanılır?",
+      "headline": "HYROX nedir ve yarış formatı nasıl işler?",
+      "eventName": "HYROX",
+      "at": "2026-11-19T05:51:39.227Z",
+      "ig": "hyroxworld",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "HYROX REHBERİ",
+            "title": "HYROX nedir ve yarış formatı nasıl işler?",
+            "subtitle": "8 kilometre koşu ve 8 fonksiyonel istasyonla fitness sınırlarınızı test edin."
+          }
+        ],
+        "caption": "HYROX, 8 kilometre koşu ile 8 farklı fonksiyonel istasyonun dönüşümlü tamamlandığı global bir fitness yarışıdır. Her 1 kilometre koşunun ardından bir kuvvet egzersizi yapılır ve bu döngü 8 kez tekrarlanır. Yarışın temel sınavı, yorgunluk birikmesine rağmen hareketleri standartlara uygun şekilde devam ettirebilmektir. Yarış planın için kaydet.\n\nYarışın Instagram hesabı: @hyroxworld\n\nKaynak: Oggusto\nGörsel: oggusto.com\n\n#hyrox #hyroxturkiye #fonksiyonelantrenman #koşu #hibritportal",
+        "srcUrls": [
+          "https://www.oggusto.com/spor/hyrox-nedir-kurallari-ve-yarismalari"
+        ],
+        "eventName": "HYROX",
+        "country": "",
+        "place": ""
+      },
+      "story": "18274649068305686"
     }
   ],
   "daily": {
@@ -1962,10 +2026,10 @@
       "summarySent": true
     },
     "2026-11-19": {
-      "drafts": 3,
-      "approved": 1,
-      "rejected": 2,
-      "aiCalls": 13
+      "drafts": 9,
+      "approved": 3,
+      "rejected": 6,
+      "aiCalls": 33
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -1986,7 +2050,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-19T04:44:49.001Z",
+  "lastRunAt": "2026-11-19T05:44:37.655Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

@@ -1266,5 +1266,72 @@
         "note": "Postta kategori bilgisi geçmemesi kuraldır ancak kaynakta PRO, OPEN, BEGINNER kategorileri mevcuttur. Postta kategori adı geçmediği için pass olmalıydı ancak sistem kısıtı gereği kontrol edilmiştir."
       }
     ]
+  },
+  {
+    "at": "2026-11-19T05:46:39.322Z",
+    "title": "The Last Dance: Hunter McIntyre to Retire After 2026-2027 HYROX Season",
+    "url": "https://thebarbellspin.com/fitness/the-last-dance-hunter-mcintyre-to-retire-after-2026-2027-hyrox-season/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kategori",
+        "note": "Kaynakta 'Pro division' ifadesi geçiyor, postta kategori geçmemesi kuralı ihlal edilmiş."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kategori",
+        "note": "Postun caption kısmında 'Pro division' ifadesi geçmektedir, yasaklı kategori bilgisi içerdiği için fail."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-19T05:47:14.325Z",
+    "title": "90-year-old athlete competes in HYROX competition",
+    "url": "https://www.wfaa.com/video/life/people/90-year-old-athlete-competes-in-hyrox-competition/287-8b86e4ac-f17e-495d-8e25-80bd546882f2",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-19T05:50:33.932Z",
+    "title": "Maltepeli öğrencilere ara tatilde telafi dersleri",
+    "url": "https://www.haberizlenim.com/maltepeli-ogrencilere-ara-tatilde-telafi-dersleri/200292",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-19T05:50:50.369Z",
+    "title": "Türk mühendis Nazife İdil Özkol, 2026 WOWSA Awards’a aday",
+    "url": "https://heyhaber.com/turk-muhendis-nazife-idil-ozkol-2026-wowsa-awards-a-aday",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "sayilar",
+        "note": "Kaynak metin 'Moskova’daki X-WA' şeklinde kesilmiş, 'genel klasman üçüncülüğü' bilgisi kaynak metinde tamamlanmıyor."
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kategori",
+        "note": "Postta 'Community Impact Award' kategorisi geçmektedir, yasak kontrolü fail."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kategori",
+        "note": "Postta 'Community Impact Award' ifadesi geçmektedir; kategori adı içerdiği için kural gereği faildir."
+      }
+    ]
   }
 ]

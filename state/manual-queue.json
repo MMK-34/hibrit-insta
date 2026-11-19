@@ -1,1 +1,45 @@
-[]
+[
+  {
+    "id": "kosu-tempo-tablosu",
+    "publishAt": "2026-11-20T19:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu/05.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu/06.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu-story/story.jpg",
+    "caption": "Tempona göre bitiş süren ne olur?\nKoşuda tempo, bir kilometreyi kaç dakikada koştuğundur. Aynı tempoyu yarış boyunca korursan bitiş süren şöyle çıkar:\n\n5 km / 10 km\n4:00/km: 20:00 / 40:00\n5:00/km: 25:00 / 50:00\n6:00/km: 30:00 / 1:00:00\n7:00/km: 35:00 / 1:10:00\n\nYarı maraton (21,1 km)\n4:30/km: 1:34:56\n5:00/km: 1:45:29\n5:30/km: 1:56:02\n6:00/km: 2:06:35\n\nMaraton (42,2 km)\n4:30/km: 3:09:53\n5:00/km: 3:30:58\n5:30/km: 3:52:04\n6:00/km: 4:13:10\n\nKıyas için: Sabastian Sawe'nin 26 Nisan 2026'da Londra'da koştuğu 1:59:30'luk maraton dünya rekoru, kilometre başına yaklaşık 2:50 tempo demek. Tigst Assefa'nın aynı gün kadınlar yarışında kırdığı 2:15:41'lik rekor ise yaklaşık 3:13/km. İki rekoru da World Athletics onayladı.\n\nSüreler sabit tempo varsayımıyla hesaplandı; parkur, rüzgar ve yorgunluk gerçek süreyi değiştirir.\n\nSenin hedef tempon kaç?\nYarış planın için kaydet.\n\nKaynak: Hibrit Portal hesaplaması rekorlar World Athletics\nGörsel: Pixabay\n\n#koşu #maraton #yarımaraton #koşutemposu #hibritportal",
+    "photos": [
+      "pixabay:1498233"
+    ],
+    "title": "Tempona göre bitiş süren ne olur?",
+    "kind": "bilgi",
+    "category": "kosu",
+    "eventName": "",
+    "srcUrl": "https://worldathletics.org/news/press-releases/ratified-world-records-sawe-ehammer-charlton-mcrae-yan-duplantis-assefa"
+  },
+  {
+    "id": "murph-nedir",
+    "publishAt": "2026-11-21T13:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/murph-nedir/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/murph-nedir/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/murph-nedir/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/murph-nedir/04.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/murph-nedir/05.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/murph-nedir-story/story.jpg",
+    "caption": "Murph nedir?\nMurph, CrossFit'in hero antrenmanlarından biri. Hero WOD'lar, görev başında hayatını kaybedenlerin anısına adanan antrenmanlar.\n\nAntrenman, süre için:\n1 mil (yaklaşık 1,6 km) koşu\n100 pull-up\n200 push-up\n300 air squat\n1 mil koşu\n\nPull-up, push-up ve squat istediğin gibi bölünebilir; örneğin 20 tur 5 pull-up, 10 push-up, 15 squat yine 100-200-300 eder. Koşu bir başta, bir sonda yapılır. CrossFit'e göre ağırlık yeleği ya da vücut zırhı varsa takılır: erkeklerde 20 lb (9 kg), kadınlarda 14 lb (6 kg).\n\nAntrenman, ABD Donanması SEAL subayı Teğmen Michael Murphy'nin anısına adandı. Murphy, 28 Haziran 2005'te Afganistan'da görev başında hayatını kaybetti. CrossFit, Murph'ü 18 Ağustos 2005'te hero WOD olarak yayımladı.\n\nMurph'ü hiç denedin mi?\nBirlikte yapmak istediğin arkadaşına gönder.\n\nKaynak: CrossFit\nGörsel: Pixabay\n\n#murph #crossfit #herowod #wod #hibritportal",
+    "photos": [
+      "pixabay:5914642"
+    ],
+    "title": "Murph nedir?",
+    "kind": "bilgi",
+    "category": "crossfit",
+    "eventName": "",
+    "srcUrl": "https://www.crossfit.com/benchmark/murph"
+  }
+]

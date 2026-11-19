@@ -1847,6 +1847,56 @@
       "eventName": "HYROX",
       "at": "2026-11-18T17:29:02.467Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "cal:circle21-adb01a7c-b8bd-4d38-a053-124b329fa2ab"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "cal:circle21-3c8a793c-c983-40c9-9df1-c1e365c268bf"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-19",
+      "ids": [
+        "https://thebarbellspin.com/competition/mayhem-madness-is-coming/"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "local:comp-overhead"
+      ],
+      "media": "18121140161602986",
+      "permalink": "https://www.instagram.com/p/Df6ROKflz64/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-19/mwn2qc5b/01.jpg",
+      "title": "MAYHEM MADNESS is Coming!",
+      "headline": "Mayhem Madness 13 Şubat 2027'de Cookeville'de yapılacak",
+      "eventName": "Mayhem Madness",
+      "at": "2026-11-19T04:54:37.499Z",
+      "ig": "mayhemathlete",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "MAYHEM MADNESS",
+            "title": "Mayhem Madness 13 Şubat 2027'de Cookeville'de yapılacak",
+            "subtitle": "CrossFit Open öncesi düzenlenen yarışmaya her seviyeden sporcu katılabiliyor."
+          }
+        ],
+        "caption": "Mayhem Madness 13 Şubat 2027'de Cookeville'de gerçekleşecek. CrossFit Open öncesi düzenlenen bu yarışma, tüm seviyelerden sporcuların katılımına açık olarak planlandı. Yarış takviminizi planlamak için hazırlıklara başlayabilirsiniz. Birlikte yarışmak istediğin arkadaşına gönder.\n\nYarışın Instagram hesabı: @mayhemathlete\n\nKaynak: The Barbell Spin\n\n#mayhemmadness #crossfit #crossfitgames #fonksiyonelantrenman #hibritportal",
+        "srcUrls": [
+          "https://thebarbellspin.com/competition/mayhem-madness-is-coming/"
+        ],
+        "eventName": "Mayhem Madness",
+        "country": "ABD",
+        "place": "Cookeville"
+      },
+      "story": "17996406807067489"
     }
   ],
   "daily": {
@@ -1912,9 +1962,10 @@
       "summarySent": true
     },
     "2026-11-19": {
-      "drafts": 0,
-      "approved": 0,
-      "rejected": 0
+      "drafts": 3,
+      "approved": 1,
+      "rejected": 2,
+      "aiCalls": 13
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -1935,7 +1986,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-18T19:44:53.279Z",
+  "lastRunAt": "2026-11-19T04:44:49.001Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

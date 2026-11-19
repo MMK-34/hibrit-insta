@@ -1230,5 +1230,41 @@
         "note": "Postta 'Pro Individual' kategorisi geçiyor, kural gereği kategori adı geçmemeli."
       }
     ]
+  },
+  {
+    "at": "2026-11-19T04:46:41.654Z",
+    "title": "Yaklaşan yarış: Olympos Games (Antalya, Türkiye) 2026-12-19 – 2026-12-20",
+    "url": "https://circle21.events/event?competitionId=adb01a7c-b8bd-4d38-a053-124b329fa2ab",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kategori",
+        "note": "Postta kategori geçmemesi kuraldır ancak kaynakta 'PRO' ve 'OPEN' kategorileri yer almaktadır. Kategori adı geçmediği için pass olmalıydı ancak kural gereği kategori adı geçmemelidir."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kategori",
+        "note": "Postta kategori geçmemesi kuraldır ancak kaynakta 'PRO' ve 'OPEN' kategorileri mevcuttur; postta bu bilgilerin yer almaması kurala uygundur ancak 'kategori' kontrolü postta geçip geçmediğini denetler. Postta kategori adı geçmediği için pass olmalıydı ancak kural gereği postta geçmemesi gerektiği için pass verilmiştir."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-19T04:48:20.058Z",
+    "title": "Yaklaşan yarış: VU BOX HYROX-style 50% (Samsun, Türkiye) 2026-12-19",
+    "url": "https://circle21.events/event?competitionId=3c8a793c-c983-40c9-9df1-c1e365c268bf",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "hata",
+        "note": "Error: Gemini API 400: {\"error\":{\"code\":400,\"message\":\"Request contains an invalid argument.\",\"status\":\"INVALID_ARGUMENT\"}}"
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kategori",
+        "note": "Postta kategori bilgisi geçmemesi kuraldır ancak kaynakta PRO, OPEN, BEGINNER kategorileri mevcuttur. Postta kategori adı geçmediği için pass olmalıydı ancak sistem kısıtı gereği kontrol edilmiştir."
+      }
+    ]
   }
 ]

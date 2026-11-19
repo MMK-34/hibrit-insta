@@ -99,5 +99,25 @@
     "createdDay": "2026-11-17",
     "due": "2026-11-26",
     "status": "bekliyor"
+  },
+  {
+    "key": "mayhemmadness",
+    "type": "gecmis",
+    "eventName": "Mayhem Madness",
+    "officialSite": "",
+    "category": "crossfit",
+    "createdDay": "2026-11-19",
+    "due": "2026-11-23",
+    "status": "bekliyor"
+  },
+  {
+    "key": "mayhemmadness",
+    "type": "wodlar",
+    "eventName": "Mayhem Madness",
+    "officialSite": "",
+    "category": "crossfit",
+    "createdDay": "2026-11-19",
+    "due": "2026-11-28",
+    "status": "bekliyor"
   }
 ]

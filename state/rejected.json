@@ -1424,5 +1424,90 @@
         "note": "Postta 'kendi kategorilerinde' ifadesi geçmektedir ancak kaynakta M1, M2, M3 gibi kategoriler açıkça belirtilmiştir. Postta kategori adı geçmemesi kural olsa da, 'kendi kategorilerinde' ibaresi genel bir kategori atıfı içerdiği için kontrol edilmiştir."
       }
     ]
+  },
+  {
+    "at": "2026-11-20T04:48:08.956Z",
+    "title": "She was spreading mulch and mowing her lawn 5 months ago. Now, she's the 1st 90-year-old to complete a HYROX competition.",
+    "url": "https://www.cbs19.tv/article/life/heartwarming/dallas-hyrox-90-year-old-margie-hennessy-becky-hennesy/287-a3d2e342-4d15-4539-90ae-dca8344e7cb1",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "link benzeri ifade: \"cbs19.tv\" (alan adı/link yazma; nokta sonrası boşluk bırak)"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-20T04:48:14.187Z",
+    "title": "Altıeylül’den Türkiye çapında gururlandıran dereceler",
+    "url": "https://futbolsayfasi.net/haber/20261119AW835538/altieylulden-turkiye-capinda-gururlandiran-dereceler",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-20T04:50:33.143Z",
+    "title": "KIXX’te HYROX Dönemi Başladı",
+    "url": "https://turksporajansi.com/2026/11/19/kixxte-hyrox-donemi-basladi/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kaynak_satiri",
+        "note": "Posttaki 'Kaynak: türk spor ajansı' satırı hatalı; Türk Spor Ajansı kaynağında bu haber hiç yer almamakta olup haberin tüm detayları Circle21 platformundan alınmıştır. Kaynak Circle21 olmalıdır."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak_satiri",
+        "note": "Postun kaynak satırında 'Kaynak: türk spor ajansı' yazmaktadır; ancak Türk Spor Ajansı'nın ilgili haberinde VU BOX veya Samsun simülasyonuna dair hiçbir bilgi geçmemekte, haber İstanbul'daki KIXX Sports Club ile ilgilidir. Bilgiler bu kaynakta hiç geçmediği için Circle21 kaynak gösterilmelidir."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-20T04:50:41.341Z",
+    "title": "2027 Yılı Faaliyet Takvimi",
+    "url": "https://taf.org.tr/2027-yili-faaliyet-takvimi/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-20T04:53:52.078Z",
+    "title": "Strava signs two-year Hyrox community deal",
+    "url": "https://www.sgieurope.com/brands/strava-signs-two-year-hyrox-community-deal/124316.article",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kaynak_satiri",
+        "note": "Postta kaynak olarak gösterilen SGIE, bu yerel etkinliğin kaynağı değildir; ilgili sayfada bu etkinliğe dair bir haber bulunmamaktadır."
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kategori",
+        "note": "Postta 'bireysel' ifadesi geçmektedir, ancak kaynakta 'PRO' ve 'OPEN' gibi kategoriler tanımlanmıştır. Kategori adı geçmemesi kuralına uyulmamıştır."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak_satiri",
+        "note": "Postta kaynak olarak gösterilen 'Sporting Goods Intelligence Europe' sitesindeki haberin bu yarışmayla hiçbir ilgisi yoktur; haber Strava ve Hyrox iş birliği hakkındadır."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kategori",
+        "note": "Kaynakta PRO ve OPEN kategorileri belirtilmiş olmasına rağmen postta bu kategoriler geçmemektedir."
+      }
+    ]
   }
 ]

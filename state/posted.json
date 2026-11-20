@@ -2184,6 +2184,76 @@
       "eventName": "Tirana Throwdown 2027",
       "at": "2026-11-19T14:50:22.476Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNOG8xeWN0REhPQ0JvaTVoUHl6N3h0bFl4dHBXR01JMzNNb3RrZ0cxNnBLVVY1aWV4Wml6dld6bkw1R05jWTgzYThPVjA5bVRncHhMdlktSWluU1ExY3VkdjV4R09za3BDREpNQXVMSVZ3WkUtOWxKUHNBUTBPZmE1SWtrTTNuZnpqdGlFZWVsS1FiRGZHZGpNUV9CZ2xSMHdoYzdLQ2lEUElvUmM3aGtuU3BueTB5MGFrWW9fdnMyMzZYQVFFM2lldmlGQUlMaDBWVWZCc1lKc2Fmdw",
+        "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5TMTVHZ28xNkJEc29FYUZtUHB3TDlUTW5LUmEycm9YaG9Ia1dnbjdqSDNvQmR2MzFlRHB1VzVOakZSdzIybnMzTElIMHc2Z1BDVjRhV2wtX19DMGp4dEViVNIBZkFVX3lxTFBhYjhRMWRSVVNkNTNLN1pPbDJpdURUakQxZ3lDU2NKM0FIMWwtaW5ucHd2NzZQQmUtbEQ5U0NJc0FTVkhzQTdGYUV6dTlZQ0dsR2gtTlVJeWxxVGI0cENxbi1HeUZXZw"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiifFBVV95cUxPZF9qVkNBWk5PTUF2UUh0dlR5OWlRLWsyRmdiSzR6VUtLb29ySWh6X01zNWoxaHJYcWJUMzVIQmxzNTNzUHlDc0NtNmlfSmwwTVhVLUpadEhDRVN2OWI0TE5OQjktTXdkdXhhYnQ1Z2hvUE1KMUtOVlVLUGVZREtXSjBMT1l5UdIBhgFBVV95cUxPZF9qVkNBWk5PTUF2UUh0dlR5OWlRLWsyRmdiSzR6VUtLb29ySWh6X01zNWoxaHJYcWJUMzVIQmxzNTNzUHlDc0NtNmlfSmwwTVhVLUpadEhDRVN2OWI0TE5OQjktTXdkdXhhYnQ1Z2hvUE1KMUtOVlVLUGVZREtXSjBMT1l5UQ",
+        "https://news.google.com/rss/articles/CBMiowFBVV95cUxOUVFpOXBqUzhQSl9wckc5VVpPSzZPRGxQa0ZnSWdBa0ZnSnFVVUtqcXZoaWMzbFphbTd1amEtaHl5TGtjdENwZEVWWkxyV2JaSEllMVhPb05jWmVYWm8tdU5hZTJ4UlVmRGw2OGRrYmtTcnFlaEk4c3ZGOERRRXNyemUzRGxET1dBU2xnRERvaThWZWFLWjdReEVsZjhxZmtjSklr"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMidEFVX3lxTE5EcUY2R05EUm9qMzhUQ2dPSFEzb2REUkdvRHViU2Q5QTZwQ3ZaMVJ3bVpNemtiX3ktMTMyR2NKOVRFUlJZUFVFMjRWUjlBUDNyUjFxTjVfcFF4Q2I5R1dzQ0NfcXI3ZzdkdEdoVlNhc1lBX2cw"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://taf.org.tr/2027-yili-faaliyet-takvimi/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMilAFBVV95cUxQSTdid3M5eVpXQ1hnMG94cHFoM1VMbjJ3dVJ1WVBlQWFGSTNCMlBRc25fZERRd3d0ZTJEa3JWQjZHN0RJYVR4OEpNUm5LNmFqY2JCdk9nOUQ0bXd5YVpsWFNJWWwzbkJUUlU2dzhaWURhR29Wd3ZyWVBpQ3NMRUdQOGZIYUQzRFZzZG9IZzAzT2JzWEdM"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://www.mysportscience.com/post/eating-before-bed-athletes"
+      ],
+      "kind": "arastirma",
+      "photos": [
+        "local:chalk-hands"
+      ],
+      "media": "17964103458252553",
+      "permalink": "https://www.instagram.com/p/Df82OYCl-mO/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-20/mwoiao5t/01.jpg",
+      "title": "Eating before bed: does pre-sleep nutrition help or harm endurance athletes?",
+      "headline": "Yatmadan önce protein alımı gece toparlanmasını nasıl etkiliyor?",
+      "at": "2026-11-20T04:56:26.477Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "ARAŞTIRMA",
+            "title": "Yatmadan önce protein alımı gece toparlanmasını nasıl etkiliyor?",
+            "subtitle": "Araştırmalar, gece alınan 30-45 gram proteinin yağ yakımını durdurmadığını ve kas protein sentezini artırdığını gösteriyor."
+          }
+        ],
+        "caption": "Yatmadan önce protein tüketimi gece toparlanmasını destekliyor.\nSosyal medyadaki yaygın inanışın aksine, yatmadan önce alınan protein uyku kalitesini veya yağ yakımını olumsuz etkilemiyor.\n\nmysportscience derlemesinde yer alan araştırmalara göre, akşam antrenmanı yapan sporcularda yatmadan 30 dakika önce alınan 30-45 g protein gece boyunca hem miyofibriler hem de mitokondriyal protein sentezini artırıyor. 36 erkek sporcuyla yapılan çalışmada 45 g protein, mitokondriyal sentezi saatte %0,087 seviyesine çıkarırken plasebo grubunda bu oran %0,067 ölçüldü.\n\nDirenç antrenmanı yapan 13 kadın sporcuda incelenen verilerde, gece alınan 30 g kazein proteininin karın bölgesindeki yağ yıkımını ve tüm vücut yağ yakımını baskılamadığı belirlendi. Kadın ve erkek sporcularda yapılan uyku analizleri de yatmadan önce alınan hafif porsiyonların dinlenme nabzını, HRV değerini ya da uyku süresini bozmadığını gösterdi.\n\nSiz gece antrenmanlarından sonra yatmadan önce bir şey tüketiyor musunuz? Yorumlara yazın.\nYarış planın için kaydet.\n\nReklam / Tanıtım\n\nKaynak: mysportscience\n\n#sporbilimi #sportscience #antrenman #beslenme #koşu #crossfit #hyrox #hibritportal",
+        "srcUrls": [
+          "https://www.mysportscience.com/post/eating-before-bed-athletes"
+        ],
+        "eventName": "",
+        "country": "",
+        "place": ""
+      }
     }
   ],
   "daily": {
@@ -2256,9 +2326,10 @@
       "summarySent": true
     },
     "2026-11-20": {
-      "drafts": 0,
-      "approved": 0,
-      "rejected": 0
+      "drafts": 6,
+      "approved": 1,
+      "rejected": 5,
+      "aiCalls": 17
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2279,7 +2350,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-19T18:44:40.399Z",
+  "lastRunAt": "2026-11-20T04:44:44.181Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

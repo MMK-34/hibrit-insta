@@ -105,5 +105,26 @@
     "category": "kosu",
     "eventName": "",
     "srcUrl": ""
+  },
+  {
+    "id": "utmb-2027-carsamba",
+    "publishAt": "2026-11-20T14:25",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-carsamba/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-carsamba/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-carsamba/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-carsamba/04.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-carsamba-story/story.jpg",
+    "caption": "UTMB 2027'de çarşamba günü başlayacak.\n\nTrail Runner Magazine'in UTMB yetkililerinden doğruladığı bilgiye göre 2027 yarış haftası 22-28 Ağustos'ta yapılacak, 174 kilometrelik ana yarış UTMB ise 25 Ağustos Çarşamba günü start alacak.\n\nUTMB nedir? Fransa'nın Chamonix kasabasında düzenlenen, Mont Blanc çevresinde koşulan bir patika koşusu haftası. Haftanın final yarışları OCC (57 km), CCC (108 km) ve UTMB (174 km).\n\nDeğişikliğin nedeni UCI Bisiklet Dünya Şampiyonası. Şampiyona 24 Ağustos-5 Eylül 2027'de aynı bölgede yapılacak, elit erkekler yol yarışı 29 Ağustos Pazar günü Chamonix yakınında koşulacak. Mont Blanc Tüneli'nin 30 Ağustos'tan itibaren bakım için kapatılması planlandığından yarış eylüle alınamadı. Final yarışlarının start saatlerinin büyük ölçüde aynı kalması bekleniyor.\n\nUTMB haftasında hangi mesafeyi koşmak isterdin?\n\nBirlikte yarışmak istediğin arkadaşına gönder.\n\nKaynak: Trail Runner Magazine\nGörsel: trailrunnermag.com\n\n#utmb #patikakosusu #trailrunning #ultramaraton #kosu #hibritportal",
+    "photos": [
+      "event:utmb-2027-carsamba",
+      "event:utmb-2027-carsamba"
+    ],
+    "title": "UTMB 2027'de çarşamba günü başlayacak",
+    "kind": "haber",
+    "category": "kosu",
+    "eventName": "UTMB Mont-Blanc 2027",
+    "srcUrl": "https://www.trailrunnermag.com/people/news/2027-utmb-world-series-finals-schedule/"
   }
 ]

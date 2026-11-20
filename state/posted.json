@@ -2421,6 +2421,86 @@
         "https://news.google.com/rss/articles/CBMipwFBVV95cUxNUnFBQXBZaGpKdG9IN1hDSmV2Tm1uczBkTUNtVi1rR3g4VmowdDJCbWhnS25pdFhHdVBkY1JnZ0ZsRFV2Z2NId3VUSTVvNHROTThhNXQzWk9IUVRsUWxQRTgtR3JVdXVmemFUQUZsQWFLXzF5dWNLaFFvdVlwZTFtSzFCc2F2aWVNSVB4dy1rekRfenpvTjMwWlJKWVV3WGVINTZfUWlaRQ"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMibkFVX3lxTFBDYU9LTkllNy1PeUw4bnJzaUcyUUN1eC05U1RRMnlseFFmTF9uTGpNd2VtMTNqZDhvVUVnRjBqS1loVGdfbFBpcnFLZm9JeHBobWJRRUFxbkhNamV6Z2pObHRVRHJuVHZISzg2NjNR"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNTERDMWdZRzFmdkpLNkQybWJqX1dtbmZYaEowZGhpYUdDU1ozbng2YktxNm1WeGNHTndHUy1Sc3ZNcEZrWC1kbFVQdWNaUkJ5NnpnVUlRZzFkVVNuVWNudEI3THI5RlFrQklwZTNVR0o3UG8xc3doU2tUWDBrMktaY2FnWWZfVDFmSlZzTE8zdFZ2VlVFellLdkRiZ0hZSU5ENUhYSGlQdHNDZkNRTjBSS25KRkNpcVlYTV9WOEszcG9OdUxQSTItOGl5akswRHpoeXd6ZA"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "fu:stnicholasyarimaratonu:gecmis"
+      ],
+      "kind": "takip",
+      "photos": [
+        "pixabay:5149812",
+        "pixabay:3586817",
+        "pixabay:1498233",
+        "pixabay:6759096"
+      ],
+      "media": "18140544646649134",
+      "permalink": "https://www.instagram.com/p/Df9RKDekn9d/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-20/mwoqmapj/01.jpg",
+      "title": "St. Nicholas Yarı Maratonu: geçmiş edisyonlarda neler oldu?",
+      "headline": "Demre'de koşu rotanızı belirleyin",
+      "eventName": "St. Nicholas Half Marathon",
+      "at": "2026-11-20T08:51:50.149Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "ST. NICHOLAS YARI MARATONU",
+            "title": "Demre'de koşu rotanızı belirleyin",
+            "subtitle": "St. Nicholas Yarı Maratonu 5-6 Aralık 2026 tarihlerinde gerçekleşecek."
+          },
+          {
+            "type": "stat",
+            "label": "Yarış parkuru sayısı",
+            "value": "3"
+          },
+          {
+            "type": "text",
+            "title": "Parkur seçenekleri",
+            "bullets": [
+              "5K Demre: 4,73 km mesafe ve 1 saatlik süre sınırı.",
+              "12K Myra: 12,3 km mesafe ve 2 saatlik süre sınırı.",
+              "21K Santa: 21,1 km mesafe ve 3 saatlik süre sınırı."
+            ]
+          },
+          {
+            "type": "text",
+            "title": "Yarış bilgileri",
+            "bullets": [
+              "Etkinlik 5-6 Aralık 2026 tarihlerinde düzenleniyor.",
+              "Yarışlar Antalya'nın Demre ilçesinde gerçekleşiyor.",
+              "Kayıtlar resmi web sitesi üzerinden devam ediyor."
+            ]
+          },
+          {
+            "type": "end",
+            "title": "Hangi mesafeyi hedefliyorsunuz?",
+            "body": "5K, 12K mı yoksa 21K parkurunda mı yer alacaksınız? Yarış planınız için kaydedin."
+          }
+        ],
+        "caption": "St. Nicholas Yarı Maratonu 5-6 Aralık 2026 tarihlerinde Demre'de koşulacak. Farklı mesafe seçenekleri sunan etkinlikte 5K, 12K ve 21K parkurları yer alıyor. Her parkurun kendine özgü mesafe ve süre sınırı bulunuyor. Yarış planın için kaydet.\n\nReklam / Tanıtım\n\nKaynak: St. Nicholas Half Marathon\n\n#stnicholashalfmarathon #koşu #maraton #yarımaraton #running #antalya #hibritportal",
+        "srcUrls": [
+          "https://stnicholashalfmarathon.com"
+        ],
+        "eventName": "St. Nicholas Half Marathon",
+        "country": "Türkiye",
+        "place": "Antalya/Demre"
+      },
+      "story": "18087551366710453"
     }
   ],
   "daily": {
@@ -2493,10 +2573,10 @@
       "summarySent": true
     },
     "2026-11-20": {
-      "drafts": 17,
-      "approved": 3,
-      "rejected": 14,
-      "aiCalls": 46
+      "drafts": 20,
+      "approved": 4,
+      "rejected": 16,
+      "aiCalls": 58
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2517,7 +2597,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-20T07:44:43.358Z",
+  "lastRunAt": "2026-11-20T08:44:37.387Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

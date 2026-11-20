@@ -1626,5 +1626,56 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-20T08:47:13.623Z",
+    "title": "Hyrox Shoes & Sportswear Trends: What Racers Really Wear",
+    "url": "https://heuritech.com/articles/hyrox-shoes-sportswear-trends/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "resmi_ad",
+        "note": "Resmî ad 'VU BOX Hybrid (HYROX-style) simulation' iken postta 'VU BOX Hybrid' olarak geçmektedir."
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "sayilar",
+        "note": "Postta 'altı koşu turu ve beş istasyon' denmiş, ancak kaynakta her koşu turunun 300 metre olduğu ve toplamda 6 koşu ile 5 istasyon olduğu belirtilmiştir; posttaki sayısal ifade eksiktir."
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kaynak_satiri",
+        "note": "Kaynak satırında belirtilen 'Heuritech', yarışmanın organizatörü veya resmî kayıt platformu değildir; genel bir sektör haber sitesidir."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "resmi_ad",
+        "note": "Postta 'VU BOX Hybrid' denilmiş, resmî ad 'VU BOX Hybrid (HYROX-style) simulation'dır."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "sayilar",
+        "note": "Postta 'altı koşu turu ve beş istasyon' denilmiş, ancak her koşu turunun 300 metre olduğu bilgisi eksik; ayrıca istasyon detayları kaynakla çelişiyor (kaynakta 300m koşu + 5 istasyon belirtilmiş)."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak_satiri",
+        "note": "Kaynak olarak Heuritech gösterilmiş ancak Heuritech bir haber/analiz sitesidir; etkinlik organizatörü veya resmî platform değildir."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-20T08:47:19.969Z",
+    "title": "Athletics UTMB World Series 2026 - 100 km - Day 2 - Part 2",
+    "url": "https://www.tod.tv/en/sports/endurance/athletics-utmb-world-series/mont-blanc/athletics-utmb-world-series-2026-100-km-day-2-part-2-5061685",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

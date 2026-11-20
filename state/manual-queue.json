@@ -1,27 +1,5 @@
 [
   {
-    "id": "kosu-tempo-tablosu",
-    "publishAt": "2026-11-20T19:30",
-    "urls": [
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu/01.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu/02.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu/03.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu/04.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu/05.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu/06.jpg"
-    ],
-    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu-story/story.jpg",
-    "caption": "Tempona göre bitiş süren ne olur?\nKoşuda tempo, bir kilometreyi kaç dakikada koştuğundur. Aynı tempoyu yarış boyunca korursan bitiş süren şöyle çıkar:\n\n5 km / 10 km\n4:00/km: 20:00 / 40:00\n5:00/km: 25:00 / 50:00\n6:00/km: 30:00 / 1:00:00\n7:00/km: 35:00 / 1:10:00\n\nYarı maraton (21,1 km)\n4:30/km: 1:34:56\n5:00/km: 1:45:29\n5:30/km: 1:56:02\n6:00/km: 2:06:35\n\nMaraton (42,2 km)\n4:30/km: 3:09:53\n5:00/km: 3:30:58\n5:30/km: 3:52:04\n6:00/km: 4:13:10\n\nKıyas için: Sabastian Sawe'nin 26 Nisan 2026'da Londra'da koştuğu 1:59:30'luk maraton dünya rekoru, kilometre başına yaklaşık 2:50 tempo demek. Tigst Assefa'nın aynı gün kadınlar yarışında kırdığı 2:15:41'lik rekor ise yaklaşık 3:13/km. İki rekoru da World Athletics onayladı.\n\nSüreler sabit tempo varsayımıyla hesaplandı; parkur, rüzgar ve yorgunluk gerçek süreyi değiştirir.\n\nSenin hedef tempon kaç?\nYarış planın için kaydet.\n\nKaynak: Hibrit Portal hesaplaması rekorlar World Athletics\nGörsel: Pixabay\n\n#koşu #maraton #yarımaraton #koşutemposu #hibritportal",
-    "photos": [
-      "pixabay:1498233"
-    ],
-    "title": "Tempona göre bitiş süren ne olur?",
-    "kind": "bilgi",
-    "category": "kosu",
-    "eventName": "",
-    "srcUrl": "https://worldathletics.org/news/press-releases/ratified-world-records-sawe-ehammer-charlton-mcrae-yan-duplantis-assefa"
-  },
-  {
     "id": "murph-nedir",
     "publishAt": "2026-11-21T13:30",
     "urls": [

@@ -2538,6 +2538,24 @@
       "eventName": "New York City Maratonu",
       "at": "2026-11-20T15:28:17.328Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "manual:kosu-tempo-tablosu"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "pixabay:1498233"
+      ],
+      "media": "18139069093636876",
+      "permalink": "https://www.instagram.com/p/Df-HYzLkuzg/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kosu-tempo-tablosu/01.jpg",
+      "title": "Tempona göre bitiş süren ne olur?",
+      "headline": "Tempona göre bitiş süren ne olur?",
+      "eventName": "",
+      "at": "2026-11-20T16:45:39.813Z",
+      "manual": true
     }
   ],
   "daily": {
@@ -2634,7 +2652,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-20T15:44:45.404Z",
+  "lastRunAt": "2026-11-20T16:45:47.633Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

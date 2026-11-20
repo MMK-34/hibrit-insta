@@ -2501,6 +2501,25 @@
         "place": "Antalya/Demre"
       },
       "story": "18087551366710453"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "manual:utmb-2027-carsamba"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:utmb-2027-carsamba",
+        "event:utmb-2027-carsamba"
+      ],
+      "media": "17958829419289924",
+      "permalink": "https://www.instagram.com/p/Df9jOnqDc0z/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/utmb-2027-carsamba/01.jpg",
+      "title": "UTMB 2027'de çarşamba günü başlayacak",
+      "headline": "UTMB 2027'de çarşamba günü başlayacak",
+      "eventName": "UTMB Mont-Blanc 2027",
+      "at": "2026-11-20T11:29:40.855Z",
+      "manual": true
     }
   ],
   "daily": {

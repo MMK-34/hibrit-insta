@@ -1509,5 +1509,57 @@
         "note": "Kaynakta PRO ve OPEN kategorileri belirtilmiş olmasına rağmen postta bu kategoriler geçmemektedir."
       }
     ]
+  },
+  {
+    "at": "2026-11-20T06:49:02.072Z",
+    "title": "@olympos.games Instagram paylaşımı: Sponsorumuz: SSN Sports Style Nutrition.",
+    "url": "https://www.instagram.com/p/Df6-FR5gtAO/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "link benzeri ifade: \"olympos.games\" (alan adı/link yazma; nokta sonrası boşluk bırak)"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-20T06:51:00.657Z",
+    "title": "Gaziantep'te 8. Gazi Yarı Maratonu 22 Kasım'da koşulacak",
+    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNeV9YcUlhbnBVOXI0UzhILU5mVExZd0xSZE1MZHg3LVd3dXZ0LXZJdWFNWmlucTFfQXRVUURkTE95R05ScWE0OHQwVlhOSHFXdlFPdTk4bVpUWk96c0xtc2RkSTNBelVaSUc2MXJ2SGtNamhENFNSVkNjWjVVMVE1ZW5ESk5vNm1rZVpyRW5TazhJWlBTSTQ4X3E1S1FyUnRRX2JJNG5Zd0x3QkpPTmhjaXpxMXRqb3BzVUlBSA?oc=5",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-20T06:51:04.341Z",
+    "title": "The Hyrox fitness race will take place today through Sunday",
+    "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPaGlodmIwY1JVUW41VkhTLWJXYWVFLVpReE1RN2FYVEZVbURFSWlpVlFyWmstQVhQQkVXcjZqR2xDUV9pdkotaklnRzVveHVSV01TcmZmTFI4cFdBS1BYSkxJbmVCWmg4UFdfLW1SRHhqYzY1WVloOUJNX0JUWHNkNVFic1hJZVZwN1FxS0NpRG1UY1RDLWhZVVVvOWo4aTZqektoSmY4VVBKVFREVnZ3TEJHVUFkUUZXX1RkTFdUOEFibkNtT2x3TzQtczlKcnVjZzlNaw?oc=5",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-20T06:51:14.119Z",
+    "title": "Stephanie Case Just Ran 100 Miles in Antarctica. She Doesn’t Even Like the Cold.",
+    "url": "https://www.trailrunnermag.com/people/stephanie-case-ran-100-miles-in-antarctica/",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "alinti_yok",
+        "note": "Caption kısmında sporcunun kendi ağzından alıntı (tırnak içinde) yer alıyor."
+      }
+    ]
   }
 ]

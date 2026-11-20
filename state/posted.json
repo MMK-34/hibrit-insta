@@ -2294,6 +2294,104 @@
         "place": ""
       },
       "story": "18102072968551468"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "ig:18347224360272907"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMivAFBVV95cUxNeV9YcUlhbnBVOXI0UzhILU5mVExZd0xSZE1MZHg3LVd3dXZ0LXZJdWFNWmlucTFfQXRVUURkTE95R05ScWE0OHQwVlhOSHFXdlFPdTk4bVpUWk96c0xtc2RkSTNBelVaSUc2MXJ2SGtNamhENFNSVkNjWjVVMVE1ZW5ESk5vNm1rZVpyRW5TazhJWlBTSTQ4X3E1S1FyUnRRX2JJNG5Zd0x3QkpPTmhjaXpxMXRqb3BzVUlBSA"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPaGlodmIwY1JVUW41VkhTLWJXYWVFLVpReE1RN2FYVEZVbURFSWlpVlFyWmstQVhQQkVXcjZqR2xDUV9pdkotaklnRzVveHVSV01TcmZmTFI4cFdBS1BYSkxJbmVCWmg4UFdfLW1SRHhqYzY1WVloOUJNX0JUWHNkNVFic1hJZVZwN1FxS0NpRG1UY1RDLWhZVVVvOWo4aTZqektoSmY4VVBKVFREVnZ3TEJHVUFkUUZXX1RkTFdUOEFibkNtT2x3TzQtczlKcnVjZzlNaw"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://www.trailrunnermag.com/people/stephanie-case-ran-100-miles-in-antarctica/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "fu:leapmotorhyroxbarcelona:gecmis"
+      ],
+      "kind": "takip",
+      "photos": [
+        "local:hyrox-sled",
+        "local:hyrox-sled-2",
+        "local:sled-stadium",
+        "local:sled-water"
+      ],
+      "media": "18126636754897473",
+      "permalink": "https://www.instagram.com/p/Df9DxQZjnYx/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-20/mwomhuvg/01.jpg",
+      "title": "Leapmotor HYROX Barcelona: geçmiş edisyonlarda neler oldu?",
+      "headline": "Leapmotor HYROX Barcelona geçmişinde neler yaşandı?",
+      "eventName": "Leapmotor HYROX Barcelona",
+      "at": "2026-11-20T06:54:45.922Z",
+      "ig": "hyroxworld",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "HYROX BARCELONA",
+            "title": "Leapmotor HYROX Barcelona geçmişinde neler yaşandı?",
+            "subtitle": "Barselona'daki hibrit fitness yarışının geçmiş edisyonlarına yakından bakın."
+          },
+          {
+            "type": "text",
+            "kicker": "YARIŞ GEÇMİŞİ",
+            "title": "Barselona Edisyonları",
+            "body": "Leapmotor HYROX Barcelona, İspanya'da geniş katılımla düzenlenen büyük hibrit fitness organizasyonları arasında yer alıyor.",
+            "bullets": [
+              "Farklı seviyelerden binlerce sporcuyu bir araya getiriyor",
+              "İstasyon ve koşu parkuru aynı formatta uygulanıyor",
+              "Resmi sonuçlar organizatör sayfasında yayımlanıyor"
+            ]
+          },
+          {
+            "type": "text",
+            "kicker": "FORMAT BİLGİSİ",
+            "title": "Hibrit Yarış Düzeni",
+            "body": "Etkinlik gün boyunca farklı başlangıç dalgaları halinde gerçekleşiyor.",
+            "bullets": [
+              "Koşu ve fonksiyonel istasyonlar ardışık olarak yapılıyor",
+              "Zaman ölçümü çip sistemiyle profesyonel olarak tutuluyor",
+              "Bireysel ve çiftler olmak üzere ana formatlar uygulanıyor"
+            ]
+          },
+          {
+            "type": "end",
+            "kicker": "BİLGİ",
+            "title": "Sırada Hangi Yarış Var?",
+            "body": "Barselona'daki bu büyük buluşma, Akdeniz bölgesindeki sporcular için sezonun önemli duraklarından biri olma özelliği taşıyor.",
+            "bullets": [
+              "Sen bu yarışta hangi kategoride yer alırdın?"
+            ]
+          }
+        ],
+        "caption": "Leapmotor HYROX Barcelona, İspanya'daki dev organizasyonlarla takvimde yer alıyor.\n\nGeçmiş edisyonlarda binlerce sporcu koşu parkuru ve fonksiyonel istasyonlarda kürsü için mücadele etti.\n\nBirlikte yarışmak istediğin arkadaşına gönder.\n\nReklam / Tanıtım\n\nYarışın Instagram hesabı: @hyroxworld\n\nKaynak: HYROX\n\n#hyrox #hyroxturkiye #fonksiyonelantrenman #hibritportal",
+        "srcUrls": [
+          "https://hyrox.com"
+        ],
+        "eventName": "Leapmotor HYROX Barcelona",
+        "country": "İspanya",
+        "place": "Barselona"
+      },
+      "story": "17966537895213240"
     }
   ],
   "daily": {
@@ -2366,10 +2464,10 @@
       "summarySent": true
     },
     "2026-11-20": {
-      "drafts": 7,
-      "approved": 2,
-      "rejected": 5,
-      "aiCalls": 23
+      "drafts": 12,
+      "approved": 3,
+      "rejected": 9,
+      "aiCalls": 37
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2390,7 +2488,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-20T05:44:41.482Z",
+  "lastRunAt": "2026-11-20T06:44:41.244Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

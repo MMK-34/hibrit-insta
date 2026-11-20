@@ -2520,6 +2520,24 @@
       "eventName": "UTMB Mont-Blanc 2027",
       "at": "2026-11-20T11:29:40.855Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "manual:hamile-kosucu-yedi-major"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:hamile-kosucu-yedi-major"
+      ],
+      "media": "18143076034623811",
+      "permalink": "https://www.instagram.com/p/Df9-iWuDGyZ/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hamile-kosucu-yedi-major/01.jpg",
+      "title": "Hamile koşucu yedi maraton majorunu bir yılda tamamladı",
+      "headline": "Hamile koşucu yedi maraton majorunu bir yılda tamamladı",
+      "eventName": "New York City Maratonu",
+      "at": "2026-11-20T15:28:17.328Z",
+      "manual": true
     }
   ],
   "daily": {

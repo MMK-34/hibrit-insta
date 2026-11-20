@@ -2392,6 +2392,35 @@
         "place": "Barselona"
       },
       "story": "17966537895213240"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPTVFldE1NdXNHbGt4ZTlQcUVMT292UjFjdXFtV3BYbjl3TnVaN1pVbWZucktpWVNGaFhyWnRsbU9VLTZYMGswaWMyVjFwTXN4VGFPU2lfWUtHUVZZZEtkOC1YNDFFeDZMT3ljcXV0Z2g0cGZnN3M1S0dRQXZlckNpR201elh3SXhvYi1WblVSWkhadGxwQVlTYlEtQ2plQUZjTU1fWFpVbXA3VFBuWFFvN3B6Y3RuUEFoTnBSQ3puZEpuYTNfWXlRcEY2ZGxBQVRBMjlJaHdrUV9PRE9RcGlxVnBiRdIB6AFBVV95cUxPLXV6c3o1YkJIemNBbldJM1NTSjVobXhlbkZYQnhBYW5wVlNfU2d3Qi1VeUtBWE1hZG1UeGNqajlzSFRWTWQ5OHlMcUtSMW5FMXQ1RG9CT1FjWmo1ZDJ5VzRJMVRIaEYzdzNpRTdWcnR2NC1vY28xcXl3T2s2ajRBRHhyT3pjMHFXUVNkZ3UwdFZmSEZGdXdCNW9qb21BRHUxOEllOGVhNWRvaWdXMV83NmJDc2J2OEtCbjJKR0NNOEhfbWlOWWdkUjdPbHFpOVljUmpHNXVNOWc0QjlJMTZFUUJpUkpsR0Jf",
+        "https://news.google.com/rss/articles/CBMitwFBVV95cUxNeWU5Sjc0ZEN1Q1JIVUE3bGJfR0l4N1ZyUkVXczNJcUFITWJhUzBCbkx3S0d1aEVReWU0VWt2ZkpWWkE5MXJUSjFQbW8wdG5pVUNVbWswUEpXLVNCMmU1Q1M2TjZ1UnZPNHJyLWFhaDM3WmJmMkJLbGR4Tl9fNlE2eVplZjR0amZCcENWSFdpazJtaTdLc1UyZDdYaTdoYTVRaWFienBKcklwTzdpWXRGSXR4d2pqTWfSAbcBQVVfeXFMTXllOUo3NGRDdUNSSFVBN2xiX0dJeDdWclJFV3MzSXFBSE1iYVMwQm5Md0tHdWhFUXllNFVrdmZKVlpBOTFyVEoxUG1vMHRuaVVDVW1rMFBKVy1TQjJlNUNTNk42dVJ2TzRyci1hYWgzN1piZjJCS2xkeE5fXzZRNnlaZWY0dGpmQnBDVkhXaWsybWk3S3NVMmQ3WGk3aGE1UWlhYnpwSnJJcE83aVl0Rkl0eHdqak1n"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMizgFBVV95cUxPb1paZmR5NzdXNHRhZUpxSDRTdUNHVUFRUUJKVUpGb3RESW84TW9hb2ZfTEJMZDVfbDFoOGVybFppdXV1MEY1Z1g4T1RBZ0FZWk1fN1JZX3gzdF9xNlhKSnNOSkducmgwUTh0X3V1a1M0ME02YTRKSTRHSkFQbG1obDBaV1BOSHhIRmdXTnlKeG1rcDlNOVdtNzZhREx2MUloWXFsTGhPX09wSHBTbmw4aEF6SVpkU01icjF3WDhwSG1EeEtsRTNZQllyX05nQQ"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://taf.org.tr/edirne-hakem-kursu-sonuclari-12-15-kasim-2026/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMipwFBVV95cUxNUnFBQXBZaGpKdG9IN1hDSmV2Tm1uczBkTUNtVi1rR3g4VmowdDJCbWhnS25pdFhHdVBkY1JnZ0ZsRFV2Z2NId3VUSTVvNHROTThhNXQzWk9IUVRsUWxQRTgtR3JVdXVmemFUQUZsQWFLXzF5dWNLaFFvdVlwZTFtSzFCc2F2aWVNSVB4dy1rekRfenpvTjMwWlJKWVV3WGVINTZfUWlaRQ"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -2464,10 +2493,10 @@
       "summarySent": true
     },
     "2026-11-20": {
-      "drafts": 12,
+      "drafts": 17,
       "approved": 3,
-      "rejected": 9,
-      "aiCalls": 37
+      "rejected": 14,
+      "aiCalls": 46
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2488,7 +2517,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-20T06:44:41.244Z",
+  "lastRunAt": "2026-11-20T07:44:43.358Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

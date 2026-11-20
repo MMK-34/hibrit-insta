@@ -1561,5 +1561,70 @@
         "note": "Caption kısmında sporcunun kendi ağzından alıntı (tırnak içinde) yer alıyor."
       }
     ]
+  },
+  {
+    "at": "2026-11-20T07:49:46.782Z",
+    "title": "Four Guwahati athletes in their 50s complete Ironman 70.3 in Vietnam, bring laurels to Assam",
+    "url": "https://www.indiatodayne.in/assam/story/four-guwahati-athletes-in-their-50s-complete-ironman-703-in-vietnam-bring-laurels-to-assam-1477476-2026-11-19",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "metin çok uzun, kısalt (yarım cümle olmasın): slayt 1 body 251>240"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-20T07:49:57.952Z",
+    "title": "Strava Partners with HYROX as Global Community Platform, Launches Hybrid Racing as Newest Sport Type",
+    "url": "https://press.strava.com/articles/strava-partners-with-hyrox-as-global-community-platform-launches-hybrid-racing-as-newest-sport-type",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "alinti_yok",
+        "note": "Metinde Michael Martin'e ait bir alıntı yer almaktadır."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-20T07:50:02.200Z",
+    "title": "EDİRNE HAKEM KURSU SONUÇLARI / 12-15 KASIM 2026",
+    "url": "https://taf.org.tr/edirne-hakem-kursu-sonuclari-12-15-kasim-2026/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-20T07:50:05.284Z",
+    "title": "Hyrox to test elite athletes out of competition",
+    "url": "https://www.sgieurope.com/sporting-events/hyrox-to-test-elite-athletes-out-of-competition/124280.article",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-20T07:50:39.188Z",
+    "title": "Leapmotor HYROX Barcelona: geçmiş yıllarda çıkan antrenmanlar",
+    "url": "https://hyrox.com",
+    "kind": "bilgi",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

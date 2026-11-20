@@ -2254,6 +2254,46 @@
         "country": "",
         "place": ""
       }
+    },
+    {
+      "day": "2026-11-20",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNYVNuUXAwcnJpVHRObGd0d0lFYkdIVUl0UVZFSGdFVkUzQ0EzUUpmakpoNVBDYXc4cDY3eUFrQzZaQUtIM2Zjek8yRGVEemU4cVluSk02Umo0UFdQMU4tYWw5UGdDQV92emdBdVBoSDNEU3dnNDg1YnYwX2RfNXRmdUdwOEZCYW5MNS1UUkhfbDNONUVmX1lSUmMxbXl0bHJNVEtfQTFaTU1OaHJ2WVpvV21Uc1ZLUnRPbTZSQS1VR2l5NXEwcEFpZmd5Q1laRW9VNXc",
+        "https://news.google.com/rss/articles/CBMipgFBVV95cUxOVzhla1htMnZRRGE2RFZxdTF6NVFnM0hPc3Q4b1lDMmpEbFRMR1BOcERtUktHOGNtYVNQX05QcDJuUUhCM2lVb3NxX0o0cEw5N1BuaEIxVWZYNnEtb3ZDU245cUVnVEFqNldpVWYwcUlRN1JiSktSaVZadUZpbFU4N01JbW13M1dCUGZGZU5lcVZVc0kxNEtDRkpzTHpiOWNST2JKRVFR",
+        "https://news.google.com/rss/articles/CBMifEFVX3lxTFAyRjE1Y0JpSXNJaFhtQlRjdTBMYTNxcDFuRkNVMUphc1FEQ2w5TGJOS19Tc0hxeFFnNVRzQWFyRGEyS3FWUklnRi13UlFSclBDbXNxUG5Sb0w0WnNKYWtSMC1NMVhScGk4OXRUS0ZCOFZmNTlBVEgtWEdIazc"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:f51b928a7c7579d6"
+      ],
+      "media": "18144687676620914",
+      "permalink": "https://www.instagram.com/p/Df88aIslpVu/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-20/mwok7x7i/01.jpg",
+      "title": "Strava Partners with HYROX as Global Community Platform, Launches Hybrid Racing as Newest Sport Type",
+      "headline": "Strava'ya resmi hibrit yarış kategorisi eklendi",
+      "eventName": "HYROX",
+      "at": "2026-11-20T05:50:28.226Z",
+      "ig": "hyroxworld",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "HYROX",
+            "title": "Strava'ya resmi hibrit yarış kategorisi eklendi",
+            "subtitle": "Dünya genelindeki HYROX sporcuları artık antrenmanlarını ve yarışlarını platform üzerinden özel olarak kaydedebilecek."
+          }
+        ],
+        "caption": "Strava, HYROX ile yaptığı iki yıllık iş birliğiyle hibrit yarışları resmi spor türü olarak platformuna ekledi. Artık antrenmanlarınızda sled push, wall ball ve burpee broad jump gibi hareketleri doğrudan kaydedebilir, yarış hazırlıklarınızı tek bir merkezden takip edebilirsiniz. Yakında eklenecek özelliklerle yarış keşfi ve resmi derece paylaşımı da mümkün olacak. Siz antrenmanlarınızı Strava'da takip ediyor musunuz? Yarış planın için kaydet.\n\nYarışın Instagram hesabı: @hyroxworld\n\nKaynak: Strava\nGörsel: circle21 resmî kayıt\n\n#hyrox #hyroxturkiye #strava #hibritfitness #antrenman #hibritportal",
+        "srcUrls": [
+          "https://press.strava.com/ja/articles/strava-partners-with-hyrox-as-global-community-platform-launches-hybrid-racing-as-newest-sport-type",
+          "https://athletechnews.com/strava-adds-hyrox-hybrid-racing-in-latest-validation-for-competitive-fitness/",
+          "https://sustainhealth.fit/lifestyle/strava-hyrox-hybrid-racing-tracking/"
+        ],
+        "eventName": "HYROX",
+        "country": "",
+        "place": ""
+      },
+      "story": "18102072968551468"
     }
   ],
   "daily": {
@@ -2326,10 +2366,10 @@
       "summarySent": true
     },
     "2026-11-20": {
-      "drafts": 6,
-      "approved": 1,
+      "drafts": 7,
+      "approved": 2,
       "rejected": 5,
-      "aiCalls": 17
+      "aiCalls": 23
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2350,7 +2390,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-20T04:44:44.181Z",
+  "lastRunAt": "2026-11-20T05:44:41.482Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

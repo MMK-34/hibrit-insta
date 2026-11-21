@@ -1703,5 +1703,36 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-21T08:46:49.465Z",
+    "title": "Alman devi Bursa'ya geliyor! Bursaspor ile kritik zirve sonrası maç izleyecekler...",
+    "url": "https://www.bursadabugun.com/haber/alman-devi-bursa-ya-geliyor-bursaspor-ile-kritik-zirve-sonrasi-mac-izleyecekler-1965009.html",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-21T08:48:38.549Z",
+    "title": "Watch Track & Field",
+    "url": "https://www.flotrack.org/watch",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kaynak_satiri",
+        "note": "Postta kaynak olarak FloTrack gösterilmiş ancak haberin asıl kaynağı Daily Sabah (Associated Press) içeriğidir."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak_satiri",
+        "note": "Postta kaynak olarak FloTrack gösterilmiş ancak verilen FloTrack linkinde bu haber yer almıyor; haber Daily Sabah'ta mevcut."
+      }
+    ]
   }
 ]

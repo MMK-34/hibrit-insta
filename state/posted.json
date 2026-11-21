@@ -2785,6 +2785,61 @@
         "place": "Gaziantep"
       },
       "story": "18094080821242524"
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQb3NWS3NLb3BwTmFpZTVZRV9aN2lIbjgyLVVRN2dPOC1HS0xOREhheUgtLXhSSDFsZ0h0SWxjXzBXVExuU0hoNXprMzl1eHZXQl9TSUJTSVZyVlRqczBvRFRiZjJnS1dEZzVRTjFBOU5yUHVZSFhhYWdxWF9wckQ0VExfNE1iVDZ5TlJiY3p6ZzhvN3ZUSlFuaTBHQ0pKVnROZXZZdUszdDEtdTdObHBoU09rT1h1OHg0QnlUbXdNMlE4aEN4MlVSaUN3Rm1QNUpGVHZLNGRJLVFQQQ",
+        "https://news.google.com/rss/articles/CBMixgFBVV95cUxQaFlha1pnbTZYb2NsekZOTUkyajJNYmMycU45MXZWV3VsaDZSYlNScTNRWGFTejFzN194VzhFYnZrcHd1N3A3b19EWld1T0VIQ2JFZnRFb2YzRldQSlp1QndvdjFOV3BlOWlPT0Z5OGYtbEliMzF2LXh3eUk4cGY0YlZyZFpRLWE5VkQxQlUtNXJBRVJ6eHRYUjU0M1huVW9wY1VFV3BOdkZpRGthN0xiQU9TTzRUV2tDNkRKSGl4cWRycERjVnfSAcgBQVVfeXFMT3Q0amttd25Ga3RGT2FzbWdGU2FnYy13MmJmNEFELURrQk91RXlfRXlDOUZXd3pOX3ExRTBEX2U4YlhlZVdyLXNhOUZXREdvV1YyR1lnbURFQ091R0QwMDhjb3VWM1B3cGhPeXdiNFlRTGNaako2SjhQNUZTbmlXRUJWamlGVmloblNlenZYWXU3Sm9VVWZUMGVReXV4QlFPRkgyYlBkSDBMd3Jlem1GeENJQTYzbFZINVRISHpFTkp1dzg0SHJMS1c"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiREFVX3lxTFBlVzMzR1N1QjlmV0tFbnNtM3Z1ZkNraEpyemloSjd0LVRfU05HSkFHcm54LU13T01TTmozWGRZd1V0bVkt",
+        "https://news.google.com/rss/articles/CBMipAFBVV95cUxPUEdHRjVLR3pNWnZnc3kwNVVFUWxsWXpuTUFaWkM3QllLaTVLUmRLMTlnR0JzVW1CSHpvMUdtaGNCQ0RxSG1RNldhb0R0a0xDSk1CSHJiSi1YNDczUk5qSkx5S29aSFo2cmlLVmRTSU1tclRwY3VrR1BJNWZSeHhLTWREckVFUldVLV9nbnRSVGFWQll1aWNpbmhxay0zTjJtaElrUdIBpAFBVV95cUxPUEdHRjVLR3pNWnZnc3kwNVVFUWxsWXpuTUFaWkM3QllLaTVLUmRLMTlnR0JzVW1CSHpvMUdtaGNCQ0RxSG1RNldhb0R0a0xDSk1CSHJiSi1YNDczUk5qSkx5S29aSFo2cmlLVmRTSU1tclRwY3VrR1BJNWZSeHhLTWREckVFUldVLV9nbnRSVGFWQll1aWNpbmhxay0zTjJtaElrUQ"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMikAFBVV95cUxNc0lKR1JPUTExeF9OTU5KVUZ4bi1tRlhodlZmRUtId1RVVC1BLWQ1UWlRczRoUzRGODdkc2VvMzBTbUZMX3pGZEtEYl9hbE9hZEdJTEpEZXJoZDZiZzR4cVdtOXdLQm15eWM4MzdNbVZfbjZBODQxLURLNGdhcmRzRWVvZFVMcllCMmxRM3pURVHSAZABQVVfeXFMTXNJSkdST1ExMXhfTk1OSlVGeG4tbUZYaHZWZkVLSHdUVVQtQS1kNVFpUXM0aFM0Rjg3ZHNlbzMwU21GTF96RmRLRGJfYWxPYWRHSUxKRGVyaGQ2Ymc0eHFXbTl3S0JteXljODM3TW1WX242QTg0MS1ESzRnYXJkc0Vlb2RVTHJZQjJsUTN6VEVR",
+        "https://news.google.com/rss/articles/CBMioAFBVV95cUxQM3p1RVU5SnpmMlFjc0JuYl9oQWJIQkFSdlJyTjBpd01mTk5nYWc2MmxHRzdmTGdjLVE1NVVQaWV3SmFFQ3Rxbkd3V0h0Rmtic0gwdHQwM2htVUEwUklmc2QwUTlWU2g2ZmlCdTRraVRDVFo2RElMTjE5OUxKZzBJSDNsMWlKOFVMeHNiR3dhRzQwM1NvQmQ5aFdpX3M0TjI3",
+        "https://news.google.com/rss/articles/CBMitAFBVV95cUxPQXZRc1NDOEI3UFZWYjNQSTI0SHMzYXNGS2dhTTZza2FVaFl3NlFkajduQzdLN0tCaEtHSUNOLS1KSEMtWktaTGpyT2tNX3FiWlJoWFZFb1hPcHlNQk9jYnc3eFNhTG5NQzVOSnRYWUZDVzloWDYyLTdtc0R2YmszNnBuRWE0N0dObFVTMFVUNVdhV1Q3WkhPdWxXTGJEM01FTW9sSnB4OVVVLTJTRHRFeXM5ZXE"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "local:run-start"
+      ],
+      "media": "18377243329246051",
+      "permalink": "https://www.instagram.com/p/Df_2K3CAAdC/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-21/mwq671my/01.jpg",
+      "title": "8. Gazi Yarı Maratonu’nda 1816 Sporcu Koşacak",
+      "headline": "8. Gazi Yarı Maratonu kayıtları devam ediyor",
+      "eventName": "Gazi Yarı Maratonu",
+      "at": "2026-11-21T08:53:39.504Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "YARIŞ DUYURUSU",
+            "title": "8. Gazi Yarı Maratonu kayıtları devam ediyor",
+            "subtitle": "Gaziantep'te gerçekleşecek yarışta 1.816 sporcu parkura çıkmaya hazırlanıyor."
+          }
+        ],
+        "caption": "8. Gazi Yarı Maratonu'nda 1.816 sporcu koşacak. Gaziantep'te düzenlenecek organizasyon için kayıt süreci devam ediyor. Şehrin önemli spor etkinliklerinden biri olan yarı maraton, her seviyeden koşucuyu bir araya getiriyor. Siz de bu maratonda yerinizi aldınız mı? Birlikte yarışmak istediğin arkadaşına gönder.\n\nReklam / Tanıtım\n\nKaynak: Haber 342\n\n#koşu #maraton #yarımaraton #running #runningturkey #gaziantep #hibritportal",
+        "srcUrls": [
+          "https://www.haber342.com/amp/haber/29188578/8-gazi-yari-maratonunda-1816-sporcu-kosacak",
+          "https://www.denizlihaber.com/guncel/denizlinin-triatlon-sampiyonlarindan-suleyman-erdogana-ziyaret/",
+          "https://www.everydayhealth.com/mental-health-conditions/strength-training-may-be-powerful-tool-to-beat-depression/"
+        ],
+        "eventName": "Gazi Yarı Maratonu",
+        "country": "Türkiye",
+        "place": "Gaziantep"
+      },
+      "story": "18112475909369000"
     }
   ],
   "daily": {
@@ -2864,10 +2919,10 @@
       "summarySent": true
     },
     "2026-11-21": {
-      "drafts": 12,
-      "approved": 9,
-      "rejected": 2,
-      "aiCalls": 56
+      "drafts": 16,
+      "approved": 10,
+      "rejected": 4,
+      "aiCalls": 68
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2888,10 +2943,10 @@
       "media": "18149320591528951"
     },
     "sehir:2026-W47": {
-      "tries": 1
+      "tries": 2
     }
   },
-  "lastRunAt": "2026-11-21T07:44:46.550Z",
+  "lastRunAt": "2026-11-21T08:44:39.831Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

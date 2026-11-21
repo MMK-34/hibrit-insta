@@ -2659,6 +2659,43 @@
         "place": "Chamonix"
       },
       "story": "18095374019369463"
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMimAFBVV95cUxOcm1qLV9vSUpIS3VRMEExOE1CYnIyTnFSWVVNZzlRYlJSNFNBWU1FU1lVOF94RzVyWVBfRW1wa1FJaWhjS2RVSWFyejVFVGJZYXotRFBSbUhuX2Z0T3hQWS1JeUVYT1haYW0yN1pLSWhuWFo0bjBpa05mMXFCQ2RwRDdjTGRHYkJ1WDZPV2lteXBVZFc5dzROMdIBngFBVV95cUxON19HWW8yU3o1ci1QZkZySHp5Yl8teXJPSjhYNHhWTkg3S05UaEdrYWNDOW1CWTlYdGFnUk1yTlVHN0VNQVNTUVo0SlZVdlVrYVNua2h5M2E4aEZTYkpLMXhYU1FEcmVwbWxaYk1jWjNlcU1QOTM2UE41NlhpY0s5TVJWaGpVQjNFdEFMa0VDdVowU09HUE1jN3cwbmo1QQ"
+      ],
+      "kind": "hikaye",
+      "photos": [
+        "event:f359a92c60bf7062"
+      ],
+      "media": "18036516491674210",
+      "permalink": "https://www.instagram.com/p/Df_hG0gFOII/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-21/mwpzm826/01.jpg",
+      "title": "This marathoner ran 7 races this year. Doing them pregnant was not part of the plan - ABC News",
+      "headline": "Deirdre Keane 7 Dünya Maraton Serisi'ni hamileyken tamamladı",
+      "eventName": "World Marathon Majors",
+      "at": "2026-11-21T05:49:35.125Z",
+      "ig": "wmmajors",
+      "athlete": "Deirdre Keane",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "HİKAYE",
+            "title": "Deirdre Keane 7 Dünya Maraton Serisi'ni hamileyken tamamladı",
+            "subtitle": "38 yaşındaki sporcu, 34 haftalık hamileyken New York City Maratonu'nu bitirerek hedefine ulaştı."
+          }
+        ],
+        "caption": "Deirdre Keane, 2026 yılında yedi Dünya Maraton Serisi yarışını hamilelik sürecinde tamamladı. 38 yaşındaki sporcu, New York City Maratonu'nu 34 haftalık hamileyken 4:06.55 sürede bitirerek yıllık hedefini gerçekleştirdi. Doktor onayıyla antrenmanlarına devam eden Keane, hamileliği boyunca fiziksel sınırlarını gözlemleyerek yarışlarını sürdürdü. Sizin ilk yarışınız hangisiydi? Yorumlara yazın.\n\nReklam / Tanıtım\n\nYarışın Instagram hesabı: @wmmajors\n\nKaynak: ABC News - Breaking News, Latest News and Videos\nGörsel: abcnews.com\n\n#maraton #dünyamaratonserisi #koşu #running #worldmarathonmajors #hibritportal",
+        "srcUrls": [
+          "https://abcnews.com/Sports/wireStory/marathoner-ran-7-races-year-pregnant-part-plan-138282293"
+        ],
+        "eventName": "World Marathon Majors",
+        "country": "ABD",
+        "place": "New York"
+      },
+      "story": "18119813126329841"
     }
   ],
   "daily": {
@@ -2738,10 +2775,10 @@
       "summarySent": true
     },
     "2026-11-21": {
-      "drafts": 5,
-      "approved": 4,
+      "drafts": 8,
+      "approved": 7,
       "rejected": 1,
-      "aiCalls": 24
+      "aiCalls": 41
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2762,7 +2799,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-21T04:44:44.483Z",
+  "lastRunAt": "2026-11-21T05:44:40.932Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

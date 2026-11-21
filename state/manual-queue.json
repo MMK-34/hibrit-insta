@@ -83,5 +83,26 @@
     "category": "kosu",
     "eventName": "",
     "srcUrl": ""
+  },
+  {
+    "id": "abd-kosarak-gecme-rekoru-2026",
+    "publishAt": "2026-11-21T08:25",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/abd-kosarak-gecme-rekoru-2026/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/abd-kosarak-gecme-rekoru-2026/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/abd-kosarak-gecme-rekoru-2026/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/abd-kosarak-gecme-rekoru-2026/04.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/abd-kosarak-gecme-rekoru-2026-story/story.jpg",
+    "caption": "ABD'yi baştan başa koşma rekoru kırıldı.\n\niRunFar'ın haberine göre 35 yaşındaki ABD'li Cameron Balser, San Francisco'dan New York'a uzanan 4.935 kilometrelik rotayı 41 gün 16 saat 45 dakikada tamamladı. New York Belediye Binası'na 20 Kasım 2026 gecesi yerel saatle 23.45'te ulaştı.\n\nTrans America Run nedir? ABD'nin batı kıyısındaki San Francisco Belediye Binası'ndan doğu kıyısındaki New York Belediye Binası'na koşulan rota. Belirli bir parkuru yok; rekor bu iki nokta arasındaki süreyle ölçülüyor.\n\nBalser 10 Ekim'de yola çıktı. 2016'da kırılan 42 gün 6 saat 30 dakikalık önceki rekoru 13 saat 45 dakika geçti. Günde 15-16 saat koştu, günlük ortalaması 73,61 mil, yani yaklaşık 118 kilometre oldu. Koşuyu beş millik bölümlere ayırdı ve her ekip durağında yaklaşık 800 kalori aldı.\n\nColorado'da kış koşulları planı zorladı; rotanın en yüksek noktasında kar vardı. Son gece George Washington Köprüsü'nden itibaren son 11 milde onlarca koşucu ona eşlik etti.\n\nGünde 118 kilometreyi kaç gün sürdürebilirdin?\n\nBirlikte yarışmak istediğin arkadaşına gönder.\n\nKaynak: iRunFar\nGörsel: irunfar.com / Alessandro Portante\n\n#ultrakosu #ultramaraton #transamericarun #rekor #kosu #kosucu #hibritportal",
+    "photos": [
+      "event:abd-kosarak-gecme-rekoru-2026",
+      "event:abd-kosarak-gecme-rekoru-2026"
+    ],
+    "title": "ABD'yi baştan başa koşma rekoru kırıldı",
+    "kind": "haber",
+    "category": "kosu",
+    "eventName": "Trans America Run",
+    "srcUrl": "https://www.irunfar.com/cameron-balser-trans-america-run-speed-record-breaking-42-2026"
   }
 ]

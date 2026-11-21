@@ -2740,6 +2740,51 @@
         "place": "Mossel Bay"
       },
       "story": "18007585058796603"
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMipgFBVV95cUxPTG1LM2sxc0VNX0w1U0dRMjRkR3plY0QwSXpWdUNBLVdvSzc1VzRiZzZ5TmJxVWV3a3NPc1l1d1pELW8xTGlvVHp5bnRQOWwyQ0FrTHFPakJ5bnVBY3pTSHh5NEV3QjdrRTZSa0FTZl96Y0l5S01ZQ2p1aDVvcVRJN05ZeGdhWlpkOEVxOHZLejR5Q3BQaWVMV2RxcFh1NE9rU2kzVFdB",
+        "https://news.google.com/rss/articles/CBMihgFBVV95cUxQeWpNN3ZlM3phVDZtd0dCcEtVTXNUd3loazJmNHY4Y1FwdlFHRGkybFBxMjRvbnlpeG9qck5WVkN5UTE5N2ZuRXJKZXk0RVpzN3FwOTJPaG9fOXVaU0JBeVNpdHFRRHI3cUY3dzlRTDZ0Y2FNTW93UzdUWE14RVhRZ2dGZE01d9IBiwFBVV95cUxQRTZIZ2tWdGs3c3JsQ0FiQVU4NGRZclJSeDZVV09JcVFRc1dqOHJsamZzMkluY0prYXp3a3ZkeG1zc1lZSTJsSGRkLUl0V0pwc3Q3dF9lZHZDdUtTZGZsM0tOQVJBRk5HeHNYejBVN0Y2WWlvTnhKVS1JanYxV0IwU2lROVd4dU1QRHRV",
+        "https://news.google.com/rss/articles/CBMihgFBVV95cUxPZF9qVkNBWk5PTUF2UUh0dlR5OWlRLWsyRmdiSzR6VUtLb29ySWh6X01zNWoxaHJYcWJUMzVIQmxzNTNzUHlDc0NtNmlfSmwwTVhVLUpadEhDRVN2OWI0TE5OQjktTXdkdXhhYnQ1Z2hvUE1KMUtOVlVLUGVZREtXSjBMT1l5UdIBhgFBVV95cUxPZF9qVkNBWk5PTUF2UUh0dlR5OWlRLWsyRmdiSzR6VUtLb29ySWh6X01zNWoxaHJYcWJUMzVIQmxzNTNzUHlDc0NtNmlfSmwwTVhVLUpadEhDRVN2OWI0TE5OQjktTXdkdXhhYnQ1Z2hvUE1KMUtOVlVLUGVZREtXSjBMT1l5UQ"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:14d7ea0994c9483d"
+      ],
+      "media": "17954062938053404",
+      "permalink": "https://www.instagram.com/p/Df_usvxki3e/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-21/mwq3vesr/01.jpg",
+      "title": "Gazi Yarı Maratonu Yol Koşusu için bu yollar kapalı olacak",
+      "headline": "8. Gazi Yarı Maratonu 22 Kasım'da koşulacak",
+      "eventName": "Gazi Yarı Maratonu",
+      "at": "2026-11-21T07:48:26.598Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "GAZİ YARI MARATONU",
+            "title": "8. Gazi Yarı Maratonu 22 Kasım'da koşulacak",
+            "subtitle": "Gaziantep'in kurtuluşunun 105. yılı anısına düzenlenen yarışta 21K ve 10K parkurları yer alıyor.",
+            "bullets": [
+              "22 Kasım Pazar günü saat 09.30'da start alacak.",
+              "Yarış Gaziantep Büyükşehir Belediyesi önünden başlayacak.",
+              "Program kapsamında 21 Kasım Cumartesi günü Çocuk Maratonu yapılacak.",
+              "10K koşusu saat 09.45'te, halk yürüyüşü ise 10.00'da başlayacak."
+            ]
+          }
+        ],
+        "caption": "8. Gazi Yarı Maratonu 22 Kasım'da Gaziantep'te koşulacak. Gaziantep Büyükşehir Belediyesi ve Türkiye Atletizm Federasyonu iş birliğiyle düzenlenen organizasyon, şehrin düşman işgalinden kurtuluşunun 105. yılına özel gerçekleştiriliyor. 21K ve 10K parkurlarının yanı sıra halk yürüyüşü ve çocuk koşusu da programda yer alıyor. Yarış planın için kaydet.\n\nKaynak: Gazikent27\nGörsel: mudanyagazetesi.com\n\n#gaziyarımaratonu #koşu #yarımaraton #gaziantep #running #runningturkey #hibritportal",
+        "srcUrls": [
+          "https://www.gazikent27.com/haber/gazi-yari-maratonu-yol-kosusu-icin-bu-yollar-kapali-olacak-127469.html",
+          "https://www.newsnationnow.com/us-news/sports/new-york-woman-marathons-pregnant/",
+          "https://mudanyagazetesi.com/spor/gaziantepte-8-gazi-yari-maratonu-basliyor/amp/"
+        ],
+        "eventName": "Gazi Yarı Maratonu",
+        "country": "Türkiye",
+        "place": "Gaziantep"
+      },
+      "story": "18094080821242524"
     }
   ],
   "daily": {
@@ -2819,10 +2864,10 @@
       "summarySent": true
     },
     "2026-11-21": {
-      "drafts": 10,
-      "approved": 8,
+      "drafts": 12,
+      "approved": 9,
       "rejected": 2,
-      "aiCalls": 49
+      "aiCalls": 56
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2841,9 +2886,12 @@
       "tries": 1,
       "done": true,
       "media": "18149320591528951"
+    },
+    "sehir:2026-W47": {
+      "tries": 1
     }
   },
-  "lastRunAt": "2026-11-21T06:44:41.039Z",
+  "lastRunAt": "2026-11-21T07:44:46.550Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

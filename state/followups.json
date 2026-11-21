@@ -183,5 +183,25 @@
     "createdDay": "2026-11-21",
     "due": "2026-11-30",
     "status": "bekliyor"
+  },
+  {
+    "key": "tiranathrowdown",
+    "type": "gecmis",
+    "eventName": "Tirana Throwdown",
+    "officialSite": "",
+    "category": "crossfit",
+    "createdDay": "2026-11-21",
+    "due": "2026-11-25",
+    "status": "bekliyor"
+  },
+  {
+    "key": "tiranathrowdown",
+    "type": "wodlar",
+    "eventName": "Tirana Throwdown",
+    "officialSite": "",
+    "category": "crossfit",
+    "createdDay": "2026-11-21",
+    "due": "2026-11-30",
+    "status": "bekliyor"
   }
 ]

@@ -1734,5 +1734,18 @@
         "note": "Postta kaynak olarak FloTrack gösterilmiş ancak verilen FloTrack linkinde bu haber yer almıyor; haber Daily Sabah'ta mevcut."
       }
     ]
+  },
+  {
+    "at": "2026-11-21T09:48:28.078Z",
+    "title": "8. Gazi Yarı Maratonu Yarın Başlıyor",
+    "url": "https://www.gaziantepdogus.com/8-gazi-yari-maratonu-yarin-basliyor",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

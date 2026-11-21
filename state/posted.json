@@ -2840,6 +2840,55 @@
         "place": "Gaziantep"
       },
       "story": "18112475909369000"
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMidEFVX3lxTFBVX2pKVVU3YnJIR0ZEeDljakpOLUwzaU1ZMzRVeTExbXpaNHZYdFZ5azJkZUpRWmduTmRIU3dSMXEtVFdMYVpMZ1hIaU5qZDA0aUVsSTUzMW0tdTVlVVJWS2xSbl9OM0lQaUUzTzluemFDVV9f",
+        "https://news.google.com/rss/articles/CBMihAFBVV95cUxOSFRKNnNTbHJmY0F0SjRZV01DMDl2VlR3ZllvT2I4NnV3aGZBNlk1Zll5UkFlMVpOcTVBRTRrWnY2UkVJek81OUExQ1VzOHlrOTc4ZjlPenpmMXNjaVIxbVAzamg5QWRhc3pRVTAwX0dwU09fbW9paTF6Z3NoelIwc3NOS3M",
+        "https://news.google.com/rss/articles/CBMinAFBVV95cUxOVEFmbnVnOUJVN2NxdzlRVnpzZDJ6Rjd0TkFNMUt5amdYNmRZbk9NczVSSENUNTBGOU80aUktZUNZMzdmdGJ0cHp4LVl2NVFsT3BWd1pFZDU0alRGZXRia3duVE0yaEZPdnJPQTNyR2NzWjFZRXcyRTNSc2c2NG5ienpRcENZa25VV3U3OG1yNFYtak85cjlncE5icVM"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "ig:18118665581018508",
+        "ig:18185503960428833",
+        "ig:18100193297428100"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "local:comp-overhead"
+      ],
+      "media": "17943889317392056",
+      "permalink": "https://www.instagram.com/p/Df_9GoKkYpD/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-21/mwq8ckeo/01.jpg",
+      "title": "@tiranathrowdown Instagram paylaşımı: Remember when you said “next year”? Well, registration just opened.",
+      "headline": "Tirana Throwdown 2027 ön elemeleri için kayıtlar açıldı",
+      "eventName": "Tirana Throwdown",
+      "at": "2026-11-21T09:54:16.806Z",
+      "ig": "tiranathrowdown",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "TIRANA THROWDOWN 2027",
+            "title": "Tirana Throwdown 2027 ön elemeleri için kayıtlar açıldı",
+            "subtitle": "Ön eleme kayıt dönemi 20-22 Kasım tarihlerinde gerçekleştiriliyor."
+          }
+        ],
+        "caption": "Tirana Throwdown 2027 ön elemeleri için kayıtlar açıldı.\n\nÖn eleme kayıt dönemi 20-22 Kasım tarihlerinde yapılıyor.\n\nBireysel ve takım katılım seçenekleriyle düzenlenen organizasyonun ön elemelerine resmi Instagram hesaplarındaki bağlantı üzerinden kayıt olabilirsiniz. Hazırlıklarınıza hemen başlayın.\n\nTirana Throwdown 2027'de birlikte yarışmak istediğin arkadaşına gönder.\n\nReklam / Tanıtım\n\nYarışın Instagram hesabı: @tiranathrowdown\n\nKaynak: tiranathrowdown Instagram\n\n#tiranathrowdown #crossfit #fonksiyonelantrenman #hibritportal",
+        "srcUrls": [
+          "https://www.instagram.com/p/Df964keMvtC/",
+          "https://www.instagram.com/reel/Df9zCqSM7gf/",
+          "https://www.instagram.com/p/Df7MBIIscPA/"
+        ],
+        "eventName": "Tirana Throwdown",
+        "country": "Arnavutluk",
+        "place": "Tiran"
+      },
+      "story": "17961357618267468"
     }
   ],
   "daily": {
@@ -2919,10 +2968,10 @@
       "summarySent": true
     },
     "2026-11-21": {
-      "drafts": 16,
-      "approved": 10,
-      "rejected": 4,
-      "aiCalls": 68
+      "drafts": 18,
+      "approved": 11,
+      "rejected": 5,
+      "aiCalls": 76
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2946,7 +2995,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-21T08:44:39.831Z",
+  "lastRunAt": "2026-11-21T09:44:43.014Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

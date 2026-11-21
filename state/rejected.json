@@ -1747,5 +1747,31 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-21T10:47:34.146Z",
+    "title": "Gazi Yarı Maratonu İçin Geri Sayım Başladı",
+    "url": "https://www.gaziantepdogus.com/gazi-yari-maratonu-icin-geri-sayim-basladi",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-21T10:47:58.531Z",
+    "title": "9. Aroma Akseki Dağ Koşusu",
+    "url": "https://m.haber7.com/spor/haber/1981208-9-aroma-akseki-dag-kosusu",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

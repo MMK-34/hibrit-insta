@@ -2889,6 +2889,38 @@
         "place": "Tiran"
       },
       "story": "17961357618267468"
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "manual:murph-nedir"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "pixabay:5914642"
+      ],
+      "media": "17901479490399075",
+      "permalink": "https://www.instagram.com/p/DgAC9Anl2lF/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/murph-nedir/01.jpg",
+      "title": "Murph nedir?",
+      "headline": "Murph nedir?",
+      "eventName": "",
+      "at": "2026-11-21T10:45:24.325Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMifkFVX3lxTE1HLUtKdUZQQ3dtOFBKTUk3Wm1ET1VCN0pEWklyNHVvc0YzamQwajJ2VTZyRDktWGZIX3pvdUJGcWZfNmFkbG1ESThJSnZzVGRGT3RCMk9VcHF2dXFRaGY0TGpuaWRvcGhVT09hSFJ0Nkk5R0U5cXZfSERBOExfQQ"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMic0FVX3lxTE1ZZUpNOElKRm11ZFpTUlZhOVdVYjh6RDE0cElZVzdSX2dXZm1qRGxSV3o2VGFLMzZ2RVZlTGNtZVJYZmJrUmRWVGFCTGt5UDFyMEUyeXpPdUNDUHE3TndDZ3FsX211bjdNU1Z4amFOMk94M0E"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -2968,10 +3000,10 @@
       "summarySent": true
     },
     "2026-11-21": {
-      "drafts": 18,
+      "drafts": 20,
       "approved": 11,
-      "rejected": 5,
-      "aiCalls": 76
+      "rejected": 7,
+      "aiCalls": 79
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2995,7 +3027,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-21T09:44:43.014Z",
+  "lastRunAt": "2026-11-21T10:45:36.445Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

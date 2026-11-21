@@ -2598,6 +2598,67 @@
         "country": "Vietnam",
         "place": "Phu Quoc"
       }
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "manual:abd-kosarak-gecme-rekoru-2026"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:abd-kosarak-gecme-rekoru-2026",
+        "event:abd-kosarak-gecme-rekoru-2026"
+      ],
+      "media": "18649733608039638",
+      "permalink": "https://www.instagram.com/p/Df_enFYF03q/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/abd-kosarak-gecme-rekoru-2026/01.jpg",
+      "title": "ABD'yi baştan başa koşma rekoru kırıldı",
+      "headline": "ABD'yi baştan başa koşma rekoru kırıldı",
+      "eventName": "Trans America Run",
+      "at": "2026-11-21T05:27:50.476Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiigFBVV95cUxOVmVzMENUTVowdkJiOWJWdVhha2ZvdG44UlA3UXNBc2FJMmF4SE5ZYnJ3MUxjMEdJUjNYbF9HckpZaEd2enJ4RDV3ckNPWWNlTXM0dVZsT3IzYThIOVlicnFBR2pKaC1WQTZiR0w5bmNkem51a2VCYkZVcE04TVM4bUMxR3BJZ09vTGc",
+        "https://news.google.com/rss/articles/CBMiigFBVV95cUxQWDk3aGUxQnJXYU9ZLXNTYnkxMkt3elh2Y1BaSkRZd01RckRwR1VwMzcxa1ZwNm9QZWl5SzdlS3J2UUQwajE1X1pITE5jd3NId1JlUTR0VDZLSW9FUXg3NlRJREo5Z2FNMVEyWHhzMFJlV3BqVWhuVldPNjJCS2Y3Vk9va1RGeElyUnc",
+        "https://news.google.com/rss/articles/CBMilAFBVV95cUxOZXRMTG55cjBMb0JON2haZDFKc2JmdUd5YW9jYzdQeXhRekFkSVRfU3BlUi01WVlBQnFkbGc4T3p5ZDljcEpITnRFLVlHX3hxR3FZZEJ2TVhENmxQc2NGUkZhZE1IcTN2S201N0ZtQmQ1TkVzRzBSd0xKa0ktdjVSMjl6WmlrbnZxNS1LM3ZwSFlYQ2NjeVhN",
+        "https://news.google.com/rss/articles/CBMiakFVX3lxTFBNdGl2OXVDRVNYY05PRzN1MGZUdTJ2eVoyY0ZQSGRJR2JCTDdlZFZmN2hhdE45RmtsOTk4UGo5elpFTlJuV1FrYWVYczQ3cl9GRHBvSmRnYWJzQVZ1TmpuQmpEcHJpbHVNUHc",
+        "https://www.trailrunnermag.com/people/news/2027-utmb-world-series-finals-schedule/"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:395754fe203c38e5"
+      ],
+      "media": "17964250227230225",
+      "permalink": "https://www.instagram.com/p/Df_fsTOjTgt/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-21/mwpz6w8k/01.jpg",
+      "title": "UTMB moves to Wednesday in 2027 as cycling World Championships come to Haute-Savoie",
+      "headline": "UTMB 2027'de çarşamba günü başlayacak",
+      "eventName": "Ultra-Trail du Mont-Blanc",
+      "at": "2026-11-21T05:37:16.015Z",
+      "ig": "utmbmontblanc",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "ULTRA-TRAIL DU MONT-BLANC",
+            "title": "UTMB 2027'de çarşamba günü başlayacak",
+            "subtitle": "Fransa'daki Bisiklet Dünya Şampiyonası ile takvim çakışması nedeniyle yarış programı bir gün öne çekildi."
+          }
+        ],
+        "caption": "Ultra-Trail du Mont-Blanc 2027'de çarşamba günü başlayacak. Fransa'nın Haute-Savoie bölgesinde düzenlenecek UCI Bisiklet Dünya Şampiyonası ile takvim çakışmasını önlemek adına yarış programı bir gün öne alındı. 22-28 Ağustos 2027 tarihleri arasında yapılacak organizasyonda, ana yarış UTMB 25 Ağustos Çarşamba günü start alacak. Bölgedeki lojistik ve trafik yoğunluğunu yönetmek amacıyla alınan bu karar, organizasyon yetkilileri ve yerel yönetimlerin iş birliğiyle netleştirildi. Yarış planın için kaydet.\n\nReklam / Tanıtım\n\nYarışın Instagram hesabı: @utmbmontblanc\n\nKaynak: RUN247\nGörsel: montblanc.utmb.world\n\n#utmb #ultratrail #patikakoşusu #trailrunning #chamonix #hibritportal",
+        "srcUrls": [
+          "https://run247.com/running-news/ultramarathon-news/utmb-moves-to-wednesday-in-2027",
+          "https://www.trailrunnermag.com/people/news/2027-utmb-world-series-finals-schedule/",
+          "https://marathonhandbook.com/utmb-2027-race-week-schedule/"
+        ],
+        "eventName": "Ultra-Trail du Mont-Blanc",
+        "country": "Fransa",
+        "place": "Chamonix"
+      },
+      "story": "18095374019369463"
     }
   ],
   "daily": {
@@ -2677,10 +2738,10 @@
       "summarySent": true
     },
     "2026-11-21": {
-      "drafts": 2,
-      "approved": 1,
+      "drafts": 5,
+      "approved": 4,
       "rejected": 1,
-      "aiCalls": 7
+      "aiCalls": 24
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",

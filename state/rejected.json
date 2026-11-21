@@ -1677,5 +1677,18 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-21T04:47:00.063Z",
+    "title": "71. ÖMER BESİM KOŞALAY KROS MÜSABAKASI KROS TÜRKİYE ŞAMPİYONASI",
+    "url": "https://taf.org.tr/71-omer-besim-kosalay-kros-musabakasi-kros-turkiye-sampiyonasi/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

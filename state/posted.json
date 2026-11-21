@@ -2556,6 +2556,48 @@
       "eventName": "",
       "at": "2026-11-20T16:45:39.813Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "https://taf.org.tr/71-omer-besim-kosalay-kros-musabakasi-kros-turkiye-sampiyonasi/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPLXV6c3o1YkJIemNBbldJM1NTSjVobXhlbkZYQnhBYW5wVlNfU2d3Qi1VeUtBWE1hZG1UeGNqajlzSFRWTWQ5OHlMcUtSMW5FMXQ1RG9CT1FjWmo1ZDJ5VzRJMVRIaEYzdzNpRTdWcnR2NC1vY28xcXl3T2s2ajRBRHhyT3pjMHFXUVNkZ3UwdFZmSEZGdXdCNW9qb21BRHUxOEllOGVhNWRvaWdXMV83NmJDc2J2OEtCbjJKR0NNOEhfbWlOWWdkUjdPbHFpOVljUmpHNXVNOWc0QjlJMTZFUUJpUkpsR0Jf0gHoAUFVX3lxTE8tdXpzejViQkh6Y0FuV0kzU1NKNWhteGVuRlhCeEFhbnBWU19TZ3dCLVV5S0FYTWFkbVR4Y2pqOXNIVFZNZDk4eUxxS1IxbkUxdDVEb0JPUWNaajVkMnlXNEkxVEhoRjN3M2lFN1ZydHY0LW9jbzFxeXdPazZqNEFEeHJPemMwcVdRU2RndTB0VmZIRkZ1d0I1b2pvbUFEdTE4SWU4ZWE1ZG9pZ1cxXzc2YkNzYnY4S0JuMkpHQ004SF9taU5ZZ2RSN09scWk5WWNSakc1dU05ZzRCOUkxNkVRQmlSSmxHQl8"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:8fe38ed11769316f"
+      ],
+      "media": "18356694949280156",
+      "permalink": "https://www.instagram.com/p/Df_awg4F_f7/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-21/mwpxkzwu/01.jpg",
+      "title": "Four Guwahati athletes in their 50s complete Ironman 70.3 in Vietnam, bring laurels to Assam",
+      "headline": "Guwahati'den 4 sporcu Ironman 70.3 Vietnam'ı tamamladı",
+      "eventName": "IRONMAN 70.3 Vietnam",
+      "at": "2026-11-21T04:54:09.394Z",
+      "ig": "ironmantri",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "YARIŞ RAPORU",
+            "title": "Guwahati'den 4 sporcu Ironman 70.3 Vietnam'ı tamamladı",
+            "subtitle": "50'li yaşlarındaki dört sporcu, Phu Quoc Adası'ndaki zorlu triatlonu başarıyla bitirdi."
+          }
+        ],
+        "caption": "Guwahati'den 50'li yaşlarındaki dört sporcu Ironman 70.3 Vietnam'ı tamamladı. 15 Kasım'da Phu Quoc Adası'nda düzenlenen yarışta 1,9 km yüzme, 90 km bisiklet ve 21,1 km koşudan oluşan parkuru başarıyla bitirdiler. 60 ülkeden yaklaşık 2.600 sporcunun katıldığı etkinlik, tropikal iklim koşullarında gerçekleşti. Bu başarı, yaşın dayanıklılık sporlarındaki engel olmadığını bir kez daha gösterdi. Bu yarışta tanıdığın biri var mı? Ona gönder.\n\nReklam / Tanıtım\n\nYarışın Instagram hesabı: @ironmantri\n\nKaynak: India Today NE\nGörsel: indiatodayne.in\n\n#triatlon #triathlon #ironman703 #dayanıklılık #hibritportal",
+        "srcUrls": [
+          "https://www.indiatodayne.in/amp/assam/story/four-guwahati-athletes-in-their-50s-complete-ironman-703-in-vietnam-bring-laurels-to-assam-1477476-2026-11-19"
+        ],
+        "eventName": "IRONMAN 70.3 Vietnam",
+        "country": "Vietnam",
+        "place": "Phu Quoc"
+      }
     }
   ],
   "daily": {
@@ -2635,9 +2677,10 @@
       "summarySent": true
     },
     "2026-11-21": {
-      "drafts": 0,
-      "approved": 0,
-      "rejected": 0
+      "drafts": 2,
+      "approved": 1,
+      "rejected": 1,
+      "aiCalls": 7
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2658,7 +2701,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-20T18:44:40.958Z",
+  "lastRunAt": "2026-11-21T04:44:44.483Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

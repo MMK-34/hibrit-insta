@@ -163,5 +163,25 @@
     "createdDay": "2026-11-19",
     "due": "2026-11-28",
     "status": "bekliyor"
+  },
+  {
+    "key": "ironman703vietnam",
+    "type": "gecmis",
+    "eventName": "IRONMAN 70.3 Vietnam",
+    "officialSite": "https://www.ironman.com",
+    "category": "kosu",
+    "createdDay": "2026-11-21",
+    "due": "2026-11-25",
+    "status": "bekliyor"
+  },
+  {
+    "key": "ironman703vietnam",
+    "type": "wodlar",
+    "eventName": "IRONMAN 70.3 Vietnam",
+    "officialSite": "https://www.ironman.com",
+    "category": "kosu",
+    "createdDay": "2026-11-21",
+    "due": "2026-11-30",
+    "status": "bekliyor"
   }
 ]

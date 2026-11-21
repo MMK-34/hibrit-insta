@@ -2696,6 +2696,50 @@
         "place": "New York"
       },
       "story": "18119813126329841"
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNaFVzdjNrMThQZWxYZFVycVVUTjJkWFVJc3BTbXhIYTF6WlgyUmg3ZjJONjJmVlVhaUhoUFI5b1FLbEh1S2s0bzhVdEY2LUkwZjEwclpvc2xXQlFrQW1rRjhMNlh6M1F2Q2JkMzA2Y2hZYzR2NXVCZnRnR3ExSU1ONk5LR25VNER0TEJrRWMxal9ZbUJkTVR0TVBWR21sMUFmRmdyQjQ0eFRpRmxxYm5JMDZNR0QwTm1uTzVuSHZsczcwYWVPSmR2NDg1eFRNTWxKUkVXcER0MHBIRENhSnVLR2FOTkpMRDlZRzlrcXhobm9PUQ"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-21",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPMDAxdkpHTzB2d0lDTzE4clJHODJ6dEo0Q0lnLVhBSlhoM3I0S1d5VGRLY0RJMllJb1J2QUl6Vkp2d0UyV001eGNBeXlSTzV2d093RTVoNzhQNlNrWldVckhMN0ZlM21ULUtkY1lFNy0yVGhtdEhKWGVsenZJTnhYZ2xtVnJvZU1XWDZVbkJ1THhsN0ZyNFN2Z19nMC1EZzhMVXlHR1NmdldUNmxHS0ptZ25SRU5QT2V0Ql9kZXNxT1pianplaWlyZFJLcXNNbzh2WVFxMTJFb1Jia3NP"
+      ],
+      "kind": "hikaye",
+      "photos": [
+        "event:cb3d063f520e4e3e"
+      ],
+      "media": "17923584369245109",
+      "permalink": "https://www.instagram.com/p/Df_nuZ3FHLv/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-21/mwq1oql1/01.jpg",
+      "title": "Oudtshoorn para-athlete takes on first Ironman 70.3 four years after accident",
+      "headline": "Vussi Marenene 4 yıl sonra Ironman 70.3'te",
+      "eventName": "IRONMAN 70.3 Mossel Bay",
+      "at": "2026-11-21T06:47:23.108Z",
+      "ig": "ironmantri",
+      "athlete": "Vussi Marenene",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "HİKAYE",
+            "title": "Vussi Marenene 4 yıl sonra Ironman 70.3'te",
+            "subtitle": "Geçirdiği kaza sonrası spora dönen 46 yaşındaki sporcu, Mossel Bay'de bisiklet etabını tamamlayacak."
+          }
+        ],
+        "caption": "Vussi Marenene 4 yıl aradan sonra Ironman 70.3 parkuruna dönüyor. 46 yaşındaki sporcu, 22 Kasım 2026'da gerçekleşecek Ironman 70.3 Mossel Bay yarışında Team Bayethe Icons adına 90 km'lik bisiklet etabını tamamlayacak. Kaza sonrası rehabilitasyon sürecinin ardından antrenmanlarına devam eden Marenene, 2028 Los Angeles Paralimpik Oyunları'na katılmayı hedefliyor. Sizin ilk yarışınız hangisiydi? Bu yarışta tanıdığın biri var mı? Ona gönder.\n\nReklam / Tanıtım\n\nYarışın Instagram hesabı: @ironmantri\n\nKaynak: Oudtshoorn Courant\nGörsel: mosselbayadvertiser.com\n\n#ironman703 #triatlon #triathlon #paraathlete #hibritportal",
+        "srcUrls": [
+          "https://www.oudtshoorncourant.com/Sport/Article/Other/oudtshoorn-para-athlete-takes-on-first-ironman-70-3-four-years-after-accident-202611180326"
+        ],
+        "eventName": "IRONMAN 70.3 Mossel Bay",
+        "country": "Güney Afrika",
+        "place": "Mossel Bay"
+      },
+      "story": "18007585058796603"
     }
   ],
   "daily": {
@@ -2775,10 +2819,10 @@
       "summarySent": true
     },
     "2026-11-21": {
-      "drafts": 8,
-      "approved": 7,
-      "rejected": 1,
-      "aiCalls": 41
+      "drafts": 10,
+      "approved": 8,
+      "rejected": 2,
+      "aiCalls": 49
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -2799,7 +2843,7 @@
       "media": "18149320591528951"
     }
   },
-  "lastRunAt": "2026-11-21T05:44:40.932Z",
+  "lastRunAt": "2026-11-21T06:44:41.039Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

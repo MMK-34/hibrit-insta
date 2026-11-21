@@ -1690,5 +1690,18 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-21T06:45:57.210Z",
+    "title": "The sweet spot for how much strength training you really need to live longer",
+    "url": "https://www.theaustralian.com.au/health/fitness/strength-training-extends-your-life-but-more-isnt-necessarily-better/news-story/12a5efd7f5cc1f567640f11fc978d67c",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

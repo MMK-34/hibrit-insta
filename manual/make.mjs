@@ -21,10 +21,12 @@ for (const s of specs) {
   // Kullanıcı kuralı (2026-11-11): karoselde her slaytın fotoğrafı farklı ve konuyla ilgili
   // Fotoğraf yetmezse kalan slaytlar fotoğrafsız (sade zemin) çizilir; ilgisiz fotoğraf ve tekrar yok
   if (!s.photos.length || new Set(s.photos.map((p) => p.file)).size !== s.photos.length) { console.log("FOTOĞRAF:", s.id, "en az 1 ve birbirinden farklı fotoğraf gerekli"); continue; }
+  // Koşu/doğa/su/bisiklet yarışları: yarış başına tek kısa post, en fazla 3 slayt (bot ile aynı kural, denetim G1)
+  if (["kosu", "doga", "su", "bisiklet"].includes(s.category) && g.post.slides.length > 3) { console.log("SLAYT:", s.id, `${s.category} postu en fazla 3 slayt (şu an ${g.post.slides.length})`); continue; }
   const post = { ...g.post, athleteName: s.post.athleteName, country: s.post.country, place: s.post.place };
-  // v2 tasarım alanları süzgeçte düşer: stil ve kapak vurgusu (hl), kapak sayısı (stat/statLabel) spec dosyasından geri eklenir
+  // v2 tasarım alanları süzgeçte düşer: stil ve kapak sayısı (stat/statLabel) spec dosyasından geri eklenir; kapak vurgusu (hl) süzgeçten doğrulanmış gelir, ezilmez (denetim G1)
   if (s.post.style) post.style = s.post.style;
-  post.slides = post.slides.map((sl, i) => ({ ...sl, ...["hl", "stat", "statLabel"].reduce((o, k) => (s.post.slides[i]?.[k] && sl.type === "cover" ? { ...o, [k]: s.post.slides[i][k] } : o), {}) }));
+  post.slides = post.slides.map((sl, i) => ({ ...sl, ...["stat", "statLabel"].reduce((o, k) => (s.post.slides[i]?.[k] && sl.type === "cover" ? { ...o, [k]: s.post.slides[i][k] } : o), {}) }));
   let photos = [];
   for (const p of s.photos) photos.push({ id: p.id ?? `event:${s.id}`, buf: await sharp(`manual/work/${p.file}`).rotate().jpeg({ quality: 92 }).toBuffer(), credit: p.credit, source: p.credit });
   // Kullanıcı kuralı (2026-11-11): karoselde her fotoğrafın en az %50'si diğerlerinden farklı.
@@ -46,7 +48,7 @@ for (const s of specs) {
   const files = await renderPost({ ...post, photos, category: s.category, source: s.sourceName, dateLabel: `${d} ${AY[m - 1]} ${y}` }, outDir);
   const storyFile = path.join(outDir, "story.jpg");
   await renderStory(files[0], storyFile);
-  const caption = post.caption.replace(/(Kaynak:[^\n]*)/, `$1\nGörsel: ${[...new Set(s.photos.map((p) => p.credit))].join(", ")}`);
+  const caption = post.caption.replace(/(Kaynak:[^\n]*)/, `$1\nGörsel: ${[...new Set(s.photos.map((p) => String(p.credit ?? "").replace(/[âÂîÎûÛ]/g, (c) => ({ â: "a", Â: "A", î: "i", Î: "I", û: "u", Û: "U" })[c])))].join(", ")}`);
   fs.writeFileSync(path.join(outDir, "caption.txt"), caption);
   console.log("çizildi:", s.id, files.length, "slayt");
   if (!UP) continue;

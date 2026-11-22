@@ -7,7 +7,7 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 
 ## G1 — Bağımsız sistem denetimi (rapor)
 - **Atanan:** Antigravity
-- **Durum:** bekliyor
+- **Durum:** bitti
 - **Kod değiştirme yok.** Çıktı: `rapor/G1-denetim.md`
 - Yapılacak: `src/run.mjs`, `src/guard.mjs`, `src/plan.mjs`, `src/event-photos.mjs`, `manual/make.mjs`,
   `.github/workflows/post.yml` dosyalarını `AGENTS.md` madde 3'teki kurallara göre baştan sona oku.
@@ -16,6 +16,10 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 - Her bulgu için: dosya:satır, sorun, somut örnek senaryo, önerilen düzeltme, önem (yüksek/orta/düşük).
   Emin olmadığın bulguyu "şüpheli" diye işaretle; uydurma bulgu yazma.
 - Notlar:
+  - `src/run.mjs`, `src/guard.mjs`, `src/plan.mjs`, `src/event-photos.mjs`, `manual/make.mjs`, `.github/workflows/post.yml` ve `src/config.mjs` baştan sona okunarak `AGENTS.md` madde 3 kurallarına göre statik kod denetimi yapıldı.
+  - Rapor `rapor/G1-denetim.md` dosyasına yazıldı (hiçbir kaynak kod değiştirilmedi).
+  - Öne çıkan bulgular: (1) `todayCount` çalışma içindeki yayınlarda (`processApprovals`, `publishDmTip`, `publishSeries`, `renderAndPublish`) artırılmadığı için tek çalışmada günlük 10 post sınırının aşılabilmesi, (2) `hikaye`/`seri`/`istatistik` türlerinde ve `designCheck` fotoğraf değişiminde stok fotoğrafa düşülebilmesi, (3) kişi adı geçen `publishSeries` serilerinin onaya gitmeden yayınlanması, (4) `manual/make.mjs`'nin `guardPost` sonrası `hl` alanını ham spec'ten ezmesi ve koşu 3 slayt / kredi şapka temizliğini atlaması, (5) `guard.mjs`'de `on/yüz/bin`, `Open/Pro/Age Group/Yaş Grubu`, `GBP/£/bedeli/fiyatı` boşlukları ve `publishStock`'un `infoToday` sayacını artırmaması.
+  - Claude Code (2026-11-22): bulgular 1, 4, 5, 6 (3 slayt + kredi şapkası), 7, 8, 9, 10 düzeltildi. Seriler artık onaya gidiyor (statik soru serisi hariç). 2, 3 ve 11 açık: seri onayı fotoğrafı da kullanıcı kontrolüne soktu; tasarım denetimi yedeği ayrıca ele alınacak.
 
 ## G2 — Replay test paketi
 - **Atanan:** Antigravity

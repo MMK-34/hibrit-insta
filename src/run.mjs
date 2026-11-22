@@ -79,7 +79,7 @@ const usedPhotos = new Set([...state.posts.flatMap((p) => p.photos ?? []).filter
 const todayPosts = state.posts.filter((p) => p.day === today && p.media);
 let todayCount = todayPosts.length; // hazır sıradan yayınlananlar da eklenir
 // Bilgi + araştırma postları günde en fazla 2 (haberlerin arasına serpiştirilir); çalışma içinde paylaşıldıkça artar
-let infoToday = todayPosts.filter((p) => p.kind === "bilgi" || p.kind === "arastirma").length;
+let infoToday = todayPosts.filter((p) => ["bilgi", "arastirma", "stok"].includes(p.kind)).length; // stok da bilgi postudur (denetim G1)
 
 // Günlük özet sayaçları: taslak / onay / red
 state.daily ??= {};
@@ -374,7 +374,7 @@ async function main() {
         }
       }
       // Çalışma başına en fazla PER_RUN post; günlük üst sınıra da uy
-      if (publishedCount >= PER_RUN || todayCount + publishedCount >= MAX_PER_DAY) break;
+      if (publishedCount >= PER_RUN || todayCount >= MAX_PER_DAY) break; // todayCount her yayında artar (denetim G1)
     } catch (e) {
     if (isCreditError(e)) throw e; // kredi bitti: üst seviyede duraklat
       if (isTransientAi(e)) {
@@ -394,7 +394,7 @@ async function main() {
   }
 
   // Haber çıkmadıysa: vadesi gelen takip postu; o da yoksa günün son çalışmasında stoktan sıradaki hazır post
-  if (!published && todayCount + publishedCount < MAX_PER_DAY) published = await publishFollowup();
+  if (!published && todayCount < MAX_PER_DAY) published = await publishFollowup();
   if (!published && ((isLast && todayCount === 0) || STOCK)) await publishStock();
 }
 
@@ -591,9 +591,11 @@ async function publishSeries({ s, key, ctx }) {
     const gate = s.static ? { ok: true, fails: [] } : await verifyGate(g.post, { sourceUrls: w.sourceUrls, photos, sourceName, referenceData: w.referenceData ?? "", rowEvidence: w.post.evidence, budget: { webSearch: 6, webFetch: 16 }, skipItems: ["kaynak_satiri"] });
     if (gate.ok) {
       bump("approved");
-      const res = await renderAndPublish({ post: g.post, photos }, { category: s.cat ?? "genel", sourceName, ids: [`seri:${key}`], kind: "seri", title: g.post.slides[0]?.title, srcUrls: w.sourceUrls, onPublished: (r) => { st.done = true; st.media = r.id; saveState(); } });
-      if (res && !DRY) { st.done = true; st.media = res.id; saveState(); }
-      return !!res;
+      const res = await renderAndPublish({ post: g.post, photos }, { category: s.cat ?? "genel", sourceName, ids: [`seri:${key}`], kind: "seri", title: g.post.slides[0]?.title, srcUrls: w.sourceUrls, hold: !s.static, onPublished: (r) => { st.done = true; st.media = r.id; saveState(); } });
+      if (res && !DRY) { st.done = true; st.media = res.id ?? res.code; saveState(); }
+      // Kullanıcı kuralı (2026-11-22): kişi adı geçen seriler onaya gider (statik "haftanın sorusu" isim içermez, doğrudan yayınlanır).
+      // Onaya giden seri yayın sayılmaz; aynı çalışmada haber akışı sürer.
+      return !!res && !res.held;
     }
     feedback = failText(gate.fails);
     log(`Seri doğrulaması düştü (deneme ${attempt}):
@@ -697,7 +699,8 @@ function logoSourceMatches(eventName, src) {
 }
 
 // Günde en çok POSTING.maxStoriesPerDay hikâye (geri sayım DAHİL, denetim 2026-11-22): her post hikâyeye düşmez
-const countdownToday = () => Object.values(state.countdowns ?? {}).filter((t) => String(t).slice(0, 10) === new Date().toISOString().slice(0, 10)).length;
+const trDay = (t) => { const d = new Date(t); return isNaN(d) ? String(t).slice(0, 10) : d.toLocaleString("sv-SE", { timeZone: "Europe/Istanbul" }).slice(0, 10); };
+const countdownToday = () => Object.values(state.countdowns ?? {}).filter((t) => trDay(t) === today).length; // TR günü (denetim G1: UTC günü kayıyordu)
 function storySlotLeft() { return state.posts.filter((p) => p.day === today && p.story).length + countdownToday() < (POSTING.maxStoriesPerDay ?? 2); }
 
 async function renderAndPublish({ post, photos }, { category, sourceName, ids, kind, title, srcUrls = [], onPublished = null, hold = false, important = false }) {
@@ -766,7 +769,7 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   if (DRY) { log(`Caption:\n${caption}`); return null; }
   const urls = await uploadFiles(files, slug);
   // Onay gerektiren post (istatistik): yayınlanmaz, kullanıcıya e-postayla gönderilir; ONAY gelince sonraki çalışmada paylaşılır
-  if (hold) return queueForApproval({ caption, urls, ids, kind, title, post, photos, srcUrls });
+  if (hold) return queueForApproval({ caption, urls, ids, kind, title, post, photos, srcUrls, ...(kind === "seri" ? { label: "SERİ POSTU" } : {}) });
   // Ortak gönderi (Collab) daveti: yalnızca izlenen Türkiye/bölge organizatörüne, aynı hesaba 30 günde en çok bir kez (davet bombardımanı yok)
   state.collabInvites ??= {};
   const lastInvite = evHandle ? Date.parse(state.collabInvites[evHandle] ?? 0) : 0;
@@ -775,6 +778,7 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   const collaborators = COLLAB_ON && evHandle && IG_WATCH_TR.includes(evHandle) && Date.now() - lastInvite > 30 * 864e5 ? [evHandle] : [];
   const res = await publish(urls, caption, { collaborators });
   if (collaborators.length) { state.collabInvites[evHandle] = new Date().toISOString(); log("Collab daveti gönderildi:", `@${evHandle}`); }
+  todayCount++; // günlük sınır aynı çalışmadaki yayınları da saysın (denetim G1: DM/seri/ana döngü birlikte 10u aşabiliyordu)
   state.posts.push({ day: today, ids, kind, photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, cover: urls[0], title, headline: post.slides[0]?.title, eventName: post.eventName || undefined, athlete: post.athleteName || undefined, at: new Date().toISOString(),
     // Haftalık bülten Reels'i video ararken kullanır: yarışın doğrulanmış hesabı, haberin sporcusu
     ig: evHandle || undefined, athlete: post.athleteName || undefined, athleteIg: post.athleteInstagram || undefined,
@@ -915,7 +919,9 @@ async function processApprovals() {
       if (!/^r[0-9a-f]{8}$/.test(it.code ?? "") || !String(it.video ?? "").startsWith(`https://raw.githubusercontent.com/${process.env.GH_REPO}/media/`)) continue;
       if (pend[it.code] || (state.reelsDone ?? []).includes(it.code)) continue;
       const media = `https://raw.githubusercontent.com/${process.env.GH_REPO}/media/`;
-      pend[it.code] = { video: it.video, ...(String(it.cover ?? "").startsWith(media) && /\.jpe?g$/i.test(it.cover) ? { cover: it.cover } : {}), caption: String(it.caption ?? "").slice(0, 2100), kind: "reel", title: it.title ?? "Haftalık bülten", ids: [`reel:${it.code}`], photos: [], urls: [it.video], srcUrls: [], at: it.at ?? new Date().toISOString(), label: "REELS" };
+      // Zamanlı Reels (anlatım videoları: Salı/Cuma 10:00 TR): onay erken verilse de publishAt'ten önce paylaşılmaz
+      const pa = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(it.publishAt ?? "") ? it.publishAt : undefined;
+      pend[it.code] = { video: it.video, ...(String(it.cover ?? "").startsWith(media) && /\.jpe?g$/i.test(it.cover) ? { cover: it.cover } : {}), caption: String(it.caption ?? "").slice(0, 2100), kind: "reel", title: it.title ?? "Haftalık bülten", ids: [`reel:${it.code}`], photos: [], urls: [it.video], srcUrls: [], at: it.at ?? new Date().toISOString(), label: "REELS", ...(pa ? { publishAt: pa } : {}) };
       moved++;
     }
     if (moved) { fs.writeFileSync(qf, "[]\n"); saveState(); log("Reels onay kuyruğuna alındı:", moved); }
@@ -950,6 +956,7 @@ async function processApprovals() {
       try {
         const res = item.video ? await publishReel(item.video, item.caption, item.cover ?? "") : await publish(item.urls, item.caption);
         if (item.video) state.reelsDone = [...(state.reelsDone ?? []), code].slice(-50);
+        todayCount++;
         state.posts.push({ day: today, ids: item.ids, kind: item.kind, photos: item.photos, media: res.id, permalink: res.permalink, cover: item.cover ?? item.urls?.[0] ?? item.video, title: item.title, headline: item.headline, eventName: item.eventName, approved: code, at: new Date().toISOString() });
         saveState();
         log("Onaylı post yayında:", res.permalink);
@@ -967,11 +974,13 @@ async function processApprovals() {
     if (!item.approved || nowLocal() < (item.publishAt ?? "")) continue;
     delete pend[code]; saveState();
     try {
-      const res = await publish(item.urls, item.caption);
-      state.posts.push({ day: today, ids: item.ids, kind: item.kind, photos: item.photos, media: res.id, permalink: res.permalink, cover: item.urls[0], title: item.title, headline: item.headline, approved: code, at: new Date().toISOString() });
+      const res = item.video ? await publishReel(item.video, item.caption, item.cover ?? "") : await publish(item.urls, item.caption);
+      if (item.video) state.reelsDone = [...(state.reelsDone ?? []), code].slice(-50);
+      else todayCount++;
+      state.posts.push({ day: today, ids: item.ids, kind: item.kind, photos: item.photos, media: res.id, permalink: res.permalink, cover: item.cover ?? item.urls[0], title: item.title, headline: item.headline, approved: code, at: new Date().toISOString() });
       saveState();
       log("Onaylı zamanlı post yayında:", res.permalink);
-      await notify(`✅ Onayladığın post paylaşıldı (${code})\n${res.permalink}`);
+      await notify(`✅ Onayladığın ${item.video ? "Reels" : "post"} paylaşıldı (${code})\n${res.permalink}`);
     } catch (e) {
       if (isCreditError(e)) throw e;
       pend[code] = item; saveState();
@@ -1177,6 +1186,7 @@ async function publishStock() {
     }
     const res = await publish(urls, post.caption);
     // Paylaşım hemen kalıcı: önce posted.json, sonra kuyruk
+    todayCount++; infoToday++;
     state.posts.push({ day: today, ids: [item.id], kind: "stok", photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, cover: urls[0], title: post.slides[0]?.title, headline: post.slides[0]?.title, at: new Date().toISOString() });
     saveState();
     st.queue.shift();

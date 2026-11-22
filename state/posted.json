@@ -3405,7 +3405,8 @@
       "drafts": 20,
       "approved": 7,
       "rejected": 13,
-      "aiCalls": 77
+      "aiCalls": 77,
+      "summarySent": true
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3429,7 +3430,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-22T17:44:39.673Z",
+  "lastRunAt": "2026-11-22T18:42:56.326Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

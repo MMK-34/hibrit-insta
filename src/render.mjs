@@ -92,6 +92,8 @@ function photoLayer(photo, mode) {
     return `<img src="${photo.bandUri ?? photo.uri}" style="position:absolute;left:0;top:0;width:${W}px;height:${bandH}px;object-fit:cover" />
       <div style="position:absolute;left:0;top:0;width:${W}px;height:${bandH}px;background-image:linear-gradient(180deg, rgba(14,15,18,0.6) 0%, rgba(14,15,18,0.12) 22%, rgba(14,15,18,0.15) 40%, rgba(14,15,18,0.35) 55%, rgba(14,15,18,0.6) 68%, rgba(14,15,18,0.8) 79%, rgba(14,15,18,0.93) 89%, ${C.ink} 100%)"></div>`;
   }
+  if (mode === "full2") return `<img src="${photo.uri}" style="position:absolute;left:0;top:0;width:${W}px;height:${H}px;object-fit:cover" />
+    <div style="position:absolute;left:0;top:0;width:${W}px;height:${H}px;background-image:linear-gradient(180deg, rgba(14,15,18,0.55) 0%, rgba(14,15,18,0.05) 16%, rgba(14,15,18,0) 40%, rgba(14,15,18,0.35) 56%, rgba(14,15,18,0.82) 72%, rgba(14,15,18,0.96) 86%, ${C.ink} 100%)"></div>`;
   const grad = mode === "dim"
     ? "linear-gradient(180deg, rgba(14,15,18,0.86) 0%, rgba(14,15,18,0.8) 50%, rgba(14,15,18,0.95) 100%)"
     // Fotoğraftan zemine uzun ve kademeli geçiş (sert çizgi olmasın); başlık bölgesi (alt ~%30) yine tam koyu
@@ -199,7 +201,30 @@ function tableHtml(s) {
   return `<div style="display:flex;flex-direction:column;width:${TBL_W}px;margin-top:44px">${headRow}${body}</div>`;
 }
 
+// ---- v2 tasarım (kullanıcı isteği 2026-11-22; ESPN, Bleacher Report, BOXROX, Morning Chalk Up incelemesi):
+// fotoğraf tüm kareyi kaplar, başlık iri ve tek vurgulu kelime kırmızı, branş etiketi dolu kırmızı rozet, varsa tek dev sayı.
+function pill(ctx, extra) {
+  const k = CATEGORY[ctx.cat] ?? CATEGORY.genel;
+  const counter = ctx.total > 1 ? `<div style="display:flex;margin-left:16px;color:${C.paper};opacity:0.75;font-size:22px">${String(ctx.index).padStart(2, "0")}/${String(ctx.total).padStart(2, "0")}</div>` : "";
+  return `<div style="display:flex;align-items:center;margin-bottom:26px"><div style="display:flex;background:${C.red};padding:10px 18px;font-family:Body;font-weight:700;font-size:24px;letter-spacing:3px;color:${C.paper}">${esc(trUpper(extra ? `${k.label} · ${extra}` : k.label))}</div>${counter}</div>`;
+}
+/** Başlık: kelime kelime; s.hl (vurgu) içindeki kelimeler kırmızı */
+function head2(text, size, hl = "") {
+  const hw = new Set(trUpper(hl).split(/\s+/).filter(Boolean));
+  const words = trUpper(text).split(/\s+/).filter(Boolean);
+  return `<div style="display:flex;flex-wrap:wrap;font-family:Head;font-weight:800;font-size:${size}px;line-height:0.95;color:${C.paper}">${words.map((w) => `<div style="display:flex;margin-right:${Math.round(size * 0.2)}px;color:${hw.has(w) ? C.red : C.paper}">${esc(w)}</div>`).join("")}</div>`;
+}
+
 const T = {
+  cover2: (s, ctx) => frame({ ...ctx, photo: ctx.photo ? { ...ctx.photo, uri: ctx.photo.fullUri ?? ctx.photo.uri } : null, photoMode: "full2", footerRight: ctx.total > 1 ? "KAYDIR →" : ctx.date, inner: `
+    <div style="display:flex;flex-direction:column;justify-content:flex-end;flex:1;padding-bottom:44px">
+      ${ctx.eventLogo ? `<div style="display:flex;align-self:flex-start;margin-bottom:30px;border-radius:16px;overflow:hidden;border:3px solid ${C.paper}"><img src="${ctx.eventLogo.uri}" style="width:${Math.round(ctx.eventLogo.w * 0.7)}px;height:${Math.round(ctx.eventLogo.h * 0.7)}px" /></div>` : ""}
+      ${pill(ctx, s.kicker)}
+      ${s.stat ? `<div style="display:flex;align-items:flex-end;margin-bottom:10px"><div style="display:flex;font-family:Head;font-weight:800;font-size:${String(s.stat).length > 5 ? 190 : 240}px;line-height:0.85;color:${C.paper}">${esc(s.stat)}</div>${s.statLabel ? `<div style="display:flex;font-family:Body;font-weight:700;font-size:28px;letter-spacing:2px;color:${C.red};margin-left:22px;margin-bottom:18px;max-width:360px">${esc(trUpper(s.statLabel))}</div>` : ""}</div>` : ""}
+      ${head2(s.title, headSize(s.title, s.stat ? 130 : 172), s.hl)}
+      ${s.subtitle ? `<div style="display:flex;font-size:32px;line-height:1.3;color:${C.text2};margin-top:24px">${esc(s.subtitle)}</div>` : ""}
+    </div>` }),
+
   cover: (s, ctx) => frame({ ...ctx, photoMode: "full", footerRight: ctx.total > 1 ? "KAYDIR →" : ctx.date, inner: `
     <div style="display:flex;flex-direction:column;justify-content:flex-end;flex:1;padding-bottom:52px">
       ${ctx.eventLogo ? (ctx.eventLogo.tile
@@ -250,7 +275,7 @@ const T = {
 
 /** Tek slayt -> JPEG Buffer */
 export async function renderSlide(slide, ctx) {
-  const tpl = T[slide.type] ?? T.text;
+  const tpl = (ctx.style === "v2" && slide.type === "cover" ? T.cover2 : null) ?? T[slide.type] ?? T.text;
   const logo = await brandLogo();
   const svg = await satori(html(tpl(slide, { ...ctx, logo })), { width: W, height: H, fonts: FONTS });
   const png = new Resvg(svg, { fitTo: { mode: "width", value: W } }).render().asPng();
@@ -286,7 +311,8 @@ async function toUri(buf, focus) {
   const merged = await sharp({ create: { width: W, height: H, channels: 3, background: C.ink } }).composite([{ input: top, left: 0, top: 0 }, { input: fade, left: 0, top: VIS_FULL - FADE }]).png().toBuffer();
   const full = await style(sharp(merged));
   const band = await style(sharp(await cropTo(buf, focus, W, BAND_H, 0.5)));
-  return { uri: `data:image/jpeg;base64,${full.toString("base64")}`, bandUri: `data:image/jpeg;base64,${band.toString("base64")}` };
+  const whole = await style(sharp(await cropTo(buf, focus, W, H, 0.38)));
+  return { fullUri: `data:image/jpeg;base64,${whole.toString("base64")}`, uri: `data:image/jpeg;base64,${full.toString("base64")}`, bandUri: `data:image/jpeg;base64,${band.toString("base64")}` };
 }
 
 /** Kapak slaytından 1080x1920 hikâye kartı: mürekkep zemin, kapak ortada, üstte küçük "YENİ PAYLAŞIM" etiketi. */
@@ -376,7 +402,7 @@ export async function renderPost(post, outDir) {
     // Kullanıcı kuralı (2026-11-11): karoselde her slaytın fotoğrafı farklı; fotoğraf yetmezse slayt fotoğrafsız (tekrar yok)
     const photo = photos[i] ?? null;
     const location = [post.country, post.place].filter(Boolean).join(" · ").slice(0, 48);
-    const buf = await renderSlide(post.slides[i], { location, cat: post.category, index: i + 1, total, source: post.source, date: post.dateLabel, photo, eventLogo: i === 0 ? eventLogo : null });
+    const buf = await renderSlide(post.slides[i], { style: post.style, location, cat: post.category, index: i + 1, total, source: post.source, date: post.dateLabel, photo, eventLogo: i === 0 ? eventLogo : null });
     const f = path.join(outDir, `${String(i + 1).padStart(2, "0")}.jpg`);
     fs.writeFileSync(f, buf);
     files.push(f);

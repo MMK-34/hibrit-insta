@@ -70,11 +70,11 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0e0f1
 .stat { display: flex; align-items: flex-end; gap: 22px; margin-top: 22px; }
 .stat .num { font-family: "Head", sans-serif; font-weight: 800; font-size: 150px; line-height: 1; height: 150px; color: #e8321e; }
 .stat .lab { font-weight: 700; font-size: 30px; letter-spacing: 3px; color: #cfc9be; padding-bottom: 18px; }
-.txt { position: absolute; left: 70px; top: 1000px; width: 940px; }
+.txt { position: absolute; left: 70px; top: 1100px; width: 940px; }
 .kick { display: inline-block; background: #e8321e; color: #f3efe7; font-weight: 700; font-size: 28px; letter-spacing: 3px; padding: 10px 18px; border-radius: 6px; margin-bottom: 22px; }
 .head { font-family: "Head", sans-serif; font-weight: 800; font-size: 96px; line-height: 0.95; color: #f3efe7; }
 .head span { display: inline-block; margin-right: 22px; }
-.cap { position: absolute; left: 0; top: 900px; width: 1080px; text-align: center; overflow: visible; }
+.cap { position: absolute; left: 0; top: 1580px; width: 1080px; text-align: center; overflow: visible; }
 .cap span { display: inline-block; font-weight: 700; font-size: 48px; line-height: 1.2; color: #0e0f12; background: #f3efe7; padding: 8px 22px; border-radius: 12px; max-width: 920px; }
 .wipe { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; background: #e8321e; }
 .intro .big { position: absolute; left: 70px; top: 980px; width: 940px; font-family: "Head", sans-serif; font-weight: 800; font-size: 190px; line-height: 0.88; }

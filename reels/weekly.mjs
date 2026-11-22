@@ -214,6 +214,23 @@ async function getMedia(it, k, skip = new Set()) {
   const need = NEED;
   const vid = path.join(A, `c${k}.mp4`), img = path.join(A, `p${k}.jpg`);
   let got = "", credit = "";
+  // Plan dosyasında doğrulanmış kendi fotoğrafı verilen haber: yalnızca o fotoğraf kullanılır; kalite kontrolü reddederse stok görüntüye düşülmez, haber çıkarılır
+  if (it.photoFile) {
+    if (skip.has("photo") || !fs.existsSync(it.photoFile)) return null;
+    // Kırpmadan yerleşim: fotoğraf genişliğe sığar, üstte 260px pay (ilerleme çubuğu ve yakınlaştırma başı kesmesin), alt kısım zemine erir
+    {
+      const W2 = 1200, H2 = 2120, TOP = 260;
+      const ph = await sharp(fs.readFileSync(it.photoFile)).rotate().resize({ width: W2, height: H2 - TOP, fit: "inside" }).toBuffer({ resolveWithObject: true });
+      const left = Math.round((W2 - ph.info.width) / 2), fadeH = Math.min(520, ph.info.height);
+      const stops = Array.from({ length: 11 }, (_, i) => `<stop offset="${i / 10}" stop-color="#0e0f12" stop-opacity="${((i / 10) ** 1.6).toFixed(3)}"/>`).join("");
+      const fade = Buffer.from(`<svg width="${ph.info.width}" height="${fadeH}" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">${stops}</linearGradient></defs><rect width="${ph.info.width}" height="${fadeH}" fill="url(#g)"/></svg>`);
+      await sharp({ create: { width: W2, height: H2, channels: 3, background: "#0e0f12" } })
+        .composite([{ input: ph.data, left, top: TOP }, { input: fade, left, top: TOP + ph.info.height - fadeH }])
+        .jpeg({ quality: 90 }).toFile(img);
+    }
+    log(`görüntü (plan fotoğrafı, ${it.photoCredit ?? ""}):`, it.headline);
+    return { ...it, k, credit: it.photoCredit ?? "", photo: `p${k}.jpg` };
+  }
   // a) yarışın / sporcunun kendi Instagram videosu
   // Kayıtlı hesap yoksa izlenen organizatör listesinden etkinlik adıyla eşleşen hesap (ör. "Varda Ultra Trail" -> vardaultratrail); şehir adı eşleşme sayılmaz
   const evWords = words(p.eventName ?? p.headline);
@@ -330,7 +347,12 @@ async function qa(list) {
 let brandSeen = false; // kullanıcı kuralı: videoda ticari marka görünürse açıklamaya "Reklam / Tanıtım"
 let final = items;
 await produce(final);
-let bad = await qa(final);
+// --reviewed: plan dosyasıyla üretilen videonun kareleri elle (Claude Code) tek tek kontrol edildiyse yapay zekâ kalite kontrolü atlanır.
+// Kullanıcının ONAY adımı yine zorunludur.
+const REVIEWED = !!PLAN && process.argv.includes("--reviewed");
+let bad = REVIEWED ? [] : await qa(final);
+if (REVIEWED && process.argv.includes("--brand")) brandSeen = true; // elle kontrolde videoda marka görüldü
+if (REVIEWED) log("kalite kontrolü elle yapıldı (--reviewed), yapay zekâ kontrolü atlandı");
 if (bad.length) {
   log("kalite kontrolü:", bad.map((b) => `${final[b.k]?.headline}: ${b.problem}`).join(" | "));
   // Sorunlu sahne hemen çıkarılmaz: önce kendi videosu/fotoğrafı atlanarak gerçek stok video denenir (sporcu haberinde yok)

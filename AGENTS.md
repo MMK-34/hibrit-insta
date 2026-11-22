@@ -21,7 +21,9 @@ Kullanıcıyla her zaman **Türkçe** konuş.
 
 1. İşe başlamadan `ORTAK-GOREV.md`'yi oku. Yalnızca **sana atanmış** ve durumu `bekliyor` olan görevi al.
 2. Görevin durumunu `yapılıyor (Antigravity)` yap.
-3. Kendi branch'inde çalış: `git switch -c antigravity/<görev-kısa-adı>` (main'den). Başka branch'e geçme, başkasının branch'ine yazma.
+3. Ortak `insta` klasöründe branch DEĞİŞTİRME (Claude Code ve başka oturumlar aynı klasörde main'de çalışıyor).
+   Kod görevi için kendi ayrı klasörünü aç: `git worktree add ../insta-ag -b antigravity/<görev-kısa-adı> origin/main`
+   ve yalnızca `../insta-ag` içinde çalış. Görev bitince commit at; worktree'yi silme, Claude Code inceleyip kaldırır.
 4. Yalnızca görevde adı geçen dosyalara dokun. Claude Code aynı anda main'de çalışıyor olabilir.
 5. Bitince kontrol et (bkz. madde 4), branch'e commit at, `ORTAK-GOREV.md`'de durumu `inceleme bekliyor` yap ve
    ne yaptığını 3–5 satırla yaz: değişen dosyalar, nasıl test ettin, açık kalan.

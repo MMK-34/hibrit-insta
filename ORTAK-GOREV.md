@@ -110,7 +110,7 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 
 ## G7 — Bilgi postu taslakları (stok kuyruğu boşalıyor)
 - **Atanan:** Antigravity
-- **Durum:** bekliyor
+- **Durum:** yapılıyor (Antigravity)
 - **Kod değiştirme yok.** Çıktı: `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G7-bilgi-taslaklari.json`
 - Neden: bot stok bilgi postu üretemiyor (Anthropic kredisi yok), `state/stock.json` kuyruğunda 3 öğe kaldı.
 - Yapılacak: 6 bilgi postu taslağı. Konular `manual/konu-havuzu.md` ve `src/config.mjs` `STOCK_TOPICS` listesinden (daha önce paylaşılmamış olanlar;

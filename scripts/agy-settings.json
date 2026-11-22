@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "command(node scripts/agy-fetch.mjs)",
+      "command(git status --short)",
+      "command(git diff --stat)"
+    ]
+  }
+}

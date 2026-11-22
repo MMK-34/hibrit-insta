@@ -86,7 +86,7 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 
 ## G6 — Yeni tasarım yönleri: 3 farklı konsept (yayın yok)
 - **Atanan:** Antigravity
-- **Durum:** bekliyor
+- **Durum:** bitti (alınmadı)
 - **Branch / worktree:** `antigravity/tasarim2` → `C:\Users\Mehmet Kuyucu\Desktop\cf\insta-ag-tasarim2` (origin/main'den yeni aç)
 - **Amaç:** Kullanıcı "farklı bir soluk, farklı bir tasarım tarzı" istiyor. Mevcut tasarımı CİLALAMA (G5 bu yüzden reddedildi).
   Birbirinden ve mevcut tasarımdan açıkça farklı **3 konsept** yap. Biri bakınca "bu bambaşka" demeli.
@@ -100,6 +100,46 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
   `audit` verisini veya `manual/work/` altındaki başka bir spec'i kullan) — tek post her tasarımı göstermez.
   Görselleri `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G6-tasarim\v3a\`, `v3b\`, `v3c\` klasörlerine koy.
 - Notlara her konsept için tek cümle: fikri ne, kime/neye benziyor.
+- Notlar:
+  - **`v3a` (Spor Dergisi Kapağı / Maç Posteri):** *L'Équipe Magazine* ve brutalist maç afişleri tarzında; karbon siyahı (`#090a0d`) zemin etrafında kalın elektrik volt sarısı (`#d9ff00`) dergi çerçevesi, üstte tam dolu sarı dergi künye şeridi, ortada keskin çerçeveli net poster fotoğrafı ve altta sarı sticker kutulu (`BigShoulders` + `ArchivoCond-800`) manşet ile barkodlu alt bilgi barı.
+  - **`v3b` (Minimal Avrupa Haber Ajansı / Gazete Küpürü):** *Le Monde*, *The Athletic* ve *Die Zeit* baskı sayfaları tarzında; açık sıcak gazete kâğıdı (`#f4efe6`) zemini üzerinde koyu mürekkep (`#111317`) ve ajans kırmızısı (`#c82314`) ile tırnaklı editoryal Serif (`Lora-700.ttf`) manşetin üstte, ince siyah cetvel çerçeveli doğal basın fotoğrafının ise altta yer aldığı ters gazete kurgusu.
+  - **`v3c` (Veri & Telemetri Odaklı Spor Yayını):** F1 canlı yayın grafikleri ve *Strava Metro / Whoop* veri ekranları tarzında; gece laciverti (`#090e17`) İsviçre ızgarası (`#23344e` hücreler), sol kenarda aktif slayt ilerleme matrisini gösteren tam boy dikey telemetri sütunu, köşe vizörlü fotoğraf monitörü, `Mono-500` teknik kodlar, geniş `Archivo-800` başlıklar ve performans turuncusu (`#ff551a`) / camgöbeği (`#22d3ee`) veri kartları.
+  - **Değişen dosyalar (`antigravity/tasarim2` branch, `8433f9b`):** `src/render.mjs` (mevcut `v1`/`v2` korunarak `v3a`, `v3b`, `v3c` eklendi) ve `fonts/Lora-700.ttf` (açık lisanslı SIL OFL Türkçe destekli serif font).
+  - **Örnekler ve test:** Hem CrossFit (`wwc`, 4 slayt) hem koşu (`bodrum-yari-maratonu-2027-kayit`, 3 slayt) postları 3 konseptle çizilip `rapor/G6-tasarim/v3a/`, `v3b/`, `v3c/` altına konuldu; `node --check`, `eslint` ve `node scripts/replay-test.mjs` (29/29) hatasız geçti.
+  - Claude Code (2026-11-22): kullanıcı mevcut v2 tasarımda kalmayı seçti. Branch ve worktree silindi. Tasarım görevi yok.
+
+## G7 — Bilgi postu taslakları (stok kuyruğu boşalıyor)
+- **Atanan:** Antigravity
+- **Durum:** bekliyor
+- **Kod değiştirme yok.** Çıktı: `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G7-bilgi-taslaklari.json`
+- Neden: bot stok bilgi postu üretemiyor (Anthropic kredisi yok), `state/stock.json` kuyruğunda 3 öğe kaldı.
+- Yapılacak: 6 bilgi postu taslağı. Konular `manual/konu-havuzu.md` ve `src/config.mjs` `STOCK_TOPICS` listesinden (daha önce paylaşılmamış olanlar;
+  `state/posted.json` başlıklarına bak). Her biri YALNIZCA resmî ya da bilimsel kaynağa dayanır (`src/run.mjs` `TRUSTED_INFO` listesindeki alan adları:
+  pubmed, doi, hyrox.com, crossfit.com, worldathletics.org, acsm.org ...). Her iddia için kaynak adresini aç ve doğrula; uydurma yok.
+- Biçim: JSON dizi; her öğe `{ "topic", "category", "sourceName", "sourceUrls": [...], "post": { "slides": [...], "caption", "hashtags", "imageQueries" } }`.
+  Slayt türleri ve alanlar için `state/stock.json` içindeki örneğe bak (cover / text (bullets) / table / end). En fazla 5 slayt.
+- Kurallar (`AGENTS.md` madde 3): sayılar rakamla, kategori/seviye adı yok, fiyat yok, şapkalı harf yok, emoji yok, Türkiye'deki okura hitap.
+  Caption sonunda `Kaynak: <kurum/dergi adı>` satırı.
+- Kendi kontrolün: her taslağı `guardPost` ile dene (`node -e` ile `src/guard.mjs` içe aktarıp), geçmeyeni düzelt.
+- Notlar:
+
+## G8 — Bilgi postlarında fotoğraf-konu uyumu
+- **Atanan:** Antigravity
+- **Durum:** bekliyor
+- **Branch / worktree:** `antigravity/foto-uyum` → `C:\Users\Mehmet Kuyucu\Desktop\cf\insta-ag-foto-uyum`
+- Sorun (G4 raporu): kettlebell yazısına askılı antrenman portresi, uyku öncesi protein yazısına magnezyum tozu fotoğrafı düştü.
+- Yapılacak: bilgi/araştırma postlarında fotoğrafın nasıl seçildiğini bul (`src/images.mjs`, `src/run.mjs` `pickPhotos`, yerel kütüphane etiketleri).
+  Önce teşhisi notlara yaz. Düzeltme küçük ve netse branch'te yap (ör. konu anahtar kelimesi fotoğraf etiketinde/açıklamasında yoksa o fotoğrafı eleme).
+  Düzeltmeyi G4'teki iki örnekle test et (ağ gerekirse yalnızca fotoğraf aramasını çalıştır, yayın yok).
+- Notlar:
+
+## G9 — Türkiye yarış takvimi doğrulaması (rapor)
+- **Atanan:** Antigravity
+- **Durum:** bekliyor
+- **Kod değiştirme yok.** Çıktı: `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G9-takvim.md`
+- Yapılacak: `cal/` takvim verisindeki önümüzdeki 90 gün içindeki Türkiye yarışlarını (CrossFit, HYROX, ATHX, koşu) tek tek resmî sayfasından kontrol et:
+  tarih, şehir, ad doğru mu, iptal/erteleme var mı. Takvimde OLMAYAN ama resmî olarak duyurulmuş Türkiye yarışlarını da listele (ad, tarih, resmî adres).
+  Veri dosyalarını elle değiştirme; yalnızca rapor.
 - Notlar:
 
 ---

@@ -114,7 +114,7 @@ const planOut = await claude({ system: "", tool: PLAN_TOOL, maxTokens: 8000, mod
 
 ${listing}
 
-${SHORT ? "Görev: Bu tek haber için TEK öğe yaz (n=0)." : "Görev: Okurun en çok ilgisini çekecek 4-6 haberi seç (kişi adı geçen haber, yani sporcu, antrenör ya da kişi odaklı haber SEÇİLMEZ, kullanıcı kuralı 2026-11-22; Türkiye'deki yarışlar ve Türk sporcular öncelikli; aynı etkinlikten bir tane; CrossFit/HYROX/hibrit öncelikli, koşudan yalnızca büyük ve popüler yarışlar, küçük yerel koşular seçilmez)."} Her biri için:
+${SHORT ? "Görev: Bu tek haber için TEK öğe yaz (n=0)." : "Görev: Okurun en çok ilgisini çekecek 4-6 haberi seç (kişi adı geçebilir ama yalnızca açıklamada o kişiye atfedilen bilgiyle, kullanıcı kuralı 2026-11-22; Türkiye'deki yarışlar ve Türk sporcular öncelikli; aynı etkinlikten bir tane; CrossFit/HYROX/hibrit öncelikli, koşudan yalnızca büyük ve popüler yarışlar, küçük yerel koşular seçilmez)."} Her biri için:
 - kicker: "Branş · Yer" (ör. "CrossFit · Kuşadası", en çok 30 karakter)
 - headline: kısa başlık, en çok 32 karakter
 - stat: haberdeki en çarpıcı TEK sayı, en çok 7 karakter, açıklamada aynen geçen biçimde (ör. "815", "1.200", "7:19:17", "9."); tarih koyma; yoksa boş

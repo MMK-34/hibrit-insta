@@ -2921,6 +2921,47 @@
         "https://news.google.com/rss/articles/CBMic0FVX3lxTE1ZZUpNOElKRm11ZFpTUlZhOVdVYjh6RDE0cElZVzdSX2dXZm1qRGxSV3o2VGFLMzZ2RVZlTGNtZVJYZmJrUmRWVGFCTGt5UDFyMEUyeXpPdUNDUHE3TndDZ3FsX211bjdNU1Z4amFOMk94M0E"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMivwFBVV95cUxNdmdxQUtFRHZPUmhkNGdLTU91VUJWQ0MxUXVWQTJwcldTTWlzVHJjeTNZeGMtZzZ5NEJTT0s1VXJFNENsSS1xVHdvMWwzTXlJX29oRjFHZm1pMHVNUmF2T2c1Qm1oeFpxb0RiUk1lanhhT29aYUFKai1LS0k5bXpGeWg3VlVnUXptclNKcXJieTlPUVI1NmM5a0g1Y1hyWXl3U0FWRHBlZy16My1nOEhlMjVCNTFTcXVINGJVMDc5NA"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNNXNTSzBvYXl3d2xwNTJSVHFPYkdkbG5MQjF6QXRDM1B0ZktvS014bndYdVZkNEd5UnJIcHZYTVE2aThRRGRNNVlBZUpEdUlMQ3JxRnNiSkN3aWZOSWc1MThqX2xSdmUwV0ZJai1XR3p1WHdZWXh6V1VrMkE4bEpNczQydGdxdHJE"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:f51b928a7c7579d6"
+      ],
+      "media": "18038294300887583",
+      "permalink": "https://www.instagram.com/p/DgB_GbwiVuy/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-22/mwrcxuv3/01.jpg",
+      "title": "Strava just made things official with Hyrox",
+      "headline": "Strava'da artık resmi HYROX kategorisi var",
+      "at": "2026-11-22T04:50:08.117Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "HYROX",
+            "title": "Strava'da artık resmi HYROX kategorisi var",
+            "subtitle": "Hibrit fitness antrenmanları artık genel aktivite türlerinden ayrılıyor."
+          }
+        ],
+        "caption": "Strava ve HYROX arasında imzalanan iki yıllık anlaşmayla hibrit fitness yarışları platformda kendi özel kategorisine kavuştu. Artık antrenmanlarınızı genel aktiviteler yerine doğrudan HYROX başlığı altında kaydedebilir, sled push veya wall ball gibi spesifik hareket verilerinizi paylaşabilirsiniz. Platform ayrıca aboneler için özel bir antrenman serisi ve yarış keşif özelliği üzerinde çalışıyor. Antrenman verilerinizi artık daha detaylı takip etmeye hazır mısınız? Yarış planın için kaydet.\n\nKaynak: Canadian Running Magazine\nGörsel: circle21 resmî kayıt\n\n#hyrox #hyroxturkiye #strava #hibritfitness #antrenman #hibritportal",
+        "srcUrls": [
+          "https://runningmagazine.ca/the-scene/strava-just-made-things-official-with-hyrox/"
+        ],
+        "eventName": "",
+        "country": "",
+        "place": ""
+      },
+      "story": "18440828149176898"
     }
   ],
   "daily": {
@@ -3005,6 +3046,12 @@
       "rejected": 7,
       "aiCalls": 79,
       "summarySent": true
+    },
+    "2026-11-22": {
+      "drafts": 3,
+      "approved": 2,
+      "rejected": 1,
+      "aiCalls": 15
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3028,7 +3075,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-21T18:44:40.717Z",
+  "lastRunAt": "2026-11-22T04:44:45.344Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

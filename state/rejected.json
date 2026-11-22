@@ -1773,5 +1773,28 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-22T04:48:08.163Z",
+    "title": "Denver just hosted its first Hyrox, the world’s fastest-growing fitness race",
+    "url": "https://www.westword.com/arts-culture/denver-just-hosted-its-first-hyrox-the-worlds-fastest-growing-fitness-race-40964824/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "tarih",
+        "note": "Kaynak metinde yarışın 12-15 Kasım 2026 tarihlerinde yapıldığı belirtiliyor, postta tarih bilgisi yok."
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "alinti_yok",
+        "note": "Kaynak metinde Allison Muscart'ın alıntıları yer alıyor, postta bu kişi yok ancak haberin kendisi olmayan kişi adı geçmemesi kuralı ihlal edilmiş."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "tarih",
+        "note": "Kaynak metne göre etkinlik 12-15 Kasım tarihleri arasında gerçekleşmiştir, ancak postta tarihe yer verilmemiştir (ya da sistem verisindeki farklı etkinlik tarihleriyle çelişmektedir)."
+      }
+    ]
   }
 ]

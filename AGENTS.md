@@ -19,17 +19,25 @@ Kullanıcıyla her zaman **Türkçe** konuş.
 
 ## 2. Çalışma düzeni (Antigravity için)
 
-1. İşe başlamadan `ORTAK-GOREV.md`'yi oku. Yalnızca **sana atanmış** ve durumu `bekliyor` olan görevi al.
-2. Görevin durumunu `yapılıyor (Antigravity)` yap.
-3. Ortak `insta` klasöründe branch DEĞİŞTİRME (Claude Code ve başka oturumlar aynı klasörde main'de çalışıyor).
-   Kod görevi için kendi ayrı klasörünü aç: `git worktree add ../insta-ag -b antigravity/<görev-kısa-adı> origin/main`
-   ve yalnızca `../insta-ag` içinde çalış. Görev bitince commit at; worktree'yi silme, Claude Code inceleyip kaldırır.
-4. Yalnızca görevde adı geçen dosyalara dokun. Claude Code aynı anda main'de çalışıyor olabilir.
-5. Bitince kontrol et (bkz. madde 4), branch'e commit at, `ORTAK-GOREV.md`'de durumu `inceleme bekliyor` yap ve
-   ne yaptığını 3–5 satırla yaz: değişen dosyalar, nasıl test ettin, açık kalan.
-6. Rapor görevlerinde (denetim, görsel kontrol) kod değiştirme; raporu `rapor/` klasörüne `.md` olarak yaz.
+Kullanıcı sana yalnızca şunu yazar: **"Sıradaki görevini yap."** Gerisini bu bölüme göre kendin yürüt.
+Kullanıcıya soru sorma, onay isteme, "devam edeyim mi" deme. Karar mercii Claude Code'dur; takıldığın yeri panoya yaz.
 
-Claude Code branch'i inceler, uygunsa main'e alır ve görevi `bitti` yapar.
+**Görev panosu tek yerde:** `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\ORTAK-GOREV.md` (bu tam yolu kullan).
+Kendi worktree'ndeki `ORTAK-GOREV.md` kopyasını okuma/yazma ve panoyu commit etme; pano yalnızca bu dosyadır.
+
+1. Panoyu oku. **Atanan: Antigravity** ve **Durum: bekliyor** olan en üstteki görevi al; durumunu `yapılıyor (Antigravity)` yap.
+2. **Ortak `insta` klasöründe branch değiştirme, dosya düzenleme yok.** Claude Code ve başka oturumlar orada main'de çalışıyor.
+   - Kod görevi: `git -C "C:\Users\Mehmet Kuyucu\Desktop\cf\insta" worktree add "C:\Users\Mehmet Kuyucu\Desktop\cf\insta-ag-<görev>" -b antigravity/<görev> origin/main`
+     ve yalnızca o klasörde çalış (`npm ci` gerekirse orada çalıştır).
+   - Rapor görevi: kod değiştirme; raporu `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\<görev>.md` olarak yaz.
+3. Yalnızca görevde adı geçen dosyalara dokun.
+4. Bitince madde 4'teki kontrolleri çalıştır, kendi branch'ine commit at (push yok), panoda durumu `inceleme bekliyor` yap
+   ve 3–5 satır not yaz: değişen dosyalar, nasıl test ettin, açık kalan. Sonra kullanıcıya tek satır yaz:
+   "Gx bitti, Claude Code'a 'Antigravity Gx'i bitirdi' de." ve dur. Bir sonraki göreve kendiliğinden geçme.
+5. Emin olmadığın şey olursa görevi `SORU` yap, panonun "Sorular" bölümüne yaz ve dur.
+6. Komutları az ve toplu çalıştır (kullanıcı her komut için izin veriyor). Okuma işleri için dosya okuma aracını kullan, kabuk komutu değil.
+
+Claude Code branch'i inceler, uygunsa main'e alır, worktree'yi kaldırır ve görevi `bitti` yapar.
 
 ## 3. İçerik kuralları (denetim yaparken bunlara göre kontrol et)
 
@@ -55,7 +63,10 @@ for f in src/*.mjs; do node --check "$f"; done
 npx --no-install eslint -c scripts/eslint.config.mjs src/*.mjs
 ```
 
-İkisi de hatasız geçmeli. `npm run dry` gerçek API anahtarı ister; çalıştırma.
+node scripts/replay-test.mjs
+```
+
+Üçü de hatasız geçmeli. `npm run dry` gerçek API anahtarı ister; çalıştırma.
 
 ## 5. Mimari (kısa)
 

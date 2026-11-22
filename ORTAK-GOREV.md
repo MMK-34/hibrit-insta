@@ -23,7 +23,7 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 
 ## G2 — Replay test paketi
 - **Atanan:** Antigravity
-- **Durum:** bekliyor
+- **Durum:** bitti
 - **Branch:** `antigravity/replay-test`
 - Yapılacak: `scripts/replay-test.mjs` yaz. `src/guard.mjs` içindeki kontrolleri (rakam kuralı, kategori adı,
   şapkalı harf, `hl` kontrolü vb.) örnek metinlerle test etsin: kuralı ihlal eden örnekler yakalanmalı,
@@ -33,6 +33,11 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 - Dokunulacak dosyalar: yalnızca `scripts/replay-test.mjs`, `scripts/replay-fixtures.json`.
   `src/` içinde değişiklik gerekiyorsa yapma, notlara yaz.
 - Notlar:
+  - `antigravity/replay-test` branch'inde `scripts/replay-test.mjs` ve `scripts/replay-fixtures.json` oluşturuldu (`src/` altında hiçbir dosyaya dokunulmadı).
+  - 29 test senaryosu eklendi: temiz örnekler ("peynir altı suyu", "%0,087 seviyesine", "bir", "ikişer", eşsesli "yüz/yüzme", şapkalı harf temizliği, `hl` 3 kelime sınırı ve başlık eşleşmesi, genel hashtag filtreleme, Türkiye ATHX) ve ihlal örnekleri (yazıyla sayılar 2..10/100/1000, İngilizce/Türkçe kategori ve yaş grubu adları, TL/EUR/GBP/kayıt bedeli fiyatları, yurt dışı ATHX, yargılayıcı ifadeler, kişi sözü/alıntı, AI klişeleri, çoklu ünlem, büyük harfli alan adı, prompt injection, spam, uzun slayt metni, eksik kapak slaytı).
+  - Test: `node scripts/replay-test.mjs` (29/29 geçti, çıkış kodu 0), `node --check` ve `eslint` hatasız geçti.
+  - Claude Code (2026-11-22): incelendi, main'e alındı (3ca136e); post.yml kod denetimine eklendi, test kalırsa bot paylaşmaz.
+  - Küçük gözlem (`src/guard.mjs:59`): `clean(s.hl).toLocaleUpperCase("tr")` İngilizce özel adlardaki küçük `i` harfini Türkçe büyük `İ`'ye çeviriyor (`"Eurasia"` -> `"EURASİA"`). Render aşamasında font/stil açısından sorun oluşturuyorsa `src/guard.mjs` içinde değerlendirilebilir.
 
 ## G3 — Takvim senkronu zaman aşımı (teşhis)
 - **Atanan:** Antigravity
@@ -51,6 +56,17 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 - Yapılacak: Kullanıcı sana son postların ekran görüntülerini/slayt görsellerini verecek (verilmezse bu görevi
   `SORU` yap ve dur — Instagram'a kendin girme). Her post için kontrol et: foto konuyla ilgili mi, olay postunda
   yalnızca olayın kendi görseli mi, yazı taşıyor mu, logo/yüz kesiliyor mu, kırmızı vurgu doğru kelimede mi.
+- Notlar:
+
+## G5 — Post slayt tasarımı denemesi (yayın yok)
+- **Atanan:** Antigravity
+- **Durum:** yapılıyor (Antigravity)
+- **Branch / worktree:** `antigravity/tasarim` → `C:\Users\Mehmet Kuyucu\Desktop\cf\insta-ag-tasarim`
+- Yapılacak: post slaytlarının tasarımını iyileştir (`src/render.mjs`, gerekirse `fonts/`). Fotoğraf ÜRETME, yapay zekâ görseli
+  YOK; mevcut gerçek fotoğraflar kalır. Hedef: v2 haber sitesi stili, kırmızı vurgu (`hl`), Türkçe karakterler doğru,
+  yazı taşmaz, logo/yüz kesilmez, boyut aynı kalır.
+- Önce/sonra örnek: `SPEC=manual/work/posts-wwc.json node manual/make.mjs` (`--publish` YOK). Önce/sonra görselleri
+  `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G5-tasarim\once\` ve `...\sonra\` klasörlerine koy.
 - Notlar:
 
 ---

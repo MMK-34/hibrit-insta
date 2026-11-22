@@ -56,6 +56,7 @@ jobs:
         run: |
           for f in src/*.mjs; do node --check "$f"; done
           npx --no-install eslint -c scripts/eslint.config.mjs src/*.mjs # sürüm package-lock.json ile sabit
+          node scripts/replay-test.mjs # süzgeç kuralları: test kalırsa paylaşım yapılmaz
 
       # Takvim kaynağı (ör. hyranking.com) yanıt vermezse komut 4 dk'da kesilir; bu adım paylaşımı asla engellemez
       - name: Yarış takvimi senkronu

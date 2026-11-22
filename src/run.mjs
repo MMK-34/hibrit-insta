@@ -402,8 +402,11 @@ const dropCategories = (txt) => String(txt ?? "").split(/(?<=[.!?])\s+/).filter(
 // Etkinlik bazlı tekrar önleme (kullanıcı kuralı 2026-11-22: Gazi Yarı Maratonu farklı sitelerden 5 kez paylaşıldı).
 // Koşu: bir yarış için tek post ("koşu var, tarih şu" yeterli), 30 gün içinde ikincisi yok. Diğer branşlar: aynı etkinliğe 2 gün içinde ikinci post yok (takip serisi hariç).
 const evKey = (s) => norm(String(s ?? "").replace(/\b(19|20)\d\d\b/g, "").replace(/^\s*\d+\s*\.?\s*/, ""));
+// Koşu, trail/ultra, su ve bisiklet yarışları: yarış başına tek post (İda Ultra "doga" kategorisinde iki kez çıktı, 2026-11-22)
+const ONE_POST_CATS = new Set(["kosu", "doga", "su", "bisiklet"]);
 function recentSameEvent({ eventName = "", text = "", category = "", followup = false }) {
-  const days = category === "kosu" ? 30 : followup ? 0 : 2;
+  const one = ONE_POST_CATS.has(category);
+  const days = one ? 30 : followup ? 0 : 2;
   if (!days) return null;
   const k = evKey(eventName), t = norm(text);
   const hits = state.posts.filter((p) => {
@@ -413,7 +416,7 @@ function recentSameEvent({ eventName = "", text = "", category = "", followup = 
     return (k.length >= 6 && (k.includes(pk) || pk.includes(k))) || (t && t.includes(pk));
   });
   // Koşu: tek post. Diğerleri: aynı etkinliğe 2 günde en çok 2 post (ör. kazananlar + Türk sporcular)
-  return (category === "kosu" ? hits.length >= 1 : hits.length >= 2) ? hits[0] : null;
+  return (one ? hits.length >= 1 : hits.length >= 2) ? hits[0] : null;
 }
 
 // Aynı haberin farklı kaynaktan tekrarı (etkinlik adı olmayan haberler dahil; Strava-HYROX iki kez çıktı):
@@ -436,6 +439,14 @@ function recentSameStory(headline, eventName = "") {
 // Kullanıcı kuralı (2026-11-22): sayfa, Türkiye'de yaşayanların katılabileceği/gidebileceği CrossFit, HYROX, ATHX ve koşu yarışları için.
 // Uzak ülkelerin yerel yarış/hikâye haberleri (ABD, Hindistan, Güney Afrika...) Türk sporcu yoksa ve çok önemli değilse elenir.
 const NEAR = /^(türkiye|kktc|kıbrıs|yunanistan|bulgaristan|arnavutluk|sırbistan|romanya|gürcistan|azerbaycan|karadağ|kuzey makedonya|bosna hersek|hırvatistan|slovenya|macaristan|polonya|çekya|slovakya|avusturya|almanya|fransa|italya|ispanya|portekiz|hollanda|belçika|isviçre|birleşik krallık|ingiltere|irlanda|danimarka|isveç|norveç|finlandiya|birleşik arap emirlikleri|bae|katar|suudi arabistan|mısır|ürdün|lübnan)$/i;
+// Kullanıcı kuralı: bilgi/araştırma postu YALNIZCA resmî sayfa ya da yayımlanmış araştırmaya dayanır.
+// Kaynaklardan (haber + yazarın kanıt adresleri) en az biri bu listedeki bir alan adında olmalı; dergi/yaşam sitesi tek başına yetmez
+// (2026-11-22: Women's Health'teki bir ünlü yazısından "araştırmalar gösteriyor" diyen kettlebell postu çıktı).
+const TRUSTED_INFO = /(^|\.)(pubmed\.ncbi\.nlm\.nih\.gov|ncbi\.nlm\.nih\.gov|doi\.org|springer\.com|sciencedirect\.com|wiley\.com|tandfonline\.com|frontiersin\.org|mdpi\.com|bmj\.com|jamanetwork\.com|nature\.com|lww\.com|physiology\.org|humankinetics\.com|jssm\.org|plos\.org|biomedcentral\.com|thelancet\.com|nejm\.org|cell\.com|sagepub\.com|eurekalert\.org|medrxiv\.org|biorxiv\.org|[a-z0-9-]+\.edu|[a-z0-9-]+\.edu\.tr|[a-z0-9-]+\.ac\.uk|hyrox\.com|crossfit\.com|concept2\.com|worldathletics\.org|utmb\.world|nsca\.com|acsm\.org|who\.int|taf\.org\.tr|gsb\.gov\.tr)$/i;
+function infoSourceOk(urls) {
+  return urls.some((u) => { try { return TRUSTED_INFO.test(new URL(u).hostname.replace(/^www\./, "")); } catch { return false; } });
+}
+
 function offAudience(post, pick) {
   if (!["haber", "hikaye", "duyuru"].includes(pick.kind) || pick.score >= 9) return "";
   const country = String(post.country ?? "").trim(), turk = /(^|[^\p{L}])Türk(?!iye)/u.test(`${post.caption ?? ""} ${post.slides?.[0]?.title ?? ""}`);
@@ -480,6 +491,10 @@ async function prepareVerified(pick, srcItems, sourceName) {
     if (dupEv) { log(`Aynı etkinlik yakın zamanda paylaşıldı (${dupEv.eventName}), atlandı.`); lastFails = [{ model: "tekrar", item: "tekrar", note: `aynı etkinlik: ${dupEv.eventName}` }]; break; }
     const dupSt = /^fu:/.test(srcItems[0].id) ? null : recentSameStory(g.post.slides[0]?.title, g.post.eventName);
     if (dupSt) { log(`Aynı haber yakın zamanda paylaşıldı (${dupSt.headline ?? dupSt.title}), atlandı.`); lastFails = [{ model: "tekrar", item: "tekrar", note: `aynı haber: ${dupSt.headline ?? dupSt.title}` }]; break; }
+    if (["bilgi", "arastirma"].includes(pick.kind) && !/^(fu|stat|dm):/.test(srcItems[0].id) && !infoSourceOk([...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)])) {
+      log("Bilgi/araştırma postu için resmî ya da bilimsel kaynak yok, atlandı:", String(srcItems[0].url ?? "").slice(0, 100));
+      lastFails = [{ model: "kaynak", item: "kaynak", note: "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor" }]; break;
+    }
     const off = offAudience(g.post, pick);
     if (off) { log(`Kitle dışı (${off}), atlandı.`); lastFails = [{ model: "kitle", item: "kitle", note: off }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);

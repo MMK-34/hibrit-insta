@@ -1,0 +1,468 @@
+[
+  {
+    "topic": "sci-creatine",
+    "category": "bilim",
+    "sourceName": "Uluslararası Spor Beslenmesi Derneği (ISSN)",
+    "sourceUrls": [
+      "https://pubmed.ncbi.nlm.nih.gov/28615996/",
+      "https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0173-z"
+    ],
+    "post": {
+      "slides": [
+        {
+          "type": "cover",
+          "kicker": "SPOR BİLİMİ",
+          "title": "Kreatin hakkında bilimsel veriler ne söylüyor?",
+          "subtitle": "Uluslararası Spor Beslenmesi Derneği pozisyon bildirisine göre etki mekanizması, doz ve güvenlik.",
+          "hl": "BİLİMSEL VERİLER"
+        },
+        {
+          "type": "text",
+          "title": "Performansa etkisi",
+          "bullets": [
+            "Kas içi kreatin depolarını artırarak yüksek yoğunluklu egzersiz kapasitesini yükseltir",
+            "Tekrarlı sprint ve ağırlık çalışmalarında antrenman adaptasyonunu destekler",
+            "Ağır antrenman dönemlerinde toparlanmayı hızlandırır ve iş yükü toleransını artırır"
+          ]
+        },
+        {
+          "type": "text",
+          "title": "Toparlanma ve koruma",
+          "bullets": [
+            "Antrenman sonrası kas hasarını ve yaralanma şiddetini azaltmaya yardımcı olabilir",
+            "Sıcak ortamda yapılan egzersizlerde vücut ısısı düzenlemesini (termoregülasyon) destekler",
+            "Sakatlık sonrası rehabilitasyon sürecinde kas kaybını sınırlandırır"
+          ]
+        },
+        {
+          "type": "table",
+          "title": "ISSN bildirisine göre kreatin kullanımı",
+          "columns": [
+            "Parametre",
+            "Bilimsel bulgu"
+          ],
+          "rows": [
+            [
+              "Günlük düzenli doz",
+              "3-5 g/gün"
+            ],
+            [
+              "Uzun süreli güvenlik",
+              "30 g/gün, 5 yıl"
+            ],
+            [
+              "Temel etki alanı",
+              "Yüksek yoğunluk ve güç"
+            ],
+            [
+              "Ek fayda",
+              "Toparlanma ve rehabilitasyon"
+            ]
+          ],
+          "note": "Kaynak: ISSN kreatin pozisyon bildirisi (Kreider ve ark., 2017)."
+        },
+        {
+          "type": "end",
+          "title": "Antrenman döneminde düzenli kreatin kullanıyor musunuz?"
+        }
+      ],
+      "caption": "Kreatin hakkında bilimsel veriler ne söylüyor?\nUluslararası Spor Beslenmesi Derneği (ISSN) tarafından yayımlanan kapsamlı pozisyon bildirisine göre kreatin monohidrat, yüksek yoğunluklu egzersiz kapasitesini ve antrenman adaptasyonunu artıran en güçlü bilimsel kanıta sahip besin desteklerinden biridir.\n\nPerformans ve toparlanma\nAraştırmalar, kreatin takviyesinin kas içi kreatin konsantrasyonunu artırarak kısa süreli patlayıcı kuvvet, tekrarlı sprint ve ağırlık antrenmanlarında performansı geliştirdiğini gösteriyor. Bunun yanında ağır antrenman yüklerini tolere etmeye, egzersiz sonrası toparlanmayı hızlandırmaya ve sakatlık sonrası rehabilitasyon sürecine katkı sağlayabildiği belirtiliyor.\n\nDoz ve güvenlik\nBildiriye göre günlük 3 gram civarında düzenli kreatin alımı sporcu sağlığı ve kas fonksiyonu için yeterli temel desteği sağlıyor. Klinik çalışmalarda sağlıklı bireylerde günde 30 grama kadar 5 yıl süren kullanımların bile güvenli ve iyi tolere edildiği rapor ediliyor.\n\nAntrenman döneminde düzenli kreatin kullanıyor musunuz?\nAntrenman planın için kaydet.\n\nKaynak: Uluslararası Spor Beslenmesi Derneği (ISSN)\n\n#sporbilimi #kreatin #sporbeslenmesi #kuvvetantrenmanı #crossfit #hyrox #hibritportal",
+      "hashtags": [
+        "#sporbilimi",
+        "#kreatin",
+        "#sporbeslenmesi",
+        "#kuvvetantrenmanı",
+        "#crossfit",
+        "#hyrox",
+        "#hibritportal"
+      ],
+      "imageQueries": [
+        "barbell strength training gym",
+        "weightlifting athlete barbell",
+        "functional fitness gym dumbbell",
+        "strength training squat rack"
+      ]
+    }
+  },
+  {
+    "topic": "sci-caffeine",
+    "category": "bilim",
+    "sourceName": "Uluslararası Spor Beslenmesi Derneği (ISSN)",
+    "sourceUrls": [
+      "https://pubmed.ncbi.nlm.nih.gov/33388079/",
+      "https://jissn.biomedcentral.com/articles/10.1186/s12970-020-00383-4"
+    ],
+    "post": {
+      "slides": [
+        {
+          "type": "cover",
+          "kicker": "SPOR BİLİMİ",
+          "title": "Kafein performans için ne zaman ve ne kadar alınmalı?",
+          "subtitle": "ISSN pozisyon bildirisine göre dayanıklılık ve kuvvet antrenmanlarında etkili kafein dozu.",
+          "hl": "NE KADAR"
+        },
+        {
+          "type": "table",
+          "title": "ISSN kafein pozisyon bildirisi özeti",
+          "columns": [
+            "Başlık",
+            "Önerilen değer"
+          ],
+          "rows": [
+            [
+              "Etkili doz aralığı",
+              "3-6 mg/kg"
+            ],
+            [
+              "En düşük olası doz",
+              "2 mg/kg"
+            ],
+            [
+              "Yan etki eşiği",
+              "9 mg/kg ve üstü"
+            ],
+            [
+              "Standart zamanlama",
+              "60 dk önce"
+            ]
+          ],
+          "note": "70 kg bir sporcu için 3-6 mg/kg doz, 210-420 mg kafeine karşılık gelir."
+        },
+        {
+          "type": "text",
+          "title": "Hangi branşlarda etkili?",
+          "bullets": [
+            "En tutarlı ve yüksek fayda aerobik dayanıklılık egzersizlerinde görülür",
+            "Kas dayanıklılığı, hareket hızı, sprint ve sıçrama performansını da destekler",
+            "Sıcak ortamda ve yüksek irtifada yapılan dayanıklılık yarışlarında 3-6 mg/kg doz etkilidir"
+          ]
+        },
+        {
+          "type": "text",
+          "title": "Zamanlama ve bireysel farklar",
+          "bullets": [
+            "Kapsül ve içecek formları genellikle antrenmandan 60 dakika önce alınır",
+            "Kafeinli sakız ve enerji jelleri kana daha hızlı karıştığı için daha kısa süre önce alınabilir",
+            "Genetik metabolizma hızı ve uyku kalitesi nedeniyle bireysel tepkiler farklılık gösterir"
+          ]
+        },
+        {
+          "type": "end",
+          "title": "Yarış veya antrenman öncesi kafein tercihiniz hangisi?"
+        }
+      ],
+      "caption": "Kafein performans için ne zaman ve ne kadar alınmalı?\nUluslararası Spor Beslenmesi Derneği (ISSN) kafein pozisyon bildirisine göre kafein, hem dayanıklılık hem de yüksek yoğunluklu branşlarda performansı akut olarak artırabilen en etkili ergojenik desteklerden biridir.\n\nDoz ve zamanlama\nAraştırmalarda performansı tutarlı biçimde geliştiren doz, vücut ağırlığının kilogramı başına 3 ile 6 mg arasıdır (örneğin 70 kg bir sporcu için 210-420 mg). En düşük etkili doz 2 mg/kg seviyesine kadar inebilirken, 9 mg/kg gibi çok yüksek dozlar ek performans kazancı sağlamadığı gibi yan etki, kaygı ve uyku bozukluğu riskini artırır.\n\nEn yaygın kullanım zamanı egzersizden 60 dakika öncedir. Kafeinli sakız ve enerji jelleri ise kapsüle kıyasla daha hızlı emildiği için başlangıca daha yakın alınabilir.\n\nHangi branşlarda çalışır?\nEn belirgin gelişim aerobik dayanıklılık sporlarında görülse de kas dayanıklılığı, bar hareket hızı, sprint, sıçrama ve bilişsel odaklanma üzerinde de olumlu etkileri doğrulanmıştır.\n\nYarış veya antrenman öncesi kafein tercihiniz hangisi?\nYarış planın için kaydet.\n\nKaynak: Uluslararası Spor Beslenmesi Derneği (ISSN)\n\n#sporbilimi #kafein #sporbeslenmesi #dayanıklılık #koşu #hyrox #crossfit #hibritportal",
+      "hashtags": [
+        "#sporbilimi",
+        "#kafein",
+        "#sporbeslenmesi",
+        "#dayanıklılık",
+        "#koşu",
+        "#hyrox",
+        "#crossfit",
+        "#hibritportal"
+      ],
+      "imageQueries": [
+        "runner athlete track start",
+        "endurance running athlete",
+        "fitness training workout gym",
+        "athlete drinking water bottles"
+      ]
+    }
+  },
+  {
+    "topic": "run-taper",
+    "category": "kosu",
+    "sourceName": "Medicine & Science in Sports & Exercise",
+    "sourceUrls": [
+      "https://pubmed.ncbi.nlm.nih.gov/17762369/"
+    ],
+    "post": {
+      "slides": [
+        {
+          "type": "cover",
+          "kicker": "ANTRENMAN BİLİMİ",
+          "title": "Yarıştan önce antrenman yükü nasıl azaltılmalı?",
+          "subtitle": "27 çalışmanın meta-analizine göre yarış öncesi en verimli taper süresi ve hacim düşüşü.",
+          "hl": "NASIL AZALTILMALI"
+        },
+        {
+          "type": "table",
+          "title": "Meta-analize göre ideal taper protokolü",
+          "columns": [
+            "Bileşen",
+            "Bilimsel öneri"
+          ],
+          "rows": [
+            [
+              "Taper süresi",
+              "2 hafta"
+            ],
+            [
+              "Hacim azaltımı",
+              "%41-60 düşüş"
+            ],
+            [
+              "Antrenman yoğunluğu",
+              "Korunur (düşürülmez)"
+            ],
+            [
+              "Antrenman sıklığı",
+              "Korunur (düşürülmez)"
+            ]
+          ],
+          "note": "Kaynak: Bosquet ve ark., Medicine & Science in Sports & Exercise (27 çalışma)."
+        },
+        {
+          "type": "text",
+          "title": "Neden hacim düşerken tempo korunur?",
+          "bullets": [
+            "Amaç biriken kas ve merkezi sinir sistemi yorgunluğunu kazanılmış kondisyonu kaybetmeden silmektir",
+            "Toplam mesafe veya süre kademeli olarak %41-60 azaltılırken yarış temposundaki kısa yüklenmeler korunur",
+            "Antrenman günlerini tamamen kesmek yerine alışık olunan sıklığı daha kısa seanslarla sürdürmek daha etkilidir"
+          ]
+        },
+        {
+          "type": "end",
+          "title": "Yarıştan önceki son 2 haftada antrenman hacmini ne kadar düşürüyorsunuz?"
+        }
+      ],
+      "caption": "Yarıştan önce antrenman yükü nasıl azaltılmalı?\nMedicine & Science in Sports & Exercise dergisinde yayımlanan ve yarışmacı sporcular üzerindeki 27 çalışmayı inceleyen meta-analiz, yarış öncesi antrenman azaltma (taper) döneminin performansı nasıl maksimize ettiğini ortaya koyuyor.\n\nEn verimli protokol: 2 hafta ve %41-60 hacim düşüşü\nAraştırmaya göre performans artışını en üst düzeye çıkaran strateji, yarıştan önceki 2 hafta boyunca toplam antrenman hacmini (haftalık kilometre veya toplam süre) kademeli olarak %41 ile %60 arasında azaltmaktır.\n\nYoğunluk ve sıklık düşürülmez\nMeta-analizin en kritik bulgusu, hacim düşürülürken antrenman yoğunluğunun (tempo) ve haftalık antrenman sıklığının azaltılmaması gerektiğidir. Seanslar kısalır ancak yarış temposundaki kısa uyarılar korunur; böylece yorgunluk dağılırken aerobik ve nöromüsküler form kaybolmaz.\n\nYarıştan önceki son 2 haftada antrenman hacmini ne kadar düşürüyorsunuz?\nYarış planın için kaydet.\n\nKaynak: Medicine & Science in Sports & Exercise\n\n#koşu #maraton #yarımaraton #antrenmanbilimi #taper #dayanıklılık #hibritportal",
+      "hashtags": [
+        "#koşu",
+        "#maraton",
+        "#yarımaraton",
+        "#antrenmanbilimi",
+        "#taper",
+        "#dayanıklılık",
+        "#hibritportal"
+      ],
+      "imageQueries": [
+        "distance runner road running",
+        "marathon runner training track",
+        "running athlete stretching track",
+        "endurance runner outdoor"
+      ]
+    }
+  },
+  {
+    "topic": "run-8020",
+    "category": "kosu",
+    "sourceName": "Frontiers in Physiology ve IJSPP",
+    "sourceUrls": [
+      "https://pubmed.ncbi.nlm.nih.gov/20861519/",
+      "https://pubmed.ncbi.nlm.nih.gov/24550842/"
+    ],
+    "post": {
+      "slides": [
+        {
+          "type": "cover",
+          "kicker": "DAYANIKLILIK",
+          "title": "Dayanıklılık sporlarında 80/20 yoğunluk kuralı nasıl çalışır?",
+          "subtitle": "Polarize antrenman araştırmalarına göre düşük ve yüksek yoğunluklu seansların dağılımı.",
+          "hl": "80/20"
+        },
+        {
+          "type": "text",
+          "title": "80/20 dağılımı nedir?",
+          "bullets": [
+            "Haftada 10-13 seans çalışan üst düzey dayanıklılık sporcularında antrenmanların yaklaşık %80'i düşük yoğunlukta yapılır",
+            "Düşük yoğunluk bölgesi 2 mmol/L kan laktat eşiğinin altındaki rahat konuşma temposudur",
+            "Kalan %20'lik bölüm ise yaklaşık %90 VO2max seviyesindeki yüksek yoğunluklu interval çalışmalara ayrılır"
+          ]
+        },
+        {
+          "type": "table",
+          "title": "9 haftalık polarize antrenman çalışması sonuçları",
+          "columns": [
+            "Ölçüm",
+            "Polarize grup değişimi"
+          ],
+          "rows": [
+            [
+              "VO2peak artışı",
+              "+%11,7"
+            ],
+            [
+              "Tükenme süresi",
+              "+%17,4"
+            ],
+            [
+              "Zirve hız / güç",
+              "+%5,1"
+            ],
+            [
+              "4 mmol/L laktat hızı",
+              "+%8,1"
+            ]
+          ],
+          "note": "Stöggl ve Sperlich (2014), 48 dayanıklılık sporcusu, 9 hafta."
+        },
+        {
+          "type": "end",
+          "title": "Haftalık koşu veya kardiyo seanslarınızın ne kadarı düşük tempoda geçiyor?"
+        }
+      ],
+      "caption": "Dayanıklılık sporlarında 80/20 yoğunluk kuralı nasıl çalışır?\nDayanıklılık sporcularının antrenman dağılımını inceleyen araştırmalar (Seiler, 2010; Stöggl ve Sperlich, 2014), seansların yaklaşık %80'inin düşük yoğunlukta, %20'sinin ise yüksek yoğunlukta yapılmasının (polarize antrenman) uzun vadeli gelişimde en verimli model olduğunu gösteriyor.\n\n9 haftalık karşılaştırma\nFrontiers in Physiology dergisinde yayımlanan çalışmada 48 koşucu, bisikletçi, triatlet ve kayakçı 9 hafta boyunca 4 farklı modele ayrıldı: yüksek hacim, eşik (threshold) antrenmanı, yüksek yoğunluklu interval (HIIT) ve polarize (80/20) antrenman.\n\n9 hafta sonunda en yüksek gelişim polarize grupta kaydedildi: zirve oksijen tüketimi (VO2peak) %11,7, testte tükenme süresi %17,4 ve zirve hız/güç %5,1 arttı. Sürekli orta-sert (eşik) tempoda koşmak yerine kolay günleri gerçekten kolay, sert günleri gerçekten sert yapmak aşırı sürantrene riskini azaltırken adaptasyonu büyütüyor.\n\nHaftalık koşu veya kardiyo seanslarınızın ne kadarı düşük tempoda geçiyor?\nAntrenman planın için kaydet.\n\nKaynak: Frontiers in Physiology ve IJSPP\n\n#koşu #dayanıklılık #polarizeantrenman #sporbilimi #maraton #hyrox #hibritportal",
+      "hashtags": [
+        "#koşu",
+        "#dayanıklılık",
+        "#polarizeantrenman",
+        "#sporbilimi",
+        "#maraton",
+        "#hyrox",
+        "#hibritportal"
+      ],
+      "imageQueries": [
+        "endurance runner outdoor trail",
+        "marathon runner road training",
+        "track running interval workout",
+        "distance running athlete"
+      ]
+    }
+  },
+  {
+    "topic": "sci-hydration",
+    "category": "bilim",
+    "sourceName": "Amerikan Spor Hekimliği Koleji (ACSM)",
+    "sourceUrls": [
+      "https://pubmed.ncbi.nlm.nih.gov/17277604/"
+    ],
+    "post": {
+      "slides": [
+        {
+          "type": "cover",
+          "kicker": "SPOR BİLİMİ",
+          "title": "Antrenmanda yüzde 2 sıvı kaybı performansı neden düşürür?",
+          "subtitle": "Amerikan Spor Hekimliği Koleji pozisyon bildirisine göre egzersizde sıvı ve elektrolit yönetimi.",
+          "hl": "YÜZDE 2"
+        },
+        {
+          "type": "text",
+          "title": "Yüzde 2 eşiği nedir?",
+          "bullets": [
+            "ACSM pozisyon bildirisine göre egzersizde sıvı alımının ana hedefi vücut ağırlığının %2'sini aşan su kaybını önlemektir",
+            "75 kg bir sporcuda 1,5 kg üzerindeki sıvı açığı aerobik performansı ve ısı kontrolünü bozmaya başlar",
+            "Terleme hızı ve terdeki tuz oranı kişiden kişiye büyük farklılık gösterir"
+          ]
+        },
+        {
+          "type": "text",
+          "title": "Antrenman öncesi ve sırası",
+          "bullets": [
+            "Sıvı alımı antrenmandan birkaç saat önce başlatılarak egzersize normal hidrasyonla girilmelidir",
+            "Antrenman öncesi ve sonrası tartılarak kişisel ter kaybı hızı hesaplanabilir",
+            "Uzun süreli veya sıcak ortamdaki çalışmalarda sodyum ve karbonhidrat içeren içecekler tek başına suya göre avantaj sağlar"
+          ]
+        },
+        {
+          "type": "end",
+          "title": "Uzun antrenmanlardan önce ve sonra tartılarak sıvı kaybınızı ölçüyor musunuz?"
+        }
+      ],
+      "caption": "Antrenmanda yüzde 2 sıvı kaybı performansı neden düşürür?\nAmerikan Spor Hekimliği Koleji (ACSM) tarafından yayımlanan egzersiz ve sıvı yerine koyma pozisyon bildirisi, antrenman sırasında oluşan sıvı ve elektrolit açığının performansı doğrudan sınırladığını ortaya koyuyor.\n\nKritik sınır: Vücut ağırlığının %2'si\nBildiriye göre egzersiz sırasında sıvı tüketiminin temel amacı, vücut ağırlığının %2'sinden fazla sıvı kaybını (örneğin 75 kg bir sporcuda 1,5 kg kayıp) ve elektrolit dengesizliğini önlemektir. Bu eşik aşıldığında kardiyovasküler zorlanma artar ve dayanıklılık performansı düşer.\n\nKişisel plan nasıl yapılır?\n1. Egzersize yeterli sıvı dengesiyle başlamak için sıvı alımını birkaç saat önceden başlatın.\n2. Terleme hızı kişiye özeldir; antrenman öncesi ve sonrası tartılarak saatlik ter kaybınızı belirleyin.\n3. Uzun veya sıcak antrenmanlarda yalnızca su yerine elektrolit (sodyum) ve karbonhidrat içeren sıvıları tercih edin.\n\nUzun antrenmanlardan önce ve sonra tartılarak sıvı kaybınızı ölçüyor musunuz?\nYarış planın için kaydet.\n\nKaynak: Amerikan Spor Hekimliği Koleji (ACSM)\n\n#sporbilimi #hidrasyon #sporbeslenmesi #dayanıklılık #koşu #hyrox #crossfit #hibritportal",
+      "hashtags": [
+        "#sporbilimi",
+        "#hidrasyon",
+        "#sporbeslenmesi",
+        "#dayanıklılık",
+        "#koşu",
+        "#hyrox",
+        "#crossfit",
+        "#hibritportal"
+      ],
+      "imageQueries": [
+        "athlete drinking water workout",
+        "runner hydration water bottle",
+        "endurance athlete sweating training",
+        "fitness athlete gym recovery"
+      ]
+    }
+  },
+  {
+    "topic": "func-hybrid",
+    "category": "fonksiyonel",
+    "sourceName": "Sports Medicine ve JSCR",
+    "sourceUrls": [
+      "https://pubmed.ncbi.nlm.nih.gov/34757594/",
+      "https://pubmed.ncbi.nlm.nih.gov/22002517/"
+    ],
+    "post": {
+      "slides": [
+        {
+          "type": "cover",
+          "kicker": "HİBRİT ANTRENMAN",
+          "title": "Kardiyo ve ağırlık aynı dönemde kas gelişimini engeller mi?",
+          "subtitle": "43 çalışmayı inceleyen Sports Medicine meta-analizine göre hibrit antrenmanın kuralları.",
+          "hl": "ENGELLER Mİ"
+        },
+        {
+          "type": "text",
+          "title": "43 çalışmanın sonucu",
+          "bullets": [
+            "Aerobik dayanıklılık ve kuvvet antrenmanını aynı programda yapmak maksimum kuvvet gelişimini engellemez",
+            "Kas kütlesi (hipertrofi) kazanımı, yalnızca ağırlık çalışan gruplarla benzer düzeydedir",
+            "Olumsuz etkileşim (interference etkisi) yalnızca patlayıcı kuvvet kazanımlarında görülebilir"
+          ]
+        },
+        {
+          "type": "text",
+          "title": "En az 3 saat ara kuralı",
+          "bullets": [
+            "Patlayıcı kuvvetteki baskılanma, kardiyo ve ağırlık aynı seansta arka arkaya yapıldığında belirginleşir",
+            "Kuvvet ve dayanıklılık seansları arasına en az 3 saat koymak bu kaybı ortadan kaldırır",
+            "HYROX ve CrossFit sporcuları 2 çalışmayı sabah-akşam veya farklı günlerde ayırarak verimi koruyabilir"
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Hibrit antrenman meta-analizi (Schumann ve ark., 2022)",
+          "columns": [
+            "Çıktı",
+            "Eş zamanlı antrenman etkisi"
+          ],
+          "rows": [
+            [
+              "Kas kütlesi (hipertrofi)",
+              "Olumsuz etki yok"
+            ],
+            [
+              "Maksimum kuvvet",
+              "Olumsuz etki yok"
+            ],
+            [
+              "Patlayıcı kuvvet (aynı seans)",
+              "Azalma görülebilir"
+            ],
+            [
+              "Patlayıcı kuvvet (3+ saat ara)",
+              "Korunur"
+            ]
+          ],
+          "note": "Kaynak: Sports Medicine (2022), 43 çalışma."
+        },
+        {
+          "type": "end",
+          "title": "Koşu ve kuvvet antrenmanlarını aynı gün mü, farklı günlerde mi yapıyorsunuz?"
+        }
+      ],
+      "caption": "Kardiyo ve ağırlık aynı dönemde kas gelişimini engeller mi?\nSports Medicine dergisinde yayımlanan ve 43 çalışmayı bir araya getiren kapsamlı meta-analiz (Schumann ve ark., 2022), dayanıklılık ve kuvvet antrenmanlarını birlikte yürüten hibrit sporcular için önemli veriler sunuyor.\n\nMaksimum kuvvet ve kas kütlesi korunuyor\nYaygın inanışın aksine, aerobik antrenman ile ağırlık antrenmanını aynı programda birleştirmek maksimum kuvvet gelişimini ve kas büyümesini (hipertrofi) tek başına ağırlık antrenmanına kıyasla engellemiyor.\n\nPatlayıcı kuvvet için 3 saat kuralı\nAraştırmada dikkat çekilen tek hassas nokta patlayıcı kuvvet (güç) gelişimi. Kardiyo ve kuvvet aynı seansta peş peşe yapıldığında patlayıcı kuvvet kazanımları baskılanabiliyor. Ancak 2 antrenman arasına en az 3 saat ara konulduğunda veya seanslar farklı günlere bölündüğünde bu olumsuz etki ortadan kalkıyor.\n\nKoşu ve kuvvet antrenmanlarını aynı gün mü, farklı günlerde mi yapıyorsunuz?\nAntrenman planın için kaydet.\n\nKaynak: Sports Medicine ve JSCR\n\n#hibritantrenman #fonksiyonelfitness #sporbilimi #hyrox #crossfit #kuvvetantrenmanı #dayanıklılık #hibritportal",
+      "hashtags": [
+        "#hibritantrenman",
+        "#fonksiyonelfitness",
+        "#sporbilimi",
+        "#hyrox",
+        "#crossfit",
+        "#kuvvetantrenmanı",
+        "#dayanıklılık",
+        "#hibritportal"
+      ],
+      "imageQueries": [
+        "hybrid fitness athlete barbell running",
+        "crossfit barbell strength workout",
+        "functional fitness athlete gym",
+        "hyrox sled push athlete"
+      ]
+    }
+  }
+]

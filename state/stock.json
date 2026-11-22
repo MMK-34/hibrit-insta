@@ -1,347 +1,825 @@
 {
-  "queue": [
-    {
-      "id": "stock:stat-tr-yillara-gore:mw728mzt",
-      "topic": "stat-tr-yillara-gore",
-      "category": "genel",
-      "sourceName": "Hibrit Portal yarışma arşivi",
-      "post": {
-        "slides": [
-          {
-            "type": "cover",
-            "kicker": "Veri",
-            "title": "Arşivimizdeki ilk Türkiye HYROX yılı: 2026",
-            "subtitle": "Arşivimizdeki 17 Türkiye edisyonunun 3'ü HYROX ve üçü de 2026'da yapıldı."
-          },
-          {
-            "type": "table",
-            "columns": [
-              "Yıl",
-              "CrossFit",
-              "HYROX",
-              "Toplam"
-            ],
-            "rows": [
-              [
-                "2020",
-                "1",
-                "0",
-                "1"
-              ],
-              [
-                "2021",
-                "0",
-                "0",
-                "0"
-              ],
-              [
-                "2022",
-                "3",
-                "0",
-                "3"
-              ],
-              [
-                "2023",
-                "2",
-                "0",
-                "2"
-              ],
-              [
-                "2024",
-                "2",
-                "0",
-                "2"
-              ],
-              [
-                "2025",
-                "2",
-                "0",
-                "2"
-              ],
-              [
-                "2026",
-                "1",
-                "3",
-                "4"
-              ]
-            ],
-            "note": "Hibrit Portal yarışma arşivi, 2020-2026 (14 edisyon). Tam sayım değil.",
-            "title": "Arşivimizde yıllara göre Türkiye yarışmaları"
-          },
-          {
-            "type": "text",
-            "title": "Arşivimiz neyi kapsıyor?",
-            "bullets": [
-              "2015 ile 2026 arasında Türkiye'den 9 farklı yarışma ve toplam 17 edisyon",
-              "Edisyonların 14'ü CrossFit, 3'ü HYROX",
-              "Tabloda yer almayan 2020 öncesi edisyonlar: Battle of Anatolia 2019, Istanbul Throwdown 2019, Istanbul Throwdown 2015",
-              "Arşiv tam sayım değil. Box içi yerel yarışmaların çoğu yok, gerçek sayı daha yüksek."
-            ]
-          },
-          {
-            "type": "text",
-            "title": "2026'nın kalanında takvimimizde 4 yarışma daha var",
-            "bullets": [
-              "Battle of Anatolia 2026/2027 (tarih tahmini)",
-              "Kuşadası Uluslararası CrossFit Şampiyonası 2026 (tarih tahmini)",
-              "VU BOX HYROX-style 50%",
-              "Olympos Games"
-            ]
-          },
-          {
-            "type": "end",
-            "title": "Arşivimizde eksik gördüğünüz bir yarışma var mı?",
-            "body": "Katıldığınız ya da bildiğiniz yarışmaları yorumlara yazın, takvimimize ekleyelim."
-          }
-        ],
-        "caption": "Arşivimizdeki ilk Türkiye HYROX yılı 2026 oldu. Kayıtlı 17 Türkiye edisyonunun 3'ü HYROX ve üçü de 2026'da yapıldı.\n\nHibrit Portal yarışma arşivinde 2015 ile 2026 arasında Türkiye'den 9 farklı yarışma ve toplam 17 edisyon yer alıyor. Bunların 14'ü CrossFit, 3'ü HYROX. 2022 ile 2025 arasındaki dört tam yılda arşivimize yılda ortalama 2,25 yarışma girdi. 2026'da ise 7 Kasım'a kadar bu sayı 4'e ulaştı.\n\nTakvimimizde yılın kalanı için 4 Türkiye yarışması daha var: Battle of Anatolia 2026/2027 ve Kuşadası Uluslararası CrossFit Şampiyonası 2026 (ikisinin de tarihi tahmini), VU BOX HYROX-style 50% ve Olympos Games.\n\nBu sayım Türkiye'deki tüm yarışmaları kapsamıyor. Arşivimizde büyük ve öne çıkan organizasyonlar yer alıyor, box içi yerel yarışmaların çoğu yok. Gerçek sayı daha yüksek.\n\nArşivimizde eksik gördüğünüz bir yarışma var mı? Yorumlara yazın, takvimimize ekleyelim. 📊\n\nKaynak: Hibrit Portal yarışma arşivi\n\n#crossfit #crossfitturkiye #hyrox #hyroxturkiye #fonksiyonelfitness #yarışmatakvimi #hibritantrenman #crossfitcompetition #fitnessyarışması",
-        "eventName": "",
-        "officialSite": "",
-        "officialInstagram": "",
-        "imageQueries": [
-          "crossfit competition barbell",
-          "hyrox race sled push",
-          "functional fitness competition crowd",
-          "crossfit athletes competition floor"
-        ],
-        "brand": "@hibritportal"
-      },
-      "createdAt": "2026-11-07T23:54:30.377Z"
-    },
-    {
-      "id": "stock:stat-tr-sehirler:mw72etke",
-      "topic": "stat-tr-sehirler",
-      "category": "genel",
-      "sourceName": "Hibrit Portal yarışma arşivi ve takvimi",
-      "post": {
-        "slides": [
-          {
-            "type": "cover",
-            "kicker": "Veri",
-            "title": "Arşivimizde lider İstanbul: şehri belli 22 kaydın 12'si",
-            "subtitle": "Hibrit Portal arşivinde ve takviminde yarışmaların hangi şehirlerde toplandığına baktık."
-          },
-          {
-            "type": "table",
-            "columns": [
-              "Şehir",
-              "Geçmiş",
-              "Yaklaşan",
-              "Toplam"
-            ],
-            "rows": [
-              [
-                "İstanbul",
-                "9",
-                "3",
-                "12"
-              ],
-              [
-                "Ankara",
-                "4",
-                "0",
-                "4"
-              ],
-              [
-                "İzmir",
-                "1",
-                "1",
-                "2"
-              ],
-              [
-                "Kuşadası",
-                "1",
-                "1",
-                "2"
-              ],
-              [
-                "Antalya",
-                "0",
-                "1",
-                "1"
-              ],
-              [
-                "Samsun",
-                "0",
-                "1",
-                "1"
-              ]
-            ],
-            "note": "Arşiv + takvim, 22 kayıt (şehri belirsiz 3 kayıt hariç).",
-            "title": "Arşivimizde ve takvimimizde şehirlere göre"
-          },
-          {
-            "type": "stat",
-            "label": "Şehri belli kayıtlarda İstanbul'un payı",
-            "value": "%55"
-          },
-          {
-            "type": "text",
-            "title": "Şehirlere göre dağılım",
-            "bullets": [
-              "İstanbul: 12 kayıt. 9'u arşivde, 3'ü takvimde.",
-              "Ankara: 4 kayıt. Dördü de yapılmış edisyon, takvimde yarışma yok.",
-              "İzmir ve Kuşadası: ikişer kayıt. Her birinin 1 kaydı arşivde, 1 kaydı takvimde.",
-              "Antalya ve Samsun: birer kayıt. İkisi de takvimdeki yaklaşan yarışmalar."
-            ]
-          },
-          {
-            "type": "text",
-            "title": "Veri neyi kapsıyor?",
-            "bullets": [
-              "Toplam 25 kayıt: arşivde 17 yapılmış edisyon, takvimde 8 yaklaşan yarışma.",
-              "Yaklaşan 8 yarışmanın 5'inin tarihi tahmini.",
-              "Yeri doğrulanmamış ya da birden fazla şehir yazan 3 kayıt sıralamaya alınmadı.",
-              "Arşiv tam bir sayım değil, büyük yarışmaları kapsıyor. Referans tarih: 7 Kasım 2026."
-            ]
-          },
-          {
-            "type": "end",
-            "title": "Sizin şehrinizde yarışma var mı?",
-            "body": "Takvimimizde olmayan bir yarışma biliyorsanız yorumlara şehir ve adıyla yazın."
-          }
-        ],
-        "caption": "Hibrit Portal yarışma arşivinde lider şehir İstanbul: şehri belli 22 kaydın 12'si, yani %55'i burada 📍\n\nArşivimizdeki 17 yapılmış edisyonu ve takvimimizdeki 8 yaklaşan yarışmayı şehir şehir saydık. İstanbul'u 4 kayıtla Ankara izliyor. Ankara'daki dört kaydın dördü de geçmiş edisyon, takvimde şu an Ankara'da yarışma yok. İzmir ve Kuşadası ikişer, Antalya ve Samsun birer kayıtla listede yer alıyor. Antalya ve Samsun'daki kayıtların ikisi de yaklaşan yarışmalar.\n\nŞehir bilgisi mekândan alındı, mekân yoksa yarışmanın şehri kullanıldı. Yeri doğrulanmamış ya da birden fazla şehir yazan 3 kayıt sıralamaya katılmadı. Yaklaşan 8 yarışmanın 5'inin tarihi henüz tahmini.\n\nBu veri tüm Türkiye'yi değil, yalnızca Hibrit Portal arşivini ve takvimini kapsıyor. Arşiv tam bir sayım değil, büyük yarışmalara odaklanıyor. Referans tarih 7 Kasım 2026.\n\nŞehrinizde takvimimize girmesi gereken bir yarışma var mı? Yorumlarda yazın.\n\nKaynak: Hibrit Portal yarışma arşivi ve takvimi\n\n#crossfit #crossfitturkiye #hyrox #hyroxturkiye #fonksiyonelfitness #yarışmatakvimi #istanbul #hibritantrenman #fitnesscompetition #hibritportal",
-        "eventName": "",
-        "officialSite": "",
-        "officialInstagram": "",
-        "imageQueries": [
-          "crossfit competition arena crowd",
-          "functional fitness competition athletes",
-          "istanbul city skyline sport",
-          "fitness competition barbell stage"
-        ],
-        "brand": "@hibritportal"
-      },
-      "createdAt": "2026-11-07T23:59:18.830Z"
-    },
-    {
-      "id": "stock:stat-takvim-ulkeler:mw72h2lq",
-      "topic": "stat-takvim-ulkeler",
-      "category": "genel",
-      "sourceName": "Hibrit Portal yarışma arşivi ve takvimi",
-      "post": {
-        "slides": [
-          {
-            "type": "cover",
-            "kicker": "Veri",
-            "title": "Takvimimizde en çok yarışma Birleşik Krallık'ta",
-            "subtitle": "Yeri belli 191 yarışmanın 46'sı tek ülkede. Türkiye de ilk beşte."
-          },
-          {
-            "type": "table",
-            "columns": [
-              "Ülke",
-              "CrossFit",
-              "HYROX",
-              "Toplam"
-            ],
-            "rows": [
-              [
-                "Birleşik Krallık",
-                "38",
-                "8",
-                "46"
-              ],
-              [
-                "Almanya",
-                "14",
-                "4",
-                "18"
-              ],
-              [
-                "İspanya",
-                "13",
-                "5",
-                "18"
-              ],
-              [
-                "ABD",
-                "1",
-                "13",
-                "14"
-              ],
-              [
-                "İtalya",
-                "4",
-                "4",
-                "8"
-              ],
-              [
-                "Türkiye",
-                "5",
-                "3",
-                "8"
-              ],
-              [
-                "Fransa",
-                "2",
-                "5",
-                "7"
-              ]
-            ],
-            "note": "Hibrit Portal takvimi, Ekim 2026-Ekim 2027, 191 yarışma.",
-            "highlight": [
-              5
-            ],
-            "title": "Takvimimizde en çok yer alan ülkeler"
-          },
-          {
-            "type": "stat",
-            "label": "Birleşik Krallık'ın takvimimizdeki payı (46 yarışma)",
-            "value": "%24"
-          },
-          {
-            "type": "text",
-            "title": "Sıralamadan öne çıkanlar",
-            "bullets": [
-              "Birleşik Krallık'taki 46 yarışmanın 38'i CrossFit, 8'i HYROX.",
-              "Almanya ve İspanya on sekizer yarışmayla Birleşik Krallık'ın ardından geliyor.",
-              "ABD'deki 14 yarışmanın 13'ü HYROX, yalnızca 1'i CrossFit.",
-              "Türkiye 8 yarışmayla (CrossFit 5, HYROX 3) İtalya ile birlikte 5. sırada."
-            ]
-          },
-          {
-            "type": "text",
-            "title": "Veriyi okurken",
-            "bullets": [
-              "Kapsam: Ekim 2026 ile Ekim 2027 arasındaki Hibrit Portal takvimi (güncelleme: 7 Kasım 2026).",
-              "Takvimde 198 yarışma var: 106 CrossFit, 92 HYROX. HYROX sayısına simülasyonlar ve HYROX tarzı yerel etkinlikler de dâhil.",
-              "Online ya da yeri açıklanmamış 7 kayıt hariç tutuldu. Kalan 191 kayıt 36 ülkeye dağılıyor.",
-              "CrossFit kayıtlarından 93'ü circle21 platformundan geliyor ve bunların 41'i Birleşik Krallık'ta."
-            ]
-          },
-          {
-            "type": "end",
-            "title": "Bu sezon hangi ülkede yarışacaksınız?",
-            "body": "Takvimimizde olmayan bir yarışma biliyorsanız yorumlara paylaşın, takvime ekleyelim."
-          }
-        ],
-        "caption": "Hibrit Portal yarışma takviminde en çok yarışma Birleşik Krallık'ta: yeri belli 191 yarışmanın 46'sı, yani %24'ü 📊\n\nEkim 2026 ile Ekim 2027 arasındaki takvimimizde 106 CrossFit ve 92 HYROX olmak üzere 198 yarışma yer alıyor (HYROX sayısına simülasyonlar ve HYROX tarzı yerel etkinlikler de dâhil). Online ya da yeri açıklanmamış 7 kaydı hariç tuttuk. Kalan 191 yarışma 36 ülkeye dağılıyor. Almanya ve İspanya on sekizer yarışmayla Birleşik Krallık'ın ardından geliyor. ABD'de ise tablo farklı: 14 yarışmanın 13'ü HYROX.\n\nTürkiye 8 yarışmayla (5 CrossFit, 3 HYROX) İtalya ile birlikte 5. sırada. Fransa 7, Hollanda ve İsviçre altışar, BAE ise 5 yarışmayla listede yer alıyor.\n\nVeriyi okurken bir noktaya dikkat edin: CrossFit kayıtlarının 93'ü circle21 platformundan geliyor ve bunların 41'i Birleşik Krallık'ta. Bu yüzden sıralama dünyada en çok yarışma yapılan ülkeleri değil, bizim takvimimizde en çok yer alan ülkeleri gösteriyor. Örneklem sınırlı; takvim güncellendikçe tablo da değişebilir.\n\nBu sezon yurt dışında yarışmayı düşünüyor musunuz, hangi ülke listenizde?\n\nKaynak: Hibrit Portal yarışma arşivi ve takvimi\n\n#crossfit #hyrox #hyroxturkiye #crossfitturkiye #yarışmatakvimi #fonksiyonelfitness #hibritantrenman #functionalfitness #fitnesscompetition",
-        "eventName": "",
-        "officialSite": "",
-        "officialInstagram": "",
-        "imageQueries": [
-          "crossfit competition athletes arena",
-          "hyrox race sled push",
-          "functional fitness competition crowd",
-          "world map fitness events"
-        ],
-        "brand": "@hibritportal"
-      },
-      "createdAt": "2026-11-08T00:01:03.854Z"
-    }
-  ],
-  "used": [
-    "hyrox-sled",
-    "hyrox-format",
-    "hyrox-divisions",
-    "stat-tr-yillara-gore",
-    "hyrox-roxzone",
-    "hyrox-wallball",
-    "stat-tr-sehirler",
-    "crossfit-open",
-    "stat-takvim-ulkeler"
-  ],
-  "fails": {}
+ "queue": [
+  {
+   "id": "stock:stat-tr-yillara-gore:mw728mzt",
+   "topic": "stat-tr-yillara-gore",
+   "category": "genel",
+   "sourceName": "Hibrit Portal yarışma arşivi",
+   "post": {
+    "slides": [
+     {
+      "type": "cover",
+      "kicker": "Veri",
+      "title": "Arşivimizdeki ilk Türkiye HYROX yılı: 2026",
+      "subtitle": "Arşivimizdeki 17 Türkiye edisyonunun 3'ü HYROX ve üçü de 2026'da yapıldı."
+     },
+     {
+      "type": "table",
+      "columns": [
+       "Yıl",
+       "CrossFit",
+       "HYROX",
+       "Toplam"
+      ],
+      "rows": [
+       [
+        "2020",
+        "1",
+        "0",
+        "1"
+       ],
+       [
+        "2021",
+        "0",
+        "0",
+        "0"
+       ],
+       [
+        "2022",
+        "3",
+        "0",
+        "3"
+       ],
+       [
+        "2023",
+        "2",
+        "0",
+        "2"
+       ],
+       [
+        "2024",
+        "2",
+        "0",
+        "2"
+       ],
+       [
+        "2025",
+        "2",
+        "0",
+        "2"
+       ],
+       [
+        "2026",
+        "1",
+        "3",
+        "4"
+       ]
+      ],
+      "note": "Hibrit Portal yarışma arşivi, 2020-2026 (14 edisyon). Tam sayım değil.",
+      "title": "Arşivimizde yıllara göre Türkiye yarışmaları"
+     },
+     {
+      "type": "text",
+      "title": "Arşivimiz neyi kapsıyor?",
+      "bullets": [
+       "2015 ile 2026 arasında Türkiye'den 9 farklı yarışma ve toplam 17 edisyon",
+       "Edisyonların 14'ü CrossFit, 3'ü HYROX",
+       "Tabloda yer almayan 2020 öncesi edisyonlar: Battle of Anatolia 2019, Istanbul Throwdown 2019, Istanbul Throwdown 2015",
+       "Arşiv tam sayım değil. Box içi yerel yarışmaların çoğu yok, gerçek sayı daha yüksek."
+      ]
+     },
+     {
+      "type": "text",
+      "title": "2026'nın kalanında takvimimizde 4 yarışma daha var",
+      "bullets": [
+       "Battle of Anatolia 2026/2027 (tarih tahmini)",
+       "Kuşadası Uluslararası CrossFit Şampiyonası 2026 (tarih tahmini)",
+       "VU BOX HYROX-style 50%",
+       "Olympos Games"
+      ]
+     },
+     {
+      "type": "end",
+      "title": "Arşivimizde eksik gördüğünüz bir yarışma var mı?",
+      "body": "Katıldığınız ya da bildiğiniz yarışmaları yorumlara yazın, takvimimize ekleyelim."
+     }
+    ],
+    "caption": "Arşivimizdeki ilk Türkiye HYROX yılı 2026 oldu. Kayıtlı 17 Türkiye edisyonunun 3'ü HYROX ve üçü de 2026'da yapıldı.\n\nHibrit Portal yarışma arşivinde 2015 ile 2026 arasında Türkiye'den 9 farklı yarışma ve toplam 17 edisyon yer alıyor. Bunların 14'ü CrossFit, 3'ü HYROX. 2022 ile 2025 arasındaki dört tam yılda arşivimize yılda ortalama 2,25 yarışma girdi. 2026'da ise 7 Kasım'a kadar bu sayı 4'e ulaştı.\n\nTakvimimizde yılın kalanı için 4 Türkiye yarışması daha var: Battle of Anatolia 2026/2027 ve Kuşadası Uluslararası CrossFit Şampiyonası 2026 (ikisinin de tarihi tahmini), VU BOX HYROX-style 50% ve Olympos Games.\n\nBu sayım Türkiye'deki tüm yarışmaları kapsamıyor. Arşivimizde büyük ve öne çıkan organizasyonlar yer alıyor, box içi yerel yarışmaların çoğu yok. Gerçek sayı daha yüksek.\n\nArşivimizde eksik gördüğünüz bir yarışma var mı? Yorumlara yazın, takvimimize ekleyelim. 📊\n\nKaynak: Hibrit Portal yarışma arşivi\n\n#crossfit #crossfitturkiye #hyrox #hyroxturkiye #fonksiyonelfitness #yarışmatakvimi #hibritantrenman #crossfitcompetition #fitnessyarışması",
+    "eventName": "",
+    "officialSite": "",
+    "officialInstagram": "",
+    "imageQueries": [
+     "crossfit competition barbell",
+     "hyrox race sled push",
+     "functional fitness competition crowd",
+     "crossfit athletes competition floor"
+    ],
+    "brand": "@hibritportal"
+   },
+   "createdAt": "2026-11-07T23:54:30.377Z"
+  },
+  {
+   "id": "stock:stat-tr-sehirler:mw72etke",
+   "topic": "stat-tr-sehirler",
+   "category": "genel",
+   "sourceName": "Hibrit Portal yarışma arşivi ve takvimi",
+   "post": {
+    "slides": [
+     {
+      "type": "cover",
+      "kicker": "Veri",
+      "title": "Arşivimizde lider İstanbul: şehri belli 22 kaydın 12'si",
+      "subtitle": "Hibrit Portal arşivinde ve takviminde yarışmaların hangi şehirlerde toplandığına baktık."
+     },
+     {
+      "type": "table",
+      "columns": [
+       "Şehir",
+       "Geçmiş",
+       "Yaklaşan",
+       "Toplam"
+      ],
+      "rows": [
+       [
+        "İstanbul",
+        "9",
+        "3",
+        "12"
+       ],
+       [
+        "Ankara",
+        "4",
+        "0",
+        "4"
+       ],
+       [
+        "İzmir",
+        "1",
+        "1",
+        "2"
+       ],
+       [
+        "Kuşadası",
+        "1",
+        "1",
+        "2"
+       ],
+       [
+        "Antalya",
+        "0",
+        "1",
+        "1"
+       ],
+       [
+        "Samsun",
+        "0",
+        "1",
+        "1"
+       ]
+      ],
+      "note": "Arşiv + takvim, 22 kayıt (şehri belirsiz 3 kayıt hariç).",
+      "title": "Arşivimizde ve takvimimizde şehirlere göre"
+     },
+     {
+      "type": "stat",
+      "label": "Şehri belli kayıtlarda İstanbul'un payı",
+      "value": "%55"
+     },
+     {
+      "type": "text",
+      "title": "Şehirlere göre dağılım",
+      "bullets": [
+       "İstanbul: 12 kayıt. 9'u arşivde, 3'ü takvimde.",
+       "Ankara: 4 kayıt. Dördü de yapılmış edisyon, takvimde yarışma yok.",
+       "İzmir ve Kuşadası: ikişer kayıt. Her birinin 1 kaydı arşivde, 1 kaydı takvimde.",
+       "Antalya ve Samsun: birer kayıt. İkisi de takvimdeki yaklaşan yarışmalar."
+      ]
+     },
+     {
+      "type": "text",
+      "title": "Veri neyi kapsıyor?",
+      "bullets": [
+       "Toplam 25 kayıt: arşivde 17 yapılmış edisyon, takvimde 8 yaklaşan yarışma.",
+       "Yaklaşan 8 yarışmanın 5'inin tarihi tahmini.",
+       "Yeri doğrulanmamış ya da birden fazla şehir yazan 3 kayıt sıralamaya alınmadı.",
+       "Arşiv tam bir sayım değil, büyük yarışmaları kapsıyor. Referans tarih: 7 Kasım 2026."
+      ]
+     },
+     {
+      "type": "end",
+      "title": "Sizin şehrinizde yarışma var mı?",
+      "body": "Takvimimizde olmayan bir yarışma biliyorsanız yorumlara şehir ve adıyla yazın."
+     }
+    ],
+    "caption": "Hibrit Portal yarışma arşivinde lider şehir İstanbul: şehri belli 22 kaydın 12'si, yani %55'i burada 📍\n\nArşivimizdeki 17 yapılmış edisyonu ve takvimimizdeki 8 yaklaşan yarışmayı şehir şehir saydık. İstanbul'u 4 kayıtla Ankara izliyor. Ankara'daki dört kaydın dördü de geçmiş edisyon, takvimde şu an Ankara'da yarışma yok. İzmir ve Kuşadası ikişer, Antalya ve Samsun birer kayıtla listede yer alıyor. Antalya ve Samsun'daki kayıtların ikisi de yaklaşan yarışmalar.\n\nŞehir bilgisi mekândan alındı, mekân yoksa yarışmanın şehri kullanıldı. Yeri doğrulanmamış ya da birden fazla şehir yazan 3 kayıt sıralamaya katılmadı. Yaklaşan 8 yarışmanın 5'inin tarihi henüz tahmini.\n\nBu veri tüm Türkiye'yi değil, yalnızca Hibrit Portal arşivini ve takvimini kapsıyor. Arşiv tam bir sayım değil, büyük yarışmalara odaklanıyor. Referans tarih 7 Kasım 2026.\n\nŞehrinizde takvimimize girmesi gereken bir yarışma var mı? Yorumlarda yazın.\n\nKaynak: Hibrit Portal yarışma arşivi ve takvimi\n\n#crossfit #crossfitturkiye #hyrox #hyroxturkiye #fonksiyonelfitness #yarışmatakvimi #istanbul #hibritantrenman #fitnesscompetition #hibritportal",
+    "eventName": "",
+    "officialSite": "",
+    "officialInstagram": "",
+    "imageQueries": [
+     "crossfit competition arena crowd",
+     "functional fitness competition athletes",
+     "istanbul city skyline sport",
+     "fitness competition barbell stage"
+    ],
+    "brand": "@hibritportal"
+   },
+   "createdAt": "2026-11-07T23:59:18.830Z"
+  },
+  {
+   "id": "stock:stat-takvim-ulkeler:mw72h2lq",
+   "topic": "stat-takvim-ulkeler",
+   "category": "genel",
+   "sourceName": "Hibrit Portal yarışma arşivi ve takvimi",
+   "post": {
+    "slides": [
+     {
+      "type": "cover",
+      "kicker": "Veri",
+      "title": "Takvimimizde en çok yarışma Birleşik Krallık'ta",
+      "subtitle": "Yeri belli 191 yarışmanın 46'sı tek ülkede. Türkiye de ilk beşte."
+     },
+     {
+      "type": "table",
+      "columns": [
+       "Ülke",
+       "CrossFit",
+       "HYROX",
+       "Toplam"
+      ],
+      "rows": [
+       [
+        "Birleşik Krallık",
+        "38",
+        "8",
+        "46"
+       ],
+       [
+        "Almanya",
+        "14",
+        "4",
+        "18"
+       ],
+       [
+        "İspanya",
+        "13",
+        "5",
+        "18"
+       ],
+       [
+        "ABD",
+        "1",
+        "13",
+        "14"
+       ],
+       [
+        "İtalya",
+        "4",
+        "4",
+        "8"
+       ],
+       [
+        "Türkiye",
+        "5",
+        "3",
+        "8"
+       ],
+       [
+        "Fransa",
+        "2",
+        "5",
+        "7"
+       ]
+      ],
+      "note": "Hibrit Portal takvimi, Ekim 2026-Ekim 2027, 191 yarışma.",
+      "highlight": [
+       5
+      ],
+      "title": "Takvimimizde en çok yer alan ülkeler"
+     },
+     {
+      "type": "stat",
+      "label": "Birleşik Krallık'ın takvimimizdeki payı (46 yarışma)",
+      "value": "%24"
+     },
+     {
+      "type": "text",
+      "title": "Sıralamadan öne çıkanlar",
+      "bullets": [
+       "Birleşik Krallık'taki 46 yarışmanın 38'i CrossFit, 8'i HYROX.",
+       "Almanya ve İspanya on sekizer yarışmayla Birleşik Krallık'ın ardından geliyor.",
+       "ABD'deki 14 yarışmanın 13'ü HYROX, yalnızca 1'i CrossFit.",
+       "Türkiye 8 yarışmayla (CrossFit 5, HYROX 3) İtalya ile birlikte 5. sırada."
+      ]
+     },
+     {
+      "type": "text",
+      "title": "Veriyi okurken",
+      "bullets": [
+       "Kapsam: Ekim 2026 ile Ekim 2027 arasındaki Hibrit Portal takvimi (güncelleme: 7 Kasım 2026).",
+       "Takvimde 198 yarışma var: 106 CrossFit, 92 HYROX. HYROX sayısına simülasyonlar ve HYROX tarzı yerel etkinlikler de dâhil.",
+       "Online ya da yeri açıklanmamış 7 kayıt hariç tutuldu. Kalan 191 kayıt 36 ülkeye dağılıyor.",
+       "CrossFit kayıtlarından 93'ü circle21 platformundan geliyor ve bunların 41'i Birleşik Krallık'ta."
+      ]
+     },
+     {
+      "type": "end",
+      "title": "Bu sezon hangi ülkede yarışacaksınız?",
+      "body": "Takvimimizde olmayan bir yarışma biliyorsanız yorumlara paylaşın, takvime ekleyelim."
+     }
+    ],
+    "caption": "Hibrit Portal yarışma takviminde en çok yarışma Birleşik Krallık'ta: yeri belli 191 yarışmanın 46'sı, yani %24'ü 📊\n\nEkim 2026 ile Ekim 2027 arasındaki takvimimizde 106 CrossFit ve 92 HYROX olmak üzere 198 yarışma yer alıyor (HYROX sayısına simülasyonlar ve HYROX tarzı yerel etkinlikler de dâhil). Online ya da yeri açıklanmamış 7 kaydı hariç tuttuk. Kalan 191 yarışma 36 ülkeye dağılıyor. Almanya ve İspanya on sekizer yarışmayla Birleşik Krallık'ın ardından geliyor. ABD'de ise tablo farklı: 14 yarışmanın 13'ü HYROX.\n\nTürkiye 8 yarışmayla (5 CrossFit, 3 HYROX) İtalya ile birlikte 5. sırada. Fransa 7, Hollanda ve İsviçre altışar, BAE ise 5 yarışmayla listede yer alıyor.\n\nVeriyi okurken bir noktaya dikkat edin: CrossFit kayıtlarının 93'ü circle21 platformundan geliyor ve bunların 41'i Birleşik Krallık'ta. Bu yüzden sıralama dünyada en çok yarışma yapılan ülkeleri değil, bizim takvimimizde en çok yer alan ülkeleri gösteriyor. Örneklem sınırlı; takvim güncellendikçe tablo da değişebilir.\n\nBu sezon yurt dışında yarışmayı düşünüyor musunuz, hangi ülke listenizde?\n\nKaynak: Hibrit Portal yarışma arşivi ve takvimi\n\n#crossfit #hyrox #hyroxturkiye #crossfitturkiye #yarışmatakvimi #fonksiyonelfitness #hibritantrenman #functionalfitness #fitnesscompetition",
+    "eventName": "",
+    "officialSite": "",
+    "officialInstagram": "",
+    "imageQueries": [
+     "crossfit competition athletes arena",
+     "hyrox race sled push",
+     "functional fitness competition crowd",
+     "world map fitness events"
+    ],
+    "brand": "@hibritportal"
+   },
+   "createdAt": "2026-11-08T00:01:03.854Z"
+  },
+  {
+   "id": "stock:sci-creatine:mws9fcgd8ip",
+   "topic": "sci-creatine",
+   "category": "bilim",
+   "sourceName": "Uluslararası Spor Beslenmesi Derneği (ISSN)",
+   "post": {
+    "slides": [
+     {
+      "type": "cover",
+      "kicker": "SPOR BİLİMİ",
+      "title": "Kreatin hakkında bilimsel veriler ne söylüyor?",
+      "subtitle": "Uluslararası Spor Beslenmesi Derneği pozisyon bildirisine göre etki mekanizması, doz ve güvenlik.",
+      "hl": "BİLİMSEL VERİLER"
+     },
+     {
+      "type": "text",
+      "title": "Performansa etkisi",
+      "bullets": [
+       "Kas içi kreatin depolarını artırarak yüksek yoğunluklu egzersiz kapasitesini yükseltir",
+       "Tekrarlı sprint ve ağırlık çalışmalarında antrenman adaptasyonunu destekler",
+       "Ağır antrenman dönemlerinde toparlanmayı hızlandırır ve iş yükü toleransını artırır"
+      ]
+     },
+     {
+      "type": "text",
+      "title": "Toparlanma ve koruma",
+      "bullets": [
+       "Antrenman sonrası kas hasarını ve yaralanma şiddetini azaltmaya yardımcı olabilir",
+       "Sıcak ortamda yapılan egzersizlerde vücut ısısı düzenlemesini (termoregülasyon) destekler",
+       "Sakatlık sonrası rehabilitasyon sürecinde kas kaybını sınırlandırır"
+      ]
+     },
+     {
+      "type": "table",
+      "title": "ISSN bildirisine göre kreatin kullanımı",
+      "columns": [
+       "Parametre",
+       "Bilimsel bulgu"
+      ],
+      "rows": [
+       [
+        "Günlük düzenli doz",
+        "3-5 g/gün"
+       ],
+       [
+        "Uzun süreli güvenlik",
+        "30 g/gün, 5 yıl"
+       ],
+       [
+        "Temel etki alanı",
+        "Yüksek yoğunluk ve güç"
+       ],
+       [
+        "Ek fayda",
+        "Toparlanma ve rehabilitasyon"
+       ]
+      ],
+      "note": "Kaynak: ISSN kreatin pozisyon bildirisi (Kreider ve ark., 2017)."
+     },
+     {
+      "type": "end",
+      "title": "Antrenman döneminde düzenli kreatin kullanıyor musunuz?"
+     }
+    ],
+    "caption": "Kreatin hakkında bilimsel veriler ne söylüyor?\nUluslararası Spor Beslenmesi Derneği (ISSN) tarafından yayımlanan kapsamlı pozisyon bildirisine göre kreatin monohidrat, yüksek yoğunluklu egzersiz kapasitesini ve antrenman adaptasyonunu artıran en güçlü bilimsel kanıta sahip besin desteklerinden biridir.\n\nPerformans ve toparlanma\nAraştırmalar, kreatin takviyesinin kas içi kreatin konsantrasyonunu artırarak kısa süreli patlayıcı kuvvet, tekrarlı sprint ve ağırlık antrenmanlarında performansı geliştirdiğini gösteriyor. Bunun yanında ağır antrenman yüklerini tolere etmeye, egzersiz sonrası toparlanmayı hızlandırmaya ve sakatlık sonrası rehabilitasyon sürecine katkı sağlayabildiği belirtiliyor.\n\nDoz ve güvenlik\nBildiriye göre günlük 3 gram civarında düzenli kreatin alımı sporcu sağlığı ve kas fonksiyonu için yeterli temel desteği sağlıyor. Klinik çalışmalarda sağlıklı bireylerde günde 30 grama kadar 5 yıl süren kullanımların bile güvenli ve iyi tolere edildiği rapor ediliyor.\n\nAntrenman döneminde düzenli kreatin kullanıyor musunuz?\nAntrenman planın için kaydet.\n\nKaynak: Uluslararası Spor Beslenmesi Derneği (ISSN)\n\n#sporbilimi #kreatin #sporbeslenmesi #kuvvetantrenmanı #crossfit #hyrox #hibritportal",
+    "hashtags": [
+     "#sporbilimi",
+     "#kreatin",
+     "#sporbeslenmesi",
+     "#kuvvetantrenmanı",
+     "#crossfit",
+     "#hyrox",
+     "#hibritportal"
+    ],
+    "imageQueries": [
+     "barbell strength training gym",
+     "weightlifting athlete barbell",
+     "functional fitness gym dumbbell",
+     "strength training squat rack"
+    ],
+    "sourceUrls": [
+     "https://pubmed.ncbi.nlm.nih.gov/28615996/",
+     "https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0173-z"
+    ]
+   },
+   "createdAt": "2026-11-22T19:58:50.316Z"
+  },
+  {
+   "id": "stock:sci-caffeine:mws9fcgd2qg",
+   "topic": "sci-caffeine",
+   "category": "bilim",
+   "sourceName": "Uluslararası Spor Beslenmesi Derneği (ISSN)",
+   "post": {
+    "slides": [
+     {
+      "type": "cover",
+      "kicker": "SPOR BİLİMİ",
+      "title": "Kafein performans için ne zaman ve ne kadar alınmalı?",
+      "subtitle": "ISSN pozisyon bildirisine göre dayanıklılık ve kuvvet antrenmanlarında etkili kafein dozu.",
+      "hl": "NE KADAR"
+     },
+     {
+      "type": "table",
+      "title": "ISSN kafein pozisyon bildirisi özeti",
+      "columns": [
+       "Başlık",
+       "Önerilen değer"
+      ],
+      "rows": [
+       [
+        "Etkili doz aralığı",
+        "3-6 mg/kg"
+       ],
+       [
+        "En düşük olası doz",
+        "2 mg/kg"
+       ],
+       [
+        "Yan etki eşiği",
+        "9 mg/kg ve üstü"
+       ],
+       [
+        "Standart zamanlama",
+        "60 dk önce"
+       ]
+      ],
+      "note": "70 kg bir sporcu için 3-6 mg/kg doz, 210-420 mg kafeine karşılık gelir."
+     },
+     {
+      "type": "text",
+      "title": "Hangi branşlarda etkili?",
+      "bullets": [
+       "En tutarlı ve yüksek fayda aerobik dayanıklılık egzersizlerinde görülür",
+       "Kas dayanıklılığı, hareket hızı, sprint ve sıçrama performansını da destekler",
+       "Sıcak ortamda ve yüksek irtifada yapılan dayanıklılık yarışlarında 3-6 mg/kg doz etkilidir"
+      ]
+     },
+     {
+      "type": "text",
+      "title": "Zamanlama ve bireysel farklar",
+      "bullets": [
+       "Kapsül ve içecek formları genellikle antrenmandan 60 dakika önce alınır",
+       "Kafeinli sakız ve enerji jelleri kana daha hızlı karıştığı için daha kısa süre önce alınabilir",
+       "Genetik metabolizma hızı ve uyku kalitesi nedeniyle bireysel tepkiler farklılık gösterir"
+      ]
+     },
+     {
+      "type": "end",
+      "title": "Yarış veya antrenman öncesi kafein tercihiniz hangisi?"
+     }
+    ],
+    "caption": "Kafein performans için ne zaman ve ne kadar alınmalı?\nUluslararası Spor Beslenmesi Derneği (ISSN) kafein pozisyon bildirisine göre kafein, hem dayanıklılık hem de yüksek yoğunluklu branşlarda performansı akut olarak artırabilen en etkili ergojenik desteklerden biridir.\n\nDoz ve zamanlama\nAraştırmalarda performansı tutarlı biçimde geliştiren doz, vücut ağırlığının kilogramı başına 3 ile 6 mg arasıdır (örneğin 70 kg bir sporcu için 210-420 mg). En düşük etkili doz 2 mg/kg seviyesine kadar inebilirken, 9 mg/kg gibi çok yüksek dozlar ek performans kazancı sağlamadığı gibi yan etki, kaygı ve uyku bozukluğu riskini artırır.\n\nEn yaygın kullanım zamanı egzersizden 60 dakika öncedir. Kafeinli sakız ve enerji jelleri ise kapsüle kıyasla daha hızlı emildiği için başlangıca daha yakın alınabilir.\n\nHangi branşlarda çalışır?\nEn belirgin gelişim aerobik dayanıklılık sporlarında görülse de kas dayanıklılığı, bar hareket hızı, sprint, sıçrama ve bilişsel odaklanma üzerinde de olumlu etkileri doğrulanmıştır.\n\nYarış veya antrenman öncesi kafein tercihiniz hangisi?\nYarış planın için kaydet.\n\nKaynak: Uluslararası Spor Beslenmesi Derneği (ISSN)\n\n#sporbilimi #kafein #sporbeslenmesi #dayanıklılık #koşu #hyrox #crossfit #hibritportal",
+    "hashtags": [
+     "#sporbilimi",
+     "#kafein",
+     "#sporbeslenmesi",
+     "#dayanıklılık",
+     "#koşu",
+     "#hyrox",
+     "#crossfit",
+     "#hibritportal"
+    ],
+    "imageQueries": [
+     "runner athlete track start",
+     "endurance running athlete",
+     "fitness training workout gym",
+     "athlete drinking water bottles"
+    ],
+    "sourceUrls": [
+     "https://pubmed.ncbi.nlm.nih.gov/33388079/",
+     "https://jissn.biomedcentral.com/articles/10.1186/s12970-020-00383-4"
+    ]
+   },
+   "createdAt": "2026-11-22T19:58:50.316Z"
+  },
+  {
+   "id": "stock:run-taper:mws9fcgd0jr",
+   "topic": "run-taper",
+   "category": "kosu",
+   "sourceName": "Medicine & Science in Sports & Exercise",
+   "post": {
+    "slides": [
+     {
+      "type": "cover",
+      "kicker": "ANTRENMAN BİLİMİ",
+      "title": "Yarıştan önce antrenman yükü nasıl azaltılmalı?",
+      "subtitle": "27 çalışmanın meta-analizine göre yarış öncesi en verimli taper süresi ve hacim düşüşü.",
+      "hl": "NASIL AZALTILMALI"
+     },
+     {
+      "type": "table",
+      "title": "Meta-analize göre ideal taper protokolü",
+      "columns": [
+       "Bileşen",
+       "Bilimsel öneri"
+      ],
+      "rows": [
+       [
+        "Taper süresi",
+        "2 hafta"
+       ],
+       [
+        "Hacim azaltımı",
+        "%41-60 düşüş"
+       ],
+       [
+        "Antrenman yoğunluğu",
+        "Korunur (düşürülmez)"
+       ],
+       [
+        "Antrenman sıklığı",
+        "Korunur (düşürülmez)"
+       ]
+      ],
+      "note": "Kaynak: Bosquet ve ark., Medicine & Science in Sports & Exercise (27 çalışma)."
+     },
+     {
+      "type": "text",
+      "title": "Neden hacim düşerken tempo korunur?",
+      "bullets": [
+       "Amaç biriken kas ve merkezi sinir sistemi yorgunluğunu kazanılmış kondisyonu kaybetmeden silmektir",
+       "Toplam mesafe veya süre kademeli olarak %41-60 azaltılırken yarış temposundaki kısa yüklenmeler korunur",
+       "Antrenman günlerini tamamen kesmek yerine alışık olunan sıklığı daha kısa seanslarla sürdürmek daha etkilidir"
+      ]
+     },
+     {
+      "type": "end",
+      "title": "Yarıştan önceki son 2 haftada antrenman hacmini ne kadar düşürüyorsunuz?"
+     }
+    ],
+    "caption": "Yarıştan önce antrenman yükü nasıl azaltılmalı?\nMedicine & Science in Sports & Exercise dergisinde yayımlanan ve yarışmacı sporcular üzerindeki 27 çalışmayı inceleyen meta-analiz, yarış öncesi antrenman azaltma (taper) döneminin performansı nasıl maksimize ettiğini ortaya koyuyor.\n\nEn verimli protokol: 2 hafta ve %41-60 hacim düşüşü\nAraştırmaya göre performans artışını en üst düzeye çıkaran strateji, yarıştan önceki 2 hafta boyunca toplam antrenman hacmini (haftalık kilometre veya toplam süre) kademeli olarak %41 ile %60 arasında azaltmaktır.\n\nYoğunluk ve sıklık düşürülmez\nMeta-analizin en kritik bulgusu, hacim düşürülürken antrenman yoğunluğunun (tempo) ve haftalık antrenman sıklığının azaltılmaması gerektiğidir. Seanslar kısalır ancak yarış temposundaki kısa uyarılar korunur; böylece yorgunluk dağılırken aerobik ve nöromüsküler form kaybolmaz.\n\nYarıştan önceki son 2 haftada antrenman hacmini ne kadar düşürüyorsunuz?\nYarış planın için kaydet.\n\nKaynak: Medicine & Science in Sports & Exercise\n\n#koşu #maraton #yarımaraton #antrenmanbilimi #taper #dayanıklılık #hibritportal",
+    "hashtags": [
+     "#koşu",
+     "#maraton",
+     "#yarımaraton",
+     "#antrenmanbilimi",
+     "#taper",
+     "#dayanıklılık",
+     "#hibritportal"
+    ],
+    "imageQueries": [
+     "distance runner road running",
+     "marathon runner training track",
+     "running athlete stretching track",
+     "endurance runner outdoor"
+    ],
+    "sourceUrls": [
+     "https://pubmed.ncbi.nlm.nih.gov/17762369/"
+    ]
+   },
+   "createdAt": "2026-11-22T19:58:50.316Z"
+  },
+  {
+   "id": "stock:run-8020:mws9fcgdef5",
+   "topic": "run-8020",
+   "category": "kosu",
+   "sourceName": "Frontiers in Physiology ve IJSPP",
+   "post": {
+    "slides": [
+     {
+      "type": "cover",
+      "kicker": "DAYANIKLILIK",
+      "title": "Dayanıklılık sporlarında 80/20 yoğunluk kuralı nasıl çalışır?",
+      "subtitle": "Polarize antrenman araştırmalarına göre düşük ve yüksek yoğunluklu seansların dağılımı.",
+      "hl": "80/20"
+     },
+     {
+      "type": "text",
+      "title": "80/20 dağılımı nedir?",
+      "bullets": [
+       "Haftada 10-13 seans çalışan üst düzey dayanıklılık sporcularında antrenmanların yaklaşık %80'i düşük yoğunlukta yapılır",
+       "Düşük yoğunluk bölgesi 2 mmol/L kan laktat eşiğinin altındaki rahat konuşma temposudur",
+       "Kalan %20'lik bölüm ise yaklaşık %90 VO2max seviyesindeki yüksek yoğunluklu interval çalışmalara ayrılır"
+      ]
+     },
+     {
+      "type": "table",
+      "title": "9 haftalık polarize antrenman çalışması sonuçları",
+      "columns": [
+       "Ölçüm",
+       "Polarize grup değişimi"
+      ],
+      "rows": [
+       [
+        "VO2peak artışı",
+        "+%11,7"
+       ],
+       [
+        "Tükenme süresi",
+        "+%17,4"
+       ],
+       [
+        "Zirve hız / güç",
+        "+%5,1"
+       ],
+       [
+        "4 mmol/L laktat hızı",
+        "+%8,1"
+       ]
+      ],
+      "note": "Stöggl ve Sperlich (2014), 48 dayanıklılık sporcusu, 9 hafta."
+     },
+     {
+      "type": "end",
+      "title": "Haftalık koşu veya kardiyo seanslarınızın ne kadarı düşük tempoda geçiyor?"
+     }
+    ],
+    "caption": "Dayanıklılık sporlarında 80/20 yoğunluk kuralı nasıl çalışır?\nDayanıklılık sporcularının antrenman dağılımını inceleyen araştırmalar (Seiler, 2010; Stöggl ve Sperlich, 2014), seansların yaklaşık %80'inin düşük yoğunlukta, %20'sinin ise yüksek yoğunlukta yapılmasının (polarize antrenman) uzun vadeli gelişimde en verimli model olduğunu gösteriyor.\n\n9 haftalık karşılaştırma\nFrontiers in Physiology dergisinde yayımlanan çalışmada 48 koşucu, bisikletçi, triatlet ve kayakçı 9 hafta boyunca 4 farklı modele ayrıldı: yüksek hacim, eşik (threshold) antrenmanı, yüksek yoğunluklu interval (HIIT) ve polarize (80/20) antrenman.\n\n9 hafta sonunda en yüksek gelişim polarize grupta kaydedildi: zirve oksijen tüketimi (VO2peak) %11,7, testte tükenme süresi %17,4 ve zirve hız/güç %5,1 arttı. Sürekli orta-sert (eşik) tempoda koşmak yerine kolay günleri gerçekten kolay, sert günleri gerçekten sert yapmak aşırı sürantrene riskini azaltırken adaptasyonu büyütüyor.\n\nHaftalık koşu veya kardiyo seanslarınızın ne kadarı düşük tempoda geçiyor?\nAntrenman planın için kaydet.\n\nKaynak: Frontiers in Physiology ve IJSPP\n\n#koşu #dayanıklılık #polarizeantrenman #sporbilimi #maraton #hyrox #hibritportal",
+    "hashtags": [
+     "#koşu",
+     "#dayanıklılık",
+     "#polarizeantrenman",
+     "#sporbilimi",
+     "#maraton",
+     "#hyrox",
+     "#hibritportal"
+    ],
+    "imageQueries": [
+     "endurance runner outdoor trail",
+     "marathon runner road training",
+     "track running interval workout",
+     "distance running athlete"
+    ],
+    "sourceUrls": [
+     "https://pubmed.ncbi.nlm.nih.gov/20861519/",
+     "https://pubmed.ncbi.nlm.nih.gov/24550842/"
+    ]
+   },
+   "createdAt": "2026-11-22T19:58:50.316Z"
+  },
+  {
+   "id": "stock:sci-hydration:mws9fcgd9wa",
+   "topic": "sci-hydration",
+   "category": "bilim",
+   "sourceName": "Amerikan Spor Hekimliği Koleji (ACSM)",
+   "post": {
+    "slides": [
+     {
+      "type": "cover",
+      "kicker": "SPOR BİLİMİ",
+      "title": "Antrenmanda yüzde 2 sıvı kaybı performansı neden düşürür?",
+      "subtitle": "Amerikan Spor Hekimliği Koleji pozisyon bildirisine göre egzersizde sıvı ve elektrolit yönetimi.",
+      "hl": "YÜZDE 2"
+     },
+     {
+      "type": "text",
+      "title": "Yüzde 2 eşiği nedir?",
+      "bullets": [
+       "ACSM pozisyon bildirisine göre egzersizde sıvı alımının ana hedefi vücut ağırlığının %2'sini aşan su kaybını önlemektir",
+       "75 kg bir sporcuda 1,5 kg üzerindeki sıvı açığı aerobik performansı ve ısı kontrolünü bozmaya başlar",
+       "Terleme hızı ve terdeki tuz oranı kişiden kişiye büyük farklılık gösterir"
+      ]
+     },
+     {
+      "type": "text",
+      "title": "Antrenman öncesi ve sırası",
+      "bullets": [
+       "Sıvı alımı antrenmandan birkaç saat önce başlatılarak egzersize normal hidrasyonla girilmelidir",
+       "Antrenman öncesi ve sonrası tartılarak kişisel ter kaybı hızı hesaplanabilir",
+       "Uzun süreli veya sıcak ortamdaki çalışmalarda sodyum ve karbonhidrat içeren içecekler tek başına suya göre avantaj sağlar"
+      ]
+     },
+     {
+      "type": "end",
+      "title": "Uzun antrenmanlardan önce ve sonra tartılarak sıvı kaybınızı ölçüyor musunuz?"
+     }
+    ],
+    "caption": "Antrenmanda yüzde 2 sıvı kaybı performansı neden düşürür?\nAmerikan Spor Hekimliği Koleji (ACSM) tarafından yayımlanan egzersiz ve sıvı yerine koyma pozisyon bildirisi, antrenman sırasında oluşan sıvı ve elektrolit açığının performansı doğrudan sınırladığını ortaya koyuyor.\n\nKritik sınır: Vücut ağırlığının %2'si\nBildiriye göre egzersiz sırasında sıvı tüketiminin temel amacı, vücut ağırlığının %2'sinden fazla sıvı kaybını (örneğin 75 kg bir sporcuda 1,5 kg kayıp) ve elektrolit dengesizliğini önlemektir. Bu eşik aşıldığında kardiyovasküler zorlanma artar ve dayanıklılık performansı düşer.\n\nKişisel plan nasıl yapılır?\n1. Egzersize yeterli sıvı dengesiyle başlamak için sıvı alımını birkaç saat önceden başlatın.\n2. Terleme hızı kişiye özeldir; antrenman öncesi ve sonrası tartılarak saatlik ter kaybınızı belirleyin.\n3. Uzun veya sıcak antrenmanlarda yalnızca su yerine elektrolit (sodyum) ve karbonhidrat içeren sıvıları tercih edin.\n\nUzun antrenmanlardan önce ve sonra tartılarak sıvı kaybınızı ölçüyor musunuz?\nYarış planın için kaydet.\n\nKaynak: Amerikan Spor Hekimliği Koleji (ACSM)\n\n#sporbilimi #hidrasyon #sporbeslenmesi #dayanıklılık #koşu #hyrox #crossfit #hibritportal",
+    "hashtags": [
+     "#sporbilimi",
+     "#hidrasyon",
+     "#sporbeslenmesi",
+     "#dayanıklılık",
+     "#koşu",
+     "#hyrox",
+     "#crossfit",
+     "#hibritportal"
+    ],
+    "imageQueries": [
+     "athlete drinking water workout",
+     "runner hydration water bottle",
+     "endurance athlete sweating training",
+     "fitness athlete gym recovery"
+    ],
+    "sourceUrls": [
+     "https://pubmed.ncbi.nlm.nih.gov/17277604/"
+    ]
+   },
+   "createdAt": "2026-11-22T19:58:50.316Z"
+  },
+  {
+   "id": "stock:func-hybrid:mws9fcgdreg",
+   "topic": "func-hybrid",
+   "category": "fonksiyonel",
+   "sourceName": "Sports Medicine ve JSCR",
+   "post": {
+    "slides": [
+     {
+      "type": "cover",
+      "kicker": "HİBRİT ANTRENMAN",
+      "title": "Kardiyo ve ağırlık aynı dönemde kas gelişimini engeller mi?",
+      "subtitle": "43 çalışmayı inceleyen Sports Medicine meta-analizine göre hibrit antrenmanın kuralları.",
+      "hl": "ENGELLER Mİ"
+     },
+     {
+      "type": "text",
+      "title": "43 çalışmanın sonucu",
+      "bullets": [
+       "Aerobik dayanıklılık ve kuvvet antrenmanını aynı programda yapmak maksimum kuvvet gelişimini engellemez",
+       "Kas kütlesi (hipertrofi) kazanımı, yalnızca ağırlık çalışan gruplarla benzer düzeydedir",
+       "Olumsuz etkileşim (interference etkisi) yalnızca patlayıcı kuvvet kazanımlarında görülebilir"
+      ]
+     },
+     {
+      "type": "text",
+      "title": "En az 3 saat ara kuralı",
+      "bullets": [
+       "Patlayıcı kuvvetteki baskılanma, kardiyo ve ağırlık aynı seansta arka arkaya yapıldığında belirginleşir",
+       "Kuvvet ve dayanıklılık seansları arasına en az 3 saat koymak bu kaybı ortadan kaldırır",
+       "HYROX ve CrossFit sporcuları 2 çalışmayı sabah-akşam veya farklı günlerde ayırarak verimi koruyabilir"
+      ]
+     },
+     {
+      "type": "table",
+      "title": "Hibrit antrenman meta-analizi (Schumann ve ark., 2022)",
+      "columns": [
+       "Çıktı",
+       "Eş zamanlı antrenman etkisi"
+      ],
+      "rows": [
+       [
+        "Kas kütlesi (hipertrofi)",
+        "Olumsuz etki yok"
+       ],
+       [
+        "Maksimum kuvvet",
+        "Olumsuz etki yok"
+       ],
+       [
+        "Patlayıcı kuvvet (aynı seans)",
+        "Azalma görülebilir"
+       ],
+       [
+        "Patlayıcı kuvvet (3+ saat ara)",
+        "Korunur"
+       ]
+      ],
+      "note": "Kaynak: Sports Medicine (2022), 43 çalışma."
+     },
+     {
+      "type": "end",
+      "title": "Koşu ve kuvvet antrenmanlarını aynı gün mü, farklı günlerde mi yapıyorsunuz?"
+     }
+    ],
+    "caption": "Kardiyo ve ağırlık aynı dönemde kas gelişimini engeller mi?\nSports Medicine dergisinde yayımlanan ve 43 çalışmayı bir araya getiren kapsamlı meta-analiz (Schumann ve ark., 2022), dayanıklılık ve kuvvet antrenmanlarını birlikte yürüten hibrit sporcular için önemli veriler sunuyor.\n\nMaksimum kuvvet ve kas kütlesi korunuyor\nYaygın inanışın aksine, aerobik antrenman ile ağırlık antrenmanını aynı programda birleştirmek maksimum kuvvet gelişimini ve kas büyümesini (hipertrofi) tek başına ağırlık antrenmanına kıyasla engellemiyor.\n\nPatlayıcı kuvvet için 3 saat kuralı\nAraştırmada dikkat çekilen tek hassas nokta patlayıcı kuvvet (güç) gelişimi. Kardiyo ve kuvvet aynı seansta peş peşe yapıldığında patlayıcı kuvvet kazanımları baskılanabiliyor. Ancak 2 antrenman arasına en az 3 saat ara konulduğunda veya seanslar farklı günlere bölündüğünde bu olumsuz etki ortadan kalkıyor.\n\nKoşu ve kuvvet antrenmanlarını aynı gün mü, farklı günlerde mi yapıyorsunuz?\nAntrenman planın için kaydet.\n\nKaynak: Sports Medicine ve JSCR\n\n#hibritantrenman #fonksiyonelfitness #sporbilimi #hyrox #crossfit #kuvvetantrenmanı #dayanıklılık #hibritportal",
+    "hashtags": [
+     "#hibritantrenman",
+     "#fonksiyonelfitness",
+     "#sporbilimi",
+     "#hyrox",
+     "#crossfit",
+     "#kuvvetantrenmanı",
+     "#dayanıklılık",
+     "#hibritportal"
+    ],
+    "imageQueries": [
+     "hybrid fitness athlete barbell running",
+     "crossfit barbell strength workout",
+     "functional fitness athlete gym",
+     "hyrox sled push athlete"
+    ],
+    "sourceUrls": [
+     "https://pubmed.ncbi.nlm.nih.gov/34757594/",
+     "https://pubmed.ncbi.nlm.nih.gov/22002517/"
+    ]
+   },
+   "createdAt": "2026-11-22T19:58:50.316Z"
+  }
+ ],
+ "used": [
+  "hyrox-sled",
+  "hyrox-format",
+  "hyrox-divisions",
+  "stat-tr-yillara-gore",
+  "hyrox-roxzone",
+  "hyrox-wallball",
+  "stat-tr-sehirler",
+  "crossfit-open",
+  "stat-takvim-ulkeler"
+ ],
+ "fails": {}
 }

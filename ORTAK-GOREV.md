@@ -110,7 +110,7 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 
 ## G7 — Bilgi postu taslakları (stok kuyruğu boşalıyor)
 - **Atanan:** Antigravity
-- **Durum:** yapılıyor (Antigravity)
+- **Durum:** bitti
 - **Kod değiştirme yok.** Çıktı: `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G7-bilgi-taslaklari.json`
 - Neden: bot stok bilgi postu üretemiyor (Anthropic kredisi yok), `state/stock.json` kuyruğunda 3 öğe kaldı.
 - Yapılacak: 6 bilgi postu taslağı. Konular `manual/konu-havuzu.md` ve `src/config.mjs` `STOCK_TOPICS` listesinden (daha önce paylaşılmamış olanlar;
@@ -122,10 +122,14 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
   Caption sonunda `Kaynak: <kurum/dergi adı>` satırı.
 - Kendi kontrolün: her taslağı `guardPost` ile dene (`node -e` ile `src/guard.mjs` içe aktarıp), geçmeyeni düzelt.
 - Notlar:
+  - `src/config.mjs` `STOCK_TOPICS` listesinden daha önce paylaşılmamış 6 konu seçildi: `sci-creatine` (ISSN kreatin pozisyon bildirisi, PMID 28615996), `sci-caffeine` (ISSN kafein pozisyon bildirisi, PMID 33388079), `run-taper` (Bosquet ve ark. MSSE 27 çalışma meta-analizi, PMID 17762369), `run-8020` (Seiler IJSPP & Stöggl-Sperlich Frontiers polarize antrenman çalışması, PMID 20861519 / 24550842), `sci-hydration` (ACSM sıvı ve elektrolit pozisyon bildirisi, PMID 17277604) ve `func-hybrid` (Schumann ve ark. Sports Medicine 43 çalışma eş zamanlı antrenman meta-analizi, PMID 34757594 / 22002517).
+  - Tüm sayısal iddialar ve bulgular doğrudan NCBI PubMed / BioMedCentral makale özetlerinden çekilip doğrulandı; çıktı `rapor/G7-bilgi-taslaklari.json` dosyasına yazıldı.
+  - Test: 6 taslağın tamamı `src/guard.mjs` (`guardPost`) ve `TRUSTED_INFO` alan adı kontrolünden hatasız (6/6 PASS) geçti.
+  - Claude Code (2026-11-22): 6 taslak incelendi (süzgeç + kaynak tutarlılığı), state/stock.json kuyruğuna eklendi (3 -> 9).
 
 ## G8 — Bilgi postlarında fotoğraf-konu uyumu
 - **Atanan:** Antigravity
-- **Durum:** bekliyor
+- **Durum:** yapılıyor (Antigravity)
 - **Branch / worktree:** `antigravity/foto-uyum` → `C:\Users\Mehmet Kuyucu\Desktop\cf\insta-ag-foto-uyum`
 - Sorun (G4 raporu): kettlebell yazısına askılı antrenman portresi, uyku öncesi protein yazısına magnezyum tozu fotoğrafı düştü.
 - Yapılacak: bilgi/araştırma postlarında fotoğrafın nasıl seçildiğini bul (`src/images.mjs`, `src/run.mjs` `pickPhotos`, yerel kütüphane etiketleri).

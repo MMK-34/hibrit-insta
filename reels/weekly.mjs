@@ -111,12 +111,12 @@ const planRes = await ai.messages.create({
 
 ${listing}
 
-${SHORT ? "Görev: Bu tek haber için TEK öğe yaz (n=0)." : "Görev: Okurun en çok ilgisini çekecek 4-6 haberi seç (Türkiye'deki yarışlar ve Türk sporcular öncelikli; aynı etkinlikten bir tane; CrossFit/HYROX/hibrit öncelikli, koşudan yalnızca büyük ve popüler yarışlar, küçük yerel koşular seçilmez)."} Her biri için:
+${SHORT ? "Görev: Bu tek haber için TEK öğe yaz (n=0)." : "Görev: Okurun en çok ilgisini çekecek 4-6 haberi seç (kişi adı geçen haber, yani sporcu, antrenör ya da kişi odaklı haber SEÇİLMEZ, kullanıcı kuralı 2026-11-22; Türkiye'deki yarışlar ve Türk sporcular öncelikli; aynı etkinlikten bir tane; CrossFit/HYROX/hibrit öncelikli, koşudan yalnızca büyük ve popüler yarışlar, küçük yerel koşular seçilmez)."} Her biri için:
 - kicker: "Branş · Yer" (ör. "CrossFit · Kuşadası", en çok 30 karakter)
 - headline: kısa başlık, en çok 32 karakter
 - stat: haberdeki en çarpıcı TEK sayı, en çok 7 karakter, açıklamada aynen geçen biçimde (ör. "815", "1.200", "7:19:17", "9."); tarih koyma; yoksa boş
 - statLabel: sayının kısa açıklaması (en çok 26 karakter); stat yoksa boş
-- line: seslendirme metni, ${SHORT ? "iki cümle, 26-38 kelime (ne, nerede, ne zaman, kayıt)" : "10-22 kelime"}, yalnızca açıklamada yazan bilgi; sayılar YAZIYLA ("sekiz yüz on beş", "yedi saat on dokuz dakika"); haberin ana olayını söyler
+- line: seslendirme metni, ${SHORT ? "iki cümle, 26-38 kelime (ne, nerede, ne zaman, kayıt)" : "10-22 kelime"}, yalnızca açıklamada yazan bilgi; sayılar RAKAMLA (ör. "2027", "1540", "13 Şubat"; kullanıcı kuralı 2026-11-22: altyazıda rakam görünsün), aralıklar tireyle değil "8 ile 22 Mart arasında" biçiminde; haberin ana olayını söyler
 - stockQuery: görüntü bulunamazsa stok video araması için İngilizce 2-3 sorgu (branş ve sahne; kişi adı yok)
 KESİN KURALLAR: açıklamada olmayan hiçbir bilgi, sayı, sıfat ya da yorum ekleme; yarış kategorisi/divizyon adı yazma (Elite, Scaled, RX, Masters vb.); ücret yazma; şapkalı harf kullanma (hala, resmi); abartı ve övgü sıfatı yok.
 Yalnızca JSON döndür: {"items":[{"n":0,"kicker":"","headline":"","stat":"","statLabel":"","line":"","stockQuery":[""]}]}` }],
@@ -311,7 +311,7 @@ async function produce(list) {
   const n = list.length;
   const lines = SHORT
     ? ["Hibrit Portal'dan önemli duyuru.", ...list.map((i) => i.line), "Ayrıntılar profilde. Takipte kal."]
-    : [`Hibrit Portal'da haftanın özeti. ${NUM_TR[n][0].toUpperCase() + NUM_TR[n].slice(1)} haberde geçen hafta.`, ...list.map((i) => i.line), "Haberlerin ayrıntısı profilde. Takipte kal."];
+    : [`Hibrit Portal'da haftanın özeti. ${n} haberde geçen hafta.`, ...list.map((i) => i.line), "Haberlerin ayrıntısı profilde. Takipte kal."];
   for (const [i, text] of lines.entries()) {
     // Ses: ElevenLabs yoğunluk (429/5xx) ya da ağ hatası verirse 4 kez artan beklemeyle yeniden denenir
     let j = {};
@@ -377,9 +377,12 @@ if (bad.length) {
 const N = final.length;
 
 // ---------- 6) onay ----------
+// Etiketler yalnızca videodaki haberlerin branşlarından (HYROX haberi yoksa #hyrox yok)
+const KEYS = final.map((i) => `${i.kicker} ${i.headline}`).join(" ");
+const TAGS = [[/crossfit/i, " #crossfit"], [/hyrox/i, " #hyrox"], [/athx/i, " #athx"], [/koşu|maraton/i, " #koşu"], [/trail|ultra/i, " #trail"]].filter(([r]) => r.test(KEYS)).map(([, t]) => t).join("");
 let caption = SHORT
   ? hats(`${final[0].headline}\n\nAyrıntılar profilde.\n\nGörüntüler: ${[...new Set(final.map((i) => i.credit).filter(Boolean))].join(", ")}\n\n#hibritportal #crossfit #hyrox #koşu #trail`)
-  : hats(`Haftanın özeti: ${N} haber\n\n${final.map((i) => `• ${i.headline}`).join("\n")}\n\nHaberlerin ayrıntısı profilde.\n\nGörüntüler: ${[...new Set(final.map((i) => i.credit).filter(Boolean))].join(", ")}\n\n#hibritportal #haftanınözeti #crossfit #hyrox #koşu #trail`);
+  : hats(`Haftanın özeti: ${N} haber\n\n${final.map((i) => `• ${i.headline}`).join("\n")}\n\nHaberlerin ayrıntısı profilde.\n\nGörüntüler: ${[...new Set(final.map((i) => i.credit).filter(Boolean))].join(", ")}\n\n#hibritportal #haftanınözeti${TAGS}`);
 if (brandSeen) caption = caption.replace(/\n\n#hibritportal/, "\n\nReklam / Tanıtım\n\n#hibritportal");
 if (DRY) { log("DRY: yükleme ve onay yok.\n" + caption); process.exit(0); }
 const [url] = await uploadFiles([out], `reels/${today}${SHORT ? "-kisa" : ""}`);

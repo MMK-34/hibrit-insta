@@ -135,7 +135,7 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 
 ## G9 — Türkiye yarış takvimi doğrulaması (rapor)
 - **Atanan:** Antigravity
-- **Durum:** bekliyor
+- **Durum:** yapılıyor (Antigravity, terminal modu, Claude Code başlattı)
 - **Kod değiştirme yok.** Çıktı: `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G9-takvim.md`
 - Yapılacak: `cal/` takvim verisindeki önümüzdeki 90 gün içindeki Türkiye yarışlarını (CrossFit, HYROX, ATHX, koşu) tek tek resmî sayfasından kontrol et:
   tarih, şehir, ad doğru mu, iptal/erteleme var mı. Takvimde OLMAYAN ama resmî olarak duyurulmuş Türkiye yarışlarını da listele (ad, tarih, resmî adres).

@@ -34,6 +34,16 @@ Tasarruf kuralları:
 - `state/` klasöründeki dosyaları değiştirme (botun canlı durumu).
 - Emin olmadığın hiçbir şey için tahmin yürütme: soru işareti varsa `ORTAK-GOREV.md`'ye "SORU" olarak yaz ve dur.
 
+## 2a. Terminal modu (varsayılan, 2026-11-22)
+
+Claude Code seni terminalden `agy -p` ile çalıştırır; görev metni istemin içindedir. Kullanıcı arada değildir: soru sorma, onay isteme.
+- Çalışma klasörün: `C:\Users\Mehmet Kuyucu\Desktop\cf\insta-ag` (ayrı kopya). Yalnızca görevde adı geçen dosyaları yaz.
+- Komut izni yalnızca `scripts/agy-settings.json` listesindekiler (`node scripts/agy-fetch.mjs`, `git status --short`, `git diff --stat`); başkası otomatik reddedilir.
+- Sayfa okumak için: `_agy/urls.txt` dosyasına adresleri yaz, `node scripts/agy-fetch.mjs` çalıştır, `_agy/pages/` altını oku.
+- Test, commit ve main'e alma Claude Code'dadır. Bitince yalnızca istenen tek satırlık özeti yaz.
+
+Aşağıdaki bölüm 2, kullanıcının uygulamada elle açtığı sohbetler içindir.
+
 ## 2. Çalışma düzeni (Antigravity için)
 
 Kullanıcı sana yalnızca şunu yazar: **"Sıradaki görevini yap."** Gerisini bu bölüme göre kendin yürüt.

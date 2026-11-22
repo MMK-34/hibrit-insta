@@ -646,6 +646,16 @@ async function pickEventPhotos({ post, pages, topic, want, category, images = []
   return [...ev, ...stock];
 }
 
+// Logo adresi (alan adı ya da Instagram kullanıcı adı) etkinlik adındaki ayırt edici bir kelimeyi içermeli.
+// Genel kelimeler (maraton, yarı, games, throwdown...) tek başına eşleşme sayılmaz.
+const LOGO_GENERIC = new Set(["marathon", "maraton", "maratonu", "half", "yari", "yarı", "race", "run", "running", "kosu", "koşu", "koşusu", "games", "throwdown", "challenge", "series", "world", "championship", "championships", "open", "final", "finals", "qualifier", "qualifiers", "ultra", "trail", "festival", "cup", "the", "and", "official"]);
+function logoSourceMatches(eventName, src) {
+  const s = norm(src ?? "");
+  if (!s) return false;
+  const words = String(eventName ?? "").toLocaleLowerCase("tr").replace(/ı/g, "i").split(/[^a-z0-9ğüşöç]+/).filter((w) => w.length >= 4 && !/^\d+$/.test(w) && !LOGO_GENERIC.has(w));
+  return words.some((w) => s.includes(norm(w)));
+}
+
 // Günde en çok POSTING.maxStoriesPerDay hikâye (geri sayım hariç): her post hikâyeye düşmez
 function storySlotLeft() { return state.posts.filter((p) => p.day === today && p.story).length < (POSTING.maxStoriesPerDay ?? 2); }
 
@@ -659,9 +669,14 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   const slug = `${today}/${Date.now().toString(36)}`;
   const outDir = path.join("out", slug);
   // Etkinlik logosu: önce circle21 resmî kaydındaki yarış logosu, sonra resmî site, sonra resmî Instagram profil fotoğrafı
+  // Yazarın tahmin ettiği site/hesap yanlış olabilir (Strava haberine bir salonun logosu, NY Maratonu hikâyesine Tokyo logosu geldi):
+  // logo yalnızca adres etkinliğin adıyla eşleşiyorsa kullanılır. circle21 kaydının logosu doğrulanmış kaynaktır.
+  const siteOk = logoSourceMatches(post.eventName, (() => { try { return new URL(post.officialSite).hostname; } catch { return ""; } })());
+  const igOk = logoSourceMatches(post.eventName, post.officialInstagram);
+  if ((post.officialSite && !siteOk) || (post.officialInstagram && !igOk)) log("Logo kaynağı etkinlik adıyla eşleşmedi, kullanılmadı:", post.eventName || "(etkinlik yok)", post.officialSite ?? "", post.officialInstagram ?? "");
   const eventLogo = (post.eventLogoUrl ? await logoFromUrl(post.eventLogoUrl).catch(() => null) : null)
-    ?? (post.officialSite ? await fetchEventLogo(post.officialSite).catch(() => null) : null)
-    ?? (post.officialInstagram ? await fetchInstagramLogo(post.officialInstagram).catch(() => null) : null);
+    ?? (post.officialSite && siteOk ? await fetchEventLogo(post.officialSite).catch(() => null) : null)
+    ?? (post.officialInstagram && igOk ? await fetchInstagramLogo(post.officialInstagram).catch(() => null) : null);
   if (eventLogo) log("Etkinlik logosu:", eventLogo.source);
   let logoUse = eventLogo;
   let files = await renderPost({ ...post, photos, eventLogo: logoUse, category, source: sourceName, dateLabel }, outDir);

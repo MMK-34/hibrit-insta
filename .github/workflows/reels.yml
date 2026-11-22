@@ -7,7 +7,7 @@ name: Reels (haftalık bülten + kısa duyuru)
 on:
   schedule:
     - cron: "0 14 * * 0" # pazar 17:00 TR: haftalık bülten
-    - cron: "0 17 * * *" # her gün 20:00 TR: kısa duyuru sırası
+    - cron: "0 9,17 * * *" # her gün 12:00 ve 20:00 TR: kısa duyuru sırası (videolu haber artırıldı, 2026-11-22)
   workflow_dispatch:
     inputs:
       mode:
@@ -42,7 +42,7 @@ jobs:
         id: mod
         run: |
           MODE="${{ github.event.inputs.mode }}"
-          if [ "${{ github.event.schedule }}" = "0 17 * * *" ]; then MODE=short; fi
+          if [ "${{ github.event.schedule }}" = "0 9,17 * * *" ]; then MODE=short; fi
           [ -z "$MODE" ] && MODE=weekly
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"
           SKIP=false

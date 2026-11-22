@@ -3066,6 +3066,60 @@
         "country": "Türkiye",
         "place": "Balıkesir/Edremit"
       }
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiswFBVV95cUxQb2xja1R0Wk4yYTdFdkxWYUV6R2tlLWRQN2VjNDk0d25haVlNNmlzdEkzcjBfMDFCU0hBektjTXZHbVNSelpXaGlnT2NnQWpQYnp6aUU5S181RHNGTl9zMl9HZ2pTNGk3NHVuM2lEaFFmMjlhc3E2MFBLMFd5dmZrT3phOTZqaWZ4Njhtbnpmd2ZpeENNdURLTW4wd3d5WHcxenZsdjdlSGRYQ3MzMnI1ZW0tVQ"
+      ],
+      "skipped": "tekrar"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMipgFBVV95cUxQY0Z4QW5sVnBoNnZfeENveGJabTBGYk9RLUxBcGJIcUtNRWFTTWlmQmxGUGxEdXBlakViYkp5NWUwZ1NYTkJRVzJDN0hBLVgxQXgydE14LTZGd3FYVlJUQnowNDVLQ25VNnNZdDl3S2lEUndUd2JpcDdzUmZnOTRYR1BwQ3hFVnF3T2xjZF9LVkdSejVNUUd3enFMcjF2cUdlcUxrQ1Z3"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMisgFBVV95cUxNVXl0X3l5dUZFWl80UnJBeUZLUk8xYUQ5T1lYVHlWRkJCVmNZZmwzRERoQll1T1RfNHRfU1lZV2Y0bXZDUWpOOEx3bUY4U1pOTy1ld21IWGxrTndYTmhiNlRlSEYzT3Bua2gwaGFkQWhTeXdCTDBORkE5U0FLQjhMRE5HZmJxTTBGekFod3BMNzJSQ3NXcmpzcTd5TzFwMFBPYUZ6WnBKOFNsSTlxVEhEbmpn"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMingFBVV95cUxNVDFBOUtCemJSWW1reDZsLXRGZ0Y1WTY1MlppVzVZZGNzMUk0eEMyU3h2Q1pTWUhBSmdkRlhFc01vX1RDMmRmM3YyZ3lQdHpBbUpLMDhvYWJabzkxSF9qTV9SdjJXbkFKdHJLbm5TQ2FDOXY3aWtkaThZMjlpSnU4aEo0Skx4ZGEwbGJycDAtenowUTluOUxkc2didmlLUQ"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "event:ebd6a51f2916b600"
+      ],
+      "media": "18024790892952195",
+      "permalink": "https://www.instagram.com/p/DgChyIxjSyo/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-22/mwrnryjw/01.jpg",
+      "title": "Mariella Frostrup swears by 15-min kettlebell YouTube workouts for building muscle at 63: ‘It’s all you need’",
+      "headline": "15 Dakikalık Kettlebell Antrenmanları Kas Gelişimi İçin Yeterli mi?",
+      "at": "2026-11-22T09:53:08.623Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "BİLGİ",
+            "title": "15 Dakikalık Kettlebell Antrenmanları Kas Gelişimi İçin Yeterli mi?",
+            "subtitle": "Araştırmalar, kısa süreli yüksek yoğunluklu antrenmanların uzun seanslarla benzer kas gelişimi sağladığını gösteriyor."
+          }
+        ],
+        "caption": "15 dakikalık kısa ve yoğun kettlebell antrenmanları, kas gelişimi ve kuvvet artışı için yeterli olabilir. Araştırmalar, antrenman süresinden ziyade hareketlerin çoklu kas gruplarını hedefleyen bileşik (compound) yapıda olmasının verimliliği artırdığını gösteriyor. Kettlebell swing, lunge, squat ve push press gibi hareketleri içeren kısa devreler, kısıtlı zamanı olan sporcular için etkili bir yöntemdir. Yarış planın için kaydet.\n\nReklam / Tanıtım\n\nKaynak: Women's Health\nGörsel: womenshealthmag.com\n\n#kettlebell #fonksiyonelantrenman #sporbilimi #antrenman #fitnessmotivation #hibritportal",
+        "srcUrls": [
+          "https://www.womenshealthmag.com/uk/fitness/strength-training/a74488660/mariella-frostrup-workout/"
+        ],
+        "eventName": "",
+        "country": "",
+        "place": ""
+      }
     }
   ],
   "daily": {
@@ -3152,10 +3206,10 @@
       "summarySent": true
     },
     "2026-11-22": {
-      "drafts": 7,
-      "approved": 5,
-      "rejected": 2,
-      "aiCalls": 38
+      "drafts": 10,
+      "approved": 6,
+      "rejected": 4,
+      "aiCalls": 47
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3179,7 +3233,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-22T08:44:39.822Z",
+  "lastRunAt": "2026-11-22T09:44:38.517Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

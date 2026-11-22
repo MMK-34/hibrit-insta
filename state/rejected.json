@@ -1809,5 +1809,31 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-22T09:48:34.498Z",
+    "title": "Ironman 70.3 Mossel Bay officially kicks off across the Garden Route",
+    "url": "https://www.sabcnews.com/sabcnews/ironman-70-3-mossel-bay-officially-kicks-off-across-the-garden-route/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-22T09:52:00.164Z",
+    "title": "Hareketin Ritmini Yakalamak: Noyan Dülek ile Farklı Bir Pazar",
+    "url": "https://www.sokgazetesi.com.tr/kose-yazilari/hareketin-ritmini-yakalamak-noyan-dulek-ile-farkli-bir-pazar-211193",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

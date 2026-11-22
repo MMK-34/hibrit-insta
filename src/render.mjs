@@ -208,11 +208,13 @@ function pill(ctx, extra) {
   const counter = ctx.total > 1 ? `<div style="display:flex;margin-left:16px;color:${C.paper};opacity:0.75;font-size:22px">${String(ctx.index).padStart(2, "0")}/${String(ctx.total).padStart(2, "0")}</div>` : "";
   return `<div style="display:flex;align-items:center;margin-bottom:26px"><div style="display:flex;background:${C.red};padding:10px 18px;font-family:Body;font-weight:700;font-size:24px;letter-spacing:3px;color:${C.paper}">${esc(trUpper(extra ? `${k.label} · ${extra}` : k.label))}</div>${counter}</div>`;
 }
+// Vurgu karşılaştırması noktalama ve eki yok sayar: "İSTANBUL" vurgusu "İSTANBUL'DA" kelimesini de boyar
+const bare = (w) => String(w).replace(/[^\p{L}\p{N}]/gu, "");
 /** Başlık: kelime kelime; s.hl (vurgu) içindeki kelimeler kırmızı */
 function head2(text, size, hl = "") {
   const hw = new Set(trUpper(hl).split(/\s+/).filter(Boolean));
   const words = trUpper(text).split(/\s+/).filter(Boolean);
-  return `<div style="display:flex;flex-wrap:wrap;font-family:Head;font-weight:800;font-size:${size}px;line-height:0.95;color:${C.paper}">${words.map((w) => `<div style="display:flex;margin-right:${Math.round(size * 0.2)}px;color:${hw.has(w) ? C.red : C.paper}">${esc(w)}</div>`).join("")}</div>`;
+  return `<div style="display:flex;flex-wrap:wrap;font-family:Head;font-weight:800;font-size:${size}px;line-height:0.95;color:${C.paper}">${words.map((w) => `<div style="display:flex;margin-right:${Math.round(size * 0.2)}px;color:${[...hw].some((h) => bare(w).startsWith(bare(h)) && bare(h).length >= 2) ? C.red : C.paper}">${esc(w)}</div>`).join("")}</div>`;
 }
 
 const T = {

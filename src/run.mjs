@@ -359,7 +359,7 @@ async function main() {
         publishedCount++;
         if (isInfo) infoToday++; // aynı çalışmada ikinci bilgi/araştırma postu kotayı aşmasın
         // Duyuruysa takip serisini planla (+4 gün geçmiş edisyonlar, +9 gün geçmiş antrenmanlar)
-        if (pick.kind === "duyuru" && ready.post.eventName && pick.category !== "kosu") {
+        if (pick.kind === "duyuru" && ready.post.eventName && !ONE_POST_CATS.has(pick.category)) {
           try {
             const n = scheduleFollowups({ eventName: ready.post.eventName, officialSite: ready.post.officialSite, category: pick.category }, today);
             if (n) log(`Takip serisi planlandı: ${ready.post.eventName} (${n} post)`);
@@ -422,17 +422,19 @@ function recentSameEvent({ eventName = "", text = "", category = "", followup = 
 // Aynı haberin farklı kaynaktan tekrarı (etkinlik adı olmayan haberler dahil; Strava-HYROX iki kez çıktı):
 // kapak başlığı son 7 günün başlıklarıyla kelime kökü (ilk 5 harf) örtüşmesine göre karşılaştırılır.
 // Farklı etkinlikler (HYROX Barcelona / HYROX Kahire sonuçları) yalnızca neredeyse aynı başlıkta (0,9) tekrar sayılır.
-const STOPW = new Set("için gibi daha olan oldu olarak ile bir iki üç yeni ilk son kadar sonra önce gün günü yılı yıl yarış yarışı yarışında koşu koşusu".split(" "));
+const STOPW = new Set("için gibi daha olan oldu olarak ile bir iki üç yeni ilk son kadar sonra önce gün günü yılı yıl yarış yarışı yarışında koşu koşusu açıklandı açıldı açılıyor sonuçları sonuçlar kayıtları kayıtlar belli 2025 2026 2027 2028".split(" "));
 const titleToks = (t) => new Set(String(t ?? "").toLocaleLowerCase("tr").replace(/[’']\S*/g, "").split(/[^a-z0-9çğıöşü]+/).filter((w) => w.length >= 3 && !STOPW.has(w)).map((w) => w.slice(0, 5)));
 function titleSim(a, b) { const A = titleToks(a), B = titleToks(b); if (Math.min(A.size, B.size) < 3) return 0; let n = 0; for (const x of A) if (B.has(x)) n++; return n / Math.min(A.size, B.size); }
 function recentSameStory(headline, eventName = "") {
   const k = evKey(eventName);
   return state.posts.find((p) => {
     if (!p.media || Date.now() - Date.parse(p.at ?? 0) > 7 * 864e5) return false;
+    if (norm(headline) && (norm(headline) === norm(p.headline) || norm(headline) === norm(p.title))) return true; // birebir aynı başlık
     const pk = evKey(p.eventName);
     const sim = Math.max(titleSim(headline, p.headline), titleSim(headline, p.title));
-    if (k.length >= 6 && pk.length >= 6) return k.includes(pk) || pk.includes(k) ? false : sim >= 0.9; // aynı etkinlik: recentSameEvent karar verir
-    return sim >= 0.6;
+    // aynı etkinlik 0,8 (recentSameEvent 2 günden sonrasını yakalamaz); farklı etkinlik 0,9; tek tarafta etkinlik adı 0,75; ikisinde de yok 0,6
+    if (k.length >= 6 && pk.length >= 6) return sim >= (k.includes(pk) || pk.includes(k) ? 0.8 : 0.9);
+    return sim >= (k.length >= 6 || pk.length >= 6 ? 0.75 : 0.6);
   }) ?? null;
 }
 
@@ -449,11 +451,14 @@ function infoSourceOk(urls) {
 
 function offAudience(post, pick) {
   if (!["haber", "hikaye", "duyuru"].includes(pick.kind) || pick.score >= 9) return "";
-  const country = String(post.country ?? "").trim(), turk = /(^|[^\p{L}])Türk(?!iye)/u.test(`${post.caption ?? ""} ${post.slides?.[0]?.title ?? ""}`);
-  if (turk || /^türkiye$|^kktc$|^kıbrıs$/i.test(country)) return "";
+  // toLocaleLowerCase("tr"): JS /i bayrağı "İ" ile "i"yi eşleştirmez (İspanya, İtalya eleniyordu)
+  const country = String(post.country ?? "").trim().toLocaleLowerCase("tr"), turk = /(^|[^\p{L}])(Türk(?!iye)|Türkiye'(den|yi|li)|[Mm]illi (sporcu|takım|atlet))/u.test(`${post.caption ?? ""} ${post.slides?.[0]?.title ?? ""}`);
+  if (turk || /^(türkiye|kktc|kıbrıs)$/.test(country)) return "";
   if (pick.kind === "hikaye") return "yurt dışı hikâye, Türk sporcu yok";
-  if (["kosu", "doga", "su", "bisiklet"].includes(pick.category)) return "yurt dışı koşu/dayanıklılık haberi, Türk sporcu yok";
-  if (country && !NEAR.test(country)) return `uzak ülke (${country}), Türkiye'den gidilmesi zor`;
+  // Dünya maraton majorları (kullanıcı kuralı: büyük ve popüler koşular kapsamda) istisna
+  const major = /(berlin|londra|london|boston|chicago|new york|tokyo|sidney|sydney) (maratonu|marathon)/i.test(`${post.eventName ?? ""} ${post.slides?.[0]?.title ?? ""}`);
+  if (["kosu", "doga", "su", "bisiklet"].includes(pick.category) && !major) return "yurt dışı koşu/dayanıklılık haberi, Türk sporcu yok";
+  if (country && !major && !NEAR.test(country)) return `uzak ülke (${country}), Türkiye'den gidilmesi zor`;
   return "";
 }
 
@@ -663,7 +668,8 @@ async function pickEventPhotos({ post, pages, topic, want, category, images = []
 
 // Logo adresi (alan adı ya da Instagram kullanıcı adı) etkinlik adındaki ayırt edici bir kelimeyi içermeli.
 // Genel kelimeler (maraton, yarı, games, throwdown...) tek başına eşleşme sayılmaz.
-const LOGO_GENERIC = new Set(["marathon", "maraton", "maratonu", "half", "yari", "yarı", "race", "run", "running", "kosu", "koşu", "koşusu", "games", "throwdown", "challenge", "series", "world", "championship", "championships", "open", "final", "finals", "qualifier", "qualifiers", "ultra", "trail", "festival", "cup", "the", "and", "official"]);
+// Şehir/ülke adı tek başına eşleşme değildir (ör. HYROX İstanbul için crossfitistanbul salonunun logosu)
+const LOGO_GENERIC = new Set(["istanbul", "ankara", "izmir", "antalya", "bursa", "bodrum", "mersin", "adana", "turkiye", "türkiye", "turkey", "tirana", "athens", "atina", "sofia", "dubai", "cairo", "kahire", "london", "londra", "berlin", "paris", "barcelona", "madrid", "rome", "roma", "marathon", "maraton", "maratonu", "half", "yari", "yarı", "race", "run", "running", "kosu", "koşu", "koşusu", "games", "throwdown", "challenge", "series", "world", "championship", "championships", "open", "final", "finals", "qualifier", "qualifiers", "ultra", "trail", "festival", "cup", "the", "and", "official"]);
 function logoSourceMatches(eventName, src) {
   const s = norm(src ?? "");
   if (!s) return false;
@@ -760,7 +766,10 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     // Yurt dışı yarışlar yalnızca görselli post olarak kalır.
     const inTR = /^t[üu]rkiye$/i.test(String(post.country ?? "").trim()) || /(İstanbul|Istanbul|İzmir|Izmir|Antalya|Ankara|Bursa|Kuşadası|Kusadasi|Bodrum|Kapadokya|Cappadocia|Kaçkar|Kackar|Uludağ|Uludag|Likya|Lycian|Türkiye|Turkey)/i.test(key);
     const big = BIG_RACES.some((re) => re.test(key)) || /\bATHX\b/i.test(key);
-    if (["duyuru", "haber"].includes(kind) && big && inTR && !/World Championships?|Dünya Şampiyonası|CrossFit Open/i.test(key)) {
+    // Kullanıcı kararı (2026-11-22): videolu haber artırılır. CrossFit/HYROX/ATHX/hibrit yarış haberleri Türkiye ve Türkiye'den gidilen yakın
+    // ülkeler için de kısa Reels sırasına girer; video YALNIZCA yarışın kendi hesabından (yoksa kısa Reels üretilmez). Kişi odaklı haber girmez.
+    const hybrid = ["crossfit", "hyrox", "fonksiyonel"].includes(category) && (inTR || NEAR.test(String(post.country ?? "").trim()));
+    if (["duyuru", "haber"].includes(kind) && !post.athleteName && ((big && inTR) || hybrid) && !/World Championships?|Dünya Şampiyonası|CrossFit Open/i.test(key)) {
       const qf = "state/short-queue.json";
       const q = fs.existsSync(qf) ? JSON.parse(fs.readFileSync(qf, "utf8")) : [];
       state.shortReels ??= [];
@@ -1060,7 +1069,7 @@ async function publishFollowup() {
   try {
     fu = dueFollowup(today);
     if (!fu) return false;
-    if (fu.category === "kosu") { log(`Koşu takip postu yapılmaz (kullanıcı kuralı): ${fu.eventName}`); if (!DRY) markFollowup(fu, "iptal"); return false; }
+    if (ONE_POST_CATS.has(fu.category)) { log(`Koşu takip postu yapılmaz (kullanıcı kuralı): ${fu.eventName}`); if (!DRY) markFollowup(fu, "iptal"); return false; }
     log(`Takip postu: ${fu.eventName} / ${fu.type}`);
     const { pick, sources } = followupInput(fu);
     const ready = await prepareVerified(pick, sources, "Hibrit Portal arşivi");

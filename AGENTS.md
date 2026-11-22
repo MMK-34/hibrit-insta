@@ -6,6 +6,23 @@ Birbirinizle doğrudan konuşamazsınız; haberleşme yalnızca `ORTAK-GOREV.md`
 
 Kullanıcıyla her zaman **Türkçe** konuş.
 
+## 0. İş bölümü (kullanıcı isteği: verimli çalışın, token harcamayın)
+
+Kim neyde iyiyse o yapar. Antigravity'nin kotası ayrıdır; okuma ağırlıklı ve deneme işleri ona gider.
+
+| Antigravity | Claude Code |
+|---|---|
+| Geniş kod okuma ve denetim raporları | Son karar, inceleme, main'e alma |
+| Görsel kontrol (slayt/foto ekran görüntüsü okuma) | Canlı bot hattı (`src/run.mjs` akışı) değişiklikleri |
+| Tasarım denemeleri (`src/render.mjs`), önce/sonra örnek | İçerik kuralları, caption, yayın kuyruğu |
+| Test yazma, mekanik kod işleri, teşhis | Anlatım videoları (ayrı video oturumu) ve oturumlar arası koordinasyon |
+| Kaynak ve veri toplama (takvim, sonuçlar) | Güvenlik gerektiren her şey (token, Meta, onay) |
+
+Tasarruf kuralları:
+- Rapor ve notlar kısa olsun: bulgu başına birkaç satır, tekrar yok, kod alıntısı yalnızca gerekli satırlar.
+- Görevin dışına çıkma; ilgisiz dosya okuma (ör. denetimde listede olmayan dosyalar).
+- Mekanik işlerde hızlı model (Flash), denetim ve tasarımda Medium yeterli; High/Orchestrator kullanma.
+
 ## 1. Kesin yasaklar (hiçbir gerekçeyle esnemez)
 
 - `.env` dosyasını açma, okuma, yazdırma, commit etme. Token, şifre, API anahtarı değerini asla ekrana veya dosyaya yazma.

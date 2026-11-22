@@ -2997,6 +2997,41 @@
         "place": "Gaziantep"
       },
       "story": "18362827213301957"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMitwFBVV95cUxNcUxYaEV5cFRGT1dIZXQydDVKQXV0cTNseE85c0YtMUhBMThGZDdfT1pyMTM3Q0RvR1Vtdk9xQ0RNM00wSXNsME11YlJ2RjNzLWJhYlpEWVctLXhBbHFFUHZkSWJTaFZPMVJMXy1ZaU9IT3pvQjl4QU1sX0t2OHVCQ21lTE5ybVZCTDRzWGJkMi1iVHlHSk9GZ1I1YW9waVNyc2RMUzU3cDhDMy1LYzJFYzJBaTJ3b0U"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:0e220241505139a7"
+      ],
+      "media": "18159175078514006",
+      "permalink": "https://www.instagram.com/p/DgCMeGNl7_Y/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-22/mwrh4cq1/01.jpg",
+      "title": "Gaziantep’te sürücülere uyarı: Pazar günü 08.00-12.30 saatleri arasında bu yollar kapalı",
+      "headline": "8. Gazi Yarı Maratonu 22 Kasım'da koşulacak",
+      "eventName": "Gazi Yarı Maratonu",
+      "at": "2026-11-22T06:46:56.159Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "GAZİ YARI MARATONU",
+            "title": "8. Gazi Yarı Maratonu 22 Kasım'da koşulacak",
+            "subtitle": "Yarış nedeniyle kent merkezindeki ana arterler 08.00-12.30 saatleri arasında araç trafiğine kapalı olacak."
+          }
+        ],
+        "caption": "8. Gazi Yarı Maratonu 22 Kasım Pazar günü Gaziantep'te gerçekleşecek. Yarış süresince kent merkezindeki ana arterler 08.00-12.30 saatleri arasında araç trafiğine kapalı olacak. Sürücülerin bu saatler arasında alternatif güzergahları kullanmaları öneriliyor. Gaziantep'te koşacak sporcuların planlarını bu saatlere göre yapmaları önem taşıyor. Bu yarışta tanıdığın biri var mı? Ona gönder.\n\nKaynak: Gaziantep Söz\nGörsel: gaziantep.bel.tr\n\n#koşu #maraton #yarımaraton #running #runningturkey #gaziantep #hibritportal",
+        "srcUrls": [
+          "https://gaziantepsoz.com/gaziantepte-suruculere-uyari-pazar-gunu-08-00-12-30-saatleri-arasinda-bu-yollar-kapali.html"
+        ],
+        "eventName": "Gazi Yarı Maratonu",
+        "country": "Türkiye",
+        "place": "Gaziantep"
+      },
+      "story": "17961614697016767"
     }
   ],
   "daily": {
@@ -3083,10 +3118,10 @@
       "summarySent": true
     },
     "2026-11-22": {
-      "drafts": 4,
-      "approved": 3,
+      "drafts": 5,
+      "approved": 4,
       "rejected": 1,
-      "aiCalls": 21
+      "aiCalls": 27
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3110,7 +3145,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-22T05:44:46.028Z",
+  "lastRunAt": "2026-11-22T06:44:49.334Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

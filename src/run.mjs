@@ -454,6 +454,9 @@ function offAudience(post, pick) {
   // toLocaleLowerCase("tr"): JS /i bayrağı "İ" ile "i"yi eşleştirmez (İspanya, İtalya eleniyordu)
   const country = String(post.country ?? "").trim().toLocaleLowerCase("tr"), turk = /(^|[^\p{L}])(Türk(?!iye)|Türkiye'(den|yi|li)|[Mm]illi (sporcu|takım|atlet))/u.test(`${post.caption ?? ""} ${post.slides?.[0]?.title ?? ""}`);
   if (turk || /^(türkiye|kktc|kıbrıs)$/.test(country)) return "";
+  // Kullanıcı kuralı (2026-11-22, ikinci açıklama): CrossFit/HYROX/ATHX/hibrit fitness haberleri dünyanın her yerinden kapsamda
+  // (ABD'deki CrossFit gündemi, Avrupa ve Balkan yarışları, kamuya mal olmuş ünlü sporcular). Uzak ülke süzgeci yalnızca diğer branşlara uygulanır.
+  if (["crossfit", "hyrox", "fonksiyonel"].includes(pick.category)) return "";
   if (pick.kind === "hikaye") return "yurt dışı hikâye, Türk sporcu yok";
   // Dünya maraton majorları (kullanıcı kuralı: büyük ve popüler koşular kapsamda) istisna
   const major = /(berlin|londra|london|boston|chicago|new york|tokyo|sidney|sydney) (maratonu|marathon)/i.test(`${post.eventName ?? ""} ${post.slides?.[0]?.title ?? ""}`);

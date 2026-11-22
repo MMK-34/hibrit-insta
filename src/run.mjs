@@ -729,8 +729,13 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   let logoUse = eventLogo;
   let files = await renderPost({ ...post, photos, eventLogo: logoUse, category, source: sourceName, dateLabel }, outDir);
   // Tasarım denetçisi (yayın öncesi görsel bütünlük): sorun varsa bir kez düzeltip yeniden çizer; hâlâ sorunluysa yayınlamaz
-  const dtopic = [post.athleteName ? `Haberin kahramanı sporcu: ${post.athleteName}` : "", post.eventName, post.slides[0]?.title].filter(Boolean).join(" | ");
+  const dtopic = [post.athleteName ? `Haberin kahramanı sporcu: ${post.athleteName}` : "", post.eventName ? `Etkinlik: ${post.eventName}` : "", [post.country, post.place].filter(Boolean).join(" / "), post.slides[0]?.title].filter(Boolean).join(" | ");
   const dc = await designCheck(files, { topic: dtopic });
+  if (dc.failed) {
+    log("Tasarım denetimi yapılamadı, post yayınlanmadı (sonraki çalışmada yeniden denenir).");
+    await push(`Tasarım denetimi yapılamadı, post bekletildi: ${String(post.slides[0]?.title ?? "").slice(0, 100)}`, { title: "Tasarım" });
+    return null;
+  }
   let brandSeen = !!dc.brand;
   if (!dc.ok) {
     log("Tasarım denetimi:", dc.issues.map((i) => `${i.slide}: ${i.problem} (${i.fix})`).join(" | "));
@@ -1178,6 +1183,11 @@ async function publishStock() {
     const photos = await findImages(post.imageQueries ?? [], Math.min(post.slides.length, 4), item.category, usedPhotos);
     if (!photos.length) return await failAttempt("foto bulunamadı");
     const files = await renderPost({ ...post, photos, category: item.category, source: item.sourceName, dateLabel }, outDir);
+    // Stok postu da yayından önce tasarım denetiminden geçer (denetim G4: protein yazısına magnezyum tozu fotoğrafı düştü)
+    if (!DRY) {
+      const dcs = await designCheck(files, { topic: `Bilgi postu: ${post.slides[0]?.title ?? item.topic}` });
+      if (!dcs.ok) return await failAttempt(dcs.failed ? "tasarım denetimi yapılamadı" : `tasarım: ${dcs.issues.map((i) => `${i.slide}: ${i.problem}`).join(" | ").slice(0, 300)}`);
+    }
     fs.writeFileSync(path.join(outDir, "caption.txt"), `${post.caption}\n`);
     log(`Stok üretildi: ${item.topic} -> ${outDir} (${files.length} slayt)`);
     if (DRY) { log(`Caption:\n${post.caption}`); return; }

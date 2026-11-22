@@ -1874,5 +1874,56 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-22T11:48:09.730Z",
+    "title": "Yaklaşan yarış: HYROX Utrecht (Utrecht, Hollanda) 2026-11-26 – 2026-11-29",
+    "url": "https://hyrox.com/find-your-race/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "tarih",
+        "note": "Kaynak sayfası (araç sınırı) nedeniyle doğrulanamadı."
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "yer",
+        "note": "Kaynak sayfası (araç sınırı) nedeniyle doğrulanamadı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "tarih",
+        "note": "Araç sınırı nedeniyle kaynak doğrulanamadı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "yer",
+        "note": "Araç sınırı nedeniyle kaynak doğrulanamadı."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-22T11:48:58.051Z",
+    "title": "HYROX Dublin: geçmiş yıllarda çıkan antrenmanlar",
+    "url": "https://hyrox.com/event/hyrox-dublin/",
+    "kind": "bilgi",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

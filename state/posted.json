@@ -3217,6 +3217,20 @@
         "cal:hyrox-2026-singapore"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMijgFBVV95cUxNQ3EtOFNhN0d3TWFfbHZwelR5ODBnMUFEcnBLLXItVkQ1Y3BRcDJ0bnU3VkxsZ2hEcUwzU2ZGc2VFSEhzRUZvNUZQNjR0cDFpMzA2a3R2dGJHQzJMUF94Rzg4WkJsMVJrTndhaXpkQk9FWm1vdkJXUzNWTDNzZ2J5T1BxN3N3STAtTmxCaFhB"
+      ],
+      "skipped": "tekrar"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "cal:hyrox-utrecht-2026-11"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -3303,10 +3317,10 @@
       "summarySent": true
     },
     "2026-11-22": {
-      "drafts": 14,
+      "drafts": 16,
       "approved": 7,
-      "rejected": 7,
-      "aiCalls": 57
+      "rejected": 9,
+      "aiCalls": 65
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3330,7 +3344,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-22T10:44:41.036Z",
+  "lastRunAt": "2026-11-22T11:44:42.518Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

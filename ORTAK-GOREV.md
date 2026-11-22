@@ -136,15 +136,20 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
   Önce teşhisi notlara yaz. Düzeltme küçük ve netse branch'te yap (ör. konu anahtar kelimesi fotoğraf etiketinde/açıklamasında yoksa o fotoğrafı eleme).
   Düzeltmeyi G4'teki iki örnekle test et (ağ gerekirse yalnızca fotoğraf aramasını çalıştır, yayın yok).
 - Notlar:
+  - **Teşhis (3 kök neden):**
+    1. **`src/run.mjs` (`pickEventPhotos`):** `kind` alanı `"bilgi"` veya `"arastirma"` olan ve belirli bir etkinliği anlatmayan (`post.eventName === ""`) paylaşımlarda bile `eventPhotos({ pages })` çağrılıyordu. Bu yüzden Kettlebell bilgi postunda (`2026-11-22`) `findImages(imageQueries)` yerine kaynak haber sayfasının (`womenshealthmag.com`) `og:image` görseli (Mariella Frostrup'un TRX askılı portresi, `event:ebd6a51f2916b600`) çekilip `"event"` modunda onaylandı.
+    2. **`src/images.mjs` (`SPORT` eşlemesi ve rastgele yerel havuz yedeği):** `LOCAL_ALT` içinde `kb-floor` ve `kb-rack` (kettlebell), `medball-rack`, `box-jumps`, `rope-climb`, `ropes`, `barbell-floor`, `athlete-rest`, `chalk-hands` bulunduğu halde `SPORT` sözlüğünde bu ekipmanların hiçbiri tanımlı değildi (`fits("kb-floor", "kettlebell workout") === false`). Ayrıca sorgu yerel kütüphaneyle hiç eşleşmediğinde (`match = []`, `m2 = []`), `else if (MULTI_SPORT.has(category)) locals = []` yalnızca `MULTI_SPORT` kümesinde yerel havuzu sıfırlıyor; `bilim` ve `fonksiyonel` bu kümede olmadığı için `LOCAL_BY_CAT.bilim` içinden rastgele `local:chalk-hands` (magnezyum tozu) seçilip `out.length === 1` olunca Pixabay/Openverse araması tamamen atlanıyordu (`2026-11-20` uyku öncesi protein postu).
+    3. **`src/images.mjs` (Konu anahtar kelimesi süzgeci eksikliği):** Başlıkta/sorguda belirgin bir ekipman veya konu anahtar kelimesi (`kettlebell`, `protein/beslenme/uyku`, `kürek`, `sled`, `wall ball`, `halat` vb.) geçtiğinde, seçilen yerel veya dış (Pixabay/Openverse) fotoğrafın etiket/açıklamasında (`alt`/`tags`/`title`) o anahtar kelimenin bulunmasını zorunlu kılan bir süzgeç yoktu ve `openverse()` sonuçlarında etiket/başlık alaka kontrolü yapılmıyordu.
 
 ## G9 — Türkiye yarış takvimi doğrulaması (rapor)
 - **Atanan:** Antigravity
-- **Durum:** yapılıyor (Antigravity, terminal modu, Claude Code başlattı)
+- **Durum:** bitti
 - **Kod değiştirme yok.** Çıktı: `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G9-takvim.md`
 - Yapılacak: `cal/` takvim verisindeki önümüzdeki 90 gün içindeki Türkiye yarışlarını (CrossFit, HYROX, ATHX, koşu) tek tek resmî sayfasından kontrol et:
   tarih, şehir, ad doğru mu, iptal/erteleme var mı. Takvimde OLMAYAN ama resmî olarak duyurulmuş Türkiye yarışlarını da listele (ad, tarih, resmî adres).
   Veri dosyalarını elle değiştirme; yalnızca rapor.
 - Notlar:
+  - Antigravity (terminal): 1 hatalı (Kuşadası/Alsancak beklenen kaydı), 17 eksik koşu yarışı (takvimde koşu yok), 2 doğrulandı, 6 doğrulanamadı. Rapor: rapor/G9-takvim.md
 
 ---
 

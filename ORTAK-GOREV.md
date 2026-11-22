@@ -66,7 +66,7 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 
 ## G5 — Post slayt tasarımı denemesi (yayın yok)
 - **Atanan:** Antigravity
-- **Durum:** yapılıyor (Antigravity)
+- **Durum:** bekliyor
 - **Branch / worktree:** `antigravity/tasarim` → `C:\Users\Mehmet Kuyucu\Desktop\cf\insta-ag-tasarim`
 - Yapılacak: post slaytlarının tasarımını iyileştir (`src/render.mjs`, gerekirse `fonts/`). Fotoğraf ÜRETME, yapay zekâ görseli
   YOK; mevcut gerçek fotoğraflar kalır. Hedef: v2 haber sitesi stili, kırmızı vurgu (`hl`), Türkçe karakterler doğru,
@@ -74,6 +74,7 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 - Önce/sonra örnek: `SPEC=manual/work/posts-wwc.json node manual/make.mjs` (`--publish` YOK). Önce/sonra görselleri
   `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G5-tasarim\once\` ve `...\sonra\` klasörlerine koy.
 - Notlar:
+  - Claude Code (2026-11-22): yarıda kalmış. Önce görselleri var (insta-ag-tasarim/rapor/G5-tasarim/once/), render.mjs değişikliği ve sonra görselleri yok. Aynı worktree ile devam et.
 
 ---
 

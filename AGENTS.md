@@ -49,12 +49,14 @@ Kendi worktree'ndeki `ORTAK-GOREV.md` kopyasını okuma/yazma ve panoyu commit e
    - Rapor görevi: kod değiştirme; raporu `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\<görev>.md` olarak yaz.
 3. Yalnızca görevde adı geçen dosyalara dokun.
 4. Bitince madde 4'teki kontrolleri çalıştır, kendi branch'ine commit at (push yok), panoda durumu `inceleme bekliyor` yap
-   ve 3–5 satır not yaz: değişen dosyalar, nasıl test ettin, açık kalan. Sonra kullanıcıya tek satır yaz:
-   "Gx bitti, Claude Code'a 'Antigravity Gx'i bitirdi' de." ve dur. Bir sonraki göreve kendiliğinden geçme.
+   ve 3–5 satır not yaz: değişen dosyalar, nasıl test ettin, açık kalan. Kullanıcıya haber verdirme:
+   Claude Code panoyu kendisi izliyor ve incelemeye kendiliğinden başlar.
+   Sonra panodaki sıradaki `bekliyor` görevine geç. Sana atanmış bekleyen görev kalmayınca kullanıcıya tek satır yaz:
+   "Görevlerim bitti." ve dur.
 5. Emin olmadığın şey olursa görevi `SORU` yap, panonun "Sorular" bölümüne yaz ve dur.
 6. Komutları az ve toplu çalıştır (kullanıcı her komut için izin veriyor). Okuma işleri için dosya okuma aracını kullan, kabuk komutu değil.
 
-Claude Code branch'i inceler, uygunsa main'e alır, worktree'yi kaldırır ve görevi `bitti` yapar.
+Claude Code branch'i inceler, uygunsa main'e alır, worktree'yi ve branch'i kaldırır, görevi `bitti` yapar.
 
 ## 3. İçerik kuralları (denetim yaparken bunlara göre kontrol et)
 

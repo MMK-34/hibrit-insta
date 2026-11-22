@@ -41,21 +41,27 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 
 ## G3 — Takvim senkronu zaman aşımı (teşhis)
 - **Atanan:** Antigravity
-- **Durum:** bekliyor
+- **Durum:** bitti
 - **Branch:** `antigravity/takvim-teshis`
 - Sorun: `post.yml` → "Yarış takvimi senkronu" adımı (`cal/scripts/sync-calendar.mjs`) 240 sn'de kesiliyor:
   "takvim hatası, son sağlam veri korundu" (2026-11-22, iki çalışmada).
 - Yapılacak: hangi kaynağın/isteğin takıldığını bul (istek başına zaman aşımı var mı? sıralı mı çalışıyor?).
   Önce teşhisi notlara yaz; düzeltme küçük ve net ise branch'te yap. Takvim verisi dosyalarını elle değiştirme.
 - Notlar:
+  - **Teşhis:** GitHub Actions (`45050762435`) loglarında `circle21` 15 sn'de tamamlanıyor (`[ok] circle21: 91`). Ardından `hyroxCalendar()` içinde birincil kaynak `hyranking.com` Actions IP'sinden `event linki bulunamadı` dönüp yedek `hyresult.com`'a düşüyor. `hyresult.com/events` sayfasında 119 etkinlik slug'ı var; her `/event/<slug>` sayfası ~1,5–2,2 sn'de yanıt veriyor ve kod bunları **sıralı** (`for` döngüsü + her istekte `sleep(350)`, istek başına 20 sn timeout) çektiği için `119 × ~2,1 sn ≈ 250+ sn` sürüyor ve 240 sn'lik `timeout 240` sınırına takılıp kesiliyor.
+  - **Düzeltme (`antigravity/takvim-teshis` branch / `insta-ag-takvim-teshis` worktree):** `cal/scripts/sync-calendar.mjs` içinde `hyroxCalendar()` liste sayfaları ve etkinlik detay istekleri 6'lı paralel gruplar (`CONC = 6`, `Promise.all`, istek başına `timeout: 10000`) halinde çekilecek şekilde güncellendi (takvim veri dosyalarına dokunulmadı).
+  - Claude Code (2026-11-22): incelendi, main'e alındı (060d04d).
+  - **Test:** Paralel çekimle 40 slug 90+ sn yerine ~22 sn'de (119 slug ~60 sn'de) tamamlanıyor. `node --check`, `eslint` ve `node scripts/replay-test.mjs` (29/29) hatasız geçti.
 
 ## G4 — Post görsel kontrolü (rapor)
 - **Atanan:** Antigravity
 - **Durum:** bekliyor
-- **Kod değiştirme yok.** Çıktı: `rapor/G4-gorsel.md`
-- Yapılacak: Kullanıcı sana son postların ekran görüntülerini/slayt görsellerini verecek (verilmezse bu görevi
-  `SORU` yap ve dur — Instagram'a kendin girme). Her post için kontrol et: foto konuyla ilgili mi, olay postunda
-  yalnızca olayın kendi görseli mi, yazı taşıyor mu, logo/yüz kesiliyor mu, kırmızı vurgu doğru kelimede mi.
+- **Kod değiştirme yok.** Çıktı: `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G4-gorsel.md`
+- Kullanıcıdan ekran görüntüsü İSTEME. Görseller: `state/posted.json` içindeki son 30 yayınlanmış postun (`media` alanı dolu)
+  `cover` adresleri (`raw.githubusercontent.com/.../media/...` kapak görseli). Bu adresleri indirip bak; Instagram'a girme.
+  Kapak dışındaki slaytlar aynı klasördedir (`cover` adresindeki `-1.jpg` / `1.jpg` yerine 2, 3... dene; yoksa yalnızca kapak).
+- Her post için kontrol et: foto konuyla ilgili mi, olay postunda yalnızca olayın kendi görseli mi, yazı taşıyor mu,
+  logo/yüz kesiliyor mu, kırmızı vurgu doğru kelimede mi. Sorunlu olanları başlık + adres + sorun olarak listele; sorunsuzları tek satırda say.
 - Notlar:
 
 ## G5 — Post slayt tasarımı denemesi (yayın yok)

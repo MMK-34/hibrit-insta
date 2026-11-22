@@ -342,6 +342,7 @@ const POST_TOOL = {
             kicker: { type: "string", description: "cover: kısa üst etiket, örn 'Son dakika' / 'Yarış raporu'" },
             title: { type: "string" },
             subtitle: { type: "string" },
+            hl: { type: "string", description: "Yalnızca cover: başlıkta kırmızıyla vurgulanacak en önemli 1-2 kelime (tarih, sayı ya da haberin özü; başlıktaki yazımla aynen). Haber sitelerindeki gibi göz bu kelimeye gitsin." },
             body: { type: "string" },
             bullets: { type: "array", items: { type: "string" }, maxItems: 4 },
             label: { type: "string", description: "stat: rakamın etiketi" },

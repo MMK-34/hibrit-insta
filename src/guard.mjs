@@ -51,6 +51,12 @@ export function guardPost(post, { sourceName }) {
     // Alanlar KESİLMEZ (yarım cümle yayınlanmasın): sınırı aşan alan aşağıda gerekçeli retle yazara geri döner
     for (const k of FIELDS) if (o[k]) o[k] = clean(o[k]);
     if (o.bullets) o.bullets = o.bullets.map((b) => clean(b)).filter(Boolean).slice(0, 4);
+    // v2 kapak vurgusu (kırmızı kelime): yalnızca başlıkta gerçekten geçen en çok 3 kelime
+    if (o.type === "cover" && s.hl && o.title) {
+      const tw = o.title.toLocaleUpperCase("tr").split(/\s+/);
+      const hw = clean(s.hl).toLocaleUpperCase("tr").split(/\s+/).filter(Boolean).slice(0, 3);
+      if (hw.length && hw.every((h) => tw.some((t) => t.startsWith(h)))) o.hl = hw.join(" ");
+    }
     return o;
   })
     // JSON kalıntısı (',' ":" {" gibi) içeren slayt bozuktur

@@ -866,7 +866,8 @@ async function processApprovals() {
     for (const it of q) {
       if (!/^r[0-9a-f]{8}$/.test(it.code ?? "") || !String(it.video ?? "").startsWith(`https://raw.githubusercontent.com/${process.env.GH_REPO}/media/`)) continue;
       if (pend[it.code] || (state.reelsDone ?? []).includes(it.code)) continue;
-      pend[it.code] = { video: it.video, caption: String(it.caption ?? "").slice(0, 2100), kind: "reel", title: it.title ?? "Haftalık bülten", ids: [`reel:${it.code}`], photos: [], urls: [it.video], srcUrls: [], at: it.at ?? new Date().toISOString(), label: "REELS" };
+      const media = `https://raw.githubusercontent.com/${process.env.GH_REPO}/media/`;
+      pend[it.code] = { video: it.video, ...(String(it.cover ?? "").startsWith(media) && /\.jpe?g$/i.test(it.cover) ? { cover: it.cover } : {}), caption: String(it.caption ?? "").slice(0, 2100), kind: "reel", title: it.title ?? "Haftalık bülten", ids: [`reel:${it.code}`], photos: [], urls: [it.video], srcUrls: [], at: it.at ?? new Date().toISOString(), label: "REELS" };
       moved++;
     }
     if (moved) { fs.writeFileSync(qf, "[]\n"); saveState(); log("Reels onay kuyruğuna alındı:", moved); }
@@ -897,9 +898,9 @@ async function processApprovals() {
       }
       delete pend[code]; saveState();
       try {
-        const res = item.video ? await publishReel(item.video, item.caption) : await publish(item.urls, item.caption);
+        const res = item.video ? await publishReel(item.video, item.caption, item.cover ?? "") : await publish(item.urls, item.caption);
         if (item.video) state.reelsDone = [...(state.reelsDone ?? []), code].slice(-50);
-        state.posts.push({ day: today, ids: item.ids, kind: item.kind, photos: item.photos, media: res.id, permalink: res.permalink, cover: item.urls[0], title: item.title, headline: item.headline, eventName: item.eventName, approved: code, at: new Date().toISOString() });
+        state.posts.push({ day: today, ids: item.ids, kind: item.kind, photos: item.photos, media: res.id, permalink: res.permalink, cover: item.cover ?? item.urls?.[0] ?? item.video, title: item.title, headline: item.headline, eventName: item.eventName, approved: code, at: new Date().toISOString() });
         saveState();
         log("Onaylı post yayında:", res.permalink);
         await notify(`✅ Onayladığın ${item.video ? "Reels" : "post"} paylaşıldı (${code})\n${res.permalink}`);

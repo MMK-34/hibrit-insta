@@ -135,9 +135,10 @@ export async function publishStory(imageUrl) {
  * Reels paylaşımı: herkese açık MP4 URL'si (H.264/AAC, 9:16). Video işlenmesi birkaç dakika sürebilir.
  * share_to_feed: profil ızgarasında da görünür.
  */
-export async function publishReel(videoUrl, caption) {
+/** coverUrl: isteğe bağlı kapak görseli (JPEG, 9:16); profil ızgarasında ortadaki 3:4 alan görünür */
+export async function publishReel(videoUrl, caption, coverUrl = "") {
   const me = userId();
-  const c = await retry("IG reels container", () => call("POST", `${me}/media`, { media_type: "REELS", video_url: videoUrl, caption, share_to_feed: "true" }));
+  const c = await retry("IG reels container", () => call("POST", `${me}/media`, { media_type: "REELS", video_url: videoUrl, caption, share_to_feed: "true", ...(coverUrl ? { cover_url: coverUrl } : {}) }));
   for (let i = 0; i < 60; i++) {
     const { status_code, status } = await retry(`IG reels durum ${c.id}`, () => call("GET", c.id, { fields: "status_code,status" }));
     if (status_code === "FINISHED") break;

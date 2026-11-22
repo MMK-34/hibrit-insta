@@ -98,9 +98,13 @@ ${rowEvidence.map((r) => `- ${e(r.claim)} → ${e(r.url)}`).join("\n")}` : ""}
 FOTOĞRAFLAR:
 ${(photos ?? []).map((p, i) => `${i + 1}. açıklama: ${e(p.alt || "?")} | lisans: ${e(p.license || "?")} | ${e(p.credit || "")}`).join("\n") || "(yok)"}`;
 
-  const settled = await Promise.allSettled([verifyOnce(MODEL, payload, budget, referenceIsSource), verifyOnce(MODEL_WRITE, payload, budget, referenceIsSource)]);
+  // Sade akış (kullanıcı kararı 2026-11-22): tek denetçi. İkinci denetçi yalnızca birincil kaynak metni olmayan zayıf haberlerde
+  // (Instagram/DM ihbarı, kısa özet) çalışır; resmî kaynak metni elimizdeyken aynı işi iki kez yaptırmak token israfıydı.
+  const strong = referenceIsSource || !!referenceData || sourceTexts.some((s) => String(s.text ?? "").length > 300 && !/BİRİNCİL KANIT DEĞİL/.test(String(s.label ?? "")));
+  const models = strong ? [MODEL] : [MODEL, MODEL_WRITE];
+  const settled = await Promise.allSettled(models.map((m) => verifyOnce(m, payload, budget, referenceIsSource)));
   const results = settled.map((r, i) => (r.status === "fulfilled" ? r.value
-    : { model: i ? MODEL_WRITE : MODEL, ok: false, fails: [{ item: "hata", note: String(r.reason).slice(0, 200) }] }));
+    : { model: models[i], ok: false, fails: [{ item: "hata", note: String(r.reason).slice(0, 200) }] }));
   // Uygulanamayan maddeler (ör. stokta fotoğraf henüz seçilmedi; istatistikte sayıların kaynağı koddan hesaplanan arşiv verisi) sayılmaz.
   // "hata" (API hatası) asla atlanmaz.
   const skip = new Set(skipItems.filter((k) => k !== "hata"));

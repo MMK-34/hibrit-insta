@@ -485,6 +485,7 @@ ${evidence || "(yok)"}
 
 KAYNAKLAR:
 ${src}`,
-    tool: REVIEW_TOOL, maxTokens: 4000, model: MODEL_WRITE, webSearch: 3, webFetch: 5,
+    // Sade akış (2026-11-22): editör yalnızca dili ve kurallara uyumu düzeltir; asıl doğruluk denetimi denetçide. Web aracı az.
+    tool: REVIEW_TOOL, maxTokens: 4000, model: MODEL_WRITE, webSearch: 1, webFetch: 2,
   });
 }

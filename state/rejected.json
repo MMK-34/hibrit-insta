@@ -1969,5 +1969,18 @@
         "note": "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar"
       }
     ]
+  },
+  {
+    "at": "2026-11-22T13:02:05.987Z",
+    "title": "Pelkofer and Eybergen Deliver Standout Pro Victories at HYROX Dallas",
+    "url": "https://roxlyfe.com/hyrox-dallas-november-2026/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kategori",
+        "note": "Postta 'profesyonel' ifadesi geçmektedir, kural gereği kategori adı geçmemelidir."
+      }
+    ]
   }
 ]

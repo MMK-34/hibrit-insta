@@ -3259,6 +3259,26 @@
         "ig:17920781814469482"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMimwFBVV95cUxPZ1FHSkoxVlZqa19iVnNMNHFJLV9iWFIzVko2VXByVU9UcmZoeWY3ODFyRmV0cll1eEVkVXpndndZaTZGVU90aGdQVU9oV2xQSS1ERkxJcUlrWEFEX1NzTlNZQ3Jsa2lIbVhzbzNQZ0k3bVBvdWxWeVI5OFVfME4wTGtmOTRoTzRPWjU3b0ZHSkdwaDdqYUp3Mm1JRdIBoAFBVV95cUxQMEVIQzZiQ1VydzF4cVBjb01LR3ktNTdOYVAwODRwOWNBYkZLVl9ST2FIb3RLemtjTEtkRVFidHpxOFM3dS1jLWJna2hYVVJ4eEt3NjF1SE80dmJpdnBtU3VZOUVHMGpMbmtQT2N5blJwaVhCWHZ0OUFxY0cwLWJfdWs2YWU1X25VUkhQQ1JzV2hYX2tJRXZuYnduRGR3ejBh",
+        "https://news.google.com/rss/articles/CBMijgFBVV95cUxNZ09LZmpwVFoyVUZRcW1LdXpPVTNueDAxQUphOGEzWGQxamdfVnIyN1MzQjR5NEpLZHNJT3FySlhHeXNyV0hiMXl2VVdndnJqV1l5STFpME5hclpJODNLUmVfVGoyZk01MjJEalhFUTVwR09ReTVqNGpOaVFiUjlxLVhOUmVBN19sMWF2SlVB",
+        "https://news.google.com/rss/articles/CBMivwFBVV95cUxPcmR2MDZVa2hmZVAzT0NOX3dnUTUxcGRzajJ0WHJfM0JhV0RjbVR4MVI1VlMxbExnUzJuQk9QOHJaUFZoV3FJVURrZTJmdjRQR245dHJxUmM3WktnMTBPZWV6bXRtUXFXdWY5NFliOUY0RXVON3NfdUl4NmF6SFVhN2ZwV1FrNjE3SG1SdGN6S010OEdDMkN5RF9jdm54aU84ekV0b3NjdUplVFNhNWdDcjdRdjJtbG5RaWpfcGQtWdIBV0FVX3lxTE5sZW92QlI1dTJCUUdhYW0tM241VVdMN28wYXF6YWROWDBCc0RKV0tlbHY0Z1o3WXBMejVGV25HQjFONG1hNkdmdnJIckVVTVlRSS0yZTU2Zw",
+        "https://news.google.com/rss/articles/CBMisgFBVV95cUxPMGVSdk1rdWEweWJDVVJYVmtndzhGeFotV1dqa3NUUkdWRm1uR2dfSnQxMmYtalNodDdUNWM0QXBpTGdmeWd5c2tWdnJ4TFZDcmRpUWdTaGJ0Q3lQTTc1bWl0N2Zwc19mVmlvVXdqRjBDM0Q4bkVKTVcxckx6aEpRREVFcXVLcDN4X0FqcWVOR292VENrZlRubFJsd2l1ZUJ5aGkyTW9jMEdncUpncFYtVFRn0gGyAUFVX3lxTE8wZVJ2TWt1YTB5YkNVUlhWa2d3OEZ4Wi1XV2prc1RSR1ZGbW5HZ19KdDEyZi1qU2h0N1Q1YzRBcGlMZ2Z5Z3lza1Z2cnhMVkNyZGlRZ1NoYnRDeVBNNzVtaXQ3ZnBzX2ZWaW9Vd2pGMEMzRDhuRUpNVzFyTHpoSlFERUVxdUtwM3hfQWpxZU5Hb3ZUQ2tmVG5sUmx3aXVlQnloaTJNb2MwR2dxSmdwVi1UVGc",
+        "https://news.google.com/rss/articles/CBMilgFBVV95cUxPV2JUQnZiazRnUEZTSjJXOFZOcGhOSTcyOFV5cWQybXRpOC00N2F0d0dPQjNoLUtvUVZMN1ZpQUtFc1NoSXY0MXFlUmdRbF9zc0plTGRScnVkZmo2bnRfTXFSWkNwdlp2RjdtS05rdnB5T1pFQlp4QVBKaWNBMmhUaER5cGdqOW9CVlRxU1BwMHdpNnhlQWc",
+        "https://news.google.com/rss/articles/CBMirgFBVV95cUxQS2RHRzYtdEVMY1c4TzlJMnE1VUQwZzVMYUc3bUJUTGJHOXpxVnRuM0xOM3ZFdXlqM1ViRUt2N2xJUWd6MXNwOWdNTVNrTm9wZlE0QWxfYi16c3Y0aE1uSjlWUkFkOFVucWR4ZnFjZGRVcFZuOGFsMjJSVHJYNXR0elhCcE9oT1FlQm9wYUJPX1NybWdYTWlGZk1uMEx0bUJtLXB5NlZBZG1oYVNBc0E",
+        "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNOWFVdDdBZ1Q3ZGJKTFdua3c0d1F5UG0zRlVsa0pTRll6andSMmtSQTlpaDdxZlZrUTN3Rld1TDU2bDR5U190Tl9tdjBFQjRjakRlcy1iLUVsMUd5dnk2MTNLT3NGSGlMVG85YlVSMEZieDF5OVcwSGdON0NxbHNKM19JZnRsS2g2MklkTFdtQk9HUThBMWluX2lYY3NWeTRxYWxJR1pHSVNfcHB6U2V4bjh0ZXYzTzB3eUV2eDUwdDJCMjjSAcMBQVVfeXFMTTlhVXQ3QWdUN2RiSkxXbmt3NHdReVBtM0ZVbGtKU0ZZemp3UjJrUkE5aWg3cWZWa1Ezd0ZXdUw1Nmw0eVNfdE5fbXYwRUI0Y2pEZXMtYi1FbDFHeXZ5NjEzS09zRkhpTFRvOWJVUjBGYngxeTlXMEhnTjdDcWxzSjNfSWZ0bEtoNjJJZExXbUJPR1E4QTFpbl9pWGNzVnk0cWFsSUdaR0lTX3BwelNleG44dGV2M08wd3lFdng1MHQyQjI4"
+      ],
+      "skipped": "tekrar"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://roxlyfe.com/hyrox-dallas-november-2026/"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -3345,10 +3365,10 @@
       "summarySent": true
     },
     "2026-11-22": {
-      "drafts": 19,
+      "drafts": 20,
       "approved": 7,
-      "rejected": 12,
-      "aiCalls": 73
+      "rejected": 13,
+      "aiCalls": 77
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",

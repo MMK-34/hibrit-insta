@@ -87,5 +87,29 @@
     "srcUrl": "https://circle21.events/tirana-throwdown-2026-qualifiers?tab=workouts",
     "storyOk": false,
     "ownerRequested": true
+  },
+  {
+    "id": "wonder-womans-cup-2027-kayit-acilis",
+    "publishAt": "2026-11-24T13:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis/04.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis-story/story.jpg",
+    "caption": "Wonder Woman's Cup kayıtları bu gece açılıyor\nKadınların öncülüğündeki CrossFit yarışması Wonder Woman's Cup, 6-7 Mart 2027'de İstanbul'da Biruni Üniversitesi'nde yapılacak. Organizatörün sitesine göre kayıtlar 25 Kasım 00.00'da açılıyor. Daha önce 27 Kasım olarak duyurulan tarih öne alındı.\n\nTakvim\nKayıt açılışı: 25 Kasım, 00.00\nAntrenmanlar ve standartlar: 1 Şubat\nSon kayıt: 15 Şubat\nSeri saatleri: 4 Mart\nYarış: 6-7 Mart, Biruni Üniversitesi, Zeytinburnu\n\nYarışta üç seviyede bireysel ve takım kategorileri var. Seviyeyi sporcu kendisi seçiyor. Bir takım kategorisinde kadın ve erkek birlikte yarışıyor. Katılım yaşı 14 ve üstü, takım kontenjanı en çok 16.\n\nİlk Wonder Woman's Cup 8 Mart 2026'da, Dünya Kadınlar Günü'nde yapıldı ve 96 kadın sporcu yarıştı. Yarışın gelirleri eğitimi destekleyen bir kuruluşa bağışlanıyor.\n\nKayıt, yarışın resmi sitesinden yapılıyor.\n\nWonder Woman's Cup'ta kiminle yarışacaksın?\nBirlikte yarışmak istediğin arkadaşına gönder.\nFotoğraflar 2026 Wonder Woman's Cup'tan.\n\nKaynak: Wonder Woman's Cup resmi sitesi\nGörsel: Wonder Woman's Cup\n\n#wonderwomanscup #crossfit #crossfitkadın #crossfityarışması #hibritportal",
+    "photos": [
+      "event:wwc-2026-g35",
+      "event:wwc-2026-g37",
+      "event:wwc-2026-g24"
+    ],
+    "title": "Wonder Woman's Cup kayıtları bu gece açılıyor",
+    "kind": "duyuru",
+    "category": "crossfit",
+    "eventName": "Wonder Woman's Cup 2027",
+    "srcUrl": "https://womanscup.com/",
+    "storyOk": false,
+    "ownerRequested": true
   }
 ]

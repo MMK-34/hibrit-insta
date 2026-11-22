@@ -70,7 +70,7 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 
 ## G5 — Post slayt tasarımı denemesi (yayın yok)
 - **Atanan:** Antigravity
-- **Durum:** yapılıyor (Antigravity)
+- **Durum:** bitti (alınmadı)
 - **Branch / worktree:** `antigravity/tasarim` → `C:\Users\Mehmet Kuyucu\Desktop\cf\insta-ag-tasarim`
 - Yapılacak: post slaytlarının tasarımını iyileştir (`src/render.mjs`, gerekirse `fonts/`). Fotoğraf ÜRETME, yapay zekâ görseli
   YOK; mevcut gerçek fotoğraflar kalır. Hedef: v2 haber sitesi stili, kırmızı vurgu (`hl`), Türkçe karakterler doğru,
@@ -79,6 +79,28 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
   `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G5-tasarim\once\` ve `...\sonra\` klasörlerine koy.
 - Notlar:
   - Claude Code (2026-11-22): yarıda kalmış. Önce görselleri var (insta-ag-tasarim/rapor/G5-tasarim/once/), render.mjs değişikliği ve sonra görselleri yok. Aynı worktree ile devam et.
+  - Değişen dosya (`antigravity/tasarim` branch, `5839369`): yalnızca `src/render.mjs`.
+  - Yapılanlar: (1) v2 stil bütünlüğü (`text`, `stat`, `table`, `end` slaytlarında kırmızı `pill` rozet, `text` maddeleri arasında `#2a2c31` ince ayırıcı çizgi, `end` slaydında `head2` kırmızı vurgu, alt bilgide kırmızı kare marka vurgusu ve büyük harf tarih, `cover2`'de şeffaf PNG logo çipi desteği), (2) `head2()` tek haneli sayı vurgusu (`"3 hafta"`) ve `hl` boş geldiğinde sayı+birim / zaman ifadesi otomatik `autoHl()` yedeği, (3) `headSize()` ölçek eşikleri iyileştirilerek 22–28 karakterlik kapak başlıklarının (`"KAYITLAR BU GECE AÇILIYOR"`) 3 satır yerine 2 satıra oturması ve sporcuyu kapatmaması sağlandı, (4) `trUpper()` içinde Türkçe `-ing` kelimeleri (`DOPİNG`) ve kesme işaretli İngilizce özel adlar (`CITY'DE`) düzeltildi, `tagLabel()` kategori tekrarı (`HYROX · HYROX`) giderildi.
+  - Test ve örnekler: `SPEC=manual/work/posts-wwc.json node manual/make.mjs` ile üretilen önce/sonra görselleri `rapor/G5-tasarim/once/` ve `rapor/G5-tasarim/sonra/` klasörlerine konuldu; `node --check`, `eslint` ve `node scripts/replay-test.mjs` (29/29) hatasız geçti.
+  - Claude Code (2026-11-22): kullanıcı beğenmedi, "aynısı olmuş". Hata brifte: mevcut stili korumasını istemiştik. G6 ile yeniden.
+
+## G6 — Yeni tasarım yönleri: 3 farklı konsept (yayın yok)
+- **Atanan:** Antigravity
+- **Durum:** bekliyor
+- **Branch / worktree:** `antigravity/tasarim2` → `C:\Users\Mehmet Kuyucu\Desktop\cf\insta-ag-tasarim2` (origin/main'den yeni aç)
+- **Amaç:** Kullanıcı "farklı bir soluk, farklı bir tasarım tarzı" istiyor. Mevcut tasarımı CİLALAMA (G5 bu yüzden reddedildi).
+  Birbirinden ve mevcut tasarımdan açıkça farklı **3 konsept** yap. Biri bakınca "bu bambaşka" demeli.
+- Serbest olan: yerleşim, tipografi (fonts/ altına açık lisanslı yeni font ekleyebilirsin), renk paleti, fotoğrafın kullanımı
+  (tam kare, bölünmüş, çerçeveli, duotone, kırpma), başlığın konumu ve ölçeği, grafik öğeler (şerit, numara, çizgi, kutu), slaytlar arası akış.
+  Fikir için (kopyalama değil): spor dergisi kapağı / maç posteri, minimal Avrupa haber ajansı, veri-istatistik odaklı spor yayını.
+- Sabit olan: 1080x1350 boyut; gerçek fotoğraflar (fotoğraf/yapay zekâ görseli üretme); Türkçe karakterler doğru;
+  yazı fotoğraftaki yüzü kapatmaz; Hibrit Portal logosu ve hesap adı görünür; haber olduğu her slayttan anlaşılır; okunaklı.
+- Uygulama: `src/render.mjs` içinde `style` alanıyla seçilen 3 yeni stil (`v3a`, `v3b`, `v3c`); mevcut `v2` bozulmadan kalsın.
+- Örnek: aynı WWC postunu 3 stille de çiz (spec'teki `style` alanını değiştirerek, `--publish` YOK), ayrıca bir koşu haberi postu da (bot postlarından birinin
+  `audit` verisini veya `manual/work/` altındaki başka bir spec'i kullan) — tek post her tasarımı göstermez.
+  Görselleri `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G6-tasarim\v3a\`, `v3b\`, `v3c\` klasörlerine koy.
+- Notlara her konsept için tek cümle: fikri ne, kime/neye benziyor.
+- Notlar:
 
 ---
 

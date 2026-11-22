@@ -176,7 +176,7 @@ async function publishManualQueue() {
   state.posts.push({ day: today, ids: [`manual:${item.id}`], kind: item.kind ?? "haber", photos: Array.isArray(item.photos) ? item.photos.map(String).slice(0, 10) : [], media: res.id, permalink: res.permalink, cover: item.urls[0], title: item.title, headline: item.title, eventName: item.eventName, at: new Date().toISOString(), manual: true });
   saveState();
   log("Hazır post yayında:", res.permalink);
-  if (POSTING.stories && item.story) await publishStory(item.story).catch((e) => log("Hikâye paylaşılamadı:", String(e.message).slice(0, 120)));
+  if (POSTING.stories && item.story && item.storyOk && storySlotLeft()) await publishStory(item.story).then((st) => { const rec = state.posts.find((p) => p.media === res.id); if (rec) rec.story = st.id; saveState(); }).catch((e) => log("Hikâye paylaşılamadı:", String(e.message).slice(0, 120)));
   await push(`Hazır post paylaşıldı: ${String(item.title ?? "").slice(0, 100)}`, { title: "Paylaşıldı", level: "ok", click: res.permalink ?? "" });
   return true;
 }
@@ -350,7 +350,9 @@ async function main() {
         if (DRY && processed >= DRY_COUNT) break;
         continue;
       }
-      const res = await renderAndPublish(ready, { category: pick.category, sourceName: ready.sourceName ?? sourceName, ids: pick.ids, kind: pick.kind, title: srcItems[0].title, srcUrls: srcItems.map((x) => x.url) });
+      // Hikâye yalnızca önemli posta (kullanıcı kuralı 2026-11-22): çok yüksek puan ya da Türkiye'deki CrossFit/HYROX/hibrit yarışı
+      const important = pick.score >= 9 || (/^türkiye$/i.test(String(ready.post.country ?? "").trim()) && ["crossfit", "hyrox", "fonksiyonel"].includes(pick.category) && ["duyuru", "haber"].includes(pick.kind));
+      const res = await renderAndPublish(ready, { category: pick.category, sourceName: ready.sourceName ?? sourceName, ids: pick.ids, kind: pick.kind, title: srcItems[0].title, srcUrls: srcItems.map((x) => x.url), important });
       if (DRY) { if (processed >= DRY_COUNT) break; continue; }
       if (res) {
         published = true;
@@ -608,7 +610,10 @@ async function pickEventPhotos({ post, pages, topic, want, category, images = []
   return [...ev, ...stock];
 }
 
-async function renderAndPublish({ post, photos }, { category, sourceName, ids, kind, title, srcUrls = [], onPublished = null, hold = false }) {
+// Günde en çok POSTING.maxStoriesPerDay hikâye (geri sayım hariç): her post hikâyeye düşmez
+function storySlotLeft() { return state.posts.filter((p) => p.day === today && p.story).length < (POSTING.maxStoriesPerDay ?? 2); }
+
+async function renderAndPublish({ post, photos }, { category, sourceName, ids, kind, title, srcUrls = [], onPublished = null, hold = false, important = false }) {
   const bad = photoRuleOk(post, photos);
   if (bad) {
     log("Fotoğraf kuralı: yayınlanmadı:", bad);
@@ -709,7 +714,7 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   log("Yayında:", res.permalink);
   await notify(`✅ Paylaşıldı (${kind})\n${post.slides[0]?.title}\n${res.permalink}`);
   // Hikâye: kapak 9:16 karta alınır ve Story olarak paylaşılır (erişim için). Hata ana postu etkilemez.
-  if (POSTING.stories !== false) {
+  if (POSTING.stories !== false && important && storySlotLeft()) {
     try {
       const sf = await renderStory(files[0], path.join(outDir, "story.jpg"));
       const [su] = await uploadFiles([sf], `${slug}/story`);
@@ -761,7 +766,9 @@ async function publishCountdowns() {
   if (DRY || hour < 9) return;
   { const sp = upcomingSpecial(now); if (sp && sp.daysLeft === 0 && sp.spec.blockMorning && hour < 12 && !state.posts.some((p) => p.media && (p.ids ?? []).includes(`ozel:${sp.key}`))) return; }
   state.countdowns ??= {};
-  const due = (await countdownsDue()).filter((c) => !state.countdowns[c.key]).slice(0, 3);
+  // Geri sayım hikâyesi günde en çok 1 (kullanıcı kuralı 2026-11-22: her şey hikâye olmasın)
+  if (Object.values(state.countdowns).some((t) => String(t).slice(0, 10) === new Date().toISOString().slice(0, 10))) return;
+  const due = (await countdownsDue()).filter((c) => !state.countdowns[c.key]).slice(0, 1);
   for (const c of due) {
     const eventLogo = c.logoUrl ? await logoFromUrl(c.logoUrl).catch(() => null) : null;
     const dir = path.join("out", today, "countdown");

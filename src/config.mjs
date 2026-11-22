@@ -30,6 +30,8 @@ export const POSTING = {
   morningHour: 9,
   // Her paylaşımın kapağı hikâye (Story) olarak da paylaşılır (erişim); false ile kapatılır
   stories: true,
+  // Hikâye yalnızca önemli postlarda ve günde en çok bu kadar (geri sayım ayrı, günde 1)
+  maxStoriesPerDay: 2,
 };
 
 // Seçim (çok aday, kısa çıktı) Sonnet; yazım ve editör kontrolü en iyi Türkçe için Opus.

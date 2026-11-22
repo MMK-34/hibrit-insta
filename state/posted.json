@@ -3118,10 +3118,10 @@
       "summarySent": true
     },
     "2026-11-22": {
-      "drafts": 5,
+      "drafts": 6,
       "approved": 4,
-      "rejected": 1,
-      "aiCalls": 27
+      "rejected": 2,
+      "aiCalls": 32
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3145,7 +3145,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-22T06:44:49.334Z",
+  "lastRunAt": "2026-11-22T07:44:39.635Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

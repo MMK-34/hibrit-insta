@@ -277,7 +277,8 @@ const T = {
 
 /** Tek slayt -> JPEG Buffer */
 export async function renderSlide(slide, ctx) {
-  const tpl = (ctx.style === "v2" && slide.type === "cover" ? T.cover2 : null) ?? T[slide.type] ?? T.text;
+  // Kullanıcı kararı (2026-11-22): yeni tasarım (v2) varsayılan; eski kapak yalnızca style: "v1" ile
+  const tpl = (ctx.style !== "v1" && slide.type === "cover" ? T.cover2 : null) ?? T[slide.type] ?? T.text;
   const logo = await brandLogo();
   const svg = await satori(html(tpl(slide, { ...ctx, logo })), { width: W, height: H, fonts: FONTS });
   const png = new Resvg(svg, { fitTo: { mode: "width", value: W } }).render().asPng();

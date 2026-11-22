@@ -61,8 +61,6 @@ Ayrıntılar: `manual/GOREV.md`, `manual/README.md`, `manual/konu-havuzu.md`.
 ```
 for f in src/*.mjs; do node --check "$f"; done
 npx --no-install eslint -c scripts/eslint.config.mjs src/*.mjs
-```
-
 node scripts/replay-test.mjs
 ```
 

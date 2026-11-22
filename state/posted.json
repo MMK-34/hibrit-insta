@@ -3279,6 +3279,25 @@
         "https://roxlyfe.com/hyrox-dallas-november-2026/"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "manual:hyrox-poznan-sonuc-2026-11"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:hyrox-poznan-sonuc-2026-11",
+        "event:hyrox-poznan-sonuc-2026-11"
+      ],
+      "media": "17996370339119675",
+      "permalink": "https://www.instagram.com/p/DgC7GXgAI6x/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-poznan-sonuc-2026-11/01.jpg",
+      "title": "HYROX Poznań'da erkeklerde birincilik 2 saniye farkla geldi",
+      "headline": "HYROX Poznań'da erkeklerde birincilik 2 saniye farkla geldi",
+      "eventName": "HYROX Poznań",
+      "at": "2026-11-22T13:34:20.835Z",
+      "manual": true
     }
   ],
   "daily": {

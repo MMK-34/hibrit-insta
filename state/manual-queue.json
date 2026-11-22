@@ -135,27 +135,5 @@
     "eventName": "iF3 World Championships 2026",
     "srcUrl": "https://britishfunctionalfitness.sport/worlds-glasgow/",
     "storyOk": false
-  },
-  {
-    "id": "hyrox-poznan-sonuc-2026-11",
-    "publishAt": "2026-11-22T16:25",
-    "urls": [
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-poznan-sonuc-2026-11/01.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-poznan-sonuc-2026-11/02.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-poznan-sonuc-2026-11/03.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-poznan-sonuc-2026-11/04.jpg"
-    ],
-    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-poznan-sonuc-2026-11-story/story.jpg",
-    "caption": "HYROX Poznań'da erkeklerde birincilik 2 saniye farkla geldi.\n\nRox Lyfe'ın haberine göre yarış 20-22 Kasım 2026'da Polonya'da, Poznań Uluslararası Fuarı'nda yapıldı.\n\nErkeklerde Çekya'dan Tomas Tvrdik 55:04 ile 1. oldu. Büyük Britanya'dan Graham Halliday 55:06 ile 2., yine Büyük Britanya'dan Jorg Gurney 55:17 ile 3. sırada bitirdi. Ev sahibi Polonya'dan Krystian Patryk Poremba 56:02 ile 4. oldu.\n\nKadınlarda Avusturya'dan Tanja Stroschneider 1:01:30 ile kazandı. İtalya'dan Gloria Corbetta 1:02:08 ile 2., Fransa'dan Ambre Keram 1:02:14 ile 3. oldu.\n\n2 saniyelik farkı sen hangi istasyonda kapatırdın?\n\nBu yarışta tanıdığın biri var mı? Ona gönder.\n\nKaynak: Rox Lyfe\nGörsel: HYROX Polonya\n\n#hyrox #hyroxpoznan #hyroxturkiye #hibritfitness #fitnessyarisi #hibritportal",
-    "photos": [
-      "event:hyrox-poznan-sonuc-2026-11",
-      "event:hyrox-poznan-sonuc-2026-11"
-    ],
-    "title": "HYROX Poznań'da erkeklerde birincilik 2 saniye farkla geldi",
-    "kind": "haber",
-    "category": "hyrox",
-    "eventName": "HYROX Poznań",
-    "srcUrl": "https://roxlyfe.com/hyrox-poznan-november-2026/",
-    "storyOk": false
   }
 ]

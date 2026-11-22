@@ -3120,6 +3120,60 @@
         "country": "",
         "place": ""
       }
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMikwFBVV95cUxPMTlXTFZRd09iZ0wxdHhXcnJjMC1yQXJqR2E0NTZJNXhvOUMzaVBFVGZ0V3c2RnlzWHk0R2ZreWd5bTdZLTQwc0tEVnRiMVhZTEx2N1FObmF6X3lRaEtpdTFtYnJpWklBYXFTRmFXTEZyaEJZLS1BaTZEbzRXTmYzaVBzSnZqTUlkN1ByVUZnbGptVkk",
+        "https://news.google.com/rss/articles/CBMihgFBVV95cUxNSnVIUE9CclFOZEtzX1JQM3dSMkxoMGtaRWl0anBsMW1Oc0V2TGRpSTh3VUJjb05fMGpYaVZGdFc5TndUSjBOcGxUU29vUV9HaUF1VVNuZTlJbEFGVjF4Y29hSEFsT1VSM1lsem9yZlExUlNla0RPaWY2bXNpNlY4ampSTUZRUQ",
+        "https://news.google.com/rss/articles/CBMigwFBVV95cUxNeTgxM2pZQjlfTU1fb3Uxdm4tRzNnRy1sWjZzbGxXWjcwdnotTTFGQ2JoS0dGaG9YVmctMnN3c3U0Qmt2enRzdGVSS1pKZDZxMk0zOHc0UWRFUzJQeHhBUGRMLXJFWW1sN0xBbDFvOGdGMUpkSnh6Q1g5QUR6cWlxRXB1cw",
+        "https://news.google.com/rss/articles/CBMif0FVX3lxTE1rMTRFUDhYVHlqR2g2UG9yZGxmN2RmVmY1SHdWZnNQN1FYeTdOV2wxbkhObDRwOTZnSDR6SmNEUUxLZXlGaEx4TFNxamtLd1ZUbUt3OGMyMUQxejIwVkVBSkFfNVFmVlpOYzNpcURNU0tZZnhPQzhHcUMwaE9JakU",
+        "https://news.google.com/rss/articles/CBMieEFVX3lxTFB4VzNuc1ZrQ2V3ZWZSWXB1NFB0eG9RUlN3VzJCOFU2NFl4ZWRETmtJVUFsMVFwMjdHQl92U0w1dVZuSEdrUWJpdnVkcExwc254aWdSb0lB",
+        "https://news.google.com/rss/articles/CBMivgFBVV95cUxNb29ZWmdFM01PYXNkd0l1U29zZHNjQjA2VjRSYy1Hd21DMnNCQnQ3SEp3N3pkektadkVnaml3VGZ2cHg0VXZ6ZWhONkR6X1hydGxGYXBrZy02X013NHJrbzVJeHNPeDN6UlA2NGExNHo5emJiWS1UWjJiTGo4Z1JlejktOW5WVFR0T3pYVmtkOWlEakp4NV9YWC1GUHhzR3hTMU1IX1hDX0pNMWN3Q3BlVEoxcWtiajRwdjlfQk5R0gG-AUFVX3lxTE1vb1laZ0UzTU9hc2R3SXVTb3Nkc2NCMDZWNFJjLUd3bUMyc0JCdDdISnc3emR6S1p2RWdqaXdUZnZweDRVdnplaE42RHpfWHJ0bEZhcGtnLTZfTXc0cmtvNUl4c094M3pSUDY0YTE0ejl6YmJZLVRaMmJMajhnUmV6OS05blZUVHRPelhWa2Q5aURqSng1X1hYLUZQeHNHeFMxTUhfWENfSk0xY3dDcGVUSjFxa2JqNHB2OV9CTlE",
+        "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPR0c1bGNkVVcwc3phc2RqVXEzMFVRZVFSc2gyTjVMX3Z3UzQzcWtOd2lRMjdUbHlOb1lSQ1ZUWU1rZy1tR1hDeWVwMnFGZV9FUFNaZ1VsSnkyWFRWVkprRzN4NTRCTWY2Z2cyM19GY3VEanJJZ09sOEgzLXNaOGFrYjdDNXdhQXdIcnFmOHBPNkNLcHd6YkZKbS1LYjVRaWNPaEFWcHNRQlhOMExDZW45RHEzWXI3Qm05ek1XbW8xOXV4a3NacUhWV3FnUWU1aC1pWEE",
+        "https://news.google.com/rss/articles/CBMiswFBVV95cUxPc0l6TmJ5WDNoMFpPeGpTTTFiTXZMNUt1UG9EWDZjaXVVeTNka2RaQ1RubFJNM3RqZ0E4MlZrZXdXVHl0VHBVelRTWmtXWGZXa09rMDE2NGdTa3paaW5vRFVySDRhb193Tk9Ib2l1b1hLZzViSEZNcDdmbzJQM0d2REYzU0dkSVZ0YnE2cld1YW8zWTlURUk3MVEwTDFTRW9QTVptTVhDRzVfRkY5Znh1Zm1yNA",
+        "https://news.google.com/rss/articles/CBMieEFVX3lxTE5EWXlqX0JXRUJQTkp6TGo4enJFNkxUejZvUnltOVlhRDM3MHdXTzVXZGl6RmhzZ2IwTXQ2T3J2MFl3OExZUHdJa19JaDA4WG1uRGtPMEp3ajlHVVdUU2NQYXkxVVhHSjFGbTVoY3F2YkRwV3FXQmdGeQ"
+      ],
+      "skipped": "tekrar"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMioAFBVV95cUxQa0xGYlJVbDNwSkZuSEtnMFhjTlhORG9DVXFLMmpIWlNFeTlTc1huNnJjSHBxeUp0cjhIb0hXSV85N0lLQjROdVdaaFlsUDN1ZXF2NzBmN1RUU1p3VEt5ZFVUS3g0OXZ1VDZuX0lDcVIwQTd0Zm1KbUFKS3JiaFhZYmVzNHdwLUZhNkFRYVRhNVpXR2V4RHFmQk41X05ZTmIy",
+        "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPN2pRaF9QanN2Y0ZwMHNIMmRTQjhVaUxyZ0VfLTlxTnBBTjVQT3EtNzVPVG93ZzRpRkpCX1FhZ0E3eExGU2lmS2QwZXNvZTllck9fUE5wOHBUNmhVNTNSbGI0WjAtOEFtZlRObWUzMkg1cU9kVUpkbUVGMWYyUHlGUWxLNlIyNUpp0gGIAUFVX3lxTE83alFoX1Bqc3ZjRnAwc0gyZFNCOFVpTHJnRV8tOXFOcEFONVBPcS03NU9Ub3dnNGlGSkJfUWFnQTd4TEZTaWZLZDBlc29lOWVyT19QTnA4cFQ2aFU1M1JsYjRaMC04QW1mVE5tZTMySDVxT2RVSmRtRUYxZjJQeUZRbEs2UjI1Smk",
+        "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNZklmX3NwamlPMjRXNVh4SHB3djN2a2ZYVWtpQ2xmYVE4V0VyR19HRGhvVzhYMS1leG1neEdaWG1JTzM3MndLdXBiZl96VXRYRngwUS1EdU55TEVrSUVIUXUyeHRGRncyeG5NYUZPckNWSHNuYXlFNFduN0JQa25ZWi1PeDVXM1UtbFh5R2l1VmJlUW9BYzdmTnp0U2trN1hwX3pqQ0JiQzQweUhONGhnMGJDcEpVR0UxTkVqUnFvR18",
+        "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPT1JFUmhfVTZxaXc1cmtFa3hZVlJ2NlhKQlF4VVg4bGVQZ1BNa1dURkpTTFRsZS1vYkZtbDBsTkVPN0hIUGtoRXh5SkVsUndvS0RoRm51bXFfOGRhWkVfeXhpbmNIMmsxTXp5UGVhWkd2V2NiOGpNdG5rbjhIYmszcHR3ZEg3cl9OS01pMS1rZWNwSVNRTU5GeHBGczVEY01fM2RDa3RSejAwMjg"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:786ec2f21c863a5a"
+      ],
+      "media": "18393626458224323",
+      "permalink": "https://www.instagram.com/p/DgCoArsjffA/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-22/mwrppwnb/01.jpg",
+      "title": "Kaz Dağları'nda 10. yıl heyecanı: 10 ülkeden 1540 sporcu İda Ultra'da buluşacak",
+      "headline": "İda Ultra Maraton 10. yılında Kaz Dağları'nda koşulacak",
+      "eventName": "Kar Spor İda Ultra Maraton",
+      "at": "2026-11-22T10:47:32.620Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "KAR SPOR İDA ULTRA MARATON",
+            "title": "İda Ultra Maraton 10. yılında Kaz Dağları'nda koşulacak",
+            "subtitle": "27-29 Kasım tarihlerinde 10 ülkeden 1.540 sporcu parkura çıkıyor."
+          }
+        ],
+        "caption": "Kar Spor İda Ultra Maraton 10. kez Kaz Dağları'nın doğal parkurlarında gerçekleşecek. 27-29 Kasım tarihlerinde 105 km'den 8,5 km'ye kadar değişen altı farklı parkurda 1.540 sporcu mücadele edecek. Tüm yarışlar Hattuşa Otel'den başlayıp aynı noktada sona erecek. Kaz Dağları'nın sonbahar rotasında yarışmak için kayıt detaylarına resmi web sitesinden ulaşabilirsiniz. Bu yarışta tanıdığın biri var mı? Ona gönder.\n\nReklam / Tanıtım\n\nKaynak: Güneş TV\nGörsel: gunestv.com\n\n#idaultra #trailrunning #patikakoşusu #ultratrail #ultrarunning #kazdağları #hibritportal",
+        "srcUrls": [
+          "https://www.gunestv.com/kaz-daglarinda-10-yil-heyecani-10-ulkeden-1540-sporcu-ida-ultrada-bulusacak",
+          "https://dokuz8haber.net/kaz-daglarinda-ultra-maraton-heyecani-10uncu-yilinda/amp/",
+          "https://www.urfadabugun.com/haber/273417/kaz-daglarinda-10-ida-ultra-maraton-heyecani-10-ulkeden-1540-sporcu-katilacak.html"
+        ],
+        "eventName": "Kar Spor İda Ultra Maraton",
+        "country": "Türkiye",
+        "place": "Balıkesir/Edremit"
+      }
     }
   ],
   "daily": {
@@ -3206,10 +3260,10 @@
       "summarySent": true
     },
     "2026-11-22": {
-      "drafts": 10,
-      "approved": 6,
+      "drafts": 11,
+      "approved": 7,
       "rejected": 4,
-      "aiCalls": 47
+      "aiCalls": 53
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3233,7 +3287,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-22T09:44:38.517Z",
+  "lastRunAt": "2026-11-22T10:44:41.036Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {
@@ -3242,7 +3296,24 @@
       "at": "2026-11-09T17:42:33.300Z"
     }
   },
-  "pendingApprovals": {},
+  "pendingApprovals": {
+    "r5ac88f5c": {
+      "video": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-22/bulten-2026-11-22.mp4",
+      "caption": "Haftanın özeti: 4 haber\n\n• Kahire'de Türk kürsüsü\n• Tirana kayıtları açıldı\n• Level 2 kursu İstanbul'da\n• İda Ultra 10. yılında\n\nHaberlerin ayrıntısı profilde.\n\nGörüntüler: cerkezkoyhaber.com.tr, Tirana Throwdown, CrossFit 34, hibya.com\n\nReklam / Tanıtım\n\n#hibritportal #haftanınözeti #crossfit #hyrox #koşu #trail",
+      "kind": "reel",
+      "title": "Haftalık bülten 2026-11-22",
+      "ids": [
+        "reel:r5ac88f5c"
+      ],
+      "photos": [],
+      "urls": [
+        "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-22/bulten-2026-11-22.mp4"
+      ],
+      "srcUrls": [],
+      "at": "2026-11-22T10:20:22.924Z",
+      "label": "REELS"
+    }
+  },
   "dmSeen": [
     "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDU0MDk0NTMwNDIxOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1OTMzMTc5NTg3NzcyNjc4NjozMzA5NzI2NDYyODY3ODM3ODMyNDg2NzA4NjE3MzYwMTc5MgZDZD",
     "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDU0MDk0NTMwNDIxOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1OTMzMTc5NTg3NzcyNjc4NjozMzA5ODE3MDc1NzY4OTY1NjU1NTY4MzI4NjQxMDU5MjI1NgZDZD",

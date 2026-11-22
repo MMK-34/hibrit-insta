@@ -3439,26 +3439,7 @@
       "at": "2026-11-09T17:42:33.300Z"
     }
   },
-  "pendingApprovals": {
-    "rb4c0e99c": {
-      "video": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/anlatim/hyrox-pekin-anlatim.mp4",
-      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/anlatim/hyrox-pekin-anlatim-kapak.jpg",
-      "caption": "HYROX'un dünya rekortmeni yarışın ortasında altına kaçırdı... ve yine de birinci oldu. 5 gün sonra zaferinden vazgeçti.\n\n12 Eylül 2026, HYROX Pekin. Avustralyalı Joanna Wietrzyk yarışı 1:01:23 ile kazandı. Yarış sırasında yaşadığı istemsiz dışkı kaçırma, hijyen ve ortak ekipman tartışmasını başlattı.\n\n📌 14 Eylül: HYROX kurucu ortağı Moritz Fürste özür diledi: \"Hemen müdahale etmemek bizim hatamızdı.\"\n📌 Kural kitabına 12.3 eklendi: kan, kusmuk, idrar ya da dışkı bulaşma riski varsa yarış direktörü sporcuyu yarıştan alabilir (DNF).\n📌 17 Eylül: Wietrzyk yarıştan geriye dönük çekildi ve puanlarından vazgeçti.\n\nAraştırmalara göre dayanıklılık sporcularının %30 ila %70'i yarışta mide ve bağırsak sorunu yaşıyor (Monash Üniversitesi).\n\nKaynaklar: BOXROX, SBS, TimesLIVE, WJLA, KUTV\nGörüntüler: Global News, KHOU 11, news.com.au · Fotoğraf: Sven Mandel (CC BY-SA 4.0)\n\nReklam / Tanıtım\n\n#hibritportal #hyrox #hyroxpekin #hyroxturkiye #fitnessracing #hibritantrenman #fonksiyonelfitness",
-      "kind": "reel",
-      "title": "Anlatım: HYROX Pekin olayı",
-      "ids": [
-        "reel:rb4c0e99c"
-      ],
-      "photos": [],
-      "urls": [
-        "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/anlatim/hyrox-pekin-anlatim.mp4"
-      ],
-      "srcUrls": [],
-      "at": "2026-11-22T20:10:00+03:00",
-      "label": "REELS",
-      "publishAt": "2026-11-24T10:00"
-    }
-  },
+  "pendingApprovals": {},
   "dmSeen": [
     "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDU0MDk0NTMwNDIxOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1OTMzMTc5NTg3NzcyNjc4NjozMzA5NzI2NDYyODY3ODM3ODMyNDg2NzA4NjE3MzYwMTc5MgZDZD",
     "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDU0MDk0NTMwNDIxOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1OTMzMTc5NTg3NzcyNjc4NjozMzA5ODE3MDc1NzY4OTY1NjU1NTY4MzI4NjQxMDU5MjI1NgZDZD",
@@ -3487,6 +3468,7 @@
   ],
   "statWeek": "2026-46",
   "reelsDone": [
-    "r2f20b103"
+    "r2f20b103",
+    "rb4c0e99c"
   ]
 }

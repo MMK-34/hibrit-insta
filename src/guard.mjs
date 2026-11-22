@@ -24,6 +24,8 @@ const MENTION_RE = /(^|\s)@[\w.]{2,30}/g;
 const BAD = /(casino|bahis|(?<![\p{L}])(?:\d*x?bet|bets?10|betboo|tipobet|superbet|jojobet|mobilbet|betist|bet)(?![\p{L}])|kripto|crypto|airdrop|dm\s*at|link\s*bio|bio'?daki\s*link|whatsapp|telegram|onlyfans|indirim\s*kodu|promo\s*code)/iu;
 const TOPIC = /(hyrox|crossfit|maraton|marathon|koşu|kosu|\brun\b|wod|antrenman|fitness|yarış|yaris|sporcu|atlet|kuvvet|dayanıklılık|\bultra\b|throwdown|\bgames\b|\bopen\b|elite|sled|wall ball|burpee|rowing|kürek|halter|barbell|kettlebell|araştırma|çalışma|yüz(me|ücü)|güreş|boks|judo|tekvando|karate|eskrim|bisiklet|pedal|tırmanış|dağcı|okçu|cimnastik|jimnastik|atıcı|kano|kayak|yelken|triatlon|duatlon|aquatlon|madalya|şampiyon|rekor|derece|kupa|federasyon|powerlifting|strongman|kalistenik|spartan|parkur)/i;
 
+// Genel/spam etiketler yasak (plan.mjs kuralı kodda): #spor, #motivasyon, #fitnessmotivation ...
+const GENERIC_TAGS = new Set(["#spor", "#sport", "#motivasyon", "#motivation", "#fitnessmotivation", "#fitness", "#gym", "#workout", "#fit", "#instagood", "#explore", "#keşfet", "#kesfet", "#keşfetteyiz", "#fyp"]);
 const FIELDS = ["kicker", "title", "subtitle", "body", "label", "value"];
 // Kullanıcı kuralı: şapkalı harf yok (hâlâ -> hala, resmî -> resmi)
 const HAT = { "â": "a", "Â": "A", "î": "i", "Î": "İ", "û": "u", "Û": "U" };
@@ -75,6 +77,12 @@ export function guardPost(post, { sourceName }) {
   const allText = JSON.stringify(slides) + " " + String(post.caption ?? "");
   if ((/kategori|divizyon|division/i.test(allText) && /\b(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX'?|Masters?|Teens?|Hybrid)\b/.test(allText)) || /\b(Beginner|Scaled|Intermediate|Advanced|RX|Masters|Teens|Elite 15|Pro Doubles|Pro Division|Doubles (Women|Men|Mixed)|Relay)\b/.test(allText))
     return { ok: false, reason: "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar" };
+  // Türkçe kategori/seviye adları da yasak (denetim 2026-11-22: "Gençler", "Kolay seviyede", "üç seviyede kategoriler" geçti)
+  const trCat = allText.match(/(?<!\p{L})(gençler|ustalar|veteranlar|elit kategori\p{L}*|(kolay|orta|ileri|zor|başlangıç) seviye\p{L}*|(iki|üç|dört) seviye\p{L}*)(?!\p{L})/iu);
+  if (trCat) return { ok: false, reason: `kategori/seviye adı yazılmış ("${trCat[0]}"): kategori ve seviye adlarını tamamen çıkar` };
+  // Sayılar rakamla (kullanıcı kuralı): "iki antrenman" değil "2 antrenman"; "bir" ve üleştirme (ikişer) serbest
+  const numWord = allText.match(/(?<!\p{L})(iki|İki|üç|dört|beş|altı(?! suyu)|yedi|sekiz|dokuz|yirmi|otuz|kırk|elli|altmış|yetmiş|seksen|doksan)(?!\p{L})/iu);
+  if (numWord) return { ok: false, reason: `sayı yazıyla yazılmış ("${numWord[0]}"): tüm sayıları rakamla yaz (2, 3, 10)` };
   // Kesin kural (kullanıcı): ücret/fiyat yazılmaz; isteyen resmî sayfadan bakar
   if (/(kayıt|katılım|giriş)\s*ücret|ücreti(?!\p{L})|\d[\d.,]*\s*(TL|USD|EUR|euro|dolar|lira)(?!\p{L})|\d[\d.,]*\s*[₺$€]|[₺$€]\s*\d/iu.test(allText))
     return { ok: false, reason: "ücret/fiyat yazılmış: kayıt ücreti ve fiyatları tamamen çıkar" };
@@ -89,12 +97,12 @@ export function guardPost(post, { sourceName }) {
   let caption = clean(post.caption ?? "").replace(/^\s*kaynak\s*:.*$/gim, "").trim().slice(0, 1900);
   // Hashtag: her biri en fazla 30 karakter (# hariç; uzunsa atılır), tekrarsız, en fazla 12
   const tags = [...new Set((post.hashtags ?? []).map((h) => "#" + String(h).normalize("NFKC").replace(/^#+/, "").replace(/[^\p{L}\p{N}_]/gu, "")))]
-    .filter((h) => h.length > 2 && h.length - 1 <= MAX_TAG_LEN).slice(0, MAX_TAGS);
+    .filter((h) => h.length > 2 && h.length - 1 <= MAX_TAG_LEN && !GENERIC_TAGS.has(h.toLocaleLowerCase("tr"))).slice(0, MAX_TAGS);
   // Marka etiketi her postta (kural): yoksa eklenir, yer yoksa son etiketin yerine
   if (!tags.some((h) => h.toLowerCase() === "#hibritportal")) { if (tags.length >= MAX_TAGS) tags.pop(); tags.push("#hibritportal"); }
   // Kaynak her açıklamanın sonunda (kullanıcı kuralı)
   // Kaynak adı da süzülür: yalnızca harf, rakam, boşluk ve . ' & , - karakterleri; en fazla 80 karakter, kelime sınırında
-  const src = String(sourceName ?? "").normalize("NFKC").replace(URL_RE, "").replace(/[^\p{L}\p{N} .'&,-]/gu, "").replace(/\s+/g, " ").trim().replace(/^(.{80}).+$/s, (m) => m.slice(0, 81).replace(/\s+\S*$/, "")) || "Hibrit Portal derlemesi"; // kelime ortasında kesilmez
+  const src = String(sourceName ?? "").normalize("NFKC").replace(/[âÂîÎûÛ]/g, (c) => HAT[c]).replace(URL_RE, "").replace(/[^\p{L}\p{N} .'&,-]/gu, "").replace(/\s+/g, " ").trim().replace(/^(.{80}).+$/s, (m) => m.slice(0, 81).replace(/\s+\S*$/, "")) || "Hibrit Portal derlemesi"; // kelime ortasında kesilmez
   // Son açıklama en fazla 2200 karakter: gerekirse gövde kısaltılır; "Kaynak:" satırı ve etiketler korunur
   const tail = `\n\nKaynak: ${src}${tags.length ? `\n\n${tags.join(" ")}` : ""}`;
   const room = MAX_CAPTION - tail.length;

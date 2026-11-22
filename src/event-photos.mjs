@@ -231,7 +231,7 @@ async function newsPages(eventName) {
 export async function eventPhotos({ pages = [], instagram = "", topic = "", n = 2, usedIds = new Set(), eventName = "", images = [] }) {
   const cands = [];
   // Resmî kayıttan gelen doğrudan görseller (ör. circle21 kapağı) önce denenir
-  for (const url of images) if (/^https:\/\//.test(url ?? "")) cands.push({ url, from: "circle21 resmî kayıt" });
+  for (const url of images) if (/^https:\/\//.test(url ?? "")) cands.push({ url, from: "circle21 resmi kayıt" });
   // Kaynak sayfalarına ek olarak etkinlik adıyla çıkan diğer haberler (daha çok fotoğraf adayı)
   pages = [...pages, ...await newsPages(eventName)];
   const seenPage = new Set();

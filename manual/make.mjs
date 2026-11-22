@@ -53,7 +53,7 @@ for (const s of specs) {
   if (q.some((x) => x.id === s.id)) { console.log("zaten sırada:", s.id); continue; }
   const urls = await uploadFiles(files, `manual/${s.id}`);
   const [story] = await uploadFiles([storyFile], `manual/${s.id}-story`);
-  q.push({ id: s.id, publishAt: s.publishAt, urls, story, caption, photos: s.photos.map((p) => p.id ?? `event:${s.id}`), title: post.slides[0].title, kind: s.kind, category: s.category, eventName: post.eventName, srcUrl: s.srcUrl, storyOk: s.story === true });
+  q.push({ id: s.id, publishAt: s.publishAt, urls, story, caption, photos: s.photos.map((p) => p.id ?? `event:${s.id}`), title: post.slides[0].title, kind: s.kind, category: s.category, eventName: post.eventName, athlete: post.athleteName || undefined, srcUrl: s.srcUrl, storyOk: s.story === true });
   console.log("sıraya alındı:", s.id, s.publishAt);
 }
 // Yazmadan hemen önce sıra yeniden okunur ve yalnızca bu çalışmada eklenenler eklenir: aynı anda çalışan başka bir

@@ -77,7 +77,7 @@ const RECENT_PHOTO_POSTS = 10;
 const recentPhotos = new Set(state.posts.filter((p) => p.media || p.deleted).slice(-RECENT_PHOTO_POSTS).flatMap((p) => p.photos ?? []));
 const usedPhotos = new Set([...state.posts.flatMap((p) => p.photos ?? []).filter((id) => !id.startsWith("local:") && !id.startsWith("event:")), ...recentPhotos]);
 const todayPosts = state.posts.filter((p) => p.day === today && p.media);
-const todayCount = todayPosts.length;
+let todayCount = todayPosts.length; // hazır sıradan yayınlananlar da eklenir
 // Bilgi + araştırma postları günde en fazla 2 (haberlerin arasına serpiştirilir); çalışma içinde paylaşıldıkça artar
 let infoToday = todayPosts.filter((p) => p.kind === "bilgi" || p.kind === "arastirma").length;
 
@@ -151,8 +151,13 @@ async function publishManualQueue() {
   if (!fs.existsSync(qf)) return;
   const q = JSON.parse(fs.readFileSync(qf, "utf8"));
   const nowS = nowLocal();
-  const item = q.find((x) => x.publishAt && x.publishAt <= nowS && Array.isArray(x.urls) && x.urls.length && x.urls.every((u) => String(u).startsWith(`https://raw.githubusercontent.com/${process.env.GH_REPO}/media/`)));
-  if (!item) return false;
+  // Hazır sıra da aynı kurallardan geçer (denetim 2026-11-22): yayın penceresi, günlük sınır, günde 1 bilgi postu
+  const m = now.getHours() * 60 + now.getMinutes();
+  if (!FORCE && (m < 7 * 60 || m > 22 * 60 + 30)) { log("Hazır sıra: yayın penceresi dışında (07:00-22:30 TR), beklemede."); return false; }
+  if (todayCount >= MAX_PER_DAY) { log(`Hazır sıra: günlük sınır dolu (${todayCount}).`); return false; }
+  const infoFull = infoToday >= (POSTING.maxInfoPerDay ?? 1);
+  const item = q.find((x) => x.publishAt && x.publishAt <= nowS && !(infoFull && ["bilgi", "arastirma"].includes(x.kind)) && Array.isArray(x.urls) && x.urls.length && x.urls.every((u) => String(u).startsWith(`https://raw.githubusercontent.com/${process.env.GH_REPO}/media/`)));
+  if (!item) { if (infoFull && q.some((x) => x.publishAt <= nowS && ["bilgi", "arastirma"].includes(x.kind))) log("Hazır sıra: bugünkü bilgi postu kotası dolu, bilgi postu yarına kaldı."); return false; }
   fs.writeFileSync(qf, JSON.stringify(q.filter((x) => x !== item), null, 2) + "\n");
   if (state.posts.some((p) => (p.ids ?? []).includes(`manual:${item.id}`))) return true; // zaten yayında: sıradan düştü, sıradakine geç
   // Karoselde video varsa ve yayın hata verirse post kaybolmasın: video çıkarılıp yalnızca görsellerle bir kez daha denenir
@@ -173,7 +178,9 @@ async function publishManualQueue() {
     else await push(`Hazır post 5 denemede yayınlanamadı: ${String(item.title ?? "").slice(0, 100)}`, { title: "Paylaşım hatası", level: "warn" }).catch(() => {});
     throw e;
   }
-  state.posts.push({ day: today, ids: [`manual:${item.id}`], kind: item.kind ?? "haber", photos: Array.isArray(item.photos) ? item.photos.map(String).slice(0, 10) : [], media: res.id, permalink: res.permalink, cover: item.urls[0], title: item.title, headline: item.title, eventName: item.eventName, at: new Date().toISOString(), manual: true });
+  todayCount++;
+  if (["bilgi", "arastirma"].includes(item.kind)) infoToday++;
+  state.posts.push({ day: today, ids: [`manual:${item.id}`], kind: item.kind ?? "haber", athlete: item.athlete || undefined, photos: Array.isArray(item.photos) ? item.photos.map(String).slice(0, 10) : [], media: res.id, permalink: res.permalink, cover: item.urls[0], title: item.title, headline: item.title, eventName: item.eventName, at: new Date().toISOString(), manual: true });
   saveState();
   log("Hazır post yayında:", res.permalink);
   if (POSTING.stories && item.story && item.storyOk && storySlotLeft()) await publishStory(item.story).then((st) => { const rec = state.posts.find((p) => p.media === res.id); if (rec) rec.story = st.id; saveState(); }).catch((e) => log("Hikâye paylaşılamadı:", String(e.message).slice(0, 120)));
@@ -220,7 +227,7 @@ async function main() {
   // Yayın penceresi (kullanıcı kuralı: 07:00-22:30 TR). GitHub zamanlayıcısı saatlerce gecikebiliyor (2026-11-17: 19:50 UTC slotu
   // 22:31 UTC'de çalıştı, 01:39 TR'de post çıktı): pencere dışındaki zamanlanmış çalışma hiçbir şey yapmaz.
   const mins = now.getHours() * 60 + now.getMinutes();
-  if (!DRY && !FORCE && SCHEDULED && (mins < 7 * 60 || mins > 22 * 60 + 30)) {
+  if (!DRY && !FORCE && (mins < 7 * 60 || mins > 22 * 60 + 30)) { // elle tetiklenen çalışma da pencereye uyar (denetim 2026-11-22)
     log("Yayın penceresi dışında (07:00-22:30 TR); atlandı");
     try { if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, "skipped=true\n"); } catch {}
     return SKIPPED;
@@ -425,10 +432,12 @@ function recentSameEvent({ eventName = "", text = "", category = "", followup = 
 const STOPW = new Set("için gibi daha olan oldu olarak ile bir iki üç yeni ilk son kadar sonra önce gün günü yılı yıl yarış yarışı yarışında koşu koşusu açıklandı açıldı açılıyor sonuçları sonuçlar kayıtları kayıtlar belli 2025 2026 2027 2028".split(" "));
 const titleToks = (t) => new Set(String(t ?? "").toLocaleLowerCase("tr").replace(/[’']\S*/g, "").split(/[^a-z0-9çğıöşü]+/).filter((w) => w.length >= 3 && !STOPW.has(w)).map((w) => w.slice(0, 5)));
 function titleSim(a, b) { const A = titleToks(a), B = titleToks(b); if (Math.min(A.size, B.size) < 3) return 0; let n = 0; for (const x of A) if (B.has(x)) n++; return n / Math.min(A.size, B.size); }
-function recentSameStory(headline, eventName = "") {
+function recentSameStory(headline, eventName = "", athlete = "") {
   const k = evKey(eventName);
   return state.posts.find((p) => {
     if (!p.media || Date.now() - Date.parse(p.at ?? 0) > 7 * 864e5) return false;
+    // Aynı sporcunun haberi 7 gün içinde tekrar sayılır (denetim 2026-11-22: Keane haberi elle + botla iki kez çıktı)
+    if (norm(athlete).length >= 6 && (norm(p.athlete ?? "") === norm(athlete) || norm(`${p.headline ?? ""} ${p.title ?? ""}`).includes(norm(athlete)))) return true;
     if (norm(headline) && (norm(headline) === norm(p.headline) || norm(headline) === norm(p.title))) return true; // birebir aynı başlık
     const pk = evKey(p.eventName);
     const sim = Math.max(titleSim(headline, p.headline), titleSim(headline, p.title));
@@ -477,9 +486,10 @@ async function prepareVerified(pick, srcItems, sourceName) {
     log("circle21 resmî kaydı eşleşti:", c21.event.name);
     srcItems = [...srcItems, { id: `c21ref:${c21.event.id}`, images: c21.event.images, logo: c21.event.logo, facts: c21.facts, handle: c21.handle, url: c21.event.url, title: `Resmî kayıt: ${c21.event.name}`, source: "circle21 resmî kayıt sayfası", text: dropCategories(c21.text) }];
   }
-  const ownC21 = srcItems.find((s) => s.id.startsWith("c21"));
-  // Güvenilir referans: yalnızca kodun biçimlediği yapılandırılmış alanlar (serbest metin yazara kaynak olarak gider, burada yok)
-  const referenceData = ownC21?.facts ? `circle21 resmî kayıt platformu, yapılandırılmış alanlar (ad, tarihler, kayıt dönemi, ücret, yer):\n${ownC21.facts}` : "";
+  // Bulanık eşleşen circle21 kaydı (c21ref) başka bir yarışa ait olabilir (denetim 2026-11-22: Strava haberine salon logosu geldi):
+  // yalnızca yazarın etkinlik adı kaydın adıyla eşleşirse haberin kendi kaydı sayılır. Doğrudan circle21 kaynağı (c21:) her zaman geçerli.
+  const c21Ok = (s, eventName) => s.id.startsWith("c21:") || (s.id.startsWith("c21ref:") && logoSourceMatches(eventName, s.title));
+  let ownC21 = srcItems.find((s) => s.id.startsWith("c21:")) ?? null;
   for (let attempt = 1; attempt <= 2; attempt++) {
     const draft = await writePost(pick, srcItems, feedback);
     if (attempt === 1) await push(`Postu hazırlıyorum: ${String(srcItems[0].title).slice(0, 120)}`, { title: "Yazılıyor" });
@@ -495,14 +505,23 @@ async function prepareVerified(pick, srcItems, sourceName) {
     const srcName = /^(fu|stat|dm):/.test(srcItems[0].id) && draft.primarySource ? draft.primarySource : sourceName;
     const g = guardPost(draft, { sourceName: srcName });
     if (!g.ok) { log("Süzgeçten geçmedi:", g.reason); lastFails = [{ model: "süzgeç", item: "süzgeç", note: g.reason }]; feedback = failText(lastFails); continue; }
+    // Koşu/doğa/su/bisiklet: kısa post, en çok 3 slayt (kapak + 1 bilgi + son); kural yalnızca prompt'ta kalmasın (denetim 2026-11-22)
+    if (ONE_POST_CATS.has(pick.category) && g.post.slides.length > 3) {
+      const end = g.post.slides.find((s, i) => i > 0 && s.type === "end");
+      g.post.slides = [g.post.slides[0], ...g.post.slides.slice(1).filter((s) => s !== end).slice(0, end ? 1 : 2), ...(end ? [end] : [])];
+    }
     const dupEv = recentSameEvent({ eventName: g.post.eventName, category: pick.category, followup: /^fu:/.test(srcItems[0].id) });
     if (dupEv) { log(`Aynı etkinlik yakın zamanda paylaşıldı (${dupEv.eventName}), atlandı.`); lastFails = [{ model: "tekrar", item: "tekrar", note: `aynı etkinlik: ${dupEv.eventName}` }]; break; }
-    const dupSt = /^fu:/.test(srcItems[0].id) ? null : recentSameStory(g.post.slides[0]?.title, g.post.eventName);
+    const dupSt = /^fu:/.test(srcItems[0].id) ? null : recentSameStory(g.post.slides[0]?.title, g.post.eventName, g.post.athleteName);
     if (dupSt) { log(`Aynı haber yakın zamanda paylaşıldı (${dupSt.headline ?? dupSt.title}), atlandı.`); lastFails = [{ model: "tekrar", item: "tekrar", note: `aynı haber: ${dupSt.headline ?? dupSt.title}` }]; break; }
     if (["bilgi", "arastirma"].includes(pick.kind) && !/^(fu|stat|dm):/.test(srcItems[0].id) && !infoSourceOk([...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)])) {
       log("Bilgi/araştırma postu için resmî ya da bilimsel kaynak yok, atlandı:", String(srcItems[0].url ?? "").slice(0, 100));
       lastFails = [{ model: "kaynak", item: "kaynak", note: "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor" }]; break;
     }
+    ownC21 = srcItems.find((s) => s.id.startsWith("c21") && c21Ok(s, g.post.eventName)) ?? null;
+    const usable = (s) => !s.id.startsWith("c21ref:") || c21Ok(s, g.post.eventName);
+    // Güvenilir referans: yalnızca kodun biçimlediği yapılandırılmış alanlar (serbest metin yazara kaynak olarak gider, burada yok)
+    const referenceData = ownC21?.facts ? `circle21 resmî kayıt platformu, yapılandırılmış alanlar (ad, tarihler, kayıt dönemi, ücret, yer):\n${ownC21.facts}` : "";
     const off = offAudience(g.post, pick);
     if (off) { log(`Kitle dışı (${off}), atlandı.`); lastFails = [{ model: "kitle", item: "kitle", note: off }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
@@ -515,7 +534,7 @@ async function prepareVerified(pick, srcItems, sourceName) {
       // circle21 kayıt sayfası tarayıcıda çizildiği için denetçi açamıyor: organizatörün kendi girdiği kayıt metni birincil kaynak olarak verilir
       // Takip edilen haber sitesinden alınan metin: denetçi postu bununla karşılaştırır (web araması gerekmez)
       ...srcItems.filter((s) => !/^(ig:|dm-ig:|c21)/.test(s.id) && String(s.text ?? "").length > 300).map((s) => ({ label: `Kaynak metni (${s.source})`, url: s.url, text: s.text })),
-      ...srcItems.filter((s) => s.id.startsWith("c21")).map((s) => ({ label: "circle21 resmî kayıt sayfası (organizatörün kendi girdiği kayıt ve açıklama; birincil kaynak)", url: s.url, text: s.text })),
+      ...srcItems.filter((s) => s.id.startsWith("c21") && usable(s)).map((s) => ({ label: "circle21 resmî kayıt sayfası (organizatörün kendi girdiği kayıt ve açıklama; birincil kaynak)", url: s.url, text: s.text })),
     ];
     // Kaynak yalnızca circle21 ise "sayfa açılamadı" kuralı uygulanmaz (veri resmî API'den geldi)
     const referenceIsSource = !!ownC21 && srcItems.every((s) => s.id.startsWith("c21"));
@@ -534,7 +553,7 @@ async function prepareVerified(pick, srcItems, sourceName) {
       if (!g.post.officialInstagram && igSrc?.curated && igSrc.handle) g.post.officialInstagram = igSrc.handle;
       // Organizatör hesabı yalnızca kaydın yapılandırılmış instagram alanından (doğrulanmış kullanıcı adı)
       if (!g.post.officialInstagram && ownC21?.handle) g.post.officialInstagram = ownC21.handle;
-      const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 7), category: pick.category, images: srcItems.flatMap((s) => s.images ?? []) });
+      const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 7), category: pick.category, images: srcItems.filter(usable).flatMap((s) => s.images ?? []) });
       if (!photos.length) { log(`Foto bulunamadı (kategori ${pick.category}, sorgular: ${(g.post.imageQueries ?? []).join(" | ")}).`); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
       await push(`İki doğrulayıcı da onayladı, görseller hazırlanıyor: ${String(g.post.slides[0]?.title ?? "").slice(0, 120)}`, { title: "Doğrulandı" });
       bump("approved");
@@ -634,10 +653,12 @@ async function pickPhotos({ post, pages, topic, want, category, images = [] }) {
 }
 
 /** Kullanıcı kuralı: fotoğraf haberin konusuna ait olmalı. Sporcu haberinde kapak sporcunun ya da etkinliğin kendi fotoğrafı; etkinlik fotoğrafı bulunduysa stok karışmaz. */
-function photoRuleOk(post, photos) {
+function photoRuleOk(post, photos, kind = "") {
   if (!photos.length) return "fotoğraf yok";
   if (post.athleteName && !(photos[0].person || photos.every((p) => p.specific))) return `sporcu haberi (${post.athleteName}) ama kapakta sporcunun/etkinliğin kendi fotoğrafı yok`;
   if (photos.some((p) => p.specific) && photos.some((p) => !p.specific)) return "etkinliğin kendi fotoğrafları ile stok fotoğraf karışmış";
+  // Haber/duyuru/takip: belirli bir olay anlatılır, stok yok (denetim 2026-11-22: etkinlik adı boş haberler stokla tamamlanıyordu)
+  if (["haber", "duyuru", "takip"].includes(kind) && !photos.every((p) => p.specific || p.person)) return `${kind} postu ama fotoğraflar haberin kendisinden değil (stok)`;
   if (post.eventName && !photos.every((p) => p.specific || p.person)) return `etkinlik haberi (${post.eventName}) ama fotoğraflar etkinliğin kendisinden değil`;
   return "";
 }
@@ -675,11 +696,12 @@ function logoSourceMatches(eventName, src) {
   return words.some((w) => s.includes(norm(w)));
 }
 
-// Günde en çok POSTING.maxStoriesPerDay hikâye (geri sayım hariç): her post hikâyeye düşmez
-function storySlotLeft() { return state.posts.filter((p) => p.day === today && p.story).length < (POSTING.maxStoriesPerDay ?? 2); }
+// Günde en çok POSTING.maxStoriesPerDay hikâye (geri sayım DAHİL, denetim 2026-11-22): her post hikâyeye düşmez
+const countdownToday = () => Object.values(state.countdowns ?? {}).filter((t) => String(t).slice(0, 10) === new Date().toISOString().slice(0, 10)).length;
+function storySlotLeft() { return state.posts.filter((p) => p.day === today && p.story).length + countdownToday() < (POSTING.maxStoriesPerDay ?? 2); }
 
 async function renderAndPublish({ post, photos }, { category, sourceName, ids, kind, title, srcUrls = [], onPublished = null, hold = false, important = false }) {
-  const bad = photoRuleOk(post, photos);
+  const bad = photoRuleOk(post, photos, kind);
   if (bad) {
     log("Fotoğraf kuralı: yayınlanmadı:", bad);
     await push(`Fotoğraf kuralı nedeniyle paylaşılmadı: ${String(post.slides[0]?.title ?? "").slice(0, 100)}\nNeden: ${bad}`, { title: "Fotoğraf" });
@@ -729,7 +751,10 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   // Yalnızca sabit sağlayıcı adı yazılır (fotoğrafçı adı dış kaynaktan gelir, caption'a girmez; görselde kalır)
   // Foto kredisi yazılmaz: yalnızca atıf gerektirmeyen fotoğraflar kullanılır (Pexels lisansı, Openverse'te CC0 / kamu malı)
   // Etkinliğin kendi fotoğrafı kullanıldıysa kaynağı açıklamada belirtilir (görselde yazı yok)
-  const evSrc = [...new Set(photos.filter((p) => String(p.id).startsWith("event:")).map((p) => p.source))];
+  // Kredi: şapkasız ve alan adı olmadan (denetim 2026-11-22: "circle21 resmî kayıt", "gaziantep.bel.tr" caption'a girdi)
+  const credit = (x) => String(x ?? "").replace(/[âÂîÎûÛ]/g, (c) => ({ "â": "a", "Â": "A", "î": "i", "Î": "İ", "û": "u", "Û": "U" })[c])
+    .replace(/^(?:https?:\/\/)?(?:www\.)?([\p{L}\p{N}-]+)(?:\.[\p{L}\p{N}-]+)+\S*$/u, (_, h) => h.charAt(0).toUpperCase() + h.slice(1)).trim();
+  const evSrc = [...new Set(photos.filter((p) => String(p.id).startsWith("event:")).map((p) => credit(p.source)).filter(Boolean))];
   let caption = evSrc.length && /Kaynak:[^\n]*/.test(post.caption) ? post.caption.replace(/(Kaynak:[^\n]*)/, `$1\nGörsel: ${evSrc.join(", ")}`) : post.caption;
   // Kullanıcı kuralı (2026-11-10): görselde ticari marka belirgin görünüyorsa açıklamaya "Reklam / Tanıtım" yazılır
   if (brandSeen && !/Reklam \/ Tanıtım/.test(caption)) caption = /\nKaynak:/.test(caption) ? caption.replace(/\nKaynak:/, "\nReklam / Tanıtım\n\nKaynak:") : `${caption}\n\nReklam / Tanıtım`;
@@ -750,7 +775,7 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   const collaborators = COLLAB_ON && evHandle && IG_WATCH_TR.includes(evHandle) && Date.now() - lastInvite > 30 * 864e5 ? [evHandle] : [];
   const res = await publish(urls, caption, { collaborators });
   if (collaborators.length) { state.collabInvites[evHandle] = new Date().toISOString(); log("Collab daveti gönderildi:", `@${evHandle}`); }
-  state.posts.push({ day: today, ids, kind, photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, cover: urls[0], title, headline: post.slides[0]?.title, eventName: post.eventName || undefined, at: new Date().toISOString(),
+  state.posts.push({ day: today, ids, kind, photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, cover: urls[0], title, headline: post.slides[0]?.title, eventName: post.eventName || undefined, athlete: post.athleteName || undefined, at: new Date().toISOString(),
     // Haftalık bülten Reels'i video ararken kullanır: yarışın doğrulanmış hesabı, haberin sporcusu
     ig: evHandle || undefined, athlete: post.athleteName || undefined, athleteIg: post.athleteInstagram || undefined,
     // Yayın sonrası denetim için (denetimden sonra silinir)
@@ -841,7 +866,7 @@ async function publishCountdowns() {
   { const sp = upcomingSpecial(now); if (sp && sp.daysLeft === 0 && sp.spec.blockMorning && hour < 12 && !state.posts.some((p) => p.media && (p.ids ?? []).includes(`ozel:${sp.key}`))) return; }
   state.countdowns ??= {};
   // Geri sayım hikâyesi günde en çok 1 (kullanıcı kuralı 2026-11-22: her şey hikâye olmasın)
-  if (Object.values(state.countdowns).some((t) => String(t).slice(0, 10) === new Date().toISOString().slice(0, 10))) return;
+  if (countdownToday() || !storySlotLeft()) return;
   const due = (await countdownsDue()).filter((c) => !state.countdowns[c.key]).slice(0, 1);
   for (const c of due) {
     const eventLogo = c.logoUrl ? await logoFromUrl(c.logoUrl).catch(() => null) : null;
@@ -906,6 +931,8 @@ async function processApprovals() {
   for (const c of comments) {
     // Yalnızca depo sahibinin (insan hesabı) yorumu; botun kendi bildirimleri ve uygulama yorumları sayılmaz
     if (String(c.user?.login ?? "").toLowerCase() !== owner || c.user?.type !== "User" || c.performed_via_github_app) continue;
+    // Onayı yalnızca kullanıcı verir: Claude oturumlarının (aynı hesapla yazan) imzalı yorumları onay sayılmaz
+    if (/Claude Code|claude\.ai|🤖/i.test(String(c.body ?? ""))) continue;
     // Komut yalnızca ilk alıntı olmayan satırda ve satırın tamamı olmalı (e-posta yanıtındaki alıntı metni sayılmaz)
     const first = String(c.body ?? "").split(/\r?\n/).map((l) => l.trim()).find((l) => l && !l.startsWith(">")) ?? "";
     for (const m of [first.match(/^(ONAY|RET)\s+([sr][0-9a-f]{8})$/i)].filter(Boolean)) {
@@ -1123,6 +1150,14 @@ async function publishStock() {
     saveStock(st);
     await notify(`⚠️ Hibrit Portal: stok post paylaşılamadı (${item.topic}, deneme ${item.attempts}):\n${String(why).slice(0, 400)}`);
   };
+  // Stok postu da bilgi kotasına sayılır ve yayından önce süzgeçten yeniden geçer (denetim 2026-11-22: eski stok öğelerinde kategori adı, şapka, emoji vardı)
+  if (!STOCK && infoToday >= (POSTING.maxInfoPerDay ?? 1)) { log("Stok: bugünkü bilgi postu kotası dolu, atlandı."); return; }
+  const gs = guardPost(item.post ?? {}, { sourceName: item.sourceName });
+  if (!gs.ok) {
+    if (!DRY) { st.queue.shift(); st.dropped = [...(st.dropped ?? []), { ...item, post: undefined, droppedAt: new Date().toISOString(), lastError: `süzgeç: ${gs.reason}` }].slice(-20); saveStock(st); }
+    log(`Stok öğesi süzgeçten geçmedi, kuyruktan çıkarıldı (${item.topic}): ${gs.reason}`);
+    return;
+  }
   try {
     const post = item.post;
     const slug = `${today}/stok-${Date.now().toString(36)}`;

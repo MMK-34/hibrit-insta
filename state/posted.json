@@ -3174,6 +3174,49 @@
         "country": "Türkiye",
         "place": "Balıkesir/Edremit"
       }
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "reel:r2f20b103"
+      ],
+      "kind": "reel",
+      "photos": [],
+      "media": "18080628689429154",
+      "permalink": "https://www.instagram.com/reel/DgCtidODQro/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-22-kapak/kapak.jpg",
+      "title": "Haftalık bülten 2026-11-22",
+      "approved": "r2f20b103",
+      "at": "2026-11-22T11:36:11.263Z"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNSnFxeEVsc2dQNnRTaUdEZk9YaVZyRUR2X2JUMW9wb2g4SzJmejBnTVNyT0VielVPbkxOdzhDSVFZQnhNbk8tQUlDVVNYUGRXZHp1VW9ZbmVaREhYNTRHSGFuMDBPR212TThpMk4yWGdpTG5jbkJxR2d5RTRaU2YzNzBGZnlVMk5sazdLeldDWVBOdEZZdGhtcWVGU1RmaUZCZjFoZzZDUjZ0LU1xVC1NcnZMbTNYVTRadnZTQU9ZMFAzOC1QNTFweQ",
+        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNaDVWTmR2Q3hpNVdnYzVrMk5zRUIycFJYUzhTcWVjd2lrdEZEelJhMkVYV1k4TDk1M2Y3eFlkbWhUWGJnMDNDaUp5SUQxZnVZMllLeDR5c0dfdVFzNTM3ZU9rdm0wS3pqYXFsRG9fQldsWkFJbXczMC13N1V2bm81T09HX2ljcndEX3pYOVR0SEZzSGp3b0ZFQ0Z3U0Z1dUl0eXdxOGp2UU8"
+      ],
+      "skipped": "tekrar"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMif0FVX3lxTE1aRlpvYVNnZUt0RENvUmR2ODN5d0ptcWxVdkFDeTJhOWwtTWNFbjM4Vktnb1lfLWpPYndDZ2lpaUdMbmNLTElESGw5VEhrUHl1Q0lsdHFBMWg0WXktVDIzU1RSTnplZkRTYU5ENnN6MzlIM1doVHJJRjNzQmM0NTTSAYQBQVVfeXFMTXVjWkFvQjlNYU1tNGhGaGMtamRNV1RJVFJGMk8wVlY4S2s1OVdHRzRYMXFNd3dBVi1aQ1JjZFlGTDdfNjNTTTNaVnU3QTI5eGQxUDBCOHFFTUlsbUxBNTJtWjc2MjlfcmpHQ1hjVFV0Z3FVWDAwZHlwc1VzOEZjTWZNVUd6"
+      ],
+      "skipped": "tekrar"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMieEFVX3lxTFBDbzFKMWZaYi1acDkxZ280eWlnaGt4MldmQU9JZjJxYXNKMktnOHE3dVZkLVd5TmFmS2VSVjlNMldhb3gwS0Q4RkpqLWpOY3Y3QUtGSXZDVlRMZkhwQjNoOE1FWmZJNHdVcW54SEVHNlZTNnZuSkNsNg"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "cal:hyrox-2026-singapore"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -3260,10 +3303,10 @@
       "summarySent": true
     },
     "2026-11-22": {
-      "drafts": 11,
+      "drafts": 14,
       "approved": 7,
-      "rejected": 4,
-      "aiCalls": 53
+      "rejected": 7,
+      "aiCalls": 57
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3323,5 +3366,8 @@
   "statEvents": [
     "CrossFit Games"
   ],
-  "statWeek": "2026-46"
+  "statWeek": "2026-46",
+  "reelsDone": [
+    "r2f20b103"
+  ]
 }

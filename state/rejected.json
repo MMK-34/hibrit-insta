@@ -1835,5 +1835,44 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-22T11:37:44.758Z",
+    "title": "I tried HYROX Singapore for the first time and here’s what no one tells you",
+    "url": "https://www.herworld.com/life/wellness/hyrox-singapore-review-lessons",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-22T11:39:42.009Z",
+    "title": "Yaklaşan yarış: HYROX Singapore 2026 (Singapore, Singapore) 2026-11-25 – 2026-11-29",
+    "url": "https://hyrox.com/find-my-race/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "kitle",
+        "item": "kitle",
+        "note": "uzak ülke (Singapur), Türkiye'den gidilmesi zor"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-22T11:39:48.564Z",
+    "title": "HYROX Dublin: geçmiş edisyonlarda neler oldu?",
+    "url": "https://hyrox.com/event/hyrox-dublin/",
+    "kind": "bilgi",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

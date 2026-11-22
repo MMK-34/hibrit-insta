@@ -638,6 +638,7 @@ function photoRuleOk(post, photos) {
   if (!photos.length) return "fotoğraf yok";
   if (post.athleteName && !(photos[0].person || photos.every((p) => p.specific))) return `sporcu haberi (${post.athleteName}) ama kapakta sporcunun/etkinliğin kendi fotoğrafı yok`;
   if (photos.some((p) => p.specific) && photos.some((p) => !p.specific)) return "etkinliğin kendi fotoğrafları ile stok fotoğraf karışmış";
+  if (post.eventName && !photos.every((p) => p.specific || p.person)) return `etkinlik haberi (${post.eventName}) ama fotoğraflar etkinliğin kendisinden değil`;
   return "";
 }
 
@@ -646,19 +647,13 @@ async function pickEventPhotos({ post, pages, topic, want, category, images = []
   const ev = await eventPhotos({ pages, instagram: post.officialInstagram, topic, n: want, eventName: post.eventName, images, usedIds: usedPhotos })
     .catch((e) => { if (isCreditError(e)) throw e; log("Etkinlik fotoğrafı hatası:", String(e?.message ?? e).slice(0, 160)); return []; });
   if (ev.length) log(`Etkinlik fotoğrafı: ${ev.length} (${[...new Set(ev.map((p) => p.source))].join(", ")})`);
-  // Belirli bir etkinlikten bahseden postta o etkinliğin fotoğrafı varsa YALNIZCA onlar kullanılır (slaytlarda sırayla tekrar eder).
-  // Hiç bulunamazsa konuyla ilgili (görsel denetimden geçmiş) stok fotoğrafa düşülür.
+  // Kullanıcı kuralı (2026-11-22, kesin): belirli bir olay/etkinlik anlatılıyorsa YALNIZCA o olayın kendi görüntüleri kullanılır
+  // ("oradaki görüntüleri getireceksin, başka görüntü getirmeyeceksin"). Stok ile tamamlanmaz; az fotoğraf slaytlarda sırayla tekrar eder.
+  // Hiç yoksa post yayınlanmaz (photoRuleOk "fotoğraf yok"). Stok yalnızca belirli bir olaya bağlı olmayan bilgi postlarında.
   if (post.eventName) {
-    const own = ev.filter((p) => p.specific);
-    // Kapak etkinliğin kendi fotoğrafı; diğer slaytlar için yetmezse konuyla ilgili gerçek stok fotoğraf eklenir (her slayt farklı)
-    if (own.length >= want || (own.length && noStock)) return own.slice(0, want);
-    if (own.length) {
-      const fill = await findImages(post.imageQueries ?? [], want - own.length + 3, category, new Set([...usedPhotos, ...own.map((p) => p.id)]));
-      const ok = (await screenPhotos(fill, topic, "stock")).slice(0, want - own.length);
-      return [...own, ...ok];
-    }
-    if (noStock) return [];
-    log(`Etkinliğe ait fotoğraf bulunamadı (${post.eventName}); konuyla ilgili stok fotoğraf kullanılacak.`);
+    const own = ev.filter((p) => p.specific).slice(0, want);
+    if (!own.length) log(`Etkinliğin kendi fotoğrafı bulunamadı (${post.eventName}); stok kullanılmaz, post yayınlanmaz.`);
+    return own;
   }
   if (noStock) return ev.filter((p) => p.specific);
   const need = want - ev.length;
@@ -714,7 +709,7 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     const badIdx = new Set(dc.issues.filter((i) => i.fix === "foto_degistir" && photos.length).map((i) => (i.slide - 1) % photos.length));
     if (badIdx.size) {
       const keep = photos.filter((_, i) => !badIdx.has(i));
-      const ownOnly = post.athleteName || photos.some((p) => p.specific);
+      const ownOnly = post.athleteName || post.eventName || photos.some((p) => p.specific);
       const extra = ownOnly ? [] : await findImages(post.imageQueries ?? [], badIdx.size + 2, category, new Set([...usedPhotos, ...photos.map((p) => p.id)]));
       const fresh = (await screenPhotos(extra, dtopic, "stock")).slice(0, badIdx.size);
       if (keep.length + fresh.length) photos = [...keep, ...fresh];

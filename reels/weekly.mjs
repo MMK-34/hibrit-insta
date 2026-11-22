@@ -266,8 +266,9 @@ async function getMedia(it, k, skip = new Set()) {
     const ph = (await eventPhotos({ eventName: p.eventName, topic: strict, n: 2 }).catch(() => [])).filter((x) => x.specific);
     if (ph[0]) { await toImg(ph[0].buf, img); got = "photo"; credit = ph[0].source; }
   }
-  // c) etkinlik haberi: konuya uygun gerçek stok video; aynı stok video iki haberde kullanılmaz
-  if (!got && !p.athlete) {
+  // c) Stok video KAPALI (kullanıcı kuralı 2026-11-22, kesin): anlatılan olayın kendi görüntüsü yoksa haber çıkarılır.
+  // Eski stok yolu yalnızca STOCK_OK=1 ile (elle deneme) açılır.
+  if (!got && !p.athlete && process.env.STOCK_OK === "1") {
     for (const q of it.stockQuery ?? []) {
       if (got) break;
       const r = await fetch(`https://pixabay.com/api/videos/?key=${process.env.PIXABAY_API_KEY}&q=${encodeURIComponent(q)}&per_page=6&safesearch=true&video_type=film`, { signal: AbortSignal.timeout(20000) }).then((x) => x.json()).catch(() => ({}));

@@ -33,7 +33,7 @@
       "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/crossfit-tahta-terimleri/05.jpg"
     ],
     "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/crossfit-tahta-terimleri-story/story.jpg",
-    "caption": "Tahtadaki kısaltmalar ne demek?\nCrossFit'e yeni başlayınca tahtada AMRAP, EMOM gibi kısaltmalar görürsün. CrossFit'in kendi sözlüğünden en sık geçen terimler:\n\nAntrenman türleri\nAMRAP: Belirli sürede olabildiğince çok tur ya da tekrar.\nEMOM: Her dakikanın başında belirli sayıda tekrar yapılır.\nTabata: 8 kez 20 saniye çalışma, 10 saniye dinlenme.\nChipper: Her hareketin yazılan tekrarı bitirilip sonrakine geçilen antrenman.\n\nKaç hareket?\nCouplet: İki hareketli antrenman, örneğin Fran.\nTriplet: Üç hareketli antrenman, örneğin Helen.\nMet-con: Metabolik kondisyon çalışması.\n\nSalon dili\nWOD: Günün antrenmanı.\nBox: CrossFit salonu.\nKipping: Pull-up gibi hareketleri vücudun salınımından güç alarak tamamlamak.\nHero WOD: Görev başında hayatını kaybeden bir görevlinin anısına yazılan antrenman.\n\nTahtada ilk gördüğünde hangisi seni şaşırttı?\nSalona yeni başlayan arkadaşına gönder.\n\nKaynak: CrossFit\nGörsel: Pexels\n\n#crossfit #wod #amrap #emom #hibritportal",
+    "caption": "Tahtadaki kısaltmalar ne demek?\nCrossFit'e yeni başlayınca tahtada AMRAP, EMOM gibi kısaltmalar görürsün. CrossFit'in kendi sözlüğünden en sık geçen terimler:\n\nAntrenman türleri\nAMRAP: Belirli sürede olabildiğince çok tur ya da tekrar.\nEMOM: Her dakikanın başında belirli sayıda tekrar yapılır.\nTabata: 8 kez 20 saniye çalışma, 10 saniye dinlenme.\nChipper: Her hareketin yazılan tekrarı bitirilip sonrakine geçilen antrenman.\n\nKaç hareket?\nCouplet: 2 hareketli antrenman, örneğin Fran.\nTriplet: 3 hareketli antrenman, örneğin Helen.\nMet-con: Metabolik kondisyon çalışması.\n\nSalon dili\nWOD: Günün antrenmanı.\nBox: CrossFit salonu.\nKipping: Pull-up gibi hareketleri vücudun salınımından güç alarak tamamlamak.\nHero WOD: Görev başında hayatını kaybeden bir görevlinin anısına yazılan antrenman.\n\nTahtada ilk gördüğünde hangisi seni şaşırttı?\nSalona yeni başlayan arkadaşına gönder.\n\nKaynak: CrossFit\nGörsel: Pexels\n\n#crossfit #wod #amrap #emom #hibritportal",
     "photos": [
       "local:box-jumps"
     ],
@@ -67,6 +67,30 @@
     "storyOk": false
   },
   {
+    "id": "wonder-womans-cup-2027-kayit-acilis",
+    "publishAt": "2026-11-24T13:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis/04.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis-story/story.jpg",
+    "caption": "Wonder Woman's Cup kayıtları bu gece açılıyor\nKadınların öncülüğündeki CrossFit yarışması Wonder Woman's Cup, 6-7 Mart 2027'de İstanbul'da Biruni Üniversitesi'nde yapılacak. Organizatörün sitesine göre kayıtlar 25 Kasım 00.00'da açılıyor. Daha önce 27 Kasım olarak duyurulan tarih öne alındı.\n\nTakvim\nKayıt açılışı: 25 Kasım, 00.00\nAntrenmanlar ve standartlar: 1 Şubat\nSon kayıt: 15 Şubat\nSeri saatleri: 4 Mart\nYarış: 6-7 Mart, Biruni Üniversitesi, Zeytinburnu\n\nYarışta bireysel ve takım olarak yarışılıyor; zorluk düzeyini sporcu kendisi seçiyor. Karma takımda kadın ve erkek birlikte yarışıyor. Katılım yaşı 14 ve üstü, takım kontenjanı en çok 16.\n\nİlk Wonder Woman's Cup 8 Mart 2026'da, Dünya Kadınlar Günü'nde yapıldı ve 96 kadın sporcu yarıştı. Yarışın gelirleri eğitimi destekleyen bir kuruluşa bağışlanıyor.\n\nKayıt, yarışın resmi sitesinden yapılıyor.\n\nWonder Woman's Cup'ta kiminle yarışacaksın?\nBirlikte yarışmak istediğin arkadaşına gönder.\nFotoğraflar 2026 Wonder Woman's Cup'tan.\n\nKaynak: Wonder Woman's Cup resmi sitesi\nGörsel: Wonder Woman's Cup\n\n#wonderwomanscup #crossfit #crossfitkadın #crossfityarışması #hibritportal",
+    "photos": [
+      "event:wwc-2026-g18",
+      "event:wwc-2026-g35",
+      "event:wwc-2026-g37"
+    ],
+    "title": "Kayıtlar bu gece açılıyor",
+    "kind": "duyuru",
+    "category": "crossfit",
+    "eventName": "Wonder Woman's Cup 2027",
+    "srcUrl": "https://womanscup.com/",
+    "storyOk": false,
+    "ownerRequested": true
+  },
+  {
     "id": "tirana-2026-eleme-antrenmanlari",
     "publishAt": "2026-11-26T19:30",
     "urls": [
@@ -77,7 +101,7 @@
       "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/tirana-2026-eleme-antrenmanlari/05.jpg"
     ],
     "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/tirana-2026-eleme-antrenmanlari-story/story.jpg",
-    "caption": "Tirana Throwdown'un geçen yılki eleme antrenmanları\nTirana Throwdown 2027 kayıtları açıldı. Elemeler yine çevrim içi: antrenmanı salonunda yapıp videoyla gönderiyorsun. Geçen yıl elemede şu iki antrenman vardı:\n\n26.1 Grindcore (3 tur, süre için, sınır 12 dk)\n21 kalori kürek\n15 toes to bar\nHer kolla 9 tek kol kettlebell hang snatch\nKolay seviyede toes to bar yerine toes to ring, kettlebell yerine dumbbell vardı.\n\n26.2 Squatstrike (toplam 14 dk)\n0-3. dakika: front squat'ta tek tekrar maksimum\n1 dakika dinlenme\n4-14. dakika: 3-6-9-12-15 shoulder to overhead ve burpee box jump over, süre için\n\nAğırlık ve kutu yüksekliği seviyeye göre değişti. Takımlarda her sporcu antrenmanı tek başına yaptı. Organizatör video için uyardı: kürek ekranındaki kalori kamerada görünmeli, burpee'de eller ve ayaklar çizginin iki yanında olmalı, kutudan atlayarak inilmez.\n\n2026 elemelerine 40'tan fazla ülkeden 700'ü aşkın sporcu katıldı. Organizatöre göre Türk sporcu Mücahit Çoban çevrim içi elemeyi zirvede bitirdi.\n\n2027 takvimi\nElemeler: 8-22 Mart 2027\nFinal: 11-13 Haziran 2027, Tiran\nErken kayıt: 23 Kasım-10 Aralık\n\nBu yıl Tirana elemelerine katılacak mısın?\nBirlikte yarışmak istediğin arkadaşına gönder.\nFotoğraflar önceki Tirana Throwdown yarışlarından.\n\nKaynak: Tirana Throwdown circle21 sayfası\nGörsel: Tirana Throwdown\n\n#tiranathrowdown #crossfit #crossfityarışması #wod #hibritportal",
+    "caption": "Tirana Throwdown'un geçen yılki eleme antrenmanları\nTirana Throwdown 2027 kayıtları açıldı. Elemeler yine çevrim içi: antrenmanı salonunda yapıp videoyla gönderiyorsun. Geçen yıl elemede şu 2 antrenman vardı:\n\n26.1 Grindcore (3 tur, süre için, sınır 12 dk)\n21 kalori kürek\n15 toes to bar\nHer kolla 9 tek kol kettlebell hang snatch\nAlternatif olarak toes to bar yerine toes to ring, kettlebell yerine dumbbell vardı.\n\n26.2 Squatstrike (toplam 14 dk)\n0-3. dakika: front squat'ta tek tekrar maksimum\n1 dakika dinlenme\n4-14. dakika: 3-6-9-12-15 shoulder to overhead ve burpee box jump over, süre için\n\nAğırlık ve kutu yüksekliği sporcunun seçtiği zorluğa göre değişti. Takımlarda her sporcu antrenmanı tek başına yaptı. Organizatör video için uyardı: kürek ekranındaki kalori kamerada görünmeli, burpee'de eller ve ayaklar çizginin 2 yanında olmalı, kutudan atlayarak inilmez.\n\n2026 elemelerine 40'tan fazla ülkeden 700'ü aşkın sporcu katıldı. Organizatöre göre Türk sporcu Mücahit Çoban çevrim içi elemeyi zirvede bitirdi.\n\n2027 takvimi\nElemeler: 8-22 Mart 2027\nFinal: 11-13 Haziran 2027, Tiran\nErken kayıt: 23 Kasım-10 Aralık\n\nBu yıl Tirana elemelerine katılacak mısın?\nBirlikte yarışmak istediğin arkadaşına gönder.\nFotoğraflar önceki Tirana Throwdown yarışlarından.\n\nKaynak: Tirana Throwdown circle21 sayfası\nGörsel: Tirana Throwdown\n\n#tiranathrowdown #crossfit #crossfityarışması #wod #hibritportal",
     "photos": [
       "ig:tiranathrowdown:DVGnte8jIW3-1",
       "ig:tiranathrowdown:DVGnte8jIW3-0",
@@ -92,27 +116,24 @@
     "ownerRequested": true
   },
   {
-    "id": "wonder-womans-cup-2027-kayit-acilis",
-    "publishAt": "2026-11-24T13:30",
+    "id": "if3-dunya-sampiyonasi-2026-iskocya",
+    "publishAt": "2026-11-22T17:30",
     "urls": [
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis/01.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis/02.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis/03.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis/04.jpg"
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/if3-dunya-sampiyonasi-2026-iskocya/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/if3-dunya-sampiyonasi-2026-iskocya/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/if3-dunya-sampiyonasi-2026-iskocya/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/if3-dunya-sampiyonasi-2026-iskocya/04.jpg"
     ],
-    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis-story/story.jpg",
-    "caption": "Wonder Woman's Cup kayıtları bu gece açılıyor\nKadınların öncülüğündeki CrossFit yarışması Wonder Woman's Cup, 6-7 Mart 2027'de İstanbul'da Biruni Üniversitesi'nde yapılacak. Organizatörün sitesine göre kayıtlar 25 Kasım 00.00'da açılıyor. Daha önce 27 Kasım olarak duyurulan tarih öne alındı.\n\nTakvim\nKayıt açılışı: 25 Kasım, 00.00\nAntrenmanlar ve standartlar: 1 Şubat\nSon kayıt: 15 Şubat\nSeri saatleri: 4 Mart\nYarış: 6-7 Mart, Biruni Üniversitesi, Zeytinburnu\n\nYarışta üç seviyede bireysel ve takım kategorileri var. Seviyeyi sporcu kendisi seçiyor. Bir takım kategorisinde kadın ve erkek birlikte yarışıyor. Katılım yaşı 14 ve üstü, takım kontenjanı en çok 16.\n\nİlk Wonder Woman's Cup 8 Mart 2026'da, Dünya Kadınlar Günü'nde yapıldı ve 96 kadın sporcu yarıştı. Yarışın gelirleri eğitimi destekleyen bir kuruluşa bağışlanıyor.\n\nKayıt, yarışın resmi sitesinden yapılıyor.\n\nWonder Woman's Cup'ta kiminle yarışacaksın?\nBirlikte yarışmak istediğin arkadaşına gönder.\nFotoğraflar 2026 Wonder Woman's Cup'tan.\n\nKaynak: Wonder Woman's Cup resmi sitesi\nGörsel: Wonder Woman's Cup\n\n#wonderwomanscup #crossfit #crossfitkadın #crossfityarışması #hibritportal",
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/if3-dunya-sampiyonasi-2026-iskocya-story/story.jpg",
+    "caption": "Fonksiyonel fitness dünya şampiyonası 3 hafta sonra İskoçya'da\nUluslararası Fonksiyonel Fitness Federasyonu'nun (iF3) 2026 Dünya Şampiyonası 11-13 Aralık'ta İskoçya'da yapılacak. Ev sahibi, Birleşik Krallık'ta yarışmalı fonksiyonel fitnessın ulusal yönetim kuruluşu olan BF3 (British Functional Fitness Federation).\n\nYarış bilgileri\nTarih: 11-13 Aralık 2026\nYer: Ravenscraig Bölge Spor Tesisi, Wishaw (Glasgow yakını)\nBireysel ve takım yarışları yapılacak.\nAntrenmanlar henüz açıklanmadı. Seyirci biletleri organizatörün sitesinden satılıyor.\n\niF3 şampiyonalarında ülkeler milli takımlarıyla yarışıyor. Geçen yılki dünya şampiyonası 5-7 Aralık 2025'te Litvanya'nın Vilnius kentinde yapılmıştı. Kadınlarda İsviçre'den Mirjam von Rohr unvanını korudu, erkeklerde İtalya'dan Tommaso Pieri ilk dünya şampiyonluğunu kazandı.\n\niF3'te Türkiye'yi temsil eden bir takım görmek ister misin?\nBirlikte yarışmak istediğin arkadaşına gönder.\nFotoğraf: 2025 iF3 Dünya Şampiyonası kadınlar kürsüsü, Vilnius.\n\nReklam / Tanıtım\n\nKaynak: BF3 resmi sitesi, Morning Chalk Up\nGörsel: Morning Chalk Up\n\n#if3 #fonksiyonelfitness #functionalfitness #crossfit #hibritportal",
     "photos": [
-      "event:wwc-2026-g18",
-      "event:wwc-2026-g35",
-      "event:wwc-2026-g37"
+      "event:if3-worlds2025-podium"
     ],
-    "title": "Kayıtlar bu gece açılıyor",
+    "title": "Fonksiyonel fitness dünya şampiyonası 3 hafta sonra İskoçya'da",
     "kind": "duyuru",
-    "category": "crossfit",
-    "eventName": "Wonder Woman's Cup 2027",
-    "srcUrl": "https://womanscup.com/",
-    "storyOk": false,
-    "ownerRequested": true
+    "category": "fonksiyonel",
+    "eventName": "iF3 World Championships 2026",
+    "srcUrl": "https://britishfunctionalfitness.sport/worlds-glasgow/",
+    "storyOk": false
   }
 ]

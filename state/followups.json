@@ -203,5 +203,25 @@
     "createdDay": "2026-11-21",
     "due": "2026-11-30",
     "status": "bekliyor"
+  },
+  {
+    "key": "8gaziyarimaratonu",
+    "type": "gecmis",
+    "eventName": "8. Gazi Yarı Maratonu",
+    "officialSite": "",
+    "category": "kosu",
+    "createdDay": "2026-11-22",
+    "due": "2026-11-26",
+    "status": "bekliyor"
+  },
+  {
+    "key": "8gaziyarimaratonu",
+    "type": "wodlar",
+    "eventName": "8. Gazi Yarı Maratonu",
+    "officialSite": "",
+    "category": "kosu",
+    "createdDay": "2026-11-22",
+    "due": "2026-12-01",
+    "status": "bekliyor"
   }
 ]

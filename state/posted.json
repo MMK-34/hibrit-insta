@@ -2962,6 +2962,41 @@
         "place": ""
       },
       "story": "18440828149176898"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiigFBVV95cUxPUWNuTU9uZ2lLXzNWVzBqREhnVUF3dVpCbVN1eHZwS3QyU2tPNWVxeElBVTdFakVzajlQaHk0U1N5UDh1QzlQVnY0ZVdJaUJMSWQ4WHlISWRqSDhzSXY4dWdlM1hKaTNpeHNZXy1fdXJGaFlSOFdNdGdFaVk5ekhxVjFBUC1wRk1CVVE"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:eac74fb79cea41a3"
+      ],
+      "media": "17913682521310420",
+      "permalink": "https://www.instagram.com/p/DgCF6xKF0nD/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-22/mwrf10zs/01.jpg",
+      "title": "Gaziantep’te 8. Gazi Yarı Maratonu İçin Geri Sayım",
+      "headline": "8. Gazi Yarı Maratonu 22 Kasım'da koşulacak",
+      "eventName": "8. Gazi Yarı Maratonu",
+      "at": "2026-11-22T05:49:41.622Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "8. GAZİ YARI MARATONU",
+            "title": "8. Gazi Yarı Maratonu 22 Kasım'da koşulacak",
+            "subtitle": "Gaziantep'in kurtuluşunun 105. yılı kapsamında düzenlenen organizasyonda 21K, 10K ve halk yürüyüşü kategorileri yer alıyor."
+          }
+        ],
+        "caption": "8. Gazi Yarı Maratonu 22 Kasım Pazar günü Gaziantep'te gerçekleşecek. Gaziantep Büyükşehir Belediyesi önünden başlayacak organizasyonda 21K, 10K ve halk yürüyüşü etapları yer alıyor. 21K yarışı 09.30, 10K yarışı 09.45 ve halk yürüyüşü 10.00'da start alacak. 21 Kasım Cumartesi günü ise çocuk maratonu düzenlenecek. Yarış planın için kaydet.\n\nKaynak: Medya Gazete\nGörsel: gaziantep.bel.tr\n\n#koşu #maraton #yarımaraton #running #runningturkey #gaziantep #hibritportal",
+        "srcUrls": [
+          "https://www.medyagazete.com/haber/gaziantepte-8-gazi-yari-maratonu-icin-geri-sayim"
+        ],
+        "eventName": "8. Gazi Yarı Maratonu",
+        "country": "Türkiye",
+        "place": "Gaziantep"
+      },
+      "story": "18362827213301957"
     }
   ],
   "daily": {
@@ -3048,10 +3083,10 @@
       "summarySent": true
     },
     "2026-11-22": {
-      "drafts": 3,
-      "approved": 2,
+      "drafts": 4,
+      "approved": 3,
       "rejected": 1,
-      "aiCalls": 15
+      "aiCalls": 21
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3075,7 +3110,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-22T04:44:45.344Z",
+  "lastRunAt": "2026-11-22T05:44:46.028Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

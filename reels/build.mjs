@@ -112,7 +112,8 @@ for (const s of segs) {
   const st = r2(s.start), du = r2(s.dur + X);
   if (s.i === 0) {
     // Giriş: 3 haber görselinden ızgara + büyük başlık (ilk kare boş değil: kanca)
-    const cells = [[0, 0, 536, 940], [544, 0, 536, 620], [544, 628, 536, 312]];
+    // Tek haberli kısa Reels'te tam genişlik tek kare (önceden 3 hücrenin 1'i doluydu, ekran boş kalıyordu)
+    const cells = B.items.length === 1 ? [[0, 0, 1080, 940]] : [[0, 0, 536, 940], [544, 0, 536, 620], [544, 628, 536, 312]];
     html += `<div id="s0" class="clip scene intro" data-start="${st}" data-duration="${du}" data-track-index="1" style="z-index:1">
   <div class="grid">${B.items.slice(0, 3).map((it, k) => `<div style="left:${cells[k][0]}px;top:${cells[k][1]}px;width:${cells[k][2]}px;height:${cells[k][3]}px"><img id="g${k}" src="assets/${esc(it.photo)}" /></div>`).join("")}</div>
   <div class="shade"></div>

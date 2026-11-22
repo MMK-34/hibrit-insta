@@ -121,7 +121,7 @@ ${SHORT ? "Görev: Bu tek haber için TEK öğe yaz (n=0)." : "Görev: Okurun en
 - statLabel: sayının kısa açıklaması (en çok 26 karakter); stat yoksa boş
 - line: seslendirme metni, ${SHORT ? "iki cümle, 26-38 kelime (ne, nerede, ne zaman, kayıt)" : "10-22 kelime"}, yalnızca açıklamada yazan bilgi; sayılar RAKAMLA (ör. "2027", "1540", "13 Şubat"; kullanıcı kuralı 2026-11-22: altyazıda rakam görünsün), aralıklar tireyle değil "8 ile 22 Mart arasında" biçiminde; haberin ana olayını söyler
 - stockQuery: görüntü bulunamazsa stok video araması için İngilizce 2-3 sorgu (branş ve sahne; kişi adı yok)
-KESİN KURALLAR: açıklamada olmayan hiçbir bilgi, sayı, sıfat ya da yorum ekleme; yarış kategorisi/divizyon adı yazma (Elite, Scaled, RX, Masters vb.); ücret yazma; şapkalı harf kullanma (hala, resmi); abartı ve övgü sıfatı yok.
+KESİN KURALLAR: Türkçe karakterleri (ç, ğ, ı, ö, ş, ü, İ) eksiksiz kullan, ASCII'ye çevirme; açıklamada olmayan hiçbir bilgi, sayı, sıfat ya da yorum ekleme; yarış kategorisi/divizyon adı yazma (Elite, Scaled, RX, Masters vb.); ücret yazma; şapkalı harf kullanma (hala, resmi); abartı ve övgü sıfatı yok.
 Yalnızca JSON döndür: {"items":[{"n":0,"kicker":"","headline":"","stat":"","statLabel":"","line":"","stockQuery":[""]}]}` });
 plan = Array.isArray(planOut?.items) ? planOut.items : [];
 log(`plan: ${plan.length} öğe`);
@@ -136,10 +136,14 @@ verdict = Array.isArray(chk?.items) ? chk.items : [];
 const CAT = /\b(Elite|Scaled|RX|Rx|Masters?|Beginner|Intermediate|Advanced|Teens?)\b|ücret|TL\b|₺|\$|€/;
 plan = plan.filter((it, k) => {
   const v = verdict.find((x) => x.k === k);
-  const bad = !v?.ok || CAT.test(`${it.headline} ${it.statLabel} ${it.line}`);
+  // Türkçe karakter şartı: 8+ kelimelik Türkçe metinde hiç ç/ğ/ı/ö/ş/ü/İ olmaması model çıktısının ASCII'ye bozulduğunu gösterir (2026-11-22, Gemini)
+  const tr = (t) => String(t ?? "").split(/\s+/).length < 8 || /[çğıöşüÇĞİÖŞÜ]/.test(String(t ?? ""));
+  const bad = !v?.ok || CAT.test(`${it.headline} ${it.statLabel} ${it.line}`) || !tr(it.line) || !tr(`${it.headline} ${it.line}`);
   if (bad) log("denetimden geçmedi, çıkarıldı:", it.headline, v?.neden ?? "kural");
+  // Sayı kutusunda tarih yok (kural): tarih aralığı ya da ay adı geçen sayı boşaltılır
+  if (!bad && (/^\d{1,2}\s*[-–]\s*\d{1,2}$/.test(String(it.stat ?? "").trim()) || /(ocak|şubat|mart|nisan|mayıs|haziran|temmuz|ağustos|eylül|ekim|kasım|aralık|kasim|subat|agustos|eylul|aralik)/i.test(String(it.statLabel ?? "")))) { it.stat = ""; it.statLabel = ""; }
   return !bad;
-}).map((it) => ({ ...it, kicker: hats(it.kicker).slice(0, 30), headline: hats(it.headline).slice(0, 34), stat: hats(it.stat).slice(0, 8), statLabel: hats(it.statLabel).slice(0, 28), line: hats(it.line) }));
+}).map((it) => ({ ...it, line: String(it.line ?? "").split(/(?<=[.!?])\s+/).filter((x) => !/(gönder|kaydet|takip et|paylaş)\.?$/i.test(x.trim())).join(" ") })).map((it) => ({ ...it, kicker: hats(it.kicker).slice(0, 30), headline: hats(it.headline).slice(0, 34), stat: hats(it.stat).slice(0, 8), statLabel: hats(it.statLabel).slice(0, 28), line: hats(it.line) }));
 if (plan.length < MIN) { if (SHORT) await dropShort(); log("denetimden geçen haber 3ten az:", plan.length); await push("Haftalık bülten hazırlanmadı: denetimden geçen haber 3'ten az.", { title: "Bülten", level: "warn" }); process.exit(0); }
 log("seçilen:", plan.map((p) => p.headline).join(" | "));
 
@@ -200,7 +204,7 @@ async function videoClip(file, topic, need, out) {
 
 const usedStock = new Set();
 // Sahne kuralı (kullanıcı): karede o yarışın sporcuları hareket hâlinde net görünmeli; manzara, kalabalık, poz/tanıtım sahnesi olmaz
-const SCENE = "Karede bu yarışın/branşın sporcuları yarışırken, antrenmanda ya da hareket hâlindeyken net görünmeli; yalnızca manzara, seyirci kalabalığı, poz/tanıtım/defile, konuşma ya da günlük hayat sahnesi uygun değil. Logo/yazı kartı, marka jeneriği, çok karanlık, bulanık ya da ağır filtreli kare de uygun değil.";
+const SCENE = "Karenin üstünde büyük yazı, altyazı, slogan, logo animasyonu ya da grafik varsa ok=false (bizim başlığımızla çakışır). Karede bu yarışın/branşın sporcuları yarışırken, antrenmanda ya da hareket hâlindeyken net görünmeli; yalnızca manzara, seyirci kalabalığı, poz/tanıtım/defile, konuşma ya da günlük hayat sahnesi uygun değil. Logo/yazı kartı, marka jeneriği, çok karanlık, bulanık ya da ağır filtreli kare de uygun değil.";
 const toImg = (buf, img) => sharp(buf).rotate().resize(1200, 2120, { fit: "cover", position: "attention" }).jpeg({ quality: 90 }).toFile(img);
 
 /** Bir haber için görüntü bulur. skip: atlanacak adımlar ("own" kendi IG videosu, "photo" fotoğraflar). Döner: bülten öğesi ya da null. */
@@ -356,6 +360,10 @@ const REVIEWED = !!PLAN && process.argv.includes("--reviewed");
 let bad = REVIEWED ? [] : await qa(final);
 if (REVIEWED && process.argv.includes("--brand")) brandSeen = true; // elle kontrolde videoda marka görüldü
 if (REVIEWED) log("kalite kontrolü elle yapıldı (--reviewed), yapay zekâ kontrolü atlandı");
+// Kısa Reels: video yalnızca yarışın kendi videosu, yerine konacak görüntü yok; paylaşım zaten kullanıcı ONAY'ına bağlı.
+// Yapay zekâ kontrolünün itirazları (tutarsız sonuç veriyor) videoyu atmaz, onay mesajına uyarı olarak yazılır.
+let qaWarn = "";
+if (SHORT && bad.length) { qaWarn = bad.map((b) => b.problem).join(" | ").slice(0, 400); log("kalite uyarısı (onay mesajına eklenecek):", qaWarn); bad = []; }
 if (bad.length) {
   log("kalite kontrolü:", bad.map((b) => `${final[b.k]?.headline}: ${b.problem}`).join(" | "));
   // Sorunlu sahne hemen çıkarılmaz: önce kendi videosu/fotoğrafı atlanarak gerçek stok video denenir (sporcu haberinde yok)
@@ -397,7 +405,7 @@ const q = cur ? JSON.parse(Buffer.from(cur.content, "base64").toString("utf8") |
 q.push({ code, video: url, caption, title: SHORT ? `Kısa duyuru: ${final[0].headline}` : `Haftalık bülten ${today}`, at: new Date().toISOString() });
 const put = await fetch(qp, { method: "PUT", headers: gh, body: JSON.stringify({ message: `reels: haftalık bülten ${today} onaya gönderildi`, branch: "main", content: Buffer.from(JSON.stringify(q, null, 2) + "\n").toString("base64"), ...(cur ? { sha: cur.sha } : {}) }) });
 if (!put.ok) throw new Error(`kuyruk yazılamadı: ${put.status}`);
-await notify(`🎬 ONAY BEKLEYEN ${KIND} (kod: ${code})\n\nVideo: ${url}\n\nOnaylamak için bu issue'ya ilk satırı "ONAY ${code}" olan bir yorum yaz; istemiyorsan "RET ${code}".\n\n--- Açıklama ---\n${caption}`);
+await notify(`🎬 ONAY BEKLEYEN ${KIND} (kod: ${code})\n\nVideo: ${url}\n\n${qaWarn ? `⚠️ Otomatik görsel kontrol notu (izlerken bak): ${qaWarn}\n\n` : ""}Onaylamak için bu issue'ya ilk satırı "ONAY ${code}" olan bir yorum yaz; istemiyorsan "RET ${code}".\n\n--- Açıklama ---\n${caption}`);
 if (SHORT) await dropShort();
 await push(`${SHORT ? "Kısa duyuru Reels'i" : "Haftalık bülten Reels'i"} hazır, onayını bekliyor. Onay: rapor issue'suna "ONAY ${code}" yaz.`, { title: "Bülten onayı", level: "approve", click: url });
 log("onaya gönderildi:", code);

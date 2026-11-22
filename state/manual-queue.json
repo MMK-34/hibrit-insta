@@ -111,5 +111,27 @@
     "srcUrl": "https://womanscup.com/",
     "storyOk": false,
     "ownerRequested": true
+  },
+  {
+    "id": "if3-dunya-sampiyonasi-2026-iskocya",
+    "publishAt": "2026-11-22T16:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/if3-dunya-sampiyonasi-2026-iskocya/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/if3-dunya-sampiyonasi-2026-iskocya/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/if3-dunya-sampiyonasi-2026-iskocya/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/if3-dunya-sampiyonasi-2026-iskocya/04.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/if3-dunya-sampiyonasi-2026-iskocya-story/story.jpg",
+    "caption": "Fonksiyonel fitness dünya şampiyonası 3 hafta sonra İskoçya'da\nUluslararası Fonksiyonel Fitness Federasyonu'nun (iF3) 2026 Dünya Şampiyonası 11-13 Aralık'ta İskoçya'da yapılacak. Ev sahibi, Birleşik Krallık'ta yarışmalı fonksiyonel fitnessın ulusal yönetim kuruluşu olan BF3 (British Functional Fitness Federation).\n\nYarış bilgileri\nTarih: 11-13 Aralık 2026\nYer: Ravenscraig Bölge Spor Tesisi, Wishaw (Glasgow yakını)\nGençler, bireysel ve takım yarışları yapılacak.\nAntrenmanlar henüz açıklanmadı. Seyirci biletleri organizatörün sitesinden satılıyor.\n\niF3 şampiyonalarında ülkeler milli takımlarıyla yarışıyor. Geçen yılki dünya şampiyonası 5-7 Aralık 2025'te Litvanya'nın Vilnius kentinde yapılmıştı.\n\niF3'te Türkiye'yi temsil eden bir takım görmek ister misin?\nBirlikte yarışmak istediğin arkadaşına gönder.\nFotoğraflar 2026 iF3 Avrupa Şampiyonası'ndan.\n\nKaynak: BF3 British Functional Fitness resmi sitesi\nGörsel: BF3\n\n#if3 #fonksiyonelfitness #functionalfitness #crossfit #hibritportal",
+    "photos": [
+      "event:bf3-euros2026-lunge",
+      "event:bf3-euros2026-front"
+    ],
+    "title": "Fonksiyonel fitness dünya şampiyonası 3 hafta sonra İskoçya'da",
+    "kind": "duyuru",
+    "category": "fonksiyonel",
+    "eventName": "iF3 World Championships 2026",
+    "srcUrl": "https://britishfunctionalfitness.sport/worlds-glasgow/",
+    "storyOk": false
   }
 ]

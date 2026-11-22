@@ -401,17 +401,49 @@ const dropCategories = (txt) => String(txt ?? "").split(/(?<=[.!?])\s+/).filter(
 
 // Etkinlik bazlı tekrar önleme (kullanıcı kuralı 2026-11-22: Gazi Yarı Maratonu farklı sitelerden 5 kez paylaşıldı).
 // Koşu: bir yarış için tek post ("koşu var, tarih şu" yeterli), 30 gün içinde ikincisi yok. Diğer branşlar: aynı etkinliğe 2 gün içinde ikinci post yok (takip serisi hariç).
-const evKey = (s) => norm(String(s ?? "").replace(/(19|20)dd/g, "").replace(/^s*d+s*.?s*/, ""));
+const evKey = (s) => norm(String(s ?? "").replace(/\b(19|20)\d\d\b/g, "").replace(/^\s*\d+\s*\.?\s*/, ""));
 function recentSameEvent({ eventName = "", text = "", category = "", followup = false }) {
   const days = category === "kosu" ? 30 : followup ? 0 : 2;
   if (!days) return null;
   const k = evKey(eventName), t = norm(text);
-  return state.posts.find((p) => {
+  const hits = state.posts.filter((p) => {
     if (!p.media || !p.eventName || Date.now() - Date.parse(p.at ?? 0) > days * 864e5) return false;
     const pk = evKey(p.eventName);
     if (pk.length < 6) return false;
     return (k.length >= 6 && (k.includes(pk) || pk.includes(k))) || (t && t.includes(pk));
+  });
+  // Koşu: tek post. Diğerleri: aynı etkinliğe 2 günde en çok 2 post (ör. kazananlar + Türk sporcular)
+  return (category === "kosu" ? hits.length >= 1 : hits.length >= 2) ? hits[0] : null;
+}
+
+// Aynı haberin farklı kaynaktan tekrarı (etkinlik adı olmayan haberler dahil; Strava-HYROX iki kez çıktı):
+// kapak başlığı son 7 günün başlıklarıyla kelime kökü (ilk 5 harf) örtüşmesine göre karşılaştırılır.
+// Farklı etkinlikler (HYROX Barcelona / HYROX Kahire sonuçları) yalnızca neredeyse aynı başlıkta (0,9) tekrar sayılır.
+const STOPW = new Set("için gibi daha olan oldu olarak ile bir iki üç yeni ilk son kadar sonra önce gün günü yılı yıl yarış yarışı yarışında koşu koşusu".split(" "));
+const titleToks = (t) => new Set(String(t ?? "").toLocaleLowerCase("tr").replace(/[’']\S*/g, "").split(/[^a-z0-9çğıöşü]+/).filter((w) => w.length >= 3 && !STOPW.has(w)).map((w) => w.slice(0, 5)));
+function titleSim(a, b) { const A = titleToks(a), B = titleToks(b); if (Math.min(A.size, B.size) < 3) return 0; let n = 0; for (const x of A) if (B.has(x)) n++; return n / Math.min(A.size, B.size); }
+function recentSameStory(headline, eventName = "") {
+  const k = evKey(eventName);
+  return state.posts.find((p) => {
+    if (!p.media || Date.now() - Date.parse(p.at ?? 0) > 7 * 864e5) return false;
+    const pk = evKey(p.eventName);
+    const sim = Math.max(titleSim(headline, p.headline), titleSim(headline, p.title));
+    if (k.length >= 6 && pk.length >= 6) return k.includes(pk) || pk.includes(k) ? false : sim >= 0.9; // aynı etkinlik: recentSameEvent karar verir
+    return sim >= 0.6;
   }) ?? null;
+}
+
+// Kullanıcı kuralı (2026-11-22): sayfa, Türkiye'de yaşayanların katılabileceği/gidebileceği CrossFit, HYROX, ATHX ve koşu yarışları için.
+// Uzak ülkelerin yerel yarış/hikâye haberleri (ABD, Hindistan, Güney Afrika...) Türk sporcu yoksa ve çok önemli değilse elenir.
+const NEAR = /^(türkiye|kktc|kıbrıs|yunanistan|bulgaristan|arnavutluk|sırbistan|romanya|gürcistan|azerbaycan|karadağ|kuzey makedonya|bosna hersek|hırvatistan|slovenya|macaristan|polonya|çekya|slovakya|avusturya|almanya|fransa|italya|ispanya|portekiz|hollanda|belçika|isviçre|birleşik krallık|ingiltere|irlanda|danimarka|isveç|norveç|finlandiya|birleşik arap emirlikleri|bae|katar|suudi arabistan|mısır|ürdün|lübnan)$/i;
+function offAudience(post, pick) {
+  if (!["haber", "hikaye", "duyuru"].includes(pick.kind) || pick.score >= 9) return "";
+  const country = String(post.country ?? "").trim(), turk = /(^|[^\p{L}])Türk(?!iye)/u.test(`${post.caption ?? ""} ${post.slides?.[0]?.title ?? ""}`);
+  if (turk || /^türkiye$|^kktc$|^kıbrıs$/i.test(country)) return "";
+  if (pick.kind === "hikaye") return "yurt dışı hikâye, Türk sporcu yok";
+  if (["kosu", "doga", "su", "bisiklet"].includes(pick.category)) return "yurt dışı koşu/dayanıklılık haberi, Türk sporcu yok";
+  if (country && !NEAR.test(country)) return `uzak ülke (${country}), Türkiye'den gidilmesi zor`;
+  return "";
 }
 
 async function prepareVerified(pick, srcItems, sourceName) {
@@ -446,6 +478,10 @@ async function prepareVerified(pick, srcItems, sourceName) {
     if (!g.ok) { log("Süzgeçten geçmedi:", g.reason); lastFails = [{ model: "süzgeç", item: "süzgeç", note: g.reason }]; feedback = failText(lastFails); continue; }
     const dupEv = recentSameEvent({ eventName: g.post.eventName, category: pick.category, followup: /^fu:/.test(srcItems[0].id) });
     if (dupEv) { log(`Aynı etkinlik yakın zamanda paylaşıldı (${dupEv.eventName}), atlandı.`); lastFails = [{ model: "tekrar", item: "tekrar", note: `aynı etkinlik: ${dupEv.eventName}` }]; break; }
+    const dupSt = /^fu:/.test(srcItems[0].id) ? null : recentSameStory(g.post.slides[0]?.title, g.post.eventName);
+    if (dupSt) { log(`Aynı haber yakın zamanda paylaşıldı (${dupSt.headline ?? dupSt.title}), atlandı.`); lastFails = [{ model: "tekrar", item: "tekrar", note: `aynı haber: ${dupSt.headline ?? dupSt.title}` }]; break; }
+    const off = offAudience(g.post, pick);
+    if (off) { log(`Kitle dışı (${off}), atlandı.`); lastFails = [{ model: "kitle", item: "kitle", note: off }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
     // Açılamayan kaynakların (Instagram paylaşımı) metni doğrulayıcıya güvenilmez kaynak metni olarak verilir
     // Doğrulanmamış hesabın metni birincil kanıt sayılmaz: iddialar bağımsız kaynakla (circle21 kaydı ya da web) teyit edilmeli

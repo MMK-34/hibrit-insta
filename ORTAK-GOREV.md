@@ -59,7 +59,7 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 - **Kod değiştirme yok.** Çıktı: `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G4-gorsel.md`
 - Kullanıcıdan ekran görüntüsü İSTEME. Görseller: `state/posted.json` içindeki son 30 yayınlanmış postun (`media` alanı dolu)
   `cover` adresleri (`raw.githubusercontent.com/.../media/...` kapak görseli). Bu adresleri indirip bak; Instagram'a girme.
-  Kapak dışındaki slaytlar aynı klasördedir (`cover` adresindeki `-1.jpg` / `1.jpg` yerine 2, 3... dene; yoksa yalnızca kapak).
+  Kapak dışındaki slaytlar aynı klasördedir (`cover` adresindeki `01.jpg` yerine `02.jpg`, `03.jpg`... dene; yoksa yalnızca kapak).
 - Her post için kontrol et: foto konuyla ilgili mi, olay postunda yalnızca olayın kendi görseli mi, yazı taşıyor mu,
   logo/yüz kesiliyor mu, kırmızı vurgu doğru kelimede mi. Sorunlu olanları başlık + adres + sorun olarak listele; sorunsuzları tek satırda say.
 - Notlar:

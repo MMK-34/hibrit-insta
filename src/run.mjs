@@ -332,6 +332,8 @@ async function main() {
       if (pick.score < need) { log(`Eşik altı (${pick.kind} ${pick.score} < ${need}), bekleniyor.`); continue; }
       const srcItems = (pick.ids ?? []).map((id) => items.find((i) => i.id === id)).filter(Boolean).slice(0, 3);
       if (!srcItems.length) continue;
+      const dupPre = recentSameEvent({ eventName: srcItems[0].eventName, text: srcItems.map((x) => x.title).join(" "), category: pick.category });
+      if (dupPre) { log(`Aynı etkinlik yakın zamanda paylaşıldı (${dupPre.eventName}), çağrı harcanmadan atlandı:`, String(srcItems[0].title ?? "").slice(0, 80)); postedIds.add(srcItems[0].id); state.posts.push({ day: today, ids: pick.ids, skipped: "tekrar" }); saveState(); continue; }
       // Gemini modunda web araması yok: tek dayanağı (küratörlü olmayan) Instagram gönderisi olan haber bağımsız kaynakla
       // teyit edilemez, doğrulamadan hiç geçmez. Taslak hakkı ve çağrı yakmadan atla; tüketme (Claude dönünce yeniden aday olur).
       if (usingGemini() && srcItems.every((s) => /^(ig:|dm-ig:)/.test(s.id) && !s.curated)) { log("Gemini modu: yalnızca Instagram kaynaklı, teyit edilemez; atlandı:", String(srcItems[0].title ?? "").slice(0, 80)); continue; }
@@ -355,7 +357,7 @@ async function main() {
         publishedCount++;
         if (isInfo) infoToday++; // aynı çalışmada ikinci bilgi/araştırma postu kotayı aşmasın
         // Duyuruysa takip serisini planla (+4 gün geçmiş edisyonlar, +9 gün geçmiş antrenmanlar)
-        if (pick.kind === "duyuru" && ready.post.eventName) {
+        if (pick.kind === "duyuru" && ready.post.eventName && pick.category !== "kosu") {
           try {
             const n = scheduleFollowups({ eventName: ready.post.eventName, officialSite: ready.post.officialSite, category: pick.category }, today);
             if (n) log(`Takip serisi planlandı: ${ready.post.eventName} (${n} post)`);
@@ -395,6 +397,21 @@ async function main() {
 const CAT_WORDS = /\b(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX|Masters?|Teens?|Hybrid)\b/;
 const dropCategories = (txt) => String(txt ?? "").split(/(?<=[.!?])\s+/).filter((s) => !(/kategori|divizyon|division|categor/i.test(s) && CAT_WORDS.test(s))).join(" ");
 
+// Etkinlik bazlı tekrar önleme (kullanıcı kuralı 2026-11-22: Gazi Yarı Maratonu farklı sitelerden 5 kez paylaşıldı).
+// Koşu: bir yarış için tek post ("koşu var, tarih şu" yeterli), 30 gün içinde ikincisi yok. Diğer branşlar: aynı etkinliğe 2 gün içinde ikinci post yok (takip serisi hariç).
+const evKey = (s) => norm(String(s ?? "").replace(/(19|20)dd/g, "").replace(/^s*d+s*.?s*/, ""));
+function recentSameEvent({ eventName = "", text = "", category = "", followup = false }) {
+  const days = category === "kosu" ? 30 : followup ? 0 : 2;
+  if (!days) return null;
+  const k = evKey(eventName), t = norm(text);
+  return state.posts.find((p) => {
+    if (!p.media || !p.eventName || Date.now() - Date.parse(p.at ?? 0) > days * 864e5) return false;
+    const pk = evKey(p.eventName);
+    if (pk.length < 6) return false;
+    return (k.length >= 6 && (k.includes(pk) || pk.includes(k))) || (t && t.includes(pk));
+  }) ?? null;
+}
+
 async function prepareVerified(pick, srcItems, sourceName) {
   srcItems = srcItems.map((s) => ({ ...s, text: dropCategories(s.text), snippet: dropCategories(s.snippet) }));
   bump("drafts");
@@ -425,6 +442,8 @@ async function prepareVerified(pick, srcItems, sourceName) {
     const srcName = /^(fu|stat|dm):/.test(srcItems[0].id) && draft.primarySource ? draft.primarySource : sourceName;
     const g = guardPost(draft, { sourceName: srcName });
     if (!g.ok) { log("Süzgeçten geçmedi:", g.reason); lastFails = [{ model: "süzgeç", item: "süzgeç", note: g.reason }]; feedback = failText(lastFails); continue; }
+    const dupEv = recentSameEvent({ eventName: g.post.eventName, category: pick.category, followup: /^fu:/.test(srcItems[0].id) });
+    if (dupEv) { log(`Aynı etkinlik yakın zamanda paylaşıldı (${dupEv.eventName}), atlandı.`); lastFails = [{ model: "tekrar", item: "tekrar", note: `aynı etkinlik: ${dupEv.eventName}` }]; break; }
     const sourceUrls = [...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)].filter((u) => /^https:\/\//.test(u ?? "")).slice(0, 6);
     // Açılamayan kaynakların (Instagram paylaşımı) metni doğrulayıcıya güvenilmez kaynak metni olarak verilir
     // Doğrulanmamış hesabın metni birincil kanıt sayılmaz: iddialar bağımsız kaynakla (circle21 kaydı ya da web) teyit edilmeli
@@ -967,6 +986,7 @@ async function publishFollowup() {
   try {
     fu = dueFollowup(today);
     if (!fu) return false;
+    if (fu.category === "kosu") { log(`Koşu takip postu yapılmaz (kullanıcı kuralı): ${fu.eventName}`); if (!DRY) markFollowup(fu, "iptal"); return false; }
     log(`Takip postu: ${fu.eventName} / ${fu.type}`);
     const { pick, sources } = followupInput(fu);
     const ready = await prepareVerified(pick, sources, "Hibrit Portal arşivi");

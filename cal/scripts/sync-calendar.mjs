@@ -102,35 +102,41 @@ async function hyroxCalendar() {
   const year = new Date().getFullYear();
   for (const base of ["https://www.hyranking.com", "https://www.hyresult.com"]) {
     const slugs = new Set();
-    for (const path of ["/events", "/events/calendar", `/events/${year}`, `/events/${year + 1}`]) {
-      const r = await fetchJson(base + path, { retries: 1 });
+    const listPages = await Promise.all(["/events", "/events/calendar", `/events/${year}`, `/events/${year + 1}`].map((p) => fetchJson(base + p, { timeout: 10000, retries: 1 })));
+    for (const r of listPages) {
       if (r.ok && typeof r.body === "string") for (const m of r.body.matchAll(/\/event\/([a-z0-9-]+)/gi)) slugs.add(m[1]);
-      await sleep(300);
     }
     if (!slugs.size) { console.warn(`${base}: event linki bulunamadı`); continue; }
-    for (const slug of [...slugs].slice(0, 200)) {
-      const p = await fetchJson(`${base}/event/${slug}`, { retries: 1 });
-      if (!p.ok || typeof p.body !== "string") continue;
-      const ev = jsonLdFrom(p.body).find((j) => j["@type"] === "SportsEvent");
-      if (!ev?.startDate) continue;
-      const city = ev.location?.address?.addressLocality;
-      const country = ev.location?.address?.addressCountry;
-      const name = cleanName(ev.name, city);
-      got.push({
-        id: `hyrox-${slug.replace(/^s\d+-/, "")}`,
-        name,
-        eventSlug: matchSlug(name),
-        type: "hyrox",
-        city,
-        country: /turkey|t[üu]rkiye/i.test(country ?? "") ? "Türkiye" : country,
-        startDate: isoDate(ev.startDate),
-        endDate: isoDate(ev.endDate ?? ev.startDate),
-        status: ev.eventStatus?.includes("Cancelled") ? "cancelled" : "confirmed",
-        url: "https://hyrox.com/find-my-race/",
-        source: "hyrox",
-        sourceUrl: `${base}/event/${slug}`,
-      });
-      await sleep(350);
+    const list = [...slugs].slice(0, 200);
+    const CONC = 6;
+    for (let i = 0; i < list.length; i += CONC) {
+      const batch = await Promise.all(list.slice(i, i + CONC).map(async (slug) => ({
+        slug,
+        p: await fetchJson(`${base}/event/${slug}`, { timeout: 10000, retries: 1 }),
+      })));
+      for (const { slug, p } of batch) {
+        if (!p.ok || typeof p.body !== "string") continue;
+        const ev = jsonLdFrom(p.body).find((j) => j["@type"] === "SportsEvent");
+        if (!ev?.startDate) continue;
+        const city = ev.location?.address?.addressLocality;
+        const country = ev.location?.address?.addressCountry;
+        const name = cleanName(ev.name, city);
+        got.push({
+          id: `hyrox-${slug.replace(/^s\d+-/, "")}`,
+          name,
+          eventSlug: matchSlug(name),
+          type: "hyrox",
+          city,
+          country: /turkey|t[üu]rkiye/i.test(country ?? "") ? "Türkiye" : country,
+          startDate: isoDate(ev.startDate),
+          endDate: isoDate(ev.endDate ?? ev.startDate),
+          status: ev.eventStatus?.includes("Cancelled") ? "cancelled" : "confirmed",
+          url: "https://hyrox.com/find-my-race/",
+          source: "hyrox",
+          sourceUrl: `${base}/event/${slug}`,
+        });
+      }
+      await sleep(150);
     }
     if (got.length) break;
   }

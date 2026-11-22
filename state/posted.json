@@ -3231,6 +3231,34 @@
         "cal:hyrox-utrecht-2026-11"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMimgFBVV95cUxPb3QxYmg2dG1CNGp0NG5ldW56X2JjN1JScExwaXRqRTA2TVlCYUdSTmdScWxHS0FjcEdRTUloTFhrc21vTkREcHRFMHZIRVoycEl6aVh0RHFUTld6M05lZ0J2RjZYcDNKSnVVSUxMcE9HV0tOSWZQX0lHbXBUaGtCbjFRcnNCVXB5dGZuT2owXzNHUmVmdVlxclFB"
+      ],
+      "skipped": "tekrar"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "ig:18171892522465240"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://roxlyfe.com/hyrox-poznan-november-2026/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "ig:17920781814469482"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -3317,10 +3345,10 @@
       "summarySent": true
     },
     "2026-11-22": {
-      "drafts": 16,
+      "drafts": 19,
       "approved": 7,
-      "rejected": 9,
-      "aiCalls": 65
+      "rejected": 12,
+      "aiCalls": 73
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3344,7 +3372,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-22T11:44:42.518Z",
+  "lastRunAt": "2026-11-22T12:44:42.962Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

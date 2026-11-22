@@ -95,7 +95,8 @@
     "category": "kosu",
     "createdDay": "2026-11-17",
     "due": "2026-11-21",
-    "status": "bekliyor"
+    "status": "iptal",
+    "doneAt": "2026-11-22T12:52:08.662Z"
   },
   {
     "key": "edirneyarimaratonu",

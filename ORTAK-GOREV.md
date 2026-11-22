@@ -55,7 +55,7 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 
 ## G4 — Post görsel kontrolü (rapor)
 - **Atanan:** Antigravity
-- **Durum:** bekliyor
+- **Durum:** bitti
 - **Kod değiştirme yok.** Çıktı: `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G4-gorsel.md`
 - Kullanıcıdan ekran görüntüsü İSTEME. Görseller: `state/posted.json` içindeki son 30 yayınlanmış postun (`media` alanı dolu)
   `cover` adresleri (`raw.githubusercontent.com/.../media/...` kapak görseli). Bu adresleri indirip bak; Instagram'a girme.
@@ -63,10 +63,14 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 - Her post için kontrol et: foto konuyla ilgili mi, olay postunda yalnızca olayın kendi görseli mi, yazı taşıyor mu,
   logo/yüz kesiliyor mu, kırmızı vurgu doğru kelimede mi. Sorunlu olanları başlık + adres + sorun olarak listele; sorunsuzları tek satırda say.
 - Notlar:
+  - `state/posted.json` içindeki son 30 yayınlanmış paylaşımın (2026-11-19 – 2026-11-22) tüm slaytları (64 görsel) `raw.githubusercontent.com` üzerinden indirilip tek tek incelendi; rapor `rapor/G4-gorsel.md` dosyasına yazıldı.
+  - 12 paylaşım sorunsuz, 18 paylaşımda görsel/tasarım/kural sorunu tespit edildi.
+  - Başlıca bulgular: (1) v2 kapakta `head2()` içindeki `bare(h).length >= 2` koşulu nedeniyle `"3 hafta"` gibi tek haneli sayı içeren `hl` vurgularında rakamın beyaz kalıp yalnızca kelimenin kızarması (`iF3` postu) ve `HYROX Poznań` postunda `hl` eksikliği, (2) olay/takip postlarında stok fotoğrafa düşülmesi (`HYROX Barcelona`, `St. Nicholas`, `Gazi Yarı Maratonu`, `Tirana Throwdown` -> arka planda Eurasia Throwdown/Backstreet ve bahis/kulüp/ELITE yazıları), (3) yanlış etkinlik logosu basılması (Strava haberlerinde `VU | BOX`, Ironman Vietnam/Güney Afrika haberlerinde `Oman Pro Series`, NYC Maratonu haberinde `Tokyo Marathon`), (4) bilgi/araştırma postlarında konuyla uyumsuz fotoğraf (kettlebell haberinde TRX portresi, uyku öncesi protein haberinde magnezyum tozu), (5) `HYROX · HYROX` kicker tekrarı ve `DOPING`/`CİTY`/`VUSSİ`/`DEİRDRE` büyük harf dönüşüm hataları.
+  - Claude Code (2026-11-22): tekrar postlar (Gazi, Strava, Keane) ve stok fotolu olay postları bugünkü düzeltmelerden önceydi, artık engelli. Düzeltildi: çatı marka logoları (ironman/majors, circle21de hyrox/crossfit) eşleşmiyor; tek haneli hl rakamı kırmızı; HYROX · HYROX tekrarı yok. Açık: bilgi postlarında foto-konu uyumu.
 
 ## G5 — Post slayt tasarımı denemesi (yayın yok)
 - **Atanan:** Antigravity
-- **Durum:** bekliyor
+- **Durum:** yapılıyor (Antigravity)
 - **Branch / worktree:** `antigravity/tasarim` → `C:\Users\Mehmet Kuyucu\Desktop\cf\insta-ag-tasarim`
 - Yapılacak: post slaytlarının tasarımını iyileştir (`src/render.mjs`, gerekirse `fonts/`). Fotoğraf ÜRETME, yapay zekâ görseli
   YOK; mevcut gerçek fotoğraflar kalır. Hedef: v2 haber sitesi stili, kırmızı vurgu (`hl`), Türkçe karakterler doğru,

@@ -488,7 +488,7 @@ async function prepareVerified(pick, srcItems, sourceName) {
   }
   // Bulanık eşleşen circle21 kaydı (c21ref) başka bir yarışa ait olabilir (denetim 2026-11-22: Strava haberine salon logosu geldi):
   // yalnızca yazarın etkinlik adı kaydın adıyla eşleşirse haberin kendi kaydı sayılır. Doğrudan circle21 kaynağı (c21:) her zaman geçerli.
-  const c21Ok = (s, eventName) => s.id.startsWith("c21:") || (s.id.startsWith("c21ref:") && logoSourceMatches(eventName, s.title));
+  const c21Ok = (s, eventName) => s.id.startsWith("c21:") || (s.id.startsWith("c21ref:") && logoSourceMatches(eventName, s.title, C21_GENERIC));
   let ownC21 = srcItems.find((s) => s.id.startsWith("c21:")) ?? null;
   for (let attempt = 1; attempt <= 2; attempt++) {
     const draft = await writePost(pick, srcItems, feedback);
@@ -690,11 +690,15 @@ async function pickEventPhotos({ post, pages, topic, want, category, images = []
 // Logo adresi (alan adı ya da Instagram kullanıcı adı) etkinlik adındaki ayırt edici bir kelimeyi içermeli.
 // Genel kelimeler (maraton, yarı, games, throwdown...) tek başına eşleşme sayılmaz.
 // Şehir/ülke adı tek başına eşleşme değildir (ör. HYROX İstanbul için crossfitistanbul salonunun logosu)
-const LOGO_GENERIC = new Set(["istanbul", "ankara", "izmir", "antalya", "bursa", "bodrum", "mersin", "adana", "turkiye", "türkiye", "turkey", "tirana", "athens", "atina", "sofia", "dubai", "cairo", "kahire", "london", "londra", "berlin", "paris", "barcelona", "madrid", "rome", "roma", "marathon", "maraton", "maratonu", "half", "yari", "yarı", "race", "run", "running", "kosu", "koşu", "koşusu", "games", "throwdown", "challenge", "series", "world", "championship", "championships", "open", "final", "finals", "qualifier", "qualifiers", "ultra", "trail", "festival", "cup", "the", "and", "official"]);
-function logoSourceMatches(eventName, src) {
+const LOGO_GENERIC = new Set(["istanbul", "ankara", "izmir", "antalya", "bursa", "bodrum", "mersin", "adana", "turkiye", "türkiye", "turkey", "tirana", "athens", "atina", "sofia", "dubai", "cairo", "kahire", "london", "londra", "berlin", "paris", "barcelona", "madrid", "rome", "roma", "marathon", "maraton", "maratonu", "half", "yari", "yarı", "race", "run", "running", "kosu", "koşu", "koşusu", "games", "throwdown", "challenge", "series", "world", "championship", "championships", "open", "final", "finals", "qualifier", "qualifiers", "ultra", "trail", "festival", "cup", "the", "and", "official",
+  // Çatı marka/seri adları (denetim G4): ironman.com Umman reklam logosunu, Majors sitesi Tokyo logosunu verdi
+  "ironman", "majors", "major"]);
+// circle21 kaydı için marka adı da yetmez: "HYROX" geçen salon kaydı Strava haberine eşlendi (VU BOX, denetim G4)
+const C21_GENERIC = new Set(["hyrox", "crossfit", "athx", "spartan", "deka", "fitness", "training", "club", "box"]);
+function logoSourceMatches(eventName, src, extraGeneric = null) {
   const s = norm(src ?? "");
   if (!s) return false;
-  const words = String(eventName ?? "").toLocaleLowerCase("tr").replace(/ı/g, "i").split(/[^a-z0-9ğüşöç]+/).filter((w) => w.length >= 4 && !/^\d+$/.test(w) && !LOGO_GENERIC.has(w));
+  const words = String(eventName ?? "").toLocaleLowerCase("tr").replace(/ı/g, "i").split(/[^a-z0-9ğüşöç]+/).filter((w) => w.length >= 4 && !/^\d+$/.test(w) && !LOGO_GENERIC.has(w) && !extraGeneric?.has(w));
   return words.some((w) => s.includes(norm(w)));
 }
 

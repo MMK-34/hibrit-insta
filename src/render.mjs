@@ -123,7 +123,7 @@ function tag(ctx, extra) {
   const k = CATEGORY[ctx.cat] ?? CATEGORY.genel;
   const counter = ctx.total > 1 ? `<div style="display:flex;margin-left:18px;color:${C.text3}">${String(ctx.index).padStart(2, "0")}/${String(ctx.total).padStart(2, "0")}</div>` : "";
   return `<div style="display:flex;width:110px;height:10px;background:${C.red};margin-bottom:22px"></div>
-    <div style="display:flex;align-items:center;font-family:Body;font-weight:700;font-size:24px;letter-spacing:3px;color:${C.red};margin-bottom:22px">${esc(trUpper(extra ? `${k.label} · ${extra}` : k.label))}${counter}</div>`;
+    <div style="display:flex;align-items:center;font-family:Body;font-weight:700;font-size:24px;letter-spacing:3px;color:${C.red};margin-bottom:22px">${esc(trUpper(kickerText(k.label, extra)))}${counter}</div>`;
 }
 
 const head = (text, size) => `<div style="display:flex;font-family:Head;font-weight:800;font-size:${size}px;line-height:0.98;color:${C.paper}">${esc(trUpper(text))}</div>`;
@@ -206,7 +206,13 @@ function tableHtml(s) {
 function pill(ctx, extra) {
   const k = CATEGORY[ctx.cat] ?? CATEGORY.genel;
   const counter = ctx.total > 1 ? `<div style="display:flex;margin-left:16px;color:${C.paper};opacity:0.75;font-size:22px">${String(ctx.index).padStart(2, "0")}/${String(ctx.total).padStart(2, "0")}</div>` : "";
-  return `<div style="display:flex;align-items:center;margin-bottom:26px"><div style="display:flex;background:${C.red};padding:10px 18px;font-family:Body;font-weight:700;font-size:24px;letter-spacing:3px;color:${C.paper}">${esc(trUpper(extra ? `${k.label} · ${extra}` : k.label))}</div>${counter}</div>`;
+  return `<div style="display:flex;align-items:center;margin-bottom:26px"><div style="display:flex;background:${C.red};padding:10px 18px;font-family:Body;font-weight:700;font-size:24px;letter-spacing:3px;color:${C.paper}">${esc(trUpper(kickerText(k.label, extra)))}</div>${counter}</div>`;
+}
+// Branş etiketi + kicker: kicker branşla başlıyorsa tekrar yazılmaz ("HYROX · HYROX POZNAN" yerine "HYROX POZNAN", denetim G4)
+function kickerText(label, extra) {
+  if (!extra) return label;
+  const n = (x) => String(x).toLocaleLowerCase("tr").replace(/[^\p{L}\p{N}]/gu, "");
+  return n(extra).startsWith(n(label)) ? extra : `${label} · ${extra}`;
 }
 // Vurgu karşılaştırması noktalama ve eki yok sayar: "İSTANBUL" vurgusu "İSTANBUL'DA" kelimesini de boyar
 const bare = (w) => String(w).replace(/[^\p{L}\p{N}]/gu, "");
@@ -214,7 +220,7 @@ const bare = (w) => String(w).replace(/[^\p{L}\p{N}]/gu, "");
 function head2(text, size, hl = "") {
   const hw = new Set(trUpper(hl).split(/\s+/).filter(Boolean));
   const words = trUpper(text).split(/\s+/).filter(Boolean);
-  return `<div style="display:flex;flex-wrap:wrap;font-family:Head;font-weight:800;font-size:${size}px;line-height:0.95;color:${C.paper}">${words.map((w) => `<div style="display:flex;margin-right:${Math.round(size * 0.2)}px;color:${[...hw].some((h) => bare(w).startsWith(bare(h)) && bare(h).length >= 2) ? C.red : C.paper}">${esc(w)}</div>`).join("")}</div>`;
+  return `<div style="display:flex;flex-wrap:wrap;font-family:Head;font-weight:800;font-size:${size}px;line-height:0.95;color:${C.paper}">${words.map((w) => `<div style="display:flex;margin-right:${Math.round(size * 0.2)}px;color:${[...hw].some((h) => (bare(h).length >= 2 ? bare(w).startsWith(bare(h)) : bare(h) !== "" && bare(w) === bare(h))) ? C.red : C.paper}">${esc(w)}</div>`).join("")}</div>`;
 }
 
 const T = {

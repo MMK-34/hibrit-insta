@@ -2,7 +2,8 @@
 
 Yayın kurulu (Pazartesi/Perşembe) bu listeden konu seçebilir ama her olguyu en az iki bağımsız güvenilir kaynakla
 kendisi doğrulamadan önermez. Kaynak: ChatGPT önerisi (2026-11-22), Claude tarafından henüz doğrulanmadı.
-Kurallar: kişi adı yok, kategori adı yok, sayılar rakamla, saygılı dil, sonda soru yok.
+Kurallar: kişi adı ve yüzü serbest (doğru ve kaynaklı olmak şartıyla; video yayından önce kullanıcı onayına gelir), kategori adı yok, sayılar rakamla, saygılı dil, sonda soru yok.
+Görsel: olayı anlatan bölümlerde YALNIZCA o olayın kendi görüntüleri; olaydan bağımsız genel bir konu anlatılan ara bölümlerde (ör. genel bir bilimsel bilgi) konuyla ilgili stok görsel kullanılabilir.
 
 1. HYROX Stockholm 2026: son wall ball tekrarı geçersiz sayıldı; 15 saniyelik ceza kürsüyü değiştirdi.
 2. HYROX Varşova 2026: bir erkek sporcu 51:59 ile 52 dakika sınırını ilk kez geçti.

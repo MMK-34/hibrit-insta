@@ -765,9 +765,10 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     const inTR = /^t[üu]rkiye$/i.test(String(post.country ?? "").trim()) || /(İstanbul|Istanbul|İzmir|Izmir|Antalya|Ankara|Bursa|Kuşadası|Kusadasi|Bodrum|Kapadokya|Cappadocia|Kaçkar|Kackar|Uludağ|Uludag|Likya|Lycian|Türkiye|Turkey)/i.test(key);
     const big = BIG_RACES.some((re) => re.test(key)) || /\bATHX\b/i.test(key);
     // Kullanıcı kararı (2026-11-22): videolu haber artırılır. CrossFit/HYROX/ATHX/hibrit yarış haberleri Türkiye ve Türkiye'den gidilen yakın
-    // ülkeler için de kısa Reels sırasına girer; video YALNIZCA yarışın kendi hesabından (yoksa kısa Reels üretilmez). Kişi odaklı haber girmez.
+    // ülkeler için de kısa Reels sırasına girer; video YALNIZCA yarışın/sporcunun kendi hesabından (yoksa kısa Reels üretilmez).
+    // Kişi adı geçen haber de girer (kullanıcı 2026-11-22): tüm Reels zaten yayından önce kullanıcı ONAY'ına gelir.
     const hybrid = ["crossfit", "hyrox", "fonksiyonel"].includes(category) && (inTR || NEAR.test(String(post.country ?? "").trim()));
-    if (["duyuru", "haber"].includes(kind) && !post.athleteName && ((big && inTR) || hybrid) && !/World Championships?|Dünya Şampiyonası|CrossFit Open/i.test(key)) {
+    if (["duyuru", "haber"].includes(kind) && ((big && inTR) || hybrid) && !/World Championships?|Dünya Şampiyonası|CrossFit Open/i.test(key)) {
       const qf = "state/short-queue.json";
       const q = fs.existsSync(qf) ? JSON.parse(fs.readFileSync(qf, "utf8")) : [];
       state.shortReels ??= [];

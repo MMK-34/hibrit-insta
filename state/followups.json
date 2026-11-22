@@ -224,5 +224,25 @@
     "createdDay": "2026-11-22",
     "due": "2026-12-01",
     "status": "bekliyor"
+  },
+  {
+    "key": "karsporidaultramaraton",
+    "type": "gecmis",
+    "eventName": "Kar Spor İda Ultra Maraton",
+    "officialSite": "",
+    "category": "doga",
+    "createdDay": "2026-11-22",
+    "due": "2026-11-26",
+    "status": "bekliyor"
+  },
+  {
+    "key": "karsporidaultramaraton",
+    "type": "wodlar",
+    "eventName": "Kar Spor İda Ultra Maraton",
+    "officialSite": "",
+    "category": "doga",
+    "createdDay": "2026-11-22",
+    "due": "2026-12-01",
+    "status": "bekliyor"
   }
 ]

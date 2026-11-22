@@ -3032,6 +3032,40 @@
         "place": "Gaziantep"
       },
       "story": "17961614697016767"
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMivwFBVV95cUxNZEtGSjRPdUtvekdMTWJObTZQa1dRdWJmZ21lWHJkalEtTmoyOEVrWXdxWEp1SkJqdzV0TU1nRTZiR1JEcUMzb05taFpNUndVMmdKM1pyRlo5LTZUUXcwUkd1d2l5RmIybjlzUGR1azdRdHNselB2ZTBlWkpwbGp3WTFEeGFYZ2Vab2d5SUFrVllMa0dDYjNzMjRBSGRPakwzN0xiQldHajBYc3FJQmxZQ19GNnM0YzVldDVPOE5Zdw"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:5aaf82323f5bd731"
+      ],
+      "media": "18355821295283055",
+      "permalink": "https://www.instagram.com/p/DgCaN-DDWHE/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-22/mwrlducr/01.jpg",
+      "title": "İda Ultra Maraton 10. yılında Kaz Dağları’nda: 10 ülkeden bin 540 sporcu 27-29 Kasım’da koşacak",
+      "headline": "İda Ultra Maraton 27-29 Kasım'da Kaz Dağları'nda",
+      "eventName": "Kar Spor İda Ultra Maraton",
+      "at": "2026-11-22T08:47:06.528Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "İDA ULTRA MARATON",
+            "title": "İda Ultra Maraton 27-29 Kasım'da Kaz Dağları'nda",
+            "subtitle": "10. yılında 10 ülkeden 1.540 sporcu parkurlarda buluşuyor."
+          }
+        ],
+        "caption": "Kar Spor İda Ultra Maraton 27-29 Kasım tarihleri arasında Kaz Dağları'nda koşulacak. 10. yılını kutlayan organizasyonda 10 farklı ülkeden 1.540 sporcu yer alacak. Edremit Belediyesi sponsorluğunda gerçekleşen yarış, uluslararası katılımcıları bölgenin zorlu parkurlarında bir araya getiriyor. Yarış planın için kaydet.\n\nReklam / Tanıtım\n\nKaynak: 24 Saat Gazetesi Ankara\nGörsel: bogazgazetesi.com.tr\n\n#idaultramaraton #trailrunning #patikakoşusu #ultratrail #ultrarunning #kazdağları #hibritportal",
+        "srcUrls": [
+          "https://www.24saatgazetesi.com/ida-ultra-maraton-10-yilinda-kaz-daglarinda-10-ulkeden-bin-540-sporcu-27-29-kasimda-kosacak"
+        ],
+        "eventName": "Kar Spor İda Ultra Maraton",
+        "country": "Türkiye",
+        "place": "Balıkesir/Edremit"
+      }
     }
   ],
   "daily": {
@@ -3118,10 +3152,10 @@
       "summarySent": true
     },
     "2026-11-22": {
-      "drafts": 6,
-      "approved": 4,
+      "drafts": 7,
+      "approved": 5,
       "rejected": 2,
-      "aiCalls": 32
+      "aiCalls": 38
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3145,7 +3179,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-22T07:44:39.635Z",
+  "lastRunAt": "2026-11-22T08:44:39.822Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

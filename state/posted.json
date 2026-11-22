@@ -3298,6 +3298,24 @@
       "eventName": "HYROX Poznań",
       "at": "2026-11-22T13:34:20.835Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-22",
+      "ids": [
+        "manual:if3-dunya-sampiyonasi-2026-iskocya"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:if3-worlds2025-podium"
+      ],
+      "media": "18118915340518849",
+      "permalink": "https://www.instagram.com/p/DgDDNIOoKWY/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/if3-dunya-sampiyonasi-2026-iskocya/01.jpg",
+      "title": "Fonksiyonel fitness dünya şampiyonası 3 hafta sonra İskoçya'da",
+      "headline": "Fonksiyonel fitness dünya şampiyonası 3 hafta sonra İskoçya'da",
+      "eventName": "iF3 World Championships 2026",
+      "at": "2026-11-22T14:45:11.865Z",
+      "manual": true
     }
   ],
   "daily": {
@@ -3411,7 +3429,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-22T13:44:40.326Z",
+  "lastRunAt": "2026-11-22T14:45:12.307Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

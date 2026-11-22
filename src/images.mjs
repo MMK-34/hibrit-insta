@@ -103,8 +103,8 @@ const LOCAL_BY_CAT = {
   hyrox: ["hyrox-sled", "hyrox-sled-2", "sled-stadium", "sled-water", "rower", "medball-rack", "kb-rack", "run-start", "chalk-hands"],
   crossfit: ["comp-overhead", "comp-lift", "comp-women", "comp-barbell", "comp-crowd", "comp-judge", "comp-rings", "comp-win", "comp-night-tr", "comp-pullups-tr", "rope-climb", "box-jumps", "barbell-floor", "overhead-woman"],
   kosu: ["run-start", "run-finish", "run-track", "silhouette", "hero-alt", "doga-trail", "doga-trail-2", "kosu-triathlon", "kosu-triathlon-swim", "kosu-triathlon-bike", "kosu-sprint", "kosu-longjump", "kosu-javelin"],
-  fonksiyonel: ["kb-floor", "kb-rack", "medball-rack", "ropes", "rings-gym", "box-jumps", "chalk-hands", "barbell-mist", "gym-industrial", "athlete-rest", "fonksiyonel-calisthenics", "fonksiyonel-ocr"],
-  bilim: ["athlete-rest", "barbell-mist", "run-track", "chalk-hands", "kb-floor", "gym-industrial"],
+  fonksiyonel: ["kb-floor", "kb-rack", "medball-rack", "ropes", "rings-gym", "box-jumps", "barbell-mist", "gym-industrial", "athlete-rest", "fonksiyonel-calisthenics", "fonksiyonel-ocr"],
+  bilim: ["athlete-rest", "barbell-mist", "run-track", "kb-floor", "gym-industrial"],
   kuvvet: ["kuvvet-weightlifting", "kuvvet-snatch", "kuvvet-strongman", "barbell-floor", "chalk-hands"],
   dovus: ["dovus-wrestling", "dovus-wrestling-2", "dovus-boxing-gym", "dovus-boxing-match", "dovus-boxing-match-2", "dovus-judo", "dovus-karate", "dovus-karate-2", "dovus-taekwondo", "dovus-kickbox"],
   su: ["su-swim-race", "su-swim-back", "su-openwater", "su-rowing", "su-erg", "su-kayak", "su-canoe", "su-sailing", "su-sup"],
@@ -123,7 +123,7 @@ const MULTI_SPORT = new Set(["kosu", "kuvvet", "dovus", "su", "bisiklet", "doga"
 
 async function getJson(url, headers = {}) {
   try {
-    const r = await fetch(url, { headers: { "user-agent": UA, ...headers }, signal: AbortSignal.timeout(20000) });
+    const r = await fetch(url, { headers: { "user-agent": UA, ...headers }, signal: AbortSignal.timeout(10000) });
     if (!r.ok) { console.warn(`foto API ${new URL(url).hostname}: HTTP ${r.status}`); return null; }
     return await r.json();
   } catch (e) { console.warn(`foto API ${new URL(url).hostname}: ${String(e?.message ?? e).slice(0, 120)}`); return null; }
@@ -136,24 +136,73 @@ async function pexels(q, n) {
   return (j?.photos ?? []).map((p) => ({ id: `pexels:${p.id}`, url: p.src.large2x, credit: `Foto: ${p.photographer} / Pexels`, alt: p.alt ?? "", license: "Pexels lisansı" }));
 }
 
+const GENERIC_QUERY_WORDS = new Set(["race", "racing", "competition", "sport", "sports", "city", "street", "athlete", "athletes", "the", "and", "with", "for", "from", "into", "over", "before", "after", "pre", "post", "start", "event", "outdoor", "indoor", "gym", "training", "workout", "exercise", "fitness", "man", "woman", "people", "person", "healthy", "health", "active", "body", "performance", "study", "science", "daily", "minute", "minutes", "hour", "hours"]);
+
+function queryWords(q) {
+  return String(q ?? "").toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length > 2 && !GENERIC_QUERY_WORDS.has(w));
+}
+
+function queryRelevant(q, tagsOrTitle) {
+  const words = queryWords(q);
+  if (!words.length) return true;
+  const tg = String(tagsOrTitle ?? "").toLowerCase();
+  return words.some((w) => {
+    const stem = w.replace(/(ing|er|ers|ed|es|s)$/, "");
+    return stem.length >= 3 ? tg.includes(stem) : tg.includes(w);
+  });
+}
+
+// Konu başlığı veya sorgularda belirgin bir ekipman/konu geçiyorsa, seçilen fotoğrafın açıklama/etiketinde o konunun karşılığı aranır
+// (denetim G4/G8: kettlebell yazısına askılı antrenman portresi, uyku öncesi protein yazısına magnezyum tozu fotoğrafı düşmesin).
+const TOPIC_SUBJECTS = [
+  { key: "kettlebell", priority: true, test: /\b(kettlebell|girya|\bkb\b)/i, match: /\b(kettlebell|\bkb\b)/i, fallbackQueries: ["kettlebell workout", "kettlebell gym"] },
+  { key: "nutrition", priority: true, test: /(protein|beslenme|yemek|öğün|nutrition|kazein|casein|karbonhidrat|carbohydrate|kreatin|creatine|kafein|caffeine|supplement|diet|\bmeal\b|eating\s+before\s+bed)/i, match: /(protein|nutrition|food|meal|eat|diet|shake|smoothie|drink|milk|yogurt|bowl|fruit|breakfast|dinner|kitchen|supplement|coffee|caffeine|creatine|egg|oats|healthy\s+food|beslenme|yemek|öğün)/i, fallbackQueries: ["healthy food nutrition meal", "protein smoothie bowl fruit"] },
+  { key: "sleep", test: /(uyku|yatmadan|\bsleep\b|bedtime|pre[-\s]*sleep)/i, match: /(sleep|bed|bedroom|night|pillow|uyku)/i, fallbackQueries: ["sleeping bed night rest"] },
+  { key: "hydration", priority: true, test: /(sıvı\s+kaybı|sıvı\s+alımı|hidrasyon|hydration|dehydration|elektrolit|electrolyte|fluid\s+replacement)/i, match: /(water|drink|bottle|hydrat|sweat|fluid|su|içecek)/i, fallbackQueries: ["athlete drinking water bottle", "runner water hydration"] },
+  { key: "rowing", priority: true, test: /(kürek|ergometre|concept2|damper|\browing\b|\brower\b)/i, match: /(row|erg|kürek|concept2|scull)/i, fallbackQueries: ["indoor rowing machine", "rowing workout"] },
+  { key: "sled", priority: true, test: /(\bsled\b|kızak\s+(itme|çekme))/i, match: /(sled|kızak)/i, fallbackQueries: ["sled push gym", "hyrox sled"] },
+  { key: "wallball", priority: true, test: /(wall\s*ball|sağlık\s+topu|medicine\s*ball|medball)/i, match: /(wall\s*ball|medball|medicine\s*ball|sağlık\s+topu)/i, fallbackQueries: ["medicine ball workout", "wall ball gym"] },
+  { key: "rope", priority: true, test: /(\bhalat\b|rope\s*climb|battle\s*rope)/i, match: /(rope|halat)/i, fallbackQueries: ["rope climb gym", "battle ropes workout"] },
+  { key: "boxjump", priority: true, test: /(box\s*jump|kutu\s+sıçrama)/i, match: /(box[-\s]*jump|plyo|kutu\s+üzerine\s+sıçrayan)/i, fallbackQueries: ["box jump workout", "plyometric box jump"] },
+];
+
+export function topicSubjects(contextText) {
+  const txt = String(contextText ?? "");
+  return TOPIC_SUBJECTS.filter((s) => s.test.test(txt));
+}
+
+export function photoMatchesTopic(photo, subjects) {
+  if (!subjects?.length) return true;
+  const hay = `${photo?.id ?? ""} ${photo?.alt ?? ""}`;
+  const pri = subjects.filter((s) => s.priority);
+  if (pri.length) return pri.some((s) => s.match.test(hay));
+  return subjects.some((s) => s.match.test(hay));
+}
+
 // Pixabay: ücretsiz anahtar, Pixabay İçerik Lisansı (atıf gerekmez). Görsel indirilip kendi sunucumuzdan kullanılır.
 async function pixabay(q, n) {
   const key = process.env.PIXABAY_API_KEY;
   if (!key) return [];
-  const j = await getJson(`https://pixabay.com/api/?key=${encodeURIComponent(key)}&q=${encodeURIComponent(q.slice(0, 100))}&image_type=photo&orientation=vertical&category=sports&safesearch=true&min_width=1000&per_page=${Math.max(n * 3, 10)}`);
-  const GENERIC = new Set(["race", "racing", "competition", "sport", "sports", "city", "street", "athlete", "athletes", "the", "and", "with", "start", "event", "outdoor", "gym", "training", "man", "woman", "people"]);
-  const words = q.toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length > 2 && !GENERIC.has(w));
-  const relevant = (tags) => { const tg = String(tags ?? "").toLowerCase(); return words.length && words.some((w) => tg.includes(w.replace(/(ing|er|ers|s)$/, ""))); };
-  return (j?.hits ?? []).filter((h) => h.largeImageURL && relevant(h.tags)).map((h) => ({ id: `pixabay:${h.id}`, url: h.largeImageURL, credit: "Foto: Pixabay", alt: String(h.tags ?? ""), license: "Pixabay İçerik Lisansı" }));
+  const j = await getJson(`https://pixabay.com/api/?key=${encodeURIComponent(key)}&q=${encodeURIComponent(q.slice(0, 100))}&image_type=photo&orientation=vertical&safesearch=true&min_width=1000&per_page=${Math.max(n * 3, 10)}`);
+  return (j?.hits ?? []).filter((h) => h.largeImageURL && queryRelevant(q, h.tags)).map((h) => ({ id: `pixabay:${h.id}`, url: h.largeImageURL, credit: "Foto: Pixabay", alt: String(h.tags ?? ""), license: "Pixabay İçerik Lisansı" }));
 }
 
 async function openverse(q, n) {
-  const j = await getJson(`https://api.openverse.org/v1/images/?q=${encodeURIComponent(q)}&license=cc0,pdm&size=large&page_size=${Math.max(n * 3, 10)}&mature=false`);
-  const BLOCK = /rawpixel|department of defense|u\.s\. army|army|navy|air force|marine|military|wheelchair|paralymp/i;
-  return (j?.results ?? []).filter((r) => r.url && (r.width ?? 0) >= 900 && !BLOCK.test(`${r.creator} ${r.title} ${r.source} ${r.provider} ${r.url}`)).map((r) => ({
-    id: `ov:${r.id}`, url: r.url, alt: r.title ?? "", license: `${String(r.license).toUpperCase()} ${r.license_version ?? ""}`.trim(),
-    credit: `Foto: ${(r.creator || "bilinmiyor").slice(0, 40)} / ${String(r.license).toUpperCase()} ${r.license_version ?? ""}`.trim(),
-  }));
+  const j = await getJson(`https://api.openverse.org/v1/images/?q=${encodeURIComponent(q)}&license=cc0,pdm&size=large&page_size=${Math.max(n * 3, 15)}&mature=false`);
+  const BLOCK = /rawpixel|department of defense|u\.s\. army|army|navy|air force|marine|military|wheelchair|paralymp|diagram|chart|graph|illustration|drawing|sketch|painting|statue|museum|herbarium|specimen|microscope|molecule|chemical|book\s+page|manuscript/i;
+  return (j?.results ?? []).filter((r) => {
+    if (!r.url || (r.width ?? 0) < 900) return false;
+    const tagStr = (r.tags ?? []).map((t) => t?.name ?? "").join(" ");
+    const meta = `${r.creator ?? ""} ${r.title ?? ""} ${tagStr} ${r.source ?? ""} ${r.provider ?? ""} ${r.url}`;
+    return !BLOCK.test(meta) && queryRelevant(q, `${r.title ?? ""} ${tagStr}`);
+  }).map((r) => {
+    const tagStr = (r.tags ?? []).map((t) => t?.name ?? "").filter(Boolean).slice(0, 8).join(", ");
+    const alt = [r.title, tagStr].filter(Boolean).join(" — ").slice(0, 180);
+    return {
+      id: `ov:${r.id}`, url: r.url, alt, license: `${String(r.license).toUpperCase()} ${r.license_version ?? ""}`.trim(),
+      credit: `Foto: ${(r.creator || "bilinmiyor").slice(0, 40)} / ${String(r.license).toUpperCase()} ${r.license_version ?? ""}`.trim(),
+    };
+  });
 }
 
 // sharp metadata() AVIF dosyalarını "heif" olarak raporlar; heif yalnızca AV1 sıkıştırmalıysa (AVIF) kabul edilir
@@ -181,63 +230,76 @@ export async function download(url) {
 
 /**
  * queries: İngilizce arama ifadeleri (en spesifikten genele). n: gereken foto sayısı.
- * usedIds: daha önce kullanılan foto id'leri (tekrarı önler). Döner: [{ id, buf, credit }]
+ * usedIds: daha önce kullanılan foto id'leri (tekrarı önler). topic: Türkçe başlık/konu (anahtar kelime uyumu için).
+ * Döner: [{ id, buf, credit }]
  */
-export async function findImages(queries, n, category, usedIds = new Set()) {
+export async function findImages(queries, n, category, usedIds = new Set(), topic = "") {
+  const subjects = topicSubjects(`${topic} ${(queries ?? []).join(" ")}`);
+  const searchQueries = [...new Set([...(queries ?? []), ...subjects.flatMap((s) => s.fallbackQueries ?? [])])];
   const out = [];
   const take = async (cands) => {
     for (const c of cands) {
       if (out.length >= n) return;
       if (usedIds.has(c.id) || out.some((o) => o.id === c.id)) continue;
+      if (!photoMatchesTopic(c, subjects)) continue;
       const buf = await download(c.url);
       if (buf) out.push({ ...c, buf });
     }
   };
-  for (const q of queries) { if (out.length < n) await take(await pexels(q, n)); }
+  for (const q of searchQueries) { if (out.length < n) await take(await pexels(q, n)); }
   // Yerel kütüphane (seçilmiş, konuyla ilgili Pexels fotoğrafları) Openverse'ten önce gelir: Openverse kalitesi değişken
   // Karışık sıra: aynı kategoride postlar hep aynı fotoğrafla açılmasın
   // Yerel kütüphanesi olmayan branşlarda (yüzme, güreş, bisiklet vb.) alakasız salon fotoğrafı konmaz
   const hasLocal = Object.hasOwn(LOCAL_BY_CAT, category ?? "genel");
   let locals = hasLocal ? [...LOCAL_BY_CAT[category ?? "genel"]].sort(() => Math.random() - 0.5) : [];
-  // Çok branşlı kategorilerde (dövüş, su, olimpik...) sorgudaki sporla eşleşen fotoğraflar varsa yalnızca onlar kullanılır:
-  // güreş haberine boks ringi, yüzme haberine kano fotoğrafı gelmesin.
-  // Anahtar = foto id'sinde geçen parça; değer = o fotoğrafı uygun kılan İngilizce sorgu sözcükleri
-  const SPORT = { swim: /swim|pool/, rowing: /rowing boat|regatta|\browers?\b|scull|\bcrew\b/, kayak: /kayak|canoe|paddl/, wrestling: /wrestl/, boxing: /box(?!ing day)/, judo: /judo/,
-    weightlifting: /weightlift|snatch|clean|jerk/, snatch: /weightlift|snatch/, road: /road|cycl/, mtb: /mountain bik|mtb/,
-    climb: /climb|boulder/, marathon: /marathon|runner|running/, start: /marathon|runner|running/, finish: /marathon|runner|running/, sled: /hyrox|sled/, overhead: /crossfit/, mountain: /mountain(?! bik| run)|summit|alpin/, archery: /archer|arrow/, rings: /gymnast|rings/,
-    karate: /karate|kumite|kata\b/, taekwondo: /taekwondo|tekvando/, kickbox: /kickbox|kick box|muay/, fencing: /fenc|epee|sabre|foil/,
-    trail: /trail|ultra|mountain run|skyrun/, triathlon: /triathlon|ironman|duathlon|aquathlon|transition/, openwater: /open water|openwater|sea swim|channel swim/,
-    erg: /ergomet|rowing machine|indoor row|concept2/, sprint: /sprint|athletics|track and field|100m|200m|400m|hurdle/, longjump: /long jump|triple jump|high jump/,
+  // Çok branşlı kategorilerde (dövüş, su, olimpik...) ve ekipman/konu odaklı bilgi postlarında sorgudaki spor/ekipmanla eşleşen fotoğraflar seçilir:
+  // güreş haberine boks ringi, yüzme haberine kano, kettlebell yazısına TRX, protein yazısına magnezyum tozu gelmesin.
+  // Anahtar = foto id'sinde geçen parça; değer = o fotoğrafı uygun kılan İngilizce/Türkçe sorgu sözcükleri
+  const SPORT = {
+    swim: /swim|pool|yüzme/, rowing: /rowing boat|regatta|\browers?\b|scull|\bcrew\b/, kayak: /kayak|canoe|paddl/, wrestling: /wrestl|güreş/,
+    boxing: /\bboxing\b|boxer|punch|boks/, judo: /judo/, weightlifting: /weightlift|snatch|clean|jerk|halter/, snatch: /weightlift|snatch/,
+    road: /road|cycl|bisiklet/, mtb: /mountain bik|mtb/, climb: /climb|boulder|tırman/,
+    marathon: /marathon|runner|running|koşu|maraton/, start: /marathon|runner|running|koşu|maraton/, finish: /marathon|runner|running|koşu|maraton/,
+    track: /\btrack\b|runner|running|interval|sprint|tempo|koşu/,
+    sled: /hyrox|sled|kızak/, overhead: /crossfit|overhead|thruster|jerk/, mountain: /mountain(?! bik| run)|summit|alpin/,
+    archery: /archer|arrow|okçuluk/, rings: /gymnast|rings|halka/, karate: /karate|kumite|kata\b/, taekwondo: /taekwondo|tekvando/,
+    kickbox: /kickbox|kick box|muay/, fencing: /fenc|epee|sabre|foil|eskrim/, trail: /trail|ultra|mountain run|skyrun|patika/,
+    triathlon: /triathlon|ironman|duathlon|aquathlon|transition|triatlon/, openwater: /open water|openwater|sea swim|channel swim|açık su/,
+    erg: /ergomet|rowing machine|indoor row|concept2|damper|kürek/, rower: /ergomet|rowing machine|indoor row|concept2|damper|\brower\b|kürek/,
+    sprint: /sprint|athletics|track and field|100m|200m|400m|hurdle/, longjump: /long jump|triple jump|high jump/,
     javelin: /javelin|discus|shot put|hammer throw|throw/, gymnast: /gymnast|vault|balance beam|floor exercise/, bouldering: /boulder|climb/,
     ski: /\bski\b|skiing|skier|biathlon/, sailing: /sail|regatta|yacht/, sup: /stand up paddle|\bsup\b|paddleboard/, canoe: /canoe|kayak/,
     velodrome: /velodrome|track cycling|keirin/, shooting: /shooting|rifle|pistol|shotgun|skeet/, calisthenics: /calisthenic|street workout|handstand/,
-    ocr: /obstacle|\bocr\b|spartan|mud run|tough mudder/, strongman: /strongman|atlas stone|log press|yoke/ };
+    ocr: /obstacle|\bocr\b|spartan|mud run|tough mudder/, strongman: /strongman|atlas stone|log press|yoke/,
+    kb: /kettlebell|girya|\bkb\b/, medball: /wall\s*ball|med(icine)?\s*ball|sağlık topu/, "box-jumps": /box\s*jump|plyo|kutu/,
+    "rope-climb": /rope\s*climb|halat/, ropes: /battle\s*rope|halat/, barbell: /barbell|deadlift|\bsquat\b|bench\s*press|powerlift|halter/,
+    lift: /weightlift|barbell|deadlift|clean|jerk|snatch/, pullups: /pull-?up|chin-?up|muscle-?up|barfiks/,
+    chalk: /\bchalk\b|magnesium|magnezyum/, rest: /\brest\b|recover|fatigue|sleep|uyku|toparlanma|dinlen/,
+  };
   const fits = (id, q) => Object.entries(SPORT).some(([k, re]) => id.includes(k) && re.test(q.toLowerCase()));
   // Sorgu sırasıyla dönüşümlü seçim: her sorgudan (branştan) önce birer fotoğraf, sonra kalanlar
-  const perQuery = queries.map((q) => locals.filter((id) => fits(id, q)));
+  const perQuery = searchQueries.map((q) => locals.filter((id) => fits(id, q)));
   const match = [];
   for (let i = 0; perQuery.some((l) => l.length > i); i++) for (const l of perQuery) if (l[i] && !match.includes(l[i])) match.push(l[i]);
-  if (match.length) locals = match;
-  else {
-    // Kategoride sorguyla eşleşen foto yoksa (ör. yüzme haberi "olimpik" sınıflandı) tüm kütüphanede branşa göre ara;
-    // alakasız bir kategori fotoğrafı (okçuluk, halka) yüzme haberine girmesin
+  if (match.length < n) {
+    // Kategoride sorguyla eşleşen foto yoksa ya da yetersizse (ör. kettlebell haberi "bilim" sınıflandı, kb-rack "fonksiyonel"de) tüm kütüphanede ara
     const every = [...new Set(Object.values(LOCAL_BY_CAT).flat())];
-    const pq = queries.map((q) => every.filter((id) => fits(id, q)));
-    const m2 = [];
-    for (let i = 0; pq.some((l) => l.length > i); i++) for (const l of pq) if (l[i] && !m2.includes(l[i])) m2.push(l[i]);
-    if (m2.length) locals = m2;
-    // Çok branşlı kategoride hiç eşleşme yoksa kategori havuzundan rastgele foto KONMAZ (karate haberine güreş fotoğrafı gibi):
-    // Openverse denenir, o da yoksa post fotoğrafsız kalır ve paylaşılmaz
-    else if (MULTI_SPORT.has(category)) locals = [];
+    const pq = searchQueries.map((q) => every.filter((id) => fits(id, q)));
+    for (let i = 0; pq.some((l) => l.length > i); i++) for (const l of pq) if (l[i] && !match.includes(l[i])) match.push(l[i]);
   }
+  if (match.length) locals = match;
+  // Çok branşlı kategoride ya da belirgin bir konu anahtar kelimesi (kettlebell, protein/beslenme vb.) varken hiç eşleşme yoksa
+  // kategori havuzundan rastgele foto KONMAZ: Pixabay/Openverse denenir
+  else if (MULTI_SPORT.has(category) || subjects.length > 0) locals = [];
+  locals = locals.filter((id) => photoMatchesTopic({ id: `local:${id}`, alt: LOCAL_ALT[id] ?? id }, subjects));
   const usedLocal = new Set(out.map((o) => o.id));
   for (let i = 0; out.length < n && i < locals.length; i++) {
     const f = path.join(LOCAL, `${locals[i]}.webp`);
     if (fs.existsSync(f) && !usedLocal.has(`local:${locals[i]}`) && !usedIds.has(`local:${locals[i]}`)) out.push({ id: `local:${locals[i]}`, buf: fs.readFileSync(f), credit: "Foto: Pexels", alt: LOCAL_ALT[locals[i]] ?? locals[i], license: "Pexels lisansı" });
   }
   // Yerelde uygun foto yoksa Pixabay (etiket alaka süzgeçli)
-  for (const q of queries) { if (out.length < (locals.length ? Math.min(n, 1) : n)) await take(await pixabay(q, n)); }
-  // Son çare: Openverse (filigranlı/ilgisiz kaynaklar elenir)
-  for (const q of queries) { if (out.length < (hasLocal && locals.length ? Math.min(n, 1) : n)) await take(await openverse(q, n)); }
+  for (const q of searchQueries) { if (out.length < (locals.length ? Math.min(n, 1) : n)) await take(await pixabay(q, n)); }
+  // Son çare: Openverse (etiket/başlık alaka süzgeçli, filigranlı/ilgisiz kaynaklar elenir)
+  for (const q of searchQueries) { if (out.length < (hasLocal && locals.length ? Math.min(n, 1) : n)) await take(await openverse(q, n)); }
   return out;
 }

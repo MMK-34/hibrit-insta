@@ -553,7 +553,7 @@ async function prepareVerified(pick, srcItems, sourceName) {
       if (!g.post.officialInstagram && igSrc?.curated && igSrc.handle) g.post.officialInstagram = igSrc.handle;
       // Organizatör hesabı yalnızca kaydın yapılandırılmış instagram alanından (doğrulanmış kullanıcı adı)
       if (!g.post.officialInstagram && ownC21?.handle) g.post.officialInstagram = ownC21.handle;
-      const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 7), category: pick.category, images: srcItems.filter(usable).flatMap((s) => s.images ?? []) });
+      const photos = await pickPhotos({ post: g.post, pages: [g.post.officialSite, ...srcItems.map((x) => x.url), ...(draft.evidence ?? []).map((x) => x.url)], topic, want: Math.min(g.post.slides.length, 7), category: pick.category, kind: pick.kind, images: srcItems.filter(usable).flatMap((s) => s.images ?? []) });
       if (!photos.length) { log(`Foto bulunamadı (kategori ${pick.category}, sorgular: ${(g.post.imageQueries ?? []).join(" | ")}).`); lastFails = [{ model: "foto", item: "gorsel", note: "foto yok" }]; break; }
       await push(`İki doğrulayıcı da onayladı, görseller hazırlanıyor: ${String(g.post.slides[0]?.title ?? "").slice(0, 120)}`, { title: "Doğrulandı" });
       bump("approved");
@@ -638,7 +638,7 @@ async function repostOne(spec) {
   if (res) log("Yeniden paylaşıldı:", res.permalink ?? res.id);
 }
 
-async function pickPhotos({ post, pages, topic, want, category, images = [] }) {
+async function pickPhotos({ post, pages, topic, want, category, kind = "", images = [] }) {
   // Haber tek bir sporcunun başarısıysa (kullanıcı kuralı): kapakta o sporcunun fotoğrafı olur
   let person = [];
   if (post.athleteName) {
@@ -649,7 +649,7 @@ async function pickPhotos({ post, pages, topic, want, category, images = [] }) {
     if (person.length >= want) return person;
     for (const p of person) usedPhotos.add(p.id);
   }
-  const rest = await pickEventPhotos({ post, pages, topic, want: want - person.length, category, images, noStock: !!post.athleteName });
+  const rest = await pickEventPhotos({ post, pages, topic, want: want - person.length, category, kind, images, noStock: !!post.athleteName });
   if (post.athleteName && !person.length && !rest.length) log(`Sporcu haberi için ne sporcunun ne etkinliğin fotoğrafı bulundu; stok fotoğrafla paylaşılmaz (${post.athleteName}).`);
   return [...person, ...rest];
 }
@@ -665,9 +665,11 @@ function photoRuleOk(post, photos, kind = "") {
   return "";
 }
 
-async function pickEventPhotos({ post, pages, topic, want, category, images = [], noStock = false }) {
-  // Etkinlik fotoğrafları önceki postlarda kullanılmış olabilir (aynı etkinliğin takip/hikaye postu): tekrar kullanılabilir
-  const ev = await eventPhotos({ pages, instagram: post.officialInstagram, topic, n: want, eventName: post.eventName, images, usedIds: usedPhotos })
+async function pickEventPhotos({ post, pages, topic, want, category, kind = "", images = [], noStock = false }) {
+  // Belirli bir olaya bağlı olmayan bilgi/araştırma postlarında kaynak haber sayfasının rastgele kapak fotoğrafı (ör. ünlü portresi)
+  // etkinlik görseli diye çekilmez; doğrudan konuya uygun stok/kütüphane fotoğrafı aranır (denetim G4/G8).
+  const isEventlessInfo = ["bilgi", "arastirma", "stok"].includes(kind) && !post.eventName && !post.athleteName;
+  const ev = isEventlessInfo ? [] : await eventPhotos({ pages, instagram: post.officialInstagram, topic, n: want, eventName: post.eventName, images, usedIds: usedPhotos })
     .catch((e) => { if (isCreditError(e)) throw e; log("Etkinlik fotoğrafı hatası:", String(e?.message ?? e).slice(0, 160)); return []; });
   if (ev.length) log(`Etkinlik fotoğrafı: ${ev.length} (${[...new Set(ev.map((p) => p.source))].join(", ")})`);
   // Kullanıcı kuralı (2026-11-22, kesin): belirli bir olay/etkinlik anlatılıyorsa YALNIZCA o olayın kendi görüntüleri kullanılır
@@ -681,7 +683,7 @@ async function pickEventPhotos({ post, pages, topic, want, category, images = []
   if (noStock) return ev.filter((p) => p.specific);
   const need = want - ev.length;
   if (need <= 0) return ev;
-  const cands = await findImages(post.imageQueries ?? [], need + 3, category, new Set([...usedPhotos, ...ev.map((p) => p.id)]));
+  const cands = await findImages(post.imageQueries ?? [], need + 3, category, new Set([...usedPhotos, ...ev.map((p) => p.id)]), topic);
   const stock = (await screenPhotos(cands, topic, "stock")).slice(0, need);
   if (cands.length > stock.length) log(`Görsel denetim: ${cands.length - stock.length} stok foto konuyla ilgisiz bulundu, kullanılmadı.`);
   return [...ev, ...stock];
@@ -744,7 +746,7 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     if (badIdx.size) {
       const keep = photos.filter((_, i) => !badIdx.has(i));
       const ownOnly = post.athleteName || post.eventName || photos.some((p) => p.specific);
-      const extra = ownOnly ? [] : await findImages(post.imageQueries ?? [], badIdx.size + 2, category, new Set([...usedPhotos, ...photos.map((p) => p.id)]));
+      const extra = ownOnly ? [] : await findImages(post.imageQueries ?? [], badIdx.size + 2, category, new Set([...usedPhotos, ...photos.map((p) => p.id)]), dtopic);
       const fresh = (await screenPhotos(extra, dtopic, "stock")).slice(0, badIdx.size);
       if (keep.length + fresh.length) photos = [...keep, ...fresh];
     }
@@ -1180,7 +1182,7 @@ async function publishStock() {
     const post = item.post;
     const slug = `${today}/stok-${Date.now().toString(36)}`;
     const outDir = path.join("out", slug);
-    const photos = await findImages(post.imageQueries ?? [], Math.min(post.slides.length, 4), item.category, usedPhotos);
+    const photos = await findImages(post.imageQueries ?? [], Math.min(post.slides.length, 4), item.category, usedPhotos, post.slides?.[0]?.title ?? item.topic);
     if (!photos.length) return await failAttempt("foto bulunamadı");
     const files = await renderPost({ ...post, photos, category: item.category, source: item.sourceName, dateLabel }, outDir);
     // Stok postu da yayından önce tasarım denetiminden geçer (denetim G4: protein yazısına magnezyum tozu fotoğrafı düştü)

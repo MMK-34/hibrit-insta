@@ -184,7 +184,7 @@ async function pixabay(q, n) {
   const key = process.env.PIXABAY_API_KEY;
   if (!key) return [];
   const j = await getJson(`https://pixabay.com/api/?key=${encodeURIComponent(key)}&q=${encodeURIComponent(q.slice(0, 100))}&image_type=photo&orientation=vertical&safesearch=true&min_width=1000&per_page=${Math.max(n * 3, 10)}`);
-  return (j?.hits ?? []).filter((h) => h.largeImageURL && queryRelevant(q, h.tags)).map((h) => ({ id: `pixabay:${h.id}`, url: h.largeImageURL, credit: "Foto: Pixabay", alt: String(h.tags ?? ""), license: "Pixabay İçerik Lisansı" }));
+  return (j?.hits ?? []).filter((h) => h.largeImageURL && queryRelevant(q, h.tags) && !/(ai[ -]?generated|generated|artificial intelligence|midjourney|stable diffusion|render|3d|illustration)/i.test(String(h.tags ?? ""))) // kullanıcı kuralı: yapay zekâ görseli yok.map((h) => ({ id: `pixabay:${h.id}`, url: h.largeImageURL, credit: "Foto: Pixabay", alt: String(h.tags ?? ""), license: "Pixabay İçerik Lisansı" }));
 }
 
 async function openverse(q, n) {

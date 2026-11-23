@@ -4,13 +4,11 @@
       "command(node scripts/agy-fetch.mjs)",
       "command(git status --short)",
       "command(git diff --stat)",
-      "read_file(C:/Users/Mehmet Kuyucu/Desktop/cf/insta/ORTAK-GOREV.md)",
-      "read_file(C:UsersMehmet KuyucuDesktopcfinstaORTAK-GOREV.md)"
+      "read_file(C:/Users/Mehmet Kuyucu/Desktop/cf/insta/ORTAK-GOREV.md)"
     ],
     "deny": [
       "read_file(.env)",
-      "read_file(C:/Users/Mehmet Kuyucu/Desktop/cf/insta/.env)",
-      "read_file(C:UsersMehmet KuyucuDesktopcfinsta.env)"
+      "read_file(C:/Users/Mehmet Kuyucu/Desktop/cf/insta/.env)"
     ]
   }
 }

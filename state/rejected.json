@@ -2069,5 +2069,97 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-23T05:29:41.381Z",
+    "title": "How a dairy shed on a Jamberoo hillside forged an unlikely world champion",
+    "url": "https://www.illawarramercury.com.au/story/9234567/nardia-guillaumier-four-time-world-champ-in-indoor-rowing/",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "tekrar",
+        "item": "tekrar",
+        "note": "aynı haber: Üç kez HYROX dünya şampiyonu olan sporcu bu sezon sonunda bırakıyor"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-23T05:31:21.547Z",
+    "title": "Yaklaşan yarış: HYROX London 2026 (London, UK) 2026-12-02 – 2026-12-07",
+    "url": "https://hyrox.com/find-my-race/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "tarih",
+        "note": "Kaynaklar denetlenemedi (sourceAccessible=false)"
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "yer",
+        "note": "Kaynaklar denetlenemedi (sourceAccessible=false)"
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "resmi_ad",
+        "note": "Kaynaklar denetlenemedi (sourceAccessible=false)"
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "sayilar",
+        "note": "Kaynaklar denetlenemedi (sourceAccessible=false)"
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak_satiri",
+        "note": "Kaynak sayfaları okunamadığı için doğrulanamadı"
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "baslik",
+        "note": "Kaynaklar doğrulanamadığı için başlık teyit edilemedi"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-23T05:33:00.088Z",
+    "title": "Yaklaşan yarış: Dubai Fitness Championship 2026 (Dubai, BAE) 2026-12-01 – 2026-12-31",
+    "url": "https://www.instagram.com/dxbfitnesschamp/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "tarih",
+        "note": "Kaynak metin veya sağlanan bağlantıda verilen 1-31 Aralık 2026 tarihleri doğrulanmamaktadır."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "tarih",
+        "note": "Kaynak doğrulanamadı. 1-31 Aralık tarihleri arasında bir yarışma düzenlendiğine dair kanıt bulunamadı."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-23T05:33:25.230Z",
+    "title": "Wolf Haven Competition: geçmiş edisyonlarda neler oldu?",
+    "url": "",
+    "kind": "bilgi",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

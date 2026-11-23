@@ -3366,6 +3366,28 @@
         "cal:hyrox-2026-dubai"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMirAFBVV95cUxPSkxrUTZ2NEZxV1NvU2dDRmRNOGhLdlBQTU1Kb3RiZHBFdGZQazBxUU9Yak1qMFM5clMweFVwTkVPSTF2Y0RRc241MmdoT2F1WnQ3Z0VvNkZYNFVQcmpocDVZY191c1NtU2Z4NmZ4c1cyazR6MXdxaXdhN2RfbHNGQ3JJZE9RMnFVdWpwQVZfN1V3OUZMQ2pQc2FQb05tRVZLUXhxSDVVNDZfSXd3"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "cal:hyrox-2026-london",
+        "cal:hyrox-london-excel-2026-12"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "cal:dubai-fitness-championship-2026-12"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -3459,10 +3481,10 @@
       "summarySent": true
     },
     "2026-11-23": {
-      "drafts": 4,
+      "drafts": 8,
       "approved": 0,
-      "rejected": 4,
-      "aiCalls": 9
+      "rejected": 8,
+      "aiCalls": 18
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",

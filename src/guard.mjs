@@ -107,8 +107,9 @@ export function guardPost(post, { sourceName }) {
   // Kaynak adı da süzülür: yalnızca harf, rakam, boşluk ve . ' & , - karakterleri; en fazla 80 karakter, kelime sınırında
   // Alan adı/kullanıcı adı biçimindeki kaynak adı yayıncı adına çevrilir ("@olympos.games" → "Olympos", "Vietnam.vn" → "Vietnam");
   // yoksa link süzgecine takılıp her seferinde eleniyordu (BF1)
-  const src = String(sourceName ?? "").normalize("NFKC").replace(/[âÂîÎûÛ]/g, (c) => HAT[c]).replace(/@/g, "")
-    .replace(/(\p{L}[\p{L}\p{N}-]*)(?:\.[\p{L}\p{N}-]+)*\.\p{Ll}{2,}(?![\p{L}\p{N}])/gu, (m, a) => a.charAt(0).toUpperCase() + a.slice(1)).replace(URL_RE, "").replace(/[^\p{L}\p{N} .'&,-]/gu, "").replace(/\s+/g, " ").trim().replace(/^(.{80}).+$/s, (m) => m.slice(0, 81).replace(/\s+\S*$/, "")) || "Hibrit Portal derlemesi"; // kelime ortasında kesilmez
+  // (Antigravity incelemesi: önce protokol, "www."/"m." ön eki ve yol kısmı atılır; "www.barbend.com/haber/1" → "Barbend")
+  const src = String(sourceName ?? "").normalize("NFKC").replace(/[âÂîÎûÛ]/g, (c) => HAT[c]).replace(/https?:\/\//gi, "").replace(/@/g, "")
+    .replace(/(?<![\p{L}\p{N}_.-])(?:www\.|m\.)?(\p{L}[\p{L}\p{N}_-]*)(?:\.[\p{L}\p{N}_-]+)*\.\p{Ll}{2,}(?:[/?#]\S*)?(?![\p{L}\p{N}])/gu, (m, a) => a.charAt(0).toUpperCase() + a.slice(1)).replace(URL_RE, "").replace(/[^\p{L}\p{N} .'&,-]/gu, "").replace(/\s+/g, " ").trim().replace(/^(.{80}).+$/s, (m) => m.slice(0, 81).replace(/\s+\S*$/, "")) || "Hibrit Portal derlemesi"; // kelime ortasında kesilmez
   // Son açıklama en fazla 2200 karakter: gerekirse gövde kısaltılır; "Kaynak:" satırı ve etiketler korunur
   const tail = `\n\nKaynak: ${src}${tags.length ? `\n\n${tags.join(" ")}` : ""}`;
   const room = MAX_CAPTION - tail.length;

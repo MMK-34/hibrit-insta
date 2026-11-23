@@ -337,8 +337,10 @@ async function main() {
     if (isCreditError(e)) throw e; // kredi bitti: üst seviyede duraklat
     console.error(e);
     log("Haber toplama/seçim hatası:", e.message);
-    // Geçici yapay zekâ kesintisi (Gemini 503): uyarı ve hata kodu yok, yedeklere geçilir (BF1)
-    if (!isTransientAi(e)) {
+    // Geçici yapay zekâ kesintisi (Gemini 503): uyarı ve hata kodu yok; çalışma burada biter (stok/tasarım denetimi de yapay zekâ ister,
+    // deneme hakkı yakmasın — Antigravity incelemesi). Sonraki saatlik çalışmada yeniden denenir.
+    if (isTransientAi(e)) { log("Yapay zekâ geçici olarak yanıt vermiyor; bu çalışma atlandı."); return; }
+    {
       await notify(`⚠️ Hibrit Portal: haber seçimi başarısız, yedeklere geçiliyor:\n${e.message}`);
       process.exitCode = 1;
     }
@@ -420,7 +422,8 @@ async function main() {
  * İkinci deneme de geçmezse null döner ve gerekçe state/rejected.json'a yazılır.
  */
 // Kaynak metinlerden yarış kategorisi cümleleri çıkarılır: yazar kategori adı yazmasın (kural: kategori yazılmaz)
-const CAT_WORDS = /\b(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX|Masters?|Teens?|Hybrid|Pro|Open|Doubles|Relay)\b/; // guard.mjs ile hizalı (BF1)
+// Pro/Open/Doubles/Relay burada YOK (Antigravity incelemesi): kaynakta cümleyi bütünüyle silip sonuç/rekor bilgisini kaybettiriyordu; yazıdaki kategori adı guard.mjs'te yakalanır
+const CAT_WORDS = /\b(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX|Masters?|Teens?|Hybrid)\b/;
 const dropCategories = (txt) => String(txt ?? "").split(/(?<=[.!?])\s+/).filter((s) => !(/kategori|divizyon|division|categor/i.test(s) && CAT_WORDS.test(s))).join(" ");
 
 // Etkinlik bazlı tekrar önleme (kullanıcı kuralı 2026-11-22: Gazi Yarı Maratonu farklı sitelerden 5 kez paylaşıldı).
@@ -457,7 +460,7 @@ function recentSameEvent({ eventName = "", text = "", category = "", followup = 
 // Aynı haberin farklı kaynaktan tekrarı (etkinlik adı olmayan haberler dahil; Strava-HYROX iki kez çıktı):
 // kapak başlığı son 7 günün başlıklarıyla kelime kökü (ilk 5 harf) örtüşmesine göre karşılaştırılır.
 // Farklı etkinlikler (HYROX Barcelona / HYROX Kahire sonuçları) yalnızca neredeyse aynı başlıkta (0,9) tekrar sayılır.
-const STOPW = new Set("için gibi daha olan oldu olarak ile bir iki üç yeni ilk son kadar sonra önce gün günü yılı yıl yarış yarışı yarışında koşu koşusu açıklandı açıldı açılıyor sonuçları sonuçlar kayıtları kayıtlar belli 2025 2026 2027 2028 dünya şampiyon şampiyonu şampiyonası sporcu sporcular rekor rekoru kazandı kazanan birinci derece".split(" ")); // genel kelimeler alakasız haberleri eşlemesin (BF1)
+const STOPW = new Set("için gibi daha olan oldu olarak ile bir iki üç yeni ilk son kadar sonra önce gün günü yılı yıl yarış yarışı yarışında koşu koşusu açıklandı açıldı açılıyor sonuçları sonuçlar kayıtları kayıtlar belli 2025 2026 2027 2028 sporcu sporcular kazandı kazanan birinci derece".split(" ")); // dolgu kelimeleri (BF1); "dünya/rekor/şampiyonası" konu belirler, çıkarılmaz (Antigravity incelemesi)
 const titleToks = (t) => new Set(String(t ?? "").toLocaleLowerCase("tr").replace(/[’']\S*/g, "").split(/[^a-z0-9çğıöşü]+/).filter((w) => w.length >= 3 && !STOPW.has(w)).map((w) => w.slice(0, 5)));
 function titleSim(a, b) { const A = titleToks(a), B = titleToks(b); if (Math.min(A.size, B.size) < 3) return 0; let n = 0; for (const x of A) if (B.has(x)) n++; return n / Math.min(A.size, B.size); }
 function recentSameStory(headline, eventName = "", athlete = "") {

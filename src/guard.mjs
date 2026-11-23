@@ -105,7 +105,10 @@ export function guardPost(post, { sourceName }) {
   if (!tags.some((h) => h.toLowerCase() === "#hibritportal")) { if (tags.length >= MAX_TAGS) tags.pop(); tags.push("#hibritportal"); }
   // Kaynak her açıklamanın sonunda (kullanıcı kuralı)
   // Kaynak adı da süzülür: yalnızca harf, rakam, boşluk ve . ' & , - karakterleri; en fazla 80 karakter, kelime sınırında
-  const src = String(sourceName ?? "").normalize("NFKC").replace(/[âÂîÎûÛ]/g, (c) => HAT[c]).replace(URL_RE, "").replace(/[^\p{L}\p{N} .'&,-]/gu, "").replace(/\s+/g, " ").trim().replace(/^(.{80}).+$/s, (m) => m.slice(0, 81).replace(/\s+\S*$/, "")) || "Hibrit Portal derlemesi"; // kelime ortasında kesilmez
+  // Alan adı/kullanıcı adı biçimindeki kaynak adı yayıncı adına çevrilir ("@olympos.games" → "Olympos", "Vietnam.vn" → "Vietnam");
+  // yoksa link süzgecine takılıp her seferinde eleniyordu (BF1)
+  const src = String(sourceName ?? "").normalize("NFKC").replace(/[âÂîÎûÛ]/g, (c) => HAT[c]).replace(/@/g, "")
+    .replace(/(\p{L}[\p{L}\p{N}-]*)(?:\.[\p{L}\p{N}-]+)*\.\p{Ll}{2,}(?![\p{L}\p{N}])/gu, (m, a) => a.charAt(0).toUpperCase() + a.slice(1)).replace(URL_RE, "").replace(/[^\p{L}\p{N} .'&,-]/gu, "").replace(/\s+/g, " ").trim().replace(/^(.{80}).+$/s, (m) => m.slice(0, 81).replace(/\s+\S*$/, "")) || "Hibrit Portal derlemesi"; // kelime ortasında kesilmez
   // Son açıklama en fazla 2200 karakter: gerekirse gövde kısaltılır; "Kaynak:" satırı ve etiketler korunur
   const tail = `\n\nKaynak: ${src}${tags.length ? `\n\n${tags.join(" ")}` : ""}`;
   const room = MAX_CAPTION - tail.length;

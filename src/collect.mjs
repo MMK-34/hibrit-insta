@@ -128,7 +128,13 @@ export async function upcomingEvents() {
     if (!e.city || !e.name) return false; // bozuk kayıt (G10: iF3 city undefined)
     if (/athx/i.test(e.name) && !tr) return false; // kullanıcı kuralı: yurt dışı ATHX aday olmaz
     // Kullanıcı kuralı: koşudan yalnızca büyük ve popüler yarışlar. Takvimdeki küçük koşu/trail kayıtları (sitede görünür) bota aday olmaz (BF1-5)
-    if (["kosu", "trail"].includes(e.type) && !BIG_RACES.some((re) => re.test(String(e.name ?? "")))) return false;
+    // Antigravity incelemesi: dünya maraton majorları da kabul; büyük harfli adlar (İSTANBUL YARI MARATONU) Türkçe başlık düzenine çevrilip denenir
+    if (["kosu", "trail"].includes(e.type)) {
+      const nm = String(e.name ?? "");
+      const title = nm.toLocaleLowerCase("tr").replace(/(^|\s)(\p{L})/gu, (m, s, c) => s + c.toLocaleUpperCase("tr"));
+      const major = /(berlin|londra|london|boston|chicago|new york|tokyo|sidney|sydney) (maratonu|marathon)/i.test(nm);
+      if (!major && !BIG_RACES.some((re) => re.test(nm) || re.test(title))) return false;
+    }
     return d >= 0 && d <= (tr ? 30 : 10);
   }).map((e) => ({
     id: `cal:${e.id}`,

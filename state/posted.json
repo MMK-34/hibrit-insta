@@ -3490,6 +3490,20 @@
         "https://news.google.com/rss/articles/CBMipgFBVV95cUxQakFhZDNIUGtTZXBJR2RiWE1Vck14bGNENmU1UzZPUGM1dFoxTHVEdUZ6S0IwR3ZZVk1rOFFUS2o5bUdYdVdZNHo1c2ltbGttQnl3STJQTFJyZkxIbmFhRHNuQzJWRG43ZXNnenBPczhaQVBfVzFOQnVveks1TTFjQ1NFc3p6c3lmN1VISVh1Rzc4Wl9EMnUyN3lvQ2Q1Mk83UWNRZGpR"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "cal:hyrox-2026-milan"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "cal:circle21-e7853b03-37f9-439f-a592-ba4dcbe803be"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -3583,10 +3597,10 @@
       "summarySent": true
     },
     "2026-11-23": {
-      "drafts": 16,
+      "drafts": 18,
       "approved": 2,
-      "rejected": 13,
-      "aiCalls": 42
+      "rejected": 15,
+      "aiCalls": 49
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3613,7 +3627,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-23T07:42:52.023Z",
+  "lastRunAt": "2026-11-23T08:43:00.439Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

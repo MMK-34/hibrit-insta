@@ -2226,5 +2226,46 @@
         "note": "aynı etkinlik: Kar Spor İda Ultra Maraton"
       }
     ]
+  },
+  {
+    "at": "2026-11-23T08:46:08.078Z",
+    "title": "Yaklaşan yarış: HYROX Milan 2026 (Milan, Italy) 2026-12-03 – 2026-12-06",
+    "url": "https://hyrox.com/find-my-race/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "tarih",
+        "note": "Kaynak sayfaya erişilemediği için tarih doğrulanamadı."
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "yer",
+        "note": "Kaynak sayfaya erişilemediği için yer doğrulanamadı."
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "resmi_ad",
+        "note": "Kaynak sayfaya erişilemediği için resmi ad doğrulanamadı."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-23T08:47:56.962Z",
+    "title": "Yaklaşan yarış: iF3 World Record Trials \"FRAN\" - LIVE EVENT (undefined, Belçika) 2026-12-03 – 2026-12-06",
+    "url": "https://circle21.events/event?competitionId=e7853b03-37f9-439f-a592-ba4dcbe803be",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "yer",
+        "note": "Kaynak metninde (Circle 21 sayfasında) Belçika geçtiğine dair bir ibare yer almamaktadır; bu detay kaynakta doğrulanamadı."
+      }
+    ]
   }
 ]

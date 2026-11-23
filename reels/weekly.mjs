@@ -72,7 +72,7 @@ const cands = SHORT
   : state.posts.filter((p) => p.media && !p.deleted && p.audited !== "yanlis" && ["haber", "duyuru", "hikaye"].includes(p.kind) && Date.parse(p.at ?? 0) > since);
 const IG = process.env.IG_ACCESS_TOKEN, IGH = IG?.startsWith("IGAA") ? "graph.instagram.com" : "graph.facebook.com";
 for (const p of cands) {
-  const j = await fetch(`https://${IGH}/v23.0/${p.media}?fields=caption&access_token=${IG}`).then((r) => r.json()).catch(() => ({}));
+  const j = await fetch(`https://${IGH}/v23.0/${p.media}?fields=caption&access_token=${IG}`, { signal: AbortSignal.timeout(15000) }).then((r) => r.json()).catch(() => ({}));
   p.caption = String(j.caption ?? "").replace(/\n*#[\s\S]*$/, "").slice(0, 1500);
 }
 const pool = cands.filter((p) => p.caption.length > 60);
@@ -133,7 +133,7 @@ ${plan.map((it, k) => `<oge k="${k}">\n${JSON.stringify({ headline: it.headline,
 Yalnızca JSON: {"items":[{"k":0,"ok":true,"neden":""}]}` });
 verdict = Array.isArray(chk?.items) ? chk.items : [];
 }
-const CAT = /\b(Elite|Scaled|RX|Rx|Masters?|Beginner|Intermediate|Advanced|Teens?)\b|ücret|TL\b|₺|\$|€/;
+const CAT = /\b(Elite|Scaled|RX|Rx|Masters?|Beginner|Intermediate|Advanced|Teens?|Pro Doubles|Pro Division|Doubles (Women|Men|Mixed)|Relay|(Open|Pro) (Women|Men|Doubles|Division)|Age Groups?)\b|ücret|TL\b|₺|\$|€|£/i;
 plan = plan.filter((it, k) => {
   const v = verdict.find((x) => x.k === k);
   // Türkçe karakter şartı: 8+ kelimelik Türkçe metinde hiç ç/ğ/ı/ö/ş/ü/İ olmaması model çıktısının ASCII'ye bozulduğunu gösterir (2026-11-22, Gemini)
@@ -169,7 +169,7 @@ async function igVideos(handle, eventName, own = false) {
   const t = process.env.IG_DISCOVERY_TOKEN, id = process.env.IG_USER_ID;
   if (!handle || !t) return [];
   const f = `business_discovery.username(${handle}){media.limit(${SHORT ? 100 : 40}){media_type,timestamp,caption,media_url}}`;
-  const j = await fetch(`https://graph.facebook.com/v23.0/${id}?fields=${encodeURIComponent(f)}&access_token=${t}`).then((r) => r.json()).catch(() => ({}));
+  const j = await fetch(`https://graph.facebook.com/v23.0/${id}?fields=${encodeURIComponent(f)}&access_token=${t}`, { signal: AbortSignal.timeout(15000) }).then((r) => r.json()).catch(() => ({}));
   const ws = distinct(eventName);
   const maxAge = (SHORT ? 730 : 12) * 864e5;
   return (j.business_discovery?.media?.data ?? []).filter((m) => m.media_type === "VIDEO" && m.media_url && Date.parse(m.timestamp) > Date.now() - maxAge)
@@ -303,7 +303,7 @@ const EL = { "xi-api-key": process.env.ELEVENLABS_API_KEY, "content-type": "appl
 let musicOk = false;
 for (let i = 0; i < 4 && !musicOk; i++) {
   if (i) await new Promise((r) => setTimeout(r, 30000 * i));
-  const mr = await fetch("https://api.elevenlabs.io/v1/music?output_format=mp3_44100_128", { method: "POST", headers: EL, body: JSON.stringify({ prompt: "Light, upbeat, modern instrumental background music for a weekly sports news recap video. Driving but soft electronic beat around 118 BPM, warm synth chords, subtle plucks, motivating and positive, unobtrusive under a voiceover, no vocals, steady energy, clean ending.", music_length_ms: 60000, force_instrumental: true }) }).catch(() => null);
+  const mr = await fetch("https://api.elevenlabs.io/v1/music?output_format=mp3_44100_128", { method: "POST", headers: EL, body: JSON.stringify({ prompt: "Light, upbeat, modern instrumental background music for a weekly sports news recap video. Driving but soft electronic beat around 118 BPM, warm synth chords, subtle plucks, motivating and positive, unobtrusive under a voiceover, no vocals, steady energy, clean ending.", music_length_ms: 60000, force_instrumental: true }), signal: AbortSignal.timeout(90000) }).catch(() => null);
   if (mr?.ok) { fs.writeFileSync(path.join(A, "music.mp3"), Buffer.from(await mr.arrayBuffer())); musicOk = true; }
   else log("müzik denemesi başarısız:", mr?.status ?? "ağ", mr ? (await mr.text()).slice(0, 120) : "");
 }
@@ -401,10 +401,10 @@ const [url] = await uploadFiles([out], `reels/${today}${SHORT ? "-kisa" : ""}`);
 const code = `r${crypto.randomBytes(4).toString("hex")}`;
 const repo = process.env.GH_REPO, gh = { authorization: `Bearer ${process.env.GH_TOKEN}`, accept: "application/vnd.github+json", "user-agent": "hibrit-insta" };
 const qp = `https://api.github.com/repos/${repo}/contents/state/reel-queue.json`;
-const cur = await fetch(`${qp}?ref=main`, { headers: gh }).then((r) => (r.ok ? r.json() : null));
+const cur = await fetch(`${qp}?ref=main`, { headers: gh, signal: AbortSignal.timeout(15000) }).then((r) => (r.ok ? r.json() : null));
 const q = cur ? JSON.parse(Buffer.from(cur.content, "base64").toString("utf8") || "[]") : [];
 q.push({ code, video: url, caption, title: SHORT ? `Kısa duyuru: ${final[0].headline}` : `Haftalık bülten ${today}`, at: new Date().toISOString() });
-const put = await fetch(qp, { method: "PUT", headers: gh, body: JSON.stringify({ message: `reels: haftalık bülten ${today} onaya gönderildi`, branch: "main", content: Buffer.from(JSON.stringify(q, null, 2) + "\n").toString("base64"), ...(cur ? { sha: cur.sha } : {}) }) });
+const put = await fetch(qp, { method: "PUT", headers: gh, signal: AbortSignal.timeout(20000), body: JSON.stringify({ message: `reels: haftalık bülten ${today} onaya gönderildi`, branch: "main", content: Buffer.from(JSON.stringify(q, null, 2) + "\n").toString("base64"), ...(cur ? { sha: cur.sha } : {}) }) });
 if (!put.ok) throw new Error(`kuyruk yazılamadı: ${put.status}`);
 await notify(`🎬 ONAY BEKLEYEN ${KIND} (kod: ${code})\n\nVideo: ${url}\n\n${qaWarn ? `⚠️ Otomatik görsel kontrol notu (izlerken bak): ${qaWarn}\n\n` : ""}Onaylamak için bu issue'ya ilk satırı "ONAY ${code}" olan bir yorum yaz; istemiyorsan "RET ${code}".\n\n--- Açıklama ---\n${caption}`);
 if (SHORT) await dropShort();

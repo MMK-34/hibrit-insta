@@ -240,7 +240,7 @@ async function main() {
   if (!DRY && hour >= 21 && state.insDay !== today) {
     try {
       const r = await collectInsights(state);
-      state.insDay = today; saveState();
+      if (r.n > 0 || !r.err) { state.insDay = today; saveState(); }
       log(`Etkileşim verisi: ${r.n} post güncellendi${r.err ? ` (hata: ${r.err})` : ""}`);
       if (r.err && !r.n) await push(`Etkileşim verisi alınamadı: ${r.err}`, { title: "Etkileşim", level: "warn" });
       if (now.getDay() === 0) { const sum = weeklySummary(state); if (sum) await notify(sum); }
@@ -687,8 +687,8 @@ function photoRuleOk(post, photos, kind = "") {
   if (!photos.length) return "fotoğraf yok";
   if (post.athleteName && !(photos[0].person || photos.every((p) => p.specific))) return `sporcu haberi (${post.athleteName}) ama kapakta sporcunun/etkinliğin kendi fotoğrafı yok`;
   if (photos.some((p) => p.specific) && photos.some((p) => !p.specific)) return "etkinliğin kendi fotoğrafları ile stok fotoğraf karışmış";
-  // Haber/duyuru/takip: belirli bir olay anlatılır, stok yok (denetim 2026-11-22: etkinlik adı boş haberler stokla tamamlanıyordu)
-  if (["haber", "duyuru", "takip"].includes(kind) && !photos.every((p) => p.specific || p.person)) return `${kind} postu ama fotoğraflar haberin kendisinden değil (stok)`;
+  // Haber/duyuru/takip/hikaye/istatistik: belirli bir olay anlatılır, stok yok (denetim 2026-11-22: etkinlik adı boş haberler stokla tamamlanıyordu)
+  if (["haber", "duyuru", "takip", "hikaye", "istatistik"].includes(kind) && !photos.every((p) => p.specific || p.person)) return `${kind} postu ama fotoğraflar haberin kendisinden değil (stok)`;
   if (post.eventName && !photos.every((p) => p.specific || p.person)) return `etkinlik haberi (${post.eventName}) ama fotoğraflar etkinliğin kendisinden değil`;
   return "";
 }
@@ -773,16 +773,23 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
     const badIdx = new Set(dc.issues.filter((i) => i.fix === "foto_degistir" && photos.length).map((i) => (i.slide - 1) % photos.length));
     if (badIdx.size) {
       const keep = photos.filter((_, i) => !badIdx.has(i));
-      const ownOnly = post.athleteName || post.eventName || photos.some((p) => p.specific);
+      const ownOnly = post.athleteName || post.eventName || photos.some((p) => p.specific || p.person) || ["haber", "duyuru", "takip", "hikaye", "istatistik"].includes(kind);
       const extra = ownOnly ? [] : await findImages(post.imageQueries ?? [], badIdx.size + 2, category, new Set([...usedPhotos, ...photos.map((p) => p.id)]), dtopic);
-      const fresh = (await screenPhotos(extra, dtopic, "stock")).slice(0, badIdx.size);
-      if (keep.length + fresh.length) photos = [...keep, ...fresh];
+      const fresh = extra.length ? (await screenPhotos(extra, dtopic, "stock")).slice(0, badIdx.size) : [];
+      if (!(keep.length + fresh.length)) {
+        log("Tasarım denetimi: kusurlu fotoğrafın yerine geçecek uygun fotoğraf yok, yayınlanmadı.");
+        await push(`Fotoğraf tasarım denetiminden geçmedi ve yerine uygun fotoğraf yok: ${String(post.slides[0]?.title ?? "").slice(0, 100)}`, { title: "Tasarım" });
+        return null;
+      }
+      photos = [...keep, ...fresh];
+      const badAfter = photoRuleOk(post, photos, kind);
+      if (badAfter) { log("Tasarım sonrası fotoğraf kuralı:", badAfter); return null; }
     }
     files = await renderPost({ ...post, photos, eventLogo: logoUse, category, source: sourceName, dateLabel }, outDir);
     const dc2 = await designCheck(files, { topic: dtopic });
     brandSeen = !!dc2.brand;
-    if (!dc2.ok) {
-      const why = dc2.issues.map((i) => `slayt ${i.slide}: ${i.problem}`).join(" | ");
+    if (dc2.failed || !dc2.ok) {
+      const why = dc2.failed ? "tasarım denetimi yapılamadı" : dc2.issues.map((i) => `slayt ${i.slide}: ${i.problem}`).join(" | ");
       log("Tasarım denetimi ikinci kez geçmedi, yayınlanmadı:", why);
       await push(`Tasarım denetimi geçmedi, post paylaşılmadı: ${String(post.slides[0]?.title ?? "").slice(0, 100)}\nNeden: ${why.slice(0, 300)}`, { title: "Tasarım" });
       return null;
@@ -818,7 +825,7 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   const res = await publish(urls, caption, { collaborators });
   if (collaborators.length) { state.collabInvites[evHandle] = new Date().toISOString(); log("Collab daveti gönderildi:", `@${evHandle}`); }
   todayCount++; // günlük sınır aynı çalışmadaki yayınları da saysın (denetim G1: DM/seri/ana döngü birlikte 10u aşabiliyordu)
-  state.posts.push({ day: today, ids, kind, photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, cover: urls[0], title, headline: post.slides[0]?.title, eventName: post.eventName || undefined, athlete: post.athleteName || undefined, at: new Date().toISOString(),
+  state.posts.push({ day: today, ids, kind, photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, cover: urls[0], title, headline: post.slides[0]?.title, eventName: post.eventName || undefined, at: new Date().toISOString(),
     // Haftalık bülten Reels'i video ararken kullanır: yarışın doğrulanmış hesabı, haberin sporcusu
     ig: evHandle || undefined, athlete: post.athleteName || undefined, athleteIg: post.athleteInstagram || undefined,
     // Yayın sonrası denetim için (denetimden sonra silinir)
@@ -1017,7 +1024,7 @@ async function processApprovals() {
     try {
       const res = item.video ? await publishReel(item.video, item.caption, item.cover ?? "") : await publish(item.urls, item.caption);
       if (item.video) state.reelsDone = [...(state.reelsDone ?? []), code].slice(-50);
-      else todayCount++;
+      todayCount++;
       state.posts.push({ day: today, ids: item.ids, kind: item.kind, photos: item.photos, media: res.id, permalink: res.permalink, cover: item.cover ?? item.urls[0], title: item.title, headline: item.headline, approved: code, at: new Date().toISOString() });
       saveState();
       log("Onaylı zamanlı post yayında:", res.permalink);
@@ -1185,6 +1192,8 @@ async function publishStock() {
     await notify(`⚠️ Hibrit Portal: ${e.message}`);
     return;
   }
+  // Stok kuyruğundaki ilk sağlam öğe için bilgi postu kotası önce kontrol edilir (kota doluyken kuyruk boşa değiştirilmez)
+  if (!STOCK && infoToday >= (POSTING.maxInfoPerDay ?? 1)) { log("Stok: bugünkü bilgi postu kotası dolu, atlandı."); return; }
   // Süzgeçten geçmeyen baştaki eski öğeler düşürülür, sıradaki sağlam öğeye geçilir (G11: boş gün yedeği sessizce başarısız oluyordu)
   for (let k = 0; k < 5 && st.queue[0] && !guardPost(st.queue[0].post ?? {}, { sourceName: st.queue[0].sourceName }).ok; k++) {
     const bad = st.queue[0];
@@ -1207,8 +1216,6 @@ async function publishStock() {
     saveStock(st);
     await notify(`⚠️ Hibrit Portal: stok post paylaşılamadı (${item.topic}, deneme ${item.attempts}):\n${String(why).slice(0, 400)}`);
   };
-  // Stok postu da bilgi kotasına sayılır ve yayından önce süzgeçten yeniden geçer (denetim 2026-11-22: eski stok öğelerinde kategori adı, şapka, emoji vardı)
-  if (!STOCK && infoToday >= (POSTING.maxInfoPerDay ?? 1)) { log("Stok: bugünkü bilgi postu kotası dolu, atlandı."); return; }
   const gs = guardPost(item.post ?? {}, { sourceName: item.sourceName });
   if (!gs.ok) {
     if (!DRY) { st.queue.shift(); st.dropped = [...(st.dropped ?? []), { ...item, post: undefined, droppedAt: new Date().toISOString(), lastError: `süzgeç: ${gs.reason}` }].slice(-20); saveStock(st); }
@@ -1216,28 +1223,32 @@ async function publishStock() {
     return;
   }
   try {
-    const post = item.post;
+    const post = gs.post;
     const slug = `${today}/stok-${Date.now().toString(36)}`;
     const outDir = path.join("out", slug);
     const photos = await findImages(post.imageQueries ?? [], Math.min(post.slides.length, 4), item.category, usedPhotos, post.slides?.[0]?.title ?? item.topic);
     if (!photos.length) return await failAttempt("foto bulunamadı");
     const files = await renderPost({ ...post, photos, category: item.category, source: item.sourceName, dateLabel }, outDir);
     // Stok postu da yayından önce tasarım denetiminden geçer (denetim G4: protein yazısına magnezyum tozu fotoğrafı düştü)
+    let brandSeen = false;
     if (!DRY) {
       const dcs = await designCheck(files, { topic: `Bilgi postu: ${post.slides[0]?.title ?? item.topic}` });
       if (!dcs.ok) return await failAttempt(dcs.failed ? "tasarım denetimi yapılamadı" : `tasarım: ${dcs.issues.map((i) => `${i.slide}: ${i.problem}`).join(" | ").slice(0, 300)}`);
+      brandSeen = !!dcs.brand;
     }
-    fs.writeFileSync(path.join(outDir, "caption.txt"), `${post.caption}\n`);
+    let caption = post.caption;
+    if (brandSeen && !/Reklam \/ Tanıtım/.test(caption)) caption = /\nKaynak:/.test(caption) ? caption.replace(/\nKaynak:/, "\nReklam / Tanıtım\n\nKaynak:") : `${caption}\n\nReklam / Tanıtım`;
+    fs.writeFileSync(path.join(outDir, "caption.txt"), `${caption}\n`);
     log(`Stok üretildi: ${item.topic} -> ${outDir} (${files.length} slayt)`);
-    if (DRY) { log(`Caption:\n${post.caption}`); return; }
+    if (DRY) { log(`Caption:\n${caption}`); return; }
     const urls = await uploadFiles(files, slug);
     // Kullanıcı kuralı: istatistik postları onaysız paylaşılmaz -> onaya gönderilir, kuyruktan çıkar
     if (/^stat/.test(item.topic ?? "") || /^stock:stat/.test(item.id ?? "")) {
-      await queueForApproval({ caption: post.caption, urls, ids: [item.id], kind: "istatistik", title: post.slides[0]?.title, post, photos, srcUrls: [] });
+      await queueForApproval({ caption, urls, ids: [item.id], kind: "istatistik", title: post.slides[0]?.title, post, photos, srcUrls: [] });
       st.queue.shift(); saveStock(st);
       return;
     }
-    const res = await publish(urls, post.caption);
+    const res = await publish(urls, caption);
     // Paylaşım hemen kalıcı: önce posted.json, sonra kuyruk
     todayCount++; infoToday++;
     state.posts.push({ day: today, ids: [item.id], kind: "stok", photos: photos.map((p) => p.id), media: res.id, permalink: res.permalink, cover: urls[0], title: post.slides[0]?.title, headline: post.slides[0]?.title, at: new Date().toISOString() });
@@ -1261,7 +1272,7 @@ try {
   if (r !== SKIPPED && !DRY && hour >= 21 && d && !d.summarySent) {
     const done = state.posts.filter((p) => p.day === today && p.media);
     let rej = [];
-    try { rej = JSON.parse(fs.readFileSync("state/rejected.json", "utf8")).filter((r) => String(r.at ?? "").slice(0, 10) === new Date().toISOString().slice(0, 10)); } catch {}
+    try { rej = JSON.parse(fs.readFileSync("state/rejected.json", "utf8")).filter((r) => trDay(r.at) === today); } catch {}
     const msg = [
       `📊 Günlük özet ${today}: ${done.length} paylaşım, ${d.drafts} taslak, ${d.approved} onay, ${d.rejected} red.`,
       done.length ? "\nPaylaşılanlar:\n" + done.map((p) => `- ${p.headline ?? p.title ?? p.kind} (${p.kind}) ${p.permalink ?? ""}`).join("\n") : "\nBugün paylaşım yok.",
@@ -1295,8 +1306,8 @@ try {
     process.exitCode = 0;
   } else {
     await notify(`⚠️ Hibrit Portal bot hatası:\n${e.message}`);
+    process.exitCode = 1;
   }
-  process.exitCode = 1;
 } finally {
   // Son kayıt (dry'da yazılmaz). 60 günden eski kayıtlar saveState içinde budanır.
   try { saveState(); } catch (e) { console.error("Durum yazılamadı:", e); process.exitCode = 1; }

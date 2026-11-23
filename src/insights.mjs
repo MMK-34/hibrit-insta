@@ -27,25 +27,28 @@ export async function collectInsights(state, { max = 40 } = {}) {
 
 const score = (i) => (i.saved ?? 0) * 3 + (i.shares ?? 0) * 3 + (i.comments ?? 0) * 2 + (i.likes ?? 0);
 const avg = (a) => (a.length ? Math.round(a.reduce((s, x) => s + x, 0) / a.length) : 0);
-const trHour = (iso) => Number(new Date(iso).toLocaleString("en-GB", { timeZone: "Europe/Istanbul", hour: "2-digit", hour12: false }));
+const trHour = (iso) => Number(new Date(iso).toLocaleString("en-GB", { timeZone: "Europe/Istanbul", hour: "2-digit", hour12: false })) % 24;
 
-/** Son 7 günün özeti: en iyi 3 post, tür ve saat dilimine göre ortalama erişim. Veri yoksa boş döner. */
+/** Son 7 günün özeti: en iyi 3 post, tür ve saat dilimine göre ortalama erişim (veya erişim yoksa etkileşim). Veri yoksa boş döner. */
 export function weeklySummary(state) {
   const since = Date.now() - 7 * 24 * H;
   const rows = (state.posts ?? []).filter((p) => p.media && p.ins && Date.parse(p.at ?? 0) > since);
   if (rows.length < 3) return "";
   const top = [...rows].sort((a, b) => score(b.ins) - score(a.ins)).slice(0, 3)
     .map((p, i) => `${i + 1}. ${String(p.headline ?? p.title ?? "").slice(0, 70)} — erişim ${p.ins.reach ?? "?"}, beğeni ${p.ins.likes ?? "?"}, kaydetme ${p.ins.saved ?? "?"}, paylaşım ${p.ins.shares ?? "?"}`);
+  const hasReach = rows.some((p) => typeof p.ins.reach === "number");
+  const metricLabel = hasReach ? "ortalama erişim" : "ortalama beğeni+yorum";
+  const metricVal = (p) => (hasReach ? (p.ins.reach ?? 0) : (p.ins.likes ?? 0) + (p.ins.comments ?? 0));
   const by = (key) => {
     const m = {};
-    for (const p of rows) { const k = key(p); (m[k] ??= []).push(p.ins.reach ?? 0); }
+    for (const p of rows) { const k = key(p); (m[k] ??= []).push(metricVal(p)); }
     return Object.entries(m).sort((a, b) => avg(b[1]) - avg(a[1])).map(([k, v]) => `${k}: ${avg(v)} (${v.length} post)`).join(" · ");
   };
   const slot = (p) => { const h = trHour(p.at); return h < 12 ? "sabah" : h < 17 ? "öğlen" : "akşam"; };
   return [
     `📈 Haftalık etkileşim özeti (${rows.length} post)`,
     "En iyi 3 post (kaydetme ve paylaşım ağırlıklı):", ...top,
-    `Türe göre ortalama erişim: ${by((p) => p.kind ?? "haber")}`,
-    `Saate göre ortalama erişim: ${by(slot)}`,
+    `Türe göre ${metricLabel}: ${by((p) => p.kind ?? "haber")}`,
+    `Saate göre ${metricLabel}: ${by(slot)}`,
   ].join("\n");
 }

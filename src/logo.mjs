@@ -80,7 +80,7 @@ export async function fetchInstagramLogo(username) {
   const t = process.env.IG_DISCOVERY_TOKEN || process.env.IG_ACCESS_TOKEN, id = process.env.IG_USER_ID;
   if (!t || !id) return null;
   const host = t.startsWith("IGAA") ? "graph.instagram.com" : "graph.facebook.com";
-  const j = await fetch(`https://${host}/v23.0/${id}?fields=${encodeURIComponent(`business_discovery.username(${u}){profile_picture_url}`)}&access_token=${t}`)
+  const j = await fetch(`https://${host}/v23.0/${id}?fields=${encodeURIComponent(`business_discovery.username(${u}){profile_picture_url}`)}&access_token=${t}`, { signal: AbortSignal.timeout(15000) })
     .then((r) => r.json()).catch(() => null);
   const pic = j?.business_discovery?.profile_picture_url;
   if (!pic) return null;

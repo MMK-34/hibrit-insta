@@ -69,7 +69,7 @@ export async function notify(text) {
       });
     } catch { /* bildirim hatası paylaşımı durdurmaz */ }
   }
-  if (/^(⚠️|📊|🎬)/u.test(String(text))) {
+  if (/^(⚠️|📊|🎬|📈)/u.test(String(text))) {
     try { await githubReport(text); } catch { /* rapor hatası paylaşımı durdurmaz */ }
   }
 }

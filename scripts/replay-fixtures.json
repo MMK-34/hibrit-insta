@@ -77,7 +77,7 @@
     },
     {
       "id": "clean-hat-chars-normalized",
-      "description": "Şapkalı harfler (â, î, û) temizlenerek şapkasız hale dönüştürülmeli",
+      "description": "Şapkalı harfler (â, î, û) metin ve hashtaglerde temizlenerek şapkasız hale dönüştürülmeli",
       "expectOk": true,
       "override": {
         "slides": [
@@ -88,11 +88,29 @@
             "subtitle": "Sükûnet ve dayanıklılık gerektiren parkur açıklandı."
           }
         ],
-        "caption": "Resmî kayıtlar hâlâ açık, kâr amacı gütmeyen koşu etkinliği."
+        "caption": "Resmî kayıtlar hâlâ açık, kâr amacı gütmeyen koşu etkinliği.",
+        "hashtags": ["#hyrox", "#resmîduyuru", "#hâlâdevam"]
       },
       "checks": {
         "noHatChars": true,
-        "titleEquals": "HYROX İstanbul kayıtları hala devam ediyor"
+        "titleEquals": "HYROX İstanbul kayıtları hala devam ediyor",
+        "captionIncludes": ["#resmiduyuru", "#haladevam"]
+      }
+    },
+    {
+      "id": "clean-brazil-not-rezil",
+      "description": "G10 regresyonu: 'Brezilya' içinde 'rezil' sahte pozitifi vermemeli",
+      "expectOk": true,
+      "override": {
+        "country": "Brezilya",
+        "place": "Rio de Janeiro",
+        "slides": [
+          {
+            "type": "cover",
+            "title": "HYROX Rio de Janeiro Brezilya takvimi açıklandı"
+          }
+        ],
+        "caption": "Brezilya'daki HYROX yarışı için kayıt tarihleri açıklandı."
       }
     },
     {
@@ -357,6 +375,15 @@
             "title": "İstanbul Maratonu ve HYROX İstanbul yarışları için yeni sezon hazırlık takvimi ile uluslararası katılımcı kuralları resmen açıklandı"
           }
         ]
+      }
+    },
+    {
+      "id": "fail-category-pro-open-with-kategori",
+      "description": "G11 regresyonu: 'Pro' veya 'Open' yanında 'kategori/divizyon' geçerse yakalanmalı",
+      "expectOk": false,
+      "expectReason": "yarış kategorisi adları yazılmış",
+      "override": {
+        "caption": "HYROX yarışında Pro kategorisinde derece yapan sporcular açıklandı."
       }
     },
     {

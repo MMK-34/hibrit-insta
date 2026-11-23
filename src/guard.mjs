@@ -98,8 +98,8 @@ export function guardPost(post, { sourceName }) {
   if (tooLong.length) return { ok: false, reason: `metin çok uzun, kısalt (yarım cümle olmasın): ${tooLong.join("; ")}` };
 
   let caption = clean(post.caption ?? "").replace(/^\s*kaynak\s*:.*$/gim, "").trim().slice(0, 1900);
-  // Hashtag: her biri en fazla 30 karakter (# hariç; uzunsa atılır), tekrarsız, en fazla 12
-  const tags = [...new Set((post.hashtags ?? []).map((h) => "#" + String(h).normalize("NFKC").replace(/^#+/, "").replace(/[^\p{L}\p{N}_]/gu, "")))]
+  // Hashtag: her biri en fazla 30 karakter (# hariç; uzunsa atılır), tekrarsız, en fazla 12; şapkalı harf temizlenir
+  const tags = [...new Set((post.hashtags ?? []).map((h) => "#" + String(h).normalize("NFKC").replace(/[âÂîÎûÛ]/g, (c) => HAT[c]).replace(/^#+/, "").replace(/[^\p{L}\p{N}_]/gu, "")))]
     .filter((h) => h.length > 2 && h.length - 1 <= MAX_TAG_LEN && !GENERIC_TAGS.has(h.toLocaleLowerCase("tr"))).slice(0, MAX_TAGS);
   // Marka etiketi her postta (kural): yoksa eklenir, yer yoksa son etiketin yerine
   if (!tags.some((h) => h.toLowerCase() === "#hibritportal")) { if (tags.length >= MAX_TAGS) tags.pop(); tags.push("#hibritportal"); }

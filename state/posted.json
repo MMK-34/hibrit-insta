@@ -3525,6 +3525,26 @@
         "https://roxlyfe.com/hyrox-rio-november-2026/"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "manual:alanya-ultra-trail-2027-kayit"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:alanya-ultra-trail-2027-kayit",
+        "event:alanya-ultra-trail-2027-kayit",
+        "event:alanya-ultra-trail-2027-kayit"
+      ],
+      "media": "18100856123442623",
+      "permalink": "https://www.instagram.com/p/DgFRt0JIykV/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/alanya-ultra-trail-2027-kayit/01.jpg",
+      "title": "Alanya Ultra Trail 2027 kayıtları açıldı",
+      "headline": "Alanya Ultra Trail 2027 kayıtları açıldı",
+      "eventName": "Alanya Ultra Trail 2027",
+      "at": "2026-11-23T11:30:31.096Z",
+      "manual": true
     }
   ],
   "daily": {

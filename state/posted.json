@@ -3388,6 +3388,61 @@
         "cal:dubai-fitness-championship-2026-12"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "manual:hyrox-guangzhou-sonuc-2026-11"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:hyrox-guangzhou-sonuc-2026-11"
+      ],
+      "media": "18027293396931575",
+      "permalink": "https://www.instagram.com/p/DgEp_lLl_uf/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-guangzhou-sonuc-2026-11/01.jpg",
+      "title": "HYROX Guangzhou'da erkeklerde birincilik 3 dakika farkla geldi",
+      "headline": "HYROX Guangzhou'da erkeklerde birincilik 3 dakika farkla geldi",
+      "eventName": "HYROX Guangzhou",
+      "at": "2026-11-23T05:43:20.966Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "https://roxlyfe.com/hyrox-guangzhou/"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:81ee37a0b5fb6bed"
+      ],
+      "media": "18175026850421956",
+      "permalink": "https://www.instagram.com/p/DgEqaLBFwl0/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-23/mwsuf21j/01.jpg",
+      "title": "Hynek and Stadelmann Deliver Dominant Pro Performances in Guangzhou",
+      "headline": "Richard Hynek ve Georgia Stadelmann Guangzhou'da kazandı",
+      "eventName": "HYROX Guangzhou",
+      "athlete": "Richard Hynek",
+      "at": "2026-11-23T05:47:03.445Z",
+      "ig": "hyroxworld",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "HYROX GUANGZHOU",
+            "title": "Richard Hynek ve Georgia Stadelmann Guangzhou'da kazandı",
+            "subtitle": "Çin'de düzenlenen ilk HYROX yarışında Pro kategorilerinde şampiyonlar belli oldu.",
+            "hl": "GUANGZHOU'DA"
+          }
+        ],
+        "caption": "Richard Hynek ve Georgia Stadelmann Guangzhou'da kazandı. Çin'de gerçekleşen ilk HYROX yarışında Pro kategorilerinde şampiyonlar belli oldu. Richard Hynek 54:40'lık derecesiyle erkeklerde, Georgia Stadelmann ise 1:01:47'lik derecesiyle kadınlarda podyumun zirvesine yerleşti. 20-22 Kasım tarihleri arasında Poly World Trade Center Expo'da düzenlenen organizasyon, Asya'daki HYROX serisinin önemli duraklarından biri oldu. Bu yarışta tanıdığın biri var mı? Ona gönder.\n\nReklam / Tanıtım\n\nYarışın Instagram hesabı: @hyroxworld\n\nKaynak: Rox Lyfe\nGörsel: Roxlyfe\n\n#hyrox #hyroxturkiye #hyroxguangzhou #fonksiyonelantrenman #hibritportal",
+        "srcUrls": [
+          "https://roxlyfe.com/hyrox-guangzhou/"
+        ],
+        "eventName": "HYROX Guangzhou",
+        "country": "Çin",
+        "place": "Guangzhou"
+      }
     }
   ],
   "daily": {
@@ -3481,10 +3536,10 @@
       "summarySent": true
     },
     "2026-11-23": {
-      "drafts": 8,
-      "approved": 0,
+      "drafts": 9,
+      "approved": 1,
       "rejected": 8,
-      "aiCalls": 18
+      "aiCalls": 25
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3508,7 +3563,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-23T04:43:33.622Z",
+  "lastRunAt": "2026-11-23T05:43:21.297Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

@@ -1304,6 +1304,10 @@ try {
       await notify("⚠️ Hibrit Portal: Anthropic API kredisi bitti. Bot ücretli işlemleri durdurdu; HİÇBİR ödeme yapılmadı. Kredi yüklenince bot bir sonraki saatlik çalışmada kendiliğinden devam eder.");
     }
     process.exitCode = 0;
+  } else if (isTransientAi(e)) {
+    // Geçici yapay zekâ kesintisi (Gemini 503 vb.): iş başarısız sayılmaz, hata e-postası gitmez; sonraki saatlik çalışmada yeniden denenir
+    log("Yapay zekâ geçici olarak yanıt vermedi; bu çalışma atlandı, sonraki çalışmada yeniden denenecek:", String(e.message).slice(0, 200));
+    process.exitCode = 0;
   } else {
     await notify(`⚠️ Hibrit Portal bot hatası:\n${e.message}`);
     process.exitCode = 1;

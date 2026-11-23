@@ -1,9 +1,12 @@
 {
   "permissions": {
     "allow": [
+      "read_file(.)",
       "command(node scripts/agy-fetch.mjs)",
       "command(git status --short)",
-      "command(git diff --stat)"
+      "command(git diff --stat)",
+      "read_file(C:/Users/Mehmet Kuyucu/Desktop/cf/insta/ORTAK-GOREV.md)",
+      "read_file(C:UsersMehmet KuyucuDesktopcfinstaORTAK-GOREV.md)"
     ]
   }
 }

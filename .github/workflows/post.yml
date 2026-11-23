@@ -58,6 +58,7 @@ jobs:
           npx --no-install eslint -c scripts/eslint.config.mjs src/*.mjs # sürüm package-lock.json ile sabit
           node scripts/replay-test.mjs # süzgeç kuralları: test kalırsa paylaşım yapılmaz
           node scripts/check-ctrl.mjs # gizli kontrol karakteri varsa paylaşım yapılmaz
+          node scripts/smoke-test.mjs # ağsız duman testi: modül yükleme + temel akışlar
 
       # Takvim kaynağı (ör. hyranking.com) yanıt vermezse komut 4 dk'da kesilir; bu adım paylaşımı asla engellemez
       - name: Yarış takvimi senkronu

@@ -22,6 +22,7 @@ import { publish, preflight, publishStory, deleteMedia, publishReel } from "./pu
 import { auditPublished, MODEL as AUDIT_MODEL_2 } from "./audit.mjs";
 import { designCheck } from "./design-check.mjs";
 import { notify, push } from "./notify.mjs";
+import { collectInsights, weeklySummary } from "./insights.mjs";
 import { guardPost } from "./guard.mjs";
 import { INTRO_IMAGES, INTRO_CAPTION } from "./intro.mjs";
 import { verifyGate, logRejected, failText } from "./verify.mjs";
@@ -235,6 +236,16 @@ async function main() {
   }
   // Yalnızca zamanlanmış çalışmalar işaretlenir: elle (stok/force/test) çalışma sıradaki zamanlanmış slotu iptal etmesin
   if (!DRY && SCHEDULED) { state.lastRunAt = new Date().toISOString(); saveState(); }
+  // Etkileşim verisi: günde bir kez, akşam (21:00 sonrası ilk çalışma); Pazar günü haftalık özet issue #1'e (yalnızca okuma, yayın engellemez)
+  if (!DRY && hour >= 21 && state.insDay !== today) {
+    try {
+      const r = await collectInsights(state);
+      state.insDay = today; saveState();
+      log(`Etkileşim verisi: ${r.n} post güncellendi${r.err ? ` (hata: ${r.err})` : ""}`);
+      if (r.err && !r.n) await push(`Etkileşim verisi alınamadı: ${r.err}`, { title: "Etkileşim", level: "warn" });
+      if (now.getDay() === 0) { const sum = weeklySummary(state); if (sum) await notify(sum); }
+    } catch (e) { log("Etkileşim verisi hatası:", String(e.message).slice(0, 200)); }
+  }
   if (!DRY && todayCount >= MAX_PER_DAY) return log(`Günlük limit dolu (${todayCount}).`);
   if (!DRY) {
     // 48 saat alarmı için ilk canlı çalışma zamanı

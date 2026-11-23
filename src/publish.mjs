@@ -169,6 +169,20 @@ export async function refreshToken() {
  * Yayınlanmış medyayı siler (yayın sonrası denetimde ciddi hata bulunursa). instagram_manage_contents izni gerekir;
  * izin yoksa { ok: false, error } döner ve çağıran kullanıcıya elle silme uyarısı gönderir.
  */
+/** Etkileşim verisi (yalnızca okuma). Önce insights (instagram_manage_insights izni), olmazsa temel sayılar (beğeni, yorum). */
+export async function mediaInsights(mediaId, isReel = false) {
+  const metrics = isReel ? "reach,likes,comments,saved,shares,views" : "reach,likes,comments,saved,shares";
+  try {
+    const j = await retry(`insights ${mediaId}`, () => call("GET", `${mediaId}/insights`, { metric: metrics }));
+    const o = {};
+    for (const m of j.data ?? []) o[m.name] = m.values?.[0]?.value ?? m.total_value?.value ?? null;
+    return o;
+  } catch (e) {
+    const b = await retry(`media ${mediaId}`, () => call("GET", mediaId, { fields: "like_count,comments_count" }));
+    return { likes: b.like_count ?? null, comments: b.comments_count ?? null, basic: true, why: String(e.message).slice(0, 120) };
+  }
+}
+
 export async function deleteMedia(mediaId) {
   if (!/^\d{5,30}$/.test(String(mediaId ?? ""))) return { ok: false, error: "geçersiz medya kimliği" };
   let last = "";

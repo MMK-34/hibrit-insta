@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-22T20:32:03.240Z",
+  "updated": "2026-11-23T04:42:51.953Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 91,
-      "fetchedAt": "2026-11-22T20:30:09.048Z"
+      "count": 90,
+      "fetchedAt": "2026-11-23T04:40:53.822Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-22T20:32:03.232Z"
+      "fetchedAt": "2026-11-23T04:42:51.942Z"
     }
   },
   "items": [
@@ -922,28 +922,6 @@
       "instagram": "https://instagram.com/blitzseries"
     },
     {
-      "id": "circle21-c1fba888-7a10-4d2d-a58b-b9e8af19dc2e",
-      "name": "IBERIAN THROWDOWN FINAL EVENT 2026",
-      "eventSlug": null,
-      "type": "crossfit",
-      "city": "Santa Cruz de Tenerife",
-      "country": "İspanya",
-      "startDate": "2026-12-04",
-      "endDate": "2026-12-06",
-      "status": "confirmed",
-      "url": "https://circle21.events/event?competitionId=c1fba888-7a10-4d2d-a58b-b9e8af19dc2e",
-      "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/295833/conversions/iberian-cover-final-c21.png-l_thumb.jpg",
-      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/295832/conversions/iberian-logo-gold-2026-s_thumb.jpg",
-      "imageCredit": "circle21 / organizatör",
-      "registration": {
-        "to": "2026-11-23",
-        "fee": "330.00 EUR"
-      },
-      "instagram": "https://instagram.com/iberianthrowdown",
-      "website": "https://www.iberianthrowdown.com"
-    },
-    {
       "id": "hyrox-2026-sanya",
       "name": "HYROX Sanya 2026",
       "eventSlug": null,
@@ -1412,7 +1390,7 @@
       "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/422349/conversions/IMG_3668-s_thumb.jpg",
       "imageCredit": "circle21 / organizatör",
       "registration": {
-        "to": "2026-12-13",
+        "to": "2026-12-06",
         "fee": "300.00 USD"
       },
       "instagram": "https://instagram.com/olympos.games",

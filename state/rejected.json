@@ -1982,5 +1982,92 @@
         "note": "Postta 'profesyonel' ifadesi geçmektedir, kural gereği kategori adı geçmemelidir."
       }
     ]
+  },
+  {
+    "at": "2026-11-23T04:44:28.054Z",
+    "title": "Çatalkaya Ultra Trail’de Free Runners grubuna ödül yağdı",
+    "url": "https://ilkses.com.tr/gundem/catalkaya-ultra-trail-de-free-runners-grubuna-odul-yagdi-468534",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "kategori/seviye adı yazılmış (\"yaş gruplarında\"): kategori ve seviye adlarını tamamen çıkar"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-23T04:46:40.329Z",
+    "title": "Pelkofer and Eybergen Deliver Standout Pro Victories at HYROX Dallas",
+    "url": "https://roxlyfe.com/hyrox-dallas-november-2026/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-23T04:47:36.478Z",
+    "title": "Yaklaşan yarış: HYROX Dubai 2026 (Dubai, United Arab Emirates) 2026-11-26 – 2026-11-28",
+    "url": "https://hyrox.com/find-my-race/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "tarih",
+        "note": "Kaynak sayfası açılamadığı için tarih bilgisi doğrulanamadı."
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "yer",
+        "note": "Kaynak sayfası açılamadığı için yer bilgisi doğrulanamadı."
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "resmi_ad",
+        "note": "Kaynak sayfası açılamadığı için etkinlik adı doğrulanamadı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "kaynak",
+        "note": "Orijinal kaynak açılamadı (paywall/403)"
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "tarih",
+        "note": "Kaynaklara erişilemediği için tarih bilgisi doğrulanamadı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "yer",
+        "note": "Kaynaklara erişilemediği için yer bilgisi doğrulanamadı."
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "item": "resmi_ad",
+        "note": "Kaynaklara erişilemediği için resmi ad bilgisi doğrulanamadı."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-23T04:48:08.351Z",
+    "title": "Mayhem Madness: geçmiş edisyonlarda neler oldu?",
+    "url": "",
+    "kind": "bilgi",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

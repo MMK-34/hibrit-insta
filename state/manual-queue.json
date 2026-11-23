@@ -1,28 +1,5 @@
 [
   {
-    "id": "kurek-damper-rehberi",
-    "publishAt": "2026-11-22T19:30",
-    "urls": [
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kurek-damper-rehberi/01.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kurek-damper-rehberi/02.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kurek-damper-rehberi/03.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kurek-damper-rehberi/04.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kurek-damper-rehberi/05.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kurek-damper-rehberi/06.jpg"
-    ],
-    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/kurek-damper-rehberi-story/story.jpg",
-    "caption": "Damperi 10'a çevirmek seni hızlandırmaz\nKürek ergometresinin yanındaki 1-10 arası kol, fan kafesine giren havayı ayarlar. Concept2'ye göre bu ayar bisikletteki vites gibidir: çekişin nasıl hissettirdiğini değiştirir, antrenmanın yoğunluğunu değil. Yoğunluğu ne kadar sert çektiğin belirler. Monitör de her çekişte çarkın ne kadar yavaşladığını (drag factor) ölçer ve gerçek eforunu damperden bağımsız hesaplar.\n\nHangi ayar?\nConcept2 başlangıç için damper 3-5 öneriyor. Çok yüksek damper, kürek çekmenin kardiyo faydasını almadan kasları yorabilir. Genel olarak düşük damper aerobik çalışmaya, yüksek damper kuvvet ağırlıklı çalışmaya uygun. Aynı ayar farklı makinelerde farklı hissettirebilir.\n\nTeknik\nÇekiş sırası bacak, gövde, kol; dönüş sırası kol, gövde, bacak. Çekiş ile dönüş arasında 1:2 oranı hedeflenir: çekiş 1 saniye sürüyorsa dönüş 2 saniye sürsün. Kayış ayağın ön yastığından geçsin.\n\nHYROX'ta 1000 m kürek için Concept2'nin önerileri: damper 3-5, dakikada 24-32 çekiş. 5 km kürek temponu biliyorsan onu 1000 m'ye uygula. Yarışın ikinci yarısında nefesini dönüş sırasına oturt, kayışa hızlı girip çık.\n\nSen damperi kaçta tutuyorsun?\nYarış planın için kaydet.\n\nKaynak: Concept2\nGörsel: Pexels\n\n#kürek #hyrox #rowing #crossfit #hibritportal",
-    "photos": [
-      "local:su-erg"
-    ],
-    "title": "Damperi 10'a çevirmek seni hızlandırmaz",
-    "kind": "bilgi",
-    "category": "hyrox",
-    "eventName": "",
-    "srcUrl": "https://www.concept2.com/indoor-rowers/training/tips-and-general-info/damper-setting",
-    "storyOk": false
-  },
-  {
     "id": "crossfit-tahta-terimleri",
     "publishAt": "2026-11-23T13:30",
     "urls": [

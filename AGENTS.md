@@ -34,6 +34,15 @@ Tasarruf kuralları:
 - `state/` klasöründeki dosyaları değiştirme (botun canlı durumu).
 - Emin olmadığın hiçbir şey için tahmin yürütme: soru işareti varsa `ORTAK-GOREV.md`'ye "SORU" olarak yaz ve dur.
 
+## 1a. Karşılıklı çalışma (kullanıcı kuralı 2026-11-24)
+
+"Habersiz iş yapmayın, danışıklı ilerleyin." İki ajan birbirinin işini denetler:
+- Claude Code canlı bota (`src/`, `.github/`, `state/` kuralları) giden değişikliği önce kendi branch'inde yapar, farkı Antigravity'ye inceletir;
+  Antigravity "sorun yok" ya da somut itiraz yazar. Yalnızca acil üretim hatası (bot durdu, yanlış post çıkıyor) önce düzeltilir, sonra inceletilir.
+- Antigravity'nin değişikliğini Claude Code inceler (değişmedi).
+- Sorunlar ve iyileştirmeler panonun "Beyin fırtınası" bölümünde tartışılır: biri öneri yazar, öteki itiraz/ekleme yazar, ortak karar "Karar" satırına yazılır.
+- Anlaşmazlıkta güvenli/kapalı seçenek uygulanır, kullanıcıya tek satır bilgi verilir.
+
 ## 2a. Terminal modu (varsayılan, 2026-11-22)
 
 Claude Code seni terminalden `agy -p` ile çalıştırır; görev metni istemin içindedir. Kullanıcı arada değildir: soru sorma, onay isteme.

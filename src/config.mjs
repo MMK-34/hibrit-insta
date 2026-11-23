@@ -48,7 +48,8 @@ export const FEEDS = [
   // bu yüzden sorgulara "when:7d" / "when:14d" eklendi (taze haber öne gelsin). 48 saat filtresi collect'te.
   // Türkiye: resmî kaynaklar (doğrudan RSS)
   { source: "Türkiye Atletizm Federasyonu", url: "https://taf.org.tr/feed/", cat: "kosu" },
-  { source: "Spor İstanbul", url: "https://spor.istanbul/feed/", cat: "kosu" },
+  // Spor İstanbul akışı GitHub Actions (yurt dışı IP) üzerinden her çalışmada HATA veriyor; Türkiye dışına kapalı (G12, 2026-11-24)
+  // { source: "Spor İstanbul", url: "https://spor.istanbul/feed/", cat: "kosu" },
   // Türkiye: maratonlar, kayıt duyuruları, şehir yarışları
   { source: "Google News", url: "https://news.google.com/rss/search?q=%22%C4%B0stanbul+Maratonu%22+OR+%22%C4%B0stanbul+Yar%C4%B1+Maratonu%22+OR+%22Spor+%C4%B0stanbul%22+when%3A7d&hl=tr&gl=TR&ceid=TR:tr", cat: "kosu" },
   { source: "Google News", url: "https://news.google.com/rss/search?q=%22yar%C4%B1+maratonu%22+OR+%22halk+ko%C5%9Fusu%22+OR+%22maratonu+kay%C4%B1tlar%C4%B1%22+OR+%22maraton+kay%C4%B1tlar%C4%B1%22+when%3A7d&hl=tr&gl=TR&ceid=TR:tr", cat: "kosu" },

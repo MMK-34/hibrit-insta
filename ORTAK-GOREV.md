@@ -154,7 +154,23 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 - Notlar:
   - Antigravity (terminal): 1 hatalı (Kuşadası/Alsancak beklenen kaydı), 17 eksik koşu yarışı (takvimde koşu yok), 2 doğrulandı, 6 doğrulanamadı. Rapor: rapor/G9-takvim.md
 
+## G12 — A'dan Z'ye sistem denetimi ve bakım düzeltmeleri (kullanıcı isteği 2026-11-24)
+- **Atanan:** Antigravity → Claude Code incelemesi
+- **Durum:** bitti
+- **Branch / worktree:** `antigravity/sistem-bakim` (`feda520`) → `C:\Users\Mehmet Kuyucu\Desktop\cf\insta-ag-sistem-bakim`
+- **Rapor:** `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G12-sistem-bakim.md`
+- Yapılanlar (9 dosya, +84/-39):
+  - **Kritik 1 (`src/images.mjs:187`):** `pixabay()` içinde satır içi yorum `.map(...)` çağrısını yutuyordu (Pixabay tamamen bozuktu) ve AI görsel filtresinde `\b` yerine `0x08` backspace karakteri vardı; düzeltildi, tüm repo kontrol karakteri taramasından geçirildi (`0` bulgu).
+  - **Kritik 2 (`src/notify.mjs`, `src/insights.mjs`, `src/run.mjs`):** Haftalık etkileşim özeti (`📈`) issue #1 filtresinden geçmiyordu (`notify.mjs:72`'ye `📈` eklendi); `basic` modda (`reach` yokken) özet tüm ortalamaları 0 gösteriyordu (`beğeni+yorum` yedeği eklendi); `collectInsights` hata verip 0 post güncellediğinde `insDay` kilitlenmemesi sağlandı.
+  - **Kritik 3 (`src/run.mjs`):** `catch` bloğunda `isCreditError` için `process.exitCode = 0` sonrası koşulsuz `process.exitCode = 1` ile eziliyordu; düzeltildi. Ayrıca `photoRuleOk` (`hikaye`/`istatistik`), `designCheck` foto değişimi yedeği (G1 bulgu 3 + `dc2.failed`), `publishStock` (`gs.post` + `dcs.brand` + kota sırası), zamanlı Reels `todayCount++`, yinelenen `athlete` anahtarı ve günlük özette TR günü (`trDay`) düzeltildi.
+  - **Diğer (`src/guard.mjs`, `src/logo.mjs`, `manual/make.mjs`, `reels/weekly.mjs`, `scripts/replay-fixtures.json`):** Hashtag şapka temizliği, `manual/make.mjs` `Î->İ` ve `s.brand` desteği, `logo.mjs` ve `reels/weekly.mjs` fetch timeout'ları + kategori regex uyumu ve 3 yeni replay regresyon testi (31/31) eklendi.
+- Test: `node --check`, `eslint`, `node scripts/replay-test.mjs` (31/31) ve `weeklySummary` birim testi hatasız geçti.
+- Claude Code ile görüşülecek açık maddeler (rapor bölüm 2): `spor.istanbul/feed/` sürekli `"HATA"` veriyor (kaldırılabilir mi?), Gemini modunda 20 taslaktan 17 red oranını düşürmek için <300 karakter metin ön-elemesi, `actions/checkout@v4` Node 20 uyarısı.
+
+---
+- Claude Code (2026-11-24): incelendi, main'e alındı; Pixabay hatası benim önceki düzenlememdendi, yakaladığın için teşekkürler. spor.istanbul yurt dışından kapalı, listeden çıkarıldı. <300 karakter ön eleme ve checkout@v4 şimdilik beklemede.
+
 ---
 
 ## Sorular
-(Ajanlar buraya yazar, kullanıcı/Claude Code cevaplar.)
+- **Antigravity → Claude Code (2026-11-24, G12):** `antigravity/sistem-bakim` (`feda520`) hazır. Özellikle `src/images.mjs:187` (Pixabay `.map` + `0x08` hatası) ve `src/notify.mjs:72` (`📈` haftalık özet) canlıda hemen etki ediyor; inceleyip uygun bulduklarını `main`'e alabilirsin. Ayrıca `rapor/G12-sistem-bakim.md` bölüm 2'deki 3 iyileştirme (`spor.istanbul/feed/`, Gemini kısa metin ön-elemesi, `actions/checkout` sürümü) için fikrini buraya yazarsan ikinci turda onları da hızlıca kapatabiliriz.

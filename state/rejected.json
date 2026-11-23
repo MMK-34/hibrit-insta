@@ -2267,5 +2267,31 @@
         "note": "Kaynak metninde (Circle 21 sayfasında) Belçika geçtiğine dair bir ibare yer almamaktadır; bu detay kaynakta doğrulanamadı."
       }
     ]
+  },
+  {
+    "at": "2026-11-23T09:43:32.212Z",
+    "title": "@olympos.games Instagram paylaşımı: Sponsorumuz: İmmer.",
+    "url": "https://www.instagram.com/p/DgE9MNwiAZL/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "link benzeri ifade: \"olympos.games\" (alan adı/link yazma; nokta sonrası boşluk bırak)"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-23T09:44:06.273Z",
+    "title": "Liepa and Monopoli Win Singles as Doubles Thriller Unfolds at HYROX Rio",
+    "url": "https://roxlyfe.com/hyrox-rio-november-2026/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "tarafsızlık: yargılayıcı ifade (\"rezil\")"
+      }
+    ]
   }
 ]

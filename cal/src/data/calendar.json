@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-23T08:42:59.165Z",
+  "updated": "2026-11-23T09:42:28.207Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 90,
-      "fetchedAt": "2026-11-23T08:41:04.534Z"
+      "fetchedAt": "2026-11-23T09:40:53.618Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-23T08:42:59.158Z"
+      "fetchedAt": "2026-11-23T09:42:28.197Z"
     }
   },
   "items": [
@@ -3885,7 +3885,7 @@
       "source": "circle21",
       "registration": {
         "to": "2027-03-31",
-        "fee": "0.00 EUR"
+        "fee": "190.00 EUR"
       }
     },
     {

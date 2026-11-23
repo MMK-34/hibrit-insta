@@ -3504,6 +3504,27 @@
         "cal:circle21-e7853b03-37f9-439f-a592-ba4dcbe803be"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "ig:18102516785416171"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMilAFBVV95cUxPQ1A1bXZTNEFSUDBqSnRwRTZGLW1idExnNHh0eWtrc1FsUFpWVDBpV2tacjVlSFRaaDI4WXJkSUJiRXllOW8yVERKNmdCQUVXMGpnTF9VbEptNUg4VThlQjZ6cGs3bmNRdFFCSl9Ub1FYbEF0Y2JldXk1Vl9kMk9SVldwM2RFR3JXTGpzYzRJeW1vQ3Bt"
+      ],
+      "skipped": "tekrar"
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "https://roxlyfe.com/hyrox-rio-november-2026/"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -3597,10 +3618,10 @@
       "summarySent": true
     },
     "2026-11-23": {
-      "drafts": 18,
+      "drafts": 20,
       "approved": 2,
-      "rejected": 15,
-      "aiCalls": 49
+      "rejected": 17,
+      "aiCalls": 54
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3627,7 +3648,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-23T08:43:00.439Z",
+  "lastRunAt": "2026-11-23T09:42:29.028Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

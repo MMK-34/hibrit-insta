@@ -122,6 +122,8 @@ export async function upcomingEvents() {
   return (data.items ?? []).filter((e) => {
     const d = (new Date(e.startDate).getTime() - now) / 864e5;
     const tr = /t[uü]rk/i.test(e.country ?? "");
+    // Yalnızca kesinleşmiş yarışlar (G9: "expected" kayıt yanlış ad/tarihle aday oluyordu)
+    if (e.status && e.status !== "confirmed") return false;
     return d >= 0 && d <= (tr ? 30 : 10);
   }).map((e) => ({
     id: `cal:${e.id}`,
@@ -131,6 +133,7 @@ export async function upcomingEvents() {
     date: new Date().toISOString(), ageH: 0,
     snippet: `Etkinlik: ${e.name}. Şehir: ${e.city}, ${e.country}. Tarih: ${e.startDate}${e.endDate ? ` - ${e.endDate}` : ""}. Durum: ${e.status ?? "?"}. Kayıt/bilgi: ${e.url || e.sourceUrl || "-"}`,
     text: "",
+    calSource: e.sourceUrl || "",
   }));
 }
 

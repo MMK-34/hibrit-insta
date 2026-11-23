@@ -535,9 +535,12 @@ async function prepareVerified(pick, srcItems, sourceName) {
       // Takip edilen haber sitesinden alınan metin: denetçi postu bununla karşılaştırır (web araması gerekmez)
       ...srcItems.filter((s) => !/^(ig:|dm-ig:|c21)/.test(s.id) && String(s.text ?? "").length > 300).map((s) => ({ label: `Kaynak metni (${s.source})`, url: s.url, text: s.text })),
       ...srcItems.filter((s) => s.id.startsWith("c21") && usable(s)).map((s) => ({ label: "circle21 resmî kayıt sayfası (organizatörün kendi girdiği kayıt ve açıklama; birincil kaynak)", url: s.url, text: s.text })),
+      // Yarış takvimi kaydı: organizatörün resmî etkinlik sayfasındaki yapılandırılmış veriden (JSON-LD) otomatik çekildi; birincil kaynak.
+      // hyrox.com GitHub'dan 403 veriyor; denetçi sayfayı açamadığı için her gün 3-4 taslak boşa gidiyordu (2026-11-23).
+      ...srcItems.filter((s) => s.id.startsWith("cal:")).map((s) => ({ label: `Hibrit Portal yarış takvimi kaydı (resmî etkinlik sayfasından otomatik çekildi${s.calSource ? `: ${s.calSource}` : ""}; birincil kaynak)`, url: s.calSource || s.url, text: s.snippet })),
     ];
-    // Kaynak yalnızca circle21 ise "sayfa açılamadı" kuralı uygulanmaz (veri resmî API'den geldi)
-    const referenceIsSource = !!ownC21 && srcItems.every((s) => s.id.startsWith("c21"));
+    // Kaynak yalnızca circle21 ya da yarış takvimi ise "sayfa açılamadı" kuralı uygulanmaz (veri resmî kaynaktan otomatik geldi)
+    const referenceIsSource = (!!ownC21 || srcItems.some((s) => s.id.startsWith("cal:"))) && srcItems.every((s) => /^(c21|cal:)/.test(s.id));
     // Kullanıcı kuralı (2026-11-17): önce metin doğrulanır, fotoğraf araması ve görsel denetimi yalnızca onaylanan habere yapılır
     // (elenen habere görsel çağrısı harcanmaz). Fotoğrafın konuya uygunluğunu görsel denetim (screenPhotos) ve tasarım denetimi yapar.
     const gate = await verifyGate(g.post, { sourceUrls, photos: [], sourceName: srcName, referenceData, sourceTexts, referenceIsSource, skipItems: ["gorsel"] });

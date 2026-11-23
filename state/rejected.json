@@ -2213,5 +2213,18 @@
         "note": "link benzeri ifade: \"Vietnam.vn\" (alan adı/link yazma; nokta sonrası boşluk bırak)"
       }
     ]
+  },
+  {
+    "at": "2026-11-23T07:46:12.886Z",
+    "title": "Kaz Dağları'nda 10. İda Ultra Maraton heyecanı: 10 ülkeden 1.540 sporcu katılacak",
+    "url": "https://hibya.com/kaz-daglarinda-10-ida-ultra-maraton-heyecani-10-ulkeden-1540-sporcu-katilacak-1102120",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "tekrar",
+        "item": "tekrar",
+        "note": "aynı etkinlik: Kar Spor İda Ultra Maraton"
+      }
+    ]
   }
 ]

@@ -3443,6 +3443,34 @@
         "country": "Çin",
         "place": "Guangzhou"
       }
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "ig:18111288878256841"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "ig:17932662879422746"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMijAFBVV95cUxQYnB0THVKbmdwLThfdEtWX0IyVTZIR09KS29VellHWmdBbTZfV3hHSmpuZmJOUEt6WF9kNHIzMG5nN180XzNIclRSMEVWalJ1MlJKRDFEU3FOZXBEOGoxZFREekRJUlpSQjlCbWp1c0VsSTFWbi1OaGpwYnprYjR4NVdiejdtWWpSWGQ4bQ"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-23",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMirwFBVV95cUxQSHlsU0ItbnhSXzNodWJoUUo4bjhNZEpkX1d3R1h5dzlIbTJiLS1yWVYySUhJNEI1SENaY193eUdCRmdaSnNmSXowMmFpNUhHOFM3Nnd4NW5nY1NlRHd6emxUZkVYeGN0ZkN2ZExvRW1lRV9YNnZQQUxHZzJwbVZZZTlVRzhRdDREZzZmZGhKa1g5V3Z2NVFITHhGTkZ5X3g0RkF1RjZiVWM3Rk43UXdF"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -3536,10 +3564,10 @@
       "summarySent": true
     },
     "2026-11-23": {
-      "drafts": 9,
+      "drafts": 14,
       "approved": 1,
-      "rejected": 8,
-      "aiCalls": 25
+      "rejected": 12,
+      "aiCalls": 34
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3561,9 +3589,12 @@
     },
     "sehir:2026-W47": {
       "tries": 2
+    },
+    "kayit-acik:2026-W48": {
+      "tries": 1
     }
   },
-  "lastRunAt": "2026-11-23T05:43:21.297Z",
+  "lastRunAt": "2026-11-23T06:42:43.707Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

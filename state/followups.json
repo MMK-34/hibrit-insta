@@ -158,7 +158,8 @@
     "category": "kosu",
     "createdDay": "2026-11-19",
     "due": "2026-11-23",
-    "status": "bekliyor"
+    "status": "iptal",
+    "doneAt": "2026-11-23T06:45:52.941Z"
   },
   {
     "key": "gaziyarimaratonu",

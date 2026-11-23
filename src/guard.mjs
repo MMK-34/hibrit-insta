@@ -18,7 +18,7 @@ const URL_RE = new RegExp(
 // Büyük/küçük harf fark etmeksizin beyaz listedeki TLD ile biten alan adı (harfle başlayan etiket): temizlikten sonra kalırsa ret
 // Alt alan adları dâhil ("SUB.HYROX.COM"); ilk etiket harfle başlar ("Elite 15.Me" gibi sayı + kısaltma geçişleri etkilenmez)
 const DOMAIN_ANYCASE_RE = new RegExp(String.raw`(?<![\p{L}\p{N}\-.])\p{L}[\p{L}\p{N}\-]*(?:${DOT}${LABEL})*${DOT}(?:${TLDS})(?![\p{L}\p{N}\-])`, "iu");
-const LINKISH_RE =/(?<![\p{L}\p{N}\-.@])[\p{L}][\p{L}\p{N}\-]+(?:\.|\[\.\]|\(\.\)|。)\p{Ll}{2,}(?![\p{L}\p{N}])/u;
+const LINKISH_RE =/(?<![\p{L}\p{N}\-.])[\p{L}][\p{L}\p{N}\-]+(?:\.|\[\.\]|\(\.\)|。)\p{Ll}{2,}(?![\p{L}\p{N}])/u;
 const MAX_SLIDES = 10, MAX_TAGS = 12, MAX_TAG_LEN = 30, MAX_CAPTION = 2200;
 const MENTION_RE = /(^|\s)@[\w.]{2,30}/g;
 const BAD = /(casino|bahis|(?<![\p{L}])(?:\d*x?bet|bets?10|betboo|tipobet|superbet|jojobet|mobilbet|betist|bet)(?![\p{L}])|kripto|crypto|airdrop|dm\s*at|link\s*bio|bio'?daki\s*link|whatsapp|telegram|onlyfans|indirim\s*kodu|promo\s*code)/iu;
@@ -129,7 +129,11 @@ export function guardPost(post, { sourceName }) {
   if ((all.match(/!/g) ?? []).length > 1) return { ok: false, reason: "birden fazla ünlem; en fazla 1" };
   if (/ignore (all|previous)|önceki talimat|system prompt/i.test(all)) return { ok: false, reason: "talimat enjeksiyonu şüphesi" };
   const eventName = clean(post.eventName ?? "").slice(0, 80);
-  const lk = `${all} ${eventName}`.match(LINKISH_RE);
+  // Instagram kullanıcı adı (@olympos.games) link değildir: yalnızca boşluktan sonra gelen ve alan adı uzantısıyla bitmeyen @ad muaf.
+  // E-posta (info@site.com) ve "@site.com" gibi alan adları yine yakalanır (güvenlik incelemesi 2026-11-23).
+  const TLD = /\.(com|net|org|io|co|tr|vn|info|app|me|uk|de|fr|es|it|nl|eu|us|ru|az|ae|gr|bg|pl|au|ca|in|cn|jp|biz|xyz|site|online|shop|store|events|run|fit|fitness|live|tv)$/i;
+  const lkText = `${all} ${eventName}`.replace(/(^|\s)@([\p{L}\p{N}._]+)/gu, (m, sp, h) => (TLD.test(h) ? m : sp));
+  const lk = lkText.match(LINKISH_RE);
   if (lk) return { ok: false, reason: `link benzeri ifade: "${lk[0]}" (alan adı/link yazma; nokta sonrası boşluk bırak)` };
   // URL_RE yalnızca küçük harfli TLD'leri siler; büyük harfli alan adı ("HYROX.COM", "Site.Org") silinmez ama yayınlanmaz: reddedilir
   const dm = `${all} ${eventName}`.match(DOMAIN_ANYCASE_RE);

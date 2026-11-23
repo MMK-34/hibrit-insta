@@ -97,7 +97,8 @@ calls.onAdd = () => { state.daily[today].aiCalls = (state.daily[today].aiCalls ?
 const isTransientAi = (e) => e instanceof BudgetError || /Gemini yanıt vermedi|AI_GECICI/.test(String(e?.message ?? e));
 
 const budgetLeft = () => Date.now() - START < BUDGET_MS;
-const draftCapReached = () => (state.daily[today]?.drafts ?? 0) >= MAX_DRAFTS_PER_DAY;
+// Taslak hakkı güne yayılır (G11: 20 hak öğlen bitiyor, akşam haberleri kaçıyordu): 13:00'e kadar %40, 18:00'e kadar %70, sonra tamamı
+const draftCapReached = () => (state.daily[today]?.drafts ?? 0) >= Math.ceil(MAX_DRAFTS_PER_DAY * (hour < 13 ? 0.4 : hour < 18 ? 0.7 : 1));
 
 /** Durumu hemen diske yazar (dry'da asla). 60 günden eski kayıtlar budanır. Atomik: önce .tmp, sonra rename. */
 function saveState() {
@@ -263,12 +264,14 @@ async function main() {
       return log("Anma günü: özel post paylaşılmadan öğlene kadar başka post atılmaz.");
   }
   try { if (await publishDmTip()) { published = true; publishedCount++; } } catch (e) { if (isCreditError(e)) throw e; log("DM ihbarı hatası:", String(e.message).slice(0, 200)); }
-  try { await draftStatForApproval(); } catch (e) { if (isCreditError(e)) throw e; log("İstatistik taslağı hatası:", String(e.message).slice(0, 200)); }
+  // Gemini modunda web araması yok: istatistik taslağı, web serisi ve takip postu kaynak bulamayıp taslak yakıyordu (G11)
+  if (!usingGemini()) try { await draftStatForApproval(); } catch (e) { if (isCreditError(e)) throw e; log("İstatistik taslağı hatası:", String(e.message).slice(0, 200)); }
   // Tekrarlayan seriler (hafta sonu yarışları, Türk sporcuların haftası, aylık takvim): günde bir kez, sabah 9'dan sonra
   if (SERIES_FORCE || (budgetLeft() && !draftCapReached() && todayCount < MAX_PER_DAY)) {
     try {
       const due = SERIES_FORCE ? (() => { const s = SERIES.find((x) => x.id === SERIES_FORCE); return s ? { s, key: `${s.id}:test`, ctx: s.ctx(now) } : null; })() : dueSeries(state, now);
-      if (due && await publishSeries(due)) { published = true; publishedCount++; }
+      // Gemini modunda web araması isteyen seriler atlanır; statik seri (haftanın sorusu) çalışır (G11)
+      if (due && (SERIES_FORCE || !usingGemini() || due.s.static) && await publishSeries(due)) { published = true; publishedCount++; }
     } catch (e) {
     if (isCreditError(e)) throw e; // kredi bitti: üst seviyede duraklat
     console.error(e); log("Seri postu hatası:", e.message);
@@ -394,7 +397,7 @@ async function main() {
   }
 
   // Haber çıkmadıysa: vadesi gelen takip postu; o da yoksa günün son çalışmasında stoktan sıradaki hazır post
-  if (!published && todayCount < MAX_PER_DAY) published = await publishFollowup();
+  if (!published && todayCount < MAX_PER_DAY && !usingGemini()) published = await publishFollowup();
   if (!published && ((isLast && todayCount === 0) || STOCK)) await publishStock();
 }
 
@@ -431,8 +434,10 @@ function recentSameEvent({ eventName = "", text = "", category = "", followup = 
     if (pk.length < 6) return false;
     return (k.length >= 6 && (k.includes(pk) || pk.includes(k) || lcsOk(k, pk))) || (t && t.includes(pk));
   });
-  // Koşu: tek post. Diğerleri: aynı etkinliğe 2 günde en çok 2 post (ör. kazananlar + Türk sporcular)
-  return (one ? hits.length >= 1 : hits.length >= 2) ? hits[0] : null;
+  // Koşu: tek post. Diğerleri: aynı etkinliğe 2 günde en çok 2 post (ör. kazananlar + Türk sporcular), ama 12 saat içinde ikincisi yok
+  // (G11: HYROX Guangzhou elle ve botla 4 dk arayla iki kez çıktı)
+  const fresh = hits.filter((p) => Date.now() - Date.parse(p.at ?? 0) < 12 * 36e5);
+  return (one ? hits.length >= 1 : hits.length >= 2 || fresh.length >= 1) ? (fresh[0] ?? hits[0]) : null;
 }
 
 // Aynı haberin farklı kaynaktan tekrarı (etkinlik adı olmayan haberler dahil; Strava-HYROX iki kez çıktı):
@@ -956,7 +961,9 @@ async function processApprovals() {
   const issues = (await ghApi("/issues?state=open&per_page=100")) ?? [];
   // notify.mjs ile aynı güvenilir issue süzgeci: yalnızca sahibin ya da botun açtığı rapor issue'su
   const rep = issues.filter((i) => i.title === "Bot raporları (otomatik)" && !i.pull_request && [owner, "github-actions[bot]"].includes(String(i.user?.login ?? "").toLowerCase())).sort((a, b) => a.number - b.number)[0];
-  const comments = rep ? (await ghApi(`/issues/${rep.number}/comments?since=${since}&per_page=100`)) ?? [] : [];
+  // Sayfalama (G11): 100 yorumu aşan günlerde sonraki sayfalardaki ONAY sessizce okunmuyordu
+  const comments = [];
+  if (rep) for (let pg = 1; pg <= 10; pg++) { const c = (await ghApi(`/issues/${rep.number}/comments?since=${since}&per_page=100&page=${pg}`)) ?? []; comments.push(...c); if (c.length < 100) break; }
   for (const c of comments) {
     // Yalnızca depo sahibinin (insan hesabı) yorumu; botun kendi bildirimleri ve uygulama yorumları sayılmaz
     if (String(c.user?.login ?? "").toLowerCase() !== owner || c.user?.type !== "User" || c.performed_via_github_app) continue;
@@ -1166,6 +1173,13 @@ async function publishStock() {
     log("Stok okunamadı:", e.message);
     await notify(`⚠️ Hibrit Portal: ${e.message}`);
     return;
+  }
+  // Süzgeçten geçmeyen baştaki eski öğeler düşürülür, sıradaki sağlam öğeye geçilir (G11: boş gün yedeği sessizce başarısız oluyordu)
+  for (let k = 0; k < 5 && st.queue[0] && !guardPost(st.queue[0].post ?? {}, { sourceName: st.queue[0].sourceName }).ok; k++) {
+    const bad = st.queue[0];
+    log(`Stok öğesi süzgeçten geçmedi, kuyruktan çıkarıldı (${bad.topic}): ${guardPost(bad.post ?? {}, { sourceName: bad.sourceName }).reason}`);
+    if (DRY) break;
+    st.queue.shift(); st.dropped = [...(st.dropped ?? []), { ...bad, post: undefined, droppedAt: new Date().toISOString(), lastError: "süzgeç" }].slice(-20); saveStock(st);
   }
   const item = st.queue[0];
   if (!item) { log("Stok boş, bugün paylaşım yok."); return; }

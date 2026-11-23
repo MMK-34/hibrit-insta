@@ -75,7 +75,7 @@ export function guardPost(post, { sourceName }) {
   if (!slides.length) return { ok: false, reason: "slayt yok" };
   // Kesin kural: yarış kategorisi/divizyonu adı yazılmaz (eksik liste yanıltıcı olur). Model kurala uymazsa kod durdurur.
   const allText = JSON.stringify(slides) + " " + String(post.caption ?? "");
-  if ((/kategori|divizyon|division/i.test(allText) && /\b(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX'?|Masters?|Teens?|Hybrid)\b/.test(allText)) || /\b(Beginner|Scaled|Intermediate|Advanced|RX|Masters|Teens|Elite 15|Pro Doubles|Pro Division|Doubles (Women|Men|Mixed)|Relay|(Open|Pro) (Women|Men|Doubles|Division)|Age Groups?)\b/.test(allText))
+  if ((/kategori|divizyon|division/i.test(allText) && /\b(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX'?|Masters?|Teens?|Hybrid|Pro|Open)\b/.test(allText)) || /\b(Beginner|Scaled|Intermediate|Advanced|RX|Masters|Teens|Elite 15|Pro Doubles|Pro Division|Doubles (Women|Men|Mixed)|Relay|(Open|Pro) (Women|Men|Doubles|Division)|Age Groups?)\b/.test(allText))
     return { ok: false, reason: "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar" };
   // Türkçe kategori/seviye adları da yasak (denetim 2026-11-22: "Gençler", "Kolay seviyede", "üç seviyede kategoriler" geçti)
   const trCat = allText.match(/(?<!\p{L})(gençler|ustalar|veteranlar|elit kategori\p{L}*|(kolay|orta|ileri|zor|başlangıç) seviye\p{L}*|(iki|üç|dört) seviye\p{L}*|yaş grub\p{L}*|yaş grupla\p{L}*)(?!\p{L})/iu);
@@ -141,6 +141,6 @@ export function guardPost(post, { sourceName }) {
   const athleteInstagram = /^[\w.]{2,30}$/.test(String(post.athleteInstagram ?? "").replace(/^@/, "")) ? String(post.athleteInstagram).replace(/^@/, "") : "";
   // Konum rozeti: yalnızca harf, boşluk, eğik çizgi; kısa
   const loc = (x, n) => clean(x ?? "").replace(/[^\p{L} /'-]/gu, "").replace(/\s+/g, " ").trim().slice(0, n);
-  const country = loc(post.country, 24), place = loc(post.place, 32);
+  const country = loc(post.country, 32), place = loc(post.place, 32);
   return { ok: true, post: { slides, caption, eventName, officialSite, officialInstagram, athleteName, athleteInstagram, country, place, imageQueries: (post.imageQueries ?? []).map((q) => clean(q).slice(0, 60)).slice(0, 4), brand: BRAND.handle } };
 }

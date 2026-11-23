@@ -28,10 +28,12 @@ export async function collectInsights(state, { max = 40 } = {}) {
 const score = (i) => (i.saved ?? 0) * 3 + (i.shares ?? 0) * 3 + (i.comments ?? 0) * 2 + (i.likes ?? 0);
 const avg = (a) => (a.length ? Math.round(a.reduce((s, x) => s + x, 0) / a.length) : 0);
 const trHour = (iso) => Number(new Date(iso).toLocaleString("en-GB", { timeZone: "Europe/Istanbul", hour: "2-digit", hour12: false })) % 24;
+const trDay = (ms) => new Date(ms).toLocaleString("sv-SE", { timeZone: "Europe/Istanbul" }).slice(0, 10);
 
 /** Son 7 günün özeti: en iyi 3 post, tür ve saat dilimine göre ortalama erişim (veya erişim yoksa etkileşim). Veri yoksa boş döner. */
 export function weeklySummary(state) {
-  const since = Date.now() - 7 * 24 * H;
+  const now = Date.now();
+  const since = now - 7 * 24 * H;
   const rows = (state.posts ?? []).filter((p) => p.media && p.ins && Date.parse(p.at ?? 0) > since);
   if (rows.length < 3) return "";
   const top = [...rows].sort((a, b) => score(b.ins) - score(a.ins)).slice(0, 3)
@@ -45,10 +47,21 @@ export function weeklySummary(state) {
     return Object.entries(m).sort((a, b) => avg(b[1]) - avg(a[1])).map(([k, v]) => `${k}: ${avg(v)} (${v.length} post)`).join(" · ");
   };
   const slot = (p) => { const h = trHour(p.at); return h < 12 ? "sabah" : h < 17 ? "öğlen" : "akşam"; };
+  const sinceDay = trDay(since), today = trDay(now);
+  let drafts = 0, approved = 0, rejected = 0;
+  for (const [day, d] of Object.entries(state.daily ?? {})) {
+    if (day <= sinceDay || day > today || !d) continue;
+    drafts += d.drafts ?? 0;
+    approved += d.approved ?? 0;
+    rejected += d.rejected ?? 0;
+  }
+  const denom = drafts || (approved + rejected);
+  const rate = denom > 0 ? Math.round((approved / denom) * 100) : 0;
   return [
     `📈 Haftalık etkileşim özeti (${rows.length} post)`,
     "En iyi 3 post (kaydetme ve paylaşım ağırlıklı):", ...top,
     `Türe göre ${metricLabel}: ${by((p) => p.kind ?? "haber")}`,
     `Saate göre ${metricLabel}: ${by(slot)}`,
+    `Son 7 gün üretim: ${drafts} taslak, ${approved} onay, ${rejected} red (onay oranı %${rate})`,
   ].join("\n");
 }

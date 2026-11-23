@@ -1278,12 +1278,21 @@ try {
   if (r !== SKIPPED && !DRY && hour >= 21 && d && !d.summarySent) {
     const done = state.posts.filter((p) => p.day === today && p.media);
     let rej = [];
-    try { rej = JSON.parse(fs.readFileSync("state/rejected.json", "utf8")).filter((r) => trDay(r.at) === today); } catch {}
+    try {
+      const raw = JSON.parse(fs.readFileSync("state/rejected.json", "utf8"));
+      if (Array.isArray(raw)) rej = raw.filter((x) => trDay(x.at) === today);
+    } catch {}
+    const whyCounts = {};
+    for (const x of rej) {
+      for (const k of new Set((x.fails ?? []).map((f) => f?.item).filter(Boolean))) whyCounts[k] = (whyCounts[k] ?? 0) + 1;
+    }
+    const whyDist = Object.entries(whyCounts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "tr")).slice(0, 6).map(([k, n]) => `${k}: ${n}`).join(", ");
     const msg = [
       `📊 Günlük özet ${today}: ${done.length} paylaşım, ${d.drafts} taslak, ${d.approved} onay, ${d.rejected} red.`,
+      whyDist ? `Eleme nedenleri: ${whyDist}` : "",
       done.length ? "\nPaylaşılanlar:\n" + done.map((p) => `- ${p.headline ?? p.title ?? p.kind} (${p.kind}) ${p.permalink ?? ""}`).join("\n") : "\nBugün paylaşım yok.",
-      rej.length ? "\nElenen taslaklar:\n" + rej.slice(-8).map((r) => `- ${String(r.title ?? "").slice(0, 90)}: ${(r.fails ?? []).slice(0, 2).map((f) => `${f.item}`).join(", ")}`).join("\n") : "",
-    ].join("\n");
+      rej.length ? "\nElenen taslaklar:\n" + rej.slice(-8).map((x) => `- ${String(x.title ?? "").slice(0, 90)}: ${(x.fails ?? []).slice(0, 2).map((f) => `${f.item}`).join(", ")}`).join("\n") : "",
+    ].filter(Boolean).join("\n");
     log(msg);
     await notify(msg);
     d.summarySent = true;

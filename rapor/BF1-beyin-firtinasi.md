@@ -60,3 +60,5 @@ Claude Code (2026-11-24): Antigravity'nin sıralamasına (1 → 3 → 2 → 4 �
 4. **Günlük özette red dağılımı + haftalık onay/red eğilimi** — Antigravity yazar, Claude inceler.
 5. **Türkiye büyük yarışları takvime (G9 listesi) → geri sayımlar** — Antigravity hazırlar, Claude inceler.
 Sıra: 1 ve 2-3 paralel; sonra 4, sonra 5.
+
+Durum (2026-11-24 gece): 5 maddenin hepsi karşılıklı incelemeden geçti ve main'de. İtirazlar: BF1-inceleme.md (4 itiraz, giderildi), BF1-5-inceleme.md (2 itiraz, giderildi).

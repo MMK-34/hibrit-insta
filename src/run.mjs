@@ -411,6 +411,15 @@ const dropCategories = (txt) => String(txt ?? "").split(/(?<=[.!?])\s+/).filter(
 const evKey = (s) => norm(String(s ?? "").replace(/\b(19|20)\d\d\b/g, "").replace(/^\s*\d+\s*\.?\s*/, ""));
 // Koşu, trail/ultra, su ve bisiklet yarışları: yarış başına tek post (İda Ultra "doga" kategorisinde iki kez çıktı, 2026-11-22)
 const ONE_POST_CATS = new Set(["kosu", "doga", "su", "bisiklet"]);
+// Etkinlik adlarında sponsor ön eki/ek farkı ("Kar Spor İda Ultra Maraton" / "10. İda Ultra Maratonu", G10):
+// en uzun ortak parça kısa adın %80'i ve en az 8 harfse aynı etkinlik sayılır
+function lcsOk(a, b) {
+  const [s, l] = a.length <= b.length ? [a, b] : [b, a];
+  if (s.length < 8) return false;
+  let best = 0;
+  for (let i = 0; i < s.length; i++) for (let j = i + best + 1; j <= s.length; j++) { if (l.includes(s.slice(i, j))) best = j - i; else break; }
+  return best >= Math.max(8, Math.ceil(s.length * 0.8));
+}
 function recentSameEvent({ eventName = "", text = "", category = "", followup = false }) {
   const one = ONE_POST_CATS.has(category);
   const days = one ? 30 : followup ? 0 : 2;
@@ -420,7 +429,7 @@ function recentSameEvent({ eventName = "", text = "", category = "", followup = 
     if (!p.media || !p.eventName || Date.now() - Date.parse(p.at ?? 0) > days * 864e5) return false;
     const pk = evKey(p.eventName);
     if (pk.length < 6) return false;
-    return (k.length >= 6 && (k.includes(pk) || pk.includes(k))) || (t && t.includes(pk));
+    return (k.length >= 6 && (k.includes(pk) || pk.includes(k) || lcsOk(k, pk))) || (t && t.includes(pk));
   });
   // Koşu: tek post. Diğerleri: aynı etkinliğe 2 günde en çok 2 post (ör. kazananlar + Türk sporcular)
   return (one ? hits.length >= 1 : hits.length >= 2) ? hits[0] : null;
@@ -537,7 +546,7 @@ async function prepareVerified(pick, srcItems, sourceName) {
       ...srcItems.filter((s) => s.id.startsWith("c21") && usable(s)).map((s) => ({ label: "circle21 resmî kayıt sayfası (organizatörün kendi girdiği kayıt ve açıklama; birincil kaynak)", url: s.url, text: s.text })),
       // Yarış takvimi kaydı: organizatörün resmî etkinlik sayfasındaki yapılandırılmış veriden (JSON-LD) otomatik çekildi; birincil kaynak.
       // hyrox.com GitHub'dan 403 veriyor; denetçi sayfayı açamadığı için her gün 3-4 taslak boşa gidiyordu (2026-11-23).
-      ...srcItems.filter((s) => s.id.startsWith("cal:")).map((s) => ({ label: `Hibrit Portal yarış takvimi kaydı (resmî etkinlik sayfasından otomatik çekildi${s.calSource ? `: ${s.calSource}` : ""}; birincil kaynak)`, url: s.calSource || s.url, text: s.snippet })),
+      ...srcItems.filter((s) => s.id.startsWith("cal:")).map((s) => ({ label: `Hibrit Portal yarış takvimi kaydı (sonuç/kayıt sitesinden otomatik çekildi${s.calSource ? `: ${s.calSource}` : ""}; güvenilir ama hatasız değil: ad, tarih, şehir ve ülke kendi içinde tutarsızsa ya da posttaki bilgi bu kayıtta yoksa fail)`, url: s.calSource || s.url, text: s.snippet })),
     ];
     // Kaynak yalnızca circle21 ya da yarış takvimi ise "sayfa açılamadı" kuralı uygulanmaz (veri resmî kaynaktan otomatik geldi)
     const referenceIsSource = (!!ownC21 || srcItems.some((s) => s.id.startsWith("cal:"))) && srcItems.every((s) => /^(c21|cal:)/.test(s.id));

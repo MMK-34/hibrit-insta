@@ -18,7 +18,7 @@ const URL_RE = new RegExp(
 // Büyük/küçük harf fark etmeksizin beyaz listedeki TLD ile biten alan adı (harfle başlayan etiket): temizlikten sonra kalırsa ret
 // Alt alan adları dâhil ("SUB.HYROX.COM"); ilk etiket harfle başlar ("Elite 15.Me" gibi sayı + kısaltma geçişleri etkilenmez)
 const DOMAIN_ANYCASE_RE = new RegExp(String.raw`(?<![\p{L}\p{N}\-.])\p{L}[\p{L}\p{N}\-]*(?:${DOT}${LABEL})*${DOT}(?:${TLDS})(?![\p{L}\p{N}\-])`, "iu");
-const LINKISH_RE =/(?<![\p{L}\p{N}\-.])[\p{L}][\p{L}\p{N}\-]+(?:\.|\[\.\]|\(\.\)|。)\p{Ll}{2,}(?![\p{L}\p{N}])/u;
+const LINKISH_RE =/(?<![\p{L}\p{N}\-.@])[\p{L}][\p{L}\p{N}\-]+(?:\.|\[\.\]|\(\.\)|。)\p{Ll}{2,}(?![\p{L}\p{N}])/u;
 const MAX_SLIDES = 10, MAX_TAGS = 12, MAX_TAG_LEN = 30, MAX_CAPTION = 2200;
 const MENTION_RE = /(^|\s)@[\w.]{2,30}/g;
 const BAD = /(casino|bahis|(?<![\p{L}])(?:\d*x?bet|bets?10|betboo|tipobet|superbet|jojobet|mobilbet|betist|bet)(?![\p{L}])|kripto|crypto|airdrop|dm\s*at|link\s*bio|bio'?daki\s*link|whatsapp|telegram|onlyfans|indirim\s*kodu|promo\s*code)/iu;
@@ -117,7 +117,7 @@ export function guardPost(post, { sourceName }) {
   if (BAD.test(all)) return { ok: false, reason: "yasaklı ifade (spam/reklam şüphesi)" };
   if (post.country && isForeignAthx(all, post.country)) return { ok: false, reason: "yurt dışı ATHX yarışı (kullanıcı kuralı: ATHX yalnızca Türkiye'de olursa paylaşılır)" };
   if (!TOPIC.test(all)) return { ok: false, reason: "konu dışı görünüyor" };
-  const judge = all.match(/(skandal|şok|olay yarattı|tepki çekti|rezalet|utanç|hezimet|fiyasko|tartışma yarattı|rezil|facia|felaket|yerden yere|destan yazdı|damga vurdu|ezip geçti|silip süpürdü|ders verdi|yerle bir|efsanevi|muhteşem|inanılmaz|mükemmel|çılgın|harika)/i);
+  const judge = all.match(/(skandal|şok|olay yarattı|tepki çekti|rezalet|utanç|hezimet|fiyasko|tartışma yarattı|(?<![a-zçğıöşü])rezil|facia|felaket|yerden yere|destan yazdı|damga vurdu|ezip geçti|silip süpürdü|ders verdi|yerle bir|efsanevi|muhteşem|inanılmaz|mükemmel|çılgın|harika)/i);
   if (judge) return { ok: false, reason: `tarafsızlık: yargılayıcı ifade ("${judge[0]}")` };
   // Kişi sözü / alıntı (kural: antrenör, yetkili, uzman alıntısı yok)
   // \b Türkçe harflerde çalışmaz (ş, ğ, İ...): harf-öncesi/sonrası lookaround kullanılır

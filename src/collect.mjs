@@ -123,7 +123,9 @@ export async function upcomingEvents() {
     const d = (new Date(e.startDate).getTime() - now) / 864e5;
     const tr = /t[uü]rk/i.test(e.country ?? "");
     // Yalnızca kesinleşmiş yarışlar (G9: "expected" kayıt yanlış ad/tarihle aday oluyordu)
-    if (e.status && e.status !== "confirmed") return false;
+    if (e.status !== "confirmed") return false;
+    if (!e.city || !e.name) return false; // bozuk kayıt (G10: iF3 city undefined)
+    if (/athx/i.test(e.name) && !tr) return false; // kullanıcı kuralı: yurt dışı ATHX aday olmaz
     return d >= 0 && d <= (tr ? 30 : 10);
   }).map((e) => ({
     id: `cal:${e.id}`,

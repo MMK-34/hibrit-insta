@@ -44,7 +44,8 @@ export const norm = (s = "") => String(s).toLocaleLowerCase("tr").replace(/ı/g,
 
 /** Duyuru paylaşıldığında takip postlarını planlar (aynı etkinlik 120 gün içinde ikinci kez planlanmaz). */
 export function scheduleFollowups({ eventName, officialSite, category }, today) {
-  if (!eventName) return 0;
+  // Resmî sitesi olmayan küçük yarışa takip açılmaz: arşiv bulunamayıp taslak boşa gidiyordu (G10: Mayhem Madness, Wolf Haven)
+  if (!eventName || !officialSite) return 0;
   const list = loadFollowups();
   const key = norm(eventName);
   const recent = list.some((f) => f.key === key && (Date.parse(today) - Date.parse(f.createdDay)) / 864e5 < 120);

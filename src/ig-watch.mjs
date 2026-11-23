@@ -83,6 +83,7 @@ export async function igWatchCandidates(extra = []) {
       if (ts < (global ? Date.now() - 2 * 864e5 : cutoff) || cap.length < 40) continue;
       if (box && !COMP_RE.test(cap)) continue;
       if (isForeignAthx(cap)) continue; // kullanıcı kuralı: yurt dışı ATHX yarışları aday olmaz
+      if (/flash sale|indirim|discount|\d+\s?% off|sponsorumuz|kampanya kodu|promo code|promosyon/i.test(cap)) continue; // reklam/indirim haber değil (G10)
       const images = [m.media_type === "IMAGE" ? m.media_url : null, ...(m.children?.data ?? []).filter((c) => c.media_type === "IMAGE").map((c) => c.media_url)].filter(Boolean).slice(0, 6);
       out.push({
         id: `ig:${m.id}`, handle: h, curated, url: m.permalink, images,

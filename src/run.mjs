@@ -733,6 +733,13 @@ async function pickEventPhotos({ post, pages, topic, want, category, kind = "", 
 // Logo adresi (alan adı ya da Instagram kullanıcı adı) etkinlik adındaki ayırt edici bir kelimeyi içermeli.
 // Genel kelimeler (maraton, yarı, games, throwdown...) tek başına eşleşme sayılmaz.
 // Şehir/ülke adı tek başına eşleşme değildir (ör. HYROX İstanbul için crossfitistanbul salonunun logosu)
+// Ürün/ekipman markaları: slayt ya da açıklamada geçerse "Reklam / Tanıtım" notu eklenir (yarış adındaki sponsor da sayılır: güvenli taraf).
+// Metin tr küçük harfe çevrilip taranır ("NİKE", "GARMİN" kapakta büyük harfle gelir). "brooks" (soyadı), "polar" (Türkçe kelime),
+// "decathlon" (atletizm branşı), tek başına "on" eklenmez. İnceleme: rapor/BRAND-inceleme.md
+const BRAND_TEXT_RE = /(?<![\p{L}\p{N}])(puma|nike|adidas|reebok|asics|new balance|hoka|saucony|nobull|rogue fitness|gymshark|under armour|salomon|garmin|coros|whoop|concept2|technogym|tyr|centr|eleiko|suunto|mizuno|altra|on running|kiprun|the north face|strava|maurten)(?![\p{L}\p{N}])/u;
+// Tüm slayt alanları (kicker, bullets, tablo, stat...) taranır; tr küçük harf + "ı"->"i" ("ASICS" -> "asics", "NİKE" -> "nike")
+const allStrings = (v) => typeof v === "string" ? [v] : Array.isArray(v) ? v.flatMap(allStrings) : v && typeof v === "object" ? Object.values(v).flatMap(allStrings) : [];
+const brandInText = (post) => BRAND_TEXT_RE.test(allStrings([post.caption, post.slides]).join(" ").toLocaleLowerCase("tr").replace(/ı/g, "i"));
 const LOGO_GENERIC = new Set(["istanbul", "ankara", "izmir", "antalya", "bursa", "bodrum", "mersin", "adana", "turkiye", "türkiye", "turkey", "tirana", "athens", "atina", "sofia", "dubai", "cairo", "kahire", "london", "londra", "berlin", "paris", "barcelona", "madrid", "rome", "roma", "marathon", "maraton", "maratonu", "half", "yari", "yarı", "race", "run", "running", "kosu", "koşu", "koşusu", "games", "throwdown", "challenge", "series", "world", "championship", "championships", "open", "final", "finals", "qualifier", "qualifiers", "ultra", "trail", "festival", "cup", "the", "and", "official",
   // Çatı marka/seri adları (denetim G4): ironman.com Umman reklam logosunu, Majors sitesi Tokyo logosunu verdi
   "ironman", "majors", "major"]);
@@ -819,6 +826,8 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   const evSrc = [...new Set(photos.filter((p) => String(p.id).startsWith("event:")).map((p) => credit(p.source)).filter(Boolean))];
   let caption = evSrc.length && /Kaynak:[^\n]*/.test(post.caption) ? post.caption.replace(/(Kaynak:[^\n]*)/, `$1\nGörsel: ${evSrc.join(", ")}`) : post.caption;
   // Kullanıcı kuralı (2026-11-10): görselde ticari marka belirgin görünüyorsa açıklamaya "Reklam / Tanıtım" yazılır
+  // Ürün/marka haberi de (2026-11-24: PUMA HYROX ayakkabısı postu) metinde marka adı geçince aynı nota tabi
+  if (brandInText(post)) brandSeen = true;
   if (brandSeen && !/Reklam \/ Tanıtım/.test(caption)) caption = /\nKaynak:/.test(caption) ? caption.replace(/\nKaynak:/, "\nReklam / Tanıtım\n\nKaynak:") : `${caption}\n\nReklam / Tanıtım`;
   // Etkinliğin Instagram hesabı tıklanabilir @etiket olarak (yalnızca doğrulanmış hesap): okur yarışın sayfasına girebilsin
   const evHandle = post.officialInstagram ? await verifiedEventHandle(post.officialInstagram, post.eventName).catch(() => "") : "";
@@ -1249,6 +1258,7 @@ async function publishStock() {
       if (!dcs.ok) return await failAttempt(dcs.failed ? "tasarım denetimi yapılamadı" : `tasarım: ${dcs.issues.map((i) => `${i.slide}: ${i.problem}`).join(" | ").slice(0, 300)}`);
       brandSeen = !!dcs.brand;
     }
+    if (brandInText(post)) brandSeen = true;
     let caption = post.caption;
     if (brandSeen && !/Reklam \/ Tanıtım/.test(caption)) caption = /\nKaynak:/.test(caption) ? caption.replace(/\nKaynak:/, "\nReklam / Tanıtım\n\nKaynak:") : `${caption}\n\nReklam / Tanıtım`;
     fs.writeFileSync(path.join(outDir, "caption.txt"), `${caption}\n`);

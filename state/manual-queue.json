@@ -1,27 +1,5 @@
 [
   {
-    "id": "crossfit-tahta-terimleri",
-    "publishAt": "2026-11-23T13:30",
-    "urls": [
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/crossfit-tahta-terimleri/01.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/crossfit-tahta-terimleri/02.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/crossfit-tahta-terimleri/03.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/crossfit-tahta-terimleri/04.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/crossfit-tahta-terimleri/05.jpg"
-    ],
-    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/crossfit-tahta-terimleri-story/story.jpg",
-    "caption": "Tahtadaki kısaltmalar ne demek?\nCrossFit'e yeni başlayınca tahtada AMRAP, EMOM gibi kısaltmalar görürsün. CrossFit'in kendi sözlüğünden en sık geçen terimler:\n\nAntrenman türleri\nAMRAP: Belirli sürede olabildiğince çok tur ya da tekrar.\nEMOM: Her dakikanın başında belirli sayıda tekrar yapılır.\nTabata: 8 kez 20 saniye çalışma, 10 saniye dinlenme.\nChipper: Her hareketin yazılan tekrarı bitirilip sonrakine geçilen antrenman.\n\nKaç hareket?\nCouplet: 2 hareketli antrenman, örneğin Fran.\nTriplet: 3 hareketli antrenman, örneğin Helen.\nMet-con: Metabolik kondisyon çalışması.\n\nSalon dili\nWOD: Günün antrenmanı.\nBox: CrossFit salonu.\nKipping: Pull-up gibi hareketleri vücudun salınımından güç alarak tamamlamak.\nHero WOD: Görev başında hayatını kaybeden bir görevlinin anısına yazılan antrenman.\n\nTahtada ilk gördüğünde hangisi seni şaşırttı?\nSalona yeni başlayan arkadaşına gönder.\n\nKaynak: CrossFit\nGörsel: Pexels\n\n#crossfit #wod #amrap #emom #hibritportal",
-    "photos": [
-      "local:box-jumps"
-    ],
-    "title": "Tahtadaki kısaltmalar ne demek?",
-    "kind": "bilgi",
-    "category": "crossfit",
-    "eventName": "",
-    "srcUrl": "https://www.crossfit.com/essentials/crossfit-terms-explained",
-    "storyOk": false
-  },
-  {
     "id": "ilk-yaris-gunu-listesi",
     "publishAt": "2026-11-24T19:30",
     "urls": [

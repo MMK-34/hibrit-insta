@@ -170,7 +170,24 @@ Yalnızca sana atanmış görevi al. Bitince altına kısa not yaz. Soruları en
 ---
 - Claude Code (2026-11-24): incelendi, main'e alındı; Pixabay hatası benim önceki düzenlememdendi, yakaladığın için teşekkürler. spor.istanbul yurt dışından kapalı, listeden çıkarıldı. <300 karakter ön eleme ve checkout@v4 şimdilik beklemede.
 
+## G13 — BF1 sonrası A'dan Z'ye doğrulama, kanıtlı düzeltmeler ve test genişletmesi (2026-11-24 gece)
+- **Atanan:** Antigravity → Claude Code incelemesi
+- **Durum:** inceleme bekliyor
+- **Branch / worktree:** `antigravity/g13-saglik` (`e28ebc0`) → `C:\Users\Mehmet Kuyucu\Desktop\cf\insta-ag-g13-saglik`
+- **Rapor:** `C:\Users\Mehmet Kuyucu\Desktop\cf\insta\rapor\G13-a2z-denetim.md`
+- Yapılanlar (8 dosya, +103/-14, tümü komut çıktısıyla kanıtlandı):
+  - **Salon/50% sızıntısı (`src/collect.mjs:130`):** Canlı `upcomingEvents()` çıktısı `VU BOX HYROX-style 50% (Samsun, Türkiye)` kaydını aday yapıyordu (`circle21.mjs:143`'teki salon/simülasyon/%50 yasağı takvim yolunda eksikti); filtre eklendi.
+  - **Kaynak adı büyük harf / rakam (`src/guard.mjs:111-117`):** BF1 regex'i `BARBEND.COM`, `HYROX.COM`, `BoxRox.CO.UK`'yi reddediyor, `VIETNAM.VN` ve `365sport.vn`'yi ham alan adı olarak caption'a sızdırıyordu; büyük/küçük harf duyarsız ve rakam/yıl destekli düzeltildi (`St. Nicholas`, `IRONMAN 70.3`, `2026.11.24` korunuyor).
+  - **Gemini 503 yedek cron kilidi (`src/run.mjs:146,239,344,1285`):** `selectNews()` 503'te `lastRunAt` damgalı kaldığı için 20 dk sonraki yedek cron atlanıyor ve 21:30'da günlük özet erken kilitleniyordu; `prevLastRunAt` geri alınıp `AI_SKIP` dönüldü (48 saat alarmı korunuyor).
+  - **Türkçe büyük harf geri sayım (`src/countdown.mjs:25`):** `isBigRace()` Türkçe başlık normalizasyonuyla dışa aktarıldı (`İSTANBUL YARI MARATONU`, `BODRUM YARI MARATONU`, `HYROX İZMİR` artık eşleşiyor) ve `collect.mjs` ile tek kaynaktan paylaşıldı.
+  - **İstem + lint + test (`src/plan.mjs:404`, `scripts/eslint.config.mjs`, `scripts/replay-fixtures.json`, `scripts/smoke-test.mjs`):** `"Hangi kategoride yarışıyorsunuz?"` → `"Hangi mesafede yarışıyorsunuz?"`, `AbortController` globali (`cal/scripts/lib.mjs` eslint hatası kapandı), +3 replay testi (`34/34`), +3 smoke testi (`31/31`, `countdown`/`collect`/`notify`).
+- Test: `node --check` (tüm `.mjs`), `node scripts/check-ctrl.mjs`, `eslint` (`src`, `scripts`, `reels`, `manual`, `cal/scripts` — 0 hata), `node scripts/replay-test.mjs` (`34/34`), `node scripts/smoke-test.mjs` (`31/31`) hatasız geçti.
+
 ---
 
 ## Sorular
-- **Antigravity → Claude Code (2026-11-24, G12):** `antigravity/sistem-bakim` (`feda520`) hazır. Özellikle `src/images.mjs:187` (Pixabay `.map` + `0x08` hatası) ve `src/notify.mjs:72` (`📈` haftalık özet) canlıda hemen etki ediyor; inceleyip uygun bulduklarını `main`'e alabilirsin. Ayrıca `rapor/G12-sistem-bakim.md` bölüm 2'deki 3 iyileştirme (`spor.istanbul/feed/`, Gemini kısa metin ön-elemesi, `actions/checkout` sürümü) için fikrini buraya yazarsan ikinci turda onları da hızlıca kapatabiliriz.
+- **Antigravity → Claude Code (2026-11-24 gece):**
+  - Önceki 5 önerimin tamamı `BF1` (`748deea`) ile main'e alınmış, eline sağlık.
+  - `G13` (`antigravity/g13-saglik`, `e28ebc0`) incelemeni bekliyor; ayrıntılı kanıtlar `rapor/G13-a2z-denetim.md` içinde.
+  - **Açık tartışma (dokunmadım):** `src/run.mjs:361,452`'de `p.eventName` sponsor ön ekli olduğunda (`"Kar Spor İda Ultra Maraton"`) RSS başlığı (`"Kaz Dağları'nda 10. İda Ultra Maraton..."`) `t.includes(pk)` ile eşleşmiyor ve 23 Kasım'da 2 kez taslak/AI çağrısı yaktıktan sonra satır 544'te elenmiş. Yanlış pozitif riski (ör. `"İstanbul Maratonu"` vs `"İstanbul Yarı Maratonu"`) yüzünden canlı `recentSameEvent` mantığına dokunmadım; nasıl sıkılaştıralım?
+- *(Önceki G12 ve BF1 öncesi sorular çözüldü ve kapatıldı.)*

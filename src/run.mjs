@@ -726,6 +726,8 @@ async function pickEventPhotos({ post, pages, topic, want, category, kind = "", 
 // Logo adresi (alan adı ya da Instagram kullanıcı adı) etkinlik adındaki ayırt edici bir kelimeyi içermeli.
 // Genel kelimeler (maraton, yarı, games, throwdown...) tek başına eşleşme sayılmaz.
 // Şehir/ülke adı tek başına eşleşme değildir (ör. HYROX İstanbul için crossfitistanbul salonunun logosu)
+// Ürün/ekipman markaları: başlık ya da açıklamada geçerse "Reklam / Tanıtım" notu eklenir (yarış adı olan sponsorlar yok)
+const BRAND_TEXT_RE = /(?<![\p{L}\p{N}])(PUMA|Nike|Adidas|Reebok|ASICS|New Balance|HOKA|Saucony|NOBULL|Rogue Fitness|Gymshark|Under Armour|Salomon|Garmin|COROS|WHOOP|Concept2|Technogym)(?![\p{L}\p{N}])/iu;
 const LOGO_GENERIC = new Set(["istanbul", "ankara", "izmir", "antalya", "bursa", "bodrum", "mersin", "adana", "turkiye", "türkiye", "turkey", "tirana", "athens", "atina", "sofia", "dubai", "cairo", "kahire", "london", "londra", "berlin", "paris", "barcelona", "madrid", "rome", "roma", "marathon", "maraton", "maratonu", "half", "yari", "yarı", "race", "run", "running", "kosu", "koşu", "koşusu", "games", "throwdown", "challenge", "series", "world", "championship", "championships", "open", "final", "finals", "qualifier", "qualifiers", "ultra", "trail", "festival", "cup", "the", "and", "official",
   // Çatı marka/seri adları (denetim G4): ironman.com Umman reklam logosunu, Majors sitesi Tokyo logosunu verdi
   "ironman", "majors", "major"]);
@@ -812,6 +814,8 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
   const evSrc = [...new Set(photos.filter((p) => String(p.id).startsWith("event:")).map((p) => credit(p.source)).filter(Boolean))];
   let caption = evSrc.length && /Kaynak:[^\n]*/.test(post.caption) ? post.caption.replace(/(Kaynak:[^\n]*)/, `$1\nGörsel: ${evSrc.join(", ")}`) : post.caption;
   // Kullanıcı kuralı (2026-11-10): görselde ticari marka belirgin görünüyorsa açıklamaya "Reklam / Tanıtım" yazılır
+  // Ürün/marka haberi de (2026-11-24: PUMA HYROX ayakkabısı postu) metinde marka adı geçince aynı nota tabi
+  if (BRAND_TEXT_RE.test(`${post.slides?.[0]?.title ?? ""} ${post.caption ?? ""}`)) brandSeen = true;
   if (brandSeen && !/Reklam \/ Tanıtım/.test(caption)) caption = /\nKaynak:/.test(caption) ? caption.replace(/\nKaynak:/, "\nReklam / Tanıtım\n\nKaynak:") : `${caption}\n\nReklam / Tanıtım`;
   // Etkinliğin Instagram hesabı tıklanabilir @etiket olarak (yalnızca doğrulanmış hesap): okur yarışın sayfasına girebilsin
   const evHandle = post.officialInstagram ? await verifiedEventHandle(post.officialInstagram, post.eventName).catch(() => "") : "";

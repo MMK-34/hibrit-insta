@@ -27,6 +27,7 @@ import { guardPost } from "./guard.mjs";
 import { INTRO_IMAGES, INTRO_CAPTION } from "./intro.mjs";
 import { verifyGate, logRejected, failText } from "./verify.mjs";
 import { scheduleFollowups, dueFollowup, markFollowup, followupInput, loadFollowups, norm } from "./followups.mjs";
+import { evKey, sameEventMatch } from "./event-match.mjs";
 import { loadStock, saveStock } from "./stock.mjs";
 import { fetchEventLogo, fetchInstagramLogo, logoFromUrl } from "./logo.mjs";
 import { POSTING } from "./config.mjs";
@@ -433,30 +434,15 @@ async function main() {
 const CAT_WORDS = /\b(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX|Masters?|Teens?|Hybrid)\b/;
 const dropCategories = (txt) => String(txt ?? "").split(/(?<=[.!?])\s+/).filter((s) => !(/kategori|divizyon|division|categor/i.test(s) && CAT_WORDS.test(s))).join(" ");
 
-// Etkinlik bazlı tekrar önleme (kullanıcı kuralı 2026-11-22: Gazi Yarı Maratonu farklı sitelerden 5 kez paylaşıldı).
-// Koşu: bir yarış için tek post ("koşu var, tarih şu" yeterli), 30 gün içinde ikincisi yok. Diğer branşlar: aynı etkinliğe 2 gün içinde ikinci post yok (takip serisi hariç).
-const evKey = (s) => norm(String(s ?? "").replace(/\b(19|20)\d\d\b/g, "").replace(/^\s*\d+\s*\.?\s*/, ""));
 // Koşu, trail/ultra, su ve bisiklet yarışları: yarış başına tek post (İda Ultra "doga" kategorisinde iki kez çıktı, 2026-11-22)
 const ONE_POST_CATS = new Set(["kosu", "doga", "su", "bisiklet"]);
-// Etkinlik adlarında sponsor ön eki/ek farkı ("Kar Spor İda Ultra Maraton" / "10. İda Ultra Maratonu", G10):
-// en uzun ortak parça kısa adın %80'i ve en az 8 harfse aynı etkinlik sayılır
-function lcsOk(a, b) {
-  const [s, l] = a.length <= b.length ? [a, b] : [b, a];
-  if (s.length < 8) return false;
-  let best = 0;
-  for (let i = 0; i < s.length; i++) for (let j = i + best + 1; j <= s.length; j++) { if (l.includes(s.slice(i, j))) best = j - i; else break; }
-  return best >= Math.max(8, Math.ceil(s.length * 0.8));
-}
 function recentSameEvent({ eventName = "", text = "", category = "", followup = false }) {
   const one = ONE_POST_CATS.has(category);
   const days = one ? 30 : followup ? 0 : 2;
   if (!days) return null;
-  const k = evKey(eventName), t = norm(text);
   const hits = state.posts.filter((p) => {
     if (!p.media || !p.eventName || Date.now() - Date.parse(p.at ?? 0) > days * 864e5) return false;
-    const pk = evKey(p.eventName);
-    if (pk.length < 6) return false;
-    return (k.length >= 6 && (k.includes(pk) || pk.includes(k) || lcsOk(k, pk))) || (t && t.includes(pk));
+    return sameEventMatch(p.eventName, { eventName, text });
   });
   // Koşu: tek post. Diğerleri: aynı etkinliğe 2 günde en çok 2 post (ör. kazananlar + Türk sporcular), ama 12 saat içinde ikincisi yok
   // (G11: HYROX Guangzhou elle ve botla 4 dk arayla iki kez çıktı)

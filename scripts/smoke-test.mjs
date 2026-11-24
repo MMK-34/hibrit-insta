@@ -220,6 +220,19 @@ try {
       throw new Error("📈 bildirimi issue #1'e yazılmadı");
     }
   });
+
+  // 7) event-match.mjs: sponsor ön ekli tekrar etkinlik eşleştirmesi (G14, pozitif + negatif senaryolar)
+  await check("event-match.mjs sameEventMatch (G14 senaryoları)", async () => {
+    const emMod = mods.get("event-match.mjs");
+    if (!emMod?.sameEventMatch) throw new Error("sameEventMatch yüklenemedi");
+    const fx = JSON.parse(fs.readFileSync(path.join(__dirname, "event-match-fixtures.json"), "utf8"));
+    const errs = [];
+    for (const tc of fx.cases ?? []) {
+      const got = Boolean(emMod.sameEventMatch(tc.postedEventName, tc.candidate));
+      if (got !== Boolean(tc.expectMatch)) errs.push(`${tc.id}: beklenen ${tc.expectMatch}, gelen ${got}`);
+    }
+    if (errs.length) throw new Error(errs.join(" | "));
+  });
 } finally {
   if (safeNetMod && origDispatch) safeNetMod.SAFE_AGENT.dispatch = origDispatch;
   globalThis.fetch = origFetch;

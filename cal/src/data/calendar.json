@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-24T13:42:52.388Z",
+  "updated": "2026-11-24T14:42:59.312Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 91,
-      "fetchedAt": "2026-11-24T13:41:04.783Z"
+      "count": 94,
+      "fetchedAt": "2026-11-24T14:40:58.344Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-24T13:42:52.380Z"
+      "fetchedAt": "2026-11-24T14:42:59.301Z"
     }
   },
   "items": [
@@ -1475,6 +1475,28 @@
       "website": "https://www.rcfn-training.de/"
     },
     {
+      "id": "circle21-b3a85d9b-4360-4b5a-85d6-1a0d6047fd4d",
+      "name": "LAB CHARITY GAMES 2026",
+      "eventSlug": null,
+      "type": "crossfit",
+      "city": "Greece",
+      "country": "Yunanistan",
+      "startDate": "2026-12-19",
+      "endDate": "2026-12-19",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=b3a85d9b-4360-4b5a-85d6-1a0d6047fd4d",
+      "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/483707/conversions/charity_games_facebook_cover-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/483706/conversions/charity_games_square-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
+      "registration": {
+        "to": "2026-12-18",
+        "fee": "0.00 EUR"
+      },
+      "instagram": "https://instagram.com/thelabfitness",
+      "website": "https://thelabfitness.gr/"
+    },
+    {
       "id": "runnight-aydos-2026-12",
       "name": "RunNight | Aydos",
       "type": "trail",
@@ -2754,7 +2776,7 @@
     },
     {
       "id": "circle21-255e3c81-7dab-4649-bc11-5e0596bfcf44",
-      "name": "THE GIRL GAMES",
+      "name": "THE GIRL GAMES - MANCHESTER",
       "eventSlug": null,
       "type": "crossfit",
       "city": "Manchester M17 1SN",
@@ -2775,10 +2797,10 @@
     },
     {
       "id": "circle21-28c09fa1-e8e1-4081-836a-b2090b326b45",
-      "name": "THE GIRL GAMES - RELAY",
+      "name": "THE GIRL GAMES - MANCHESTER RELAY",
       "eventSlug": null,
       "type": "crossfit",
-      "city": "Manchester",
+      "city": "Manchester M17 1SN",
       "country": "Birleşik Krallık",
       "startDate": "2027-03-21",
       "endDate": "2027-03-21",
@@ -3897,6 +3919,39 @@
       },
       "instagram": "https://instagram.com/clashofthebulls",
       "website": "www.clashofthebulls.com"
+    },
+    {
+      "id": "circle21-b79bd359-f03e-4ac7-8944-29bc8a77be1a",
+      "name": "THE GIRL GAMES - TELFORD",
+      "eventSlug": null,
+      "type": "crossfit",
+      "city": "Telford",
+      "country": "Birleşik Krallık",
+      "startDate": "2027-06-13",
+      "endDate": "2027-06-13",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=b79bd359-f03e-4ac7-8944-29bc8a77be1a",
+      "source": "circle21",
+      "registration": {
+        "to": "2027-06-11",
+        "fee": "0.00 EUR"
+      }
+    },
+    {
+      "id": "circle21-dbde8cfd-74be-4b8c-8979-d788b64f5a05",
+      "name": "THE GIRL GAMES - TELFORD RELAY",
+      "eventSlug": null,
+      "type": "crossfit",
+      "country": "Birleşik Krallık",
+      "startDate": "2027-06-13",
+      "endDate": "2027-06-13",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=dbde8cfd-74be-4b8c-8979-d788b64f5a05",
+      "source": "circle21",
+      "registration": {
+        "to": "2027-06-11",
+        "fee": "0.00 EUR"
+      }
     },
     {
       "id": "circle21-0ba91ed2-a327-42ab-896e-7e88f8062216",

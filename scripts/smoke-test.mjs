@@ -233,6 +233,74 @@ try {
     }
     if (errs.length) throw new Error(errs.join(" | "));
   });
+
+  // 8) circle21.mjs: circle21Reference (ağsız sahte API yanıtı; circle21Events veriyi safeGet/SAFE_AGENT üzerinden çeker)
+  await check("circle21.mjs circle21Reference (G15 senaryoları)", async () => {
+    const c21Mod = mods.get("circle21.mjs");
+    if (!c21Mod?.circle21Reference) throw new Error("circle21Reference yüklenemedi");
+    if (!mockAgent) {
+      safeNetMod = mods.get("safe-net.mjs");
+      if (!safeNetMod) throw new Error("safe-net.mjs yüklenemedi");
+      mockAgent = new MockAgent();
+      mockAgent.disableNetConnect();
+      origDispatch = safeNetMod.SAFE_AGENT.dispatch.bind(safeNetMod.SAFE_AGENT);
+      safeNetMod.SAFE_AGENT.dispatch = (opts, handler) => mockAgent.dispatch(opts, handler);
+    }
+    const startIso = new Date(Date.now() + 5 * 864e5).toISOString();
+    const endIso = new Date(Date.now() + 6 * 864e5).toISOString();
+    const fakeEvents = [
+      { id: "c21-vubox", name: "VU BOX Hybrid (HYROX-style) simulation", slug: "vu-box-hybrid-simulation", country: "TR", date_from: startIso, date_to: endIso, competition_address: "34340 Beşiktaş/İstanbul", onsite: true },
+      { id: "c21-alsancak", name: "ALSANCAK TEAM SERIES 2026", slug: "alsancak-team-series-2026", country: "TR", date_from: startIso, date_to: endIso, competition_address: "35220 Konak/İzmir", onsite: true },
+      { id: "c21-open", name: "Open Cup", slug: "open-cup", country: "TR", date_from: startIso, date_to: endIso, competition_address: "06510 Çankaya/Ankara", onsite: true },
+      { id: "c21-kartal", name: "Kartal SİMÜLASYON", slug: "kartal-simulasyon", country: "TR", date_from: startIso, date_to: endIso, competition_address: "34710 Kadıköy/İstanbul", onsite: true },
+    ];
+    const c21Payload = Buffer.from(JSON.stringify({ data: fakeEvents }), "utf8");
+    mockAgent
+      .get("https://api.circle21.events")
+      .intercept({ path: /^\/api\/competition/, method: "GET" })
+      .reply(200, c21Payload, {
+        headers: { "content-type": "application/json", "content-length": String(c21Payload.length) },
+      })
+      .persist();
+
+    const r1 = await c21Mod.circle21Reference("PUMA Hybrid HYROX shoe");
+    if (r1 !== null) throw new Error(`PUMA metni null dönmeliydi, gelen: ${r1?.event?.name}`);
+
+    const r2 = await c21Mod.circle21Reference("Alsancak'ta CrossFit yarışı");
+    if (r2?.event?.id !== "c21-alsancak" || r2?.event?.name !== "ALSANCAK TEAM SERIES 2026") {
+      throw new Error(`Alsancak kaydı eşleşmedi, gelen: ${r2?.event?.name ?? "null"}`);
+    }
+
+    const r3 = await c21Mod.circle21Reference("Salon reopen CrossFit haberi");
+    if (r3 !== null) throw new Error(`reopen metni Open kaydına bağlanmamalıydı, gelen: ${r3?.event?.name}`);
+
+    const r4 = await c21Mod.circle21Reference("Kartal CrossFit yarışı");
+    if (r4 !== null) throw new Error(`Kartal SİMÜLASYON referans olmamalıydı, gelen: ${r4?.event?.name}`);
+  });
+
+  // 9) brand.mjs: brandInText marka tespiti (G15 senaryoları)
+  await check("brand.mjs brandInText (G15 senaryoları)", async () => {
+    const brandMod = mods.get("brand.mjs");
+    if (!brandMod?.brandInText) throw new Error("brandInText yüklenemedi");
+    const cases = [
+      ["kapak ASICS YENİ", { slides: [{ type: "cover", title: "ASICS YENİ" }] }, true],
+      ["kapak NİKE", { slides: [{ type: "cover", title: "NİKE" }] }, true],
+      ["caption Nike", { caption: "a\nNike b", slides: [] }, true],
+      ["bullets GARMIN", { slides: [{ type: "list", bullets: ["GARMIN saat"] }] }, true],
+      ["rows ROGUE FITNESS", { slides: [{ type: "table", rows: [["ROGUE FITNESS", "x"]] }] }, true],
+      ["Haley Brooks", { caption: "Haley Brooks kazandı", slides: [{ title: "Haley Brooks kazandı" }] }, false],
+      ["Rogue Invitational", { caption: "Rogue Invitational", slides: [{ title: "Rogue Invitational" }] }, false],
+      ["Decathlon rekoru", { caption: "Decathlon rekoru", slides: [{ title: "Decathlon rekoru" }] }, false],
+      ["boş nesne", {}, false],
+      ["kelime içi niketon", { caption: "Niketon koşusu" }, false],
+    ];
+    const errs = [];
+    for (const [label, post, want] of cases) {
+      const got = Boolean(brandMod.brandInText(post));
+      if (got !== want) errs.push(`${label}: beklenen ${want}, gelen ${got}`);
+    }
+    if (errs.length) throw new Error(errs.join(" | "));
+  });
 } finally {
   if (safeNetMod && origDispatch) safeNetMod.SAFE_AGENT.dispatch = origDispatch;
   globalThis.fetch = origFetch;

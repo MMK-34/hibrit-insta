@@ -67,5 +67,25 @@
     "eventName": "Varna Throwdown 2027",
     "srcUrl": "https://www.chernomore.bg/a/17-sport/308797-nad-250-uchastnitsi-shte-se-vklyuchat-v-nay-golyamoto-krosfit-sastezanie-u-nas-varna-throwdown-2026",
     "storyOk": false
+  },
+  {
+    "id": "echo-bike-2027-yari-final",
+    "publishAt": "2026-11-25T07:30",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/echo-bike-2027-yari-final/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/echo-bike-2027-yari-final/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/echo-bike-2027-yari-final/03.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/echo-bike-2027-yari-final-story/story.jpg",
+    "caption": "Echo Bike ilk kez CrossFit Games online yarı finalinde\n2027 sezonunda online yarı finallere katılacak bireysel sporcuların bir Rogue Echo Bike'a ihtiyacı olacak.\n\nDuyuruyu Adrian Bozman 24 Kasım'da Instagram'dan yaptı. Echo Bike, CrossFit Games'in bir online aşamasında ilk kez kullanılacak. Değişiklik yarı finaller için geçerli; çeyrek finallerde şimdilik yer almıyor.\n\nHaberi veren The Barbell Spin, Rogue'un ana gönderim bölgeleri dışındaki sporcuların bisikleti nasıl temin edeceği sorusunu gündeme getirdi.\n\nSalonunda Echo Bike var mı?\nYarı final hedefi olan arkadaşına gönder.\n\nReklam / Tanıtım\n\nKaynak: The Barbell Spin\nGörsel: The Barbell Spin\n\n#crossfit #crossfitgames #echobike #hibritportal",
+    "photos": [
+      "event:echo-bike-2027-yari-final"
+    ],
+    "title": "Echo Bike ilk kez online yarı finalde",
+    "kind": "haber",
+    "category": "crossfit",
+    "eventName": "2027 CrossFit Games online yarı finalleri",
+    "srcUrl": "https://thebarbellspin.com/crossfit-games/crossfit-just-added-a-major-piece-of-equipment-to-the-2027-online-semifinals/",
+    "storyOk": false
   }
 ]

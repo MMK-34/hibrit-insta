@@ -730,7 +730,9 @@ async function pickEventPhotos({ post, pages, topic, want, category, kind = "", 
 // Metin tr küçük harfe çevrilip taranır ("NİKE", "GARMİN" kapakta büyük harfle gelir). "brooks" (soyadı), "polar" (Türkçe kelime),
 // "decathlon" (atletizm branşı), tek başına "on" eklenmez. İnceleme: rapor/BRAND-inceleme.md
 const BRAND_TEXT_RE = /(?<![\p{L}\p{N}])(puma|nike|adidas|reebok|asics|new balance|hoka|saucony|nobull|rogue fitness|gymshark|under armour|salomon|garmin|coros|whoop|concept2|technogym|tyr|centr|eleiko|suunto|mizuno|altra|on running|kiprun|the north face|strava|maurten)(?![\p{L}\p{N}])/u;
-const brandInText = (post) => BRAND_TEXT_RE.test([post.caption, ...(post.slides ?? []).flatMap((s) => [s.title, s.subtitle, s.body, s.text])].filter(Boolean).join(" ").toLocaleLowerCase("tr"));
+// Tüm slayt alanları (kicker, bullets, tablo, stat...) taranır; tr küçük harf + "ı"->"i" ("ASICS" -> "asics", "NİKE" -> "nike")
+const allStrings = (v) => typeof v === "string" ? [v] : Array.isArray(v) ? v.flatMap(allStrings) : v && typeof v === "object" ? Object.values(v).flatMap(allStrings) : [];
+const brandInText = (post) => BRAND_TEXT_RE.test(allStrings([post.caption, post.slides]).join(" ").toLocaleLowerCase("tr").replace(/ı/g, "i"));
 const LOGO_GENERIC = new Set(["istanbul", "ankara", "izmir", "antalya", "bursa", "bodrum", "mersin", "adana", "turkiye", "türkiye", "turkey", "tirana", "athens", "atina", "sofia", "dubai", "cairo", "kahire", "london", "londra", "berlin", "paris", "barcelona", "madrid", "rome", "roma", "marathon", "maraton", "maratonu", "half", "yari", "yarı", "race", "run", "running", "kosu", "koşu", "koşusu", "games", "throwdown", "challenge", "series", "world", "championship", "championships", "open", "final", "finals", "qualifier", "qualifiers", "ultra", "trail", "festival", "cup", "the", "and", "official",
   // Çatı marka/seri adları (denetim G4): ironman.com Umman reklam logosunu, Majors sitesi Tokyo logosunu verdi
   "ironman", "majors", "major"]);

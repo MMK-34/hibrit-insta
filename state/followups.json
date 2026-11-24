@@ -250,5 +250,25 @@
     "createdDay": "2026-11-22",
     "due": "2026-12-01",
     "status": "bekliyor"
+  },
+  {
+    "key": "wodapaloozamexico",
+    "type": "gecmis",
+    "eventName": "Wodapalooza Mexico",
+    "officialSite": "https://socal.wodapalooza.com/",
+    "category": "crossfit",
+    "createdDay": "2026-11-24",
+    "due": "2026-11-28",
+    "status": "bekliyor"
+  },
+  {
+    "key": "wodapaloozamexico",
+    "type": "wodlar",
+    "eventName": "Wodapalooza Mexico",
+    "officialSite": "https://socal.wodapalooza.com/",
+    "category": "crossfit",
+    "createdDay": "2026-11-24",
+    "due": "2026-12-03",
+    "status": "bekliyor"
   }
 ]

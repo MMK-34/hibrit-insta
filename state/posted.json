@@ -3545,6 +3545,71 @@
       "eventName": "Alanya Ultra Trail 2027",
       "at": "2026-11-23T11:30:31.096Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-24",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMihwFBVV95cUxNeUFOcFRXb2NiU3lUY0p2c1dLSW8wR1BjYjJkXzA4UzRkajBPanNGU3EyOTBnazFubHVkaHhkTDAzRXNRQ0dxbHRSaG9LU0pGUWtLcjN4VGZ6anVyeW05YWl3RmpoWGg3ZW9Wbm9fclMweWNGTGNCOXNnbEZOSzJkcWE3aWdHMWM",
+        "https://news.google.com/rss/articles/CBMiigFBVV95cUxQTTJ5bEtHZ181Y3VjbnhIY3p5VF85U3IwWURxZjc5WnZmdHlmdFRiNGgxbmpjcWtKRmdndWNuNjduazBvdmJ2UFVwdDljUjhfVTJ4dmV5SWZmd2pGc0Y3UWIzMG9QTFc5T1BZdmpKdjZ2RC1GRGRlRHctd3UyMGhUdTIySm9MU2FCVkHSAYoBQVVfeXFMUE0yeWxLR2dfNWN1Y254SGN6eVRfOVNyMFlEcWY3OVp2ZnR5ZnRUYjRoMW5qY3FrSkZnZ3VjbjY3bmswb3ZidlBVcHQ5Y1I4X1UyeHZleUlmZndqRnNGN1FiMzBvUExXOU9QWXZqSnY2dkQtRkRkZUR3LXd1MjBoVHUyMkpvTFNhQlZB",
+        "https://news.google.com/rss/articles/CBMipAFBVV95cUxON0VqYU1Eb0FiOWJReHRLWWhDMFV3c25Db2QyckktUXFsd3dtN0VEb2RnM2ZidVluZThza1lZLUVtZ0VpZnIwbzlVUERLeFZkOC01RG9CRkd3dHNzVkxFUTBPblRaN0E2c0tRcW5jVDVCbFBBWjgwQk9VdnhJdFhVRXBybS1zNmh1VTNmbFZ5bDl4UG8tU2VWdnU3MkVoai04WFVTMdIBpAFBVV95cUxON0VqYU1Eb0FiOWJReHRLWWhDMFV3c25Db2QyckktUXFsd3dtN0VEb2RnM2ZidVluZThza1lZLUVtZ0VpZnIwbzlVUERLeFZkOC01RG9CRkd3dHNzVkxFUTBPblRaN0E2c0tRcW5jVDVCbFBBWjgwQk9VdnhJdFhVRXBybS1zNmh1VTNmbFZ5bDl4UG8tU2VWdnU3MkVoai04WFVTM"
+      ],
+      "skipped": "tekrar"
+    },
+    {
+      "day": "2026-11-24",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMifkFVX3lxTFAzcTUzeG4zM0ZSV2hUNE1WaW1hU2FMR1ItVi1NT0VQUVBXUmV6MEt1SHEza01tX3pCSVJMV3JjZ3dfdWh5WmJ1YzFYMFA5ZW5JeHRPa1N3dnYwUkhXUXR0aFJkeG1IM3ZJTXZKZWpkTC1KRkpkRXdaSm9kaUZ0UQ"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-24",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMifkFVX3lxTFBac3N1TFhlNEVGYjlael9Uejk3NXBPMzBNVFR5X3NGcEJKM3pEcS1RZ0RIMGdVZk5ySFBwdFJWci1QSnhjamVQZmdCMm9rV1Frd0c3c1I3eWlVSjNHVGZjbzR6WG5BTTFoZEUxeXFpYVFkVHdlYVoxOEoyMnlIQQ"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-24",
+      "ids": [
+        "https://thebarbellspin.com/fitness/mat-fraser-commits-to-the-2027-leadville-100-ultramarathon/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-24",
+      "ids": [
+        "cal:wodapalooza-mexico-2026-12"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:325863eb5ee39308"
+      ],
+      "media": "17982238022922979",
+      "permalink": "https://www.instagram.com/p/DgHIjP5koQ1/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-24/mwu7r00b/01.jpg",
+      "title": "Yaklaşan yarış: Wodapalooza Mexico (Mexico City, Meksika) 2026-12-04 – 2026-12-06",
+      "headline": "Wodapalooza Mexico 4 Aralık'ta başlıyor",
+      "eventName": "Wodapalooza Mexico",
+      "at": "2026-11-24T04:48:51.162Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "YARIŞ TAKVİMİ",
+            "title": "Wodapalooza Mexico 4 Aralık'ta başlıyor",
+            "subtitle": "Meksika'nın başkenti Mexico City'de düzenlenecek yarış 3 gün sürecek.",
+            "hl": "4 ARALIK"
+          }
+        ],
+        "caption": "Wodapalooza Mexico, 4-6 Aralık 2026 tarihleri arasında Mexico City'de gerçekleşecek. CrossFit topluluğunun takip ettiği organizasyon, 3 gün boyunca sürecek müsabakalara ev sahipliği yapacak. Yarışla ilgili güncel bilgilere ve kayıt detaylarına resmi web sitesi üzerinden ulaşabilirsiniz. Bu yarışta tanıdığın biri var mı? Ona gönder.\n\nReklam / Tanıtım\n\nKaynak: Wodapalooza Mexico resmi sitesi\nGörsel: Socal\n\n#wodapalooza #crossfit #fonksiyonelantrenman #hibritportal",
+        "srcUrls": [
+          "https://socal.wodapalooza.com/"
+        ],
+        "eventName": "Wodapalooza Mexico",
+        "country": "Meksika",
+        "place": "Mexico City"
+      }
     }
   ],
   "daily": {
@@ -3645,9 +3710,10 @@
       "summarySent": true
     },
     "2026-11-24": {
-      "drafts": 0,
-      "approved": 0,
-      "rejected": 0
+      "drafts": 4,
+      "approved": 1,
+      "rejected": 3,
+      "aiCalls": 13
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3674,7 +3740,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-23T18:42:43.814Z",
+  "lastRunAt": "2026-11-24T04:43:22.572Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

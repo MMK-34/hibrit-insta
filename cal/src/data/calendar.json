@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-24T12:42:54.522Z",
+  "updated": "2026-11-24T13:42:52.388Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 91,
-      "fetchedAt": "2026-11-24T12:40:54.605Z"
+      "fetchedAt": "2026-11-24T13:41:04.783Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-24T12:42:54.515Z"
+      "fetchedAt": "2026-11-24T13:42:52.380Z"
     }
   },
   "items": [
@@ -3279,10 +3279,15 @@
       "status": "confirmed",
       "url": "https://circle21.events/event?competitionId=e09987bc-860c-440b-9143-e91cf5a64764",
       "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/483670/conversions/Colour-(White-BG)-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/483659/conversions/Colour-(White-BG)-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
       "registration": {
         "to": "2027-04-20",
-        "fee": "0.00 EUR"
-      }
+        "fee": "60.00 GBP"
+      },
+      "instagram": "https://www.instagram.com/grit_gravity/",
+      "website": "https://www.instagram.com/grit_gravity/"
     },
     {
       "id": "circle21-5aa46697-1162-4e29-a901-e375b7d5526c",

@@ -2332,5 +2332,18 @@
         "note": "Posttaki 3000 metre ve 3800 metre rakım bilgileri kaynakta 10.000 feet ve 12.500+ feet olarak geçmektedir; birim çevrimleri hatalıdır (10.000 feet yaklaşık 3048 metredir, 12.500 feet ise yaklaşık 3810 metredir ancak kaynakta feet cinsinden verilmiştir)."
       }
     ]
+  },
+  {
+    "at": "2026-11-24T05:44:41.494Z",
+    "title": "Yaklaşan yarış: Blitz Series | Tenerife 2026 (Santa Cruz de Tenerife, İspanya) 2026-12-04 – 2026-12-05",
+    "url": "https://circle21.events/event?competitionId=0f01ce17-2259-4d10-a619-8d54cb6ab4ff",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "tarih",
+        "note": "Postta tarih 4-5 Aralık olarak verilmiş, ancak resmî kaynakta etkinlik tarihi 5 Aralık 2026 olarak belirtilmiştir."
+      }
+    ]
   }
 ]

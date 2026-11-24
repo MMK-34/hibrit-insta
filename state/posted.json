@@ -3701,6 +3701,20 @@
         "country": "",
         "place": ""
       }
+    },
+    {
+      "day": "2026-11-24",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiV0FVX3lxTE83WU5ScDU4OVptQklRYkZwekNmaENNMEdKa0R4c1R3M01LMWpReXg2MnZJd0tndjc0djlQQVVwM3VUR0FJVmRqcjNycjFfYklvakdlWi1jUQ"
+      ],
+      "skipped": "tekrar"
+    },
+    {
+      "day": "2026-11-24",
+      "ids": [
+        "cal:circle21-0f01ce17-2259-4d10-a619-8d54cb6ab4ff"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -3801,10 +3815,10 @@
       "summarySent": true
     },
     "2026-11-24": {
-      "drafts": 5,
-      "approved": 2,
-      "rejected": 3,
-      "aiCalls": 18
+      "drafts": 7,
+      "approved": 3,
+      "rejected": 4,
+      "aiCalls": 26
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3831,7 +3845,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-24T04:43:22.572Z",
+  "lastRunAt": "2026-11-24T05:42:51.362Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

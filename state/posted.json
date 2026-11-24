@@ -3715,6 +3715,20 @@
         "cal:circle21-0f01ce17-2259-4d10-a619-8d54cb6ab4ff"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-24",
+      "ids": [
+        "reel:rb4c0e99c"
+      ],
+      "kind": "reel",
+      "photos": [],
+      "media": "17899349406414749",
+      "permalink": "https://www.instagram.com/reel/DgHchVHjKdR/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/anlatim/hyrox-pekin-anlatim-kapak.jpg",
+      "title": "Anlatım: HYROX Pekin olayı",
+      "approved": "rb4c0e99c",
+      "at": "2026-11-24T07:44:07.998Z"
     }
   ],
   "daily": {
@@ -3815,10 +3829,10 @@
       "summarySent": true
     },
     "2026-11-24": {
-      "drafts": 7,
-      "approved": 3,
+      "drafts": 8,
+      "approved": 4,
       "rejected": 4,
-      "aiCalls": 28
+      "aiCalls": 33
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3845,7 +3859,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-24T06:42:37.099Z",
+  "lastRunAt": "2026-11-24T07:42:53.490Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {
@@ -3855,25 +3869,6 @@
     }
   },
   "pendingApprovals": {
-    "rb4c0e99c": {
-      "video": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/anlatim/hyrox-pekin-anlatim.mp4",
-      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/anlatim/hyrox-pekin-anlatim-kapak.jpg",
-      "caption": "HYROX'un dünya rekortmeni yarışın ortasında altına kaçırdı... ve yine de birinci oldu. 5 gün sonra zaferinden vazgeçti.\n\n12 Eylül 2026, HYROX Pekin. Avustralyalı Joanna Wietrzyk yarışı 1:01:23 ile kazandı. Yarış sırasında yaşadığı istemsiz dışkı kaçırma, hijyen ve ortak ekipman tartışmasını başlattı.\n\n📌 14 Eylül: HYROX kurucu ortağı Moritz Fürste özür diledi: \"Hemen müdahale etmemek bizim hatamızdı.\"\n📌 Kural kitabına 12.3 eklendi: kan, kusmuk, idrar ya da dışkı bulaşma riski varsa yarış direktörü sporcuyu yarıştan alabilir (DNF).\n📌 17 Eylül: Wietrzyk yarıştan geriye dönük çekildi ve puanlarından vazgeçti.\n\nAraştırmalara göre dayanıklılık sporcularının %30 ila %70'i yarışta mide ve bağırsak sorunu yaşıyor (Monash Üniversitesi).\n\nKaynaklar: BOXROX, SBS, TimesLIVE, WJLA, KUTV\nGörüntüler: Global News, KHOU 11, news.com.au · Fotoğraf: Sven Mandel (CC BY-SA 4.0)\n\nReklam / Tanıtım\n\n#hibritportal #hyrox #hyroxpekin #hyroxturkiye #fitnessracing #hibritantrenman #fonksiyonelfitness",
-      "kind": "reel",
-      "title": "Anlatım: HYROX Pekin olayı",
-      "ids": [
-        "reel:rb4c0e99c"
-      ],
-      "photos": [],
-      "urls": [
-        "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/anlatim/hyrox-pekin-anlatim.mp4"
-      ],
-      "srcUrls": [],
-      "at": "2026-11-22T20:10:00+03:00",
-      "label": "REELS",
-      "publishAt": "2026-11-24T10:00",
-      "approved": "rb4c0e99c"
-    },
     "r28d967d0": {
       "video": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-23-kisa/kisa-2026-11-23.mp4",
       "caption": "Wolf Haven Yarışması Geliyor\n\nAyrıntılar profilde.\n\nGörüntüler: @wolfhavencf\n\nReklam / Tanıtım\n\n#hibritportal #crossfit",
@@ -3919,6 +3914,7 @@
   ],
   "statWeek": "2026-46",
   "reelsDone": [
-    "r2f20b103"
+    "r2f20b103",
+    "rb4c0e99c"
   ]
 }

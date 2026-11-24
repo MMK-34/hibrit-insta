@@ -128,7 +128,8 @@ export async function upcomingEvents() {
     if (!e.city || !e.name) return false; // bozuk kayıt (G10: iF3 city undefined)
     if (/athx/i.test(e.name) && !tr) return false; // kullanıcı kuralı: yurt dışı ATHX aday olmaz
     // Kullanıcı kuralı: salon (box) içi yarışmalar ve simülasyonlar duyurulmaz (circle21.mjs:143 ile uyumlu; takvim üzerinden sızıntı engeli)
-    if (/\bbox\b|simulation|simülasyon|in-?house|50%/i.test(`${e.name} ${e.instagram ?? ""}`)) return false;
+    // tr küçük harf + aksan silme: "SİMÜLASYON", "Simulasyon", "İN-HOUSE" da yakalanır (C21 incelemesi)
+    if (/\bbox\b|simulation|simulasyon|in-?house|50%/.test(`${e.name} ${e.instagram ?? ""}`.toLocaleLowerCase("tr").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i"))) return false;
     // Kullanıcı kuralı: koşudan yalnızca büyük ve popüler yarışlar. Takvimdeki küçük koşu/trail kayıtları (sitede görünür) bota aday olmaz (BF1-5)
     // Antigravity incelemesi: dünya maraton majorları da kabul; büyük harfli adlar (İSTANBUL YARI MARATONU) Türkçe başlık düzenine çevrilip denenir
     if (["kosu", "trail"].includes(e.type)) {

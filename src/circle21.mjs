@@ -102,7 +102,9 @@ export function c21Text(e) {
 
 const norm = (s) => String(s ?? "").toLocaleLowerCase("tr").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i");
 const CITY = new Set(["istanbul", "ankara", "izmir", "antalya", "bursa", "adana", "mersin", "kocaeli", "eskisehir", "samsun", "trabzon", "konya", "kayseri", "gaziantep", "mugla", "bodrum", "aydin", "kusadasi", "denizli", "nicosia", "lefkosa", "girne", "kyrenia", "famagusta", "gazimagusa", "cyprus", "kibris", "turkiye", "turkey", "city"]);
-const STOP = new Set(["2025", "2026", "2027", "the", "games", "series", "team", "crossfit", "challenge", "cup", "throwdown", "hyrox", "style", "and"]);
+const STOP = new Set(["2025", "2026", "2027", "the", "games", "series", "team", "crossfit", "challenge", "cup", "throwdown", "hyrox", "style", "and",
+  // Branş/biçim kelimeleri ayırt edici değil (2026-11-24: "VU BOX Hybrid (HYROX-style) simulation" kaydı PUMA "Hybrid" ayakkabı haberine bağlandı)
+  "hybrid", "hibrit", "simulation", "simulasyon", "fitness", "fonksiyonel", "functional", "race", "racing", "competition", "championship", "open", "league", "edition", "festival"]);
 
 /**
  * Haber metniyle eşleşen circle21 yarışı (tarih penceresi ±25 gün; şehir ya da adın ayırt edici kelimesi metinde geçmeli).

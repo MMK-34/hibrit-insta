@@ -400,6 +400,36 @@
           }
         ]
       }
+    },
+    {
+      "id": "clean-sourcename-uppercase-domain",
+      "description": "G13 regresyonu: büyük harfli alan adı (BARBEND.COM) yayıncı adına çevrilip geçmeli",
+      "sourceName": "BARBEND.COM",
+      "expectOk": true,
+      "checks": {
+        "captionIncludes": ["Kaynak: Barbend"],
+        "captionExcludes": ["BARBEND.COM"]
+      }
+    },
+    {
+      "id": "clean-sourcename-digit-and-cctld",
+      "description": "G13 regresyonu: rakamla başlayan ve ccTLD alan adı (365sport.vn) ham alan adı sızdırmadan temizlenmeli",
+      "sourceName": "365sport.vn",
+      "expectOk": true,
+      "checks": {
+        "captionIncludes": ["Kaynak: 365sport"],
+        "captionExcludes": ["365sport.vn"]
+      }
+    },
+    {
+      "id": "clean-sourcename-ig-and-title-preserved",
+      "description": "G13 regresyonu: noktalı IG adı temizlenmeli, 'St. Nicholas' gibi kısaltmalar korunmalı",
+      "sourceName": "@olympos.games Instagram",
+      "expectOk": true,
+      "checks": {
+        "captionIncludes": ["Kaynak: Olympos Instagram"],
+        "captionExcludes": ["olympos.games"]
+      }
     }
   ]
 }

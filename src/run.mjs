@@ -143,6 +143,7 @@ async function recentIgCaptions(limit = 12) {
 }
 let igTitles = []; // state'te olmayan son IG paylaşımlarının başlıkları (selectNews tekrar önleme)
 const SKIPPED = Symbol("atlandı"); // 45 dk kapısında atlanan çalışma: özet/alarm da çalışmaz
+const AI_SKIP = Symbol("ai-atlandı"); // geçici AI kesintisi: günlük özet erken kilitlenmez ama 48 saat alarmı çalışmaya devam eder
 
 /**
  * state/manual-queue.json: [{ id, publishAt: "YYYY-MM-DDTHH:MM" (TR), urls: [...], caption, title, kind, category }]
@@ -235,6 +236,7 @@ async function main() {
     return SKIPPED;
   }
   // Yalnızca zamanlanmış çalışmalar işaretlenir: elle (stok/force/test) çalışma sıradaki zamanlanmış slotu iptal etmesin
+  const prevLastRunAt = state.lastRunAt;
   if (!DRY && SCHEDULED) { state.lastRunAt = new Date().toISOString(); saveState(); }
   // Etkileşim verisi: günde bir kez, akşam (21:00 sonrası ilk çalışma); Pazar günü haftalık özet issue #1'e (yalnızca okuma, yayın engellemez)
   if (!DRY && hour >= 21 && state.insDay !== today) {
@@ -338,8 +340,13 @@ async function main() {
     console.error(e);
     log("Haber toplama/seçim hatası:", e.message);
     // Geçici yapay zekâ kesintisi (Gemini 503): uyarı ve hata kodu yok; çalışma burada biter (stok/tasarım denetimi de yapay zekâ ister,
-    // deneme hakkı yakmasın — Antigravity incelemesi). Sonraki saatlik çalışmada yeniden denenir.
-    if (isTransientAi(e)) { log("Yapay zekâ geçici olarak yanıt vermiyor; bu çalışma atlandı."); return; }
+    // deneme hakkı yakmasın — Antigravity incelemesi). 45 dk kilidi geri alınır ki 20 dk sonraki yedek cron kurtarma şansı bulsun (G13).
+    if (isTransientAi(e)) {
+      if (!DRY && SCHEDULED && !published && processed === 0) { state.lastRunAt = prevLastRunAt; saveState(); }
+      try { if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, "skipped=true\n"); } catch {}
+      log("Yapay zekâ geçici olarak yanıt vermiyor; bu çalışma atlandı.");
+      return AI_SKIP;
+    }
     {
       await notify(`⚠️ Hibrit Portal: haber seçimi başarısız, yedeklere geçiliyor:\n${e.message}`);
       process.exitCode = 1;
@@ -1285,7 +1292,7 @@ try {
   // Günlük özet: son çalışmada (21:30) log + bildirim; gecikmeli/yedek çalışmada ikinci kez gönderilmez.
   // hour >= 21: 20:10 yedeği ve 20:xx'e kayan 19:30 özeti erken göndermez; 22:10 yedeği yalnızca 21:30 düştüyse gönderir.
   const d = state.daily?.[today];
-  if (r !== SKIPPED && !DRY && hour >= 21 && d && !d.summarySent) {
+  if (r !== SKIPPED && r !== AI_SKIP && !DRY && hour >= 21 && d && !d.summarySent) {
     const done = state.posts.filter((p) => p.day === today && p.media);
     let rej = [];
     try {

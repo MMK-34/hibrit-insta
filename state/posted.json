@@ -3643,6 +3643,11 @@
       "rejected": 17,
       "aiCalls": 54,
       "summarySent": true
+    },
+    "2026-11-24": {
+      "drafts": 0,
+      "approved": 0,
+      "rejected": 0
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",

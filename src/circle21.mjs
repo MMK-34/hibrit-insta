@@ -102,7 +102,17 @@ export function c21Text(e) {
 
 const norm = (s) => String(s ?? "").toLocaleLowerCase("tr").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i");
 const CITY = new Set(["istanbul", "ankara", "izmir", "antalya", "bursa", "adana", "mersin", "kocaeli", "eskisehir", "samsun", "trabzon", "konya", "kayseri", "gaziantep", "mugla", "bodrum", "aydin", "kusadasi", "denizli", "nicosia", "lefkosa", "girne", "kyrenia", "famagusta", "gazimagusa", "cyprus", "kibris", "turkiye", "turkey", "city"]);
-const STOP = new Set(["2025", "2026", "2027", "the", "games", "series", "team", "crossfit", "challenge", "cup", "throwdown", "hyrox", "style", "and"]);
+const STOP = new Set(["the", "games", "series", "team", "crossfit", "challenge", "cup", "throwdown", "hyrox", "style", "and",
+  // Branş/biçim/aşama/kategori kelimeleri ayırt edici değil (2026-11-24: "VU BOX Hybrid (HYROX-style) simulation" kaydı
+  // PUMA "Hybrid" ayakkabı haberine bağlandı; liste Antigravity incelemesiyle genişletildi, rapor/C21-inceleme.md)
+  "hybrid", "hibrit", "simulation", "simulasyon", "fitness", "fonksiyonel", "functional", "race", "races", "racing", "competition", "competitions",
+  "championship", "championships", "open", "league", "edition", "festival", "teams", "event", "events", "final", "finals", "qualifier", "qualifiers",
+  "qualification", "live", "online", "training", "club", "world", "international", "national", "athx", "spartan", "deka", "winter", "summer", "spring",
+  "elite", "masters", "doubles", "relay", "individual", "individuals", "partner", "mixed", "women", "womens",
+  "yaris", "yarisi", "yarisma", "yarismasi", "sampiyona", "sampiyonasi", "takim", "turnuva", "turnuvasi", "kupa", "kupasi", "serisi", "oyunlari", "ligi",
+  "uluslararasi", "ulusal"]);
+// Salon (box) içi yarış / simülasyon: norm() sonrası denetlenir ("SİMÜLASYON", "Simulasyon", "İN-HOUSE" da yakalanır)
+const inHouse = (e) => /\bbox\b|simulation|simulasyon|in-?house|50%/.test(norm(`${e.name} ${e.instagram ?? ""}`));
 
 /**
  * Haber metniyle eşleşen circle21 yarışı (tarih penceresi ±25 gün; şehir ya da adın ayırt edici kelimesi metinde geçmeli).
@@ -111,17 +121,21 @@ const STOP = new Set(["2025", "2026", "2027", "the", "games", "series", "team", 
 export async function circle21Reference(text) {
   const t = norm(text);
   if (!t) return null;
+  const tokens = t.split(/[^a-z0-9]+/).filter(Boolean);
   const now = Date.now();
   let best = null;
   for (const e of await circle21Events()) {
     const s = Date.parse(e.start ?? 0), en = Date.parse(e.end ?? e.start ?? 0);
     if (!(s - 25 * 864e5 <= now + 60 * 864e5 && en + 25 * 864e5 >= now)) continue;
+    // Salon içi yarış/simülasyonlar aday olmadığı gibi başka habere referans da olmaz (circle21Candidates ile aynı kural)
+    if (inHouse(e)) continue;
     let score = 0;
     // Adresteki ilçe/il ("09400 Kuşadası/Aydın")
     const place = (e.address.match(/\d{5}\s+([^/,]+)\/([^,]+)/) ?? []).slice(1).map((x) => norm(x.trim())).filter((x) => x.length > 3);
     // Ayırt edici ad kelimesi: şehir/ilçe adı sayılmaz (ör. "İstanbul City Championship" -> "istanbul" tek başına eşleştirmez)
-    const words = norm(e.name).split(/[^a-z0-9]+/).filter((w) => w.length > 3 && !STOP.has(w) && !CITY.has(w) && !place.includes(w));
-    if (words.some((w) => t.includes(w))) score += 2;
+    const words = norm(e.name).split(/[^a-z0-9]+/).filter((w) => w.length > 3 && !/^\d+$/.test(w) && !STOP.has(w) && !CITY.has(w) && !place.includes(w));
+    // Kelime başı eşleşmesi: Türkçe ek tutar ("alsancakta"), kelime içi tutmaz ("reopen", "colleague")
+    if (words.some((w) => tokens.some((k) => k.startsWith(w)))) score += 2;
     if (place.some((p) => t.includes(p))) score += 1;
     if (/crossfit|fonksiyonel|hyrox|hibrit|throwdown|wod/.test(t)) score += 0.5;
     else continue; // koşu, bisiklet vb. haberler circle21 (CrossFit/fonksiyonel) kaydına bağlanmaz
@@ -140,7 +154,7 @@ export async function circle21Candidates() {
     const start = Date.parse(e.start ?? 0);
     if (!(start > now)) continue;
     // Kullanıcı kuralı: salon (box) içi yarışmalar ve simülasyonlar duyurulmaz (Wolf Haven hariç; o Instagram izlemesinden gelir)
-    if (/\bbox\b|simulation|simülasyon|in-?house|50%/i.test(`${e.name} ${e.instagram}`)) continue;
+    if (inHouse(e)) continue;
     const pub = Date.parse(e.published ?? 0), regTo = Date.parse(e.regTo ?? 0);
     const base = {
       eventName: e.name, url: e.url, logo: e.logo, images: e.images, source: "circle21 resmî kayıt sayfası", feedCat: "crossfit", date: new Date().toISOString(), ageH: 0,

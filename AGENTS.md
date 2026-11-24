@@ -51,6 +51,10 @@ Claude Code seni terminalden `agy -p` ile çalıştırır; görev metni istemin 
 - Sayfa okumak için: `_agy/urls.txt` dosyasına adresleri yaz, `node scripts/agy-fetch.mjs` çalıştır, `_agy/pages/` altını oku.
 - Test, commit ve main'e alma Claude Code'dadır. Bitince yalnızca istenen tek satırlık özeti yaz.
 
+**Bekleme döngüsü kurma (kullanıcı kuralı 2026-11-24):** Panoyu "her N dakikada bir" kontrol eden sürekli açık takip başlatma;
+her kontrol kotadan yer. Haberleşme olay tabanlıdır: panoyu Claude Code token harcamayan bir dosya izleyicisiyle izler ve
+seni gerektiğinde `agy -p` ile kendisi çalıştırır. İşin bitince dur.
+
 Aşağıdaki bölüm 2, kullanıcının uygulamada elle açtığı sohbetler içindir.
 
 ## 2. Çalışma düzeni (Antigravity için)

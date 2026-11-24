@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-24T11:42:47.653Z",
+  "updated": "2026-11-24T12:42:54.522Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 90,
-      "fetchedAt": "2026-11-24T11:40:54.845Z"
+      "count": 91,
+      "fetchedAt": "2026-11-24T12:40:54.605Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-24T11:42:47.641Z"
+      "fetchedAt": "2026-11-24T12:42:54.515Z"
     }
   },
   "items": [
@@ -3266,6 +3266,23 @@
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
       "sourceUrl": "https://www.hyresult.com/event/s9-2027-london"
+    },
+    {
+      "id": "circle21-e09987bc-860c-440b-9143-e91cf5a64764",
+      "name": "Grit + Gravity",
+      "eventSlug": null,
+      "type": "crossfit",
+      "city": "Manchester",
+      "country": "Birleşik Krallık",
+      "startDate": "2027-04-24",
+      "endDate": "2027-04-24",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=e09987bc-860c-440b-9143-e91cf5a64764",
+      "source": "circle21",
+      "registration": {
+        "to": "2027-04-20",
+        "fee": "0.00 EUR"
+      }
     },
     {
       "id": "circle21-5aa46697-1162-4e29-a901-e375b7d5526c",

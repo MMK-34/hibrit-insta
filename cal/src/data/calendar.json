@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-24T08:42:47.724Z",
+  "updated": "2026-11-24T09:42:49.099Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 90,
-      "fetchedAt": "2026-11-24T08:40:54.247Z"
+      "fetchedAt": "2026-11-24T09:41:00.195Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-24T08:42:47.715Z"
+      "fetchedAt": "2026-11-24T09:42:49.088Z"
     }
   },
   "items": [
@@ -685,18 +685,18 @@
       "sourceUrl": "https://www.hyresult.com/event/s9-2026-singapore"
     },
     {
-      "id": "hyrox-2026-gandhinagar",
-      "name": "HYROX Gandhinagar 2026",
+      "id": "hyrox-2026-gujarat",
+      "name": "HYROX Gujarat 2026",
       "eventSlug": null,
       "type": "hyrox",
-      "city": "Gandhinagar",
+      "city": "Gujarat",
       "country": "India",
       "startDate": "2026-11-25",
       "endDate": "2026-11-28",
       "status": "confirmed",
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
-      "sourceUrl": "https://www.hyresult.com/event/s9-2026-gandhinagar"
+      "sourceUrl": "https://www.hyresult.com/event/s9-2026-gujarat"
     },
     {
       "id": "hyrox-2026-johannesburg",

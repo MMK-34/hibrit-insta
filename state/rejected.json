@@ -2345,5 +2345,44 @@
         "note": "Postta tarih 4-5 Aralık olarak verilmiş, ancak resmî kaynakta etkinlik tarihi 5 Aralık 2026 olarak belirtilmiştir."
       }
     ]
+  },
+  {
+    "at": "2026-11-24T11:43:49.110Z",
+    "title": "PUMA's Ultimate HYROX Shoe Launches This Holiday Season",
+    "url": "https://sports.yahoo.com/articles/pumas-ultimate-hyrox-shoe-launches-020001479.html",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-24T11:43:53.345Z",
+    "title": "HYROX Hamburg The Ones We Didn’t See Coming",
+    "url": "https://www.boxrox.com/hyrox-hamburg-the-ones-we-didnt-see-coming/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-24T11:45:34.859Z",
+    "title": "Ha Thi Hau'nun Hong Kong 100 yarışından 2026 Dünya Patika Yarışları Şampiyonası'na uzanan yolculuğu.",
+    "url": "https://www.vietnam.vn/tr/ha-thi-hau-tu-dau-an-hong-kong-100-den-ngoi-vo-dich-world-trail-majors-2026",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "kitle",
+        "item": "kitle",
+        "note": "yurt dışı hikâye, Türk sporcu yok"
+      }
+    ]
   }
 ]

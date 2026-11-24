@@ -3793,6 +3793,25 @@
         "https://news.google.com/rss/articles/CBMiowFBVV95cUxPU2RTQlEtZGt2XzI0WUNiSGxNekVocGsyclRHM09kVWYxeFk2alF6RnJDNjkxNXhaYUdoT19XeDNoWXlIdmFNNVhWQmZqSFJQOFlJSUhZUEs2MVVPZFR2aGtxT01ObWhIeGNuYklfQlZTS05sMThEUF9OMFV2NGtJbXItS1F4TFQ1TVFHd2pnekZmdHhDYTBxUEFISFpaYXhmUnE0"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-24",
+      "ids": [
+        "manual:varna-throwdown-2027-kayit"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:varna-throwdown-2027-kayit",
+        "event:varna-throwdown-2027-kayit"
+      ],
+      "media": "18059339486805325",
+      "permalink": "https://www.instagram.com/p/DgIYdBsjoEP/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/varna-throwdown-2027-kayit/01.jpg",
+      "title": "Varna Throwdown 2027 kayıtları 1 Aralık'ta açılıyor",
+      "headline": "Varna Throwdown 2027 kayıtları 1 Aralık'ta açılıyor",
+      "eventName": "Varna Throwdown 2027",
+      "at": "2026-11-24T16:27:04.763Z",
+      "manual": true
     }
   ],
   "daily": {
@@ -3896,7 +3915,7 @@
       "drafts": 12,
       "approved": 5,
       "rejected": 7,
-      "aiCalls": 53
+      "aiCalls": 56
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",

@@ -3729,6 +3729,33 @@
       "title": "Anlatım: HYROX Pekin olayı",
       "approved": "rb4c0e99c",
       "at": "2026-11-24T07:44:07.998Z"
+    },
+    {
+      "day": "2026-11-24",
+      "ids": [
+        "manual:wonder-womans-cup-2027-kayit-acilis"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:wwc-2026-g18",
+        "event:wwc-2026-g35",
+        "event:wwc-2026-g37"
+      ],
+      "media": "18127485322931972",
+      "permalink": "https://www.instagram.com/p/DgHxI1MDXef/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/wonder-womans-cup-2027-kayit-acilis/01.jpg",
+      "title": "Kayıtlar bu gece açılıyor",
+      "headline": "Kayıtlar bu gece açılıyor",
+      "eventName": "Wonder Woman's Cup 2027",
+      "at": "2026-11-24T10:43:31.202Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-24",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMihAFBVV95cUxNUjFiUnBWR0xzYngybjhSMnhKWkRMMHBibjZXMXRTelR0ei1XbDVDdW9BM01fdDZuZi11YVk4c3dWaDhaWUc3SVVsV3hRX2oxWXJZaUpVYzNKdzRYRV9QUi1VS0QwOFV5SmVOa25KNndCcXhZS2YtdDZDTlRZZy0zNzYzN03SAYoBQVVfeXFMUE0yeWxLR2dfNWN1Y254SGN6eVRfOVNyMFlEcWY3OVp2ZnR5ZnRUYjRoMW5qY3FrSkZnZ3VjbjY3bmswb3ZidlBVcHQ5Y1I4X1UyeHZleUlmZndqRnNGN1FiMzBvUExXOU9QWXZqSnY2dkQtRkRkZUR3LXd1MjBoVHUyMkpvTFNhQlZB"
+      ],
+      "skipped": "tekrar"
     }
   ],
   "daily": {
@@ -3829,10 +3856,10 @@
       "summarySent": true
     },
     "2026-11-24": {
-      "drafts": 8,
-      "approved": 4,
+      "drafts": 9,
+      "approved": 5,
       "rejected": 4,
-      "aiCalls": 33
+      "aiCalls": 38
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -3859,7 +3886,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-24T09:42:49.910Z",
+  "lastRunAt": "2026-11-24T10:43:31.641Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

@@ -105,11 +105,15 @@ export function guardPost(post, { sourceName }) {
   if (!tags.some((h) => h.toLowerCase() === "#hibritportal")) { if (tags.length >= MAX_TAGS) tags.pop(); tags.push("#hibritportal"); }
   // Kaynak her açıklamanın sonunda (kullanıcı kuralı)
   // Kaynak adı da süzülür: yalnızca harf, rakam, boşluk ve . ' & , - karakterleri; en fazla 80 karakter, kelime sınırında
-  // Alan adı/kullanıcı adı biçimindeki kaynak adı yayıncı adına çevrilir ("@olympos.games" → "Olympos", "Vietnam.vn" → "Vietnam");
-  // yoksa link süzgecine takılıp her seferinde eleniyordu (BF1)
-  // (Antigravity incelemesi: önce protokol, "www."/"m." ön eki ve yol kısmı atılır; "www.barbend.com/haber/1" → "Barbend")
+  // Alan adı/kullanıcı adı biçimindeki kaynak adı yayıncı adına çevrilir ("@olympos.games" → "Olympos", "Vietnam.vn" → "Vietnam", "BARBEND.COM" → "Barbend");
+  // yoksa link süzgecine takılıp eleniyor ya da ham alan adı (VIETNAM.VN, 365sport.vn) caption'a sızıyordu (BF1/G13)
   const src = String(sourceName ?? "").normalize("NFKC").replace(/[âÂîÎûÛ]/g, (c) => HAT[c]).replace(/https?:\/\//gi, "").replace(/@/g, "")
-    .replace(/(?<![\p{L}\p{N}_.-])(?:www\.|m\.)?(\p{L}[\p{L}\p{N}_-]*)(?:\.[\p{L}\p{N}_-]+)*\.\p{Ll}{2,}(?:[/?#]\S*)?(?![\p{L}\p{N}])/gu, (m, a) => a.charAt(0).toUpperCase() + a.slice(1)).replace(URL_RE, "").replace(/[^\p{L}\p{N} .'&,-]/gu, "").replace(/\s+/g, " ").trim().replace(/^(.{80}).+$/s, (m) => m.slice(0, 81).replace(/\s+\S*$/, "")) || "Hibrit Portal derlemesi"; // kelime ortasında kesilmez
+    .replace(/(?<![\p{L}\p{N}_.-])(?:(?:www|m)\.)?([\p{L}\p{N}][\p{L}\p{N}_-]*)(?:\.[\p{L}\p{N}_-]+)*\.(?:\p{L}{2,}|\d{4})(?:[/?#]\S*)?(?![\p{L}\p{N}])/giu, (m, a) => {
+      if (/^\d+$/.test(a) && !/\p{L}/u.test(m)) return m; // saf tarih/sayı ("2026.11.24") bozulmaz
+      const allCaps = a === a.toUpperCase() && /\p{Lu}/u.test(a) && a.length > 1;
+      const base = (allCaps ? a.toLowerCase() : a).replace(/_/g, " ");
+      return base.charAt(0).toUpperCase() + base.slice(1);
+    }).replace(URL_RE, "").replace(/[^\p{L}\p{N} .'&,-]/gu, "").replace(/\s+/g, " ").trim().replace(/^(.{80}).+$/s, (m) => m.slice(0, 81).replace(/\s+\S*$/, "")) || "Hibrit Portal derlemesi"; // kelime ortasında kesilmez
   // Son açıklama en fazla 2200 karakter: gerekirse gövde kısaltılır; "Kaynak:" satırı ve etiketler korunur
   const tail = `\n\nKaynak: ${src}${tags.length ? `\n\n${tags.join(" ")}` : ""}`;
   const room = MAX_CAPTION - tail.length;

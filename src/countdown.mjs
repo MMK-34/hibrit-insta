@@ -22,7 +22,14 @@ export const BIG_RACES = [
   /CrossFit Games\b/i,
   /Athens Throwdown|Tirana Throwdown|Belgrade Games/i,
 ];
-const isBig = (name) => BIG_RACES.some((re) => re.test(String(name ?? "")));
+const toTrTitle = (s) => String(s ?? "").toLocaleLowerCase("tr").replace(/(^|\s)(\p{L})/gu, (m, sp, c) => sp + c.toLocaleUpperCase("tr"));
+// JS /i bayrağı Türkçe "İ"/"i" ve "I"/"ı" eşleştirmez: başlık düzeniyle iki kez denenir (G13)
+export const isBigRace = (name) => {
+  const nm = String(name ?? "");
+  const title = toTrTitle(nm);
+  return BIG_RACES.some((re) => re.test(nm) || re.test(title));
+};
+const isBig = isBigRace;
 
 // Yarış başlangıcına ve kayıt kapanışına kalan gün eşikleri
 const START_DAYS = [30, 14, 7, 3, 1];

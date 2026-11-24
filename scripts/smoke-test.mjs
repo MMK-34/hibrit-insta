@@ -32,7 +32,8 @@ const RUN_IMPORTS = new Set([...fs.readFileSync(path.join(SRC_DIR, "run.mjs"), "
 const SKIP = { has: (f) => !RUN_IMPORTS.has(f) };
 
 const origFetch = globalThis.fetch;
-globalThis.fetch = async (input) => {
+const ghCalls = [];
+globalThis.fetch = async (input, init) => {
   const url = typeof input === "string" ? input : input?.url ?? String(input);
   if (url.startsWith("https://pixabay.com/api/")) {
     return new Response(JSON.stringify({
@@ -49,6 +50,13 @@ globalThis.fetch = async (input) => {
   }
   if (url.startsWith("https://api.openverse.org/")) {
     return new Response(JSON.stringify({ results: [] }), { status: 200, headers: { "content-type": "application/json" } });
+  }
+  if (url.startsWith("https://api.github.com/repos/smoke-test/repo/issues")) {
+    ghCalls.push({ method: init?.method ?? "GET", url, body: init?.body ? JSON.parse(init.body) : null });
+    if ((init?.method ?? "GET") === "GET") {
+      return new Response(JSON.stringify([{ number: 1, title: "Bot raporları (otomatik)", user: { login: "smoke-test" } }]), { status: 200, headers: { "content-type": "application/json" } });
+    }
+    return new Response(JSON.stringify({ id: 1 }), { status: 201, headers: { "content-type": "application/json" } });
   }
   throw new Error(`ağsız duman testinde beklenmeyen ağ isteği: ${url}`);
 };
@@ -178,6 +186,38 @@ try {
     const meta = await sharp(jpeg).metadata();
     if (meta.format !== "jpeg" || meta.width !== 1080 || meta.height !== 1350) {
       throw new Error(`beklenmeyen kapak biçimi: ${meta.format} ${meta.width}x${meta.height}`);
+    }
+  });
+
+  // 4) countdown.mjs: Türkçe büyük harf eşleşmesi (İSTANBUL YARI MARATONU, BODRUM YARI MARATONU, HYROX İZMİR)
+  await check("countdown.mjs isBigRace (Türkçe büyük harf)", async () => {
+    const cdMod = mods.get("countdown.mjs");
+    if (!cdMod?.isBigRace) throw new Error("isBigRace dışa aktarılmamış");
+    for (const nm of ["İSTANBUL YARI MARATONU", "BODRUM YARI MARATONU", "HYROX İZMİR", "Runtalya 2027"]) {
+      if (!cdMod.isBigRace(nm)) throw new Error(`büyük yarış eşleşmedi: ${nm}`);
+    }
+    if (cdMod.isBigRace("Küçük İlçe Halk Koşusu")) throw new Error("küçük koşu büyük yarış sayıldı");
+  });
+
+  // 5) collect.mjs: upcomingEvents salon içi (box/50%/simülasyon) kayıtlarını aday yapmaz
+  await check("collect.mjs upcomingEvents (salon/50% filtresi)", async () => {
+    const colMod = mods.get("collect.mjs");
+    if (!colMod?.upcomingEvents) throw new Error("upcomingEvents yüklenemedi");
+    const up = await colMod.upcomingEvents();
+    const bad = up.filter((e) => /\bbox\b|simulation|simülasyon|in-?house|50%/i.test(e.title));
+    if (bad.length) throw new Error(`salon/50% kaydı sızdı: ${bad.map((x) => x.title).join(", ")}`);
+  });
+
+  // 6) notify.mjs: issue #1 yönlendirme süzgeci (📈/⚠️/📊/🎬 yazar, ✅ yazmaz)
+  await check("notify.mjs issue #1 yönlendirme", async () => {
+    const notifyMod = mods.get("notify.mjs");
+    if (!notifyMod?.notify) throw new Error("notify yüklenemedi");
+    ghCalls.length = 0;
+    await notifyMod.notify("✅ Paylaşıldı (test)");
+    if (ghCalls.some((c) => c.method === "POST")) throw new Error("✅ bildirimi issue #1'e yazılmamalıydı");
+    await notifyMod.notify("📈 Haftalık etkileşim özeti (test)");
+    if (!ghCalls.some((c) => c.method === "POST" && c.url.endsWith("/issues/1/comments"))) {
+      throw new Error("📈 bildirimi issue #1'e yazılmadı");
     }
   });
 } finally {

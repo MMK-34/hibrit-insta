@@ -3,7 +3,7 @@ import { isForeignAthx } from "./guard.mjs";
 import { safeGet, urlAllowed } from "./safe-net.mjs";
 import { XMLParser } from "fast-xml-parser";
 import { FEEDS, POSTING } from "./config.mjs";
-import { BIG_RACES } from "./countdown.mjs";
+import { isBigRace } from "./countdown.mjs";
 
 const UA = "Mozilla/5.0 (compatible; hibrit-portal-news/1.0)";
 const MAX_BYTES = 2e6; // gövde üst sınırı ~2 MB
@@ -127,13 +127,14 @@ export async function upcomingEvents() {
     if (e.status !== "confirmed") return false;
     if (!e.city || !e.name) return false; // bozuk kayıt (G10: iF3 city undefined)
     if (/athx/i.test(e.name) && !tr) return false; // kullanıcı kuralı: yurt dışı ATHX aday olmaz
+    // Kullanıcı kuralı: salon (box) içi yarışmalar ve simülasyonlar duyurulmaz (circle21.mjs:143 ile uyumlu; takvim üzerinden sızıntı engeli)
+    if (/\bbox\b|simulation|simülasyon|in-?house|50%/i.test(`${e.name} ${e.instagram ?? ""}`)) return false;
     // Kullanıcı kuralı: koşudan yalnızca büyük ve popüler yarışlar. Takvimdeki küçük koşu/trail kayıtları (sitede görünür) bota aday olmaz (BF1-5)
     // Antigravity incelemesi: dünya maraton majorları da kabul; büyük harfli adlar (İSTANBUL YARI MARATONU) Türkçe başlık düzenine çevrilip denenir
     if (["kosu", "trail"].includes(e.type)) {
       const nm = String(e.name ?? "");
-      const title = nm.toLocaleLowerCase("tr").replace(/(^|\s)(\p{L})/gu, (m, s, c) => s + c.toLocaleUpperCase("tr"));
       const major = /(berlin|londra|london|boston|chicago|new york|tokyo|sidney|sydney) (maratonu|marathon)/i.test(nm);
-      if (!major && !BIG_RACES.some((re) => re.test(nm) || re.test(title))) return false;
+      if (!major && !isBigRace(nm)) return false;
     }
     return d >= 0 && d <= (tr ? 30 : 10);
   }).map((e) => ({

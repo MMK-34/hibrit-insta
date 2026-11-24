@@ -86,9 +86,10 @@ export function sameEventMatch(postedEventName, { eventName = "", text = "" } = 
   const k = evKey(eventName);
   const t = norm(text);
   const target = `${eventName} ${text}`.trim();
-  const targetToks = tokens(target);
-  // Farklı alt türler ("İstanbul Maratonu" ≠ "İstanbul Yarı Maratonu", "Antalya Maratonu" ≠ "Antalya Ultra") asla eşleşmez
-  if (targetToks.length && !subTypesCompatible(pToks, targetToks)) return false;
+  // Farklı alt türler ("İstanbul Maratonu" ≠ "İstanbul Yarı Maratonu", "Antalya Maratonu" ≠ "Antalya Ultra") eşleşmez.
+  // Alt tür yalnızca etkinlik ADLARI arasında karşılaştırılır: haber metninde "maraton ve yarı maraton parkurları" geçmesi
+  // aynı yarışın tekrarını gizlememeli (Claude incelemesi; eski kod bu durumu yakalıyordu)
+  if (k && !subTypesCompatible(pToks, tokens(eventName))) return false;
   if (k.length >= 6 && (k.includes(pk) || pk.includes(k) || lcsOk(k, pk))) return true;
   if (t && t.includes(pk)) return true;
   if (target && sponsorCoreMatches(postedEventName, target)) return true;

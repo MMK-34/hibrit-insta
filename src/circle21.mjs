@@ -111,6 +111,8 @@ const STOP = new Set(["the", "games", "series", "team", "crossfit", "challenge",
   "elite", "masters", "doubles", "relay", "individual", "individuals", "partner", "mixed", "women", "womens",
   "yaris", "yarisi", "yarisma", "yarismasi", "sampiyona", "sampiyonasi", "takim", "turnuva", "turnuvasi", "kupa", "kupasi", "serisi", "oyunlari", "ligi",
   "uluslararasi", "ulusal"]);
+// Salon (box) içi yarış / simülasyon: norm() sonrası denetlenir ("SİMÜLASYON", "Simulasyon", "İN-HOUSE" da yakalanır)
+const inHouse = (e) => /\bbox\b|simulation|simulasyon|in-?house|50%/.test(norm(`${e.name} ${e.instagram ?? ""}`));
 
 /**
  * Haber metniyle eşleşen circle21 yarışı (tarih penceresi ±25 gün; şehir ya da adın ayırt edici kelimesi metinde geçmeli).
@@ -126,7 +128,7 @@ export async function circle21Reference(text) {
     const s = Date.parse(e.start ?? 0), en = Date.parse(e.end ?? e.start ?? 0);
     if (!(s - 25 * 864e5 <= now + 60 * 864e5 && en + 25 * 864e5 >= now)) continue;
     // Salon içi yarış/simülasyonlar aday olmadığı gibi başka habere referans da olmaz (circle21Candidates ile aynı kural)
-    if (/\bbox\b|simulation|simülasyon|in-?house|50%/i.test(`${e.name} ${e.instagram ?? ""}`)) continue;
+    if (inHouse(e)) continue;
     let score = 0;
     // Adresteki ilçe/il ("09400 Kuşadası/Aydın")
     const place = (e.address.match(/\d{5}\s+([^/,]+)\/([^,]+)/) ?? []).slice(1).map((x) => norm(x.trim())).filter((x) => x.length > 3);
@@ -152,7 +154,7 @@ export async function circle21Candidates() {
     const start = Date.parse(e.start ?? 0);
     if (!(start > now)) continue;
     // Kullanıcı kuralı: salon (box) içi yarışmalar ve simülasyonlar duyurulmaz (Wolf Haven hariç; o Instagram izlemesinden gelir)
-    if (/\bbox\b|simulation|simülasyon|in-?house|50%/i.test(`${e.name} ${e.instagram}`)) continue;
+    if (inHouse(e)) continue;
     const pub = Date.parse(e.published ?? 0), regTo = Date.parse(e.regTo ?? 0);
     const base = {
       eventName: e.name, url: e.url, logo: e.logo, images: e.images, source: "circle21 resmî kayıt sayfası", feedCat: "crossfit", date: new Date().toISOString(), ageH: 0,

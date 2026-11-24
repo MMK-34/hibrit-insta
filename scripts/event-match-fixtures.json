@@ -1,0 +1,152 @@
+{
+  "description": "G14: recentSameEvent sponsor ön ekli etkinlik eşleştirme pozitif/negatif test senaryoları",
+  "cases": [
+    {
+      "id": "pos-ida-ultra-rss-title",
+      "description": "Sponsor ön ekli kayıt (Kar Spor İda Ultra Maraton) sponsor adı olmayan RSS başlığıyla eşleşmeli",
+      "postedEventName": "Kar Spor İda Ultra Maraton",
+      "candidate": { "eventName": "", "text": "Kaz Dağları'nda 10. İda Ultra Maraton heyecanı başlıyor" },
+      "expectMatch": true
+    },
+    {
+      "id": "pos-ida-ultra-suffix-u",
+      "description": "Sponsor ön ekli kayıt, Türkçe iyelik ekli (Maratonu) RSS başlığıyla eşleşmeli",
+      "postedEventName": "Kar Spor İda Ultra Maraton",
+      "candidate": { "eventName": "", "text": "Kaz Dağları'nda 10. İda Ultra Maratonu: 10 ülkeden 1.540 sporcu" },
+      "expectMatch": true
+    },
+    {
+      "id": "pos-ida-ultra-apostrophe",
+      "description": "Kesme işaretli ek (Maraton'da) ile eşleşmeli",
+      "postedEventName": "10. Kar Spor İda Ultra Maratonu",
+      "candidate": { "eventName": "", "text": "İda Ultra Maraton'da kayıtlar doldu" },
+      "expectMatch": true
+    },
+    {
+      "id": "pos-salomon-kapadokya",
+      "description": "Tek kelimelik sponsor ön eki (Salomon Kapadokya Ultra Trail) eşleşmeli",
+      "postedEventName": "Salomon Kapadokya Ultra Trail",
+      "candidate": { "eventName": "", "text": "Kapadokya Ultra Trail 2026 sonuçları açıklandı" },
+      "expectMatch": true
+    },
+    {
+      "id": "pos-nkolay-istanbul-maratonu",
+      "description": "2 kelimelik sponsor ön eki (N Kolay İstanbul Maratonu) eşleşmeli",
+      "postedEventName": "N Kolay İstanbul Maratonu",
+      "candidate": { "eventName": "", "text": "48. İstanbul Maratonu kayıtları açıldı" },
+      "expectMatch": true
+    },
+    {
+      "id": "pos-isbankasi-istanbul-maratonu",
+      "description": "3 kelimelik sponsor ön eki (Türkiye İş Bankası İstanbul Maratonu) eşleşmeli",
+      "postedEventName": "Türkiye İş Bankası 48. İstanbul Maratonu",
+      "candidate": { "eventName": "", "text": "İstanbul Maratonu parkuru belli oldu" },
+      "expectMatch": true
+    },
+    {
+      "id": "pos-istanbul-yari-maratonu",
+      "description": "Yarı maraton aynı türle (N Kolay İstanbul Yarı Maratonu ↔ İstanbul Yarı Maratonu) eşleşmeli",
+      "postedEventName": "N Kolay İstanbul Yarı Maratonu",
+      "candidate": { "eventName": "", "text": "İstanbul Yarı Maratonu 2026 tarihleri açıklandı" },
+      "expectMatch": true
+    },
+    {
+      "id": "pos-uluslararasi-mersin",
+      "description": "Sıra sayısı + Uluslararası ön ekli kayıt (8. Uluslararası Mersin Maratonu) eşleşmeli",
+      "postedEventName": "8. Uluslararası Mersin Maratonu",
+      "candidate": { "eventName": "", "text": "Mersin Maratonu 13 Aralık tarihinde koşulacak" },
+      "expectMatch": true
+    },
+    {
+      "id": "pos-hyrox-direct",
+      "description": "Doğrudan HYROX etkinlik adı (ASCII/Türkçe İ farkıyla) eşleşmeli",
+      "postedEventName": "HYROX Istanbul 2026",
+      "candidate": { "eventName": "", "text": "HYROX İstanbul kayıtları açıldı" },
+      "expectMatch": true
+    },
+    {
+      "id": "pos-uludag-diacritic-ascii",
+      "description": "Türkçe aksan/ASCII farkı (Uludağ ↔ Uludag) sponsor ön ekiyle eşleşmeli",
+      "postedEventName": "Merrell Uludağ Ultra Trail",
+      "candidate": { "eventName": "", "text": "Uludag Ultra Trail 2026 tarihleri duyuruldu" },
+      "expectMatch": true
+    },
+    {
+      "id": "neg-istanbul-maraton-vs-yari",
+      "description": "NEGATİF: İstanbul Maratonu ile İstanbul Yarı Maratonu eşleşmemeli (yarı farkı)",
+      "postedEventName": "İstanbul Maratonu",
+      "candidate": { "eventName": "", "text": "İstanbul Yarı Maratonu kayıtları açıldı" },
+      "expectMatch": false
+    },
+    {
+      "id": "neg-sponsor-istanbul-maraton-vs-yari",
+      "description": "NEGATİF: N Kolay İstanbul Maratonu ile İstanbul Yarı Maratonu eşleşmemeli",
+      "postedEventName": "N Kolay İstanbul Maratonu",
+      "candidate": { "eventName": "İstanbul Yarı Maratonu", "text": "İstanbul Yarı Maratonu kayıtları açıldı" },
+      "expectMatch": false
+    },
+    {
+      "id": "neg-istanbul-yari-vs-maraton",
+      "description": "NEGATİF: İstanbul Yarı Maratonu ile İstanbul Maratonu eşleşmemeli",
+      "postedEventName": "İstanbul Yarı Maratonu",
+      "candidate": { "eventName": "", "text": "48. İstanbul Maratonu parkuru açıklandı" },
+      "expectMatch": false
+    },
+    {
+      "id": "neg-antalya-ultra-vs-alanya-ultra-trail",
+      "description": "NEGATİF: Antalya Ultra ile Alanya Ultra Trail eşleşmemeli",
+      "postedEventName": "Antalya Ultra",
+      "candidate": { "eventName": "Alanya Ultra Trail", "text": "Alanya Ultra Trail kayıtları açıldı" },
+      "expectMatch": false
+    },
+    {
+      "id": "neg-sponsor-antalya-vs-alanya",
+      "description": "NEGATİF: Sponsor ön ekli Antalya Ultra ile Alanya Ultra Trail eşleşmemeli",
+      "postedEventName": "Kar Spor Antalya Ultra",
+      "candidate": { "eventName": "", "text": "Alanya Ultra Trail 2026 duyuruldu" },
+      "expectMatch": false
+    },
+    {
+      "id": "neg-bodrum-yari-vs-trabzon-yari",
+      "description": "NEGATİF: Bodrum Yarı Maratonu ön ek atılınca yalnızca 'yarı maraton' kalır, Trabzon ile eşleşmemeli",
+      "postedEventName": "Bodrum Yarı Maratonu",
+      "candidate": { "eventName": "", "text": "Trabzon Yarı Maratonu kayıtları açıldı" },
+      "expectMatch": false
+    },
+    {
+      "id": "neg-generic-only-core",
+      "description": "NEGATİF: Sponsor atılınca yalnızca tür kelimeleri (Ultra Maraton) kalırsa başka yarışla eşleşmemeli",
+      "postedEventName": "Kar Spor Ultra Maraton",
+      "candidate": { "eventName": "", "text": "Kaz Dağları'nda İda Ultra Maraton heyecanı" },
+      "expectMatch": false
+    },
+    {
+      "id": "neg-antalya-maraton-vs-antalya-ultra",
+      "description": "NEGATİF: Antalya Maratonu (yol) ile Antalya Ultra Maratonu eşleşmemeli (ultra farkı)",
+      "postedEventName": "Runatolia Antalya Maratonu",
+      "candidate": { "eventName": "", "text": "6. Antalya Ultra Maratonu kayıtları açıldı" },
+      "expectMatch": false
+    },
+    {
+      "id": "neg-hyrox-different-cities",
+      "description": "NEGATİF: Farklı şehirlerdeki HYROX yarışları eşleşmemeli",
+      "postedEventName": "HYROX Barcelona",
+      "candidate": { "eventName": "HYROX Madrid", "text": "HYROX Madrid sonuçları açıklandı" },
+      "expectMatch": false
+    },
+    {
+      "id": "pos-istanbul-maraton-yari-yolda",
+      "description": "Başlıkta 'yarı maraton' değil 'yarı yolda' geçiyorsa İstanbul Maratonu yine eşleşmeli",
+      "postedEventName": "N Kolay İstanbul Maratonu",
+      "candidate": { "eventName": "", "text": "İstanbul Maratonu yarı yolda yağmur altında koşuldu" },
+      "expectMatch": true
+    },
+    {
+      "id": "neg-word-boundary-ida-vs-gida",
+      "description": "NEGATİF: Kısa etkinlik adı (İda) başka bir kelimenin içinde (Gıda) eşleşmemeli",
+      "postedEventName": "Kar Spor İda Ultra Maraton",
+      "candidate": { "eventName": "", "text": "Gıda Ultra Maraton sponsorluğu açıklandı" },
+      "expectMatch": false
+    }
+  ]
+}

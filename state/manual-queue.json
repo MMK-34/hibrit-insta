@@ -92,5 +92,27 @@
     "srcUrl": "https://circle21.events/tirana-throwdown-2026-qualifiers?tab=workouts",
     "storyOk": false,
     "ownerRequested": true
+  },
+  {
+    "id": "hyrox-rio-2026-sonuclar",
+    "publishAt": "2026-11-24T08:22",
+    "urls": [
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-rio-2026-sonuclar/01.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-rio-2026-sonuclar/02.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-rio-2026-sonuclar/03.jpg",
+      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-rio-2026-sonuclar/04.jpg"
+    ],
+    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/hyrox-rio-2026-sonuclar-story/story.jpg",
+    "caption": "HYROX Rio'da kazananlar belli oldu\nHYROX, 21-22 Kasım 2026'da Brezilya'nın Rio de Janeiro kentindeki Riocentro'da yapıldı. Bu, HYROX'un şehre ikinci gelişiydi.\n\nErkeklerde Letonyalı Arturs Liepa 58:23 ile birinci oldu. Liepa, 60 dakikanın altına inen tek sporcuydu. Brezilyalı Bruno Carvalho 1:00:21 ile ikinci, Derik Afornali 1:00:58 ile üçüncü oldu.\n\nKadınlarda Arjantinli Agustina Monopoli 1:07:19 ile kazandı ve en yakın rakibini 2 dakika 30 saniye geride bıraktı. Şilili Carola Vergara Ferrer 1:09:49 ile ikinci, Brezilyalı Fernanda Costa 3 saniye arkada 1:09:52 ile üçüncü oldu.\n\nHYROX nedir? 8 kilometre koşu ve 8 fonksiyonel egzersiz istasyonundan oluşan, dünyanın birçok şehrinde düzenlenen bir fitness yarışı.\n\nSence 60 dakikanın altına inmek için en kritik istasyon hangisi?\nBu yarışta tanıdığın biri var mı? Ona gönder.\n\nKaynak: Rox Lyfe\nGörsel: roxlyfe.com\n\n#hyrox #hyroxrio #hyroxsonuclari #hibritfitness #hibritportal",
+    "photos": [
+      "event:hyrox-rio-2026-sonuclar"
+    ],
+    "title": "HYROX Rio'da kazananlar belli oldu",
+    "kind": "haber",
+    "category": "hyrox",
+    "eventName": "HYROX Rio de Janeiro",
+    "athlete": "Arturs Liepa, Agustina Monopoli",
+    "srcUrl": "https://roxlyfe.com/hyrox-rio-november-2026/",
+    "storyOk": false
   }
 ]

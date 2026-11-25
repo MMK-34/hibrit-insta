@@ -4229,6 +4229,55 @@
         "cal:hyrox-2026-sanya"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "ig:18077811359745903"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:9c7b729be29cfe77",
+        "event:6c110437ac54b420",
+        "event:387e6dd14fd1549e"
+      ],
+      "media": "18120484853135477",
+      "permalink": "https://www.instagram.com/p/DgKkmHeF3VJ/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-25/mww4ed1p/01.jpg",
+      "title": "@uludagultratrail Instagram paylaşımı: Her adımı ayrı bir hikaye, her tırmanışı ayrı bir meydan okuma...",
+      "headline": "Uludağ Ultra Trail 10. yılı için tarihini duyurdu",
+      "eventName": "Uludağ Ultra Trail",
+      "at": "2026-11-25T12:51:41.417Z",
+      "ig": "uludagultratrail",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "ULAŞIM VE YARIŞ DUYURUSU",
+            "title": "Uludağ Ultra Trail 10. yılı için tarihini duyurdu",
+            "subtitle": "Yarış 16-18 Temmuz 2027 tarihlerinde düzenlenecek."
+          },
+          {
+            "type": "stat",
+            "label": "Yarış Mesafesi Seçenekleri",
+            "value": "6 Parkur"
+          },
+          {
+            "type": "end",
+            "title": "Sıradaki Hedef",
+            "subtitle": "Uludağ Ultra Trail'in hangi parkurunda yarışmayı planlıyorsunuz?",
+            "body": "Düşüncelerinizi yorumlara yazın."
+          }
+        ],
+        "caption": "Uludağ Ultra Trail 16-18 Temmuz 2027 tarihlerinde koşulacak. 10. yılına hazırlanan organizasyon, 100K, 70K, 42K, 30K, 16K ve 6K olmak üzere 6 farklı parkur seçeneği sunuyor. Kayıt bilgileri resmi internet sitesinde yer alıyor. Uludağ Ultra Trail'in hangi parkurunda yer alıyorsunuz?\n\nReklam / Tanıtım\n\nYarışın Instagram hesabı: @uludagultratrail\n\nKaynak: uludagultratrail Instagram\nGörsel: circle21 resmi kayıt\n\n#trailrunning #patikakoşusu #ultratrail #ultrarunning #uludağ #uludagultratrail #koşuyarışı #hibritportal",
+        "srcUrls": [
+          "https://www.instagram.com/p/DgHJ6gmgDHA/"
+        ],
+        "eventName": "Uludağ Ultra Trail",
+        "country": "Türkiye",
+        "place": "Bursa"
+      },
+      "story": "18117031604133632"
     }
   ],
   "daily": {
@@ -4336,10 +4385,10 @@
       "summarySent": true
     },
     "2026-11-25": {
-      "drafts": 13,
-      "approved": 3,
+      "drafts": 14,
+      "approved": 4,
       "rejected": 10,
-      "aiCalls": 33
+      "aiCalls": 38
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4366,7 +4415,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-25T11:42:53.131Z",
+  "lastRunAt": "2026-11-25T12:43:01.584Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

@@ -108,7 +108,7 @@ export const SERIES = [
     cover: (c) => ({ kicker: "VİZESİZ ROTALAR", title: "Vize gerektirmeyen ülkelerdeki yarışlar", subtitle: `${c.range}: Türk vatandaşlarının vizesiz gidebildiği ülkelerdeki yarışlardan bir seçki.` }),
     intro: (c, names, n) => `Türk vatandaşlarının vizesiz gidebildiği ülkelerde ${n} yarış: ${names}. Vize kuralları değişebilir; yola çıkmadan önce Dışişleri Bakanlığı'nın güncel bilgisini kontrol edin.`,
     tableTitle: "Vizesiz yarışlar",
-    end: { title: "Hangi ülkede yarışmak istersiniz?", body: "Bu listeyi yurt dışında yarışmak isteyen arkadaşınıza gönderin." },
+    end: { title: "Hangi ülkede yarışmak istersiniz?" },
     imageQueries: ["crossfit competition barbell", "marathon runners city street", "trail running race"], cat: "yaris",
     task: (c) => `GÖREV: ${fmt(c.from)} ile ${fmt(c.to)} arasında, TÜRKİYE CUMHURİYETİ VATANDAŞLARININ (umuma mahsus pasaportla) VİZESİZ girebildiği ülkelerde düzenlenecek yarışları bul (en az 2, en fazla 12). Türkiye ve KKTC hariç. Başlıca aday bölgeler: Balkanlar (Sırbistan/Belgrad, Arnavutluk/Tiran, Bosna-Hersek, Karadağ, Kuzey Makedonya, Kosova), Gürcistan, Azerbaycan; yine de her ülkeyi aşağıdaki kurala göre doğrula. Öncelik: CrossFit yarışmaları ve throwdown'lar (ör. Balkanlar, Gürcistan, Azerbaycan), HYROX şehir yarışları, ATHX, maratonlar ve trail/ultra yarışları. Tarih sırasına göre diz.
 VİZE KURALI (kesin): Her ülkenin Türk vatandaşları için vizesiz olduğunu T.C. Dışişleri Bakanlığı'nın (mfa.gov.tr) ilgili ülke sayfasından ya da o ülkenin resmî konsolosluk/vize sitesinden DOĞRULA. Vize kapıda, e-vize ya da elektronik seyahat izni gereken ülkeler VİZESİZ SAYILMAZ, listeye koyma. Emin olmadığın ülkeyi koyma.
@@ -124,7 +124,7 @@ Her satırın tarihini ve resmî adını organizatörün sitesinden doğrula ve 
     cover: (c) => ({ kicker: c.city.toLocaleUpperCase("tr"), title: `${c.city}'da yaklaşan yarışlar`.replace(/'da yaklaşan/, (c.city.match(/[aıou][^aeıioöuü]*$/i) ? "'da" : "'de") + " yaklaşan"), subtitle: `${c.range} arasında ${c.city} ve çevresindeki yarışlardan bir seçki.` }),
     intro: (c, names, n) => `${c.city} ve çevresinde önümüzdeki haftalarda ${n} yarış: ${names}.`,
     tableTitle: "Şehir takvimi",
-    end: { title: "Sırada hangi şehir olsun?", body: "Şehrinizi yorumlara yazın, listesini hazırlayalım. Aynı şehirdeki arkadaşınıza gönderin." },
+    end: { title: "Sırada hangi şehir olsun?", body: "Şehrinizi yorumlara yazın, listesini hazırlayalım." },
     imageQueries: ["marathon runners city street", "crossfit competition barbell", "trail running race"], cat: "yaris",
     task: (c) => `GÖREV: ${fmt(c.from)} ile ${fmt(c.to)} arasında ${c.city.toLocaleUpperCase("tr")} ilinde (ilçeleri dahil) düzenlenecek yarışları bul (en az 3, en fazla 12). Tarih sırasına göre diz. Yer sütununa ilçe ya da mekân adını yaz (en fazla 25 karakter). 3 yarış bulamazsan enough=false ver.\n${RACE_RULES}`,
   },

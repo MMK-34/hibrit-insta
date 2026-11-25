@@ -31,6 +31,27 @@ const FIELDS = ["kicker", "title", "subtitle", "body", "label", "value"];
 const HAT = { "â": "a", "Â": "A", "î": "i", "Î": "İ", "û": "u", "Û": "U" };
 const clean = (t = "") => String(t).normalize("NFKC").replace(/[âÂîÎûÛ]/g, (c) => HAT[c]).replace(/[’‘]/g, "'").replace(/\s*—\s*/g, ", ").replace(/–/g, "-").replace(URL_RE, "").replace(MENTION_RE, "$1").replace(/[ \t]{2,}/g, " ").trim();
 
+// Çağrı cümlesi yok (kullanıcı kuralı 2026-11-25: "arkadaşına gönder" vb. kötü).
+// 1) Metnin SONUNDAKİ emir kipli gönder/kaydet/etiketle/paylaş/takip et cümleleri atılır (gövdedeki bilgi cümlesine dokunulmaz).
+// 2) Gövdede yalnızca açık sosyal çağrı ("arkadaşına gönder/etiketle") atılır. Soru ve haber cümleleri kalır.
+const CTA_SUFFIX = "(?:[ıi]n|[ıi]n[ıi]z|y[ıi]n|y[ıi]n[ıi]z|[ae]bilir(?:sin|siniz)|(?:me|ma)y[ıi]\\s+unutma(?:y[ıi]n)?)?";
+const CTA_VERB = "(?:g[öo]nder|yolla|ilet|kaydet|kayded|etiketle|payla[şs]|takip\\s+et|takip\\s+ed|takipte\\s+kal)";
+const CTA_END = new RegExp(`(?<![\\p{L}\\p{N}])${CTA_VERB}${CTA_SUFFIX}$`, "u");
+const CTA_SOCIAL = new RegExp(`[^.!?\\n]*(?<![\\p{L}\\p{N}])arkada[şs]\\p{L}*[^.!?\\n]*(?<![\\p{L}\\p{N}])(?:g[öo]nder|yolla|etiketle)${CTA_SUFFIX}(?![\\p{L}\\p{N}])[.!…]*[ \\t]*`, "giu");
+const TRAIL = /[\s.!…\p{Extended_Pictographic}️‍]+$/u;
+export const stripCta = (t = "") => {
+  let s = String(t).trimEnd();
+  for (let k = 0; k < 4; k++) {
+    const body = s.replace(TRAIL, "");
+    const i = Math.max(...["\n", ".", "!", "?", "…"].map((c) => body.lastIndexOf(c)));
+    if (!CTA_END.test(body.slice(i + 1).trim().toLocaleLowerCase("tr"))) break;
+    s = s.slice(0, i + 1).trimEnd();
+  }
+  // Satır yalnızca çağrıdan oluşuyorsa satır tamamen atılır (fazladan boş satır kalmaz)
+  return s.split("\n").map((line) => { const x = line.replace(CTA_SOCIAL, "").trimEnd(); return line.trim() && !x.trim() ? null : x; })
+    .filter((x) => x !== null).join("\n").replace(/\n{3,}/g, "\n\n").trim();
+};
+
 // Kullanıcı kuralı (2026-11-10): ATHX yalnızca Türkiye'de olursa paylaşılır; yurt dışı ATHX yarışları (duyuru/sonuç) kapsam dışı.
 // ATHX'in genel formatını anlatan bilgi postu (belirli bir ülke yok) serbest.
 export const TR_PLACE = /(t[üu]rkiye|turkey|t[üu]rk\b|turkish|[İi]stanbul|[İi]zmir|antalya|ankara|bursa|ku[şs]adas[ıi]|bodrum|mersin|adana|eski[şs]ehir|kocaeli|konya|kayseri|gaziantep|samsun|trabzon|mu[ğg]la|denizli|ayd[ıi]n|kapadokya|cappadocia)/i;
@@ -52,6 +73,7 @@ export function guardPost(post, { sourceName }) {
     if (Array.isArray(s.bullets)) o.bullets = s.bullets;
     // Alanlar KESİLMEZ (yarım cümle yayınlanmasın): sınırı aşan alan aşağıda gerekçeli retle yazara geri döner
     for (const k of FIELDS) if (o[k]) o[k] = clean(o[k]);
+    if (o.type === "end" && o.body) o.body = stripCta(o.body); // son slaytta da çağrı cümlesi yok (2026-11-25)
     if (o.bullets) o.bullets = o.bullets.map((b) => clean(b)).filter(Boolean).slice(0, 4);
     // v2 kapak vurgusu (kırmızı kelime): yalnızca başlıkta gerçekten geçen en çok 3 kelime
     if (o.type === "cover" && s.hl && o.title) {
@@ -97,7 +119,7 @@ export function guardPost(post, { sourceName }) {
   });
   if (tooLong.length) return { ok: false, reason: `metin çok uzun, kısalt (yarım cümle olmasın): ${tooLong.join("; ")}` };
 
-  let caption = clean(post.caption ?? "").replace(/^\s*kaynak\s*:.*$/gim, "").trim().slice(0, 1900);
+  let caption = stripCta(clean(post.caption ?? "").replace(/^\s*kaynak\s*:.*$/gim, "")).slice(0, 1900);
   // Hashtag: her biri en fazla 30 karakter (# hariç; uzunsa atılır), tekrarsız, en fazla 12; şapkalı harf temizlenir
   const tags = [...new Set((post.hashtags ?? []).map((h) => "#" + String(h).normalize("NFKC").replace(/[âÂîÎûÛ]/g, (c) => HAT[c]).replace(/^#+/, "").replace(/[^\p{L}\p{N}_]/gu, "")))]
     .filter((h) => h.length > 2 && h.length - 1 <= MAX_TAG_LEN && !GENERIC_TAGS.has(h.toLocaleLowerCase("tr"))).slice(0, MAX_TAGS);

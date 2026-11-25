@@ -4085,6 +4085,101 @@
       "eventName": "Varna Throwdown 2027",
       "at": "2026-11-24T16:27:04.763Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "manual:ilk-yaris-gunu-listesi"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "pixabay:2489290"
+      ],
+      "media": "18144810781626522",
+      "permalink": "https://www.instagram.com/p/DgJstweF1Vv/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/ilk-yaris-gunu-listesi/01.jpg",
+      "title": "İlk yarışından önce bu listeye bak",
+      "headline": "İlk yarışından önce bu listeye bak",
+      "eventName": "",
+      "at": "2026-11-25T04:43:23.411Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "manual:echo-bike-2027-yari-final"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:echo-bike-2027-yari-final"
+      ],
+      "media": "18109884383359147",
+      "permalink": "https://www.instagram.com/p/DgJswkiF3uN/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/echo-bike-2027-yari-final/01.jpg",
+      "title": "Echo Bike ilk kez online yarı finalde",
+      "headline": "Echo Bike ilk kez online yarı finalde",
+      "eventName": "2027 CrossFit Games online yarı finalleri",
+      "at": "2026-11-25T04:43:47.035Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "https://thebarbellspin.com/crossfit-games/crossfit-just-added-a-major-piece-of-equipment-to-the-2027-online-semifinals/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "https://www.boxrox.com/nike-vaporfly-4-black-friday-deal-hyrox/",
+        "https://www.boxrox.com/linda-meier-amazfit-balance-2-black-friday-deal/",
+        "https://www.boxrox.com/hunter-mcintyre-amazfit-t-rex-3-pro-black-friday-deal/",
+        "https://www.boxrox.com/the-future-of-hybrid-fitness-racing-is-here-hybrid-rcn-hyrox-nitro-elite/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "https://taf.org.tr/erteleme-bilgilendirmesi/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "https://thebarbellspin.com/competition/whos-competing-at-the-2026-down-under-championship/"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:46e1407a622cec12"
+      ],
+      "media": "18290102455293498",
+      "permalink": "https://www.instagram.com/p/DgJtXlelz0J/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-25/mwvn8eir/01.jpg",
+      "title": "Who's Competing at the 2026 Down Under Championship?",
+      "headline": "Down Under Championship 2026 bu hafta sonu başlıyor",
+      "eventName": "Down Under Championship",
+      "at": "2026-11-25T04:49:04.981Z",
+      "ig": "downunderchampionship",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "CROSSFIT",
+            "title": "Down Under Championship 2026 bu hafta sonu başlıyor",
+            "subtitle": "Avustralya'nın Wollongong kentinde düzenlenecek yarışma 27-29 Kasım tarihleri arasında gerçekleşecek."
+          }
+        ],
+        "caption": "Down Under Championship 27-29 Kasım 2026 tarihlerinde Avustralya'nın Wollongong kentinde düzenleniyor. Bireysel ve takım kategorilerinde sporcuların mücadele edeceği yarış, WIN Arena'da ve dış mekan parkurlarında gerçekleşecek. Yarışın canlı yayın takibi ve sonuçları Competition Corner üzerinden takip edilebilir. Bu yarışta takip ettiğiniz bir sporcu var mı? Ona gönder.\n\nReklam / Tanıtım\n\nYarışın Instagram hesabı: @downunderchampionship\n\nKaynak: The Barbell Spin\nGörsel: Thebarbellspin\n\n#crossfit #downunderchampionship #fonksiyonelantrenman #crossfitgames #hibritportal",
+        "srcUrls": [
+          "https://thebarbellspin.com/competition/whos-competing-at-the-2026-down-under-championship/"
+        ],
+        "eventName": "Down Under Championship",
+        "country": "Avustralya",
+        "place": "Wollongong"
+      }
     }
   ],
   "daily": {
@@ -4192,9 +4287,10 @@
       "summarySent": true
     },
     "2026-11-25": {
-      "drafts": 0,
-      "approved": 0,
-      "rejected": 0
+      "drafts": 4,
+      "approved": 1,
+      "rejected": 3,
+      "aiCalls": 8
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4221,7 +4317,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-24T18:42:56.808Z",
+  "lastRunAt": "2026-11-25T04:43:47.192Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

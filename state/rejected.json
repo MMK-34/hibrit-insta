@@ -2384,5 +2384,44 @@
         "note": "yurt dışı hikâye, Türk sporcu yok"
       }
     ]
+  },
+  {
+    "at": "2026-11-25T04:46:25.246Z",
+    "title": "CrossFit Just Added a Major Piece of Equipment to the 2027 Online Semifinals",
+    "url": "https://thebarbellspin.com/crossfit-games/crossfit-just-added-a-major-piece-of-equipment-to-the-2027-online-semifinals/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "tekrar",
+        "item": "tekrar",
+        "note": "aynı etkinlik: 2027 CrossFit Games online yarı finalleri"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-25T04:46:31.481Z",
+    "title": "The Nike Super Shoe HYROX World Champion Dylan Scott Has Raced In Is Under $150",
+    "url": "https://www.boxrox.com/nike-vaporfly-4-black-friday-deal-hyrox/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "tekrar",
+        "item": "tekrar",
+        "note": "aynı haber: PUMA, HYROX için özel yarış ayakkabısını duyurdu"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-25T04:48:06.880Z",
+    "title": "ERTELEME BİLGİLENDİRMESİ",
+    "url": "https://taf.org.tr/erteleme-bilgilendirmesi/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

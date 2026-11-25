@@ -270,5 +270,25 @@
     "createdDay": "2026-11-24",
     "due": "2026-12-03",
     "status": "bekliyor"
+  },
+  {
+    "key": "downunderchampionship",
+    "type": "gecmis",
+    "eventName": "Down Under Championship",
+    "officialSite": "https://competitioncorner.net",
+    "category": "crossfit",
+    "createdDay": "2026-11-25",
+    "due": "2026-11-29",
+    "status": "bekliyor"
+  },
+  {
+    "key": "downunderchampionship",
+    "type": "wodlar",
+    "eventName": "Down Under Championship",
+    "officialSite": "https://competitioncorner.net",
+    "category": "crossfit",
+    "createdDay": "2026-11-25",
+    "due": "2026-12-04",
+    "status": "bekliyor"
   }
 ]

@@ -1,27 +1,5 @@
 [
   {
-    "id": "ilk-yaris-gunu-listesi",
-    "publishAt": "2026-11-24T19:30",
-    "urls": [
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/ilk-yaris-gunu-listesi/01.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/ilk-yaris-gunu-listesi/02.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/ilk-yaris-gunu-listesi/03.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/ilk-yaris-gunu-listesi/04.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/ilk-yaris-gunu-listesi/05.jpg"
-    ],
-    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/ilk-yaris-gunu-listesi-story/story.jpg",
-    "caption": "İlk yarışından önce bu listeye bak\nİlk yarışta en çok zaman parkurun dışında kaybedilir: geç kalmak, bir şeyi evde unutmak, ısınma alanını bulamamak. Saatler ve belgeler için her zaman organizatörün gönderdiği sporcu bilgilendirmesini esas al.\n\nBir hafta önce\nSporcu bilgilendirmesini oku: check-in saati, start saatin, istenen belgeler orada yazar.\nKimlik ve kayıt onayını hazırla.\nAntrenman hacmini düşür, yeni bir şey deneme.\nYarışta giyeceğin ayakkabı ve kıyafetle en az bir antrenman yap.\n\nBir gün önce\nÇantanı akşamdan hazırla: kimlik, yarış kıyafeti, yedek çorap, su, alışık olduğun atıştırmalık, yarış sonrası kuru kıyafet.\nAlışık olduğun bir akşam yemeği ye ve erken yat.\n\nYarış sabahı\nStarttan 2-3 saat önce alışık olduğun kahvaltıyı yap.\nCheck-in saatine göre alanda ol.\nStart, tuvalet ve ısınma alanını bul. Tuvalet kuyruğu uzar, ısınmadan önce git.\nIsınmayı starttan 5-10 dakika önce bitir.\n\nYarışta ve sonra\nYavaş başla, ilk bölüm her zaman olduğundan kolay gelir.\nNo rep aldıysan tartışma, tekrarı düzelt ve devam et.\nFinişten sonra birkaç dakika yürü, hemen oturma.\nSu, karbonhidrat ve protein içeren bir şeyler al.\n\nYarış çantana ilk ne koyarsın?\nYarış planın için kaydet.\n\nKaynak: Hibrit Portal rehberi\nGörsel: Pixabay\n\n#ilkyarış #hyrox #koşu #crossfit #hibritportal",
-    "photos": [
-      "pixabay:2489290"
-    ],
-    "title": "İlk yarışından önce bu listeye bak",
-    "kind": "bilgi",
-    "category": "kosu",
-    "eventName": "",
-    "srcUrl": "",
-    "storyOk": false
-  },
-  {
     "id": "tirana-2026-eleme-antrenmanlari",
     "publishAt": "2026-11-26T19:30",
     "urls": [
@@ -45,25 +23,5 @@
     "srcUrl": "https://circle21.events/tirana-throwdown-2026-qualifiers?tab=workouts",
     "storyOk": false,
     "ownerRequested": true
-  },
-  {
-    "id": "echo-bike-2027-yari-final",
-    "publishAt": "2026-11-25T07:30",
-    "urls": [
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/echo-bike-2027-yari-final/01.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/echo-bike-2027-yari-final/02.jpg",
-      "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/echo-bike-2027-yari-final/03.jpg"
-    ],
-    "story": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/echo-bike-2027-yari-final-story/story.jpg",
-    "caption": "Echo Bike ilk kez CrossFit Games online yarı finalinde\n2027 sezonunda online yarı finallere katılacak bireysel sporcuların bir Rogue Echo Bike'a ihtiyacı olacak.\n\nDuyuruyu Adrian Bozman 24 Kasım'da Instagram'dan yaptı. Echo Bike, CrossFit Games'in bir online aşamasında ilk kez kullanılacak. Değişiklik yarı finaller için geçerli; çeyrek finallerde şimdilik yer almıyor.\n\nHaberi veren The Barbell Spin, Rogue'un ana gönderim bölgeleri dışındaki sporcuların bisikleti nasıl temin edeceği sorusunu gündeme getirdi.\n\nSalonunda Echo Bike var mı?\nYarı final hedefi olan arkadaşına gönder.\n\nReklam / Tanıtım\n\nKaynak: The Barbell Spin\nGörsel: The Barbell Spin\n\n#crossfit #crossfitgames #echobike #hibritportal",
-    "photos": [
-      "event:echo-bike-2027-yari-final"
-    ],
-    "title": "Echo Bike ilk kez online yarı finalde",
-    "kind": "haber",
-    "category": "crossfit",
-    "eventName": "2027 CrossFit Games online yarı finalleri",
-    "srcUrl": "https://thebarbellspin.com/crossfit-games/crossfit-just-added-a-major-piece-of-equipment-to-the-2027-online-semifinals/",
-    "storyOk": false
   }
 ]

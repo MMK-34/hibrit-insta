@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-25T13:43:04.337Z",
+  "updated": "2026-11-25T14:43:50.713Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 95,
-      "fetchedAt": "2026-11-25T13:41:03.988Z"
+      "count": 96,
+      "fetchedAt": "2026-11-25T14:41:00.390Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-25T13:43:04.328Z"
+      "fetchedAt": "2026-11-25T14:43:50.701Z"
     }
   },
   "items": [
@@ -753,6 +753,23 @@
       "source": "manual",
       "sourceUrl": "https://www.passtiming.org/etkinlikler",
       "eventSlug": null
+    },
+    {
+      "id": "circle21-a5c6ae9f-382c-443b-983b-cbe75a6b16c7",
+      "name": "AGORÀ - Team Italia Retreat",
+      "eventSlug": null,
+      "type": "crossfit",
+      "city": "Italy",
+      "country": "İtalya",
+      "startDate": "2026-11-28",
+      "endDate": "2026-11-29",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=a5c6ae9f-382c-443b-983b-cbe75a6b16c7",
+      "source": "circle21",
+      "registration": {
+        "to": "2026-11-27"
+      },
+      "instagram": "https://www.instagram.com/wanderteen/"
     },
     {
       "id": "hyrox-youngstars-utrecht-2026-11",

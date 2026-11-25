@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-25T16:43:44.804Z",
+  "updated": "2026-11-25T17:42:56.150Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 96,
-      "fetchedAt": "2026-11-25T16:40:59.167Z"
+      "fetchedAt": "2026-11-25T17:40:56.927Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-25T16:43:44.795Z"
+      "fetchedAt": "2026-11-25T17:42:56.139Z"
     }
   },
   "items": [
@@ -953,11 +953,11 @@
       "city": "Santa Cruz de Tenerife",
       "country": "İspanya",
       "startDate": "2026-12-04",
-      "endDate": "2026-12-05",
+      "endDate": "2026-12-04",
       "status": "confirmed",
       "url": "https://circle21.events/event?competitionId=0f01ce17-2259-4d10-a619-8d54cb6ab4ff",
       "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/415453/conversions/Cover-Circle-29-l_thumb.jpg",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/484292/conversions/Cover-Circle-31-l_thumb.jpg",
       "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/404299/conversions/Imagen-de-Codex-27-ago-2026,-17-s_thumb.jpg",
       "imageCredit": "circle21 / organizatör",
       "registration": {

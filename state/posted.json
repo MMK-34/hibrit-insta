@@ -4309,6 +4309,24 @@
         "country": "",
         "place": ""
       }
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "manual:rax7-throwdown-2026-izmit"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:rax7-throwdown-2026-izmit"
+      ],
+      "media": "18134572540839164",
+      "permalink": "https://www.instagram.com/p/DgLF-u6j0JN/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/rax7-throwdown-2026-izmit/01.jpg",
+      "title": "RAX7 Throwdown 20 Aralık'ta İzmit'te",
+      "headline": "RAX7 Throwdown 20 Aralık'ta İzmit'te",
+      "eventName": "RAX7 Throwdown 2026",
+      "at": "2026-11-25T17:43:23.822Z",
+      "manual": true
     }
   ],
   "daily": {
@@ -4419,7 +4437,7 @@
       "drafts": 15,
       "approved": 5,
       "rejected": 10,
-      "aiCalls": 42
+      "aiCalls": 43
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",

@@ -4180,6 +4180,20 @@
         "country": "Avustralya",
         "place": "Wollongong"
       }
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiowFBVV95cUxQOFNrdjNERU5iVG9fR2hWeTFyMUF1dXZnak5CSGtYanBhTmlTd0xrVEhmYjF5THlkM2dGVlZ6enBXR1BlU21IY0piR2pFSVZBMGF2SWZycHRLamxwOXd5YWhucWVOOExTaXZ3ZnhmaWFiR3lySXlZamdLaW1nYm5PN2ZLcTFoUHVPTHlIZjRKUDg1WTUzNXBzUGZzZjFyYVdWLVY0"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "cal:circle21-51705e04-2a55-44fd-865f-ba2d58cac793"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -4287,10 +4301,10 @@
       "summarySent": true
     },
     "2026-11-25": {
-      "drafts": 4,
+      "drafts": 6,
       "approved": 1,
-      "rejected": 3,
-      "aiCalls": 8
+      "rejected": 5,
+      "aiCalls": 11
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4317,7 +4331,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-25T04:43:47.192Z",
+  "lastRunAt": "2026-11-25T05:42:35.317Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

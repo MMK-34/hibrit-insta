@@ -2423,5 +2423,31 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-25T05:44:32.826Z",
+    "title": "PUMA's Ultimate HYROX Shoe Launches This Holiday Season",
+    "url": "https://www.si.com/fannation/sneakers/off-court/puma-ultimate-hyrox-shoe-launches-this-holiday-season",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "tekrar",
+        "item": "tekrar",
+        "note": "aynı haber: PUMA, HYROX için özel yarış ayakkabısını duyurdu"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-25T05:46:05.553Z",
+    "title": "Yaklaşan yarış: 971 Hybrid (Ajman Cornich - Al Nakhil 2 - Ajman - Emiratos Árabes Unidos, BAE) 2026-12-05",
+    "url": "https://circle21.events/event?competitionId=51705e04-2a55-44fd-865f-ba2d58cac793",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

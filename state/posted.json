@@ -4194,6 +4194,27 @@
         "cal:circle21-51705e04-2a55-44fd-865f-ba2d58cac793"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMivgFBVV95cUxPQTA5Y0NnYS03MFpBa2pPWm1SdGVqVXRIZGc5cEQtN3BWOU9qbWQtN1V3VmFuMC1iSzlOS1BzaWZpYVZMcTJTRzZ2dVlHU21ZRFM1YUw0aUpFYnJKZzc5UFlzN0FfeEJyU19RNlRHZk9LVDVvQ0UxOUhJOXFLSlN6Szd5SVQ4QUo2T1FvZVVsVVpNclV1WkhmdXFTZlVFZ0ZxMjJjY25MX01GYmtydzBiOWREODNSbmUtalVxckFn"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNX1p3Qmlwamx1NXBJbUFMdE5MSWYwcjNVVlpwc2Vzb2NSNnI2b0FfOXppOW1KdTZzZEJKNUgtTGtENEJ6dTJpNFY5SkdWUG5pZlRuTGpBUUNEdk5KVjJoYnhTSzNSV1E2VlI2cV85QVMxTjY4c25QaGZXcy1zbGoyd1VNbXNTUHVibW13MEpTc0t1UDJGOG9pQVBIM2xZWWJfZzAzQ0xXVkJXTmFMMzdJOXBxbUFmeHFXcHBWWXZOSzdwY1E0SGVUMnh2Mzc3SWZVcUhFNXl4aXZpZnRwaVE"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "cal:hyrox-2026-anaheim"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -4301,10 +4322,10 @@
       "summarySent": true
     },
     "2026-11-25": {
-      "drafts": 8,
+      "drafts": 11,
       "approved": 3,
-      "rejected": 5,
-      "aiCalls": 20
+      "rejected": 8,
+      "aiCalls": 26
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4331,7 +4352,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-25T09:43:06.200Z",
+  "lastRunAt": "2026-11-25T10:42:50.270Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

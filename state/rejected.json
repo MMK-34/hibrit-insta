@@ -2449,5 +2449,44 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-25T10:43:49.003Z",
+    "title": "Strava launches Hybrid Racing sport type and enters expansive HYROX partnership",
+    "url": "https://endurance.biz/2026/industry-news/strava-launches-hybrid-racing-sport-type-and-enters-expansive-hyrox-partnership/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "tekrar",
+        "item": "tekrar",
+        "note": "aynı haber: Strava'ya resmi hibrit yarış kategorisi eklendi"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-25T10:44:13.613Z",
+    "title": "Anneler ve kızları: Bir büyükannenin sessizliğiyle yüzleşen üç kuşak",
+    "url": "https://www.sortiraparis.com/tr/hobiler/sinema-serisi-festival/articles/20922-catherine-deneuve-un-basrolde-oldugu-bir-aile-sirri-meres-et-filles",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-25T10:47:09.154Z",
+    "title": "Yaklaşan yarış: HYROX Anaheim 2026 (Anaheim, USA) 2026-12-03 – 2026-12-07",
+    "url": "https://hyrox.com/find-my-race/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "tarih",
+        "note": "Postta tarih 3-7 Aralık olarak belirtilmiş ancak kaynakta 3-6 Aralık tarihleri yer almaktadır."
+      }
+    ]
   }
 ]

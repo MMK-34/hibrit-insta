@@ -314,6 +314,17 @@ try {
       ["Antrenmanı yapıp videoyla gönderiyorsun.", "Antrenmanı yapıp videoyla gönderiyorsun."],
       ["Yeni rekor kaydetti.\n\nNe düşünüyorsun?", "Yeni rekor kaydetti.\n\nNe düşünüyorsun?"],
       ["Paylaşım rekor kırdı.", "Paylaşım rekor kırdı."],
+      // Antigravity CTA-inceleme itirazları
+      ["Canlı sonuçları federasyon sitesinden takip edin. Kayıt 10 Nisan'da.\n\nHazır mısın?", "Canlı sonuçları federasyon sitesinden takip edin. Kayıt 10 Nisan'da.\n\nHazır mısın?"],
+      ["Hazır mısın?\nArkadaşına gönder 👇", "Hazır mısın?"],
+      ["Hazır mısın?\nPaylaşmayı unutma.", "Hazır mısın?"],
+      ["Hazır mısın?\nBunu arkadaşlarına gönderebilirsin.", "Hazır mısın?"],
+      ["Hazır mısın?\nTakipte kalın!", "Hazır mısın?"],
+      ["Hazır mısın?\nGÖNDERİN.", "Hazır mısın?"],
+      ["Tanıdığın biri var mı?Ona gönder.", "Tanıdığın biri var mı?"],
+      ["A geldi.\nYarış arkadaşını etiketle.\nB geldi.", "A geldi.\nB geldi."],
+      ["Mesafe 3.5 km. Kayıt açık.", "Mesafe 3.5 km. Kayıt açık."],
+      ["Arkadaşına gönderdiği mesaj viral oldu.", "Arkadaşına gönderdiği mesaj viral oldu."],
     ];
     const errs = [];
     for (const [inp, want] of cases) { const got = g.stripCta(inp); if (got !== want) errs.push(`${JSON.stringify(inp)} -> ${JSON.stringify(got)}`); }

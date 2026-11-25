@@ -4278,6 +4278,37 @@
         "place": "Bursa"
       },
       "story": "18117031604133632"
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "seri:soru:2026-W48"
+      ],
+      "kind": "seri",
+      "photos": [
+        "local:run-start"
+      ],
+      "media": "18058419152589976",
+      "permalink": "https://www.instagram.com/p/DgK4ayGE8L8/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-25/mwwamr9x/01.jpg",
+      "title": "Yurt içi yarışlar mı, yurt dışı yarışlar mı?",
+      "headline": "Yurt içi yarışlar mı, yurt dışı yarışlar mı?",
+      "at": "2026-11-25T15:44:59.701Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "HAFTANIN SORUSU",
+            "title": "Yurt içi yarışlar mı, yurt dışı yarışlar mı?",
+            "subtitle": "Cevabınızı ve nedenini yorumlara yazın."
+          }
+        ],
+        "caption": "Haftanın sorusu: Yurt içi yarışlar mı, yurt dışı yarışlar mı?\n\nCevabınızı ve nedenini yorumlara yazın. Haftaya en çok gelen cevabı paylaşalım.\n\nKaynak: Hibrit Portal\n\n#hibritportal #koşu #hyrox #crossfit #yarış",
+        "srcUrls": [],
+        "eventName": "",
+        "country": "",
+        "place": ""
+      }
     }
   ],
   "daily": {
@@ -4385,10 +4416,10 @@
       "summarySent": true
     },
     "2026-11-25": {
-      "drafts": 14,
-      "approved": 4,
+      "drafts": 15,
+      "approved": 5,
       "rejected": 10,
-      "aiCalls": 38
+      "aiCalls": 41
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4413,9 +4444,14 @@
     },
     "kayit-acik:2026-W48": {
       "tries": 2
+    },
+    "soru:2026-W48": {
+      "tries": 1,
+      "done": true,
+      "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-25T14:43:51.502Z",
+  "lastRunAt": "2026-11-25T15:43:28.431Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

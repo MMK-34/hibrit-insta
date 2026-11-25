@@ -4215,6 +4215,20 @@
         "cal:hyrox-2026-anaheim"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMikgFBVV95cUxObHpSTDRxeXh3UHFackhIVUl4a2Z6LW5MY055U3VRUkV6dVM1TkdMQXdPRmNGVW1LUHI0RE92TXdQRWZoamJZNXo2Ujd3TVpHZGhNeVY5elA2eERnMnRXaGhBNUZ6X3JuWmtKcS1YaDRpaEpQYnh6ako1dUgxWjdkbGhtRjBJdUk1dzhOTVZ0eUZuZw"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-25",
+      "ids": [
+        "cal:hyrox-2026-sanya"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -4322,10 +4336,10 @@
       "summarySent": true
     },
     "2026-11-25": {
-      "drafts": 11,
+      "drafts": 13,
       "approved": 3,
-      "rejected": 8,
-      "aiCalls": 26
+      "rejected": 10,
+      "aiCalls": 33
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4352,7 +4366,7 @@
       "tries": 2
     }
   },
-  "lastRunAt": "2026-11-25T10:42:50.270Z",
+  "lastRunAt": "2026-11-25T11:42:53.131Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

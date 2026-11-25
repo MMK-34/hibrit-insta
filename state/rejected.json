@@ -2488,5 +2488,31 @@
         "note": "Postta tarih 3-7 Aralık olarak belirtilmiş ancak kaynakta 3-6 Aralık tarihleri yer almaktadır."
       }
     ]
+  },
+  {
+    "at": "2026-11-25T11:43:20.806Z",
+    "title": "Gaziantep’te KKTC’li atletlerden büyük başarı",
+    "url": "https://haberkibris.com/gaziantepte-kktcli-atletlerden-buyuk-basari-1436-2026-11-23.html",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-25T11:43:58.037Z",
+    "title": "Yaklaşan yarış: HYROX Sanya 2026 (Sanya, China) 2026-12-04 – 2026-12-06",
+    "url": "https://hyrox.com/find-my-race/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "tarih",
+        "note": "Postta 4-6 Aralık denilmiş, ancak resmî kaynakta yarış tarihleri 5-6 Aralık olarak belirtilmiştir."
+      }
+    ]
   }
 ]

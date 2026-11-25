@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-25T10:42:49.677Z",
+  "updated": "2026-11-25T11:42:52.428Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 95,
-      "fetchedAt": "2026-11-25T10:41:05.219Z"
+      "fetchedAt": "2026-11-25T11:41:00.902Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-25T10:42:49.668Z"
+      "fetchedAt": "2026-11-25T11:42:52.420Z"
     }
   },
   "items": [
@@ -2988,6 +2988,9 @@
       "status": "confirmed",
       "url": "https://circle21.events/event?competitionId=60b0942a-2abb-475c-bd21-7d043e1885f6",
       "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/484138/conversions/HYROX-Shepton-Mallet-Event-Poster-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/484136/conversions/ChatGPT-Image-Nov-25,-2026-at-11_35_16-AM-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
       "registration": {
         "to": "2027-03-28",
         "fee": "0.00 GBP"

@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-25T06:43:01.209Z",
+  "updated": "2026-11-25T07:42:47.970Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 94,
-      "fetchedAt": "2026-11-25T06:41:05.002Z"
+      "count": 95,
+      "fetchedAt": "2026-11-25T07:40:59.436Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-25T06:43:01.201Z"
+      "fetchedAt": "2026-11-25T07:42:47.959Z"
     }
   },
   "items": [
@@ -3133,6 +3133,28 @@
       },
       "instagram": "https://instagram.com/italian.teen.arena",
       "website": "https://www.instagram.com/italian.teen.arena/"
+    },
+    {
+      "id": "circle21-c6f12b13-76a3-4768-b16d-3270ec2206f4",
+      "name": "Athens Throwdown 2027 Spectators Tickets",
+      "eventSlug": "athens-throwdown",
+      "type": "crossfit",
+      "city": "Greece",
+      "country": "Yunanistan",
+      "startDate": "2027-04-16",
+      "endDate": "2027-04-18",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=c6f12b13-76a3-4768-b16d-3270ec2206f4",
+      "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/369171/conversions/Athens-Throwdown-2027-Spectators-Tickets-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/369173/conversions/274007362_5446906268670654_8409688317908723684_n-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
+      "registration": {
+        "to": "2027-04-18",
+        "fee": "0.00 EUR"
+      },
+      "instagram": "https://instagram.com/athensthrowdown",
+      "website": "https://www.athensthrowdown.com"
     },
     {
       "id": "circle21-7e3314a6-2595-4dc5-a5c3-11dab0bded1c",

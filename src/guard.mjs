@@ -31,6 +31,13 @@ const FIELDS = ["kicker", "title", "subtitle", "body", "label", "value"];
 const HAT = { "â": "a", "Â": "A", "î": "i", "Î": "İ", "û": "u", "Û": "U" };
 const clean = (t = "") => String(t).normalize("NFKC").replace(/[âÂîÎûÛ]/g, (c) => HAT[c]).replace(/[’‘]/g, "'").replace(/\s*—\s*/g, ", ").replace(/–/g, "-").replace(URL_RE, "").replace(MENTION_RE, "$1").replace(/[ \t]{2,}/g, " ").trim();
 
+// Çağrı cümlesi yok (kullanıcı kuralı 2026-11-25: "arkadaşına gönder" vb. kötü): emir kipiyle biten
+// gönder/kaydet/etiketle/paylaş/takip et cümleleri caption'dan atılır; soru ve haber cümleleri kalır.
+const CTA_SENT = /(?<![\p{L}\p{N}])(g[öo]nder|g[öo]nderin|yolla|yollay[ıi]n|kaydet|kaydedin|etiketle|etiketleyin|payla[şs]|payla[şs][ıi]n|takip\s+et|takip\s+edin)\s*[.!]*$/iu;
+export const stripCta = (t = "") => String(t).split("\n")
+  .map((line) => line.split(/(?<=[.!?])\s+/).filter((x) => !CTA_SENT.test(x.trim())).join(" ").trimEnd())
+  .join("\n").replace(/\n{3,}/g, "\n\n").trim();
+
 // Kullanıcı kuralı (2026-11-10): ATHX yalnızca Türkiye'de olursa paylaşılır; yurt dışı ATHX yarışları (duyuru/sonuç) kapsam dışı.
 // ATHX'in genel formatını anlatan bilgi postu (belirli bir ülke yok) serbest.
 export const TR_PLACE = /(t[üu]rkiye|turkey|t[üu]rk\b|turkish|[İi]stanbul|[İi]zmir|antalya|ankara|bursa|ku[şs]adas[ıi]|bodrum|mersin|adana|eski[şs]ehir|kocaeli|konya|kayseri|gaziantep|samsun|trabzon|mu[ğg]la|denizli|ayd[ıi]n|kapadokya|cappadocia)/i;
@@ -97,7 +104,7 @@ export function guardPost(post, { sourceName }) {
   });
   if (tooLong.length) return { ok: false, reason: `metin çok uzun, kısalt (yarım cümle olmasın): ${tooLong.join("; ")}` };
 
-  let caption = clean(post.caption ?? "").replace(/^\s*kaynak\s*:.*$/gim, "").trim().slice(0, 1900);
+  let caption = stripCta(clean(post.caption ?? "").replace(/^\s*kaynak\s*:.*$/gim, "")).slice(0, 1900);
   // Hashtag: her biri en fazla 30 karakter (# hariç; uzunsa atılır), tekrarsız, en fazla 12; şapkalı harf temizlenir
   const tags = [...new Set((post.hashtags ?? []).map((h) => "#" + String(h).normalize("NFKC").replace(/[âÂîÎûÛ]/g, (c) => HAT[c]).replace(/^#+/, "").replace(/[^\p{L}\p{N}_]/gu, "")))]
     .filter((h) => h.length > 2 && h.length - 1 <= MAX_TAG_LEN && !GENERIC_TAGS.has(h.toLocaleLowerCase("tr"))).slice(0, MAX_TAGS);

@@ -301,6 +301,24 @@ try {
     }
     if (errs.length) throw new Error(errs.join(" | "));
   });
+
+  // 10) guard.mjs: stripCta çağrı cümlesi temizliği (kullanıcı kuralı 2026-11-25)
+  await check("guard.mjs stripCta (çağrı cümlesi yok)", async () => {
+    const g = mods.get("guard.mjs");
+    if (!g?.stripCta) throw new Error("stripCta yüklenemedi");
+    const cases = [
+      ["Katılacak mısın?\nBirlikte yarışmak istediğin arkadaşına gönder.", "Katılacak mısın?"],
+      ["Tanıdığın biri var mı? Ona gönder.", "Tanıdığın biri var mı?"],
+      ["Salonunda Echo Bike var mı?\nYarı final hedefi olan arkadaşına gönder.", "Salonunda Echo Bike var mı?"],
+      ["Hangisini seçerdin?\nYarış planın için kaydet.", "Hangisini seçerdin?"],
+      ["Antrenmanı yapıp videoyla gönderiyorsun.", "Antrenmanı yapıp videoyla gönderiyorsun."],
+      ["Yeni rekor kaydetti.\n\nNe düşünüyorsun?", "Yeni rekor kaydetti.\n\nNe düşünüyorsun?"],
+      ["Paylaşım rekor kırdı.", "Paylaşım rekor kırdı."],
+    ];
+    const errs = [];
+    for (const [inp, want] of cases) { const got = g.stripCta(inp); if (got !== want) errs.push(`${JSON.stringify(inp)} -> ${JSON.stringify(got)}`); }
+    if (errs.length) throw new Error(errs.join(" | "));
+  });
 } finally {
   if (safeNetMod && origDispatch) safeNetMod.SAFE_AGENT.dispatch = origDispatch;
   globalThis.fetch = origFetch;

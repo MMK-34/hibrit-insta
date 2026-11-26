@@ -2605,5 +2605,31 @@
         "note": "aynı etkinlik: Uluslararası Kanyon Ulubey Ultra Trail"
       }
     ]
+  },
+  {
+    "at": "2026-11-26T16:45:33.970Z",
+    "title": "‘Faecal’: HYROX nightmare as substance seen",
+    "url": "https://www.news.com.au/sport/sports-life/faecal-matter-hyrox-nightmare-as-substance-spotted-on-competition-circuit/news-story/28a175bde33f3ccfb7e776b06e44120c",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "tekrar",
+        "item": "tekrar",
+        "note": "aynı etkinlik: HYROX Dallas"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-26T16:45:57.824Z",
+    "title": "WFP Adds Beetle Extravaganza to 2027 Season",
+    "url": "https://thebarbellspin.com/competition/wfp-adds-beetle-extravaganza-to-2027-season/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kategori",
+        "note": "Postta 'elit takım kategorisi' ifadesi geçmektedir, kural gereği kategori adı geçmemelidir."
+      }
+    ]
   }
 ]

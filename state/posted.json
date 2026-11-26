@@ -4645,6 +4645,47 @@
         "country": "Yunanistan",
         "place": "Atina"
       }
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "manual:tirana-2026-eleme-antrenmanlari"
+      ],
+      "kind": "bilgi",
+      "photos": [
+        "ig:tiranathrowdown:DVGnte8jIW3-1",
+        "ig:tiranathrowdown:DVGnte8jIW3-0",
+        "ig:tiranathrowdown:DVGnte8jIW3-2"
+      ],
+      "media": "18234131371336190",
+      "permalink": "https://www.instagram.com/p/DgNj7SLF5Wz/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/tirana-2026-eleme-antrenmanlari/01.jpg",
+      "title": "Geçen yıl elemelerde bu antrenmanlar vardı",
+      "headline": "Geçen yıl elemelerde bu antrenmanlar vardı",
+      "eventName": "Tirana Throwdown 2027",
+      "at": "2026-11-26T16:43:34.007Z",
+      "manual": true
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMi8AFBVV95cUxOR3F5ajhxbUgzSlVlNTVZZEtwSl9yS0lXdFhBeVJNQTRtb0FGdUwzV2w2SWFXR01NMVJvRUtQU0pfQmdIbkFaRXVBTTR5NzVnVXVWb2tVRU5xNER1UEQ1OTBoNXhQUFJsZWR6akc5U19FZ21VdjlrNG50X3VrYXJ4bFYzTkdIRzhiRjd3RHU3LWRYc0hjNFY0QzU4RFdTLXpzdlZHdTlTajNXNGRyajVaWTJ3bk9kYndyb1NvYkRGam41RlYxc2ZubXRrV3BUaGZkZDM2X0cwdmNsbHJPZlVrMS1GRHlLa2IzMVRDTGhqVkHSAfYBQVVfeXFMTUZOOXhlSXY4b3ZCY2NMQUZwbUlwRGYza0dIOGtjVFZBampwNjIxTndLTHdJTS1vazRuUlJVZlNfUW1GRDZQMUpfN1pSRllZWnBkRnhPLUhfbXJFRHNrVDVnVDM3ck1Vb1hCRjhoUEh5Y1kxZDBCSGRzcV94QTduWUI3czhHeDYzWHpVX0ZRdGl1ME0xZF9FaEZqMl8yN0ZtdFZ1T212TEtWb1VSUVJ1WjZ1cVpTb2hnamRZLUNTRmZESklTLVlucG51MVB5dnFlUHRIT1NwOWVWTkFBNFM0Y180eUkzcC0xYmRRTm5DR1M0TmU3anhn"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMimgFBVV95cUxPSVdDdTN2NksyVE54LUoxYVBSWFh3X2ZDMEJOX2xLY1lnVFNidEUwaF91MHJSQWxTeGxHYXlTVnFyY3k3SmhUOGNuU1A1SlE0TGFCZ0plYlVZMWdRUk1vMlcxajBLVWRYa3hHRlNQZGdkQ3lCTjZyUkU5OE56aUhFNk1fZ3RST0NfcU5mTzF2aThJMG1RU2tENUR3"
+      ],
+      "skipped": "tekrar"
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "https://thebarbellspin.com/competition/wfp-adds-beetle-extravaganza-to-2027-season/"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -4759,10 +4800,10 @@
       "summarySent": true
     },
     "2026-11-26": {
-      "drafts": 15,
-      "approved": 8,
-      "rejected": 7,
-      "aiCalls": 61
+      "drafts": 18,
+      "approved": 9,
+      "rejected": 9,
+      "aiCalls": 68
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4794,7 +4835,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-26T15:42:56.117Z",
+  "lastRunAt": "2026-11-26T16:43:34.534Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

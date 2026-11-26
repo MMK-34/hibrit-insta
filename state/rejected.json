@@ -2553,5 +2553,18 @@
         "note": "aynı etkinlik: 10. Uluslararası Bodrum Yarı Maratonu"
       }
     ]
+  },
+  {
+    "at": "2026-11-26T12:47:02.895Z",
+    "title": "The biggest HYROX training mistake? You might be going too hard",
+    "url": "https://www.redbull.com/my-en/hyrox-training-too-much-intensity",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "alinti_yok",
+        "note": "Postta 'Uzmanlar' ifadesiyle genel bir atıf yapılmış, kaynak metinde ise Piers Plowman'dan alıntılar yer alıyor."
+      }
+    ]
   }
 ]

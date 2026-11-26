@@ -4490,6 +4490,42 @@
         "country": "",
         "place": ""
       }
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "https://thebarbellspin.com/fitness/another-poop-incident-hits-hyrox-this-time-in-dallas/"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:c6cb9bd050b93c3b"
+      ],
+      "media": "17957712321303231",
+      "permalink": "https://www.instagram.com/p/DgNB3fqDrf4/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-26/mwxhjo8m/01.jpg",
+      "title": "Another Poop Incident Hits HYROX, This Time in Dallas",
+      "headline": "HYROX Dallas yarışında parkurda kirlilik yaşandı",
+      "eventName": "HYROX Dallas",
+      "at": "2026-11-26T11:45:55.012Z",
+      "ig": "hyroxworld",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "HYROX",
+            "title": "HYROX Dallas yarışında parkurda kirlilik yaşandı",
+            "subtitle": "Yarış sırasında parkurda tespit edilen kirlilik sonrası görevliler müdahale etti ve organizasyon aksamadan devam etti.",
+            "hl": "HYROX DALLAS"
+          }
+        ],
+        "caption": "HYROX Dallas yarışında parkurda kirlilik yaşandı. Yarış sırasında parkurda tespit edilen kirlilik sonrası görevliler temizlik yaparak organizasyonun aksamadan devam etmesini sağladı. Benzer bir durum eylül ayında da yaşanmıştı. Sizce büyük katılımlı hibrit yarışlarda bu tür durumların önüne geçmek için ne yapılabilir?\n\nReklam / Tanıtım\n\nYarışın Instagram hesabı: @hyroxworld\n\nKaynak: The Barbell Spin\nGörsel: Thebarbellspin\n\n#hyrox #hyroxturkiye #fonksiyonelantrenman #hibritportal",
+        "srcUrls": [
+          "https://thebarbellspin.com/fitness/another-poop-incident-hits-hyrox-this-time-in-dallas/"
+        ],
+        "eventName": "HYROX Dallas",
+        "country": "ABD",
+        "place": "Dallas"
+      }
     }
   ],
   "daily": {
@@ -4604,10 +4640,10 @@
       "summarySent": true
     },
     "2026-11-26": {
-      "drafts": 8,
-      "approved": 5,
+      "drafts": 9,
+      "approved": 6,
       "rejected": 3,
-      "aiCalls": 36
+      "aiCalls": 41
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4639,7 +4675,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-26T10:42:37.212Z",
+  "lastRunAt": "2026-11-26T11:42:39.972Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

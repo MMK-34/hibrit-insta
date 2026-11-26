@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-26T10:42:36.556Z",
+  "updated": "2026-11-26T11:42:39.195Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 98,
-      "fetchedAt": "2026-11-26T10:40:59.195Z"
+      "fetchedAt": "2026-11-26T11:40:55.871Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-26T10:42:36.548Z"
+      "fetchedAt": "2026-11-26T11:42:39.183Z"
     }
   },
   "items": [
@@ -3697,6 +3697,9 @@
       "status": "confirmed",
       "url": "https://circle21.events/event?competitionId=a337c10e-7d2e-46be-ab23-e38585c993ac",
       "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/484566/conversions/DSC01190-s_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/484566/conversions/DSC01190-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
       "registration": {
         "to": "2027-05-01",
         "fee": "1200.00 SEK"

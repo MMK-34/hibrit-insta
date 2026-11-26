@@ -4454,6 +4454,42 @@
         "country": "ABD",
         "place": "Miami"
       }
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNaTVOS1JtTjJ0U1Jib3BmeU93X2x6eEdWS0E2MXp5OERMeHBMTFFVbmNRWjFKdnpZNHVkbnpKdHNSelluQ3NOSVNURGExVDBvWWtzWU5INEJ2Vl9oelZKSVVJUGViZ2pTbDBFUEpyTW5jX1lBLWN4YkloYVJOcFBabzhHTlFTZXZjWGRCbXFoSXBoQ09IUEp6TmtXakQzTWp3UlRoZTJpRTE1Y3VxZXFweXltbkl2bjZqdURj"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:8d59c3c0ce362c3c"
+      ],
+      "media": "18129938869908306",
+      "permalink": "https://www.instagram.com/p/DgMmRCcmjk7/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-26/mwx8xqat/01.jpg",
+      "title": "CrossFit Just Added a Major Piece of Equipment to the 2027 Online Semifinals",
+      "headline": "2027 Yarı finalleri için Rogue Echo Bike duyuruldu",
+      "eventName": "CrossFit Games",
+      "at": "2026-11-26T07:44:42.679Z",
+      "ig": "crossfitgames",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "CROSSFIT GAMES",
+            "title": "2027 Yarı finalleri için Rogue Echo Bike duyuruldu",
+            "subtitle": "Bireysel çevrim içi yarışmalarda ilk kez Rogue Echo Bike kullanılacak.",
+            "hl": "ROGUE ECHO BİKE"
+          }
+        ],
+        "caption": "CrossFit Games bireysel çevrim içi yarı finallerinde ilk kez Rogue Echo Bike zorunlu ekipman olarak yer alacak.\n\nAdrian Bozman tarafından duyurulan yenilikle birlikte, sporcular 2027 sezonundaki eleme aşamasında bu ekipmanla yarışacak.\n\nSiz de salonunuzda Echo Bike antrenmanları yapıyor musunuz, yorumlara yazın.\n\nYarışın Instagram hesabı: @crossfitgames\n\nKaynak: The Barbell Spin\nGörsel: Thebarbellspin\n\n#crossfit #crossfitgames #fonksiyonelantrenman #hibritportal",
+        "srcUrls": [
+          "https://thebarbellspin.com/crossfit-games/crossfit-just-added-a-major-piece-of-equipment-to-the-2027-online-semifinals/"
+        ],
+        "eventName": "CrossFit Games",
+        "country": "",
+        "place": ""
+      }
     }
   ],
   "daily": {
@@ -4568,10 +4604,10 @@
       "summarySent": true
     },
     "2026-11-26": {
-      "drafts": 7,
-      "approved": 4,
+      "drafts": 8,
+      "approved": 5,
       "rejected": 3,
-      "aiCalls": 27
+      "aiCalls": 32
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4603,7 +4639,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-26T06:42:55.649Z",
+  "lastRunAt": "2026-11-26T07:42:43.525Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

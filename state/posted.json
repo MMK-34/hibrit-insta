@@ -4362,6 +4362,48 @@
         "place": "Uşak/Ulubey"
       },
       "story": "17982641127151404"
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "cal:circle21-2a4ac925-1bae-48d3-adcd-3d0350288149"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMinAFBVV95cUxOZnRtYmdYQkR0VXVBUVM2MDRhakd4ZDhJcDdzZXUydHJJV0k4NHRweDg4emlxbFhGVm5PdlU4dElfWExGdUVUbDhuaC1LZkxfR0FzVzlaTGIwSzNIQnZ5d0FwdFBsV1R4QkNIWTNqckExWlk3NENwSFE3alU3OXRld05BYzVPWGtvNUREOHU4cmcxaXFqZi1KTGIxbFY"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:d403050f1351e778"
+      ],
+      "media": "17920159491521216",
+      "permalink": "https://www.instagram.com/p/DgMZH-zmpWb/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-26/mwx4ude9/01.jpg",
+      "title": "CrossFit Athlete Council Election: Term Beginning January 2027",
+      "headline": "CrossFit Sporcu Konseyi seçimleri açıklandı",
+      "eventName": "CrossFit Athlete Council",
+      "at": "2026-11-26T05:49:51.551Z",
+      "ig": "crossfitgames",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "CROSSFIT",
+            "title": "CrossFit Sporcu Konseyi seçimleri açıklandı",
+            "subtitle": "2027 Ocak ayında başlayacak yeni dönem için seçim süreci duyuruldu."
+          }
+        ],
+        "caption": "CrossFit Sporcu Konseyi seçimleri açıklandı. 2027 Ocak ayında başlayacak yeni dönem için seçim süreci duyuruldu. Sporcu Konseyi, CrossFit topluluğunun sesi olma görevini üstleniyor. Sizce bir sporcu konseyinde hangi konular öncelikli olmalı?\n\nReklam / Tanıtım\n\nYarışın Instagram hesabı: @crossfitgames\n\nKaynak: CrossFit Games\nGörsel: Thebarbellspin\n\n#crossfit #crossfitgames #fonksiyonelantrenman #hibritportal",
+        "srcUrls": [
+          "https://games.crossfit.com/article/crossfit-athlete-council-election-term-beginning-january-2027"
+        ],
+        "eventName": "CrossFit Athlete Council",
+        "country": "",
+        "place": ""
+      }
     }
   ],
   "daily": {
@@ -4476,10 +4518,10 @@
       "summarySent": true
     },
     "2026-11-26": {
-      "drafts": 1,
-      "approved": 1,
-      "rejected": 0,
-      "aiCalls": 6
+      "drafts": 3,
+      "approved": 2,
+      "rejected": 1,
+      "aiCalls": 14
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4511,7 +4553,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-26T04:42:37.974Z",
+  "lastRunAt": "2026-11-26T05:42:46.564Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

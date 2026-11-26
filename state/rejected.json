@@ -2514,5 +2514,18 @@
         "note": "Postta 4-6 Aralık denilmiş, ancak resmî kaynakta yarış tarihleri 5-6 Aralık olarak belirtilmiştir."
       }
     ]
+  },
+  {
+    "at": "2026-11-26T05:45:58.367Z",
+    "title": "Yaklaşan yarış: The Amsterdam Throwdown 2026 Finals (KP Amsterdam, Hollanda) 2026-12-05 – 2026-12-06",
+    "url": "https://circle21.events/event?competitionId=2a4ac925-1bae-48d3-adcd-3d0350288149",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "foto",
+        "item": "gorsel",
+        "note": "foto yok"
+      }
+    ]
   }
 ]

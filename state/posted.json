@@ -4609,6 +4609,42 @@
         "https://news.google.com/rss/articles/CBMipgFBVV95cUxNZnFGSE5JbGRMT1lYaW9tQmhKNEdGX1Z5M21ZejVUcWtZMnJwRGZnNTNjSWZFeS0ybDQzcWpxUWp0bWRoQldGLXR1Q0tBWHo5d3RkdjUxM29zcm5nYzNITmdEenllU2M0ZzFfNFVWWGZpenNGZFNnVlRjUFI5b1pnU3Q3MHhzODhfM0Q5dnJ0OGotZktyblhzN3ROQTM2T1p4aGk3NHlB"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "ig:18093918995302813"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:ffe5739f0b8ef72e"
+      ],
+      "media": "18651993283030573",
+      "permalink": "https://www.instagram.com/p/DgNddgJoD1A/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-26/mwxq6du7/01.jpg",
+      "title": "@athensthrowdown Instagram paylaşımı: Earn your spot among the best in Athens: register for the Online Qualifiers today! 🏆",
+      "headline": "Athens Throwdown 2027 online eleme kayıtları açıldı",
+      "eventName": "Athens Throwdown 2027",
+      "at": "2026-11-26T15:47:00.530Z",
+      "ig": "athensthrowdown",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "ATHENS THROWDOWN 2027",
+            "title": "Athens Throwdown 2027 online eleme kayıtları açıldı",
+            "subtitle": "Atina'daki organizasyon için ön eleme kayıtları başladı.",
+            "hl": "KAYITLARI AÇILDI"
+          }
+        ],
+        "caption": "Athens Throwdown 2027 online eleme kayıtları açıldı.\n\nAtina'da düzenlenecek organizasyon, World Fitness Project resmi eleme etkinliği olarak gerçekleştiriliyor.\n\nOnline elemeler için kayıtlar organizasyonun resmi sosyal medya hesabındaki bağlantı üzerinden yapılabilir.\n\nAthens Throwdown 2027 elemelerine katılacak mısınız?\n\nYarışın Instagram hesabı: @athensthrowdown\n\nKaynak: athensthrowdown Instagram\nGörsel: Thebarbellspin\n\n#athensthrowdown #crossfit #fonksiyonelantrenman #hibritportal",
+        "srcUrls": [
+          "https://www.instagram.com/reel/DgIVeWehvxN/"
+        ],
+        "eventName": "Athens Throwdown 2027",
+        "country": "Yunanistan",
+        "place": "Atina"
+      }
     }
   ],
   "daily": {
@@ -4723,10 +4759,10 @@
       "summarySent": true
     },
     "2026-11-26": {
-      "drafts": 14,
-      "approved": 7,
+      "drafts": 15,
+      "approved": 8,
       "rejected": 7,
-      "aiCalls": 55
+      "aiCalls": 61
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4758,7 +4794,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-26T14:34:29.222Z",
+  "lastRunAt": "2026-11-26T15:42:56.117Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {
@@ -4825,6 +4861,10 @@
     {
       "ev": "wolfhaven2event",
       "at": "2026-11-26T12:52:33.367Z"
+    },
+    {
+      "ev": "athensthrowdown2027",
+      "at": "2026-11-26T15:47:00.531Z"
     }
   ]
 }

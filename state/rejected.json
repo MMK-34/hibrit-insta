@@ -2566,5 +2566,31 @@
         "note": "Postta 'Uzmanlar' ifadesiyle genel bir atıf yapılmış, kaynak metinde ise Piers Plowman'dan alıntılar yer alıyor."
       }
     ]
+  },
+  {
+    "at": "2026-11-26T13:44:00.235Z",
+    "title": "Yaklaşan yarış: AGORÀ - Team Italia Retreat (Italy, İtalya) 2026-11-28 – 2026-11-29",
+    "url": "https://circle21.events/event?competitionId=a5c6ae9f-382c-443b-983b-cbe75a6b16c7",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kaynak_satiri",
+        "note": "Postta kaynak olarak 'AGORÀ resmi sitesi' belirtilmiş ancak verilen orijinal kaynak URL'leri 'circle21.events' platformuna aittir. Kaynak satırı, verilen orijinal kaynaklarla uyuşmamaktadır."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-26T13:44:09.305Z",
+    "title": "Scientists Propose Kombucha Protocol to Test Endurance Recovery in Ironman Triathletes",
+    "url": "https://bioengineer.org/scientists-propose-kombucha-protocol-to-test-endurance-recovery-in-ironman-triathletes/",
+    "kind": "arastirma",
+    "fails": [
+      {
+        "model": "kaynak",
+        "item": "kaynak",
+        "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
+      }
+    ]
   }
 ]

@@ -4581,6 +4581,27 @@
         "place": "İstanbul"
       },
       "story": "18134084986842276"
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiigFBVV95cUxPeWxIUVB0OWdmV0czNTVfQXFtVnpDSDJqTU5OSkZSZlJLUDkxOTZ6RVdqOWZJZFJ5QVlQamUyV1R6dVg2WV95SkFnLUIzNVJUb01fOUlSZ1pXX21IZ0ltcnN6TjlBM0lKY1ZnUGJjeG1zU2wzbnhfWVVsSmlTOE1ocXBnSjZCWmdvdGc"
+      ],
+      "skipped": "tekrar"
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "cal:circle21-a5c6ae9f-382c-443b-983b-cbe75a6b16c7"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMisAFBVV95cUxPTlFtQzZGNl9BUlJNY2ZyZ1hxdWc5UGFHU1ZHenRWR2k2T24ybTVWZllvNFJnaVNXRWlSNXFyNlVnQlotZUl0Z3lSM2R3VDBiUDRQZTNpbTNSSFFGQWphZkgxcEVYUlpsdmpBVUZmUlVaeXV3TTNBTllDd2owRWVWdl9LRm9YbmI4RVJjRkhJdGk4ckZGdHp4eWRQQ09TN25wMnFMRG9YSV9TUzZIbGNlcw"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -4695,10 +4716,10 @@
       "summarySent": true
     },
     "2026-11-26": {
-      "drafts": 11,
+      "drafts": 13,
       "approved": 7,
-      "rejected": 4,
-      "aiCalls": 48
+      "rejected": 6,
+      "aiCalls": 52
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4730,7 +4751,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-26T12:43:14.111Z",
+  "lastRunAt": "2026-11-26T13:42:51.701Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

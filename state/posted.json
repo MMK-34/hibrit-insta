@@ -4327,6 +4327,41 @@
       "eventName": "RAX7 Throwdown 2026",
       "at": "2026-11-25T17:43:23.822Z",
       "manual": true
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMisAFBVV95cUxOMmRrT05JcmNZUFNqaG5pYVEyME5YZW9fNGptczZhV1BSekVUV0I3YVMzSG43YXRGeVhnb2tWZy1WcjI0MkI4eWx0LXMtZG8zWHAtVDNwcUIwbEtMNFVhaHRhWUQ1ZlZ1VFp6RUVWVGRFa0UtMXNWTXJCX3JnMDBwa0NEYUowUTBxVUx0TWZqSGZfQUFSemxzV3NTTkc4cVRYdG1hXzEyZm5uVExqWUJ4cA"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:38efa37fc549a7ad"
+      ],
+      "media": "17900824149682608",
+      "permalink": "https://www.instagram.com/p/DgMSCULjtaK/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-26/mwx2l5fm/01.jpg",
+      "title": "Ulubey Kanyonu'nda 2027 Yarışı İçin Kayıtlar Sürüyor! Yeni Parkur da Eklendi",
+      "headline": "Uluslararası Kanyon Ulubey Ultra Trail kayıtları devam ediyor",
+      "eventName": "Uluslararası Kanyon Ulubey Ultra Trail",
+      "at": "2026-11-26T04:48:02.238Z",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "ULUSLARARASI KANYON ULUBEY ULTRA TRAIL",
+            "title": "Uluslararası Kanyon Ulubey Ultra Trail kayıtları devam ediyor",
+            "subtitle": "Uşak'ta 26-27 Haziran 2027 tarihlerinde gerçekleşecek yarışa 10, 16, 35, 60 ve 100 km parkurları eklendi."
+          }
+        ],
+        "caption": "Uluslararası Kanyon Ulubey Ultra Trail kayıtları 18 Haziran 2027 tarihine kadar devam ediyor. Uşak'ta düzenlenecek organizasyon; 10, 16, 35, 60 ve 100 km parkurlarıyla 26-27 Haziran 2027 tarihlerinde koşulacak. 100 km parkuru 26 Haziran'da, diğer mesafeler ise 27 Haziran'da başlayacak. Yarışın başlangıç ve bitiş noktası Ulubey Kanyon Tabiat Parkı olarak belirlendi. 35, 60 ve 100 km parkurları için 18 yaş sınırı bulunurken, 10 ve 16 km parkurlarına 13 yaş ve üzeri sporcular aile izniyle katılabiliyor. Kayıt işlemlerini organizasyonun resmi sitesi üzerinden tamamlayabilirsiniz. Siz bu yıl hangi mesafede yarışmayı planlıyorsunuz?\n\nKaynak: Uşak Haber Gazetesi\nGörsel: Usakhabergazetesi\n\n#ulubeyultra #patikakoşusu #ultratrail #ultrarunning #koşu #hibritportal",
+        "srcUrls": [
+          "https://www.usakhabergazetesi.com.tr/ulubey-kanyonunda-2027-yarisi-icin-kayitlar-suruyor-yeni-parkur-da-eklendi"
+        ],
+        "eventName": "Uluslararası Kanyon Ulubey Ultra Trail",
+        "country": "Türkiye",
+        "place": "Uşak/Ulubey"
+      },
+      "story": "17982641127151404"
     }
   ],
   "daily": {
@@ -4441,9 +4476,10 @@
       "summarySent": true
     },
     "2026-11-26": {
-      "drafts": 0,
-      "approved": 0,
-      "rejected": 0
+      "drafts": 1,
+      "approved": 1,
+      "rejected": 0,
+      "aiCalls": 6
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4475,7 +4511,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-25T18:43:08.758Z",
+  "lastRunAt": "2026-11-26T04:42:37.974Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

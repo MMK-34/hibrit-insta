@@ -2527,5 +2527,31 @@
         "note": "foto yok"
       }
     ]
+  },
+  {
+    "at": "2026-11-26T06:47:39.725Z",
+    "title": "@crossfitgames Instagram paylaşımı: For the first time in CrossFit competition history, the roguefitness Echo Bike will be programmed during an online competition. ",
+    "url": "https://www.instagram.com/p/DgIby8qFcHh/",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "alinti_yok",
+        "note": "Postta 'Sizce çevrim içi yarışmalarda Echo Bike kullanımı antrenman stratejilerini nasıl etkiler?' şeklinde bir soru/alıntı benzeri etkileşim metni bulunmaktadır."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-26T06:47:42.565Z",
+    "title": "@bodrumyarimaratonu Instagram paylaşımı: Güneşin denize en çok yakıştığı o günlerde, Sarı Yaz’ın tam kalbinde buluşuyoruz! 🌊✨",
+    "url": "https://www.instagram.com/p/DgHLUcqjfrK/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "tekrar",
+        "item": "tekrar",
+        "note": "aynı etkinlik: 10. Uluslararası Bodrum Yarı Maratonu"
+      }
+    ]
   }
 ]

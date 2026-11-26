@@ -4404,6 +4404,56 @@
         "country": "",
         "place": ""
       }
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "ig:18191551897414208"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "ig:17890037127690321"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "ig:18118108115035943"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:e2106182d52f1cbf"
+      ],
+      "media": "17940398934406868",
+      "permalink": "https://www.instagram.com/p/DgMf_2oDScW/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-26/mwx6yvkk/01.jpg",
+      "title": "@wodapalooza Instagram paylaşımı: Forget the TVs. This is the Black Friday deal you've actually been waiting for. 🛒 Gymreapers Wodapalooza Year 15 passes go on sale Fri, Nov",
+      "headline": "Wodapalooza 2027 kayıtları 27 Kasım'da açılıyor",
+      "eventName": "Wodapalooza",
+      "at": "2026-11-26T06:49:58.943Z",
+      "ig": "wodapalooza",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "WODAPALOOZA",
+            "title": "Wodapalooza 2027 kayıtları 27 Kasım'da açılıyor",
+            "subtitle": "Miami'de düzenlenecek 15. yıl yarışının biletleri cuma günü satışa sunuluyor.",
+            "hl": "27 KASIM"
+          }
+        ],
+        "caption": "Wodapalooza 2027 kayıtları 27 Kasım Cuma günü Türkiye saatiyle 18.00'de açılıyor. 11-14 Mart 2027 tarihleri arasında Miami'deki Lummus Park'ta gerçekleşecek organizasyon için 3 günlük, 2 günlük ve çocuk kategorisi bilet seçenekleri sunulacak. Biletlere Wodapalooza resmi sitesi üzerinden ulaşabilirsiniz. Siz de bu büyük CrossFit buluşmasına katılmayı planlıyor musunuz?\n\nReklam / Tanıtım\n\nYarışın Instagram hesabı: @wodapalooza\n\nKaynak: wodapalooza Instagram\nGörsel: Wodapalooza\n\n#wodapalooza #crossfit #fonksiyonelantrenman #miami #hibritportal",
+        "srcUrls": [
+          "https://www.instagram.com/p/DgK6PFxlpq8/"
+        ],
+        "eventName": "Wodapalooza",
+        "country": "ABD",
+        "place": "Miami"
+      }
     }
   ],
   "daily": {
@@ -4518,10 +4568,10 @@
       "summarySent": true
     },
     "2026-11-26": {
-      "drafts": 3,
-      "approved": 2,
-      "rejected": 1,
-      "aiCalls": 14
+      "drafts": 7,
+      "approved": 4,
+      "rejected": 3,
+      "aiCalls": 27
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4553,7 +4603,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-26T05:42:46.564Z",
+  "lastRunAt": "2026-11-26T06:42:55.649Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

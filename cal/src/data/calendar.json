@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-26T08:42:34.133Z",
+  "updated": "2026-11-26T09:42:53.134Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 96,
-      "fetchedAt": "2026-11-26T08:40:53.527Z"
+      "count": 97,
+      "fetchedAt": "2026-11-26T09:40:59.866Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-26T08:42:34.125Z"
+      "fetchedAt": "2026-11-26T09:42:53.122Z"
     }
   },
   "items": [
@@ -3663,6 +3663,22 @@
       },
       "instagram": "https://instagram.com/therainhilltrials",
       "website": "www.therainhilltrials.co.uk"
+    },
+    {
+      "id": "circle21-a337c10e-7d2e-46be-ab23-e38585c993ac",
+      "name": "Lerumsboxen Hyrox 2027",
+      "eventSlug": null,
+      "type": "hyrox",
+      "country": "İsveç",
+      "startDate": "2027-05-15",
+      "endDate": "2027-05-15",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=a337c10e-7d2e-46be-ab23-e38585c993ac",
+      "source": "circle21",
+      "registration": {
+        "to": "2027-05-01",
+        "fee": "1200.00 SEK"
+      }
     },
     {
       "id": "hyrox-2027-bengaluru",

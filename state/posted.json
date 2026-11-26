@@ -4607,7 +4607,7 @@
       "drafts": 8,
       "approved": 5,
       "rejected": 3,
-      "aiCalls": 32
+      "aiCalls": 36
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4639,7 +4639,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-26T09:42:53.900Z",
+  "lastRunAt": "2026-11-26T10:42:37.212Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-26T09:42:53.134Z",
+  "updated": "2026-11-26T10:42:36.556Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 97,
-      "fetchedAt": "2026-11-26T09:40:59.866Z"
+      "count": 98,
+      "fetchedAt": "2026-11-26T10:40:59.195Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-26T09:42:53.122Z"
+      "fetchedAt": "2026-11-26T10:42:36.548Z"
     }
   },
   "items": [
@@ -3225,6 +3225,28 @@
       "url": "https://www.athensthrowdown.com/en/register/",
       "source": "https://www.athensthrowdown.com/en/teams/",
       "note": "Tae Kwon Do Stadium; takım check-in 15 Nisan."
+    },
+    {
+      "id": "circle21-58381eed-c658-4f6f-9deb-3b9d02343702",
+      "name": "Community Games Vol. 3",
+      "eventSlug": null,
+      "type": "crossfit",
+      "city": "Gummersbach-Strombach",
+      "country": "Almanya",
+      "startDate": "2027-04-17",
+      "endDate": "2027-04-18",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=58381eed-c658-4f6f-9deb-3b9d02343702",
+      "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/457022/conversions/c-227-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/457028/conversions/6fc26d4d-1fb2-41a7-ae80-0c2b59442859-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
+      "registration": {
+        "to": "2027-02-15",
+        "fee": "0.00 EUR"
+      },
+      "instagram": "https://instagram.com/community_games_by_cfg",
+      "website": "www.crossfit-gm.de"
     },
     {
       "id": "circle21-c07facd4-7a9c-47fa-8c7e-1e5621b64545",

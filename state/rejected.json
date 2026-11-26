@@ -2592,5 +2592,18 @@
         "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
       }
     ]
+  },
+  {
+    "at": "2026-11-26T14:35:07.486Z",
+    "title": "Ulubey Kanyonu'nda 2027 Yarışı İçin Kayıtlar Sürüyor! Yeni Parkur da Eklendi",
+    "url": "https://724ege.com/ulubey-kanyonu-nda-2027-yarisi-icin-kayitlar-suruyor-yeni-parkur-da-eklendi-bf3bacc/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "tekrar",
+        "item": "tekrar",
+        "note": "aynı etkinlik: Uluslararası Kanyon Ulubey Ultra Trail"
+      }
+    ]
   }
 ]

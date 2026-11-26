@@ -4602,6 +4602,13 @@
         "https://news.google.com/rss/articles/CBMisAFBVV95cUxPTlFtQzZGNl9BUlJNY2ZyZ1hxdWc5UGFHU1ZHenRWR2k2T24ybTVWZllvNFJnaVNXRWlSNXFyNlVnQlotZUl0Z3lSM2R3VDBiUDRQZTNpbTNSSFFGQWphZkgxcEVYUlpsdmpBVUZmUlVaeXV3TTNBTllDd2owRWVWdl9LRm9YbmI4RVJjRkhJdGk4ckZGdHp4eWRQQ09TN25wMnFMRG9YSV9TUzZIbGNlcw"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-26",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMipgFBVV95cUxNZnFGSE5JbGRMT1lYaW9tQmhKNEdGX1Z5M21ZejVUcWtZMnJwRGZnNTNjSWZFeS0ybDQzcWpxUWp0bWRoQldGLXR1Q0tBWHo5d3RkdjUxM29zcm5nYzNITmdEenllU2M0ZzFfNFVWWGZpenNGZFNnVlRjUFI5b1pnU3Q3MHhzODhfM0Q5dnJ0OGotZktyblhzN3ROQTM2T1p4aGk3NHlB"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -4716,10 +4723,10 @@
       "summarySent": true
     },
     "2026-11-26": {
-      "drafts": 13,
+      "drafts": 14,
       "approved": 7,
-      "rejected": 6,
-      "aiCalls": 52
+      "rejected": 7,
+      "aiCalls": 55
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4751,7 +4758,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-26T13:42:51.701Z",
+  "lastRunAt": "2026-11-26T14:34:29.222Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-26T14:12:07.157Z",
+  "updated": "2026-11-26T14:34:28.432Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 98,
-      "fetchedAt": "2026-11-26T14:10:16.879Z"
+      "count": 99,
+      "fetchedAt": "2026-11-26T14:32:52.627Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-26T14:12:07.146Z"
+      "fetchedAt": "2026-11-26T14:34:28.420Z"
     }
   },
   "items": [
@@ -2790,6 +2790,25 @@
       "url": "https://hyrox.com/find-my-race/",
       "source": "hyrox",
       "sourceUrl": "https://www.hyresult.com/event/s9-2027-buenos-aires"
+    },
+    {
+      "id": "circle21-2e7e6f02-48cc-44d6-b016-f563c725ff51",
+      "name": "UNIT 54 HYROX SIM #2",
+      "eventSlug": null,
+      "type": "hyrox",
+      "city": "Bristol BS39 7NX",
+      "country": "Birleşik Krallık",
+      "startDate": "2027-03-21",
+      "endDate": "2027-03-21",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=2e7e6f02-48cc-44d6-b016-f563c725ff51",
+      "source": "circle21",
+      "registration": {
+        "to": "2027-03-07",
+        "fee": "0.00 GBP"
+      },
+      "instagram": "https://instagram.com/unit54grft",
+      "website": "www.unit54grft.com"
     },
     {
       "id": "circle21-255e3c81-7dab-4649-bc11-5e0596bfcf44",

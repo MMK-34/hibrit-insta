@@ -4740,6 +4740,31 @@
         "https://news.google.com/rss/articles/CBMicEFVX3lxTE12b1BRSkxTdVc4NVNNaFgxdV9QRC1obGVlY0J3NlpzVzh4YVVDRUlJSl9RNHJGY2V1ZUJkUDhBdEE4V09oemJMN0NPRkhjTGFpLWVCOS00M3FTWDNyOHhDb21FOVdVRnVGTHd3aXZOaWw"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMimwFBVV95cUxNVVJvMnFaeHpOZU5xWlpsVk9YRXdoQW5vTmMwN0Q3TDJ1Ml90V2pBMUJHdjFNZFE2T2FiVFBnNjZSQXVsWHRKdHBlUEhzWW1ZYXJuRVd5UVRsWXRlT1ltMG1ia0taZDlJZk52ajVNUjBFcG9WbFBtR3dtYXZ2ekZwRXJhQVNqS2JwWU5ZMVhhcl8zYUlMMGRBNTdlTQ"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "cal:circle21-371f8139-51e8-4b9d-a69a-f277e1d504f9",
+        "cal:circle21-93cd0544-0d69-406d-b82c-a99dddfd6938",
+        "cal:circle21-7ddeaae7-afa1-4185-8bc6-307b7792bb8d",
+        "cal:circle21-ad4bdde5-b14a-4fbc-9c52-c0fc76e0923b",
+        "cal:circle21-64e26db1-c17c-4c3b-9b84-2af5494157e6"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMitAFBVV95cUxPZXYyOC16M0EzNGdQbjMyWGVWaGQxYnNnY1pmX0JtX3I1SmYxME53MDczNm02V1JITTBNSmVyV2EzN3BIcDZOLU43dzVWWFhnWkcwNS1ydW5yTmNJTlhEeTFCdEY3QkE2c0xNTVBLTVVZX2g2N3FtWjFXSFB3YXJYdTJtRWlIdXh0eFZZQWxwb2V2RVlMdVJVSmRod3JFNTduWGV5RmREemxBaUtiY2VOVGNBYWo"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -4861,10 +4886,10 @@
       "summarySent": true
     },
     "2026-11-27": {
-      "drafts": 5,
+      "drafts": 8,
       "approved": 0,
-      "rejected": 5,
-      "aiCalls": 6
+      "rejected": 8,
+      "aiCalls": 12
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4896,7 +4921,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-27T04:42:59.888Z",
+  "lastRunAt": "2026-11-27T05:42:58.625Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

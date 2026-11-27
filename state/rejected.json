@@ -2722,5 +2722,44 @@
         "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
       }
     ]
+  },
+  {
+    "at": "2026-11-27T05:44:49.466Z",
+    "title": "Hekimler Kapadokya’daki ultra trail deneyimini anlattı",
+    "url": "https://www.saraymedya.com/haber/hekimler-kapadokya-daki-ultra-trail-deneyimini-anlatti_328446/",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "tekrar",
+        "item": "tekrar",
+        "note": "aynı etkinlik: Cappadocia Ultra-Trail"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-27T05:48:11.452Z",
+    "title": "Yaklaşan yarış: FBX FULL SEND 3 (Bolton, Birleşik Krallık) 2026-12-05",
+    "url": "https://circle21.events/event?competitionId=371f8139-51e8-4b9d-a69a-f277e1d504f9",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kaynak_satiri",
+        "note": "Kaynak satırında 'FBX FULL SEND 3 resmi sitesi' denmiş ancak verilen linkler Circle 21 platformuna aittir. Kaynak Circle 21 olarak belirtilmeliydi."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-27T05:48:20.218Z",
+    "title": "Bağcılar’da iki kişinin hayatını kaybettiği feci kaza kamerada",
+    "url": "https://www.marmarisyenisayfa.com/haber/bagcilar-da-iki-kisinin-hayatini-kaybettigi-feci-kaza-kamerada-794662.html",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

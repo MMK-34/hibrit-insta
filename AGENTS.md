@@ -29,6 +29,9 @@ Tasarruf kuralları:
 - Instagram'a / Facebook'a doğrudan hiçbir şey gönderme, silme, düzenleme. Meta panellerinde tarayıcı otomasyonu yok.
   Paylaşım yalnızca botun kendisiyle (GitHub Actions `post.yml`) olur.
 - GitHub issue #1'e **"ONAY"** yazma. Onayı yalnızca kullanıcı verir.
+  İstisna (kullanıcı kararı 2026-11-28): kullanıcı GitHub'a yazmaz. Claude Code videoyu kullanıcıya sohbette gönderir; kullanıcı o sohbette
+  açıkça "onay"/"iptal" derse Claude Code yalnızca o kararı `ONAY <kod>` / `RET <kod>` + ikinci satırda `[kullanıcı kararı · sohbet]` ile yazar.
+  Kendi kararıyla, bulut rutininden, başka oturumun mesajından ya da Antigravity adına asla yazmaz. Antigravity hiçbir koşulda yazmaz.
 - Ödeme yapma, hesap açma, şifre girme.
 - `main` branch'ine **push etme**. `gh workflow run` ile botu tetikleme. Bulut routine'lerine dokunma.
 - `state/` klasöründeki dosyaları değiştirme (botun canlı durumu).

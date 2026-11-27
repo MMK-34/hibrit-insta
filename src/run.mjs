@@ -995,8 +995,9 @@ async function processApprovals() {
   for (const c of comments) {
     // Yalnızca depo sahibinin (insan hesabı) yorumu; botun kendi bildirimleri ve uygulama yorumları sayılmaz
     if (String(c.user?.login ?? "").toLowerCase() !== owner || c.user?.type !== "User" || c.performed_via_github_app) continue;
-    // Onayı yalnızca kullanıcı verir: Claude oturumlarının (aynı hesapla yazan) imzalı yorumları onay sayılmaz
-    if (/Claude Code|claude\.ai|🤖/i.test(String(c.body ?? ""))) continue;
+    // Onayı yalnızca kullanıcı verir. Kullanıcı kararı (2026-11-28): GitHub'a kendisi yazmaz; Reels'i sohbette izleyip kararını
+    // Claude Code'a söyler, Claude kararı "[kullanıcı kararı · sohbet]" işaretiyle yazar. İşaretsiz Claude imzalı yorumlar sayılmaz.
+    if (/Claude Code|claude\.ai|🤖/i.test(String(c.body ?? "")) && !/\[kullanıcı kararı · sohbet\]/.test(String(c.body ?? ""))) continue;
     // Komut yalnızca ilk alıntı olmayan satırda ve satırın tamamı olmalı (e-posta yanıtındaki alıntı metni sayılmaz)
     const first = String(c.body ?? "").split(/\r?\n/).map((l) => l.trim()).find((l) => l && !l.startsWith(">")) ?? "";
     for (const m of [first.match(/^(ONAY|RET)\s+([sr][0-9a-f]{8})$/i)].filter(Boolean)) {

@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-27T08:42:30.464Z",
+  "updated": "2026-11-27T09:42:33.078Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 97,
-      "fetchedAt": "2026-11-27T08:40:59.931Z"
+      "fetchedAt": "2026-11-27T09:40:55.285Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-27T08:42:30.453Z"
+      "fetchedAt": "2026-11-27T09:42:33.071Z"
     }
   },
   "items": [
@@ -2554,7 +2554,8 @@
         "fee": "0.00 EUR"
       },
       "instagram": "https://instagram.com/atenearules",
-      "website": "https://atenea.telamon.es"
+      "website": "https://atenea.telamon.es",
+      "maxParticipants": 10
     },
     {
       "id": "hyrox-2027-santiago",

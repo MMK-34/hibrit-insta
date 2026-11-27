@@ -4807,6 +4807,43 @@
         "https://www.sciencedaily.com/releases/2026/11/261126063315.htm"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://thebarbellspin.com/crossfit-games/adrian-bozman-to-program-the-2027-crossfit-games/"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:ceb88e4011ec0306"
+      ],
+      "media": "18169718356441584",
+      "permalink": "https://www.instagram.com/p/DgQCbDhEsMe/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-27/mwz5mbsj/01.jpg",
+      "title": "Adrian Bozman to Program the 2027 CrossFit Games",
+      "headline": "Adrian Bozman 2027 CrossFit Games parkurunu hazırlayacak",
+      "eventName": "CrossFit Games",
+      "at": "2026-11-27T15:48:33.350Z",
+      "ig": "crossfitgames",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "CROSSFIT GAMES",
+            "title": "Adrian Bozman 2027 CrossFit Games parkurunu hazırlayacak",
+            "subtitle": "Dave Castro, 2027 sezonunda genel yönetime odaklanacağını duyurdu",
+            "hl": "ADRİAN BOZMAN"
+          }
+        ],
+        "caption": "Adrian Bozman 2027 CrossFit Games parkurunu hazırlayacak\n\nDave Castro, 2027 sezonunda genel yönetim görevini üstleneceğini ve parkur hazırlama sürecinden çekileceğini açıkladı.\n\nBozman, 2022 ve 2023 sezonlarında da programlama görevini üstlenmişti.\n\n2027 sezonunda en fit sporcuyu belirleyecek testler Bozman ve ekibinin kontrolünde olacak.\n\nSiz bu değişiklik hakkında ne düşünüyorsunuz?\n\nReklam / Tanıtım\n\nKaynak: The Barbell Spin\nGörsel: @crossfitgames\n\n#crossfit #crossfitgames #fonksiyonelantrenman #hibritportal",
+        "srcUrls": [
+          "https://thebarbellspin.com/crossfit-games/adrian-bozman-to-program-the-2027-crossfit-games/"
+        ],
+        "eventName": "CrossFit Games",
+        "country": "Amerika Birleşik Devletleri",
+        "place": ""
+      },
+      "story": "18148007068606141"
     }
   ],
   "daily": {
@@ -4928,10 +4965,10 @@
       "summarySent": true
     },
     "2026-11-27": {
-      "drafts": 14,
-      "approved": 0,
+      "drafts": 15,
+      "approved": 1,
       "rejected": 14,
-      "aiCalls": 22
+      "aiCalls": 27
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4963,7 +5000,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-27T14:29:30.215Z",
+  "lastRunAt": "2026-11-27T15:43:12.410Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

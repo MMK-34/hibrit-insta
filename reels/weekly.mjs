@@ -151,11 +151,16 @@ log("seçilen:", plan.map((p) => p.headline).join(" | "));
 // ---------- 3) görüntüler ----------
 const dur = (f) => Number(sh("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).trim()) || 0;
 const frame = (f, t, out) => { sh("ffmpeg", ["-loglevel", "error", "-y", "-ss", String(t), "-i", f, "-frames:v", "1", "-vf", "scale=720:-2", out]); return fs.readFileSync(out); };
-/** Kaynaktaki [from, from+len] bölümünü dikey 1080x1920 keser; sahne süresinden kısaysa yalnızca BU bölüm döngüye alınır (denetlenmemiş kare girmez). */
+/** Kaynaktaki [from, from+len] bölümünü dikey 1080x1920 keser. Döngü YOK (kullanıcı kuralı 2026-11-28: "aynı videoyu döndürüp durmuşsun"). */
 const vertical = (f, from, len, out) => {
-  const seg = out.replace(/\.mp4$/, "-seg.mp4");
-  sh("ffmpeg", ["-loglevel", "error", "-y", "-ss", String(from), "-i", f, "-t", String(len), "-vf", "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30", "-an", "-c:v", "libx264", "-crf", "18", "-preset", "fast", seg]);
-  sh("ffmpeg", ["-loglevel", "error", "-y", "-stream_loop", "-1", "-i", seg, "-t", String(NEED + 1), "-c:v", "libx264", "-crf", "18", "-preset", "fast", "-an", out]);
+  sh("ffmpeg", ["-loglevel", "error", "-y", "-ss", String(from), "-i", f, "-t", String(len), "-vf", "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30", "-an", "-c:v", "libx264", "-crf", "18", "-preset", "fast", out]);
+};
+/** Farklı denetlenmiş parçaları art arda birleştirir (her parça bir kez görünür). */
+const joinSegs = (segs, out) => {
+  if (segs.length === 1) { fs.copyFileSync(segs[0], out); return; }
+  const list = out.replace(/\.mp4$/, "-list.txt");
+  fs.writeFileSync(list, segs.map((s) => `file '${path.resolve(s).replace(/\\/g, "/").replace(/'/g, "'\\''")}'`).join("\n") + "\n");
+  sh("ffmpeg", ["-loglevel", "error", "-y", "-f", "concat", "-safe", "0", "-i", list, "-c:v", "libx264", "-crf", "18", "-preset", "fast", "-an", out]);
 };
 const words = (s) => String(s ?? "").toLocaleLowerCase("tr").normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i").split(/[^a-z0-9]+/).filter((w) => w.length >= 4 && !/^(20\d\d|yaris|series|games|team|cup)$/.test(w));
 
@@ -179,11 +184,11 @@ async function igVideos(handle, eventName, own = false) {
 
 /**
  * Videodan habere uyan bölümü seçer: her ~2 sn'den bir kare görsel denetimden geçer; art arda geçen karelerin en uzun aralığı kesilir.
- * Ekrana giren her an denetlenmiş bir aralıktan gelir (en az 3 sn). Döner: true/false.
+ * Ekrana giren her an denetlenmiş bir aralıktan gelir (en az 3 sn). Döner: kesilen parçanın süresi (sn) ya da 0.
  */
 async function videoClip(file, topic, need, out) {
   const d = dur(file);
-  if (d < 3) return false;
+  if (d < 3) return 0;
   const step = Math.max(1, d / 18);
   const times = [];
   for (let t = 0.3; t < d - 0.5 && times.length < 18; t += step) times.push(t);
@@ -198,9 +203,10 @@ async function videoClip(file, topic, need, out) {
     if (!best || len > best.len) best = { from: Math.max(0, pics[i].t - step / 2), len };
     i = j;
   }
-  if (!best || best.len < 3) return false;
-  vertical(file, best.from, Math.min(best.len, need + 1, d - best.from), out);
-  return true;
+  if (!best || best.len < 3) return 0;
+  const len = Math.min(best.len, need + 1, d - best.from);
+  vertical(file, best.from, len, out);
+  return len;
 }
 
 const usedStock = new Set();
@@ -249,11 +255,18 @@ async function getMedia(it, k, skip = new Set()) {
     // Genel marka hesapları (hyroxworld, crossfitgames...) yarışın kendi hesabı DEĞİL: videonun açıklamasında yarışın adı geçmeli
     // (2026-11-22: hyroxworld'den başka bir sporcunun videosu Kahire'deki Türk sporcular haberine girdi)
     const own = !SERIES_ACCOUNTS.has(h) && (h === p.ig || h === p.athleteIg || watched.includes(h));
-    for (const m of (await igVideos(h, p.eventName, own)).slice(0, SHORT ? 5 : 3)) {
-      const raw = path.join(W, `ig${k}.mp4`);
+    // Sahne süresi tek videodan dolmazsa aynı hesabın başka videolarından (geçmiş edisyonlar dahil) farklı parçalar eklenir; döngü yok
+    const segs = []; let total = 0, vi = 0;
+    for (const m of (await igVideos(h, p.eventName, own)).slice(0, SHORT ? 8 : 4)) {
+      if (total >= need) break;
+      const raw = path.join(W, `ig${k}-${vi}.mp4`), seg = path.join(W, `seg${k}-${vi}.mp4`);
+      vi++;
       fs.writeFileSync(raw, Buffer.from(await (await fetch(m.media_url, { signal: AbortSignal.timeout(120000) })).arrayBuffer()));
-      if (await videoClip(raw, strict, need, vid)) { got = "video"; credit = `@${h}`; break; }
+      const len = await videoClip(raw, strict, need - total, seg);
+      if (len) { segs.push(seg); total += len; }
     }
+    if (total >= need) { joinSegs(segs, vid); got = "video"; credit = `@${h}`; }
+    else if (segs.length) log(`yeterli farklı görüntü yok (@${h}: ${total.toFixed(1)}/${need} sn), video kullanılmadı:`, it.headline);
   }
   // Kısa haber videosu (kullanıcı kuralı 2026-11-22): YALNIZCA ilgili yarışın kendi videosu; fotoğraf ya da stok videoya düşülmez
   if (SHORT && !got) return null;
@@ -273,7 +286,7 @@ async function getMedia(it, k, skip = new Set()) {
     for (const q of it.stockQuery ?? []) {
       if (got) break;
       const r = await fetch(`https://pixabay.com/api/videos/?key=${process.env.PIXABAY_API_KEY}&q=${encodeURIComponent(q)}&per_page=6&safesearch=true&video_type=film`, { signal: AbortSignal.timeout(20000) }).then((x) => x.json()).catch(() => ({}));
-      for (const h of (r.hits ?? []).filter((h) => h.duration >= 6 && !usedStock.has(h.id)).slice(0, 4)) {
+      for (const h of (r.hits ?? []).filter((h) => h.duration * 0.85 >= need + 1 && !usedStock.has(h.id)).slice(0, 4)) {
         const v = h.videos.large?.url ? h.videos.large : h.videos.medium;
         const raw = path.join(W, `px${h.id}.mp4`);
         fs.writeFileSync(raw, Buffer.from(await (await fetch(v.url, { signal: AbortSignal.timeout(120000) })).arrayBuffer()));

@@ -42,6 +42,17 @@ export function saveFollowups(list) {
 
 export const norm = (s = "") => String(s).toLocaleLowerCase("tr").replace(/ı/g, "i").replace(/[^a-z0-9ğüşöç]/g, "");
 
+// Kısa Reels tekrar kontrolü (kullanıcı 2026-11-28): yarışa özgü kelimeler (4+ harf; sayı ve dolgu kelimeleri hariç) öteki kaydın
+// norm anahtarında geçiyor mu. En az 2 kelime (tek kelimelik adda 1) eşleşirse aynı yarış: "Wolf Haven Yarışması" ~ "wolfhaven2event".
+const RACE_FILL = /^(yarisma\p{L}*|yaris\p{L}*|event\p{L}*|etkinli\p{L}*|duyuru\p{L}*|kayit\p{L}*|geliyor|yeni|ikinci|birinci|edition|games|series|throwdown|challenge|crossfit|hyrox|fitness|open|team)$/u;
+export function shortRaceSame(name, otherEv) {
+  const ws = String(name ?? "").toLocaleLowerCase("tr").replace(/ı/g, "i").split(/[^a-z0-9ğüşöç]+/u)
+    .filter((w) => w.length >= 4 && !/\d/.test(w) && !RACE_FILL.test(w));
+  if (!ws.length || !otherEv) return false;
+  const hit = ws.filter((w) => String(otherEv).includes(w)).length;
+  return hit >= Math.min(2, ws.length);
+}
+
 /** Duyuru paylaşıldığında takip postlarını planlar (aynı etkinlik 120 gün içinde ikinci kez planlanmaz). */
 export function scheduleFollowups({ eventName, officialSite, category }, today) {
   // Resmî sitesi olmayan küçük yarışa takip açılmaz: arşiv bulunamayıp taslak boşa gidiyordu (G10: Mayhem Madness, Wolf Haven)

@@ -26,7 +26,7 @@ import { collectInsights, weeklySummary } from "./insights.mjs";
 import { guardPost } from "./guard.mjs";
 import { INTRO_IMAGES, INTRO_CAPTION } from "./intro.mjs";
 import { verifyGate, logRejected, failText } from "./verify.mjs";
-import { scheduleFollowups, dueFollowup, markFollowup, followupInput, loadFollowups, norm } from "./followups.mjs";
+import { scheduleFollowups, dueFollowup, markFollowup, followupInput, loadFollowups, norm, shortRaceSame } from "./followups.mjs";
 import { evKey, sameEventMatch } from "./event-match.mjs";
 import { loadStock, saveStock } from "./stock.mjs";
 import { fetchEventLogo, fetchInstagramLogo, logoFromUrl } from "./logo.mjs";
@@ -855,8 +855,11 @@ async function renderAndPublish({ post, photos }, { category, sourceName, ids, k
       const q = fs.existsSync(qf) ? JSON.parse(fs.readFileSync(qf, "utf8")) : [];
       state.shortReels ??= [];
       const ev = norm(post.eventName || post.slides[0]?.title || "").slice(0, 60);
-      const recent = state.shortReels.some((x) => x.ev === ev && Date.now() - Date.parse(x.at ?? 0) < 10 * 864e5);
-      if (!recent && !q.some((x) => x.ev === ev)) {
+      // Aynı yarış farklı başlıkla da yakalanır ("Wolf Haven Yarışması" / "Wolf Haven 2. Event": 2 kısa Reels çıktı, kullanıcı 2026-11-28):
+      // yarışa özgü kelimeler (4+ harf, dolgu ve yıl hariç) öteki kaydın anahtarında geçiyorsa aynı yarış sayılır; pencere 60 gün.
+      const sameRace = (x) => x.ev === ev || shortRaceSame(post.eventName || post.slides[0]?.title || "", x.ev);
+      const recent = state.shortReels.some((x) => sameRace(x) && Date.now() - Date.parse(x.at ?? 0) < 60 * 864e5);
+      if (!recent && !q.some(sameRace)) {
         q.push({ media: res.id, ev, at: new Date().toISOString() });
         state.shortReels = [...state.shortReels, { ev, at: new Date().toISOString() }].slice(-100);
         fs.writeFileSync(qf, JSON.stringify(q, null, 2) + "\n");

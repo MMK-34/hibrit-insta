@@ -2761,5 +2761,57 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-27T10:44:42.349Z",
+    "title": "KAZDAĞLARI’NDA ULTRA MARATON HEYECANI 10. YILINDA",
+    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOekRvM05EM2xkZXg2Vm82aE00QUlxa2xVamxxWTZiTUlhWkMzekFfVFI2UFpYQTBXOTM5TjBfQU1WSlB6QTVoMHRKVVduRFF4WHB6Mi0xOXlPd05CNUlwOVhKTjFpZGdGYzhhSUExVmo4eW5NN1Fac29jZXMyLWJmT2o5QlBXbmdkdjA1V1pTdTl0cGZoVHdIV0d5UVQyTTh6clE?oc=5",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-27T10:46:19.988Z",
+    "title": "The biggest HYROX training mistake? You might be going too hard",
+    "url": "https://www.redbull.com/int-en/hyrox-training-too-much-intensity",
+    "kind": "bilgi",
+    "fails": [
+      {
+        "model": "kaynak",
+        "item": "kaynak",
+        "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-27T10:46:43.729Z",
+    "title": "Ultramarathon Success Demands Physiological Durability Rather Than Peak Aerobic Capacity",
+    "url": "https://bioengineer.org/ultramarathon-success-demands-physiological-durability-rather-than-peak-aerobic-capacity/",
+    "kind": "arastirma",
+    "fails": [
+      {
+        "model": "kaynak",
+        "item": "kaynak",
+        "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-27T10:48:27.210Z",
+    "title": "Lab Heart Tissues Reveal Marathon Pacing Causes Reversible Cardiac Injury",
+    "url": "https://bioengineer.org/lab-heart-tissues-reveal-marathon-pacing-causes-reversible-cardiac-injury/",
+    "kind": "arastirma",
+    "fails": [
+      {
+        "model": "kaynak",
+        "item": "kaynak",
+        "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
+      }
+    ]
   }
 ]

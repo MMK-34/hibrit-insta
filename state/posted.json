@@ -4765,6 +4765,34 @@
         "https://news.google.com/rss/articles/CBMitAFBVV95cUxPZXYyOC16M0EzNGdQbjMyWGVWaGQxYnNnY1pmX0JtX3I1SmYxME53MDczNm02V1JITTBNSmVyV2EzN3BIcDZOLU43dzVWWFhnWkcwNS1ydW5yTmNJTlhEeTFCdEY3QkE2c0xNTVBLTVVZX2g2N3FtWjFXSFB3YXJYdTJtRWlIdXh0eFZZQWxwb2V2RVlMdVJVSmRod3JFNTduWGV5RmREemxBaUtiY2VOVGNBYWo"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiogFBVV95cUxOekRvM05EM2xkZXg2Vm82aE00QUlxa2xVamxxWTZiTUlhWkMzekFfVFI2UFpYQTBXOTM5TjBfQU1WSlB6QTVoMHRKVVduRFF4WHB6Mi0xOXlPd05CNUlwOVhKTjFpZGdGYzhhSUExVmo4eW5NN1Fac29jZXMyLWJmT2o5QlBXbmdkdjA1V1pTdTl0cGZoVHdIV0d5UVQyTTh6clE"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMickFVX3lxTE1ZMF8yZ2NuLUsxb3J1WDdGQUNpMU44RmJRWEdHOTI4UjNUYlh5RTI2MUlESzJGLVhzZzNtNXRRcWZyYTVpRFZkTWdvbmpIeTdlb1VvYmJQc2hIc2ZZLWtpalQ4cGRCeG5FSnJJUy1XRTNwUQ"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiswFBVV95cUxPU25nbDBPUHdMYWxPbEs3RnBFVFp1TkdlbUlZR05EZjFVMTQ4WC0tMDZpWWhyaGtsRklKZ2hHc0dTcjVobzVoOEpXM0JwS2YxSUcwY3J0ckxMWF9qRW52SWNuYVAyZzRkLWJaempQemZJTnlrSjIyQzZDQnRNTnBZSV9RcEEtYkMxRllqajB5OThtTUVGWENpTklzWUgzWVQtWlRvZUNXeFgwTG5hSWEtN1VFWQ"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMinwFBVV95cUxNRzR2X3NVSEdtYUtRRi12M3pPcE1ZNU5HdEw0ZkhUalVCaDF2YWxlZTlveGtlbUxtLTJDa2lfZGRHOVY2QWpTTUp0eExtV0g5M3QyOUwxQmJoWi1IdWdDUy1rdUZYMWMzNC1kUExZVXJZR09nV3AwRlVVcnB5Z3cxX2drUXR6ZTUtWmxRZVo5amtYclVGVmNieUMxRVpZWDA"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -4886,10 +4914,10 @@
       "summarySent": true
     },
     "2026-11-27": {
-      "drafts": 8,
+      "drafts": 12,
       "approved": 0,
-      "rejected": 8,
-      "aiCalls": 12
+      "rejected": 12,
+      "aiCalls": 19
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4921,7 +4949,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-27T09:42:33.668Z",
+  "lastRunAt": "2026-11-27T10:42:49.341Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

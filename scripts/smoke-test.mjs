@@ -288,6 +288,9 @@ try {
       ["caption Nike", { caption: "a\nNike b", slides: [] }, true],
       ["bullets GARMIN", { slides: [{ type: "list", bullets: ["GARMIN saat"] }] }, true],
       ["rows ROGUE FITNESS", { slides: [{ type: "table", rows: [["ROGUE FITNESS", "x"]] }] }, true],
+      ["Rogue Echo Bike", { caption: "2027 yarı finallerinde Rogue Echo Bike zorunlu", slides: [] }, true],
+      ["Echo Bike", { slides: [{ type: "cover", title: "Echo Bike ilk kez yarı finalde" }] }, true],
+      ["SkiErg", { caption: "HYROX istasyonunda SkiErg rekoru", slides: [] }, true],
       ["Haley Brooks", { caption: "Haley Brooks kazandı", slides: [{ title: "Haley Brooks kazandı" }] }, false],
       ["Rogue Invitational", { caption: "Rogue Invitational", slides: [{ title: "Rogue Invitational" }] }, false],
       ["Decathlon rekoru", { caption: "Decathlon rekoru", slides: [{ title: "Decathlon rekoru" }] }, false],
@@ -329,6 +332,36 @@ try {
     const errs = [];
     for (const [inp, want] of cases) { const got = g.stripCta(inp); if (got !== want) errs.push(`${JSON.stringify(inp)} -> ${JSON.stringify(got)}`); }
     if (errs.length) throw new Error(errs.join(" | "));
+  });
+
+  // 11) insights.mjs: collectInsights silinmiş IG postunu atlar ve sonrakileri günceller; token hatasında durur (G17)
+  await check("insights.mjs collectInsights (silinmiş post atla, token hatasında dur)", async () => {
+    const insightsMod = mods.get("insights.mjs");
+    if (!insightsMod?.collectInsights) throw new Error("collectInsights yüklenemedi");
+    const now = Date.now();
+    const mk = (id, hrsAgo) => ({ media: id, kind: "haber", at: new Date(now - hrsAgo * 36e5).toISOString() });
+    const st1 = { posts: [mk("m-ok-1", 72), mk("m-gone", 60), mk("m-ok-2", 30)] };
+    const seen = [];
+    const r1 = await insightsMod.collectInsights(st1, {
+      fetchInsights: async (id) => {
+        seen.push(id);
+        if (id === "m-gone") throw new Error('IG m-gone: HTTP 400 {"message":"Unsupported get request. Object with ID \'m-gone\' does not exist","code":100,"error_subcode":33}');
+        return { likes: 12, comments: 2, reach: 500 };
+      },
+    });
+    if (r1.n !== 2 || r1.skipped !== 1 || r1.err !== "") throw new Error(`beklenen n=2 skipped=1 err="", gelen: ${JSON.stringify(r1)}`);
+    if (!st1.posts[1].insMissing || !st1.posts[2].ins) throw new Error("silinmiş post işaretlenmedi veya sonraki post güncellenmedi");
+    // İkinci turda insMissing olan post bir daha çağrılmaz
+    seen.length = 0;
+    st1.posts[2].ins.at = new Date(now - 25 * 36e5).toISOString();
+    const r1b = await insightsMod.collectInsights(st1, { fetchInsights: async (id) => { seen.push(id); return { likes: 15, comments: 3 }; } });
+    if (seen.includes("m-gone") || r1b.n !== 1) throw new Error(`insMissing tekrar çağrıldı: ${seen.join(",")}`);
+    // Token/izin hatasında hemen durmalı
+    const st2 = { posts: [mk("m-a", 48), mk("m-b", 36)] };
+    const r2 = await insightsMod.collectInsights(st2, {
+      fetchInsights: async () => { throw new Error('IG m-a: HTTP 401 {"code":190,"message":"Invalid OAuth access token"}'); },
+    });
+    if (r2.n !== 0 || !r2.err || st2.posts[0].insMissing || st2.posts[1].ins) throw new Error(`token hatasında durmadı: ${JSON.stringify(r2)}`);
   });
 } finally {
   if (safeNetMod && origDispatch) safeNetMod.SAFE_AGENT.dispatch = origDispatch;

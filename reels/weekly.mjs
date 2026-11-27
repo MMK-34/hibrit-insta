@@ -29,6 +29,7 @@ const SHORT = process.argv.includes("--short");
 const MIN = SHORT ? 1 : 3;
 const NEED = SHORT ? 22 : 9; // sahne için gereken video süresi (sn)
 const KIND = SHORT ? "KISA DUYURU REELS" : "HAFTALIK BÜLTEN REELS";
+const LABEL = SHORT ? "Kısa duyuru Reels" : "Haftalık bülten";
 const shortQ = SHORT && fs.existsSync("state/short-queue.json") ? JSON.parse(fs.readFileSync("state/short-queue.json", "utf8")) : [];
 if (SHORT && !shortQ.length) { console.log("kısa Reels sırası boş"); process.exit(0); }
 // Beklenmeyen her hata telefona ve rapor issue'suna bildirilir (sessiz başarısızlık yok)
@@ -77,7 +78,7 @@ for (const p of cands) {
 }
 const pool = cands.filter((p) => p.caption.length > 60);
 log("aday haber:", pool.length);
-if (pool.length < MIN) { log("aday yetersiz"); if (SHORT) await dropShort(); await push(`Haftalık bülten hazırlanmadı: bu hafta yeterli doğrulanmış haber yok (${pool.length}).`, { title: "Bülten" }); process.exit(0); }
+if (pool.length < MIN) { log("aday yetersiz"); if (SHORT) await dropShort(); await push(`${LABEL} hazırlanmadı: yeterli doğrulanmış haber yok (${pool.length}).`, { title: LABEL }); process.exit(0); }
 
 // ---------- 2) metin ----------
 // Model çıktısı: önce tam JSON; bozuksa "items" içindeki her nesne ayrı ayrı (dengeli süslü parantez) ayrıştırılır, bozuk öğe atlanır
@@ -144,7 +145,7 @@ plan = plan.filter((it, k) => {
   if (!bad && (/^\d{1,2}\s*[-–]\s*\d{1,2}$/.test(String(it.stat ?? "").trim()) || /(ocak|şubat|mart|nisan|mayıs|haziran|temmuz|ağustos|eylül|ekim|kasım|aralık|kasim|subat|agustos|eylul|aralik)/i.test(String(it.statLabel ?? "")))) { it.stat = ""; it.statLabel = ""; }
   return !bad;
 }).map((it) => ({ ...it, line: String(it.line ?? "").split(/(?<=[.!?])\s+/).filter((x) => !/(gönder|kaydet|takip et|paylaş)\.?$/i.test(x.trim())).join(" ") })).map((it) => ({ ...it, kicker: hats(it.kicker).slice(0, 30), headline: hats(it.headline).slice(0, 34), stat: hats(it.stat).slice(0, 8), statLabel: hats(it.statLabel).slice(0, 28), line: hats(it.line) }));
-if (plan.length < MIN) { if (SHORT) await dropShort(); log("denetimden geçen haber 3ten az:", plan.length); await push("Haftalık bülten hazırlanmadı: denetimden geçen haber 3'ten az.", { title: "Bülten", level: "warn" }); process.exit(0); }
+if (plan.length < MIN) { if (SHORT) await dropShort(); log(`denetimden geçen haber ${MIN}'den az:`, plan.length); await push(`${LABEL} hazırlanmadı: denetimden geçen haber ${MIN}'den az.`, { title: LABEL, level: "warn" }); process.exit(0); }
 log("seçilen:", plan.map((p) => p.headline).join(" | "));
 
 // ---------- 3) görüntüler ----------
@@ -295,7 +296,7 @@ for (const [k, it] of plan.entries()) {
   const m = await getMedia(it, k);
   if (m) items.push(m); else log("görüntü bulunamadı, haber çıkarıldı:", it.headline);
 }
-if (items.length < MIN) { if (SHORT) await dropShort(); log("görüntü bulunan haber 3ten az"); await push("Haftalık bülten hazırlanmadı: yeterli görüntü bulunamadı.", { title: "Bülten", level: "warn" }); process.exit(0); }
+if (items.length < MIN) { if (SHORT) await dropShort(); log(`görüntü bulunan haber ${MIN}'den az`); await push(`${LABEL} hazırlanmadı: yeterli görüntü bulunamadı.`, { title: LABEL, level: "warn" }); process.exit(0); }
 
 // ---------- 4) müzik (bir kez) ----------
 const EL = { "xi-api-key": process.env.ELEVENLABS_API_KEY, "content-type": "application/json" };
@@ -375,7 +376,7 @@ if (bad.length) {
     if (m) next.push(m); else log("yerine uygun görüntü yok, haber çıkarıldı:", it.headline);
   }
   final = next;
-  if (final.length < MIN) { if (SHORT) await dropShort(); await push(`Haftalık bülten onaya gönderilmedi: kalite kontrolünden geçen sahne 3'ten az.\n${bad.map((b) => b.problem).join(" | ").slice(0, 300)}`, { title: "Bülten", level: "warn" }); process.exit(0); }
+  if (final.length < MIN) { if (SHORT) await dropShort(); await push(`${LABEL} onaya gönderilmedi: kalite kontrolünden geçen sahne ${MIN}'den az.\n${bad.map((b) => b.problem).join(" | ").slice(0, 300)}`, { title: LABEL, level: "warn" }); process.exit(0); }
   await produce(final);
   bad = await qa(final);
   if (bad.length) {
@@ -384,7 +385,7 @@ if (bad.length) {
     const kept = final.filter((_, k) => !bad.some((b) => b.k === k));
     if (kept.length >= MIN) { final = kept; await produce(final); bad = []; }
   }
-  if (bad.length) { await push(`Haftalık bülten onaya gönderilmedi: ikinci kalite kontrolü de geçmedi.\n${bad.map((b) => b.problem).join(" | ").slice(0, 300)}`, { title: "Bülten", level: "warn" }); process.exit(0); }
+  if (bad.length) { await push(`${LABEL} onaya gönderilmedi: ikinci kalite kontrolü de geçmedi.\n${bad.map((b) => b.problem).join(" | ").slice(0, 300)}`, { title: LABEL, level: "warn" }); process.exit(0); }
 }
 const N = final.length;
 
@@ -397,14 +398,15 @@ let caption = SHORT
   : hats(`Haftanın özeti: ${N} haber\n\n${final.map((i) => `• ${i.headline}`).join("\n")}\n\nHaberlerin ayrıntısı profilde.\n\nGörüntüler: ${[...new Set(final.map((i) => i.credit).filter(Boolean))].join(", ")}\n\n#hibritportal #haftanınözeti${TAGS}`);
 if (brandSeen) caption = caption.replace(/\n\n#hibritportal/, "\n\nReklam / Tanıtım\n\n#hibritportal");
 if (DRY) { log("DRY: yükleme ve onay yok.\n" + caption); process.exit(0); }
-const [url] = await uploadFiles([out], `reels/${today}${SHORT ? "-kisa" : ""}`);
+// Kod yüklemeden önce üretilir: aynı gün iki kısa Reels (12:00 ve 20:00) üretilirse ikincisi birincisinin MP4 dosyasını ezmez (G17)
 const code = `r${crypto.randomBytes(4).toString("hex")}`;
+const [url] = await uploadFiles([out], `reels/${today}${SHORT ? "-kisa" : ""}/${code}`);
 const repo = process.env.GH_REPO, gh = { authorization: `Bearer ${process.env.GH_TOKEN}`, accept: "application/vnd.github+json", "user-agent": "hibrit-insta" };
 const qp = `https://api.github.com/repos/${repo}/contents/state/reel-queue.json`;
 const cur = await fetch(`${qp}?ref=main`, { headers: gh, signal: AbortSignal.timeout(15000) }).then((r) => (r.ok ? r.json() : null));
 const q = cur ? JSON.parse(Buffer.from(cur.content, "base64").toString("utf8") || "[]") : [];
 q.push({ code, video: url, caption, title: SHORT ? `Kısa duyuru: ${final[0].headline}` : `Haftalık bülten ${today}`, at: new Date().toISOString() });
-const put = await fetch(qp, { method: "PUT", headers: gh, signal: AbortSignal.timeout(20000), body: JSON.stringify({ message: `reels: haftalık bülten ${today} onaya gönderildi`, branch: "main", content: Buffer.from(JSON.stringify(q, null, 2) + "\n").toString("base64"), ...(cur ? { sha: cur.sha } : {}) }) });
+const put = await fetch(qp, { method: "PUT", headers: gh, signal: AbortSignal.timeout(20000), body: JSON.stringify({ message: `reels: ${SHORT ? "kısa duyuru" : "haftalık bülten"} ${today} onaya gönderildi`, branch: "main", content: Buffer.from(JSON.stringify(q, null, 2) + "\n").toString("base64"), ...(cur ? { sha: cur.sha } : {}) }) });
 if (!put.ok) throw new Error(`kuyruk yazılamadı: ${put.status}`);
 await notify(`🎬 ONAY BEKLEYEN ${KIND} (kod: ${code})\n\nVideo: ${url}\n\n${qaWarn ? `⚠️ Otomatik görsel kontrol notu (izlerken bak): ${qaWarn}\n\n` : ""}Onaylamak için bu issue'ya ilk satırı "ONAY ${code}" olan bir yorum yaz; istemiyorsan "RET ${code}".\n\n--- Açıklama ---\n${caption}`);
 if (SHORT) await dropShort();

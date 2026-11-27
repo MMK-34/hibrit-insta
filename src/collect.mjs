@@ -17,12 +17,16 @@ async function get(url, timeout = 15000) {
   return r?.ok ? r.buf.toString("utf8") : null;
 }
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const isGNews = (u) => /^https?:\/\/news\.google\.com\//i.test(String(u ?? ""));
+
 export async function collect() {
   const now = Date.now();
   const out = [];
   const report = {};
-  await Promise.all(FEEDS.map(async (f) => {
-    const xml = await get(f.url);
+  const fetchFeed = async (f, retry = false) => {
+    let xml = await get(f.url);
+    if (!xml && retry) { await sleep(800); xml = await get(f.url); }
     if (!xml) { report[f.url] = "HATA"; return; }
     let doc;
     try { doc = parser.parse(xml); } catch { report[f.url] = "PARSE"; return; }
@@ -48,7 +52,20 @@ export async function collect() {
       n++;
     }
     report[f.url] = n;
-  }));
+  };
+  // 26 Google News RSS isteği tek anda ateşlenince aynı runner IP'sinden 429/HATA dönüyordu (G17, 27 Kas);
+  // doğrudan RSS'ler paralel, Google News ise 3'lü küçük gruplar + kısa aralıkla çekilir.
+  const direct = FEEDS.filter((f) => !isGNews(f.url));
+  const gnews = FEEDS.filter((f) => isGNews(f.url));
+  await Promise.all([
+    ...direct.map((f) => fetchFeed(f, false)),
+    (async () => {
+      for (let i = 0; i < gnews.length; i += 3) {
+        if (i) await sleep(250);
+        await Promise.all(gnews.slice(i, i + 3).map((f) => fetchFeed(f, true)));
+      }
+    })(),
+  ]);
   // Aynı başlığı farklı kaynaklardan tekilleştir
   const seen = new Set();
   const uniq = out.filter((x) => {

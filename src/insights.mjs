@@ -6,23 +6,36 @@ import { mediaInsights } from "./publish.mjs";
 const H = 36e5;
 
 /** 20 saatten eski, 8 günden yeni postların verisini günde bir kez günceller (çalışma başına en çok `max`). */
-export async function collectInsights(state, { max = 40 } = {}) {
+export async function collectInsights(state, { max = 40, fetchInsights = mediaInsights } = {}) {
   const now = Date.now();
-  let n = 0, err = "";
-  for (const p of state.posts ?? []) {
-    if (!p.media || n >= max) continue;
+  const eligible = (state.posts ?? []).filter((p) => {
+    if (!p.media || p.deleted || p.insMissing) return false;
     const age = now - Date.parse(p.at ?? 0);
-    if (!(age > 20 * H && age < 8 * 24 * H)) continue;
-    if (p.ins?.at && now - Date.parse(p.ins.at) < 20 * H) continue;
+    if (!(age > 20 * H && age < 8 * 24 * H)) return false;
+    if (p.ins?.at && now - Date.parse(p.ins.at) < 20 * H) return false;
+    return true;
+  });
+  // Henüz hiç verisi olmayan yeni postlar önce çekilir (max sınırında aç kalmasın)
+  eligible.sort((a, b) => Number(!!a.ins) - Number(!!b.ins));
+  let n = 0, skipped = 0, err = "";
+  for (const p of eligible) {
+    if (n >= max) break;
     try {
-      p.ins = { at: new Date().toISOString(), ...(await mediaInsights(p.media, p.kind === "reel")) };
+      p.ins = { at: new Date().toISOString(), ...(await fetchInsights(p.media, p.kind === "reel")) };
       n++;
     } catch (e) {
-      err = String(e?.message ?? e).slice(0, 300);
-      break; // izin/token sorunu: kalan postlar için de aynı hata gelir
+      const msg = String(e?.message ?? e).slice(0, 300);
+      // Tekil silinmiş/erişilemeyen obje (HTTP 400 + does not exist / error_subcode 33): yalnızca bu postu atla, kalanları kesme (G17)
+      if (/HTTP 400\b/i.test(msg) && (/does not exist/i.test(msg) || /"error_subcode"\s*:\s*33\b/.test(msg))) {
+        p.insMissing = new Date().toISOString();
+        skipped++;
+        continue;
+      }
+      err = msg;
+      break; // izin/token/hız sınırı sorunu: kalan postlar için de aynı hata gelir
     }
   }
-  return { n, err };
+  return { n, err, skipped };
 }
 
 const score = (i) => (i.saved ?? 0) * 3 + (i.shares ?? 0) * 3 + (i.comments ?? 0) * 2 + (i.likes ?? 0);
@@ -34,7 +47,7 @@ const trDay = (ms) => new Date(ms).toLocaleString("sv-SE", { timeZone: "Europe/I
 export function weeklySummary(state) {
   const now = Date.now();
   const since = now - 7 * 24 * H;
-  const rows = (state.posts ?? []).filter((p) => p.media && p.ins && Date.parse(p.at ?? 0) > since);
+  const rows = (state.posts ?? []).filter((p) => p.media && !p.deleted && p.ins && Date.parse(p.at ?? 0) > since);
   if (rows.length < 3) return "";
   const top = [...rows].sort((a, b) => score(b.ins) - score(a.ins)).slice(0, 3)
     .map((p, i) => `${i + 1}. ${String(p.headline ?? p.title ?? "").slice(0, 70)} — erişim ${p.ins.reach ?? "?"}, beğeni ${p.ins.likes ?? "?"}, kaydetme ${p.ins.saved ?? "?"}, paylaşım ${p.ins.shares ?? "?"}`);

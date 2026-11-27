@@ -2839,5 +2839,44 @@
         "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
       }
     ]
+  },
+  {
+    "at": "2026-11-27T16:44:42.989Z",
+    "title": "This runner has completed over 70 marathons. This year, she ran 7 of them while pregnant",
+    "url": "https://www.wcax.com/2026/11/26/this-runner-has-completed-over-70-marathons-this-year-she-ran-7-them-while-pregnant/",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "tekrar",
+        "item": "tekrar",
+        "note": "aynı haber: Deirdre Keane 7 Dünya Maraton Serisi'ni hamileyken tamamladı"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-27T16:44:51.561Z",
+    "title": "Zone 2 Cardio vs HIIT: Which Improves Cardiovascular Fitness Faster?",
+    "url": "https://www.boxrox.com/zone-2-cardio-vs-hiit-which-improves-cardiovascular-fitness-faster/",
+    "kind": "arastirma",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "sayı yazıyla yazılmış (\"iki\"): tüm sayıları rakamla yaz (2, 3, 10)"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-27T16:45:08.074Z",
+    "title": "From Hyrox to 100 jumps a day: These are the fitness trends runners should watch in 2027",
+    "url": "https://runningmagazine.ca/the-scene/from-hyrox-to-100-jumps-a-day-these-are-the-fitness-trends-runners-should-watch-in-2027/",
+    "kind": "bilgi",
+    "fails": [
+      {
+        "model": "kaynak",
+        "item": "kaynak",
+        "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
+      }
+    ]
   }
 ]

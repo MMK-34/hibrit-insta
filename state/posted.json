@@ -4844,6 +4844,34 @@
         "place": ""
       },
       "story": "18148007068606141"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMilgFBVV95cUxOa1BXbEtYVHhOTUJoeVBNUmNxVXUybHRJQVkzYm1wdnpmcUhpX0tJWEp3ckZEVGZIWTJSUHhFZmhad3hBZEZLRGc2VjBJcE56UzF4NlRuTFdiSGtRVjgxUi1FeDhqNVAxWDZ1ZG44U2hSbzNadzJ2V1M5T1dyNUZkTWZQdHNhNzdrYlpwaGd2bEp5VFdWX1E"
+      ],
+      "skipped": "tekrar"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMitwFBVV95cUxOY2ZWSWVFY1dwTFNEMnltXzRLZGszTmJKcXdPQ2g5ZVBlMmdKbmZtYWhKMS1OT0RHbFJsN3pTQ0huWnROaDJyX3JPdHlsLXA0LTRJT2pyaDhKXzhaTkRTM1JTWk9tOUhBX0NoQjVEb3lQZVBjdno4dVkwZ1oxVTZUelhRU0c4eTVvYTNuQ0ZPM2JqYWgxT0tJRE5sTVpCblUxZVdpaDkzQW56cWZqOWVvS3ozWUJfQ3M"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://www.boxrox.com/zone-2-cardio-vs-hiit-which-improves-cardiovascular-fitness-faster/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNSW9ha0ZJcm1idDNwUFVCUTNCWmZuNXpUYlMzX0hWUkZzSmdJeU1qZW5SWFVQcmZKWWVCNUVWcEVFaG5UemN5NEtwRjNmRExXRFYtMkhPamRab3JRUk4teW93eS1EOFJTeWRwSTBNNllKY0V4dmI5Q2tWUkNOZzlsOWtyMUZ1S3JJNDQ5SE1zRnJtcG5lMzBEY2ZUVUZyVzFPUVhlUGV3NkhLX3YxY0YyQktMdmJVUlZtNk11X2V0a1ZQaTQ"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -4965,10 +4993,10 @@
       "summarySent": true
     },
     "2026-11-27": {
-      "drafts": 15,
+      "drafts": 18,
       "approved": 1,
-      "rejected": 14,
-      "aiCalls": 27
+      "rejected": 17,
+      "aiCalls": 33
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -5000,7 +5028,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-27T15:43:12.410Z",
+  "lastRunAt": "2026-11-27T16:42:46.788Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

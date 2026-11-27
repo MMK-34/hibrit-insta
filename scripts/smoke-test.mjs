@@ -363,6 +363,26 @@ try {
     });
     if (r2.n !== 0 || !r2.err || st2.posts[0].insMissing || st2.posts[1].ins) throw new Error(`token hatasında durmadı: ${JSON.stringify(r2)}`);
   });
+
+  // 12) followups.mjs: aynı yarış için ikinci kısa Reels engellenir (kullanıcı 2026-11-28, Wolf Haven iki kez çıktı)
+  await check("followups.mjs shortRaceSame (aynı yarış farklı başlık)", async () => {
+    const f = mods.get("followups.mjs");
+    if (!f?.shortRaceSame) throw new Error("shortRaceSame yüklenemedi");
+    const cases = [
+      ["Wolf Haven Yarışması", "wolfhaven2event", true],
+      ["Wolf Haven 2. Event", "wolfhavenyarismasigeliyor", true],
+      ["Athens Throwdown 2027", "athensthrowdown2027", true],
+      ["Athens Throwdown 2027", "wolfhaven2event", false],
+      ["HYROX İstanbul", "hyroxankara", false],
+      ["HYROX İstanbul", "athxistanbul", false],
+      ["İda Ultra", "kapadokyaultratrail", false],
+      ["Lykos Yarışması", "lykos2event", true],
+      ["Lykos Yarışı başlıyor", "lykosthrowdown", true],
+      ["", "wolfhaven2event", false],
+    ];
+    const errs = cases.filter(([a, b, want]) => f.shortRaceSame(a, b) !== want).map(([a, b, want]) => `${a} ~ ${b} != ${want}`);
+    if (errs.length) throw new Error(errs.join(" | "));
+  });
 } finally {
   if (safeNetMod && origDispatch) safeNetMod.SAFE_AGENT.dispatch = origDispatch;
   globalThis.fetch = origFetch;

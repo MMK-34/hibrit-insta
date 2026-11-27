@@ -42,6 +42,21 @@ export function saveFollowups(list) {
 
 export const norm = (s = "") => String(s).toLocaleLowerCase("tr").replace(/ı/g, "i").replace(/[^a-z0-9ğüşöç]/g, "");
 
+// Kısa Reels tekrar kontrolü (kullanıcı 2026-11-28): yarışa özgü kelimeler (4+ harf; sayı ve dolgu kelimeleri hariç) öteki kaydın
+// norm anahtarında geçiyor mu. En az 2 kelime (tek kelimelik adda 1) eşleşirse aynı yarış: "Wolf Haven Yarışması" ~ "wolfhaven2event".
+// Şehir/ülke/genel tür kelimeleri de dolgu sayılır: "HYROX İstanbul" ile "ATHX İstanbul" aynı yarış değildir (Antigravity incelemesi).
+const RACE_FILL = /^(yarisma\w*|yaris\w*|event\w*|etkinli\w*|duyuru\w*|kayit\w*|geliyor|basliyor|acildi|aciliyor|yeni|ikinci|birinci|edition|games|series|throwdown|challenge|championship\w*|sampiyona\w*|crossfit|hyrox|athx|fitness|open|team|festival|kupasi|cup|istanbul|ankara|izmir|antalya|bursa|bodrum|kusadasi|kapadokya|cappadocia|turkiye|turkey|athens|tirana|sofia|varna|belgrade|ultra|trail|maraton\w*|marathon|kosu\w*|half|world|international|uluslararasi|triathlon|triatlon)$/;
+const ascii = (s) => String(s ?? "").toLocaleLowerCase("tr").replace(/ı/g, "i").replace(/ş/g, "s").replace(/ç/g, "c").replace(/ğ/g, "g").replace(/ö/g, "o").replace(/ü/g, "u");
+export function shortRaceSame(name, otherEv) {
+  const ws = [...new Set(ascii(name).split(/[^a-z0-9]+/).filter((w) => w.length >= 4 && !/\d/.test(w) && !RACE_FILL.test(w)))];
+  if (!otherEv) return false;
+  const ev = ascii(otherEv);
+  // Adı yalnızca genel kelimelerden oluşan yarış ("Athens Throwdown"): harfleri birebir aynıysa (yıl/sayı hariç) aynı yarış
+  if (!ws.length) { const a = ascii(name).replace(/[^a-z]/g, ""); return a.length >= 6 && a === ev.replace(/[^a-z]/g, ""); }
+  const hit = ws.filter((w) => ev.includes(w)).length;
+  return hit >= Math.min(2, ws.length);
+}
+
 /** Duyuru paylaşıldığında takip postlarını planlar (aynı etkinlik 120 gün içinde ikinci kez planlanmaz). */
 export function scheduleFollowups({ eventName, officialSite, category }, today) {
   // Resmî sitesi olmayan küçük yarışa takip açılmaz: arşiv bulunamayıp taslak boşa gidiyordu (G10: Mayhem Madness, Wolf Haven)

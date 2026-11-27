@@ -262,7 +262,8 @@ async function getMedia(it, k, skip = new Set()) {
       const raw = path.join(W, `ig${k}-${vi}.mp4`), seg = path.join(W, `seg${k}-${vi}.mp4`);
       vi++;
       fs.writeFileSync(raw, Buffer.from(await (await fetch(m.media_url, { signal: AbortSignal.timeout(120000) })).arrayBuffer()));
-      const len = await videoClip(raw, strict, need - total, seg);
+      // kalan süre 3 sn'den azsa da en az 3 sn'lik parça istenir (videoClip 3 sn altını reddeder; Antigravity ikinci bakış)
+      const len = await videoClip(raw, strict, Math.max(3, need - total), seg);
       if (len) { segs.push(seg); total += len; }
     }
     if (total >= need) { joinSegs(segs, vid); got = "video"; credit = `@${h}`; }

@@ -2813,5 +2813,31 @@
         "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
       }
     ]
+  },
+  {
+    "at": "2026-11-27T11:44:40.869Z",
+    "title": "This Is the Minimum Amount of Strength You Need in the Offseason to Get Ready for Your Next Training Block",
+    "url": "https://www.runnersworld.com/training/a74465765/offseason-minimum-strength-training/",
+    "kind": "bilgi",
+    "fails": [
+      {
+        "model": "kaynak",
+        "item": "kaynak",
+        "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-27T11:44:44.927Z",
+    "title": "A fat-burning molecule has an unexpected benefit for your muscles",
+    "url": "https://www.sciencedaily.com/releases/2026/11/261126063315.htm",
+    "kind": "arastirma",
+    "fails": [
+      {
+        "model": "kaynak",
+        "item": "kaynak",
+        "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
+      }
+    ]
   }
 ]

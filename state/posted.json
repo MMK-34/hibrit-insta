@@ -4793,6 +4793,20 @@
         "https://news.google.com/rss/articles/CBMinwFBVV95cUxNRzR2X3NVSEdtYUtRRi12M3pPcE1ZNU5HdEw0ZkhUalVCaDF2YWxlZTlveGtlbUxtLTJDa2lfZGRHOVY2QWpTTUp0eExtV0g5M3QyOUwxQmJoWi1IdWdDUy1rdUZYMWMzNC1kUExZVXJZR09nV3AwRlVVcnB5Z3cxX2drUXR6ZTUtWmxRZVo5amtYclVGVmNieUMxRVpZWDA"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://www.runnersworld.com/training/a74465765/offseason-minimum-strength-training/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://www.sciencedaily.com/releases/2026/11/261126063315.htm"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -4914,10 +4928,10 @@
       "summarySent": true
     },
     "2026-11-27": {
-      "drafts": 12,
+      "drafts": 14,
       "approved": 0,
-      "rejected": 12,
-      "aiCalls": 19
+      "rejected": 14,
+      "aiCalls": 22
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4949,7 +4963,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-27T10:42:49.341Z",
+  "lastRunAt": "2026-11-27T11:42:54.424Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

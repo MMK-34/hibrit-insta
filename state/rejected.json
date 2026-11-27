@@ -2878,5 +2878,31 @@
         "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
       }
     ]
+  },
+  {
+    "at": "2026-11-27T17:45:02.547Z",
+    "title": "Puma builds a wider platform for its new Hyrox shoe",
+    "url": "https://www.sgieurope.com/product/puma-builds-a-wider-platform-for-its-new-hyrox-shoe/124450.article",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-27T17:45:06.182Z",
+    "title": "» İstanbul bir kez daha olimpiyata talip",
+    "url": "https://10haber.net/spor/istanbul-bir-kez-daha-olipiyata-talip-758609/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

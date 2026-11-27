@@ -4872,6 +4872,27 @@
         "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNSW9ha0ZJcm1idDNwUFVCUTNCWmZuNXpUYlMzX0hWUkZzSmdJeU1qZW5SWFVQcmZKWWVCNUVWcEVFaG5UemN5NEtwRjNmRExXRFYtMkhPamRab3JRUk4teW93eS1EOFJTeWRwSTBNNllKY0V4dmI5Q2tWUkNOZzlsOWtyMUZ1S3JJNDQ5SE1zRnJtcG5lMzBEY2ZUVUZyVzFPUVhlUGV3NkhLX3YxY0YyQktMdmJVUlZtNk11X2V0a1ZQaTQ"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOcW5XRTh2MDJ6TWZmWDhTMlpwWF9TWnNIakZodDRSeEdJV2R3MzAtUEwwdjctMXpJMXRZMjRPcnhJRGhvNkxqNngweERSc19Ua3ktQ0hWdUw4WWplT2FUZ2tTdkhHc09lNFNNRzQyREVWT3lDU2k4c09iS2NrMGdSUnExWjhwcmZncHFBODFJY0RoUTAxOEdpMzl4NFRTeXN3dHllSlZfMHpRdzlqRUQ3d014N3VPSGhHSEhaelp0MHo3U2JoQ1kwWEk3SzlMdF8tMWk0eA"
+      ],
+      "skipped": "tekrar"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiogFBVV95cUxNT1JQXzZITXozV2RZTm9uMldWNGItV3FYWTIwMGhGblVOalVCNHhMMG1fLU0tTzdZWHZ6MkVEN1R1cmhSRXB4MlY3cEVrdFBvUFV0TTM2OTBPTlBqd1I0YzZIWjBzSGZUb3dzRzZHMzJ5Tzl3dzBzM3lpZGM3U0NkRzhOcFU3aEF2UUxObHlucWx3eGIxV1pYZ1ozWkkwUE1kWWc"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiekFVX3lxTE5oei0yTlJXam5hdGhFT096MHlUOUdnYnZEMXlfcE5VNTZZblVkU2R5SlNCOE1UbUhmQ0ViZVppa2VDYUNDMUZtZGx1WE4zdHczc09qX2RkZkdjNDBfNDFvb056UnVWOEFhbV9oOWgxWklReHh2SGdRT1hR"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -4993,10 +5014,10 @@
       "summarySent": true
     },
     "2026-11-27": {
-      "drafts": 18,
+      "drafts": 20,
       "approved": 1,
-      "rejected": 17,
-      "aiCalls": 33
+      "rejected": 19,
+      "aiCalls": 36
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -5028,7 +5049,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-27T16:42:46.788Z",
+  "lastRunAt": "2026-11-27T17:43:10.963Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

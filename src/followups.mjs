@@ -49,8 +49,10 @@ const RACE_FILL = /^(yarisma\w*|yaris\w*|event\w*|etkinli\w*|duyuru\w*|kayit\w*|
 const ascii = (s) => String(s ?? "").toLocaleLowerCase("tr").replace(/ı/g, "i").replace(/ş/g, "s").replace(/ç/g, "c").replace(/ğ/g, "g").replace(/ö/g, "o").replace(/ü/g, "u");
 export function shortRaceSame(name, otherEv) {
   const ws = [...new Set(ascii(name).split(/[^a-z0-9]+/).filter((w) => w.length >= 4 && !/\d/.test(w) && !RACE_FILL.test(w)))];
-  if (!ws.length || !otherEv) return false;
+  if (!otherEv) return false;
   const ev = ascii(otherEv);
+  // Adı yalnızca genel kelimelerden oluşan yarış ("Athens Throwdown"): harfleri birebir aynıysa (yıl/sayı hariç) aynı yarış
+  if (!ws.length) { const a = ascii(name).replace(/[^a-z]/g, ""); return a.length >= 6 && a === ev.replace(/[^a-z]/g, ""); }
   const hit = ws.filter((w) => ev.includes(w)).length;
   return hit >= Math.min(2, ws.length);
 }

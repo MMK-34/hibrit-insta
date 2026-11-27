@@ -99,8 +99,8 @@ export function guardPost(post, { sourceName }) {
   const allText = JSON.stringify(slides) + " " + String(post.caption ?? "");
   if ((/kategori|divizyon|division/i.test(allText) && /\b(Beginner|Scaled|Intermediate|Advanced|Elite|Elit|RX'?|Masters?|Teens?|Hybrid|Pro|Open)\b/.test(allText)) || /\b(Beginner|Scaled|Intermediate|Advanced|RX|Masters|Teens|Elite 15|Pro Doubles|Pro Division|Doubles (Women|Men|Mixed)|Relay|(Open|Pro) (Women|Men|Doubles|Division)|Age Groups?)\b/.test(allText))
     return { ok: false, reason: "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar" };
-  // Türkçe kategori/seviye adları da yasak (denetim 2026-11-22: "Gençler", "Kolay seviyede", "üç seviyede kategoriler" geçti)
-  const trCat = allText.match(/(?<!\p{L})(gençler|ustalar|veteranlar|elit kategori\p{L}*|(kolay|orta|ileri|zor|başlangıç) seviye\p{L}*|(iki|üç|dört) seviye\p{L}*|yaş grub\p{L}*|yaş grupla\p{L}*)(?!\p{L})/iu);
+  // Türkçe kategori/seviye adları da yasak (denetim 2026-11-22: "Gençler", "Kolay seviyede", "üç seviyede kategoriler" geçti; G17: "elit takım kategorisi", "çocuk kategorisi")
+  const trCat = allText.match(/(?<!\p{L})(gençler|ustalar|veteranlar|elit(?:\s+\p{L}+)?\s+kategori\p{L}*|çocuk\s+kategori\p{L}*|(kolay|orta|ileri|zor|başlangıç) seviye\p{L}*|(iki|üç|dört) seviye\p{L}*|yaş grub\p{L}*|yaş grupla\p{L}*)(?!\p{L})/iu);
   if (trCat) return { ok: false, reason: `kategori/seviye adı yazılmış ("${trCat[0]}"): kategori ve seviye adlarını tamamen çıkar` };
   // Sayılar rakamla (kullanıcı kuralı): "iki antrenman" değil "2 antrenman"; "bir" ve üleştirme (ikişer) serbest
   const numWord = allText.match(/(?<!\p{L})(iki|İki|üç|dört|beş|altı(?! suyu)|yedi|sekiz|dokuz|yirmi|otuz|kırk|elli|altmış|yetmiş|seksen|doksan)(?!\p{L})/iu);

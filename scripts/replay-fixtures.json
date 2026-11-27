@@ -430,6 +430,23 @@
         "captionIncludes": ["Kaynak: Olympos Instagram"],
         "captionExcludes": ["olympos.games"]
       }
+    },
+    {
+      "id": "fail-category-elit-takim-ve-cocuk",
+      "description": "G17 regresyonu: 'elit takım kategorisi' ve 'çocuk kategorisi' süzgeçte yakalanmalı",
+      "expectOk": false,
+      "expectReason": "kategori/seviye adı yazılmış",
+      "override": {
+        "caption": "WFP 2027 sezonunda elit takım kategorisi ve çocuk kategorisi duyuruldu."
+      }
+    },
+    {
+      "id": "clean-elit-sporcu-allowed",
+      "description": "G17 regresyonu: 'elit sporcular' ifadesi kategori adı olmadan geçmeli",
+      "expectOk": true,
+      "override": {
+        "caption": "HYROX yarışında elit sporcular ve amatör koşucular aynı parkurda ter döktü."
+      }
     }
   ]
 }

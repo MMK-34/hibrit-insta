@@ -245,9 +245,10 @@ async function main() {
     try {
       const r = await collectInsights(state);
       if (r.n > 0 || !r.err) { state.insDay = today; saveState(); }
-      log(`Etkileşim verisi: ${r.n} post güncellendi${r.err ? ` (hata: ${r.err})` : ""}`);
+      else if (r.skipped > 0) saveState();
+      log(`Etkileşim verisi: ${r.n} post güncellendi${r.skipped ? `, ${r.skipped} silinmiş post atlandı` : ""}${r.err ? ` (hata: ${r.err})` : ""}`);
       if (r.err && !r.n) await push(`Etkileşim verisi alınamadı: ${r.err}`, { title: "Etkileşim", level: "warn" });
-      if (now.getDay() === 0) { const sum = weeklySummary(state); if (sum) await notify(sum); }
+      if (now.getDay() === 0 && state.insDay === today) { const sum = weeklySummary(state); if (sum) await notify(sum); }
     } catch (e) { log("Etkileşim verisi hatası:", String(e.message).slice(0, 200)); }
   }
   if (!DRY && todayCount >= MAX_PER_DAY) return log(`Günlük limit dolu (${todayCount}).`);
@@ -374,9 +375,13 @@ async function main() {
       if (usingGemini() && srcItems.every((s) => /^(ig:|dm-ig:)/.test(s.id) && !s.curated)) { log("Gemini modu: yalnızca Instagram kaynaklı, teyit edilemez; atlandı:", String(srcItems[0].title ?? "").slice(0, 80)); continue; }
       // Google News bağlantısı yayıncının asıl adresine çözülür (yazar tam metni okur, doğrulayıcı sayfayı açabilir); id değişmez (tekrar önleme)
       for (const s of srcItems) if (!s.id.startsWith("cal:") && !s.id.startsWith("cfcourse:") && !s.id.startsWith("c21") && !s.id.startsWith("ig:")) { s.url = await resolveNewsUrl(s.url); s.text = await articleText(s.url); }
-      // Kaynak adı: takvim kayıtlarında organizatör sitesi
+      // Kaynak adı: takvim kayıtlarında organizatör sitesi (circle21/TAF kayıtları kendi platform adıyla yazılır; doğrulayıcı URL ile eşleşsin, G17)
       // Takvim kaydı: alan adı yazılmaz (guard link sayar); etkinliğin resmî sitesi olarak belirtilir
-      const sourceName = srcItems[0].id.startsWith("ig:") ? `@${srcItems[0].handle} Instagram` : srcItems[0].id.startsWith("c21") ? "circle21 resmî kayıt sayfası" : srcItems[0].id.startsWith("cfcourse:") ? "CrossFit resmî kurs takvimi" : srcItems[0].id.startsWith("cal:") ? (srcItems[0].eventName ? `${String(srcItems[0].eventName).replace(/\s+[—–-]\s+.*$/, "").replace(/\s+(20\d\d|kayıt.*|online.*|qualifier.*|\(.*\))$/i, "").replace(/\s+20\d\d.*$/, "").trim()} resmî sitesi` : "Organizatörün resmî sitesi") : srcItems[0].source;
+      const calSourceName = (s) => (s.id.startsWith("cal:circle21") || /circle21\.events/i.test(s.url ?? "")) ? "circle21 resmî kayıt sayfası"
+        : /(^|\.)taf\.org\.tr$/i.test((() => { try { return new URL(s.url ?? "").hostname; } catch { return ""; } })()) ? "Türkiye Atletizm Federasyonu"
+        : s.eventName ? `${String(s.eventName).replace(/\s+[—–-]\s+.*$/, "").replace(/\s+(20\d\d|kayıt.*|online.*|qualifier.*|\(.*\))$/i, "").replace(/\s+20\d\d.*$/, "").trim()} resmî sitesi`
+        : "Organizatörün resmî sitesi";
+      const sourceName = srcItems[0].id.startsWith("ig:") ? `@${srcItems[0].handle} Instagram` : srcItems[0].id.startsWith("c21") ? "circle21 resmî kayıt sayfası" : srcItems[0].id.startsWith("cfcourse:") ? "CrossFit resmî kurs takvimi" : srcItems[0].id.startsWith("cal:") ? calSourceName(srcItems[0]) : srcItems[0].source;
 
       const ready = await prepareVerified(pick, srcItems, sourceName);
       processed++;
@@ -454,7 +459,7 @@ function recentSameEvent({ eventName = "", text = "", category = "", followup = 
 // Aynı haberin farklı kaynaktan tekrarı (etkinlik adı olmayan haberler dahil; Strava-HYROX iki kez çıktı):
 // kapak başlığı son 7 günün başlıklarıyla kelime kökü (ilk 5 harf) örtüşmesine göre karşılaştırılır.
 // Farklı etkinlikler (HYROX Barcelona / HYROX Kahire sonuçları) yalnızca neredeyse aynı başlıkta (0,9) tekrar sayılır.
-const STOPW = new Set("için gibi daha olan oldu olarak ile bir iki üç yeni ilk son kadar sonra önce gün günü yılı yıl yarış yarışı yarışında koşu koşusu açıklandı açıldı açılıyor sonuçları sonuçlar kayıtları kayıtlar belli 2025 2026 2027 2028 sporcu sporcular kazandı kazanan birinci derece".split(" ")); // dolgu kelimeleri (BF1); "dünya/rekor/şampiyonası" konu belirler, çıkarılmaz (Antigravity incelemesi)
+const STOPW = new Set("için gibi daha olan oldu olarak ile bir iki üç yeni ilk kez son kadar sonra önce gün günü yılı yıl yarış yarışı yarışında koşu koşusu açıklandı duyuruldu duyurdu açıldı açılıyor sonuçları sonuçlar kayıtları kayıtlar belli 2025 2026 2027 2028 sporcu sporcular kazandı kazanan birinci derece".split(" ")); // dolgu kelimeleri (BF1/G17); "dünya/rekor/şampiyonası" konu belirler, çıkarılmaz (Antigravity incelemesi)
 const titleToks = (t) => new Set(String(t ?? "").toLocaleLowerCase("tr").replace(/[’']\S*/g, "").split(/[^a-z0-9çğıöşü]+/).filter((w) => w.length >= 3 && !STOPW.has(w)).map((w) => w.slice(0, 5)));
 function titleSim(a, b) { const A = titleToks(a), B = titleToks(b); if (Math.min(A.size, B.size) < 3) return 0; let n = 0; for (const x of A) if (B.has(x)) n++; return n / Math.min(A.size, B.size); }
 function recentSameStory(headline, eventName = "", athlete = "") {
@@ -1027,7 +1032,7 @@ async function processApprovals() {
       const res = item.video ? await publishReel(item.video, item.caption, item.cover ?? "") : await publish(item.urls, item.caption);
       if (item.video) state.reelsDone = [...(state.reelsDone ?? []), code].slice(-50);
       todayCount++;
-      state.posts.push({ day: today, ids: item.ids, kind: item.kind, photos: item.photos, media: res.id, permalink: res.permalink, cover: item.cover ?? item.urls[0], title: item.title, headline: item.headline, approved: code, at: new Date().toISOString() });
+      state.posts.push({ day: today, ids: item.ids, kind: item.kind, photos: item.photos, media: res.id, permalink: res.permalink, cover: item.cover ?? item.urls?.[0] ?? item.video, title: item.title, headline: item.headline, eventName: item.eventName, approved: code, at: new Date().toISOString() });
       saveState();
       log("Onaylı zamanlı post yayında:", res.permalink);
       await notify(`✅ Onayladığın ${item.video ? "Reels" : "post"} paylaşıldı (${code})\n${res.permalink}`);

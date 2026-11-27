@@ -374,6 +374,10 @@ try {
       ["Athens Throwdown 2027", "athensthrowdown2027", true],
       ["Athens Throwdown 2027", "wolfhaven2event", false],
       ["HYROX İstanbul", "hyroxankara", false],
+      ["HYROX İstanbul", "athxistanbul", false],
+      ["İda Ultra", "kapadokyaultratrail", false],
+      ["Lykos Yarışması", "lykos2event", true],
+      ["Lykos Yarışı başlıyor", "lykosthrowdown", true],
       ["", "wolfhaven2event", false],
     ];
     const errs = cases.filter(([a, b, want]) => f.shortRaceSame(a, b) !== want).map(([a, b, want]) => `${a} ~ ${b} != ${want}`);

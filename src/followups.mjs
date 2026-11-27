@@ -44,12 +44,14 @@ export const norm = (s = "") => String(s).toLocaleLowerCase("tr").replace(/ı/g,
 
 // Kısa Reels tekrar kontrolü (kullanıcı 2026-11-28): yarışa özgü kelimeler (4+ harf; sayı ve dolgu kelimeleri hariç) öteki kaydın
 // norm anahtarında geçiyor mu. En az 2 kelime (tek kelimelik adda 1) eşleşirse aynı yarış: "Wolf Haven Yarışması" ~ "wolfhaven2event".
-const RACE_FILL = /^(yarisma\p{L}*|yaris\p{L}*|event\p{L}*|etkinli\p{L}*|duyuru\p{L}*|kayit\p{L}*|geliyor|yeni|ikinci|birinci|edition|games|series|throwdown|challenge|crossfit|hyrox|fitness|open|team)$/u;
+// Şehir/ülke/genel tür kelimeleri de dolgu sayılır: "HYROX İstanbul" ile "ATHX İstanbul" aynı yarış değildir (Antigravity incelemesi).
+const RACE_FILL = /^(yarisma\w*|yaris\w*|event\w*|etkinli\w*|duyuru\w*|kayit\w*|geliyor|basliyor|acildi|aciliyor|yeni|ikinci|birinci|edition|games|series|throwdown|challenge|championship\w*|sampiyona\w*|crossfit|hyrox|athx|fitness|open|team|festival|kupasi|cup|istanbul|ankara|izmir|antalya|bursa|bodrum|kusadasi|kapadokya|cappadocia|turkiye|turkey|athens|tirana|sofia|varna|belgrade|ultra|trail|maraton\w*|marathon|kosu\w*|half|world|international|uluslararasi|triathlon|triatlon)$/;
+const ascii = (s) => String(s ?? "").toLocaleLowerCase("tr").replace(/ı/g, "i").replace(/ş/g, "s").replace(/ç/g, "c").replace(/ğ/g, "g").replace(/ö/g, "o").replace(/ü/g, "u");
 export function shortRaceSame(name, otherEv) {
-  const ws = String(name ?? "").toLocaleLowerCase("tr").replace(/ı/g, "i").split(/[^a-z0-9ğüşöç]+/u)
-    .filter((w) => w.length >= 4 && !/\d/.test(w) && !RACE_FILL.test(w));
+  const ws = [...new Set(ascii(name).split(/[^a-z0-9]+/).filter((w) => w.length >= 4 && !/\d/.test(w) && !RACE_FILL.test(w)))];
   if (!ws.length || !otherEv) return false;
-  const hit = ws.filter((w) => String(otherEv).includes(w)).length;
+  const ev = ascii(otherEv);
+  const hit = ws.filter((w) => ev.includes(w)).length;
   return hit >= Math.min(2, ws.length);
 }
 

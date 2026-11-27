@@ -153,7 +153,8 @@ const dur = (f) => Number(sh("ffprobe", ["-v", "error", "-show_entries", "format
 const frame = (f, t, out) => { sh("ffmpeg", ["-loglevel", "error", "-y", "-ss", String(t), "-i", f, "-frames:v", "1", "-vf", "scale=720:-2", out]); return fs.readFileSync(out); };
 /** Kaynaktaki [from, from+len] bölümünü dikey 1080x1920 keser. Döngü YOK (kullanıcı kuralı 2026-11-28: "aynı videoyu döndürüp durmuşsun"). */
 const vertical = (f, from, len, out) => {
-  sh("ffmpeg", ["-loglevel", "error", "-y", "-ss", String(from), "-i", f, "-t", String(len), "-vf", "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30", "-an", "-c:v", "libx264", "-crf", "18", "-preset", "fast", out]);
+  sh("ffmpeg", ["-loglevel", "error", "-y", "-ss", String(from), "-i", f, "-t", String(len), "-vf", "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,setsar=1,format=yuv420p", "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18", "-preset", "fast", out]);
+  return dur(out); // gerçek süre (kaynağın sesi videodan uzunsa teorik süre yanıltır)
 };
 /** Farklı denetlenmiş parçaları art arda birleştirir (her parça bir kez görünür). */
 const joinSegs = (segs, out) => {
@@ -204,9 +205,8 @@ async function videoClip(file, topic, need, out) {
     i = j;
   }
   if (!best || best.len < 3) return 0;
-  const len = Math.min(best.len, need + 1, d - best.from);
-  vertical(file, best.from, len, out);
-  return len;
+  const got = vertical(file, best.from, Math.min(best.len, need + 1, d - best.from), out);
+  return got >= 3 ? got : 0;
 }
 
 const usedStock = new Set();

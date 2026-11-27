@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-27T07:42:38.114Z",
+  "updated": "2026-11-27T08:42:30.464Z",
   "sources": {
     "circle21": {
       "ok": true,
       "count": 97,
-      "fetchedAt": "2026-11-27T07:40:53.066Z"
+      "fetchedAt": "2026-11-27T08:40:59.931Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-27T07:42:38.106Z"
+      "fetchedAt": "2026-11-27T08:42:30.453Z"
     }
   },
   "items": [
@@ -3678,13 +3678,14 @@
       "status": "confirmed",
       "url": "https://circle21.events/event?competitionId=a337c10e-7d2e-46be-ab23-e38585c993ac",
       "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/484566/conversions/DSC01190-s_thumb.jpg",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/485021/conversions/lerumsboxen-hyrox-2027-omslag-l_thumb.jpg",
       "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/484566/conversions/DSC01190-s_thumb.jpg",
       "imageCredit": "circle21 / organizatör",
       "registration": {
         "to": "2027-05-01",
         "fee": "1200.00 SEK"
-      }
+      },
+      "instagram": "https://instagram.com/lerumsboxen"
     },
     {
       "id": "hyrox-2027-bengaluru",

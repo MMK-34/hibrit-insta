@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-27T17:43:10.334Z",
+  "updated": "2026-11-27T18:42:38.308Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 97,
-      "fetchedAt": "2026-11-27T17:40:58.918Z"
+      "count": 98,
+      "fetchedAt": "2026-11-27T18:40:55.027Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-27T17:43:10.325Z"
+      "fetchedAt": "2026-11-27T18:42:38.297Z"
     }
   },
   "items": [
@@ -3356,6 +3356,28 @@
       },
       "instagram": "https://www.instagram.com/grit_gravity/",
       "website": "https://www.instagram.com/grit_gravity/"
+    },
+    {
+      "id": "circle21-a46ab569-9b09-4f08-a9f6-4288000f0fb4",
+      "name": "DISTRICT L - 24hr BACKYARD CROSSFIT RACE",
+      "eventSlug": null,
+      "type": "crossfit",
+      "city": "Penrith CA11 0US",
+      "country": "Birleşik Krallık",
+      "startDate": "2027-04-24",
+      "endDate": "2027-04-25",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=a46ab569-9b09-4f08-a9f6-4288000f0fb4",
+      "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/485668/conversions/District-L-Transparent-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/485622/conversions/logoorangeDLnoLift-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
+      "registration": {
+        "to": "2027-01-05",
+        "fee": "80.00 GBP"
+      },
+      "instagram": "https://instagram.com/districtl_",
+      "website": "https://www.instagram.com/districtl_/"
     },
     {
       "id": "circle21-5aa46697-1162-4e29-a901-e375b7d5526c",

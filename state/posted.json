@@ -2402,7 +2402,7 @@
         "place": ""
       },
       "ins": {
-        "at": "2026-11-26T18:43:11.772Z",
+        "at": "2026-11-27T18:42:39.052Z",
         "likes": 1,
         "comments": 0,
         "basic": true,
@@ -2449,7 +2449,7 @@
       },
       "story": "18102072968551468",
       "ins": {
-        "at": "2026-11-26T18:43:12.315Z",
+        "at": "2026-11-27T18:42:41.049Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -2554,7 +2554,7 @@
       },
       "story": "17966537895213240",
       "ins": {
-        "at": "2026-11-26T18:43:13.131Z",
+        "at": "2026-11-27T18:42:42.106Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -2670,7 +2670,7 @@
       },
       "story": "18087551366710453",
       "ins": {
-        "at": "2026-11-26T18:43:13.932Z",
+        "at": "2026-11-27T18:42:43.160Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -2696,7 +2696,7 @@
       "at": "2026-11-20T11:29:40.855Z",
       "manual": true,
       "ins": {
-        "at": "2026-11-26T18:43:14.953Z",
+        "at": "2026-11-27T18:42:44.124Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -2721,7 +2721,7 @@
       "at": "2026-11-20T15:28:17.328Z",
       "manual": true,
       "ins": {
-        "at": "2026-11-26T18:43:15.874Z",
+        "at": "2026-11-27T18:42:45.310Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -2746,7 +2746,7 @@
       "at": "2026-11-20T16:45:39.813Z",
       "manual": true,
       "ins": {
-        "at": "2026-11-26T18:43:16.724Z",
+        "at": "2026-11-27T18:42:46.441Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -2795,7 +2795,7 @@
         "place": "Phu Quoc"
       },
       "ins": {
-        "at": "2026-11-26T18:43:17.602Z",
+        "at": "2026-11-27T18:42:47.319Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -2821,7 +2821,7 @@
       "at": "2026-11-21T05:27:50.476Z",
       "manual": true,
       "ins": {
-        "at": "2026-11-26T18:43:18.282Z",
+        "at": "2026-11-27T18:42:48.212Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -2870,7 +2870,7 @@
       },
       "story": "18095374019369463",
       "ins": {
-        "at": "2026-11-26T18:43:19.032Z",
+        "at": "2026-11-27T18:42:49.502Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -2914,7 +2914,7 @@
       },
       "story": "18119813126329841",
       "ins": {
-        "at": "2026-11-26T18:43:19.960Z",
+        "at": "2026-11-27T18:42:50.362Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -2965,7 +2965,7 @@
       },
       "story": "18007585058796603",
       "ins": {
-        "at": "2026-11-26T18:43:20.632Z",
+        "at": "2026-11-27T18:42:51.059Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -3017,7 +3017,7 @@
       },
       "story": "18094080821242524",
       "ins": {
-        "at": "2026-11-26T18:43:21.338Z",
+        "at": "2026-11-27T18:42:52.122Z",
         "likes": 1,
         "comments": 0,
         "basic": true,
@@ -3079,7 +3079,7 @@
       },
       "story": "18112475909369000",
       "ins": {
-        "at": "2026-11-26T18:43:22.160Z",
+        "at": "2026-11-27T18:42:53.012Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -3135,7 +3135,7 @@
       },
       "story": "17961357618267468",
       "ins": {
-        "at": "2026-11-26T18:43:23.136Z",
+        "at": "2026-11-27T18:42:53.782Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -3160,7 +3160,7 @@
       "at": "2026-11-21T10:45:24.325Z",
       "manual": true,
       "ins": {
-        "at": "2026-11-26T18:43:23.941Z",
+        "at": "2026-11-27T18:42:54.636Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -3222,7 +3222,7 @@
       },
       "story": "18440828149176898",
       "ins": {
-        "at": "2026-11-26T18:43:24.727Z",
+        "at": "2026-11-27T18:42:55.505Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -3264,7 +3264,7 @@
       },
       "story": "18362827213301957",
       "ins": {
-        "at": "2026-11-26T18:43:25.474Z",
+        "at": "2026-11-27T18:42:58.512Z",
         "likes": 0,
         "comments": 0,
         "basic": true,
@@ -5017,7 +5017,8 @@
       "drafts": 20,
       "approved": 1,
       "rejected": 19,
-      "aiCalls": 36
+      "aiCalls": 36,
+      "summarySent": true
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -5049,7 +5050,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-27T17:43:10.963Z",
+  "lastRunAt": "2026-11-27T18:42:39.049Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {
@@ -5090,6 +5091,22 @@
       "srcUrls": [],
       "at": "2026-11-26T18:51:50.341Z",
       "label": "REELS"
+    },
+    "rdd751651": {
+      "video": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-27-kisa/kisa-2026-11-27.mp4",
+      "caption": "Athens Throwdown 2027 Kayıtları\n\nAyrıntılar profilde.\n\nGörüntüler: @athensthrowdown\n\nReklam / Tanıtım\n\n#hibritportal #crossfit",
+      "kind": "reel",
+      "title": "Kısa duyuru: Athens Throwdown 2027 Kayıtları",
+      "ids": [
+        "reel:rdd751651"
+      ],
+      "photos": [],
+      "urls": [
+        "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-27-kisa/kisa-2026-11-27.mp4"
+      ],
+      "srcUrls": [],
+      "at": "2026-11-27T18:34:41.314Z",
+      "label": "REELS"
     }
   },
   "dmSeen": [
@@ -5127,7 +5144,7 @@
     "r2f20b103",
     "rb4c0e99c"
   ],
-  "insDay": "2026-11-26",
+  "insDay": "2026-11-27",
   "shortReels": [
     {
       "ev": "wolfhaven2event",

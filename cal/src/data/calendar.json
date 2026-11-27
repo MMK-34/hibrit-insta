@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-26T23:24:55.712Z",
+  "updated": "2026-11-27T04:42:59.209Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 99,
-      "fetchedAt": "2026-11-26T23:23:07.154Z"
+      "count": 97,
+      "fetchedAt": "2026-11-27T04:40:57.113Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-26T23:24:55.703Z"
+      "fetchedAt": "2026-11-27T04:42:59.200Z"
     }
   },
   "items": [
@@ -755,23 +755,6 @@
       "eventSlug": null
     },
     {
-      "id": "circle21-a5c6ae9f-382c-443b-983b-cbe75a6b16c7",
-      "name": "AGORÀ - Team Italia Retreat",
-      "eventSlug": null,
-      "type": "crossfit",
-      "city": "Italy",
-      "country": "İtalya",
-      "startDate": "2026-11-28",
-      "endDate": "2026-11-29",
-      "status": "confirmed",
-      "url": "https://circle21.events/event?competitionId=a5c6ae9f-382c-443b-983b-cbe75a6b16c7",
-      "source": "circle21",
-      "registration": {
-        "to": "2026-11-27"
-      },
-      "instagram": "https://www.instagram.com/wanderteen/"
-    },
-    {
       "id": "hyrox-youngstars-utrecht-2026-11",
       "name": "HYROX Youngstars Utrecht",
       "eventSlug": null,
@@ -1347,27 +1330,6 @@
         "fee": "89.85 EUR"
       },
       "website": "https://www.bamchallenge.nl"
-    },
-    {
-      "id": "circle21-91252f62-07cb-49fa-ac99-a2a814db636e",
-      "name": "The Union Games x Elevate Fitness",
-      "eventSlug": null,
-      "type": "crossfit",
-      "city": "Wakefield WF2 7AZ",
-      "country": "Birleşik Krallık",
-      "startDate": "2026-12-13",
-      "endDate": "2026-12-13",
-      "status": "confirmed",
-      "url": "https://circle21.events/event?competitionId=91252f62-07cb-49fa-ac99-a2a814db636e",
-      "source": "circle21",
-      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/436549/conversions/Gritty-Union-Games-Fitness-Banner-l_thumb.jpg",
-      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/436517/conversions/WhatsApp-Image-2026-08-20-at-16.55.59-(6)-s_thumb.jpg",
-      "imageCredit": "circle21 / organizatör",
-      "registration": {
-        "to": "2026-11-27",
-        "fee": "80.00 GBP"
-      },
-      "instagram": "https://instagram.com/the.uniongames"
     },
     {
       "id": "mersin-maratonu-2026-12",

@@ -2657,5 +2657,70 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-27T04:43:30.901Z",
+    "title": "4..KADEME UYGULAMA EĞİTİMİ KURS SONUÇLARI AÇIKLANDI",
+    "url": "https://taf.org.tr/4-kademe-uygulama-egitimi-kurs-sonuclari-aciklandi-2/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-27T04:43:36.136Z",
+    "title": "Uşak’ta sağlık çalışanlarından kan bağışı desteği",
+    "url": "https://www.marmarisyenisayfa.com/haber/usak-ta-saglik-calisanlarindan-kan-bagisi-destegi-794237.html",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-27T04:43:42.095Z",
+    "title": "Il più grande Campionato Mondiale di Canotaggio Indoor di sempre si terrà a Birmingham, dal 4 al 6 dicembre",
+    "url": "https://www.puglialive.net/il-piu-grande-campionato-mondiale-di-canotaggio-indoor-di-sempre-si-terra-a-birmingham-dal-4-al-6-dicembre/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "kitle",
+        "item": "kitle",
+        "note": "yurt dışı koşu/dayanıklılık haberi, Türk sporcu yok"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-27T04:43:44.701Z",
+    "title": "Greve bağlı aksama: Paris, Londra ve Brüksel seferlerinde iptaller",
+    "url": "https://www.aksiyon.com.tr/greve-bagli-aksama-paris-londra-ve-bruksel-seferlerinde-iptaller-402499/amp",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-27T04:43:49.342Z",
+    "title": "The biggest HYROX training mistake? You might be going too hard",
+    "url": "https://www.redbull.com/sg-en/hyrox-training-too-much-intensity",
+    "kind": "bilgi",
+    "fails": [
+      {
+        "model": "kaynak",
+        "item": "kaynak",
+        "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
+      }
+    ]
   }
 ]

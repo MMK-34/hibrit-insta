@@ -4705,6 +4705,41 @@
         "https://news.google.com/rss/articles/CBMic0FVX3lxTE5rNk1ZWVpNMF8yQnJvaFl6RXhweVNCaEhnSGtqQTJMYXJiZ0Uxc19DSlE4OVBCN05xMHB3QkItNm5VUXlkNTQxVDhaajUxV2gxQkJFaDBvR2N0M2ZYNXRIVks0VFZpZUxYME9xejlZckNEVjDSAXtBVV95cUxOWTNRM200ZXNfUnh4MldlOUFacUVUejRiZFNLamJkT002YUlDR2t1RnFmMlNmdW1pb1Q4MDBrejBKcUlCQlYyMlp6LWd2QUhHZmZxSEZTdklXUUd0aG5NOXh1VE5rRHljbU5PTTNzSVg4ZDhDVl9Yd2NiMTA"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://taf.org.tr/4-kademe-uygulama-egitimi-kurs-sonuclari-aciklandi-2/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiowFBVV95cUxPN3RvdmM0eW1TVnczVTZwc3BMTjBVYkhzM21OUnhmRmVJNXZrVTNtcUpqMUVYV0lxWjJRV01ndml5Y3pSLWtySnJzcG1FNnF4MmFaeF9ieWYzNHMyWlUzOVVDRzNaV09POXZhMFF6VDl5dGlxWHA5UGM5NkVpTGdJaUprOUhjb2ZSZ2hPZmRZWWxWOEYwOWlvblU1M3FUaG00Zzdz"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMizwFBVV95cUxPTzJDdHdZeDFZZ3VmeGFRTmpOanJLbWltQ0RtcW1EMHFkZjR6cEFUdHJqQ2tGYkdSQ0pDcGpGTFhKQ3NES2tRTUZfYWpzRkVpR1FxVEtmNnRDQTk2NU1oTjdPTVEyMEw4bndHbEk5aC0wTERKSkh6UURoN2drOWZRLWtCcDlFSExBZ1haMDFCQ21JWHA4WjV2T3JSVEs4RTVVZ1kzVXFnMTB2ZlBHNEp4S2lVRmQ3cnZsb2VHMnZYMjNiZmlQdkxJRVM2dnRxeUU"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMipAFBVV95cUxQRGh4YV9NX0o4SnJEa042RU1oN09tUjBpNm4zZ2ZQaFZ0S2djVEtONnVNbDk5U2x5QXk2Q09sWmNYMGdtazJuM0pTMnQ4VjdxeTVKQ3hRc0pkbWM3RVZBQzlQOHdiS0Nabnp1RnZ1MURHYUs3UGQ5V2VROGhBZkVZdFEyNTJFMThHTVloVjJxT1ZxZlpqVkRlZFA5bUUzcFBqZklBU9IBpAFBVV95cUxQRGh4YV9NX0o4SnJEa042RU1oN09tUjBpNm4zZ2ZQaFZ0S2djVEtONnVNbDk5U2x5QXk2Q09sWmNYMGdtazJuM0pTMnQ4VjdxeTVKQ3hRc0pkbWM3RVZBQzlQOHdiS0Nabnp1RnZ1MURHYUs3UGQ5V2VROGhBZkVZdFEyNTJFMThHTVloVjJxT1ZxZlpqVkRlZFA5bUUzcFBqZklBUw"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-27",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMicEFVX3lxTE12b1BRSkxTdVc4NVNNaFgxdV9QRC1obGVlY0J3NlpzVzh4YVVDRUlJSl9RNHJGY2V1ZUJkUDhBdEE4V09oemJMN0NPRkhjTGFpLWVCOS00M3FTWDNyOHhDb21FOVdVRnVGTHd3aXZOaWw"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -4826,9 +4861,10 @@
       "summarySent": true
     },
     "2026-11-27": {
-      "drafts": 0,
+      "drafts": 5,
       "approved": 0,
-      "rejected": 0
+      "rejected": 5,
+      "aiCalls": 6
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -4860,7 +4896,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-26T18:43:05.528Z",
+  "lastRunAt": "2026-11-27T04:42:59.888Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {
@@ -4884,6 +4920,22 @@
       ],
       "srcUrls": [],
       "at": "2026-11-22T22:19:15.159Z",
+      "label": "REELS"
+    },
+    "r35c1d683": {
+      "video": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-26-kisa/kisa-2026-11-26.mp4",
+      "caption": "Wolf Haven 2. Event Duyurusu\n\nAyrıntılar profilde.\n\nGörüntüler: @wolfhavencf\n\n#hibritportal #crossfit",
+      "kind": "reel",
+      "title": "Kısa duyuru: Wolf Haven 2. Event Duyurusu",
+      "ids": [
+        "reel:r35c1d683"
+      ],
+      "photos": [],
+      "urls": [
+        "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-26-kisa/kisa-2026-11-26.mp4"
+      ],
+      "srcUrls": [],
+      "at": "2026-11-26T18:51:50.341Z",
       "label": "REELS"
     }
   },

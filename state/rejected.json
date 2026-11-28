@@ -2982,5 +2982,62 @@
         "note": "kalıp ifade (\"unutmayın\"); haber dili kullan"
       }
     ]
+  },
+  {
+    "at": "2026-11-28T10:47:04.329Z",
+    "title": "HYROX Challenger 15: Everything you need to know about the new format",
+    "url": "https://www.redbull.com/sg-en/hyrox-challenger-15-format-explained",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-28T10:48:43.583Z",
+    "title": "McKenzie and Shen Dominate Ultra-Trail Kosciuszko 100km Races",
+    "url": "https://www.sportzhub.com/article/mckenzie-and-shen-dominate-ultra-trail-kosciuszko-100km-races.html",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-28T10:52:23.208Z",
+    "title": "In Korea's Hyrox boom, the finish line means more when shared",
+    "url": "https://www.koreaherald.com/article/10949832",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "claude-haiku-5-5",
+        "item": "alinti_yok",
+        "note": "Postta sporcunun kendi alıntısı (babasına söyledikleri) yer almaktadır; kural gereği alıntı olmamalıdır."
+      },
+      {
+        "model": "claude-haiku-5-5",
+        "item": "kategori",
+        "note": "Postta 'çiftler kategorisi' ifadesi geçmektedir; kategori adı geçmesi yasaktır."
+      }
+    ]
+  },
+  {
+    "at": "2026-11-28T10:53:58.551Z",
+    "title": "Exercise-Released Molecule L-BAIBA Boosts Muscle Strength and May Protect Against Diabetes-Related Damage",
+    "url": "https://news.ssbcrack.com/exercise-released-molecule-l-baiba-boosts-muscle-strength-and-may-protect-against-diabetes-related-damage/",
+    "kind": "arastirma",
+    "fails": [
+      {
+        "model": "kaynak",
+        "item": "kaynak",
+        "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
+      }
+    ]
   }
 ]

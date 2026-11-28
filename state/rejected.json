@@ -3039,5 +3039,31 @@
         "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
       }
     ]
+  },
+  {
+    "at": "2026-11-28T11:48:58.166Z",
+    "title": "Yaklaşan yarış: IBERIAN THROWDOWN FINAL EVENT 2026 (Santa Cruz de Tenerife, İspanya) 2026-12-04 – 2026-12-06",
+    "url": "https://circle21.events/event?competitionId=c1fba888-7a10-4d2d-a58b-b9e8af19dc2e",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "foto",
+        "item": "gorsel",
+        "note": "foto yok"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-28T11:52:00.738Z",
+    "title": "Kim Dong-hyun and Mother Finish Hyrox Competition Together",
+    "url": "https://www.chosun.com/english/kpop-culture-en/2026/11/28/PYPNEEEGCREODKOJO7J5L2LQ4U/",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
   }
 ]

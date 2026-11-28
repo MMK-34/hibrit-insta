@@ -5068,6 +5068,21 @@
         "https://news.google.com/rss/articles/CBMizAFBVV95cUxOb09Id0NyNVVSQlowZlR6NGw2MEJJcXhCejVGajd6YTNMM0prYnZCN3JfN1FEMm9BMV9kR2VNOVZtX1NGRnh2TXl5dFV6ZDZfQ3lCcnlGTDZyN3JsRkRsSXlQWi1SMVEzT0lKbTkxOHFjam8tNzFxajBJa2RhbWpvQ1RZUWRJeDRyN24zZU0zdi1jX0xhaFItZWk0djhwVXFwSkdXUVpMOEZ3TkMxSE8xRi16dlBZOU8xeXZJeEh5djZTNzdPYW9iTVRCSE0"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-28",
+      "ids": [
+        "cal:circle21-c1fba888-7a10-4d2d-a58b-b9e8af19dc2e"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-28",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMijgFBVV95cUxPaVlhV19sQldPN0pvRkNxWkpCcm1JcW9yT0RvaE5LaU0tUWRMTDVrVVl5NTZ6VWJJVGtUWjFCd3ZhdDhKeWNkY1ZQWEpuZURuYW1JMXJYNFpuc2t4emRMVTNUZUlVcVQ3QnRBR19MQm9BT05sall4R3N6dlpENWVBUERmVXd6bDFVemdOdkZB",
+        "https://news.google.com/rss/articles/CBMijgFBVV95cUxQTTRhSFZvcDFuTmZfeHVVS3hYeEw0VmZBZ3JaMWxfa1hETjROQUVTaC1UMkNRekRsWG1KdnBiY3ZpVDlCc3FYRlFCTE5pMHhHRG5GUTVzRHlzdEJjNUR1alZqSnZ4RzFzRFpvMFVxSHgzSENaN09keEdQNnRQZ2pzQnVmX0x5QXRlS08zeDF3"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -5196,10 +5211,10 @@
       "summarySent": true
     },
     "2026-11-28": {
-      "drafts": 12,
+      "drafts": 14,
       "approved": 2,
-      "rejected": 10,
-      "aiCalls": 29
+      "rejected": 12,
+      "aiCalls": 34
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -5231,7 +5246,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-28T10:42:43.058Z",
+  "lastRunAt": "2026-11-28T11:42:45.719Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

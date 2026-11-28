@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-28T10:42:42.332Z",
+  "updated": "2026-11-28T11:42:45.127Z",
   "sources": {
     "circle21": {
       "ok": true,
-      "count": 98,
-      "fetchedAt": "2026-11-28T10:40:57.563Z"
+      "count": 99,
+      "fetchedAt": "2026-11-28T11:41:00.013Z"
     },
     "hyrox": {
       "ok": true,
       "count": 119,
-      "fetchedAt": "2026-11-28T10:42:42.322Z"
+      "fetchedAt": "2026-11-28T11:42:45.119Z"
     }
   },
   "items": [
@@ -948,6 +948,28 @@
         "fee": "50.00 EUR"
       },
       "instagram": "https://instagram.com/blitzseries"
+    },
+    {
+      "id": "circle21-c1fba888-7a10-4d2d-a58b-b9e8af19dc2e",
+      "name": "IBERIAN THROWDOWN FINAL EVENT 2026",
+      "eventSlug": null,
+      "type": "crossfit",
+      "city": "Santa Cruz de Tenerife",
+      "country": "İspanya",
+      "startDate": "2026-12-04",
+      "endDate": "2026-12-06",
+      "status": "confirmed",
+      "url": "https://circle21.events/event?competitionId=c1fba888-7a10-4d2d-a58b-b9e8af19dc2e",
+      "source": "circle21",
+      "image": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/295833/conversions/iberian-cover-final-c21.png-l_thumb.jpg",
+      "logo": "https://production-storage-circle21.s3.eu-central-1.amazonaws.com/295832/conversions/iberian-logo-gold-2026-s_thumb.jpg",
+      "imageCredit": "circle21 / organizatör",
+      "registration": {
+        "to": "2026-11-30",
+        "fee": "330.00 EUR"
+      },
+      "instagram": "https://instagram.com/iberianthrowdown",
+      "website": "https://www.iberianthrowdown.com"
     },
     {
       "id": "hyrox-2026-sanya",

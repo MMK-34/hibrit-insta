@@ -2969,5 +2969,18 @@
         "note": "sayı yazıyla yazılmış (\"iki\"): tüm sayıları rakamla yaz (2, 3, 10)"
       }
     ]
+  },
+  {
+    "at": "2026-11-28T06:44:23.634Z",
+    "title": "@hyroxuk Instagram paylaşımı: TWO WEEKS UNTIL ORIGINAL SOURCE HYROX LONDON OLYMPIA TICKETS GO LIVE! ⚡️",
+    "url": "https://www.instagram.com/reel/DgPCnzLs7uq/",
+    "kind": "duyuru",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "kalıp ifade (\"unutmayın\"); haber dili kullan"
+      }
+    ]
   }
 ]

@@ -4977,6 +4977,49 @@
         "https://www.boxrox.com/walking-lunges-vs-reverse-lunges-which-is-better-for-building-stronger-legs/"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-28",
+      "ids": [
+        "ig:18112796681248598"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-28",
+      "ids": [
+        "ig:18101790554216440"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:ff63110f32f7fbe9"
+      ],
+      "media": "18117014876582155",
+      "permalink": "https://www.instagram.com/p/DgRpFdWDRw4/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-28/mx01pqc6/01.jpg",
+      "title": "@athensthrowdown Instagram paylaşımı: Save up to 33%: Early Bird Spectator Passes are launching this Tuesday, 1 December @ 09:00 (Local Greek Time)!",
+      "headline": "Athens Throwdown seyirci biletleri 1 Aralık'ta satışa çıkıyor",
+      "eventName": "Athens Throwdown",
+      "at": "2026-11-28T06:45:32.746Z",
+      "ig": "athensthrowdown",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "ATHENS THROWDOWN",
+            "title": "Athens Throwdown seyirci biletleri 1 Aralık'ta satışa çıkıyor",
+            "subtitle": "Atina'daki Tae Kwon Do Stadyumu'nda gerçekleşecek 3 günlük yarışmanın biletleri indirimli dönemle başlıyor.",
+            "hl": "1 ARALIK"
+          }
+        ],
+        "caption": "Athens Throwdown seyirci biletleri 1 Aralık'ta satışa çıkıyor. Atina'daki Tae Kwon Do Stadyumu'nda 3 gün sürecek organizasyon için biletler indirimli dönemle başlıyor. Yarış atmosferini yerinde takip etmek isteyenler için kayıtlar organizasyonun resmi web sitesi üzerinden yapılacak. Siz de bu büyük CrossFit etkinliğini yerinde izleyecek misiniz?\n\nReklam / Tanıtım\n\nKaynak: athensthrowdown Instagram\nGörsel: @athensthrowdown\n\n#athensthrowdown #crossfit #fonksiyonelantrenman #atina #hibritportal",
+        "srcUrls": [
+          "https://www.instagram.com/p/DgP9PpzGbpj/"
+        ],
+        "eventName": "Athens Throwdown",
+        "country": "Yunanistan",
+        "place": "Atina"
+      }
     }
   ],
   "daily": {
@@ -5105,10 +5148,10 @@
       "summarySent": true
     },
     "2026-11-28": {
-      "drafts": 6,
-      "approved": 1,
-      "rejected": 5,
-      "aiCalls": 14
+      "drafts": 8,
+      "approved": 2,
+      "rejected": 6,
+      "aiCalls": 22
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -5140,7 +5183,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-28T05:43:07.272Z",
+  "lastRunAt": "2026-11-28T06:42:57.688Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

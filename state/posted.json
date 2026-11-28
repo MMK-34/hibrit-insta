@@ -5020,6 +5020,26 @@
         "country": "Yunanistan",
         "place": "Atina"
       }
+    },
+    {
+      "day": "2026-11-28",
+      "ids": [
+        "manual:mersin-mar-2026-program"
+      ],
+      "kind": "haber",
+      "photos": [
+        "event:mersin-mar-2026-program",
+        "event:mersin-mar-2026-program",
+        "event:mersin-mar-2026-program"
+      ],
+      "media": "18125734540939736",
+      "permalink": "https://www.instagram.com/p/DgR9YltlyiI/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/manual/mersin-mar-2026-program/01.jpg",
+      "title": "Mersin Maratonu 13 Aralık'ta koşulacak, program belli oldu",
+      "headline": "Mersin Maratonu 13 Aralık'ta koşulacak, program belli oldu",
+      "eventName": "8. Uluslararası Mersin Maratonu",
+      "at": "2026-11-28T09:42:56.683Z",
+      "manual": true
     }
   ],
   "daily": {
@@ -5183,7 +5203,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-28T08:42:47.462Z",
+  "lastRunAt": "2026-11-28T09:42:56.834Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

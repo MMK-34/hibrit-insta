@@ -2904,5 +2904,70 @@
         "note": "factsOk=false"
       }
     ]
+  },
+  {
+    "at": "2026-11-28T05:45:03.250Z",
+    "title": "Spartan Race returns to Newberry",
+    "url": "https://www.newberryobserver.com/news/81978/spartan-race-returns-to-newberry-3/amp",
+    "kind": "hikaye",
+    "fails": [
+      {
+        "model": "yazar",
+        "item": "kaynak",
+        "note": "factsOk=false"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-28T05:45:11.059Z",
+    "title": "HYROX Challenger 15: Everything you need to know about the new format",
+    "url": "https://www.redbull.com/nz-en/hyrox-challenger-15-format-explained",
+    "kind": "haber",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "yarış kategorisi adları yazılmış (Beginner, Scaled, Advanced vb.): kategori adlarını tamamen çıkar"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-28T05:45:16.007Z",
+    "title": "This Is The Strength Training Sweet Spot For Longevity, From A 30-Year Harvard Study",
+    "url": "https://health.yahoo.com/wellness/fitness/exercise/articles/strength-training-sweet-spot-longevity-113800532.html",
+    "kind": "arastirma",
+    "fails": [
+      {
+        "model": "kaynak",
+        "item": "kaynak",
+        "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-28T05:45:25.237Z",
+    "title": "Adding More Reps vs Adding More Weight: How Should Beginners Progress?",
+    "url": "https://www.boxrox.com/adding-more-reps-vs-adding-more-weight-how-should-beginners-progress/",
+    "kind": "bilgi",
+    "fails": [
+      {
+        "model": "kaynak",
+        "item": "kaynak",
+        "note": "bilgi/araştırma postu resmî ya da bilimsel kaynağa dayanmıyor"
+      }
+    ]
+  },
+  {
+    "at": "2026-11-28T05:45:33.060Z",
+    "title": "Walking Lunges vs Reverse Lunges: Which Is Better for Building Stronger Legs?",
+    "url": "https://www.boxrox.com/walking-lunges-vs-reverse-lunges-which-is-better-for-building-stronger-legs/",
+    "kind": "bilgi",
+    "fails": [
+      {
+        "model": "süzgeç",
+        "item": "süzgeç",
+        "note": "sayı yazıyla yazılmış (\"iki\"): tüm sayıları rakamla yaz (2, 3, 10)"
+      }
+    ]
   }
 ]

@@ -4942,6 +4942,41 @@
         "country": "Avustralya",
         "place": "Melbourne"
       }
+    },
+    {
+      "day": "2026-11-28",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiigFBVV95cUxPc3lHQ0hNdU5seGpCcXZ0WG1SNFR3a1VIaWQzYS1KcjR6dDVoNUREQUxtZEZiQU01Zkpudm9zM0FxZ1lLaUVneWJUUzM3LXJxYzBOdFUxTWc4MHVYZ1lqRDJYaGxzS2czdDZ1dXZaMFFqWWNHdWU3YXBGYTl5eHowd0pMd0FabVhnSEHSAYoBQVVfeXFMT3N5R0NITXVObHhqQnF2dFhtUjRUd2tVSGlkM2EtSnI0enQ1aDVEREFMbWRGYkFNNWZKbnZvczNBcWdZS2lFZ3liVFMzNy1ycWMwTnRVMU1nODB1WGdZakQyWGhsc0tnM3Q2dXV2WjBRalljR3VlN2FwRmE5eXh6MHdKTHdBWm1YZ0hB"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-28",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMidEFVX3lxTE1mZXRLZHNJRHRDWk5hVXFyWmMxN1FVcTNLT0N3M0pEeVJmZ0dlV2JRNDlheTZ1eWpHZ0VnazJmSjB3UjRwZkZWR09PTm9wVlVheW5iRjVwUUNoV0tJZHpmSE43endVRGcxUUdCOU9jYnVfZTRs"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-28",
+      "ids": [
+        "https://news.google.com/rss/articles/CBMiswFBVV95cUxNQVZkSm9wRVJZXzNhRldnOEZaTFJNbzRvQWpHQ0NpOUlqYlhEOFREWHY4YU10Mm0yQmlLRTVKR294MDhPdy1IdnJyWkFhV2EzVmZDTzMwNDNubWdpUkNoU1BNSHhPejR2M056VHV3NFFFbFR4WUZ1dXA3Sm1FdzBUVGpfNk9pbWV6cEtKUnpyVjc2RXdIV2s5b0pta1JQWDQ3YndWRmhjUVlqeFo4eWQ5X0Fidw"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-28",
+      "ids": [
+        "https://www.boxrox.com/adding-more-reps-vs-adding-more-weight-how-should-beginners-progress/"
+      ],
+      "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-28",
+      "ids": [
+        "https://www.boxrox.com/walking-lunges-vs-reverse-lunges-which-is-better-for-building-stronger-legs/"
+      ],
+      "skipped": "doğrulama"
     }
   ],
   "daily": {
@@ -5070,10 +5105,10 @@
       "summarySent": true
     },
     "2026-11-28": {
-      "drafts": 1,
+      "drafts": 6,
       "approved": 1,
-      "rejected": 0,
-      "aiCalls": 5
+      "rejected": 5,
+      "aiCalls": 14
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -5105,7 +5140,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-28T04:43:00.316Z",
+  "lastRunAt": "2026-11-28T05:43:07.272Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {

@@ -310,5 +310,25 @@
     "createdDay": "2026-11-26",
     "due": "2026-12-05",
     "status": "bekliyor"
+  },
+  {
+    "key": "hyroxmelbourne2026",
+    "type": "gecmis",
+    "eventName": "HYROX Melbourne 2026",
+    "officialSite": "https://hyrox.com/find-my-race/",
+    "category": "hyrox",
+    "createdDay": "2026-11-28",
+    "due": "2026-12-02",
+    "status": "bekliyor"
+  },
+  {
+    "key": "hyroxmelbourne2026",
+    "type": "wodlar",
+    "eventName": "HYROX Melbourne 2026",
+    "officialSite": "https://hyrox.com/find-my-race/",
+    "category": "hyrox",
+    "createdDay": "2026-11-28",
+    "due": "2026-12-07",
+    "status": "bekliyor"
   }
 ]

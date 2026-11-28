@@ -4893,6 +4893,55 @@
         "https://news.google.com/rss/articles/CBMiekFVX3lxTE5oei0yTlJXam5hdGhFT096MHlUOUdnYnZEMXlfcE5VNTZZblVkU2R5SlNCOE1UbUhmQ0ViZVppa2VDYUNDMUZtZGx1WE4zdHczc09qX2RkZkdjNDBfNDFvb056UnVWOEFhbV9oOWgxWklReHh2SGdRT1hR"
       ],
       "skipped": "doğrulama"
+    },
+    {
+      "day": "2026-11-28",
+      "ids": [
+        "reel:rdd751651"
+      ],
+      "kind": "reel",
+      "photos": [],
+      "media": "18040631063893122",
+      "permalink": "https://www.instagram.com/reel/DgRbIh-h2AG/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-27-kisa/kisa-2026-11-27.mp4",
+      "title": "Kısa duyuru: Athens Throwdown 2027 Kayıtları",
+      "approved": "rdd751651",
+      "at": "2026-11-28T04:44:05.158Z"
+    },
+    {
+      "day": "2026-11-28",
+      "ids": [
+        "cal:hyrox-2026-melbourne"
+      ],
+      "kind": "duyuru",
+      "photos": [
+        "event:0b870ecaeaae5595"
+      ],
+      "media": "18112525421245856",
+      "permalink": "https://www.instagram.com/p/DgRbtSXDRrF/",
+      "cover": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/2026-11-28/mwzxhk02/01.jpg",
+      "title": "Yaklaşan yarış: HYROX Melbourne 2026 (Melbourne, Australia) 2026-12-08 – 2026-12-13",
+      "headline": "HYROX Melbourne 2026 tarihleri açıklandı",
+      "eventName": "HYROX Melbourne 2026",
+      "at": "2026-11-28T04:48:41.959Z",
+      "ig": "hyroxworld",
+      "audit": {
+        "slides": [
+          {
+            "type": "cover",
+            "kicker": "HYROX MELBOURNE",
+            "title": "HYROX Melbourne 2026 tarihleri açıklandı",
+            "subtitle": "Avustralya'da düzenlenecek yarış 8-13 Aralık 2026 tarihleri arasında gerçekleşecek."
+          }
+        ],
+        "caption": "HYROX Melbourne 2026 tarihleri açıklandı. Avustralya'da düzenlenecek yarış 8-13 Aralık 2026 tarihleri arasında gerçekleşecek. Yarışa dair güncel bilgilere ve kayıt detaylarına HYROX resmi web sitesi üzerinden ulaşabilirsiniz. Siz de bu tarihlerde Melbourne'de yarışacak mısınız?\n\nYarışın Instagram hesabı: @hyroxworld\n\nKaynak: HYROX Melbourne resmi sitesi\nGörsel: Redbull\n\n#hyrox #hyroxturkiye #crossfit #fonksiyonelantrenman #hibritportal",
+        "srcUrls": [
+          "https://hyrox.com/find-my-race/"
+        ],
+        "eventName": "HYROX Melbourne 2026",
+        "country": "Avustralya",
+        "place": "Melbourne"
+      }
     }
   ],
   "daily": {
@@ -5021,9 +5070,10 @@
       "summarySent": true
     },
     "2026-11-28": {
-      "drafts": 0,
-      "approved": 0,
-      "rejected": 0
+      "drafts": 1,
+      "approved": 1,
+      "rejected": 0,
+      "aiCalls": 5
     }
   },
   "deployedAt": "2026-11-08T07:37:57.121Z",
@@ -5055,7 +5105,7 @@
       "media": "18058419152589976"
     }
   },
-  "lastRunAt": "2026-11-27T18:42:39.049Z",
+  "lastRunAt": "2026-11-28T04:43:00.316Z",
   "collabInvites": {},
   "countdowns": {},
   "specials": {
@@ -5064,56 +5114,7 @@
       "at": "2026-11-09T17:42:33.300Z"
     }
   },
-  "pendingApprovals": {
-    "r28d967d0": {
-      "video": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-23-kisa/kisa-2026-11-23.mp4",
-      "caption": "Wolf Haven Yarışması Geliyor\n\nAyrıntılar profilde.\n\nGörüntüler: @wolfhavencf\n\nReklam / Tanıtım\n\n#hibritportal #crossfit",
-      "kind": "reel",
-      "title": "Kısa duyuru: Wolf Haven Yarışması Geliyor",
-      "ids": [
-        "reel:r28d967d0"
-      ],
-      "photos": [],
-      "urls": [
-        "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-23-kisa/kisa-2026-11-23.mp4"
-      ],
-      "srcUrls": [],
-      "at": "2026-11-22T22:19:15.159Z",
-      "label": "REELS"
-    },
-    "r35c1d683": {
-      "video": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-26-kisa/kisa-2026-11-26.mp4",
-      "caption": "Wolf Haven 2. Event Duyurusu\n\nAyrıntılar profilde.\n\nGörüntüler: @wolfhavencf\n\n#hibritportal #crossfit",
-      "kind": "reel",
-      "title": "Kısa duyuru: Wolf Haven 2. Event Duyurusu",
-      "ids": [
-        "reel:r35c1d683"
-      ],
-      "photos": [],
-      "urls": [
-        "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-26-kisa/kisa-2026-11-26.mp4"
-      ],
-      "srcUrls": [],
-      "at": "2026-11-26T18:51:50.341Z",
-      "label": "REELS"
-    },
-    "rdd751651": {
-      "video": "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-27-kisa/kisa-2026-11-27.mp4",
-      "caption": "Athens Throwdown 2027 Kayıtları\n\nAyrıntılar profilde.\n\nGörüntüler: @athensthrowdown\n\nReklam / Tanıtım\n\n#hibritportal #crossfit",
-      "kind": "reel",
-      "title": "Kısa duyuru: Athens Throwdown 2027 Kayıtları",
-      "ids": [
-        "reel:rdd751651"
-      ],
-      "photos": [],
-      "urls": [
-        "https://raw.githubusercontent.com/MMK-34/hibrit-insta/media/reels/2026-11-27-kisa/kisa-2026-11-27.mp4"
-      ],
-      "srcUrls": [],
-      "at": "2026-11-27T18:34:41.314Z",
-      "label": "REELS"
-    }
-  },
+  "pendingApprovals": {},
   "dmSeen": [
     "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDU0MDk0NTMwNDIxOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1OTMzMTc5NTg3NzcyNjc4NjozMzA5NzI2NDYyODY3ODM3ODMyNDg2NzA4NjE3MzYwMTc5MgZDZD",
     "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDU0MDk0NTMwNDIxOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1OTMzMTc5NTg3NzcyNjc4NjozMzA5ODE3MDc1NzY4OTY1NjU1NTY4MzI4NjQxMDU5MjI1NgZDZD",
@@ -5147,7 +5148,8 @@
   "statWeek": "2026-46",
   "reelsDone": [
     "r2f20b103",
-    "rb4c0e99c"
+    "rb4c0e99c",
+    "rdd751651"
   ],
   "insDay": "2026-11-27",
   "shortReels": [
